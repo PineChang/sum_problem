@@ -1,0 +1,1111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://www.cnblogs.com/xdp-gacl/p/4009399.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/encoder.js"></script>
+
+<title>JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/bundle-SimpleClear.css">
+<link type="text/css" rel="stylesheet" href="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/133816.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xdp-gacl/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xdp-gacl/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xdp-gacl/wlwmanifest.xml">
+<script src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xdp-gacl', cb_enable_mathjax=false;</script>
+<script src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<div id="page_begin_html"><!-- Baidu Button BEGIN -->
+<!--<div style="display: none" id="__document_write_ajax_div-1"></div><script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=6507240" >window['__document_write_ajax_callbacks__']['1']();</script>
+<div style="display: none" id="__document_write_ajax_div-2"></div><script type="text/javascript" id="bdshell_js">window['__document_write_ajax_callbacks__']['2']();</script>
+<div style="display: none" id="__document_write_ajax_div-3"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['3']();</script>-->
+<!-- Baidu Button END -->
+
+<!--添加博客目录-->
+
+
+<!--
+<head>
+
+DIY 博客全文界面的推荐、反对、加关注、返回顶部、快速评论等小功能的集成
+
+<div style="display: none" id="__document_write_ajax_div-5"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script>
+</head>
+--></div><script>load_page_begin_html();</script>
+
+<div id="main">
+<div id="header">
+<h1><a id="Header1_HeaderTitle" href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a></h1>
+<p id="tagline">只为成功找方法，不为失败找借口！</p></div>
+
+<div id="post_detail">
+<div class="post">
+    <h2 class="postTitle"><a id="cb_post_title_url" href="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园.html">JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据</a></h2>
+    <div class="postText"><div id="cnblogs_post_body"><h2 id="blogTitle0">一、Oracle中大数据处理</h2>
+<p>　　在Oracle中，LOB（Large Object，大型对象）类型的字段现在用得越来越多了。因为这种类型的字段，容量大（最多能容纳4GB的数据），且一个表中可以有多个这种类型的字段，很灵活，适用于数据 量非常大的业务领域（如图象、档案等）。</p>
+<p>　　LOB类型分为BLOB和CLOB两种：BLOB即二进制大型对象（Binary Large Object），适用于存贮非文本的字节流数据（如程序、图象、影音等）。而CLOB，即字符型大型对象（Character Large Object），则与字符集相关，适于存贮文本型的数据（如历史档案、大部头著作等）。</p>
+<h2 id="blogTitle1">二、搭建测试环境</h2>
+<h3 id="blogTitle2">2.1、建立两个测试用的数据库表</h3>
+<p>　　建表SQL语句为：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">CREATE</span> <span style="color: #0000ff;">TABLE</span> TEST_CLOB ( ID <span style="color: #0000ff;">NUMBER</span>(<span style="color: #800000; font-weight: bold;">3</span><span style="color: #000000;">), CLOBCOL CLOB)
+</span><span style="color: #008080;">2</span> 
+<span style="color: #008080;">3</span> <span style="color: #0000ff;">CREATE</span> <span style="color: #0000ff;">TABLE</span> TEST_BLOB ( ID <span style="color: #0000ff;">NUMBER</span>(<span style="color: #800000; font-weight: bold;">3</span>), BLOBCOL BLOB)</pre>
+</div>
+<h3 id="blogTitle3">2.2、搭建测试项目架构</h3>
+<p>　　<img style="border: 1px solid black;" src="data:image/png;base64,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" alt=""></p>
+<h3 id="blogTitle4">2.3、编写db.properties配置文件</h3>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;">1</span> oracleDb_Driver=<span style="color: #000000;">oracle.jdbc.driver.OracleDriver
+</span><span style="color: #008080;">2</span> oracleDb_Url=jdbc:oracle:thin:@localhost:1521<span style="color: #000000;">:GACL
+</span><span style="color: #008080;">3</span> oracleDb_UserName=<span style="color: #000000;">GACL_XDP
+</span><span style="color: #008080;">4</span> oracleDb_Password=P</pre>
+</div>
+<h3 id="blogTitle5">2.4、编写JdbcUtils工具类</h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.utils;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.InputStream;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Connection;
+</span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.DriverManager;
+</span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.SQLException;
+</span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Statement;
+</span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;
+</span><span style="color: #008080;">10</span> 
+<span style="color: #008080;">11</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> JdbcUtils {
+</span><span style="color: #008080;">12</span> 
+<span style="color: #008080;">13</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String oracleDb_Driver = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">14</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String oracleDb_Url = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">15</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String oracleDb_UserName = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">16</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String oracleDb_Password = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">17</span>     
+<span style="color: #008080;">18</span>     <span style="color: #0000ff;">static</span><span style="color: #000000;">{
+</span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">20</span>             <span style="color: #008000;">//</span><span style="color: #008000;">读取db.properties文件中的数据库连接信息</span>
+<span style="color: #008080;">21</span>             InputStream in = JdbcUtils.<span style="color: #0000ff;">class</span>.getClassLoader().getResourceAsStream("db.properties"<span style="color: #000000;">);
+</span><span style="color: #008080;">22</span>             Properties prop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();
+</span><span style="color: #008080;">23</span> <span style="color: #000000;">            prop.load(in);
+</span><span style="color: #008080;">24</span>             
+<span style="color: #008080;">25</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接驱动</span>
+<span style="color: #008080;">26</span>             oracleDb_Driver = prop.getProperty("oracleDb_Driver"<span style="color: #000000;">);
+</span><span style="color: #008080;">27</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接URL地址</span>
+<span style="color: #008080;">28</span>             oracleDb_Url = prop.getProperty("oracleDb_Url"<span style="color: #000000;">);
+</span><span style="color: #008080;">29</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接用户名</span>
+<span style="color: #008080;">30</span>             oracleDb_UserName = prop.getProperty("oracleDb_UserName"<span style="color: #000000;">);
+</span><span style="color: #008080;">31</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接密码</span>
+<span style="color: #008080;">32</span>             oracleDb_Password = prop.getProperty("oracleDb_Password"<span style="color: #000000;">);
+</span><span style="color: #008080;">33</span>             
+<span style="color: #008080;">34</span>             <span style="color: #008000;">//</span><span style="color: #008000;">加载数据库驱动</span>
+<span style="color: #008080;">35</span> <span style="color: #000000;">            Class.forName(oracleDb_Driver);
+</span><span style="color: #008080;">36</span>             
+<span style="color: #008080;">37</span>         }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;">38</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> ExceptionInInitializerError(e);
+</span><span style="color: #008080;">39</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">40</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">41</span>     
+<span style="color: #008080;">42</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">43</span> <span style="color: #008000;">    * @Method: getOracleConnection
+</span><span style="color: #008080;">44</span> <span style="color: #008000;">    * @Description: 获取Oracle数据库连接对象
+</span><span style="color: #008080;">45</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">46</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">47</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span><span style="color: #008000;"> Connection数据库连接对象
+</span><span style="color: #008080;">48</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> SQLException
+</span><span style="color: #008080;">49</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">50</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> Connection getOracleConnection() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">51</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> DriverManager.getConnection(oracleDb_Url, oracleDb_UserName,oracleDb_Password);
+</span><span style="color: #008080;">52</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">53</span>     
+<span style="color: #008080;">54</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">55</span> <span style="color: #008000;">    * @Method: release
+</span><span style="color: #008080;">56</span> <span style="color: #008000;">    * @Description: 释放资源，
+</span><span style="color: #008080;">57</span> <span style="color: #008000;">    *     要释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，存储查询结果的ResultSet对象
+</span><span style="color: #008080;">58</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">59</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">60</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> conn
+</span><span style="color: #008080;">61</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> st
+</span><span style="color: #008080;">62</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> rs
+</span><span style="color: #008080;">63</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">64</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> release(Connection conn,Statement st,ResultSet rs){
+</span><span style="color: #008080;">65</span>         <span style="color: #0000ff;">if</span>(rs!=<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;">66</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">67</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">关闭存储查询结果的ResultSet对象</span>
+<span style="color: #008080;">68</span> <span style="color: #000000;">                rs.close();
+</span><span style="color: #008080;">69</span>             }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;">70</span> <span style="color: #000000;">                e.printStackTrace();
+</span><span style="color: #008080;">71</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">72</span>             rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">73</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">74</span>         <span style="color: #0000ff;">if</span>(st!=<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;">75</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">76</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">关闭负责执行SQL命令的Statement对象</span>
+<span style="color: #008080;">77</span> <span style="color: #000000;">                st.close();
+</span><span style="color: #008080;">78</span>             }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;">79</span> <span style="color: #000000;">                e.printStackTrace();
+</span><span style="color: #008080;">80</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">81</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">82</span>         
+<span style="color: #008080;">83</span>         <span style="color: #0000ff;">if</span>(conn!=<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;">84</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">85</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">关闭Connection数据库连接对象</span>
+<span style="color: #008080;">86</span> <span style="color: #000000;">                conn.close();
+</span><span style="color: #008080;">87</span>             }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;">88</span> <span style="color: #000000;">                e.printStackTrace();
+</span><span style="color: #008080;">89</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">90</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">91</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">92</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h2 id="blogTitle6">三、JDBC处理Oracle大数据</h2>
+<h3 id="blogTitle7">3.1、JDBC处理CLOB数据</h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.demo;
+</span><span style="color: #008080;">  2</span> 
+<span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.BufferedReader;
+</span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.BufferedWriter;
+</span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileReader;
+</span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileWriter;
+</span><span style="color: #008080;">  7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Connection;
+</span><span style="color: #008080;">  8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.PreparedStatement;
+</span><span style="color: #008080;">  9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;"> 10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.junit.Test;
+</span><span style="color: #008080;"> 11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> me.gacl.utils.JdbcUtils;
+</span><span style="color: #008080;"> 12</span> 
+<span style="color: #008080;"> 13</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 14</span> <span style="color: #008000;">* @ClassName: JdbcOperaOracleClob
+</span><span style="color: #008080;"> 15</span> <span style="color: #008000;">* @Description:Oracle中字符型大型对象（Character Large Object）数据处理
+</span><span style="color: #008080;"> 16</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;"> 17</span> <span style="color: #008000;">* @date: 2014-10-7 下午3:53:19
+</span><span style="color: #008080;"> 18</span> <span style="color: #008000;">*
+</span><span style="color: #008080;"> 19</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 20</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> JdbcOperaOracleClob {
+</span><span style="color: #008080;"> 21</span> 
+<span style="color: #008080;"> 22</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 23</span> <span style="color: #008000;">    CREATE TABLE TEST_CLOB ( ID NUMBER(3), CLOBCOL CLOB)
+</span><span style="color: #008080;"> 24</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 25</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 26</span> <span style="color: #008000;">    * @Method: clobInsert
+</span><span style="color: #008080;"> 27</span> <span style="color: #008000;">    * @Description:往数据库中插入一个新的CLOB对象
+</span><span style="color: #008080;"> 28</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 29</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 30</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;"> 31</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 32</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> clobInsert() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;"> 34</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 35</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 36</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 37</span>         conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;"> 38</span>         <span style="color: #0000ff;">boolean</span> defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;"> 39</span>         <span style="color: #008000;">/*</span><span style="color: #008000;">开启事务，设定不自动提交 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 40</span>         conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 41</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 42</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 插入一个空的CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 43</span>             String sql = "INSERT INTO TEST_CLOB VALUES (?, EMPTY_CLOB())"<span style="color: #000000;">;
+</span><span style="color: #008080;"> 44</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;"> 45</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;"> 46</span> <span style="color: #000000;">            stmt.executeUpdate();
+</span><span style="color: #008080;"> 47</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 查询此CLOB对象并锁定 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 48</span>             sql = "SELECT CLOBCOL FROM TEST_CLOB WHERE ID=? FOR UPDATE"<span style="color: #000000;">;
+</span><span style="color: #008080;"> 49</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;"> 50</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;"> 51</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;"> 52</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;"> 53</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 取出此CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 54</span>                 oracle.sql.CLOB clob = (oracle.sql.CLOB) rs.getClob("CLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 55</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 向CLOB对象中写入数据 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 56</span>                 BufferedWriter out = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedWriter(clob.getCharacterOutputStream());
+</span><span style="color: #008080;"> 57</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">这种方式获取的路径，其中的空格会被使用“%20”代替</span>
+<span style="color: #008080;"> 58</span>                 String path = JdbcOperaClob.<span style="color: #0000ff;">class</span>.getClassLoader().getResource("data.txt"<span style="color: #000000;">).getPath();
+</span><span style="color: #008080;"> 59</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">将“%20”替换回空格</span>
+<span style="color: #008080;"> 60</span>                 path = path.replaceAll("%20", " "<span style="color: #000000;">);
+</span><span style="color: #008080;"> 61</span>                 BufferedReader in = <span style="color: #0000ff;">new</span> BufferedReader(<span style="color: #0000ff;">new</span><span style="color: #000000;"> FileReader(path));
+</span><span style="color: #008080;"> 62</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;"> 63</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;"> 64</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;"> 65</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;"> 66</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;"> 67</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;"> 68</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 69</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 正式提交 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 70</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;"> 71</span>             System.out.println("插入成功"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 72</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;"> 73</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 出错回滚 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 74</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;"> 75</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;"> 76</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{
+</span><span style="color: #008080;"> 77</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 恢复原提交状态 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 78</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;"> 79</span> <span style="color: #000000;">            JdbcUtils.release(conn,stmt,rs);
+</span><span style="color: #008080;"> 80</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 81</span>         
+<span style="color: #008080;"> 82</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 83</span>     
+<span style="color: #008080;"> 84</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 85</span> <span style="color: #008000;">    * @Method: clobRead
+</span><span style="color: #008080;"> 86</span> <span style="color: #008000;">    * @Description: CLOB对象读取
+</span><span style="color: #008080;"> 87</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 88</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 89</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;"> 90</span>     <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 91</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 92</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> clobRead() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;"> 93</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 94</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 95</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 96</span>         conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;"> 97</span>         <span style="color: #0000ff;">boolean</span> defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;"> 98</span>         conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 99</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">100</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 查询CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">101</span>             String sql = "SELECT * FROM TEST_CLOB WHERE ID=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">102</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">103</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">104</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;">105</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;">106</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 获取CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">107</span>                 oracle.sql.CLOB clob = (oracle.sql.CLOB) rs.getClob("CLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;">108</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 以字符形式输出 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">109</span>                 BufferedReader in = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedReader(clob.getCharacterStream());
+</span><span style="color: #008080;">110</span>                 BufferedWriter out = <span style="color: #0000ff;">new</span> BufferedWriter(<span style="color: #0000ff;">new</span> FileWriter("D:\\2.txt"<span style="color: #000000;">));
+</span><span style="color: #008080;">111</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;">112</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;">113</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;">114</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">115</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;">116</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;">117</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">118</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;">119</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;">120</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;">121</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{
+</span><span style="color: #008080;">122</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 恢复原提交状态 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">123</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;">124</span> <span style="color: #000000;">            JdbcUtils.release(conn,stmt,rs);
+</span><span style="color: #008080;">125</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">126</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">127</span>     
+<span style="color: #008080;">128</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">129</span> <span style="color: #008000;">    * @Method: clobModify
+</span><span style="color: #008080;">130</span> <span style="color: #008000;">    * @Description:修改CLOB对象（是在原CLOB对象基础上进行覆盖式的修改）
+</span><span style="color: #008080;">131</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">132</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">133</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">134</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">135</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;">136</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> clobModify() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">137</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">138</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">139</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">140</span>         conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;">141</span>         <span style="color: #0000ff;">boolean</span> defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;">142</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 开启事务</span>
+<span style="color: #008080;">143</span>         conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;">144</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">145</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 查询CLOB对象并锁定 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">146</span>             String sql = "SELECT CLOBCOL FROM TEST_CLOB WHERE ID=? FOR UPDATE"<span style="color: #000000;">;
+</span><span style="color: #008080;">147</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">148</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">149</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;">150</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;">151</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 获取此CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">152</span>                 oracle.sql.CLOB clob = (oracle.sql.CLOB) rs.getClob("CLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;">153</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 进行覆盖式修改 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">154</span>                 BufferedWriter out = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedWriter(clob.getCharacterOutputStream());
+</span><span style="color: #008080;">155</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> 这种方式获取的路径，其中的空格会被使用“%20”代替</span>
+<span style="color: #008080;">156</span>                 String path = JdbcOperaClob.<span style="color: #0000ff;">class</span>.getClassLoader().getResource("data2.txt"<span style="color: #000000;">).getPath();
+</span><span style="color: #008080;">157</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> 将“%20”替换回空格</span>
+<span style="color: #008080;">158</span>                 path = path.replaceAll("%20", " "<span style="color: #000000;">);
+</span><span style="color: #008080;">159</span>                 BufferedReader in = <span style="color: #0000ff;">new</span> BufferedReader(<span style="color: #0000ff;">new</span><span style="color: #000000;"> FileReader(path));
+</span><span style="color: #008080;">160</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;">161</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;">162</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;">163</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">164</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;">165</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;">166</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">167</span>             <span style="color: #008000;">/*</span><span style="color: #008000;">提交事务 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">168</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;">169</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;">170</span>             <span style="color: #008000;">/*</span><span style="color: #008000;">出错回滚事务 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">171</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;">172</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;">173</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{
+</span><span style="color: #008080;">174</span>             <span style="color: #008000;">/*</span><span style="color: #008000;">恢复原提交状态 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">175</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;">176</span> <span style="color: #000000;">            JdbcUtils.release(conn,stmt,rs);
+</span><span style="color: #008080;">177</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">178</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">179</span> 
+<span style="color: #008080;">180</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">181</span> <span style="color: #008000;">    * @Method: clobReplace
+</span><span style="color: #008080;">182</span> <span style="color: #008000;">    * @Description:替换CLOB对象（将原CLOB对象清除，换成一个全新的CLOB对象）
+</span><span style="color: #008080;">183</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">184</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">185</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">186</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">187</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;">188</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> clobReplace() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">189</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">190</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">191</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">192</span>         conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;">193</span>         <span style="color: #0000ff;">boolean</span> defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;">194</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 开启事务</span>
+<span style="color: #008080;">195</span>         conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;">196</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">197</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 清空原CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">198</span>             String sql = "UPDATE TEST_CLOB SET CLOBCOL=EMPTY_CLOB() WHERE ID=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">199</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">200</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">201</span> <span style="color: #000000;">            stmt.executeUpdate();
+</span><span style="color: #008080;">202</span> 
+<span style="color: #008080;">203</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 查询CLOB对象并锁定 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">204</span>             sql = "SELECT CLOBCOL FROM TEST_CLOB WHERE ID=? FOR UPDATE"<span style="color: #000000;">;
+</span><span style="color: #008080;">205</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">206</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">207</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;">208</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;">209</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 获取此CLOB对象 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">210</span>                 oracle.sql.CLOB clob = (oracle.sql.CLOB) rs.getClob("CLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;">211</span>                 <span style="color: #008000;">/*</span><span style="color: #008000;"> 更新数据 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">212</span>                 BufferedWriter out = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedWriter(clob.getCharacterOutputStream());
+</span><span style="color: #008080;">213</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> 这种方式获取的路径，其中的空格会被使用“%20”代替</span>
+<span style="color: #008080;">214</span>                 String path = JdbcOperaClob.<span style="color: #0000ff;">class</span>.getClassLoader().getResource("db.properties"<span style="color: #000000;">).getPath();
+</span><span style="color: #008080;">215</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> 将“%20”替换回空格</span>
+<span style="color: #008080;">216</span>                 path = path.replaceAll("%20", " "<span style="color: #000000;">);
+</span><span style="color: #008080;">217</span>                 BufferedReader in = <span style="color: #0000ff;">new</span> BufferedReader(<span style="color: #0000ff;">new</span><span style="color: #000000;"> FileReader(path));
+</span><span style="color: #008080;">218</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;">219</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;">220</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;">221</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">222</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;">223</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;">224</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">225</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 正式提交 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">226</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;">227</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;">228</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 出错回滚 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">229</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;">230</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;">231</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">232</span>             <span style="color: #008000;">/*</span><span style="color: #008000;"> 恢复原提交状态 </span><span style="color: #008000;">*/</span>
+<span style="color: #008080;">233</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;">234</span> <span style="color: #000000;">            JdbcUtils.release(conn, stmt, rs);
+</span><span style="color: #008080;">235</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">236</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">237</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3 id="blogTitle8">3.2、JDBC处理BLOB数据</h3>
+<p>　　Oracle定义了一个BLOB字段用于保存二进制数据，但这个字段并不能存放真正的二进制数据，只能向这个字段存一个指针，然后把数据放到指针所指向的Oracle的LOB段中， LOB段是在数据库内部表的一部分。因而在操作Oracle的Blob之前，必须获得指针（定位器）才能进行Blob数据的读取和写入。<br>　　如何获得表中的Blob指针呢？ 可以先使用insert语句向表中插入一个空的blob（调用oracle的函数empty_blob()），这将创建一个blob的指针，然后再把这个empty的blob的指针查询出来，这样就可得到BLOB对象，从而读写blob数据了。</p>
+<p>　　1、插入空blob：insert into testblob(id,image) values(?,empty_blob())<br>　　2、获得blob的cursor：</p>
+<p>　　　　select image from testblob where id=? for update 注意: 必 须加for update锁定该行，直至该行被修改完毕，保证不产生并发冲突。</p>
+<p>　　　　Blob b = rs.getBlob("image");<br>　　　　<br>　　3、利用 io和获取到的cursor往数据库读写数据<br>　　注意：<span style="color: #ff0000;"><strong>以上操作需开启事务。</strong></span></p>
+<p><strong>　　BLOB对象的存取范例</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.demo;
+</span><span style="color: #008080;">  2</span> 
+<span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.BufferedInputStream;
+</span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.BufferedOutputStream;
+</span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileOutputStream;
+</span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Connection;
+</span><span style="color: #008080;">  7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.PreparedStatement;
+</span><span style="color: #008080;">  8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;">  9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.junit.Test;
+</span><span style="color: #008080;"> 10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> me.gacl.utils.JdbcUtils;
+</span><span style="color: #008080;"> 11</span> 
+<span style="color: #008080;"> 12</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 13</span> <span style="color: #008000;">* @ClassName: JdbcOperaOracleBlob
+</span><span style="color: #008080;"> 14</span> <span style="color: #008000;">* @Description:Oracle中大数据处理
+</span><span style="color: #008080;"> 15</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;"> 16</span> <span style="color: #008000;">* @date: 2014-10-7 下午3:53:19
+</span><span style="color: #008080;"> 17</span> <span style="color: #008000;">*
+</span><span style="color: #008080;"> 18</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 19</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> JdbcOperaOracleBlob {
+</span><span style="color: #008080;"> 20</span> 
+<span style="color: #008080;"> 21</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 22</span> <span style="color: #008000;">     * @Method: blobInsert
+</span><span style="color: #008080;"> 23</span> <span style="color: #008000;">     * @Description: 向数据库中插入一个新的BLOB对象
+</span><span style="color: #008080;"> 24</span> <span style="color: #008000;">     * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 25</span> <span style="color: #008000;">     * 
+</span><span style="color: #008080;"> 26</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;"> 27</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 28</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 29</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> blobInsert() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;"> 30</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 31</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 32</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 33</span>         <span style="color: #0000ff;">boolean</span> defaultCommit = <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 34</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 35</span>             conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;"> 36</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到数据库事务处理的默认提交方式</span>
+<span style="color: #008080;"> 37</span>             defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;"> 38</span>             <span style="color: #008000;">//</span><span style="color: #008000;">1、开启事务</span>
+<span style="color: #008080;"> 39</span>             conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 40</span>             <span style="color: #008000;">//</span><span style="color: #008000;">2、插入一个空的BLOB对象</span>
+<span style="color: #008080;"> 41</span>             String sql = "INSERT INTO TEST_BLOB VALUES (?, EMPTY_BLOB())"<span style="color: #000000;">;
+</span><span style="color: #008080;"> 42</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;"> 43</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;"> 44</span> <span style="color: #000000;">            stmt.executeUpdate();
+</span><span style="color: #008080;"> 45</span>             <span style="color: #008000;">//</span><span style="color: #008000;">3、查询此BLOB对象并锁定。注意: 必 须加for update锁定该行，直至该行被修改完毕，保证不产生并发冲突</span>
+<span style="color: #008080;"> 46</span>             sql = "SELECT BLOBCOL FROM TEST_BLOB WHERE ID=? FOR UPDATE"<span style="color: #000000;">;
+</span><span style="color: #008080;"> 47</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;"> 48</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;"> 49</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;"> 50</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;"> 51</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">4、取出此BLOB对象 ，并强制转换成Oracle的BLOB对象</span>
+<span style="color: #008080;"> 52</span>                 oracle.sql.BLOB blob = (oracle.sql.BLOB) rs.getBlob("BLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 53</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">5、使用IO向BLOB对象中写入数据</span>
+<span style="color: #008080;"> 54</span>                 BufferedOutputStream out = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedOutputStream(blob.getBinaryOutputStream());
+</span><span style="color: #008080;"> 55</span>                 BufferedInputStream in = <span style="color: #0000ff;">new</span> BufferedInputStream(JdbcOperaOracleBlob.<span style="color: #0000ff;">class</span>.getClassLoader().getResourceAsStream("01.jpg"<span style="color: #000000;">));
+</span><span style="color: #008080;"> 56</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;"> 57</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;"> 58</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;"> 59</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;"> 60</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;"> 61</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;"> 62</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 63</span>             <span style="color: #008000;">//</span><span style="color: #008000;">6、提交事务</span>
+<span style="color: #008080;"> 64</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;"> 65</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;"> 66</span>             <span style="color: #008000;">//</span><span style="color: #008000;">7、出错回滚事务</span>
+<span style="color: #008080;"> 67</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;"> 68</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;"> 69</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 70</span>             <span style="color: #008000;">//</span><span style="color: #008000;">8、恢复数据库事务处理的默认提交方式</span>
+<span style="color: #008080;"> 71</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;"> 72</span>             <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span>
+<span style="color: #008080;"> 73</span> <span style="color: #000000;">            JdbcUtils.release(conn, stmt, rs);
+</span><span style="color: #008080;"> 74</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 75</span> 
+<span style="color: #008080;"> 76</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 77</span> 
+<span style="color: #008080;"> 78</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 79</span> <span style="color: #008000;">     * @Method: blobModify
+</span><span style="color: #008080;"> 80</span> <span style="color: #008000;">     * @Description:修改BLOB对象（是在原BLOB对象基础上进行覆盖式的修改）
+</span><span style="color: #008080;"> 81</span> <span style="color: #008000;">     * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 82</span> <span style="color: #008000;">     * 
+</span><span style="color: #008080;"> 83</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;"> 84</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 85</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 86</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> blobModify() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;"> 87</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 88</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 89</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 90</span>         <span style="color: #0000ff;">boolean</span> defaultCommit = <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 91</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 92</span>             conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;"> 93</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到数据库事务处理的默认提交方式</span>
+<span style="color: #008080;"> 94</span>             defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;"> 95</span>             <span style="color: #008000;">//</span><span style="color: #008000;">1、开启事务</span>
+<span style="color: #008080;"> 96</span>             conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 97</span>             <span style="color: #008000;">//</span><span style="color: #008000;">2、查询此BLOB对象并锁定。注意: 必 须加for update锁定该行，直至该行被修改完毕，保证不产生并发冲突</span>
+<span style="color: #008080;"> 98</span>             String sql = "SELECT BLOBCOL FROM TEST_BLOB WHERE ID=? FOR UPDATE"<span style="color: #000000;">;
+</span><span style="color: #008080;"> 99</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">100</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">101</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;">102</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;">103</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">3、取出此BLOB对象 ，并强制转换成Oracle的BLOB对象</span>
+<span style="color: #008080;">104</span>                 oracle.sql.BLOB blob = (oracle.sql.BLOB) rs.getBlob("BLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;">105</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">4、使用IO向BLOB对象中写入数据</span>
+<span style="color: #008080;">106</span>                 BufferedOutputStream out = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedOutputStream(blob.getBinaryOutputStream());
+</span><span style="color: #008080;">107</span>                 BufferedInputStream in = <span style="color: #0000ff;">new</span> BufferedInputStream(JdbcOperaOracleBlob.<span style="color: #0000ff;">class</span>.getClassLoader().getResourceAsStream("02.jpg"<span style="color: #000000;">));
+</span><span style="color: #008080;">108</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;">109</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;">110</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;">111</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">112</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;">113</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;">114</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">115</span>             <span style="color: #008000;">//</span><span style="color: #008000;">5、提交事务</span>
+<span style="color: #008080;">116</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;">117</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;">118</span>             <span style="color: #008000;">//</span><span style="color: #008000;">6、出错回滚事务</span>
+<span style="color: #008080;">119</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;">120</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;">121</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">122</span>             <span style="color: #008000;">//</span><span style="color: #008000;">8、恢复数据库事务处理的默认提交方式</span>
+<span style="color: #008080;">123</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;">124</span>             <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span>
+<span style="color: #008080;">125</span> <span style="color: #000000;">            JdbcUtils.release(conn, stmt, rs);
+</span><span style="color: #008080;">126</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">127</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">128</span> 
+<span style="color: #008080;">129</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">130</span> <span style="color: #008000;">     * @Method: blobReplace
+</span><span style="color: #008080;">131</span> <span style="color: #008000;">     * @Description:替换BLOB对象（将原BLOB对象清除，换成一个全新的BLOB对象）
+</span><span style="color: #008080;">132</span> <span style="color: #008000;">     * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">133</span> <span style="color: #008000;">     * 
+</span><span style="color: #008080;">134</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">135</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;">136</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;">137</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> blobReplace() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">138</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">139</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">140</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">141</span>         <span style="color: #0000ff;">boolean</span> defaultCommit = <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+</span><span style="color: #008080;">142</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">143</span>             conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;">144</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到数据库事务处理的默认提交方式</span>
+<span style="color: #008080;">145</span>             defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;">146</span>             <span style="color: #008000;">//</span><span style="color: #008000;">1、开启事务</span>
+<span style="color: #008080;">147</span>             conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;">148</span>             <span style="color: #008000;">//</span><span style="color: #008000;">2、清空原BLOB对象</span>
+<span style="color: #008080;">149</span>             String sql = "UPDATE TEST_BLOB SET BLOBCOL=EMPTY_BLOB() WHERE ID=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">150</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">151</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">152</span> <span style="color: #000000;">            stmt.executeUpdate();
+</span><span style="color: #008080;">153</span>             <span style="color: #008000;">//</span><span style="color: #008000;">3、查询此BLOB对象并锁定。注意: 必 须加for update锁定该行，直至该行被修改完毕，保证不产生并发冲突</span>
+<span style="color: #008080;">154</span>             sql = "SELECT BLOBCOL FROM TEST_BLOB WHERE ID=? FOR UPDATE"<span style="color: #000000;">;
+</span><span style="color: #008080;">155</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">156</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">157</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;">158</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;">159</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">4、取出此BLOB对象 ，并强制转换成Oracle的BLOB对象</span>
+<span style="color: #008080;">160</span>                 oracle.sql.BLOB blob = (oracle.sql.BLOB) rs.getBlob("BLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;">161</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">5、使用IO向BLOB对象中写入数据</span>
+<span style="color: #008080;">162</span>                 BufferedOutputStream out = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedOutputStream(blob.getBinaryOutputStream());
+</span><span style="color: #008080;">163</span>                 BufferedInputStream in = <span style="color: #0000ff;">new</span> BufferedInputStream(JdbcOperaOracleBlob.<span style="color: #0000ff;">class</span>.getClassLoader().getResourceAsStream("01.jpg"<span style="color: #000000;">));
+</span><span style="color: #008080;">164</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;">165</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;">166</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;">167</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">168</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;">169</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;">170</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">171</span>             <span style="color: #008000;">//</span><span style="color: #008000;">6、提交事务</span>
+<span style="color: #008080;">172</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;">173</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;">174</span>             <span style="color: #008000;">//</span><span style="color: #008000;">7、出错回滚事务</span>
+<span style="color: #008080;">175</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;">176</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;">177</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">178</span>             <span style="color: #008000;">//</span><span style="color: #008000;">8、恢复数据库事务处理的默认提交方式</span>
+<span style="color: #008080;">179</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;">180</span>             <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span>
+<span style="color: #008080;">181</span> <span style="color: #000000;">            JdbcUtils.release(conn, stmt, rs);
+</span><span style="color: #008080;">182</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">183</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">184</span> 
+<span style="color: #008080;">185</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">186</span> <span style="color: #008000;">     * @Method: blobRead
+</span><span style="color: #008080;">187</span> <span style="color: #008000;">     * @Description:BLOB对象读取
+</span><span style="color: #008080;">188</span> <span style="color: #008000;">     * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">189</span> <span style="color: #008000;">     * 
+</span><span style="color: #008080;">190</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">191</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;">192</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;">193</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> blobRead() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">194</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">195</span>         PreparedStatement stmt = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">196</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">197</span>         <span style="color: #0000ff;">boolean</span> defaultCommit = <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+</span><span style="color: #008080;">198</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">199</span>             conn =<span style="color: #000000;"> JdbcUtils.getOracleConnection();
+</span><span style="color: #008080;">200</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到数据库事务处理的默认提交方式</span>
+<span style="color: #008080;">201</span>             defaultCommit =<span style="color: #000000;"> conn.getAutoCommit();
+</span><span style="color: #008080;">202</span>             <span style="color: #008000;">//</span><span style="color: #008000;">1、开启事务</span>
+<span style="color: #008080;">203</span>             conn.setAutoCommit(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;">204</span>             <span style="color: #008000;">//</span><span style="color: #008000;">2、查询BLOB对象</span>
+<span style="color: #008080;">205</span>             String sql = "SELECT BLOBCOL FROM TEST_BLOB WHERE ID=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">206</span>             stmt =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">207</span>             stmt.setInt(1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">208</span>             rs =<span style="color: #000000;"> stmt.executeQuery();
+</span><span style="color: #008080;">209</span>             <span style="color: #0000ff;">if</span><span style="color: #000000;"> (rs.next()) {
+</span><span style="color: #008080;">210</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">3、取出此BLOB对象 ，并强制转换成Oracle的BLOB对象</span>
+<span style="color: #008080;">211</span>                 oracle.sql.BLOB blob = (oracle.sql.BLOB) rs.getBlob("BLOBCOL"<span style="color: #000000;">);
+</span><span style="color: #008080;">212</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">4、以二进制流的形式输出</span>
+<span style="color: #008080;">213</span>                 BufferedOutputStream out = <span style="color: #0000ff;">new</span> BufferedOutputStream(<span style="color: #0000ff;">new</span> FileOutputStream("D:/1.jpg"<span style="color: #000000;">));
+</span><span style="color: #008080;">214</span>                 BufferedInputStream in = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BufferedInputStream(blob.getBinaryStream());
+</span><span style="color: #008080;">215</span>                 <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;
+</span><span style="color: #008080;">216</span>                 <span style="color: #0000ff;">while</span> ((c = in.read()) != -1<span style="color: #000000;">) {
+</span><span style="color: #008080;">217</span> <span style="color: #000000;">                    out.write(c);
+</span><span style="color: #008080;">218</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">219</span> <span style="color: #000000;">                in.close();
+</span><span style="color: #008080;">220</span> <span style="color: #000000;">                out.close();
+</span><span style="color: #008080;">221</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">222</span>             <span style="color: #008000;">//</span><span style="color: #008000;">5、提交事务</span>
+<span style="color: #008080;">223</span> <span style="color: #000000;">            conn.commit();
+</span><span style="color: #008080;">224</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception ex) {
+</span><span style="color: #008080;">225</span>             <span style="color: #008000;">//</span><span style="color: #008000;">6、出错回滚事务</span>
+<span style="color: #008080;">226</span> <span style="color: #000000;">            conn.rollback();
+</span><span style="color: #008080;">227</span>             <span style="color: #0000ff;">throw</span><span style="color: #000000;"> ex;
+</span><span style="color: #008080;">228</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {
+</span><span style="color: #008080;">229</span>             <span style="color: #008000;">//</span><span style="color: #008000;">8、恢复数据库事务处理的默认提交方式</span>
+<span style="color: #008080;">230</span> <span style="color: #000000;">            conn.setAutoCommit(defaultCommit);
+</span><span style="color: #008080;">231</span>             <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span>
+<span style="color: #008080;">232</span> <span style="color: #000000;">            JdbcUtils.release(conn, stmt, rs);
+</span><span style="color: #008080;">233</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">234</span> 
+<span style="color: #008080;">235</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">236</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h2 class="newtext" id="blogTitle9">四、使用JDBC处理Oracle大数据总结</h2>
+<p class="newtext">　　通过JDBC操纵Oracle数据库的LOB字段，不外乎插入、修改、替换、读取四种方式，掌握起来并不难。观察上述<span style="color: #ff0000;"><strong>程序对LOB类型字段的存取</strong></span>，我们可以看出，<span style="color: #ff0000;"><strong>较之其它类型字段，有下面几个显著不同的特点</strong></span>：</p>
+<p class="newtext">　　<span style="color: #ff0000;"><strong>1、必须取消自动提交</strong></span>。</p>
+<p class="newtext">　　存取操作开始前，必须用setAutoCommit(false)取消自动提交。其它类型字段则无此特殊要求。这是因为存取LOB类型字段时，通常要进行多次操作可以完成。不这样的话，Oracle将抛出“读取违反顺序”的错误。</p>
+<p class="newtext">　　<span style="color: #ff0000;"><strong>2、插入方式不同</strong></span>。</p>
+<p class="newtext">　　LOB数据不能象其它类型数据一样直接插入（INSERT）。插入前必须先插入一个空的LOB对象，CLOB类型 的空对象为EMPTY_CLOB()，BLOB类型的空对象为EMPTY_BLOB()。之后通过SELECT命令查询得到先前插入的记录并锁定，继而将 空对象修改为所要插入的LOB对象。</p>
+<p class="newtext">　　<span style="color: #ff0000;"><strong>3、修改方式不同</strong></span>。</p>
+<p class="newtext">　　其它类型的字段修改时，用UPDATE … SET…命令即可。而LOB类型字段，则只能用SELECT … FOR UPDATE命令将记录查询出来并锁定，然后才能修改。且修改也有两种改法：一是在原数据基础上的修改（即覆盖式修改），执行SELECT … FOR UPDATE后再改数据；二是替换（先将原数据清掉，再修改），先执行UPDATE命令将LOB字段之值设为空的LOB对象，然后进行第一种改法。建议使 用替换的方法，以实现与其它字段UPDATE操作后一样的效果。</p>
+<p class="newtext">　　<span style="color: #ff0000;"><strong>4、存取时应使用由数据库JDBC驱动程序提供的LOB操作类</strong></span>。</p>
+<p class="newtext">　　对于Oracle数据库，应使用oracle.sql.CLOB和oracle.sql.BLOB。不使用由数据库JDBC驱动程序提供的LOB类时，程序运行时易于出现“抽象方法调用”的错误，这是因为JDBC所定义的java.sql.Clob与 java.sql.Blob接口，其中的一些方法并未在数据库厂家提供的驱动程序中真正实现。</p>
+<p class="newtext">　　<span style="color: #ff0000;"><strong>5、存取手段与文件操作相仿</strong></span>。</p>
+<p class="newtext">　　对于BLOB类型，应用InputStream/OutputStream类，此类不进行编码转换，逐个字节存取。oracle.sql.BLOB类相应提供了getBinaryStream()和getBinaryOutputStream()两个方法，前一个 方法用于读取Oracle的BLOB字段，后一个方法用于将数据写入Oracle的BLOB字段。</p>
+<p class="newtext">　　对于CLOB类型，应用Reader/Writer类，此类进行编码转换。oracle.sql.CLOB类相应 提供了getCharacterStream()和getCharacterOutputStream()两个方法，前一个方法用于读取Oracle的 CLOB字段，后一个方法用于将数据写入Oracle的CLOB字段。</p>
+<p class="newtext">　　需要说明的是，为了大幅提高程序执行效率，对BLOB/CLOB字段的读写操作，应该使用缓冲操作类（带 Buffered前缀），即：BufferedInputStream，BufferedOutputStream，BufferedReader，BufferedWriter。 例程中全部使用了缓冲操作类。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4009399,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/" target="_blank"><img src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/20160221223904.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followees">关注 - 83</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followers">粉丝 - 4889</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4009399,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">3</span>
+    </div>
+	<div class="buryit" onclick="votePost(4009399,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xdp-gacl/p/3982581.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/3982581.html" title="发布于2014-10-18 10:51">javaweb学习总结(三十四)——使用JDBC处理MySQL大数据</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/3983253.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/3983253.html" title="发布于2014-10-18 11:02">javaweb学习总结(三十六)——使用JDBC进行批处理</a><br></div>
+</div>
+
+</div>
+    <p class="postfoot">posted on <span id="post-date">2014-10-18 10:58</span> <a href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a> 阅读(<span id="post_view_count">5922</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4009399" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xdp-gacl/p/4009399.html#" onclick="AddToWz(4009399);return false;">收藏</a></p>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=133816,cb_entryId=4009399,cb_blogApp=currentBlogApp,cb_blogUserGuid='f1774468-815f-e011-a53f-842b2b196315',cb_entryCreatedDate='2014/10/18 10:58:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xdp-gacl/p/4009399.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xdp-gacl/p/4009399.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=SpreadJS&utm_campaign=community" target="_blank">【推荐】怎样将“在线Excel“嵌入你的开发系统中？</a><br><a href="http://click.aliyun.com/m/3037/" target="_blank">【推荐】阿里云高性能云服务器+SSD云盘，让业务响应0延迟</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/545131/" target="_blank">亚马逊创始人贝索斯过去三个月资产增加180亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/545130/" target="_blank">Facebook要做聊天机器人，一个月内吸引了上千开发者</a><br> ·  <a href="http://news.cnblogs.com/n/545129/" target="_blank">俞敏洪：不主张大学生创业，大学生的项目我不投！</a><br> ·  <a href="http://news.cnblogs.com/n/545128/" target="_blank">三个季度连续亏损 LG移动部门或将减员缩编</a><br> ·  <a href="http://news.cnblogs.com/n/545127/" target="_blank">微软手机最新黑科技：利用传感器“预知”用户行为</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./JavaWeb学习总结(三十五)——使用JDBC处理Oracle大数据 - 孤傲苍狼 - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br> ·  <a href="http://kb.cnblogs.com/page/541740/" target="_blank">架构漫谈（六）：软件架构到底是要解决什么问题？</a><br> ·  <a href="http://kb.cnblogs.com/page/541188/" target="_blank">架构漫谈（五）：什么是软件</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="rightmenu">
+	
+		
+<div id="my_links">
+<h3>导航</h3>
+<ul>
+<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/xdp-gacl/">首页</a></li>
+<!--<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>-->
+<li><a id="MyLinks1_ContactLink" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC">联系</a></li>
+<li><a id="MyLinks1_Syndication" href="http://www.cnblogs.com/xdp-gacl/rss">订阅</a></li><!--<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/xdp-gacl/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>-->
+<li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+</div>
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalTodayDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>公告</h3>
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>园龄：<a href="http://home.cnblogs.com/u/xdp-gacl/" title="入园时间：2011-04-05">5年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xdp-gacl/followers/">4889</a><br>关注：<a href="http://home.cnblogs.com/u/xdp-gacl/followees/">83</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;f1774468-815f-e011-a53f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>		
+		
+<div id="blog_stats">
+<h3>统计</h3>
+<ul>
+<li>随笔 - 275
+</li><li>文章 - 0
+</li><li>评论 - 1503
+<!--<li>引用 - 0-->
+</li>
+</ul>
+</div>
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a>(62)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">java基础总结</a>(28)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Javascript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Javascript学习总结</a>(27)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Snmp%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Snmp学习总结</a>(15)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyEclipse%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">MyEclipse使用总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Android%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Android开发学习总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Maven%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Maven学习总结</a>(11)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/WebLogic%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">WebLogic使用总结</a>(9)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyBatis%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MyBatis学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MySQL%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MySQL学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xdp-gacl/category/431986.html">AJAX(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xdp-gacl/category/663970.html">Android开发(12)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xdp-gacl/category/431983.html">ASP.NET(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xdp-gacl/category/431981.html">C#(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xdp-gacl/category/647917.html">CSS学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xdp-gacl/category/557089.html">C语言学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/xdp-gacl/category/605855.html">FusionCharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/xdp-gacl/category/641669.html">H2数据库学习使用总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/xdp-gacl/category/601788.html">Hessian(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/xdp-gacl/category/557131.html">Hibernate</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/xdp-gacl/category/602554.html">Highcharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/xdp-gacl/category/544383.html">HTML(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/xdp-gacl/category/791376.html">html5学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/xdp-gacl/category/647915.html">Html学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/xdp-gacl/category/431984.html">Java(13)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/xdp-gacl/category/431982.html">JavaScript(27)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结(55)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/xdp-gacl/category/563691.html">Java基础加强总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/xdp-gacl/category/566451.html">java基础面试题(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/xdp-gacl/category/563690.html">java基础总结(28)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/xdp-gacl/category/595905.html">Java监控</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/xdp-gacl/category/607504.html">Java事务处理</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/xdp-gacl/category/600539.html">java字节码的处理技术</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/xdp-gacl/category/636007.html">JFinal学习研究</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/xdp-gacl/category/609326.html">JNDI(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/xdp-gacl/category/571424.html">Jquery EasyUI学习使用总结(7)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/xdp-gacl/category/600080.html">jwebap</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/xdp-gacl/category/599454.html">kafka</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/xdp-gacl/category/590574.html">LDAP</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/xdp-gacl/category/620197.html">Linux学习总结(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/xdp-gacl/category/544719.html">Maven(10)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/xdp-gacl/category/599453.html">Mina</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/xdp-gacl/category/655890.html">Mybatis(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/xdp-gacl/category/544414.html">MyEclipse(11)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/xdp-gacl/category/557132.html">MySQL(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/xdp-gacl/category/576035.html">Nginx(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/xdp-gacl/category/567838.html">Oracle学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/xdp-gacl/category/562877.html">PowerDesigner使用总结(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/xdp-gacl/category/640475.html">redis</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/xdp-gacl/category/591218.html">RESTful架构(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/xdp-gacl/category/649781.html">Servlet3.0(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/xdp-gacl/category/613358.html">Snmp学习总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/xdp-gacl/category/544380.html">Spring(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/xdp-gacl/category/654626.html">SpringMVC学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/xdp-gacl/category/543327.html">SQLServer(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/xdp-gacl/category/543338.html">Struts2(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/xdp-gacl/category/737796.html">SVN</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/xdp-gacl/category/544377.html">VB.NET(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/xdp-gacl/category/637206.html">WebLogic使用总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/xdp-gacl/category/629559.html">WebService学习总结(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/xdp-gacl/category/787823.html">WebSocket(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/xdp-gacl/category/554263.html">WinForm学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/xdp-gacl/category/602889.html">XML学习总结(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/xdp-gacl/category/551491.html">插件化开发</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/xdp-gacl/category/598077.html">创业知识(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/xdp-gacl/category/651090.html">大数据/hadoop(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/xdp-gacl/category/645953.html">代码注释(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/xdp-gacl/category/588156.html">单点登录(Yale_CAS_SSO)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/xdp-gacl/category/710266.html">电脑基本技能</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/xdp-gacl/category/636430.html">读书笔记</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/xdp-gacl/category/635429.html">负载均衡(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/xdp-gacl/category/543351.html">互联网基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/xdp-gacl/category/644775.html">缓存框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/xdp-gacl/category/801455.html">架构设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_64" href="http://www.cnblogs.com/xdp-gacl/category/661363.html">框架整合(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_65" href="http://www.cnblogs.com/xdp-gacl/category/810590.html">敏捷开发(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_66" href="http://www.cnblogs.com/xdp-gacl/category/591507.html">权限设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_67" href="http://www.cnblogs.com/xdp-gacl/category/431985.html">生活感悟(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_68" href="http://www.cnblogs.com/xdp-gacl/category/589802.html">数据库Sharding(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_69" href="http://www.cnblogs.com/xdp-gacl/category/562913.html">数据库理论基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_70" href="http://www.cnblogs.com/xdp-gacl/category/608526.html">微信开发(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_71" href="http://www.cnblogs.com/xdp-gacl/category/811446.html">我的开发框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_72" href="http://www.cnblogs.com/xdp-gacl/category/806539.html">项目管理(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_73" href="http://www.cnblogs.com/xdp-gacl/category/654566.html">英语学习</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_74" href="http://www.cnblogs.com/xdp-gacl/category/578277.html">原创小工具(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_75" href="http://www.cnblogs.com/xdp-gacl/category/594056.html">云计算(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_76" href="http://www.cnblogs.com/xdp-gacl/category/598078.html">哲学人生</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_77" href="http://www.cnblogs.com/xdp-gacl/category/596451.html">职场感悟(3)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xdp-gacl/archive/2016/04.html">2016年4月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xdp-gacl/archive/2016/03.html">2016年3月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xdp-gacl/archive/2016/02.html">2016年2月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xdp-gacl/archive/2016/01.html">2016年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xdp-gacl/archive/2015/07.html">2015年7月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xdp-gacl/archive/2015/03.html">2015年3月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xdp-gacl/archive/2015/02.html">2015年2月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xdp-gacl/archive/2015/01.html">2015年1月 (40)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xdp-gacl/archive/2014/12.html">2014年12月 (17)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xdp-gacl/archive/2014/11.html">2014年11月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xdp-gacl/archive/2014/10.html">2014年10月 (31)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xdp-gacl/archive/2014/08.html">2014年8月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xdp-gacl/archive/2014/07.html">2014年7月 (25)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xdp-gacl/archive/2014/06.html">2014年6月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xdp-gacl/archive/2014/05.html">2014年5月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xdp-gacl/archive/2014/04.html">2014年4月 (22)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xdp-gacl/archive/2014/03.html">2014年3月 (28)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xdp-gacl/archive/2014/02.html">2014年2月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xdp-gacl/archive/2014/01.html">2014年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xdp-gacl/archive/2013/12.html">2013年12月 (16)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xdp-gacl/archive/2012/11.html">2012年11月 (1)</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html#3427933">1. Re:Spring常用注解</a></li>
+        <li class="recent_comment_body">通俗易懂，谢谢博主的分享。</li>
+        <li class="recent_comment_author">--Xsum</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#3427806">2. Re:java基础学习总结——equals方法</a></li>
+        <li class="recent_comment_body">楼主写得很好，简单明了</li>
+        <li class="recent_comment_author">--bequt</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3983253.html#3427770">3. Re:javaweb学习总结(三十六)——使用JDBC进行批处理</a></li>
+        <li class="recent_comment_body">顶</li>
+        <li class="recent_comment_author">--孟妹</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html#3427757">4. Re:MyBatis学习总结(一)——MyBatis快速入门</a></li>
+        <li class="recent_comment_body">感谢你，讲的很详细</li>
+        <li class="recent_comment_author">--zimu1990</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3908610.html#3427733">5. Re:javaweb学习总结(二十一)——JavaWeb的两种开发模式</a></li>
+        <li class="recent_comment_body">写的实在是太好了</li>
+        <li class="recent_comment_author">--寻影657</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4240930.html#3427216">6. Re:Maven学习总结(三)——使用Maven构建项目</a></li>
+        <li class="recent_comment_body">真心不错</li>
+        <li class="recent_comment_author">--奕p</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html#3426738">7. Re:javaweb学习总结(五)——Servlet开发(一)</a></li>
+        <li class="recent_comment_body">请教下楼主，上面为servlet映射url是在config里面的web.xml还是WEB-INF里的web.xml里创建啊？小白不懂求指导。</li>
+        <li class="recent_comment_author">--metaluo</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html#3425929">8. Re:JavaWeb学习总结(一)——JavaWeb开发入门</a></li>
+        <li class="recent_comment_body">LZ肯定对大家这么弱鸡而无语</li>
+        <li class="recent_comment_author">--March On</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html#3425801">9. Re:JavaWeb学习总结(五十)——文件上传和下载</a></li>
+        <li class="recent_comment_body">博主大赞，如果能有上传到数据库就更好了</li>
+        <li class="recent_comment_author">--Charming2Future</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html#3425140">10. Re:MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合</a></li>
+        <li class="recent_comment_body">博主 我的项目在运行时报错：org.springframework.beans.factory.BeanCreationException: Error creating bean with nam......</li>
+        <li class="recent_comment_author">--xkpactera</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(154164)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3497016.html">2. MyEclipse使用总结——MyEclipse10安装SVN插件(139728)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">3. JavaWeb学习总结(五十)——文件上传和下载(100170)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">4. javaweb学习总结(五)——Servlet开发(一)(99507)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(86497)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">6. Android开发学习总结(一)——搭建最新版本的Android开发环境(79094)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html">7. Spring常用注解(72114)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3777987.html">8. Java基础学习总结——Java对象的序列化和反序列化(61572)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">9. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57260)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3734395.html">10. JavaWeb学习总结(二)——Tomcat服务器学习和使用(一)(51493)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">1. JavaWeb学习总结(五十)——文件上传和下载(80)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">2. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">3. MyBatis学习总结(一)——MyBatis快速入门(52)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">4. javaweb学习总结(四)——Http协议(43)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(42)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">6. JavaScript自动生成博文目录导航(40)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">7. javaweb学习总结(五)——Servlet开发(一)(39)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4239501.html">8. 使用Maven搭建Struts2+Spring3+Hibernate4的整合开发环境(34)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">9. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(32)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">10. Android开发学习总结(一)——搭建最新版本的Android开发环境(31)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(63)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">2. javaweb学习总结(五)——Servlet开发(一)(56)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">3. JavaWeb学习总结(一)——JavaWeb开发入门(48)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">4. JavaWeb学习总结(五十)——文件上传和下载(47)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">5. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(41)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">6. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(37)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/5149171.html">7. 微信开发学习总结（一）——微信开发环境搭建(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">8. JavaScript自动生成博文目录导航(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">9. Android开发学习总结(一)——搭建最新版本的Android开发环境(35)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">10. javaweb学习总结(四)——Http协议(34)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+        
+		
+<div id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © 孤傲苍狼
+</div>
+	
+</div>			
+			
+	
+
+<!--PageEndHtml Block Begin-->
+<!--评论，生成气泡效果标签代码-->
+<script type="text/javascript" language="javascript"> 
+    $(document).ready(function() {
+        var commentTime = setInterval(function(){if($("#comments_pager_bottom").length>0){CommentBubble();clearTimeout(commentTime);}},50);
+    }); 
+    function CommentBubble()
+    {
+var w1 = '<div class="list">' +
+        '<table class="out" border="0" cellspacing="0" cellpadding="0"> ' +
+            '<tr>' +
+                '<td class="icontd" align="right" valign="bottom">' +
+                    '<img src="http://pic.cnitblog.com/face/289233/20131202131125.png" width="70px" height="57px"/>' +
+                '</td>' +
+                '<td align="left" valign="bottom" class="q">' +
+                    '<table border="0" cellpadding="0" cellspacing="0" style=""> ' +
+                        '<tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> ' +
+                        '<tr><td class="left"></td> <td align="left" class="conmts"><p>';
+ 
+ 
+        var w2 = '</p> </td> <td class="right"></td></tr> ' +
+                        '<tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> ' +
+                    '</table>' +
+                '</td> ' +
+            '</tr> ' +
+        '</table> ' +
+    '</div>';
+ 
+        $.each($(".blog_comment_body"), function(i, t) {
+            $(t).html(w1 + $(t).html() + w2);
+        });
+$(".louzhu").closest(".feedbackItem").find(".out").removeClass("out").addClass("inc");
+        /*.find(".q").attr("align","right");*/
+        }
+</script>
+<!--PageEndHtml Block End-->
+
+
+<div class="sideBar" id="sideBar"><div id="sideBarTab"><h2>目录导航</h2></div><div id="sideBarContents" style="display: none;"><dl><dt name="0">一、Oracle中大数据处理</dt><dt name="1">二、搭建测试环境</dt><dd name="2">2.1、建立两个测试用的数据库表</dd><dd name="3">2.2、搭建测试项目架构</dd><dd name="4">2.3、编写db.properties配置文件</dd><dd name="5">2.4、编写JdbcUtils工具类</dd><dt name="6">三、JDBC处理Oracle大数据</dt><dd name="7">3.1、JDBC处理CLOB数据</dd><dd name="8">3.2、JDBC处理BLOB数据</dd><dt name="9">四、使用JDBC处理Oracle大数据总结</dt></dl></div></div></body></html>

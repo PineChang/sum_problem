@@ -1,0 +1,1003 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://www.cnblogs.com/xdp-gacl/p/4006830.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/encoder.js"></script>
+
+<title>javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/bundle-SimpleClear.css">
+<link type="text/css" rel="stylesheet" href="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/133816.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xdp-gacl/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xdp-gacl/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xdp-gacl/wlwmanifest.xml">
+<script src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xdp-gacl', cb_enable_mathjax=false;</script>
+<script src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<div id="page_begin_html"><!-- Baidu Button BEGIN -->
+<!--<div style="display: none" id="__document_write_ajax_div-1"></div><script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=6507240" >window['__document_write_ajax_callbacks__']['1']();</script>
+<div style="display: none" id="__document_write_ajax_div-2"></div><script type="text/javascript" id="bdshell_js">window['__document_write_ajax_callbacks__']['2']();</script>
+<div style="display: none" id="__document_write_ajax_div-3"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['3']();</script>-->
+<!-- Baidu Button END -->
+
+<!--添加博客目录-->
+
+
+<!--
+<head>
+
+DIY 博客全文界面的推荐、反对、加关注、返回顶部、快速评论等小功能的集成
+
+<div style="display: none" id="__document_write_ajax_div-5"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script>
+</head>
+--></div><script>load_page_begin_html();</script>
+
+<div id="main">
+<div id="header">
+<h1><a id="Header1_HeaderTitle" href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a></h1>
+<p id="tagline">只为成功找方法，不为失败找借口！</p></div>
+
+<div id="post_detail">
+<div class="post">
+    <h2 class="postTitle"><a id="cb_post_title_url" href="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园.html">javaweb学习总结(四十)——编写自己的JDBC框架</a></h2>
+    <div class="postText"><div id="cnblogs_post_body"><h2 id="blogTitle0">一、元数据介绍</h2>
+<p>　　元数据指的是"数据库"、"表"、"列"的定义信息。</p>
+<h3 id="blogTitle1">1.1、DataBaseMetaData元数据</h3>
+<p>　　Connection.getDatabaseMetaData()获得代表DatabaseMetaData元数据的DatabaseMetaData对象。<br>　　DataBaseMetaData对象的常用方法：</p>
+<ul>
+<li>getURL()：返回一个String类对象，代表数据库的URL。</li>
+<li>getUserName()：返回连接当前数据库管理系统的用户名。</li>
+<li>getDatabaseProductName()：返回数据库的产品名称。</li>
+<li>getDatabaseProductVersion()：返回数据库的版本号。</li>
+<li>getDriverName()：返回驱动驱动程序的名称。</li>
+<li>getDriverVersion()：返回驱动程序的版本号。</li>
+<li>isReadOnly()：返回一个boolean值，指示数据库是否只允许读操作。</li>
+
+
+
+
+
+
+
+
+</ul>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 2</span> <span style="color: #008000;">    * @Method: testDataBaseMetaData
+</span><span style="color: #008080;"> 3</span> <span style="color: #008000;">    * @Description: 获取数据库的元信息
+</span><span style="color: #008080;"> 4</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 5</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 6</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> SQLException
+</span><span style="color: #008080;"> 7</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 8</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> testDataBaseMetaData() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException {
+</span><span style="color: #008080;">10</span>         Connection conn =<span style="color: #000000;"> JdbcUtils.getConnection();
+</span><span style="color: #008080;">11</span>         DatabaseMetaData metadata =<span style="color: #000000;"> conn.getMetaData();
+</span><span style="color: #008080;">12</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getURL()：返回一个String类对象，代表数据库的URL</span>
+<span style="color: #008080;">13</span> <span style="color: #000000;">        System.out.println(metadata.getURL());
+</span><span style="color: #008080;">14</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getUserName()：返回连接当前数据库管理系统的用户名</span>
+<span style="color: #008080;">15</span> <span style="color: #000000;">        System.out.println(metadata.getUserName());
+</span><span style="color: #008080;">16</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getDatabaseProductName()：返回数据库的产品名称</span>
+<span style="color: #008080;">17</span> <span style="color: #000000;">        System.out.println(metadata.getDatabaseProductName());
+</span><span style="color: #008080;">18</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getDatabaseProductVersion()：返回数据库的版本号</span>
+<span style="color: #008080;">19</span> <span style="color: #000000;">        System.out.println(metadata.getDatabaseProductVersion());
+</span><span style="color: #008080;">20</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getDriverName()：返回驱动驱动程序的名称</span>
+<span style="color: #008080;">21</span> <span style="color: #000000;">        System.out.println(metadata.getDriverName());
+</span><span style="color: #008080;">22</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getDriverVersion()：返回驱动程序的版本号</span>
+<span style="color: #008080;">23</span> <span style="color: #000000;">        System.out.println(metadata.getDriverVersion());
+</span><span style="color: #008080;">24</span>         <span style="color: #008000;">//</span><span style="color: #008000;">isReadOnly()：返回一个boolean值，指示数据库是否只允许读操作</span>
+<span style="color: #008080;">25</span> <span style="color: #000000;">        System.out.println(metadata.isReadOnly());
+</span><span style="color: #008080;">26</span>         JdbcUtils.release(conn, <span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span><span style="color: #000000;">);
+</span><span style="color: #008080;">27</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　运行结果如下：</p>
+<p>　　<img style="border: 1px solid black;" src="data:image/png;base64,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" alt=""></p>
+<h3 id="blogTitle2">1.2、ParameterMetaData元数据</h3>
+<p>　　PreparedStatement.getParameterMetaData() 获得代表PreparedStatement元数据的ParameterMetaData对象。 <br>　　Select * from user where name=? And password=?<br>　　ParameterMetaData对象的常用方法：</p>
+<ul>
+<li>getParameterCount()： 获得指定参数的个数</li>
+<li>getParameterType(int&nbsp;param)：获得指定参数的sql类型，MySQL数据库驱动不支持</li>
+
+
+
+
+
+
+
+
+</ul>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 2</span> <span style="color: #008000;">    * @Method: testParameterMetaData
+</span><span style="color: #008080;"> 3</span> <span style="color: #008000;">    * @Description: 获取参数元信息
+</span><span style="color: #008080;"> 4</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 5</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 6</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> SQLException
+</span><span style="color: #008080;"> 7</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 8</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> testParameterMetaData() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException {
+</span><span style="color: #008080;">10</span>         Connection conn =<span style="color: #000000;"> JdbcUtils.getConnection();
+</span><span style="color: #008080;">11</span>         String sql = "select * from user wherer name=? and password=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">12</span>         <span style="color: #008000;">//</span><span style="color: #008000;">将SQL预编译一下</span>
+<span style="color: #008080;">13</span>         PreparedStatement st =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">14</span>         ParameterMetaData pm =<span style="color: #000000;"> st.getParameterMetaData();
+</span><span style="color: #008080;">15</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getParameterCount() 获得指定参数的个数</span>
+<span style="color: #008080;">16</span> <span style="color: #000000;">        System.out.println(pm.getParameterCount());
+</span><span style="color: #008080;">17</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getParameterType(int param)：获得指定参数的sql类型，MySQL数据库驱动不支持</span>
+<span style="color: #008080;">18</span>         System.out.println(pm.getParameterType(1<span style="color: #000000;">));
+</span><span style="color: #008080;">19</span>         JdbcUtils.release(conn, <span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span><span style="color: #000000;">);
+</span><span style="color: #008080;">20</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3 id="blogTitle3">1.3、ResultSetMetaData元数据</h3>
+<p>　　ResultSet. getMetaData() 获得代表ResultSet对象元数据的ResultSetMetaData对象。 <br>　　ResultSetMetaData对象的常用方法：</p>
+<ul>
+<li>getColumnCount() 返回resultset对象的列数</li>
+<li>getColumnName(int&nbsp;column) 获得指定列的名称</li>
+<li>getColumnTypeName(int&nbsp;column)获得指定列的类型</li>
+
+
+
+
+
+
+
+
+</ul>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 2</span> <span style="color: #008000;">    * @Method: testResultSetMetaData
+</span><span style="color: #008080;"> 3</span> <span style="color: #008000;">    * @Description: 结果集的元数据
+</span><span style="color: #008080;"> 4</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 5</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 6</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;"> 7</span>     <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 8</span> <span style="color: #000000;">    @Test
+</span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> testResultSetMetaData() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">10</span>         Connection conn =<span style="color: #000000;"> JdbcUtils.getConnection();
+</span><span style="color: #008080;">11</span>         String sql = "select * from account"<span style="color: #000000;">;
+</span><span style="color: #008080;">12</span>         PreparedStatement st  =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">13</span>         ResultSet rs =<span style="color: #000000;"> st.executeQuery();
+</span><span style="color: #008080;">14</span>         <span style="color: #008000;">//</span><span style="color: #008000;">ResultSet.getMetaData()获得代表ResultSet对象元数据的ResultSetMetaData对象</span>
+<span style="color: #008080;">15</span>         ResultSetMetaData metadata =<span style="color: #000000;"> rs.getMetaData();
+</span><span style="color: #008080;">16</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getColumnCount() 返回resultset对象的列数</span>
+<span style="color: #008080;">17</span> <span style="color: #000000;">        System.out.println(metadata.getColumnCount());
+</span><span style="color: #008080;">18</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getColumnName(int column) 获得指定列的名称</span>
+<span style="color: #008080;">19</span>         System.out.println(metadata.getColumnName(1<span style="color: #000000;">));
+</span><span style="color: #008080;">20</span>         <span style="color: #008000;">//</span><span style="color: #008000;">getColumnTypeName(int column)获得指定列的类型</span>
+<span style="color: #008080;">21</span>         System.out.println(metadata.getColumnTypeName(1<span style="color: #000000;">));
+</span><span style="color: #008080;">22</span> <span style="color: #000000;">        JdbcUtils.release(conn, st, rs);
+</span><span style="color: #008080;">23</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h2 id="blogTitle4">二、使用元数据封装简单的JDBC框架</h2>
+<p>　　系统中所有实体对象都涉及到基本的CRUD操作<br>　　所有实体的CUD操作代码基本相同，仅仅发送给数据库的SQL语句不同而已，因此可以把CUD操作的所有相同代码抽取到工具类的一个update方法中，并定义参数接收变化的SQL语句。<br>　　实体的R操作，除SQL语句不同之外，根据操作的实体不同，对ResultSet的映射也各不相同，因此可义一个query方法，除以参数形式接收变化的SQL语句外，可以使用策略模式由qurey方法的调用者决定如何把ResultSet中的数据映射到实体对象中。</p>
+<h3 id="blogTitle5">2.1、封装通用的update方法和qurey方法</h3>
+<p>　　定义一个JdbcUtils工具类，工具类负责获取数据库连接，释放资源，执行SQL的update和query操作，代码如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.util;
+</span><span style="color: #008080;">  2</span> 
+<span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.InputStream;
+</span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Connection;
+</span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.DriverManager;
+</span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.PreparedStatement;
+</span><span style="color: #008080;">  7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;">  8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.SQLException;
+</span><span style="color: #008080;">  9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Statement;
+</span><span style="color: #008080;"> 10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;
+</span><span style="color: #008080;"> 11</span> 
+<span style="color: #008080;"> 12</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> JdbcUtils {
+</span><span style="color: #008080;"> 13</span> 
+<span style="color: #008080;"> 14</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String driver = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 15</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String url = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 16</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String username = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 17</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String password = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 18</span>     
+<span style="color: #008080;"> 19</span>     <span style="color: #0000ff;">static</span><span style="color: #000000;">{
+</span><span style="color: #008080;"> 20</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;"> 21</span>             <span style="color: #008000;">//</span><span style="color: #008000;">读取db.properties文件中的数据库连接信息</span>
+<span style="color: #008080;"> 22</span>             InputStream in = JdbcUtils.<span style="color: #0000ff;">class</span>.getClassLoader().getResourceAsStream("db.properties"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 23</span>             Properties prop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();
+</span><span style="color: #008080;"> 24</span> <span style="color: #000000;">            prop.load(in);
+</span><span style="color: #008080;"> 25</span>             
+<span style="color: #008080;"> 26</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接驱动</span>
+<span style="color: #008080;"> 27</span>             driver = prop.getProperty("driver"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 28</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接URL地址</span>
+<span style="color: #008080;"> 29</span>             url = prop.getProperty("url"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 30</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接用户名</span>
+<span style="color: #008080;"> 31</span>             username = prop.getProperty("username"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 32</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取数据库连接密码</span>
+<span style="color: #008080;"> 33</span>             password = prop.getProperty("password"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 34</span>             
+<span style="color: #008080;"> 35</span>             <span style="color: #008000;">//</span><span style="color: #008000;">加载数据库驱动</span>
+<span style="color: #008080;"> 36</span> <span style="color: #000000;">            Class.forName(driver);
+</span><span style="color: #008080;"> 37</span>             
+<span style="color: #008080;"> 38</span>         }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;"> 39</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> ExceptionInInitializerError(e);
+</span><span style="color: #008080;"> 40</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 41</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 42</span>     
+<span style="color: #008080;"> 43</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 44</span> <span style="color: #008000;">    * @Method: getConnection
+</span><span style="color: #008080;"> 45</span> <span style="color: #008000;">    * @Description: 获取数据库连接对象
+</span><span style="color: #008080;"> 46</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 47</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 48</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span><span style="color: #008000;"> Connection数据库连接对象
+</span><span style="color: #008080;"> 49</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> SQLException
+</span><span style="color: #008080;"> 50</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 51</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> Connection getConnection() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;"> 52</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> DriverManager.getConnection(url, username,password);
+</span><span style="color: #008080;"> 53</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 54</span>     
+<span style="color: #008080;"> 55</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 56</span> <span style="color: #008000;">    * @Method: release
+</span><span style="color: #008080;"> 57</span> <span style="color: #008000;">    * @Description: 释放资源，
+</span><span style="color: #008080;"> 58</span> <span style="color: #008000;">    *     要释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，存储查询结果的ResultSet对象
+</span><span style="color: #008080;"> 59</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 60</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 61</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> conn
+</span><span style="color: #008080;"> 62</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> st
+</span><span style="color: #008080;"> 63</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> rs
+</span><span style="color: #008080;"> 64</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 65</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> release(Connection conn,Statement st,ResultSet rs){
+</span><span style="color: #008080;"> 66</span>         <span style="color: #0000ff;">if</span>(rs!=<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;"> 67</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;"> 68</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">关闭存储查询结果的ResultSet对象</span>
+<span style="color: #008080;"> 69</span> <span style="color: #000000;">                rs.close();
+</span><span style="color: #008080;"> 70</span>             }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;"> 71</span> <span style="color: #000000;">                e.printStackTrace();
+</span><span style="color: #008080;"> 72</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 73</span>             rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 74</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 75</span>         <span style="color: #0000ff;">if</span>(st!=<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;"> 76</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;"> 77</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">关闭负责执行SQL命令的Statement对象</span>
+<span style="color: #008080;"> 78</span> <span style="color: #000000;">                st.close();
+</span><span style="color: #008080;"> 79</span>             }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;"> 80</span> <span style="color: #000000;">                e.printStackTrace();
+</span><span style="color: #008080;"> 81</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 82</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 83</span>         
+<span style="color: #008080;"> 84</span>         <span style="color: #0000ff;">if</span>(conn!=<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;"> 85</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;"> 86</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">关闭Connection数据库连接对象</span>
+<span style="color: #008080;"> 87</span> <span style="color: #000000;">                conn.close();
+</span><span style="color: #008080;"> 88</span>             }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;"> 89</span> <span style="color: #000000;">                e.printStackTrace();
+</span><span style="color: #008080;"> 90</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;"> 91</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 92</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 93</span>     
+<span style="color: #008080;"> 94</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 95</span> <span style="color: #008000;">    * @Method: update
+</span><span style="color: #008080;"> 96</span> <span style="color: #008000;">    * @Description: 万能更新
+</span><span style="color: #008080;"> 97</span> <span style="color: #008000;">    * 所有实体的CUD操作代码基本相同，仅仅发送给数据库的SQL语句不同而已，
+</span><span style="color: #008080;"> 98</span> <span style="color: #008000;">    * 因此可以把CUD操作的所有相同代码抽取到工具类的一个update方法中，并定义参数接收变化的SQL语句
+</span><span style="color: #008080;"> 99</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">100</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> sql 要执行的SQL
+</span><span style="color: #008080;">101</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> params 执行SQL时使用的参数
+</span><span style="color: #008080;">102</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> SQLException
+</span><span style="color: #008080;">103</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">104</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> update(String sql,Object params[]) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">105</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">106</span>         PreparedStatement st = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">107</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">108</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">109</span>             conn =<span style="color: #000000;"> getConnection();
+</span><span style="color: #008080;">110</span>             st =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">111</span>             <span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0;i&lt;params.length;i++<span style="color: #000000;">){
+</span><span style="color: #008080;">112</span>                 st.setObject(i+1<span style="color: #000000;">, params[i]);
+</span><span style="color: #008080;">113</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">114</span> <span style="color: #000000;">            st.executeUpdate();
+</span><span style="color: #008080;">115</span>             
+<span style="color: #008080;">116</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{
+</span><span style="color: #008080;">117</span> <span style="color: #000000;">            release(conn, st, rs);
+</span><span style="color: #008080;">118</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">119</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">120</span>     
+<span style="color: #008080;">121</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">122</span> <span style="color: #008000;">    * @Method: query
+</span><span style="color: #008080;">123</span> <span style="color: #008000;">    * @Description:万能查询
+</span><span style="color: #008080;">124</span> <span style="color: #008000;">    * 实体的R操作，除SQL语句不同之外，根据操作的实体不同，对ResultSet的映射也各不相同，
+</span><span style="color: #008080;">125</span> <span style="color: #008000;">    * 因此可义一个query方法，除以参数形式接收变化的SQL语句外，可以使用策略模式由qurey方法的调用者决定如何把ResultSet中的数据映射到实体对象中。
+</span><span style="color: #008080;">126</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">127</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">128</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> sql 要执行的SQL
+</span><span style="color: #008080;">129</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> params 执行SQL时使用的参数
+</span><span style="color: #008080;">130</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> rsh 查询返回的结果集处理器
+</span><span style="color: #008080;">131</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span>
+<span style="color: #008080;">132</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> SQLException
+</span><span style="color: #008080;">133</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">134</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> Object query(String sql,Object params[],ResultSetHandler rsh) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">135</span>         
+<span style="color: #008080;">136</span>         Connection conn = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">137</span>         PreparedStatement st = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">138</span>         ResultSet rs = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">139</span>         
+<span style="color: #008080;">140</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">141</span>             conn =<span style="color: #000000;"> getConnection();
+</span><span style="color: #008080;">142</span>             st =<span style="color: #000000;"> conn.prepareStatement(sql);
+</span><span style="color: #008080;">143</span>             <span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0;i&lt;params.length;i++<span style="color: #000000;">){
+</span><span style="color: #008080;">144</span>                 st.setObject(i+1<span style="color: #000000;">, params[i]);
+</span><span style="color: #008080;">145</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">146</span>             rs =<span style="color: #000000;"> st.executeQuery();
+</span><span style="color: #008080;">147</span>             <span style="color: #008000;">/**</span>
+<span style="color: #008080;">148</span> <span style="color: #008000;">             * 对于查询返回的结果集处理使用到了策略模式，
+</span><span style="color: #008080;">149</span> <span style="color: #008000;">             * 在设计query方法时，query方法事先是无法知道用户对返回的查询结果集如何进行处理的，即不知道结果集的处理策略，
+</span><span style="color: #008080;">150</span> <span style="color: #008000;">             * 那么这个结果集的处理策略就让用户自己提供，query方法内部就调用用户提交的结果集处理策略进行处理
+</span><span style="color: #008080;">151</span> <span style="color: #008000;">             * 为了能够让用户提供结果集的处理策略，需要对用户暴露出一个结果集处理接口ResultSetHandler
+</span><span style="color: #008080;">152</span> <span style="color: #008000;">             * 用户只要实现了ResultSetHandler接口，那么query方法内部就知道用户要如何处理结果集了
+</span><span style="color: #008080;">153</span>              <span style="color: #008000;">*/</span>
+<span style="color: #008080;">154</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> rsh.handler(rs);
+</span><span style="color: #008080;">155</span>             
+<span style="color: #008080;">156</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{
+</span><span style="color: #008080;">157</span> <span style="color: #000000;">            release(conn, st, rs);
+</span><span style="color: #008080;">158</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">159</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">160</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　在设计query方法时，对于查询返回的结果集处理使用到了策略模式，query方法事先是无法知道用户对返回的查询结果集如何进行处理的，即不知道结果集的处理策略， 那么这个结果集的处理策略就让用户自己提供，query方法内部就调用用户提交的结果集处理策略进行处理， 为了能够让用户提供结果集的处理策略，需要对用户暴露出一个结果集处理接口ResultSetHandler， 结果集处理器接口ResultSetHandler的定义如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.util;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;"> 4</span> 
+<span style="color: #008080;"> 5</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 6</span> <span style="color: #008000;">* @ClassName: ResultSetHandler
+</span><span style="color: #008080;"> 7</span> <span style="color: #008000;">* @Description:结果集处理器接口
+</span><span style="color: #008080;"> 8</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;"> 9</span> <span style="color: #008000;">* @date: 2014-10-5 下午12:01:27
+</span><span style="color: #008080;">10</span> <span style="color: #008000;">*
+</span><span style="color: #008080;">11</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">12</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">interface</span><span style="color: #000000;"> ResultSetHandler {
+</span><span style="color: #008080;">13</span>     
+<span style="color: #008080;">14</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">15</span> <span style="color: #008000;">    * @Method: handler
+</span><span style="color: #008080;">16</span> <span style="color: #008000;">    * @Description: 结果集处理方法
+</span><span style="color: #008080;">17</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">18</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">19</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> rs 查询结果集
+</span><span style="color: #008080;">20</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span>
+<span style="color: #008080;">21</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">22</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Object handler(ResultSet rs);
+</span><span style="color: #008080;">23</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　用户只要实现了ResultSetHandler接口，那么就是针对查询结果集写了一个处理器，在query方法内部就调用用户自己写的处理器处理结果集。</p>
+<h3 id="blogTitle6">2.2、编写常用的结果集处理器</h3>
+<p>　　为了提高框架的易用性，我们可以事先就针对结果集写好一些常用的处理器，比如将结果集转换成bean对象的处理器，将结果集转换成bean对象的list集合的处理器。</p>
+<h4><strong>2.2.1、BeanHandler——将结果集转换成bean对象的处理器</strong></h4>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.util;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Field;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSetMetaData;
+</span><span style="color: #008080;"> 6</span> 
+<span style="color: #008080;"> 7</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 8</span> <span style="color: #008000;">* @ClassName: BeanHandler
+</span><span style="color: #008080;"> 9</span> <span style="color: #008000;">* @Description: 将结果集转换成bean对象的处理器
+</span><span style="color: #008080;">10</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;">11</span> <span style="color: #008000;">* @date: 2014-10-5 下午12:00:33
+</span><span style="color: #008080;">12</span> <span style="color: #008000;">*
+</span><span style="color: #008080;">13</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">14</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> BeanHandler <span style="color: #0000ff;">implements</span><span style="color: #000000;"> ResultSetHandler {
+</span><span style="color: #008080;">15</span>     <span style="color: #0000ff;">private</span> Class&lt;?&gt;<span style="color: #000000;"> clazz;
+</span><span style="color: #008080;">16</span>     <span style="color: #0000ff;">public</span> BeanHandler(Class&lt;?&gt;<span style="color: #000000;"> clazz){
+</span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">this</span>.clazz =<span style="color: #000000;"> clazz;
+</span><span style="color: #008080;">18</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">19</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Object handler(ResultSet rs) {
+</span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">21</span>             <span style="color: #0000ff;">if</span>(!<span style="color: #000000;">rs.next()){
+</span><span style="color: #008080;">22</span>                 <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">23</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">24</span>             Object bean =<span style="color: #000000;"> clazz.newInstance();
+</span><span style="color: #008080;">25</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到结果集元数据</span>
+<span style="color: #008080;">26</span>             ResultSetMetaData metadata =<span style="color: #000000;"> rs.getMetaData();
+</span><span style="color: #008080;">27</span>             <span style="color: #0000ff;">int</span> columnCount = metadata.getColumnCount();<span style="color: #008000;">//</span><span style="color: #008000;">得到结果集中有几列数据</span>
+<span style="color: #008080;">28</span>             <span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0;i&lt;columnCount;i++<span style="color: #000000;">){
+</span><span style="color: #008080;">29</span>                 String coulmnName = metadata.getColumnName(i+1);<span style="color: #008000;">//</span><span style="color: #008000;">得到每列的列名</span>
+<span style="color: #008080;">30</span>                 Object coulmnData = rs.getObject(i+1<span style="color: #000000;">);
+</span><span style="color: #008080;">31</span>                 Field f = clazz.getDeclaredField(coulmnName);<span style="color: #008000;">//</span><span style="color: #008000;">反射出类上列名对应的属性</span>
+<span style="color: #008080;">32</span>                 f.setAccessible(<span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;">33</span> <span style="color: #000000;">                f.set(bean, coulmnData);
+</span><span style="color: #008080;">34</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">35</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> bean;
+</span><span style="color: #008080;">36</span>         }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;">37</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> RuntimeException(e);
+</span><span style="color: #008080;">38</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">39</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">40</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h4><strong>2.2.2、BeanListHandler——将结果集转换成bean对象的list集合的处理器</strong></h4>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.util;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Field;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSet;
+</span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.ResultSetMetaData;
+</span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;
+</span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;
+</span><span style="color: #008080;"> 8</span> 
+<span style="color: #008080;"> 9</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;">10</span> <span style="color: #008000;">* @ClassName: BeanListHandler
+</span><span style="color: #008080;">11</span> <span style="color: #008000;">* @Description: 将结果集转换成bean对象的list集合的处理器
+</span><span style="color: #008080;">12</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;">13</span> <span style="color: #008000;">* @date: 2014-10-5 下午12:00:06
+</span><span style="color: #008080;">14</span> <span style="color: #008000;">*
+</span><span style="color: #008080;">15</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">16</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> BeanListHandler <span style="color: #0000ff;">implements</span><span style="color: #000000;"> ResultSetHandler {
+</span><span style="color: #008080;">17</span>     <span style="color: #0000ff;">private</span> Class&lt;?&gt;<span style="color: #000000;"> clazz;
+</span><span style="color: #008080;">18</span>     <span style="color: #0000ff;">public</span> BeanListHandler(Class&lt;?&gt;<span style="color: #000000;"> clazz){
+</span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">this</span>.clazz =<span style="color: #000000;"> clazz;
+</span><span style="color: #008080;">20</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">21</span>     
+<span style="color: #008080;">22</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Object handler(ResultSet rs) {
+</span><span style="color: #008080;">23</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;">{
+</span><span style="color: #008080;">24</span>             List&lt;Object&gt; list = <span style="color: #0000ff;">new</span> ArrayList&lt;Object&gt;<span style="color: #000000;">();
+</span><span style="color: #008080;">25</span>             <span style="color: #0000ff;">while</span><span style="color: #000000;">(rs.next()){
+</span><span style="color: #008080;">26</span>                 Object bean =<span style="color: #000000;"> clazz.newInstance();
+</span><span style="color: #008080;">27</span>                 
+<span style="color: #008080;">28</span>                 ResultSetMetaData  metadata =<span style="color: #000000;"> rs.getMetaData();
+</span><span style="color: #008080;">29</span>                 <span style="color: #0000ff;">int</span> count =<span style="color: #000000;"> metadata.getColumnCount();
+</span><span style="color: #008080;">30</span>                 <span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0;i&lt;count;i++<span style="color: #000000;">){
+</span><span style="color: #008080;">31</span>                     String name = metadata.getColumnName(i+1<span style="color: #000000;">);
+</span><span style="color: #008080;">32</span>                     Object value =<span style="color: #000000;"> rs.getObject(name);
+</span><span style="color: #008080;">33</span>                     
+<span style="color: #008080;">34</span>                     Field f =<span style="color: #000000;"> bean.getClass().getDeclaredField(name);
+</span><span style="color: #008080;">35</span>                     f.setAccessible(<span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;">36</span> <span style="color: #000000;">                    f.set(bean, value);
+</span><span style="color: #008080;">37</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">38</span> <span style="color: #000000;">                list.add(bean);
+</span><span style="color: #008080;">39</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">40</span>             <span style="color: #0000ff;">return</span> list.size()&gt;0?list:<span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008080;">41</span>         
+<span style="color: #008080;">42</span>         }<span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {
+</span><span style="color: #008080;">43</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> RuntimeException(e);
+</span><span style="color: #008080;">44</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">45</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">46</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　当框架自身提供的结果集处理器不满足用户的要求时，那么用户就可以自己去实现ResultSetHandler接口，编写满足自己业务要求的结果集处理器。</p>
+<p>　　有了上述的JdbcUtils框架之后，针对单个实体对象CRUD操作就非常方便了，如下所示：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.dao;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.SQLException;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;
+</span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> me.gacl.domain.Account;
+</span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> me.gacl.util.BeanHandler;
+</span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> me.gacl.util.BeanListHandler;
+</span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> me.gacl.util.JdbcUtils;
+</span><span style="color: #008080;"> 9</span> 
+<span style="color: #008080;">10</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> AccountDao {
+</span><span style="color: #008080;">11</span> 
+<span style="color: #008080;">12</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> add(Account account) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">13</span>         String sql = "insert into account(name,money) values(?,?)"<span style="color: #000000;">;
+</span><span style="color: #008080;">14</span>         Object params[] =<span style="color: #000000;"> {account.getName(),account.getMoney()};
+</span><span style="color: #008080;">15</span> <span style="color: #000000;">        JdbcUtils.update(sql, params);
+</span><span style="color: #008080;">16</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">17</span>     
+<span style="color: #008080;">18</span>     
+<span style="color: #008080;">19</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> delete(<span style="color: #0000ff;">int</span> id) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">20</span>         String sql = "delete from account where id=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">21</span>         Object params[] =<span style="color: #000000;"> {id};
+</span><span style="color: #008080;">22</span> <span style="color: #000000;">        JdbcUtils.update(sql, params);
+</span><span style="color: #008080;">23</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">24</span>     
+<span style="color: #008080;">25</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> update(Account account) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">26</span>         
+<span style="color: #008080;">27</span>         String sql = "update account set name=?,money=? where id=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">28</span>         Object params[] =<span style="color: #000000;"> {account.getName(),account.getMoney(),account.getId()};
+</span><span style="color: #008080;">29</span> <span style="color: #000000;">        JdbcUtils.update(sql, params);
+</span><span style="color: #008080;">30</span>         
+<span style="color: #008080;">31</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">32</span>     
+<span style="color: #008080;">33</span>     <span style="color: #0000ff;">public</span> Account find(<span style="color: #0000ff;">int</span> id) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">34</span>         String sql = "select * from account where id=?"<span style="color: #000000;">;
+</span><span style="color: #008080;">35</span>         Object params[] =<span style="color: #000000;"> {id};
+</span><span style="color: #008080;">36</span>         <span style="color: #0000ff;">return</span> (Account) JdbcUtils.query(sql, params, <span style="color: #0000ff;">new</span> BeanHandler(Account.<span style="color: #0000ff;">class</span><span style="color: #000000;">));
+</span><span style="color: #008080;">37</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">38</span>     
+<span style="color: #008080;">39</span>     <span style="color: #0000ff;">public</span> List&lt;Account&gt; getAll() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> SQLException{
+</span><span style="color: #008080;">40</span>         String sql = "select * from account"<span style="color: #000000;">;
+</span><span style="color: #008080;">41</span>         Object params[] =<span style="color: #000000;"> {};
+</span><span style="color: #008080;">42</span>         <span style="color: #0000ff;">return</span> (List&lt;Account&gt;) JdbcUtils.query(sql, params,<span style="color: #0000ff;">new</span> BeanListHandler(Account.<span style="color: #0000ff;">class</span><span style="color: #000000;">));
+</span><span style="color: #008080;">43</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">44</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;　　编写的这个JDBC框架就是模拟Apache的DBUtils框架的实现，下一篇将具体介绍Apache的DBUtils框架。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4006830,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/" target="_blank"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/20160221223904.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followees">关注 - 83</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followers">粉丝 - 4889</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4006830,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">3</span>
+    </div>
+	<div class="buryit" onclick="votePost(4006830,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xdp-gacl/p/4002804.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/4002804.html" title="发布于2014-10-18 20:48">javaweb学习总结(三十九)——数据库连接池</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/4007225.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/4007225.html" title="发布于2014-10-19 20:40">javaweb学习总结(四十一)——Apache的DBUtils框架学习</a><br></div>
+</div>
+
+</div>
+    <p class="postfoot">posted on <span id="post-date">2014-10-19 09:20</span> <a href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a> 阅读(<span id="post_view_count">8858</span>) 评论(<span id="post_comment_count">3</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4006830" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xdp-gacl/p/4006830.html#" onclick="AddToWz(4006830);return false;">收藏</a></p>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=133816,cb_entryId=4006830,cb_blogApp=currentBlogApp,cb_blogUserGuid='f1774468-815f-e011-a53f-842b2b196315',cb_entryCreatedDate='2014/10/19 9:20:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4006830.html#3047552" class="layer">#1楼</a><a name="3047552" id="comment_anchor_3047552"></a>
+					<span>
+						 <span class="comment_date">2014-10-20 22:04</span>
+					</span>
+				<a id="a_comment_author_3047552" href="http://www.cnblogs.com/xiaopohou/" target="_blank">monkey's</a> <a href="http://msg.cnblogs.com/send/monkey%26%2339%3Bs" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3047552" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>帅气</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3047552,&#39;Digg&#39;,this)">支持(2)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3047552,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3047552_avatar" style="display:none;">http://pic.cnblogs.com/face/u305497.jpg?id=27231910</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4006830.html#3346926" class="layer">#2楼</a><a name="3346926" id="comment_anchor_3346926"></a>
+					<span>
+						 <span class="comment_date">2016-01-13 15:02</span>
+					</span>
+				<a id="a_comment_author_3346926" href="http://www.cnblogs.com/hiter-java/" target="_blank">旧收音机</a> <a href="http://msg.cnblogs.com/send/%E6%97%A7%E6%94%B6%E9%9F%B3%E6%9C%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3346926" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>大拿，为啥每次我解决不了问题的时候都是你给我指明方向呢？求加QQ:592658325,以后一起学习</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3346926,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3346926,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4006830.html#3394725" class="layer">#3楼</a><a name="3394725" id="comment_anchor_3394725"></a><span id="comment-maxId" style="display:none;">3394725</span><span id="comment-maxDate" style="display:none;">2016/3/29 16:43:00</span>
+					<span>
+						 <span class="comment_date">2016-03-29 16:43</span>
+					</span>
+				<a id="a_comment_author_3394725" href="http://www.cnblogs.com/sandra1993/" target="_blank">sandra1993</a> <a href="http://msg.cnblogs.com/send/sandra1993" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3394725" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>BeanHandler的f.set(bean, coulmnData);这一行，处理日期类型会发生IllegalArgumentException异常，这个怎么解决呢</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3394725,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3394725,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xdp-gacl/p/4006830.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xdp-gacl/p/4006830.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=SpreadJS&utm_campaign=community" target="_blank">【推荐】怎样将“在线Excel“嵌入你的开发系统中？</a><br><a href="http://click.aliyun.com/m/3037/" target="_blank">【推荐】阿里云高性能云服务器+SSD云盘，让业务响应0延迟</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/545131/" target="_blank">亚马逊创始人贝索斯过去三个月资产增加180亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/545130/" target="_blank">Facebook要做聊天机器人，一个月内吸引了上千开发者</a><br> ·  <a href="http://news.cnblogs.com/n/545129/" target="_blank">俞敏洪：不主张大学生创业，大学生的项目我不投！</a><br> ·  <a href="http://news.cnblogs.com/n/545128/" target="_blank">三个季度连续亏损 LG移动部门或将减员缩编</a><br> ·  <a href="http://news.cnblogs.com/n/545127/" target="_blank">微软手机最新黑科技：利用传感器“预知”用户行为</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./javaweb学习总结(四十)——编写自己的JDBC框架 - 孤傲苍狼 - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br> ·  <a href="http://kb.cnblogs.com/page/541740/" target="_blank">架构漫谈（六）：软件架构到底是要解决什么问题？</a><br> ·  <a href="http://kb.cnblogs.com/page/541188/" target="_blank">架构漫谈（五）：什么是软件</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="rightmenu">
+	
+		
+<div id="my_links">
+<h3>导航</h3>
+<ul>
+<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/xdp-gacl/">首页</a></li>
+<!--<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>-->
+<li><a id="MyLinks1_ContactLink" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC">联系</a></li>
+<li><a id="MyLinks1_Syndication" href="http://www.cnblogs.com/xdp-gacl/rss">订阅</a></li><!--<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/xdp-gacl/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>-->
+<li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+</div>
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalTodayDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>公告</h3>
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>园龄：<a href="http://home.cnblogs.com/u/xdp-gacl/" title="入园时间：2011-04-05">5年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xdp-gacl/followers/">4889</a><br>关注：<a href="http://home.cnblogs.com/u/xdp-gacl/followees/">83</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;f1774468-815f-e011-a53f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>		
+		
+<div id="blog_stats">
+<h3>统计</h3>
+<ul>
+<li>随笔 - 275
+</li><li>文章 - 0
+</li><li>评论 - 1503
+<!--<li>引用 - 0-->
+</li>
+</ul>
+</div>
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a>(62)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">java基础总结</a>(28)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Javascript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Javascript学习总结</a>(27)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Snmp%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Snmp学习总结</a>(15)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyEclipse%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">MyEclipse使用总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Android%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Android开发学习总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Maven%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Maven学习总结</a>(11)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/WebLogic%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">WebLogic使用总结</a>(9)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyBatis%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MyBatis学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MySQL%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MySQL学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xdp-gacl/category/431986.html">AJAX(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xdp-gacl/category/663970.html">Android开发(12)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xdp-gacl/category/431983.html">ASP.NET(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xdp-gacl/category/431981.html">C#(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xdp-gacl/category/647917.html">CSS学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xdp-gacl/category/557089.html">C语言学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/xdp-gacl/category/605855.html">FusionCharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/xdp-gacl/category/641669.html">H2数据库学习使用总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/xdp-gacl/category/601788.html">Hessian(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/xdp-gacl/category/557131.html">Hibernate</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/xdp-gacl/category/602554.html">Highcharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/xdp-gacl/category/544383.html">HTML(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/xdp-gacl/category/791376.html">html5学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/xdp-gacl/category/647915.html">Html学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/xdp-gacl/category/431984.html">Java(13)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/xdp-gacl/category/431982.html">JavaScript(27)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结(55)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/xdp-gacl/category/563691.html">Java基础加强总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/xdp-gacl/category/566451.html">java基础面试题(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/xdp-gacl/category/563690.html">java基础总结(28)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/xdp-gacl/category/595905.html">Java监控</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/xdp-gacl/category/607504.html">Java事务处理</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/xdp-gacl/category/600539.html">java字节码的处理技术</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/xdp-gacl/category/636007.html">JFinal学习研究</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/xdp-gacl/category/609326.html">JNDI(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/xdp-gacl/category/571424.html">Jquery EasyUI学习使用总结(7)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/xdp-gacl/category/600080.html">jwebap</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/xdp-gacl/category/599454.html">kafka</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/xdp-gacl/category/590574.html">LDAP</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/xdp-gacl/category/620197.html">Linux学习总结(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/xdp-gacl/category/544719.html">Maven(10)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/xdp-gacl/category/599453.html">Mina</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/xdp-gacl/category/655890.html">Mybatis(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/xdp-gacl/category/544414.html">MyEclipse(11)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/xdp-gacl/category/557132.html">MySQL(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/xdp-gacl/category/576035.html">Nginx(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/xdp-gacl/category/567838.html">Oracle学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/xdp-gacl/category/562877.html">PowerDesigner使用总结(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/xdp-gacl/category/640475.html">redis</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/xdp-gacl/category/591218.html">RESTful架构(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/xdp-gacl/category/649781.html">Servlet3.0(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/xdp-gacl/category/613358.html">Snmp学习总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/xdp-gacl/category/544380.html">Spring(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/xdp-gacl/category/654626.html">SpringMVC学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/xdp-gacl/category/543327.html">SQLServer(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/xdp-gacl/category/543338.html">Struts2(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/xdp-gacl/category/737796.html">SVN</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/xdp-gacl/category/544377.html">VB.NET(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/xdp-gacl/category/637206.html">WebLogic使用总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/xdp-gacl/category/629559.html">WebService学习总结(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/xdp-gacl/category/787823.html">WebSocket(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/xdp-gacl/category/554263.html">WinForm学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/xdp-gacl/category/602889.html">XML学习总结(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/xdp-gacl/category/551491.html">插件化开发</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/xdp-gacl/category/598077.html">创业知识(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/xdp-gacl/category/651090.html">大数据/hadoop(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/xdp-gacl/category/645953.html">代码注释(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/xdp-gacl/category/588156.html">单点登录(Yale_CAS_SSO)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/xdp-gacl/category/710266.html">电脑基本技能</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/xdp-gacl/category/636430.html">读书笔记</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/xdp-gacl/category/635429.html">负载均衡(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/xdp-gacl/category/543351.html">互联网基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/xdp-gacl/category/644775.html">缓存框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/xdp-gacl/category/801455.html">架构设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_64" href="http://www.cnblogs.com/xdp-gacl/category/661363.html">框架整合(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_65" href="http://www.cnblogs.com/xdp-gacl/category/810590.html">敏捷开发(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_66" href="http://www.cnblogs.com/xdp-gacl/category/591507.html">权限设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_67" href="http://www.cnblogs.com/xdp-gacl/category/431985.html">生活感悟(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_68" href="http://www.cnblogs.com/xdp-gacl/category/589802.html">数据库Sharding(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_69" href="http://www.cnblogs.com/xdp-gacl/category/562913.html">数据库理论基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_70" href="http://www.cnblogs.com/xdp-gacl/category/608526.html">微信开发(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_71" href="http://www.cnblogs.com/xdp-gacl/category/811446.html">我的开发框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_72" href="http://www.cnblogs.com/xdp-gacl/category/806539.html">项目管理(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_73" href="http://www.cnblogs.com/xdp-gacl/category/654566.html">英语学习</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_74" href="http://www.cnblogs.com/xdp-gacl/category/578277.html">原创小工具(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_75" href="http://www.cnblogs.com/xdp-gacl/category/594056.html">云计算(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_76" href="http://www.cnblogs.com/xdp-gacl/category/598078.html">哲学人生</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_77" href="http://www.cnblogs.com/xdp-gacl/category/596451.html">职场感悟(3)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xdp-gacl/archive/2016/04.html">2016年4月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xdp-gacl/archive/2016/03.html">2016年3月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xdp-gacl/archive/2016/02.html">2016年2月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xdp-gacl/archive/2016/01.html">2016年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xdp-gacl/archive/2015/07.html">2015年7月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xdp-gacl/archive/2015/03.html">2015年3月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xdp-gacl/archive/2015/02.html">2015年2月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xdp-gacl/archive/2015/01.html">2015年1月 (40)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xdp-gacl/archive/2014/12.html">2014年12月 (17)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xdp-gacl/archive/2014/11.html">2014年11月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xdp-gacl/archive/2014/10.html">2014年10月 (31)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xdp-gacl/archive/2014/08.html">2014年8月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xdp-gacl/archive/2014/07.html">2014年7月 (25)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xdp-gacl/archive/2014/06.html">2014年6月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xdp-gacl/archive/2014/05.html">2014年5月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xdp-gacl/archive/2014/04.html">2014年4月 (22)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xdp-gacl/archive/2014/03.html">2014年3月 (28)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xdp-gacl/archive/2014/02.html">2014年2月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xdp-gacl/archive/2014/01.html">2014年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xdp-gacl/archive/2013/12.html">2013年12月 (16)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xdp-gacl/archive/2012/11.html">2012年11月 (1)</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html#3427933">1. Re:Spring常用注解</a></li>
+        <li class="recent_comment_body">通俗易懂，谢谢博主的分享。</li>
+        <li class="recent_comment_author">--Xsum</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#3427806">2. Re:java基础学习总结——equals方法</a></li>
+        <li class="recent_comment_body">楼主写得很好，简单明了</li>
+        <li class="recent_comment_author">--bequt</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3983253.html#3427770">3. Re:javaweb学习总结(三十六)——使用JDBC进行批处理</a></li>
+        <li class="recent_comment_body">顶</li>
+        <li class="recent_comment_author">--孟妹</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html#3427757">4. Re:MyBatis学习总结(一)——MyBatis快速入门</a></li>
+        <li class="recent_comment_body">感谢你，讲的很详细</li>
+        <li class="recent_comment_author">--zimu1990</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3908610.html#3427733">5. Re:javaweb学习总结(二十一)——JavaWeb的两种开发模式</a></li>
+        <li class="recent_comment_body">写的实在是太好了</li>
+        <li class="recent_comment_author">--寻影657</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4240930.html#3427216">6. Re:Maven学习总结(三)——使用Maven构建项目</a></li>
+        <li class="recent_comment_body">真心不错</li>
+        <li class="recent_comment_author">--奕p</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html#3426738">7. Re:javaweb学习总结(五)——Servlet开发(一)</a></li>
+        <li class="recent_comment_body">请教下楼主，上面为servlet映射url是在config里面的web.xml还是WEB-INF里的web.xml里创建啊？小白不懂求指导。</li>
+        <li class="recent_comment_author">--metaluo</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html#3425929">8. Re:JavaWeb学习总结(一)——JavaWeb开发入门</a></li>
+        <li class="recent_comment_body">LZ肯定对大家这么弱鸡而无语</li>
+        <li class="recent_comment_author">--March On</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html#3425801">9. Re:JavaWeb学习总结(五十)——文件上传和下载</a></li>
+        <li class="recent_comment_body">博主大赞，如果能有上传到数据库就更好了</li>
+        <li class="recent_comment_author">--Charming2Future</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html#3425140">10. Re:MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合</a></li>
+        <li class="recent_comment_body">博主 我的项目在运行时报错：org.springframework.beans.factory.BeanCreationException: Error creating bean with nam......</li>
+        <li class="recent_comment_author">--xkpactera</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(154164)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3497016.html">2. MyEclipse使用总结——MyEclipse10安装SVN插件(139728)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">3. JavaWeb学习总结(五十)——文件上传和下载(100170)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">4. javaweb学习总结(五)——Servlet开发(一)(99507)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(86497)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">6. Android开发学习总结(一)——搭建最新版本的Android开发环境(79094)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html">7. Spring常用注解(72114)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3777987.html">8. Java基础学习总结——Java对象的序列化和反序列化(61572)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">9. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57260)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3734395.html">10. JavaWeb学习总结(二)——Tomcat服务器学习和使用(一)(51493)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">1. JavaWeb学习总结(五十)——文件上传和下载(80)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">2. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">3. MyBatis学习总结(一)——MyBatis快速入门(52)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">4. javaweb学习总结(四)——Http协议(43)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(42)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">6. JavaScript自动生成博文目录导航(40)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">7. javaweb学习总结(五)——Servlet开发(一)(39)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4239501.html">8. 使用Maven搭建Struts2+Spring3+Hibernate4的整合开发环境(34)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">9. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(32)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">10. Android开发学习总结(一)——搭建最新版本的Android开发环境(31)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(63)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">2. javaweb学习总结(五)——Servlet开发(一)(56)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">3. JavaWeb学习总结(一)——JavaWeb开发入门(48)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">4. JavaWeb学习总结(五十)——文件上传和下载(47)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">5. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(41)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">6. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(37)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/5149171.html">7. 微信开发学习总结（一）——微信开发环境搭建(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">8. JavaScript自动生成博文目录导航(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">9. Android开发学习总结(一)——搭建最新版本的Android开发环境(35)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">10. javaweb学习总结(四)——Http协议(34)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+        
+		
+<div id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © 孤傲苍狼
+</div>
+	
+</div>			
+			
+	
+
+<!--PageEndHtml Block Begin-->
+<!--评论，生成气泡效果标签代码-->
+<script type="text/javascript" language="javascript"> 
+    $(document).ready(function() {
+        var commentTime = setInterval(function(){if($("#comments_pager_bottom").length>0){CommentBubble();clearTimeout(commentTime);}},50);
+    }); 
+    function CommentBubble()
+    {
+var w1 = '<div class="list">' +
+        '<table class="out" border="0" cellspacing="0" cellpadding="0"> ' +
+            '<tr>' +
+                '<td class="icontd" align="right" valign="bottom">' +
+                    '<img src="http://pic.cnitblog.com/face/289233/20131202131125.png" width="70px" height="57px"/>' +
+                '</td>' +
+                '<td align="left" valign="bottom" class="q">' +
+                    '<table border="0" cellpadding="0" cellspacing="0" style=""> ' +
+                        '<tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> ' +
+                        '<tr><td class="left"></td> <td align="left" class="conmts"><p>';
+ 
+ 
+        var w2 = '</p> </td> <td class="right"></td></tr> ' +
+                        '<tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> ' +
+                    '</table>' +
+                '</td> ' +
+            '</tr> ' +
+        '</table> ' +
+    '</div>';
+ 
+        $.each($(".blog_comment_body"), function(i, t) {
+            $(t).html(w1 + $(t).html() + w2);
+        });
+$(".louzhu").closest(".feedbackItem").find(".out").removeClass("out").addClass("inc");
+        /*.find(".q").attr("align","right");*/
+        }
+</script>
+<!--PageEndHtml Block End-->
+
+
+<div class="sideBar" id="sideBar"><div id="sideBarTab"><h2>目录导航</h2></div><div id="sideBarContents" style="display: none;"><dl><dt name="0">一、元数据介绍</dt><dd name="1">1.1、DataBaseMetaData元数据</dd><dd name="2">1.2、ParameterMetaData元数据</dd><dd name="3">1.3、ResultSetMetaData元数据</dd><dt name="4">二、使用元数据封装简单的JDBC框架</dt><dd name="5">2.1、封装通用的update方法和qurey方法</dd><dd name="6">2.2、编写常用的结果集处理器</dd></dl></div></div></body></html>

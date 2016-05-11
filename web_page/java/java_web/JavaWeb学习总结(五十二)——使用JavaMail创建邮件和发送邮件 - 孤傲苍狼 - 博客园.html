@@ -1,0 +1,1016 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://www.cnblogs.com/xdp-gacl/p/4216311.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/bundle-SimpleClear.css">
+<link type="text/css" rel="stylesheet" href="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/133816.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xdp-gacl/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xdp-gacl/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xdp-gacl/wlwmanifest.xml">
+<script type="text/javascript" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/encoder.js"></script><script src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xdp-gacl', cb_enable_mathjax=false;</script>
+<script src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<div id="page_begin_html"><!-- Baidu Button BEGIN -->
+<!--<div style="display: none" id="__document_write_ajax_div-1"></div><script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=6507240" >window['__document_write_ajax_callbacks__']['1']();</script>
+<div style="display: none" id="__document_write_ajax_div-2"></div><script type="text/javascript" id="bdshell_js">window['__document_write_ajax_callbacks__']['2']();</script>
+<div style="display: none" id="__document_write_ajax_div-3"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['3']();</script>-->
+<!-- Baidu Button END -->
+
+<!--添加博客目录-->
+
+
+<!--
+<head>
+
+DIY 博客全文界面的推荐、反对、加关注、返回顶部、快速评论等小功能的集成
+
+<div style="display: none" id="__document_write_ajax_div-5"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script>
+</head>
+--></div><script>load_page_begin_html();</script>
+
+<div id="main">
+<div id="header">
+<h1><a id="Header1_HeaderTitle" href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a></h1>
+<p id="tagline">只为成功找方法，不为失败找借口！</p></div>
+
+<div id="post_detail">
+<div class="post">
+    <h2 class="postTitle"><a id="cb_post_title_url" href="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园.html">JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件</a></h2>
+    <div class="postText"><div id="cnblogs_post_body"><h2 id="blogTitle0">一、RFC882文档简单说明</h2>
+<p>　　RFC882文档规定了如何编写一封简单的邮件(纯文本邮件)，一封简单的邮件包含邮件头和邮件体两个部分，邮件头和邮件体之间使用<span style="color: #ff0000;"><strong>空行</strong></span>分隔。</p>
+<p>　　邮件头包含的内容有：</p>
+<ol>
+<li><span style="color: #ff0000;"><strong>from</strong></span>字段&nbsp;　　--用于指明发件人</li>
+<li><span style="color: #ff0000;"><strong>to</strong></span>字段&nbsp;　　&nbsp;&nbsp;&nbsp;&nbsp;--用于指明收件人</li>
+<li><span style="color: #ff0000;"><strong>subject</strong></span>字段&nbsp;&nbsp;--用于说明邮件主题</li>
+<li><span style="color: #ff0000;"><strong>cc</strong></span>字段&nbsp;　　&nbsp;&nbsp;&nbsp;-- 抄送，将邮件发送给收件人的同时抄送给另一个收件人，收件人可以看到邮件抄送给了谁</li>
+<li><span style="color: #ff0000;"><strong>bcc</strong></span>字段&nbsp;　　&nbsp;-- 密送，将邮件发送给收件人的同时将邮件秘密发送给另一个收件人，收件人无法看到邮件密送给了谁</li>
+</ol>
+<p>　　邮件体指的就是邮件的具体内容。</p>
+<h2 id="blogTitle1">二、MIME协议简单介绍</h2>
+<p>　　在我们的实际开发当中，一封邮件既可能包含图片，又可能包含有附件，在这样的情况下，RFC882文档规定的邮件格式就无法满足要求了。</p>
+<p>　　<span style="color: #ff0000;"><strong>MIME协议是对RFC822文档的升级和补充</strong></span>，它描述了如何生产一封复杂的邮件。通常我们把<span style="color: #ff0000;"><strong>MIME协议描述的邮件称之为MIME邮件</strong></span>。<span style="color: #ff0000;"><strong>MIME协议描述的数据称之为MIME消息。</strong></span><br>　　对于一封复杂邮件，如果包含了多个不同的数据，MIME协议规定了要使用分隔线对多段数据进行分隔，并使用Content-Type头字段对数据的类型、以及多个数据之间的关系进行描述。</p>
+<h2 id="blogTitle2">三、使用JavaMail创建邮件和发送邮件</h2>
+<p>　　JavaMail创建的邮件是基于MIME协议的。因此可以使用JavaMail创建出包含图片，包含附件的复杂邮件。</p>
+<h3 id="blogTitle3">3.1、JavaMail API的简单介绍</h3>
+<p>　　<img style="border: 1px solid black;" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/122128504487771.png" alt=""></p>
+<p>　　<img style="border: 1px solid black;" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/122130317295595.png" alt=""></p>
+<p>　　<img style="border: 1px solid black;" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/122131389484760.png" alt=""></p>
+<h3 id="blogTitle4">3.2、创建邮件发送测试项目</h3>
+<p>　　<img style="border: 1px solid black;" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/122200071519160.png" alt=""></p>
+<h3 id="blogTitle5">3.3、发送一封只包含文本的简单邮件</h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.main;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Message;
+</span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Session;
+</span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Transport;
+</span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.InternetAddress;
+</span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMessage;
+</span><span style="color: #008080;"> 9</span> 
+<span style="color: #008080;">10</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;">11</span> <span style="color: #008000;">* @ClassName: Sendmail
+</span><span style="color: #008080;">12</span> <span style="color: #008000;">* @Description: 发送Email
+</span><span style="color: #008080;">13</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;">14</span> <span style="color: #008000;">* @date: 2015-1-12 下午9:42:56
+</span><span style="color: #008080;">15</span> <span style="color: #008000;">*
+</span><span style="color: #008080;">16</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">17</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Sendmail {
+</span><span style="color: #008080;">18</span> 
+<span style="color: #008080;">19</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">20</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args
+</span><span style="color: #008080;">21</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception 
+</span><span style="color: #008080;">22</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;">23</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">24</span>         
+<span style="color: #008080;">25</span>         Properties prop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();
+</span><span style="color: #008080;">26</span>         prop.setProperty("mail.host", "smtp.sohu.com"<span style="color: #000000;">);
+</span><span style="color: #008080;">27</span>         prop.setProperty("mail.transport.protocol", "smtp"<span style="color: #000000;">);
+</span><span style="color: #008080;">28</span>         prop.setProperty("mail.smtp.auth", "true"<span style="color: #000000;">);
+</span><span style="color: #008080;">29</span>         <span style="color: #008000;">//</span><span style="color: #008000;">使用JavaMail发送邮件的5个步骤
+</span><span style="color: #008080;">30</span>         <span style="color: #008000;">//</span><span style="color: #008000;">1、创建session</span>
+<span style="color: #008080;">31</span>         Session session =<span style="color: #000000;"> Session.getInstance(prop);
+</span><span style="color: #008080;">32</span>         <span style="color: #008000;">//</span><span style="color: #008000;">开启Session的debug模式，这样就可以查看到程序发送Email的运行状态</span>
+<span style="color: #008080;">33</span>         session.setDebug(<span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;">34</span>         <span style="color: #008000;">//</span><span style="color: #008000;">2、通过session得到transport对象</span>
+<span style="color: #008080;">35</span>         Transport ts =<span style="color: #000000;"> session.getTransport();
+</span><span style="color: #008080;">36</span>         <span style="color: #008000;">//</span><span style="color: #008000;">3、使用邮箱的用户名和密码连上邮件服务器，发送邮件时，发件人需要提交邮箱的用户名和密码给smtp服务器，用户名和密码都通过验证之后才能够正常发送邮件给收件人。</span>
+<span style="color: #008080;">37</span>         ts.connect("smtp.sohu.com", "gacl", "邮箱密码"<span style="color: #000000;">);
+</span><span style="color: #008080;">38</span>         <span style="color: #008000;">//</span><span style="color: #008000;">4、创建邮件</span>
+<span style="color: #008080;">39</span>         Message message =<span style="color: #000000;"> createSimpleMail(session);
+</span><span style="color: #008080;">40</span>         <span style="color: #008000;">//</span><span style="color: #008000;">5、发送邮件</span>
+<span style="color: #008080;">41</span> <span style="color: #000000;">        ts.sendMessage(message, message.getAllRecipients());
+</span><span style="color: #008080;">42</span> <span style="color: #000000;">        ts.close();
+</span><span style="color: #008080;">43</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">44</span>     
+<span style="color: #008080;">45</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">46</span> <span style="color: #008000;">    * @Method: createSimpleMail
+</span><span style="color: #008080;">47</span> <span style="color: #008000;">    * @Description: 创建一封只包含文本的邮件
+</span><span style="color: #008080;">48</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">49</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">50</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> session
+</span><span style="color: #008080;">51</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span>
+<span style="color: #008080;">52</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">53</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">54</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span><span style="color: #000000;"> MimeMessage createSimpleMail(Session session)
+</span><span style="color: #008080;">55</span>             <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">56</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建邮件对象</span>
+<span style="color: #008080;">57</span>         MimeMessage message = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMessage(session);
+</span><span style="color: #008080;">58</span>         <span style="color: #008000;">//</span><span style="color: #008000;">指明邮件的发件人</span>
+<span style="color: #008080;">59</span>         message.setFrom(<span style="color: #0000ff;">new</span> InternetAddress("gacl@sohu.com"<span style="color: #000000;">));
+</span><span style="color: #008080;">60</span>         <span style="color: #008000;">//</span><span style="color: #008000;">指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发</span>
+<span style="color: #008080;">61</span>         message.setRecipient(Message.RecipientType.TO, <span style="color: #0000ff;">new</span> InternetAddress("gacl@sohu.com"<span style="color: #000000;">));
+</span><span style="color: #008080;">62</span>         <span style="color: #008000;">//</span><span style="color: #008000;">邮件的标题</span>
+<span style="color: #008080;">63</span>         message.setSubject("只包含文本的简单邮件"<span style="color: #000000;">);
+</span><span style="color: #008080;">64</span>         <span style="color: #008000;">//</span><span style="color: #008000;">邮件的文本内容</span>
+<span style="color: #008080;">65</span>         message.setContent("你好啊！", "text/html;charset=UTF-8"<span style="color: #000000;">);
+</span><span style="color: #008080;">66</span>         <span style="color: #008000;">//</span><span style="color: #008000;">返回创建好的邮件对象</span>
+<span style="color: #008080;">67</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> message;
+</span><span style="color: #008080;">68</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">69</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3 id="blogTitle6">3.4、发送包含内嵌图片的邮件</h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.main;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileOutputStream;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;
+</span><span style="color: #008080;"> 5</span> 
+<span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.DataHandler;
+</span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.FileDataSource;
+</span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Message;
+</span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Session;
+</span><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Transport;
+</span><span style="color: #008080;">11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.InternetAddress;
+</span><span style="color: #008080;">12</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeBodyPart;
+</span><span style="color: #008080;">13</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMessage;
+</span><span style="color: #008080;">14</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMultipart;
+</span><span style="color: #008080;">15</span> 
+<span style="color: #008080;">16</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;">17</span> <span style="color: #008000;">* @ClassName: Sendmail
+</span><span style="color: #008080;">18</span> <span style="color: #008000;">* @Description: 发送Email
+</span><span style="color: #008080;">19</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;">20</span> <span style="color: #008000;">* @date: 2015-1-12 下午9:42:56
+</span><span style="color: #008080;">21</span> <span style="color: #008000;">*
+</span><span style="color: #008080;">22</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">23</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Sendmail {
+</span><span style="color: #008080;">24</span> 
+<span style="color: #008080;">25</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">26</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args
+</span><span style="color: #008080;">27</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception 
+</span><span style="color: #008080;">28</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;">29</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">30</span>         
+<span style="color: #008080;">31</span>         Properties prop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();
+</span><span style="color: #008080;">32</span>         prop.setProperty("mail.host", "smtp.sohu.com"<span style="color: #000000;">);
+</span><span style="color: #008080;">33</span>         prop.setProperty("mail.transport.protocol", "smtp"<span style="color: #000000;">);
+</span><span style="color: #008080;">34</span>         prop.setProperty("mail.smtp.auth", "true"<span style="color: #000000;">);
+</span><span style="color: #008080;">35</span>         <span style="color: #008000;">//</span><span style="color: #008000;">使用JavaMail发送邮件的5个步骤
+</span><span style="color: #008080;">36</span>         <span style="color: #008000;">//</span><span style="color: #008000;">1、创建session</span>
+<span style="color: #008080;">37</span>         Session session =<span style="color: #000000;"> Session.getInstance(prop);
+</span><span style="color: #008080;">38</span>         <span style="color: #008000;">//</span><span style="color: #008000;">开启Session的debug模式，这样就可以查看到程序发送Email的运行状态</span>
+<span style="color: #008080;">39</span>         session.setDebug(<span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;">40</span>         <span style="color: #008000;">//</span><span style="color: #008000;">2、通过session得到transport对象</span>
+<span style="color: #008080;">41</span>         Transport ts =<span style="color: #000000;"> session.getTransport();
+</span><span style="color: #008080;">42</span>         <span style="color: #008000;">//</span><span style="color: #008000;">3、连上邮件服务器，需要发件人提供邮箱的用户名和密码进行验证</span>
+<span style="color: #008080;">43</span>         ts.connect("smtp.sohu.com", "gacl", "邮箱密码"<span style="color: #000000;">);
+</span><span style="color: #008080;">44</span>         <span style="color: #008000;">//</span><span style="color: #008000;">4、创建邮件</span>
+<span style="color: #008080;">45</span>         Message message =<span style="color: #000000;"> createImageMail(session);
+</span><span style="color: #008080;">46</span>         <span style="color: #008000;">//</span><span style="color: #008000;">5、发送邮件</span>
+<span style="color: #008080;">47</span> <span style="color: #000000;">        ts.sendMessage(message, message.getAllRecipients());
+</span><span style="color: #008080;">48</span> <span style="color: #000000;">        ts.close();
+</span><span style="color: #008080;">49</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">50</span>     
+<span style="color: #008080;">51</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">52</span> <span style="color: #008000;">    * @Method: createImageMail
+</span><span style="color: #008080;">53</span> <span style="color: #008000;">    * @Description: 生成一封邮件正文带图片的邮件
+</span><span style="color: #008080;">54</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">55</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">56</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> session
+</span><span style="color: #008080;">57</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span>
+<span style="color: #008080;">58</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">59</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">60</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> MimeMessage createImageMail(Session session) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">61</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建邮件</span>
+<span style="color: #008080;">62</span>         MimeMessage message = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMessage(session);
+</span><span style="color: #008080;">63</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 设置邮件的基本信息
+</span><span style="color: #008080;">64</span>         <span style="color: #008000;">//</span><span style="color: #008000;">发件人</span>
+<span style="color: #008080;">65</span>         message.setFrom(<span style="color: #0000ff;">new</span> InternetAddress("gacl@sohu.com"<span style="color: #000000;">));
+</span><span style="color: #008080;">66</span>         <span style="color: #008000;">//</span><span style="color: #008000;">收件人</span>
+<span style="color: #008080;">67</span>         message.setRecipient(Message.RecipientType.TO, <span style="color: #0000ff;">new</span> InternetAddress("xdp_gacl@sina.cn"<span style="color: #000000;">));
+</span><span style="color: #008080;">68</span>         <span style="color: #008000;">//</span><span style="color: #008000;">邮件标题</span>
+<span style="color: #008080;">69</span>         message.setSubject("带图片的邮件"<span style="color: #000000;">);
+</span><span style="color: #008080;">70</span> 
+<span style="color: #008080;">71</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 准备邮件数据
+</span><span style="color: #008080;">72</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 准备邮件正文数据</span>
+<span style="color: #008080;">73</span>         MimeBodyPart text = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;">74</span>         text.setContent("这是一封邮件正文带图片&lt;img src='cid:xxx.jpg'&gt;的邮件", "text/html;charset=UTF-8"<span style="color: #000000;">);
+</span><span style="color: #008080;">75</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 准备图片数据</span>
+<span style="color: #008080;">76</span>         MimeBodyPart image = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;">77</span>         DataHandler dh = <span style="color: #0000ff;">new</span> DataHandler(<span style="color: #0000ff;">new</span> FileDataSource("src\\1.jpg"<span style="color: #000000;">));
+</span><span style="color: #008080;">78</span> <span style="color: #000000;">        image.setDataHandler(dh);
+</span><span style="color: #008080;">79</span>         image.setContentID("xxx.jpg"<span style="color: #000000;">);
+</span><span style="color: #008080;">80</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 描述数据关系</span>
+<span style="color: #008080;">81</span>         MimeMultipart mm = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMultipart();
+</span><span style="color: #008080;">82</span> <span style="color: #000000;">        mm.addBodyPart(text);
+</span><span style="color: #008080;">83</span> <span style="color: #000000;">        mm.addBodyPart(image);
+</span><span style="color: #008080;">84</span>         mm.setSubType("related"<span style="color: #000000;">);
+</span><span style="color: #008080;">85</span> 
+<span style="color: #008080;">86</span> <span style="color: #000000;">        message.setContent(mm);
+</span><span style="color: #008080;">87</span> <span style="color: #000000;">        message.saveChanges();
+</span><span style="color: #008080;">88</span>         <span style="color: #008000;">//</span><span style="color: #008000;">将创建好的邮件写入到E盘以文件的形式进行保存</span>
+<span style="color: #008080;">89</span>         message.writeTo(<span style="color: #0000ff;">new</span> FileOutputStream("E:\\ImageMail.eml"<span style="color: #000000;">));
+</span><span style="color: #008080;">90</span>         <span style="color: #008000;">//</span><span style="color: #008000;">返回创建好的邮件</span>
+<span style="color: #008080;">91</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> message;
+</span><span style="color: #008080;">92</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">93</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3 id="blogTitle7">3.5、发送包含附件的邮件</h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.main;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileOutputStream;
+</span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;
+</span><span style="color: #008080;"> 5</span> 
+<span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.DataHandler;
+</span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.FileDataSource;
+</span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Message;
+</span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Session;
+</span><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Transport;
+</span><span style="color: #008080;">11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.InternetAddress;
+</span><span style="color: #008080;">12</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeBodyPart;
+</span><span style="color: #008080;">13</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMessage;
+</span><span style="color: #008080;">14</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMultipart;
+</span><span style="color: #008080;">15</span> 
+<span style="color: #008080;">16</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;">17</span> <span style="color: #008000;">* @ClassName: Sendmail
+</span><span style="color: #008080;">18</span> <span style="color: #008000;">* @Description: 发送Email
+</span><span style="color: #008080;">19</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;">20</span> <span style="color: #008000;">* @date: 2015-1-12 下午9:42:56
+</span><span style="color: #008080;">21</span> <span style="color: #008000;">*
+</span><span style="color: #008080;">22</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">23</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Sendmail {
+</span><span style="color: #008080;">24</span> 
+<span style="color: #008080;">25</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">26</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args
+</span><span style="color: #008080;">27</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception 
+</span><span style="color: #008080;">28</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;">29</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;">30</span>         
+<span style="color: #008080;">31</span>         Properties prop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();
+</span><span style="color: #008080;">32</span>         prop.setProperty("mail.host", "smtp.sohu.com"<span style="color: #000000;">);
+</span><span style="color: #008080;">33</span>         prop.setProperty("mail.transport.protocol", "smtp"<span style="color: #000000;">);
+</span><span style="color: #008080;">34</span>         prop.setProperty("mail.smtp.auth", "true"<span style="color: #000000;">);
+</span><span style="color: #008080;">35</span>         <span style="color: #008000;">//</span><span style="color: #008000;">使用JavaMail发送邮件的5个步骤
+</span><span style="color: #008080;">36</span>         <span style="color: #008000;">//</span><span style="color: #008000;">1、创建session</span>
+<span style="color: #008080;">37</span>         Session session =<span style="color: #000000;"> Session.getInstance(prop);
+</span><span style="color: #008080;">38</span>         <span style="color: #008000;">//</span><span style="color: #008000;">开启Session的debug模式，这样就可以查看到程序发送Email的运行状态</span>
+<span style="color: #008080;">39</span>         session.setDebug(<span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;">40</span>         <span style="color: #008000;">//</span><span style="color: #008000;">2、通过session得到transport对象</span>
+<span style="color: #008080;">41</span>         Transport ts =<span style="color: #000000;"> session.getTransport();
+</span><span style="color: #008080;">42</span>         <span style="color: #008000;">//</span><span style="color: #008000;">3、连上邮件服务器</span>
+<span style="color: #008080;">43</span>         ts.connect("smtp.sohu.com", "gacl", "邮箱密码"<span style="color: #000000;">);
+</span><span style="color: #008080;">44</span>         <span style="color: #008000;">//</span><span style="color: #008000;">4、创建邮件</span>
+<span style="color: #008080;">45</span>         Message message =<span style="color: #000000;"> createAttachMail(session);
+</span><span style="color: #008080;">46</span>         <span style="color: #008000;">//</span><span style="color: #008000;">5、发送邮件</span>
+<span style="color: #008080;">47</span> <span style="color: #000000;">        ts.sendMessage(message, message.getAllRecipients());
+</span><span style="color: #008080;">48</span> <span style="color: #000000;">        ts.close();
+</span><span style="color: #008080;">49</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">50</span>     
+<span style="color: #008080;">51</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">52</span> <span style="color: #008000;">    * @Method: createAttachMail
+</span><span style="color: #008080;">53</span> <span style="color: #008000;">    * @Description: 创建一封带附件的邮件
+</span><span style="color: #008080;">54</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;">55</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;">56</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> session
+</span><span style="color: #008080;">57</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span>
+<span style="color: #008080;">58</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;">59</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;">60</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> MimeMessage createAttachMail(Session session) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception{
+</span><span style="color: #008080;">61</span>         MimeMessage message = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMessage(session);
+</span><span style="color: #008080;">62</span>         
+<span style="color: #008080;">63</span>         <span style="color: #008000;">//</span><span style="color: #008000;">设置邮件的基本信息
+</span><span style="color: #008080;">64</span>         <span style="color: #008000;">//</span><span style="color: #008000;">发件人</span>
+<span style="color: #008080;">65</span>         message.setFrom(<span style="color: #0000ff;">new</span> InternetAddress("gacl@sohu.com"<span style="color: #000000;">));
+</span><span style="color: #008080;">66</span>         <span style="color: #008000;">//</span><span style="color: #008000;">收件人</span>
+<span style="color: #008080;">67</span>         message.setRecipient(Message.RecipientType.TO, <span style="color: #0000ff;">new</span> InternetAddress("xdp_gacl@sina.cn"<span style="color: #000000;">));
+</span><span style="color: #008080;">68</span>         <span style="color: #008000;">//</span><span style="color: #008000;">邮件标题</span>
+<span style="color: #008080;">69</span>         message.setSubject("JavaMail邮件发送测试"<span style="color: #000000;">);
+</span><span style="color: #008080;">70</span>         
+<span style="color: #008080;">71</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建邮件正文，为了避免邮件正文中文乱码问题，需要使用charset=UTF-8指明字符编码</span>
+<span style="color: #008080;">72</span>         MimeBodyPart text = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;">73</span>         text.setContent("使用JavaMail创建的带附件的邮件", "text/html;charset=UTF-8"<span style="color: #000000;">);
+</span><span style="color: #008080;">74</span>         
+<span style="color: #008080;">75</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建邮件附件</span>
+<span style="color: #008080;">76</span>         MimeBodyPart attach = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;">77</span>         DataHandler dh = <span style="color: #0000ff;">new</span> DataHandler(<span style="color: #0000ff;">new</span> FileDataSource("src\\2.jpg"<span style="color: #000000;">));
+</span><span style="color: #008080;">78</span> <span style="color: #000000;">        attach.setDataHandler(dh);
+</span><span style="color: #008080;">79</span>         attach.setFileName(dh.getName());  <span style="color: #008000;">//</span>
+<span style="color: #008080;">80</span>         
+<span style="color: #008080;">81</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建容器描述数据关系</span>
+<span style="color: #008080;">82</span>         MimeMultipart mp = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMultipart();
+</span><span style="color: #008080;">83</span> <span style="color: #000000;">        mp.addBodyPart(text);
+</span><span style="color: #008080;">84</span> <span style="color: #000000;">        mp.addBodyPart(attach);
+</span><span style="color: #008080;">85</span>         mp.setSubType("mixed"<span style="color: #000000;">);
+</span><span style="color: #008080;">86</span>         
+<span style="color: #008080;">87</span> <span style="color: #000000;">        message.setContent(mp);
+</span><span style="color: #008080;">88</span> <span style="color: #000000;">        message.saveChanges();
+</span><span style="color: #008080;">89</span>         <span style="color: #008000;">//</span><span style="color: #008000;">将创建的Email写入到E盘存储</span>
+<span style="color: #008080;">90</span>         message.writeTo(<span style="color: #0000ff;">new</span> FileOutputStream("E:\\attachMail.eml"<span style="color: #000000;">));
+</span><span style="color: #008080;">91</span>         <span style="color: #008000;">//</span><span style="color: #008000;">返回生成的邮件</span>
+<span style="color: #008080;">92</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> message;
+</span><span style="color: #008080;">93</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">94</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3 id="blogTitle8">3.6、发送包含内嵌图片和附件的复杂邮件</h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> me.gacl.main;
+</span><span style="color: #008080;">  2</span> 
+<span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileOutputStream;
+</span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;
+</span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.DataHandler;
+</span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.FileDataSource;
+</span><span style="color: #008080;">  7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Message;
+</span><span style="color: #008080;">  8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Session;
+</span><span style="color: #008080;">  9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.Transport;
+</span><span style="color: #008080;"> 10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.InternetAddress;
+</span><span style="color: #008080;"> 11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeBodyPart;
+</span><span style="color: #008080;"> 12</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMessage;
+</span><span style="color: #008080;"> 13</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeMultipart;
+</span><span style="color: #008080;"> 14</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.mail.internet.MimeUtility;
+</span><span style="color: #008080;"> 15</span> 
+<span style="color: #008080;"> 16</span> <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 17</span> <span style="color: #008000;">* @ClassName: Sendmail
+</span><span style="color: #008080;"> 18</span> <span style="color: #008000;">* @Description: 发送Email
+</span><span style="color: #008080;"> 19</span> <span style="color: #008000;">* </span><span style="color: #808080;">@author</span><span style="color: #008000;">: 孤傲苍狼
+</span><span style="color: #008080;"> 20</span> <span style="color: #008000;">* @date: 2015-1-12 下午9:42:56
+</span><span style="color: #008080;"> 21</span> <span style="color: #008000;">*
+</span><span style="color: #008080;"> 22</span> <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 23</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Sendmail {
+</span><span style="color: #008080;"> 24</span> 
+<span style="color: #008080;"> 25</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 26</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args
+</span><span style="color: #008080;"> 27</span> <span style="color: #008000;">     * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception 
+</span><span style="color: #008080;"> 28</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 29</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;"> 30</span>         
+<span style="color: #008080;"> 31</span>         Properties prop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();
+</span><span style="color: #008080;"> 32</span>         prop.setProperty("mail.host", "smtp.sohu.com"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 33</span>         prop.setProperty("mail.transport.protocol", "smtp"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 34</span>         prop.setProperty("mail.smtp.auth", "true"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 35</span>         <span style="color: #008000;">//</span><span style="color: #008000;">使用JavaMail发送邮件的5个步骤
+</span><span style="color: #008080;"> 36</span>         <span style="color: #008000;">//</span><span style="color: #008000;">1、创建session</span>
+<span style="color: #008080;"> 37</span>         Session session =<span style="color: #000000;"> Session.getInstance(prop);
+</span><span style="color: #008080;"> 38</span>         <span style="color: #008000;">//</span><span style="color: #008000;">开启Session的debug模式，这样就可以查看到程序发送Email的运行状态</span>
+<span style="color: #008080;"> 39</span>         session.setDebug(<span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 40</span>         <span style="color: #008000;">//</span><span style="color: #008000;">2、通过session得到transport对象</span>
+<span style="color: #008080;"> 41</span>         Transport ts =<span style="color: #000000;"> session.getTransport();
+</span><span style="color: #008080;"> 42</span>         <span style="color: #008000;">//</span><span style="color: #008000;">3、连上邮件服务器</span>
+<span style="color: #008080;"> 43</span>         ts.connect("smtp.sohu.com", "gacl", "邮箱密码"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 44</span>         <span style="color: #008000;">//</span><span style="color: #008000;">4、创建邮件</span>
+<span style="color: #008080;"> 45</span>         Message message =<span style="color: #000000;"> createMixedMail(session);
+</span><span style="color: #008080;"> 46</span>         <span style="color: #008000;">//</span><span style="color: #008000;">5、发送邮件</span>
+<span style="color: #008080;"> 47</span> <span style="color: #000000;">        ts.sendMessage(message, message.getAllRecipients());
+</span><span style="color: #008080;"> 48</span> <span style="color: #000000;">        ts.close();
+</span><span style="color: #008080;"> 49</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 50</span>     
+<span style="color: #008080;"> 51</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 52</span> <span style="color: #008000;">    * @Method: createMixedMail
+</span><span style="color: #008080;"> 53</span> <span style="color: #008000;">    * @Description: 生成一封带附件和带图片的邮件
+</span><span style="color: #008080;"> 54</span> <span style="color: #008000;">    * @Anthor:孤傲苍狼
+</span><span style="color: #008080;"> 55</span> <span style="color: #008000;">    *
+</span><span style="color: #008080;"> 56</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@param</span><span style="color: #008000;"> session
+</span><span style="color: #008080;"> 57</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@return</span>
+<span style="color: #008080;"> 58</span> <span style="color: #008000;">    * </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> Exception
+</span><span style="color: #008080;"> 59</span>     <span style="color: #008000;">*/</span> 
+<span style="color: #008080;"> 60</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> MimeMessage createMixedMail(Session session) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {
+</span><span style="color: #008080;"> 61</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建邮件</span>
+<span style="color: #008080;"> 62</span>         MimeMessage message = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMessage(session);
+</span><span style="color: #008080;"> 63</span>         
+<span style="color: #008080;"> 64</span>         <span style="color: #008000;">//</span><span style="color: #008000;">设置邮件的基本信息</span>
+<span style="color: #008080;"> 65</span>         message.setFrom(<span style="color: #0000ff;">new</span> InternetAddress("gacl@sohu.com"<span style="color: #000000;">));
+</span><span style="color: #008080;"> 66</span>         message.setRecipient(Message.RecipientType.TO, <span style="color: #0000ff;">new</span> InternetAddress("xdp_gacl@sina.cn"<span style="color: #000000;">));
+</span><span style="color: #008080;"> 67</span>         message.setSubject("带附件和带图片的的邮件"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 68</span>         
+<span style="color: #008080;"> 69</span>         <span style="color: #008000;">//</span><span style="color: #008000;">正文</span>
+<span style="color: #008080;"> 70</span>         MimeBodyPart text = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;"> 71</span>         text.setContent("xxx这是女的xxxx&lt;br/&gt;&lt;img src='cid:aaa.jpg'&gt;","text/html;charset=UTF-8"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 72</span>         
+<span style="color: #008080;"> 73</span>         <span style="color: #008000;">//</span><span style="color: #008000;">图片</span>
+<span style="color: #008080;"> 74</span>         MimeBodyPart image = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;"> 75</span>         image.setDataHandler(<span style="color: #0000ff;">new</span> DataHandler(<span style="color: #0000ff;">new</span> FileDataSource("src\\3.jpg"<span style="color: #000000;">)));
+</span><span style="color: #008080;"> 76</span>         image.setContentID("aaa.jpg"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 77</span>         
+<span style="color: #008080;"> 78</span>         <span style="color: #008000;">//</span><span style="color: #008000;">附件1</span>
+<span style="color: #008080;"> 79</span>         MimeBodyPart attach = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;"> 80</span>         DataHandler dh = <span style="color: #0000ff;">new</span> DataHandler(<span style="color: #0000ff;">new</span> FileDataSource("src\\4.zip"<span style="color: #000000;">));
+</span><span style="color: #008080;"> 81</span> <span style="color: #000000;">        attach.setDataHandler(dh);
+</span><span style="color: #008080;"> 82</span> <span style="color: #000000;">        attach.setFileName(dh.getName());
+</span><span style="color: #008080;"> 83</span>         
+<span style="color: #008080;"> 84</span>         <span style="color: #008000;">//</span><span style="color: #008000;">附件2</span>
+<span style="color: #008080;"> 85</span>         MimeBodyPart attach2 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;"> 86</span>         DataHandler dh2 = <span style="color: #0000ff;">new</span> DataHandler(<span style="color: #0000ff;">new</span> FileDataSource("src\\波子.zip"<span style="color: #000000;">));
+</span><span style="color: #008080;"> 87</span> <span style="color: #000000;">        attach2.setDataHandler(dh2);
+</span><span style="color: #008080;"> 88</span> <span style="color: #000000;">        attach2.setFileName(MimeUtility.encodeText(dh2.getName()));
+</span><span style="color: #008080;"> 89</span>         
+<span style="color: #008080;"> 90</span>         <span style="color: #008000;">//</span><span style="color: #008000;">描述关系:正文和图片</span>
+<span style="color: #008080;"> 91</span>         MimeMultipart mp1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMultipart();
+</span><span style="color: #008080;"> 92</span> <span style="color: #000000;">        mp1.addBodyPart(text);
+</span><span style="color: #008080;"> 93</span> <span style="color: #000000;">        mp1.addBodyPart(image);
+</span><span style="color: #008080;"> 94</span>         mp1.setSubType("related"<span style="color: #000000;">);
+</span><span style="color: #008080;"> 95</span>         
+<span style="color: #008080;"> 96</span>         <span style="color: #008000;">//</span><span style="color: #008000;">描述关系:正文和附件</span>
+<span style="color: #008080;"> 97</span>         MimeMultipart mp2 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMultipart();
+</span><span style="color: #008080;"> 98</span> <span style="color: #000000;">        mp2.addBodyPart(attach);
+</span><span style="color: #008080;"> 99</span> <span style="color: #000000;">        mp2.addBodyPart(attach2);
+</span><span style="color: #008080;">100</span>         
+<span style="color: #008080;">101</span>         <span style="color: #008000;">//</span><span style="color: #008000;">代表正文的bodypart</span>
+<span style="color: #008080;">102</span>         MimeBodyPart content = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();
+</span><span style="color: #008080;">103</span> <span style="color: #000000;">        content.setContent(mp1);
+</span><span style="color: #008080;">104</span> <span style="color: #000000;">        mp2.addBodyPart(content);
+</span><span style="color: #008080;">105</span>         mp2.setSubType("mixed"<span style="color: #000000;">);
+</span><span style="color: #008080;">106</span>         
+<span style="color: #008080;">107</span> <span style="color: #000000;">        message.setContent(mp2);
+</span><span style="color: #008080;">108</span> <span style="color: #000000;">        message.saveChanges();
+</span><span style="color: #008080;">109</span>         
+<span style="color: #008080;">110</span>         message.writeTo(<span style="color: #0000ff;">new</span> FileOutputStream("E:\\MixedMail.eml"<span style="color: #000000;">));
+</span><span style="color: #008080;">111</span>         <span style="color: #008000;">//</span><span style="color: #008000;">返回创建好的的邮件</span>
+<span style="color: #008080;">112</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> message;
+</span><span style="color: #008080;">113</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">114</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　以上就是使用JavaMail的API创建邮件和发送邮件的全部内容。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4216311,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/" target="_blank"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20160221223904.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followees">关注 - 83</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followers">粉丝 - 4889</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4216311,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">8</span>
+    </div>
+	<div class="buryit" onclick="votePost(4216311,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xdp-gacl/p/4209586.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/4209586.html" title="发布于2015-01-10 14:25">JavaWeb学习总结(五十一)——邮件的发送与接收原理</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/4220190.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/4220190.html" title="发布于2015-01-12 23:51">JavaWeb学习总结(五十三)——Web应用中使用JavaMail发送邮件</a><br></div>
+</div>
+
+</div>
+    <p class="postfoot">posted on <span id="post-date">2015-01-12 22:24</span> <a href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a> 阅读(<span id="post_view_count">17940</span>) 评论(<span id="post_comment_count">9</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4216311" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#" onclick="AddToWz(4216311);return false;">收藏</a></p>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=133816,cb_entryId=4216311,cb_blogApp=currentBlogApp,cb_blogUserGuid='f1774468-815f-e011-a53f-842b2b196315',cb_entryCreatedDate='2015/1/12 22:24:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3265335" class="layer">#1楼</a><a name="3265335" id="comment_anchor_3265335"></a>
+					<span>
+						 <span class="comment_date">2015-09-12 10:16</span>
+					</span>
+				<a id="a_comment_author_3265335" href="http://home.cnblogs.com/u/685795/" target="_blank">majava</a> <a href="http://msg.cnblogs.com/send/majava" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3265335" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>狂赞</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3265335,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3265335,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3306882" class="layer">#2楼</a><a name="3306882" id="comment_anchor_3306882"></a>
+					<span>
+						 <span class="comment_date">2015-11-15 21:22</span>
+					</span>
+				<a id="a_comment_author_3306882" href="http://www.cnblogs.com/guodefu909/" target="_blank">guodefu909</a> <a href="http://msg.cnblogs.com/send/guodefu909" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3306882" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>感谢分享</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3306882,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3306882,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3324610" class="layer">#3楼</a><a name="3324610" id="comment_anchor_3324610"></a>
+					<span>
+						 <span class="comment_date">2015-12-10 17:02</span>
+					</span>
+				<a id="a_comment_author_3324610" href="http://www.cnblogs.com/voyager/" target="_blank">安安静静的美男子</a> <a href="http://msg.cnblogs.com/send/%E5%AE%89%E5%AE%89%E9%9D%99%E9%9D%99%E7%9A%84%E7%BE%8E%E7%94%B7%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3324610" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>有问题吧，内嵌图片的那个。</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3324610,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3324610,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3324610_avatar" style="display:none;">http://pic.cnblogs.com/face/590244/20131210091150.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3324712" class="layer">#4楼</a><a name="3324712" id="comment_anchor_3324712"></a>
+					<span>
+						 <span class="comment_date">2015-12-10 19:50</span>
+					</span>
+				<a id="a_comment_author_3324712" href="http://www.cnblogs.com/voyager/" target="_blank">安安静静的美男子</a> <a href="http://msg.cnblogs.com/send/%E5%AE%89%E5%AE%89%E9%9D%99%E9%9D%99%E7%9A%84%E7%BE%8E%E7%94%B7%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3324712" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>内嵌图片的话，网易的邮箱有问题，QQ可以。</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3324712,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3324712,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3324712_avatar" style="display:none;">http://pic.cnblogs.com/face/590244/20131210091150.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3348807" class="layer">#5楼</a><a name="3348807" id="comment_anchor_3348807"></a>
+					<span>
+						 <span class="comment_date">2016-01-16 08:46</span>
+					</span>
+				<a id="a_comment_author_3348807" href="http://home.cnblogs.com/u/880896/" target="_blank">大沙筆</a> <a href="http://msg.cnblogs.com/send/%E5%A4%A7%E6%B2%99%E7%AD%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3348807" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>谢谢分享！看您的博客帮助很大！</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3348807,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3348807,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3365503" class="layer">#6楼</a><a name="3365503" id="comment_anchor_3365503"></a>
+					<span>
+						 <span class="comment_date">2016-02-23 15:01</span>
+					</span>
+				<a id="a_comment_author_3365503" href="http://www.cnblogs.com/jingmoxukong/" target="_blank">拿铁已冷</a> <a href="http://msg.cnblogs.com/send/%E6%8B%BF%E9%93%81%E5%B7%B2%E5%86%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3365503" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>干货，很实用。</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3365503,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3365503,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3365503_avatar" style="display:none;">http://pic.cnblogs.com/face/318837/20150311185321.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3366165" class="layer">#7楼</a><a name="3366165" id="comment_anchor_3366165"></a>
+					<span>
+						 <span class="comment_date">2016-02-24 16:47</span>
+					</span>
+				<a id="a_comment_author_3366165" href="http://www.cnblogs.com/JiaJianWorld/" target="_blank">浅白色</a> <a href="http://msg.cnblogs.com/send/%E6%B5%85%E7%99%BD%E8%89%B2" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3366165" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>非常感谢,还想问一下,在服务器上用系统账号发的邮件,能不能把发件人改了(动态改的),主要目的是为了能够让用户点回复的时候是回复给自己动态设定好的账号,而不是系统账号.能通过这种方式吗,</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3366165,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3366165,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3380491" class="layer">#8楼</a><a name="3380491" id="comment_anchor_3380491"></a>
+					<span>
+						 <span class="comment_date">2016-03-14 14:06</span>
+					</span>
+				<a id="a_comment_author_3380491" href="http://home.cnblogs.com/u/913036/" target="_blank">旗木卡卡西丶</a> <a href="http://msg.cnblogs.com/send/%E6%97%97%E6%9C%A8%E5%8D%A1%E5%8D%A1%E8%A5%BF%E4%B8%B6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3380491" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>请问一下如何发送 固定格式  的表格 不是附件</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3380491,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3380491,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#3388246" class="layer">#9楼</a><a name="3388246" id="comment_anchor_3388246"></a><span id="comment-maxId" style="display:none;">3388246</span><span id="comment-maxDate" style="display:none;">2016/3/22 16:20:25</span>
+					<span>
+						 <span class="comment_date">2016-03-22 16:20</span>
+					</span>
+				<a id="a_comment_author_3388246" href="http://www.cnblogs.com/javaCommunication/" target="_blank">疯狂奔跑，华丽跌倒</a> <a href="http://msg.cnblogs.com/send/%E7%96%AF%E7%8B%82%E5%A5%94%E8%B7%91%EF%BC%8C%E5%8D%8E%E4%B8%BD%E8%B7%8C%E5%80%92" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3388246" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>赞</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3388246,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3388246,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3388246_avatar" style="display:none;">http://pic.cnblogs.com/face/800227/20150819143435.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xdp-gacl/p/4216311.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=SpreadJS&utm_campaign=community" target="_blank">【推荐】怎样将“在线Excel“嵌入你的开发系统中？</a><br><a href="http://click.aliyun.com/m/3037/" target="_blank">【推荐】阿里云高性能云服务器+SSD云盘，让业务响应0延迟</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/545131/" target="_blank">亚马逊创始人贝索斯过去三个月资产增加180亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/545130/" target="_blank">Facebook要做聊天机器人，一个月内吸引了上千开发者</a><br> ·  <a href="http://news.cnblogs.com/n/545129/" target="_blank">俞敏洪：不主张大学生创业，大学生的项目我不投！</a><br> ·  <a href="http://news.cnblogs.com/n/545128/" target="_blank">三个季度连续亏损 LG移动部门或将减员缩编</a><br> ·  <a href="http://news.cnblogs.com/n/545127/" target="_blank">微软手机最新黑科技：利用传感器“预知”用户行为</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./JavaWeb学习总结(五十二)——使用JavaMail创建邮件和发送邮件 - 孤傲苍狼 - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br> ·  <a href="http://kb.cnblogs.com/page/541740/" target="_blank">架构漫谈（六）：软件架构到底是要解决什么问题？</a><br> ·  <a href="http://kb.cnblogs.com/page/541188/" target="_blank">架构漫谈（五）：什么是软件</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="rightmenu">
+	
+		
+<div id="my_links">
+<h3>导航</h3>
+<ul>
+<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/xdp-gacl/">首页</a></li>
+<!--<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>-->
+<li><a id="MyLinks1_ContactLink" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC">联系</a></li>
+<li><a id="MyLinks1_Syndication" href="http://www.cnblogs.com/xdp-gacl/rss">订阅</a></li><!--<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/xdp-gacl/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>-->
+<li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+</div>
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="日历">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalTodayDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>公告</h3>
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>园龄：<a href="http://home.cnblogs.com/u/xdp-gacl/" title="入园时间：2011-04-05">5年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xdp-gacl/followers/">4889</a><br>关注：<a href="http://home.cnblogs.com/u/xdp-gacl/followees/">83</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;f1774468-815f-e011-a53f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>		
+		
+<div id="blog_stats">
+<h3>统计</h3>
+<ul>
+<li>随笔 - 275
+</li><li>文章 - 0
+</li><li>评论 - 1503
+<!--<li>引用 - 0-->
+</li>
+</ul>
+</div>
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a>(62)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">java基础总结</a>(28)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Javascript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Javascript学习总结</a>(27)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Snmp%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Snmp学习总结</a>(15)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyEclipse%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">MyEclipse使用总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Android%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Android开发学习总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Maven%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Maven学习总结</a>(11)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/WebLogic%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">WebLogic使用总结</a>(9)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyBatis%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MyBatis学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MySQL%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MySQL学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xdp-gacl/category/431986.html">AJAX(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xdp-gacl/category/663970.html">Android开发(12)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xdp-gacl/category/431983.html">ASP.NET(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xdp-gacl/category/431981.html">C#(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xdp-gacl/category/647917.html">CSS学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xdp-gacl/category/557089.html">C语言学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/xdp-gacl/category/605855.html">FusionCharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/xdp-gacl/category/641669.html">H2数据库学习使用总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/xdp-gacl/category/601788.html">Hessian(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/xdp-gacl/category/557131.html">Hibernate</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/xdp-gacl/category/602554.html">Highcharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/xdp-gacl/category/544383.html">HTML(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/xdp-gacl/category/791376.html">html5学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/xdp-gacl/category/647915.html">Html学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/xdp-gacl/category/431984.html">Java(13)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/xdp-gacl/category/431982.html">JavaScript(27)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结(55)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/xdp-gacl/category/563691.html">Java基础加强总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/xdp-gacl/category/566451.html">java基础面试题(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/xdp-gacl/category/563690.html">java基础总结(28)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/xdp-gacl/category/595905.html">Java监控</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/xdp-gacl/category/607504.html">Java事务处理</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/xdp-gacl/category/600539.html">java字节码的处理技术</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/xdp-gacl/category/636007.html">JFinal学习研究</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/xdp-gacl/category/609326.html">JNDI(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/xdp-gacl/category/571424.html">Jquery EasyUI学习使用总结(7)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/xdp-gacl/category/600080.html">jwebap</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/xdp-gacl/category/599454.html">kafka</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/xdp-gacl/category/590574.html">LDAP</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/xdp-gacl/category/620197.html">Linux学习总结(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/xdp-gacl/category/544719.html">Maven(10)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/xdp-gacl/category/599453.html">Mina</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/xdp-gacl/category/655890.html">Mybatis(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/xdp-gacl/category/544414.html">MyEclipse(11)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/xdp-gacl/category/557132.html">MySQL(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/xdp-gacl/category/576035.html">Nginx(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/xdp-gacl/category/567838.html">Oracle学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/xdp-gacl/category/562877.html">PowerDesigner使用总结(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/xdp-gacl/category/640475.html">redis</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/xdp-gacl/category/591218.html">RESTful架构(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/xdp-gacl/category/649781.html">Servlet3.0(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/xdp-gacl/category/613358.html">Snmp学习总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/xdp-gacl/category/544380.html">Spring(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/xdp-gacl/category/654626.html">SpringMVC学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/xdp-gacl/category/543327.html">SQLServer(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/xdp-gacl/category/543338.html">Struts2(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/xdp-gacl/category/737796.html">SVN</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/xdp-gacl/category/544377.html">VB.NET(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/xdp-gacl/category/637206.html">WebLogic使用总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/xdp-gacl/category/629559.html">WebService学习总结(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/xdp-gacl/category/787823.html">WebSocket(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/xdp-gacl/category/554263.html">WinForm学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/xdp-gacl/category/602889.html">XML学习总结(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/xdp-gacl/category/551491.html">插件化开发</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/xdp-gacl/category/598077.html">创业知识(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/xdp-gacl/category/651090.html">大数据/hadoop(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/xdp-gacl/category/645953.html">代码注释(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/xdp-gacl/category/588156.html">单点登录(Yale_CAS_SSO)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/xdp-gacl/category/710266.html">电脑基本技能</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/xdp-gacl/category/636430.html">读书笔记</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/xdp-gacl/category/635429.html">负载均衡(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/xdp-gacl/category/543351.html">互联网基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/xdp-gacl/category/644775.html">缓存框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/xdp-gacl/category/801455.html">架构设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_64" href="http://www.cnblogs.com/xdp-gacl/category/661363.html">框架整合(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_65" href="http://www.cnblogs.com/xdp-gacl/category/810590.html">敏捷开发(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_66" href="http://www.cnblogs.com/xdp-gacl/category/591507.html">权限设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_67" href="http://www.cnblogs.com/xdp-gacl/category/431985.html">生活感悟(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_68" href="http://www.cnblogs.com/xdp-gacl/category/589802.html">数据库Sharding(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_69" href="http://www.cnblogs.com/xdp-gacl/category/562913.html">数据库理论基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_70" href="http://www.cnblogs.com/xdp-gacl/category/608526.html">微信开发(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_71" href="http://www.cnblogs.com/xdp-gacl/category/811446.html">我的开发框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_72" href="http://www.cnblogs.com/xdp-gacl/category/806539.html">项目管理(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_73" href="http://www.cnblogs.com/xdp-gacl/category/654566.html">英语学习</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_74" href="http://www.cnblogs.com/xdp-gacl/category/578277.html">原创小工具(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_75" href="http://www.cnblogs.com/xdp-gacl/category/594056.html">云计算(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_76" href="http://www.cnblogs.com/xdp-gacl/category/598078.html">哲学人生</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_77" href="http://www.cnblogs.com/xdp-gacl/category/596451.html">职场感悟(3)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xdp-gacl/archive/2016/04.html">2016年4月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xdp-gacl/archive/2016/03.html">2016年3月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xdp-gacl/archive/2016/02.html">2016年2月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xdp-gacl/archive/2016/01.html">2016年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xdp-gacl/archive/2015/07.html">2015年7月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xdp-gacl/archive/2015/03.html">2015年3月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xdp-gacl/archive/2015/02.html">2015年2月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xdp-gacl/archive/2015/01.html">2015年1月 (40)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xdp-gacl/archive/2014/12.html">2014年12月 (17)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xdp-gacl/archive/2014/11.html">2014年11月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xdp-gacl/archive/2014/10.html">2014年10月 (31)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xdp-gacl/archive/2014/08.html">2014年8月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xdp-gacl/archive/2014/07.html">2014年7月 (25)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xdp-gacl/archive/2014/06.html">2014年6月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xdp-gacl/archive/2014/05.html">2014年5月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xdp-gacl/archive/2014/04.html">2014年4月 (22)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xdp-gacl/archive/2014/03.html">2014年3月 (28)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xdp-gacl/archive/2014/02.html">2014年2月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xdp-gacl/archive/2014/01.html">2014年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xdp-gacl/archive/2013/12.html">2013年12月 (16)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xdp-gacl/archive/2012/11.html">2012年11月 (1)</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html#3427933">1. Re:Spring常用注解</a></li>
+        <li class="recent_comment_body">通俗易懂，谢谢博主的分享。</li>
+        <li class="recent_comment_author">--Xsum</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#3427806">2. Re:java基础学习总结——equals方法</a></li>
+        <li class="recent_comment_body">楼主写得很好，简单明了</li>
+        <li class="recent_comment_author">--bequt</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3983253.html#3427770">3. Re:javaweb学习总结(三十六)——使用JDBC进行批处理</a></li>
+        <li class="recent_comment_body">顶</li>
+        <li class="recent_comment_author">--孟妹</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html#3427757">4. Re:MyBatis学习总结(一)——MyBatis快速入门</a></li>
+        <li class="recent_comment_body">感谢你，讲的很详细</li>
+        <li class="recent_comment_author">--zimu1990</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3908610.html#3427733">5. Re:javaweb学习总结(二十一)——JavaWeb的两种开发模式</a></li>
+        <li class="recent_comment_body">写的实在是太好了</li>
+        <li class="recent_comment_author">--寻影657</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4240930.html#3427216">6. Re:Maven学习总结(三)——使用Maven构建项目</a></li>
+        <li class="recent_comment_body">真心不错</li>
+        <li class="recent_comment_author">--奕p</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html#3426738">7. Re:javaweb学习总结(五)——Servlet开发(一)</a></li>
+        <li class="recent_comment_body">请教下楼主，上面为servlet映射url是在config里面的web.xml还是WEB-INF里的web.xml里创建啊？小白不懂求指导。</li>
+        <li class="recent_comment_author">--metaluo</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html#3425929">8. Re:JavaWeb学习总结(一)——JavaWeb开发入门</a></li>
+        <li class="recent_comment_body">LZ肯定对大家这么弱鸡而无语</li>
+        <li class="recent_comment_author">--March On</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html#3425801">9. Re:JavaWeb学习总结(五十)——文件上传和下载</a></li>
+        <li class="recent_comment_body">博主大赞，如果能有上传到数据库就更好了</li>
+        <li class="recent_comment_author">--Charming2Future</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html#3425140">10. Re:MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合</a></li>
+        <li class="recent_comment_body">博主 我的项目在运行时报错：org.springframework.beans.factory.BeanCreationException: Error creating bean with nam......</li>
+        <li class="recent_comment_author">--xkpactera</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(154171)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3497016.html">2. MyEclipse使用总结——MyEclipse10安装SVN插件(139730)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">3. JavaWeb学习总结(五十)——文件上传和下载(100174)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">4. javaweb学习总结(五)——Servlet开发(一)(99514)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(86502)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">6. Android开发学习总结(一)——搭建最新版本的Android开发环境(79097)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html">7. Spring常用注解(72117)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3777987.html">8. Java基础学习总结——Java对象的序列化和反序列化(61577)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">9. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57266)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3734395.html">10. JavaWeb学习总结(二)——Tomcat服务器学习和使用(一)(51493)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">1. JavaWeb学习总结(五十)——文件上传和下载(80)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">2. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">3. MyBatis学习总结(一)——MyBatis快速入门(52)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">4. javaweb学习总结(四)——Http协议(43)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(42)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">6. JavaScript自动生成博文目录导航(40)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">7. javaweb学习总结(五)——Servlet开发(一)(39)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4239501.html">8. 使用Maven搭建Struts2+Spring3+Hibernate4的整合开发环境(34)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">9. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(32)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">10. Android开发学习总结(一)——搭建最新版本的Android开发环境(31)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(63)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">2. javaweb学习总结(五)——Servlet开发(一)(56)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">3. JavaWeb学习总结(一)——JavaWeb开发入门(48)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">4. JavaWeb学习总结(五十)——文件上传和下载(47)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">5. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(41)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">6. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(37)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/5149171.html">7. 微信开发学习总结（一）——微信开发环境搭建(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">8. JavaScript自动生成博文目录导航(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">9. Android开发学习总结(一)——搭建最新版本的Android开发环境(35)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">10. javaweb学习总结(四)——Http协议(34)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+        
+		
+<div id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © 孤傲苍狼
+</div>
+	
+</div>			
+			
+	
+
+<!--PageEndHtml Block Begin-->
+<!--评论，生成气泡效果标签代码-->
+<script type="text/javascript" language="javascript"> 
+    $(document).ready(function() {
+        var commentTime = setInterval(function(){if($("#comments_pager_bottom").length>0){CommentBubble();clearTimeout(commentTime);}},50);
+    }); 
+    function CommentBubble()
+    {
+var w1 = '<div class="list">' +
+        '<table class="out" border="0" cellspacing="0" cellpadding="0"> ' +
+            '<tr>' +
+                '<td class="icontd" align="right" valign="bottom">' +
+                    '<img src="http://pic.cnitblog.com/face/289233/20131202131125.png" width="70px" height="57px"/>' +
+                '</td>' +
+                '<td align="left" valign="bottom" class="q">' +
+                    '<table border="0" cellpadding="0" cellspacing="0" style=""> ' +
+                        '<tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> ' +
+                        '<tr><td class="left"></td> <td align="left" class="conmts"><p>';
+ 
+ 
+        var w2 = '</p> </td> <td class="right"></td></tr> ' +
+                        '<tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> ' +
+                    '</table>' +
+                '</td> ' +
+            '</tr> ' +
+        '</table> ' +
+    '</div>';
+ 
+        $.each($(".blog_comment_body"), function(i, t) {
+            $(t).html(w1 + $(t).html() + w2);
+        });
+$(".louzhu").closest(".feedbackItem").find(".out").removeClass("out").addClass("inc");
+        /*.find(".q").attr("align","right");*/
+        }
+</script>
+<!--PageEndHtml Block End-->
+
+
+<div class="sideBar" id="sideBar"><div id="sideBarTab"><h2>目录导航</h2></div><div id="sideBarContents" style="display: none;"><dl><dt name="0">一、RFC882文档简单说明</dt><dt name="1">二、MIME协议简单介绍</dt><dt name="2">三、使用JavaMail创建邮件和发送邮件</dt><dd name="3">3.1、JavaMail API的简单介绍</dd><dd name="4">3.2、创建邮件发送测试项目</dd><dd name="5">3.3、发送一封只包含文本的简单邮件</dd><dd name="6">3.4、发送包含内嵌图片的邮件</dd><dd name="7">3.5、发送包含附件的邮件</dd><dd name="8">3.6、发送包含内嵌图片和附件的复杂邮件</dd></dl></div></div></body></html>

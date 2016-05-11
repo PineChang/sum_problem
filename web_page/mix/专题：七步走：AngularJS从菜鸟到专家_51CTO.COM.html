@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0048)http://developer.51cto.com/art/201311/416334.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><style type="text/css" id="4257455000"></style><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"><script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/v4.js" charset="utf-8" id="UYScript"></script><script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/saved_resource" charset="utf-8" id="uyan_script"></script>
+
+<title>专题：七步走：AngularJS从菜鸟到专家_51CTO.COM</title>
+<meta name="keywords" content="AngularJS,编程,开发,页面设计,动态,Web">
+<meta name="description" content="Angular.js 是一个MV*（Model-View-Whatever，不管是MVC或者MVVM，统归MDV(model Drive View)）JavaScript框架，其是Google推出的SPA（single-page-application）应用框架，其为我们的web应用开发增加不少魔法变换。">
+<link href="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/reset.css" rel="stylesheet" type="text/css">
+<link href="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/style.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/art_master_top.css">
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/index_1_down.js"></script>
+<style type="text/css"></style><script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/logger.js"></script><link href="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/bdsstyle.css" rel="stylesheet" type="text/css"></head>
+<body><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare" style="right: 0px; top: 293px; position: fixed; height: 330px; overflow: hidden;"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/r0.gif" alt="" style="float:left;margin-top:58px;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none; left: 24px;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_renren rrw">人人网</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_douban db">豆瓣网</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_thx thx">和讯微博</a></li><li><a href="http://developer.51cto.com/art/201311/416334.htm#" class="bds_more">更多...</a></li></ul><p><a href="http://developer.51cto.com/art/201311/416334.htm#" class="goWebsite">百度分享</a></p></div></div></div>
+<script id="allmobilize" charset="utf-8" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/allmobilize.min.js"></script><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="http://developer.51cto.com/art/201311/416334.htm#">
+<div id="home_top">    <div class="top_nav">        <div class="left" style="width:400px"><div class="logo_51cto" title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></div><a href="http://www.51cto.com/">首页</a><img width="16" height="25" align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/top_bg_xian.gif" style="padding-top: 2px;"><a onmouseover="show(1,this);" onmouseout="popupClose();" href="http://www.51cto.com/col/35/" target="_blank">技术频道<img align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/nav_ico1.gif" style="padding-left: 4px;"></a><img width="16" height="25" align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/top_bg_xian.gif"><a onmouseover="show(2,this);" onmouseout="popupClose();" href="http://www.51cto.com/" target="_blank">51CTO旗下网站<img align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/nav_ico1.gif" style="padding-left: 4px;"></a><img width="16" height="25" align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/top_bg_xian.gif"><a href="http://www.51cto.com/about/map.htm" target="_blank">地图</a> <a href="http://www.51cto.com/about/rss.html" target="_blank"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/143749870.gif" style="vertical-align:middle; margin-bottom: 5px; margin-left:5px;"></a>       </div>        <div class="right">            <div class="more"><img width="27" height="16" align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/top_shequ.gif"><a href="http://gaozhao.51cto.com/" target="_blank" style="color:#CC0000">招聘</a><a href="http://edu.51cto.com/" target="_blank" style="color:#CC0000">学院</a><a href="http://down.51cto.com/" target="_blank">下载</a><a href="http://bbs.51cto.com/" target="_blank">论坛</a><a href="http://blog.51cto.com/" target="_blank">博客</a><a onmouseover="show(3,this)" onmouseout="popupClose()" href="javascript:viod(0);">更多<img align="absmiddle" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/nav_ico1.gif" style="padding-left: 4px;"></a>            </div>            <span id="login_status"><div class="login" style="padding-top:8px; text-align:right;"><a href="http://home.51cto.com/index?reback=http://developer.51cto.com/art/201311/416334.htm" target="_self">登录</a><a href="http://ucenter.51cto.com/2015/register.php?reback=http://developer.51cto.com/art/201311/416334.htm" target="_self">注册</a></div></span>                </div>    </div></div>
+<div class="subMenu1" id="s1" onmouseover="popupNoClose();" onmouseout="popupClose();">
+<ul>
+<li><a href="http://network.51cto.com/" target="_blank">网络</a></li>
+<li><a href="http://netsecurity.51cto.com/" target="_blank">安全</a></li>
+<li><a href="http://developer.51cto.com/" target="_blank">开发</a></li>
+<li><a href="http://database.51cto.com/" target="_blank">数据库</a></li>
+<li><a href="http://server.51cto.com/" target="_blank">服务器</a></li>
+<li><a href="http://os.51cto.com/" target="_blank">系统</a></li>
+<li><a href="http://virtual.51cto.com/" target="_blank">虚拟化</a></li>
+<li><a href="http://cloud.51cto.com/" target="_blank">云计算</a></li>
+<li><a href="http://developer.51cto.com/embed/" target="_blank">嵌入式</a></li>
+<li><a href="http://mobile.51cto.com/" target="_blank">移动开发</a></li>
+</ul>
+</div> 
+<div class="subMenu2" id="s2" onmouseover="popupNoClose()" onmouseout="popupClose()">
+<ul>
+<li><a href="http://www.51cto.com/" target="_blank" title="中国领先的IT技术网站">51CTO.COM</a></li>
+<li><a href="http://www.cioage.com/" target="_blank" title="中国首个专门服务于CIO的专业网站">CIOage.com</a></li>
+<li><a href="http://www.watchstor.com/" target="_blank" title="领先的中文存储网络媒体">WatchStor.com</a></li>
+<li><a href="http://www.hc3i.cn/" target="_blank" title="中国首家专注于数字医疗及医疗信息化的专业网站">HC3i.cn</a></li>
+</ul>
+</div>
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/jquery-1.8.3.min.js"></script>
+<script>
+$(function(){
+	$(".bann").height(265);	 
+	$(".bann").css("background-color","white");
+	$(".hot").css("top","450px");
+	//$(".fixfloat").css("height","640px");
+	$(".g_13").find(".focus").css("height","640px");
+});
+var edunum=2;
+$(function(){
+	$("#change").click(function(){
+		$("#edu > ul").css("display","none");
+		var eduid='edu'+edunum;
+		$("#" + eduid).css("display","block");	
+		if(edunum<4){
+			edunum++;	
+		}else{
+			edunum=1;	
+		}							
+	});  
+});
+</script>
+
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/head_art_more1.js"></script><div class="subMenu3" id="s3" onmouseover="popupNoClose()" onmouseout="popupClose()" style="z-index:9999;position: absolute;">
+<ul>
+<li><a href="http://home.51cto.com/" target="_blank">家园</a></li>
+<li><a href="http://gaozhao.51cto.com/" target="_blank" style="color:red;">招聘</a></li>
+<li><a href="http://edu.51cto.com/" target="_blank">学院</a></li>
+<li><a href="http://blog.51cto.com/" target="_blank">博客</a></li>
+<li><a href="http://bbs.51cto.com/" target="_blank">论坛</a></li>
+<li><a href="http://down.51cto.com/" target="_blank">下载</a></li>
+<li><a href="http://selftest.51cto.com/" target="_blank">自测</a></li>
+<li><a href="http://doctor.51cto.com/" target="_blank">门诊</a></li>
+<li><a href="http://blog.51cto.com/newsletter/" target="_blank">周刊</a></li>
+<li><a href="http://book.51cto.com/" target="_blank">读书</a></li>
+<li><a href="http://t.51cto.com/" target="_blank" style="color:red;">题库</a></li>
+</ul>
+</div>
+
+<div class="wrap">
+    <div id="header" class="clearfix">
+      <h1 id="logo"><a href="http://www.51cto.com/" target="_blank">51CTO首页</a></h1>
+      <ul id="gnb">
+        <li class="s01"><a href="http://developer.51cto.com/" target="_blank">开发频道</a></li>
+        <li class="s02"><a href="http://mobile.51cto.com/" target="_blank">移动频道</a></li>
+        <li class="s03"><a href="http://os.51cto.com/" target="_blank">系统频道</a></li>
+        <li class="s04"><a href="http://network.51cto.com/" target="_blank">网络频道</a></li>
+        <li class="s05"><a href="http://netsecurity.51cto.com/" target="_blank">安全频道</a></li>
+        <li class="s06"><a href="http://www.watchstor.com/" target="_blank">存储频道</a></li>
+        <li class="s07"><a href="http://server.51cto.com/" target="_blank">服务器频道</a></li>
+        <li class="s08"><a href="http://cloud.51cto.com/" target="_blank">云计算频道</a></li>
+      </ul>
+    </div><!--// header div -->
+  <div class="banner bgfff"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/wKioJlJ8pg_geP6hAACFV92v1sY474.jpg" alt="专题：七步走：AngularJS从菜鸟到专家"></div>
+  <div class="lead">
+    <h3 class="reveiw"></h3>
+    <p>Angular.js 是一个MV*（Model-View-Whatever，不管是MVC或者MVVM，统归MDV(model Drive View)）JavaScript框架，其是Google推出的SPA（single-page-application）应用框架，其为我们的web应用开发增加不少魔法变换。</p>
+  </div>
+  <div class="clearfix bgfff">
+    <div class="main_left">
+      <div class="clearfix">
+        <h3 class="title02"> <span>头条推荐</span> </h3>
+        <div class="info01"><h4 class="font30"><a href="http://developer.51cto.com/art/201302/380661.htm">现在就开始使用AngularJS的三个重要原因</a></h4><p>要知道开源界的很多框架都是开发人员由于个人兴趣或者激情而开发出来的，比如，Cappucino 还有 Knockout。而anguar.js是由互联网巨人Google组织开发的。这意味这你有更加强大的社区支持。谁都不希望第一天开始使用一个框架，第二天发现这个框架已经被遗弃了吧！……<a href="http://developer.51cto.com/art/201302/380661.htm" target="_blank">&gt;&gt;详细</a></p>
+        </div>
+        <!--<div class="info01">
+          <h4 class="font30"><a href="http://developer.51cto.com/art/201305/393568.htm" target="_blank">Go语言1.1版发布</a></h4>
+          <p>“很高兴宣布 Go 语言 1.1 版的发布。在去年3月，我们发布了 1.0 版。此后我们发布了3个小版本更新，这些都只是修复了严重问题，所以各位到现在用的都是 Go 1.0.3 版。</p><p>和 1.0 版相比，Go 1.1 包含了许多改进。最显著的改进是和性能相关。我们优化了编译器和链接器、垃圾回收器、goroutine 调度、映射实现和部分标准库。在 Go 1.1 之下，你的Go代码应该会明显快多了。还有Go语言本身一些细微变化，其中两点这里要摘出来说说：① return 的变化将带来更为简洁和正确的程序，② 引入了方法值（method values）。并行编程在这更为安全……<a href="http://developer.51cto.com/art/201305/393568.htm" target="_blank">>>详细</a></p>
+        </div>-->
+      </div>
+    </div>
+  <div class="main_right"><a href="http://developer.51cto.com/art/201310/414304.htm"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/wKioJlJ8qDnxvBElAABiY67LtnI417.jpg" width="320" height="180"></a><div class="imgrt"><a href="http://developer.51cto.com/art/201310/414304.htm" target="_blank"><span>Spring MVC+JQuery+Google Map打造IP位置查找应用</span></a></div></div>
+</div>
+  <div class="gimg"><a href="http://developer.51cto.com/art/201304/390405.htm" target="_blank"></a></div>
+  <p class="clear hr12"></p>
+  <div class="bgfff clearfix">
+    <div class="main_left">
+     
+      <div class="clearfix">
+        <h3 class="title03"> <span>1&nbsp;<a href="http://developer.51cto.com/art/201308/406932.htm" target="_blank">Angular.js为什么如此火呢？</a></span> </h3>
+        <div class="info02">
+          <p align="left">Angular.js 是一个MV*（Model-View-Whatever，不管是MVC或者MVVM，统归MDV(model Drive View)）JavaScript框架，其是Google推出的SPA（single-page-application）应用框架，其为我们的web应用开发增加不少魔法变换。</p>
+<p>我可以花整天的时间告诉你为什么你必须在新项目尝试angular.js，但是我觉得还是百说不如一练。</p>
+<p><strong>数据绑定和scopes(作用域)<br>
+</strong></p>
+<p>首先第一个浮出大脑的问题是：angular支持数据绑定吗？</p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201308/406932.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <h3 class="title03"> <span>2&nbsp;<a href="http://developer.51cto.com/art/201308/408586.htm" target="_blank">七步从Angular.JS菜鸟到专家（1）：如何开始</a></span> </h3>
+        <div class="info02">
+          <p>AngularJS 重新定义了前端应用的开发方式。面对HTML和JavaScript之间的界线，它非但不畏缩不前，反而正面出击，提出了有效的解决方案。</p>
+<p>很多前端应用的开发框架，比如Backbone、EmberJS等，都要求开发者继承此框架特有的一些JavaScript对象。这种方式有其长 处，但它不必要地污染了开发者自己代码的对象空间，还要求开发者去了解内存里那些抽象对象。尽管如此我们还是接受了这种方式，因为网络最初的设计无法提供 我们今天所需的交互性，于是我们需要框架，来帮我们填补JavaScript和HTML之间的鸿沟。</p>
+<p><strong>AngularJS 填上了这条鸿沟。</strong></p>
+<p>而且有了它，你不用再“直接”操控DOM，只要给你的DOM注上metadata（即AngularJS里的directive们），然后让AngularJS来帮你操纵DOM。</p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201308/408586.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <h3 class="title03"> <span>3&nbsp;<a href="http://developer.51cto.com/art/201311/415855.htm" target="_blank">七步从Angular.JS菜鸟到专家（2）：Scopes</a></span> </h3>
+        <div class="info02">
+          <p>这是＂AngularJS&nbsp;-&nbsp;七步从菜鸟到专家＂系列的第二篇。</p>
+<p>在第一篇我们展示了如何开始搭建一个Angular应用。在这一篇里，我们要讨论一个理解AngularJS运作原理所必须的基本概念，以及你如何更好地运用它。</p>
+<p>在这个系列教程里，我们会开发一个NPR（美国全国公共广播电台）广播的音频播放器，它能显示Morning&nbsp;Edition节目里现在播出的最新故事，并在我们的浏览器里播放。完成版的Demo可以看这里。</p>
+<p><strong>第二部分&nbsp;Scopes</strong></p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201311/415855.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <h3 class="title03"> <span>4&nbsp;<a href="http://developer.51cto.com/art/201310/412244.htm" target="_blank">七步从Angular.JS菜鸟到专家（3）：数据绑定和AJAX</a></span> </h3>
+        <div class="info02">
+          <p>这是＂AngularJS&nbsp;-&nbsp;七步从菜鸟到专家＂系列的第三篇。</p>
+<p>在第一篇，我们展示了如何开始搭建一个AngularaJS应用。第二篇我们讨论了scope<span style="font-family: &#39;MS Mincho&#39;">和&nbsp;</span>$scope&nbsp;的功能。</p>
+<p>通过这整个系列的教程，我们会开发一个NPR（美国全国公共广播电台）广播的音频播放器，它能显示Morning&nbsp;Edition节目里现在播出的最新故事，并在我们的浏览器里播放。完成版的Demo可以看这里。</p>
+<p>第三部分&nbsp;数据绑定</p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201310/412244.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <h3 class="title03"> <span>5&nbsp;<a href="http://developer.51cto.com/art/201310/413736.htm" target="_blank">七步从AngularJS菜鸟到专家（4和5）：指令和表达式</a></span> </h3>
+        <div class="info02">
+          <p>这一篇包含了＂AngularJS&nbsp;-&nbsp;七步从菜鸟到专家＂系列的第四篇（指令）和第五篇（表达式）。</p>
+<p>之前的几篇展示了我们应用的核心组件，以及如何设置搭建一个Angular.js应用。在这一部分，我们会厘清一些术语，然后深入探讨很多Angular.js提供的核心功能。</p>
+<p>通 过这整个系列的教程，我们会开发一个NPR（美国全国公共广播电台）广播的音频播放器，它能显示Morning&nbsp;Edition节目里现在播出的最新故 事，并在我们的浏览器里播放它们。完成版的Demo可以看这里（http://www.ng-newsletter.com/code /beginner_series/）</p>
+<p><strong>第四部分&nbsp;指令属性</strong></p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201310/413736.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <h3 class="title03"> <span>6&nbsp;<a href="http://developer.51cto.com/art/201311/415900.htm" target="_blank">七步从AngularJS菜鸟到专家（6）：服务</a></span> </h3>
+        <div class="info02">
+          <p>这是＂AngularJS – 七步从菜鸟到专家＂系列的第六篇。</p>
+<p>在第一篇，我们展示了如何开始搭建一个AngularaJS应用。在第五篇我们讨论了Angular内建的directives。在这一章，我们来讨论services，整理我们的代码并完成我们的音频播放器应用。</p>
+<p>通过这整个系列的教程，我们会开发一个NPR（美国全国公共广播电台）广播的音频播放器，它能显示Morning Edition节目里现在播出的最新故事，并在我们的浏览器里播放。完成版的Demo可以看看这里。</p>
+<p>目前为止，我们把注意力都放在了如何把视图绑定到$scope和如何用controller管理数据，从内存和效率角度出 发，controllers仅当需要的时候才会被实例化并在不需要的时候被丢弃掉，这就意味着每一次我们使用route跳转或者重载视图（我们会在下一篇 讨论routing），当前的controller会被销毁。</p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201311/415900.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <h3 class="title03"> <span>7&nbsp;<a href="http://developer.51cto.com/art/201310/414163.htm" target="_blank">七步从AngularJS菜鸟到专家（7）：Routing</a></span> </h3>
+        <div class="info02">
+          <p>这是＂AngularJS – 七步从菜鸟到专家＂系列的第七篇。</p>
+<p>在第一篇，我们展示了如何开始搭建一个AngularaJS应用。在第四、五篇我们讨论了Angular内建的directives，上一篇了解了services的强大。</p>
+<p>在这一章，我们来看几个前面没有机会细说的关键点，文章的最后会列举一些特别棒的学习资源链接和工具。</p>
+<p>通过这整个系列的教程，我们会开发一个NPR（美国全国公共广播电台）广播的音频播放器，它能显示Morning Edition节目里现在播出的最新故事，并在我们的浏览器里播放。完成版的Demo可以看这里。</p>
+          <p class="more"> <a href="http://developer.51cto.com/art/201310/414163.htm" target="_blank">阅读全文</a> </p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="main_right">
+    
+     <!--投票begin-->
+       <h3 class="title04"><span>投&nbsp;&nbsp;&nbsp;&nbsp;票</span></h3><div class="main_r01 bdl03"><table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#FFFFFF">
+<form name="voteform" method="get" action="http://www.51cto.com/php/vote2.php" target="_blank"></form>
+<tbody><tr><td height="24" bgcolor="#EDEDE2">本期的推荐内容</td></tr>
+<tr><td height="24"><input type="radio" name="voteitem" value="1">这期内容非常喜欢，给力！</td></tr>
+<tr><td height="24"><input type="radio" name="voteitem" value="2">内容一般般，还可以。</td></tr>
+<tr><td height="24"><input type="radio" name="voteitem" value="3">推荐的内容没有感兴趣的。</td></tr>
+<tr><td height="24"><input type="radio" name="voteitem" value="4">推荐的内容很差！</td></tr>
+<tr><td height="24"><input type="radio" name="voteitem" value="5">我是打酱油路过的。</td></tr>
+<tr><td height="24" bgcolor="#FFFFFF"><input type="hidden" name="id" value="本期的推荐内容"><input type="submit" style="width:40;background-color:#EDEDE2;border:1px soild #818279" name="aaa1" value="投票"> <input type="button" style="width:80;background-color:#EDEDE2;border:1px soild #818279" name="aaa2" value="查看结果" onclick="javascript:window.open(&#39;http://www.51cto.com/php/vote2.php?job=view&amp;id=%B1%BE%C6%DA%B5%C4%CD%C6%BC%F6%C4%DA%C8%DD&#39;);"></td></tr>
+
+</tbody></table></div>
+      <!--投票end--> 
+      <h3 class="title04"><span>专题推荐</span></h3>
+      <div class="main_r01 bdl04">
+      
+        <div><a href="http://developer.51cto.com/art/201311/416301.htm" target="_blank"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/wKioJlJ8iS7xnqUIAAAU3zkLspM124.jpg" width="100" height="80" alt="...，这一周电商也没少使劲。让双十一一年热过一年。本周开发频道重点推荐，滚动滑轮往下看。" border="0"></a>
+          <dl>
+            <dt><a href="http://developer.51cto.com/art/201311/416301.htm" title="开发频道2013年11月第1周重点内容推荐：Hadoop生态系统全面盘点" target="_blank">开发频道2013年11月第1周重</a></dt>
+            <dd>...，这一周电商也没少使劲。让双十一一年热过一年。本周开发频道重点推荐，滚...</dd>
+          </dl>
+        </div>
+        
+        <div><a href="http://developer.51cto.com/art/201311/415182.htm" target="_blank"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/wKioJlJzSTTgD4rzAAATbDPO0Lg822.jpg" width="100" height="80" alt="...是会后的收尾工作。我们也再次期待明年的今天在聚首! 开发频道每周重点推荐，准时上线。会后余味，慢慢" border="0"></a>
+          <dl>
+            <dt><a href="http://developer.51cto.com/art/201311/415182.htm" title="开发频道2013年10月第5周重点内容推荐：JavaScript就是一种垃圾语言" target="_blank">开发频道2013年10月第5周重</a></dt>
+            <dd>...是会后的收尾工作。我们也再次期待明年的今天在聚首! 开发频道每周重点推荐...</dd>
+          </dl>
+        </div>
+        
+        <div><a href="http://developer.51cto.com/art/201310/413970.htm" target="_blank"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/wKioJlJtxkDQvxdSAAASilOeUY8524.jpg" width="100" height="80" alt="十一归来，貌似大家都没有什么劲头。本周五，为期两天的51CTO的云计算架构师峰会开始了，不知道各位有否关" border="0"></a>
+          <dl>
+            <dt><a href="http://developer.51cto.com/art/201310/413970.htm" title="开发频道2013年10月第4周重点内容推荐：马云疯了！都是小马哥逼的" target="_blank">开发频道2013年10月第4周重</a></dt>
+            <dd>十一归来，貌似大家都没有什么劲头。本周五，为期两天的51CTO的云计算架构师峰...</dd>
+          </dl>
+        </div>
+        
+        <div><a href="http://developer.51cto.com/art/201310/413497.htm" target="_blank"><img src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/wKioOVJkfVHRs1EoAAAPAavkp1E398.jpg" width="100" height="80" alt="《待字闺中：编程面试题集》集合最新最全的面试经验和最新最有趣的面试题，不仅推荐给准备面试的各位，各种" border="0"></a>
+          <dl>
+            <dt><a href="http://developer.51cto.com/art/201310/413497.htm" title="待字闺中：编程面题集" target="_blank">待字闺中：编程面题集</a></dt>
+            <dd>《待字闺中：编程面试题集》集合最新最全的面试经验和最新最有趣的面试题，不仅...</dd>
+          </dl>
+        </div>
+        
+        <p class="clear"></p>
+        <ul class="list01">
+           
+          <li><a href="http://developer.51cto.com/art/201310/413449.htm" title="开发频道2013年10月第3周重点内容推荐：一个番茄是如何让你工作更有效率的" target="_blank">开发频道2013年10月第3周重点内</a></li> 
+          <li><a href="http://developer.51cto.com/art/201310/412950.htm" title="开发频道2013年10月第2周重点内容推荐：产品经理再也不要反人类！" target="_blank">开发频道2013年10月第2周重点内</a></li> 
+          <li><a href="http://developer.51cto.com/art/201307/402037.htm" title="等待中：加速Java应用开发速度" target="_blank">等待中：加速Java应用开发速度</a></li> 
+          <li><a href="http://developer.51cto.com/art/201209/358044.htm" title="Java新浪微博客户端开发" target="_blank">Java新浪微博客户端开发</a></li> 
+          <li><a href="http://developer.51cto.com/art/201206/344818.htm" title="2012上半年开发频道大记事" target="_blank">2012上半年开发频道大记事</a></li> 
+          <li><a href="http://developer.51cto.com/art/201206/342957.htm" title="Java轻量级开发工具，我推荐" target="_blank">Java轻量级开发工具，我推荐</a></li> 
+          <li><a href="http://developer.51cto.com/art/201206/342959.htm" title="Spring开源框架快速入门" target="_blank">Spring开源框架快速入门</a></li>
+        </ul>
+      </div>
+      
+      <h3 class="title04"><span>一周排行</span></h3>
+      <div class="main_r01 bdl02">
+        <ul class="list02">
+         
+        
+<li><a href="http://developer.51cto.com/art/201007/214478.htm" target="_blank" title="Eclipse插件大全 挑选最牛的TOP30">Eclipse插件大全 挑选最牛的TOP30</a>
+</li><li><a href="http://developer.51cto.com/art/201311/415064.htm" target="_blank" title="IT行业中的六个肮脏秘密">IT行业中的六个肮脏秘密</a>
+</li><li><a href="http://developer.51cto.com/art/201311/416005.htm" target="_blank" title="为404错误页面收集创意灵感">为404错误页面收集创意灵感</a>
+</li><li><a href="http://developer.51cto.com/art/201310/414082.htm" target="_blank" title="二维码的生成细节和原理">二维码的生成细节和原理</a>
+</li><li><a href="http://developer.51cto.com/art/201311/415979.htm" target="_blank" title="由12306.cn谈谈网站性能技术">由12306.cn谈谈网站性能技术</a>
+</li><li><a href="http://developer.51cto.com/art/201311/416036.htm" target="_blank" title="Tomcat完美实现在线商城应用部署">Tomcat完美实现在线商城应用部署</a>
+</li><li><a href="http://developer.51cto.com/art/201308/408412.htm" target="_blank" title="浏览器的重绘与重排">浏览器的重绘与重排</a>
+</li><li><a href="http://developer.51cto.com/art/201311/416034.htm" target="_blank" title="阿里COO自述：我的五年双十一">阿里COO自述：我的五年双十一</a>
+</li><li><a href="http://developer.51cto.com/art/200906/128274.htm" target="_blank" title="Java数组声明、创建、初始化">Java数组声明、创建、初始化</a>
+</li><li><a href="http://developer.51cto.com/art/200903/117512.htm" target="_blank" title="详解Java解析XML的四种方法">详解Java解析XML的四种方法</a>
+
+        
+        </li></ul>
+      </div>
+      
+    </div>
+  </div>
+  <div class="bgfff clearfix">
+  <div class="hr12"></div>
+    <h3 class="title02"> <span>留言评论</span> </h3>
+    <div class="comment"><div id="uyan_frame"><iframe id="uyan_ifr_3882034" scrolling="no" frameborder="0" style="height: 798px; display: block !important; width: 100% !important; border: 0px none !important; overflow: hidden !important;" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/saved_resource.html"></iframe></div>
+<script type="text/javascript" id="UYScript" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/iframe.js" async=""></script>
+</div>
+  </div>
+  <div class="bgfff clearfix footer">
+    <p> <a href="http://www.51cto.com/" target="_blank">领先的IT技术网站 51CTO</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.watchstor.com/" target="_blank">领先的中文存储媒体 WatchStor</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cioage.com/" target="_blank">中国首个CIO网站 CIOage</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.hc3i.cn/" target="_blank">中国首家数字医疗网站 HC3i</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.linkphone.cn/" target="_blank">移动互联网生活门户 灵客风LinkPhone</a></p>
+    Copyright?2005-2013 <a href="http://www.51cto.com/" target="_blank">51CTO.COM</a> 版权所有 未经许可 请勿转载</div>
+</div>
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/count.js"></script><script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/count.php"></script><script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/scroll.js"></script>
+
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/analytic.js"></script>
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/index.php" charset="utf-8"></script>
+<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;uid=585532" src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/bds_s_v2.js"></script>
+
+<script type="text/javascript">
+	var bds_config = {'snsKey':{'tsina':'2378297317'}};
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+</script>
+<script src="./专题：七步走：AngularJS从菜鸟到专家_51CTO.COM_files/count(1).php" language="javascript"></script>
+
+
+</body></html>

@@ -1,0 +1,57 @@
+.jspContainer {
+	OVERFLOW: hidden; POSITION: relative
+}
+.jspPane {
+	POSITION: absolute
+}
+.jspVerticalBar {
+	HEIGHT: 100%; WIDTH: 5px; BACKGROUND: red; RIGHT: 5px; POSITION: absolute; TOP: 20px
+}
+.jspHorizontalBar {
+	HEIGHT: 4px; WIDTH: 100%; BACKGROUND: red; POSITION: absolute; LEFT: 0px; BOTTOM: 0px
+}
+.jspVerticalBar * {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+.jspHorizontalBar * {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+.jspCap {
+	DISPLAY: none
+}
+.jspHorizontalBar .jspCap {
+	FLOAT: left
+}
+.jspTrack {
+	BACKGROUND: #e2dfdf; POSITION: relative
+}
+.jspDrag {
+	CURSOR: pointer; BACKGROUND: #0a3c72; POSITION: relative; LEFT: 0px; TOP: 0px; border-radius: 4px
+}
+.jspHorizontalBar .jspTrack {
+	HEIGHT: 100%; FLOAT: left
+}
+.jspHorizontalBar .jspDrag {
+	HEIGHT: 100%; FLOAT: left
+}
+.jspArrow {
+	CURSOR: pointer; BACKGROUND: #50506d; DISPLAY: block; TEXT-INDENT: -20000px
+}
+.jspDisabled.jspArrow {
+	CURSOR: default; BACKGROUND: #80808d
+}
+.jspVerticalBar .jspArrow {
+	HEIGHT: 16px
+}
+.jspHorizontalBar .jspArrow {
+	HEIGHT: 100%; WIDTH: 16px; FLOAT: left
+}
+.jspVerticalBar .jspArrow:focus {
+	OUTLINE-STYLE: none
+}
+.jspCorner {
+	HEIGHT: 100%; BACKGROUND: #eeeef4; FLOAT: left
+}
+* HTML .jspCorner {
+	MARGIN: 0px -3px 0px 0px
+}

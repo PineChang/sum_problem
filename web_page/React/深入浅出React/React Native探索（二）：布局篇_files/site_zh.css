@@ -1,0 +1,1089 @@
+BODY {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+SPAN.about_general {
+	FONT-SIZE: 12px
+}
+I {
+	FONT-STYLE: normal
+}
+EM {
+	FONT-STYLE: normal
+}
+.text_info P EM {
+	FONT-STYLE: normal
+}
+.text_info EM {
+	FONT-STYLE: normal
+}
+.homepage_list .left .listed_news .news P EM {
+	FONT-STYLE: normal
+}
+TABLE.last_content TD.text {
+	WIDTH: 360px
+}
+.presentation_full .qcon_notice {
+	MARGIN-TOP: -8px; MARGIN-RIGHT: 160px
+}
+#content .static_pages .left .contribute_join .or {
+	TOP: 60px
+}
+H1 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+H4 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+OL LI {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+H1.general {
+	FONT-SIZE: 22px; FONT-WEIGHT: 600
+}
+.text_info H3 {
+	LINE-HEIGHT: 36px
+}
+.text_info H4 {
+	LINE-HEIGHT: 32px
+}
+.related_sponsors H3 {
+	LINE-HEIGHT: 1.2
+}
+#content .static_pages .left H3 {
+	FONT-SIZE: 18px
+}
+#content .static_pages .left .border_box TABLE.core TD.c1 {
+	FONT-SIZE: 12px
+}
+#content .static_pages .left .border_box TABLE.core TD.c2 {
+	FONT-SIZE: 12px
+}
+.title_canvas H1 {
+	FONT-SIZE: 22px; FONT-WEIGHT: 500
+}
+.tab_article .txxt H2 {
+	FONT-SIZE: 14px; FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif; FONT-WEIGHT: 600
+}
+.tab_article .txxt {
+	FLOAT: left
+}
+.tab_article {
+	MARGIN: 5px 0px 10px
+}
+.tab_article IMG {
+	BORDER-TOP: #999 1px solid; HEIGHT: 85px; BORDER-RIGHT: #999 1px solid; WIDTH: 85px; BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid
+}
+.text_content_container UL {
+	MARGIN: 0px 0px 15px 10px
+}
+.widget_div UL.books LI .one_book P {
+	FONT-SIZE: 12px
+}
+UL.tabs LI {
+	FONT-SIZE: 12px
+}
+UNKNOWN {
+	FONT-SIZE: 12px
+}
+.homepage_grid .presentations_type.grid .news > DIV .video_details P SPAN {
+	FONT-SIZE: 12px
+}
+.homepage_grid .interviews_type.grid .news > DIV .video_details P SPAN {
+	FONT-SIZE: 12px
+}
+.homepage_list > .tabs LI A {
+	FONT-SIZE: 14px
+}
+.logo P {
+	FONT-SIZE: 12px
+}
+.breadcrumbs {
+	FONT-SIZE: 12px; FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.widget_div UL.books LI .one_book P {
+	FONT-SIZE: 14px
+}
+.homepage_list .left .listed_news .news P {
+	FONT-SIZE: 14px
+}
+.homepage_list .left .listed_news .news H2 {
+	FONT-SIZE: 16px; FONT-WEIGHT: 600; MARGIN: 0px 0px 2px
+}
+.homepage_list .left .listed_news .news {
+	MARGIN: 0px 0px 10px
+}
+.ebook_list H2 {
+	FONT-SIZE: 16px
+}
+H2.itemtitle {
+	MIN-HEIGHT: 24px
+}
+.text_info {
+	FONT-SIZE: 14px; FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.text_info P {
+	FONT-SIZE: 14px; MARGIN: 0px 0px 15px; LINE-HEIGHT: 1.8
+}
+BLOCKQUOTE {
+	MARGIN: 0px 0px 10px
+}
+.text_info P EM {
+	FONT-SIZE: 14px
+}
+.text_info EM {
+	FONT-SIZE: 14px
+}
+UL.tabs LI {
+	FONT-SIZE: 14px
+}
+.tag_page_content .tab_content .list.this_is P {
+	FONT-SIZE: 14px
+}
+.tag_page_content H2 {
+	FONT-SIZE: 16px
+}
+.general_green {
+	FONT-SIZE: 20px
+}
+.homepage_list {
+	MARGIN: 0px
+}
+.related_sponsors P.title {
+	MARGIN: 0px 0px 8px
+}
+.related_sponsors .related_editorial {
+	MIN-HEIGHT: 150px
+}
+.news_in_tabs .panes > DIV H3 {
+	OVERFLOW: hidden; HEIGHT: 18px; FONT-WEIGHT: normal; MARGIN: 0px 0px 10px 1px
+}
+.homepage_grid .grid .news > DIV H3 {
+	FONT-SIZE: 14px; FONT-WEIGHT: 600; MARGIN: 0px
+}
+.homepage_grid .grid .news > DIV > SPAN {
+	FONT-SIZE: 12px
+}
+.articles_type.grid DIV SPAN {
+	TEXT-ALIGN: right
+}
+.homepage_grid .grid .news > DIV > SPAN {
+	MAX-HEIGHT: 14px
+}
+.homepage_grid .grid .full_width.news .gbanner {
+	PADDING-LEFT: 10px
+}
+#footer {
+	PADDING-BOTTOM: 15px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 8px 0px; PADDING-RIGHT: 0px
+}
+.our_events .communities {
+	MARGIN: 20px 0px 0px
+}
+UL.footerMenu LI {
+	WIDTH: 145px
+}
+UL.footerMenu {
+	MARGIN: 30px 10px 10px 0px
+}
+UL.footerTxt1 {
+	MARGIN: 30px 20px 10px 30px
+}
+UL.footerTxt1 LI STRONG {
+	MARGIN-BOTTOM: 25px; FONT-SIZE: 13px; TEXT-TRANSFORM: none; FONT-WEIGHT: 600; MARGIN-TOP: 10px
+}
+DIV.ftxt3 {
+	MARGIN: 30px 0px 10px 20px
+}
+.our_events {
+	MARGIN: 30px 0px 0px
+}
+.communities FIELDSET {
+	MARGIN-TOP: -12px
+}
+.homepage_list .left .listed_news .news {
+	FONT-SIZE: 14px
+}
+.widget_div UL.books LI .one_book P {
+	FONT-SIZE: 14px
+}
+.homepage_list .left .listed_news .news P {
+	FONT-SIZE: 14px
+}
+.homepage_list .left .listed_news .news H2 {
+	FONT-SIZE: 20px; FONT-WEIGHT: 600
+}
+.homepage_grid .grid .news > DIV H3 A IMG {
+	BORDER-TOP: #888 1px solid; HEIGHT: 60px; BORDER-RIGHT: #888 1px solid; WIDTH: 60px; BORDER-BOTTOM: #888 1px solid; BORDER-LEFT: #888 1px solid
+}
+.widget_div UL.books LI .one_book P {
+	FONT-SIZE: 12px
+}
+.widget_div H2 {
+	FONT-SIZE: 20px; FONT-WEIGHT: 600
+}
+.homepage_grid H2 {
+	FONT-SIZE: 20px; FONT-WEIGHT: 600
+}
+.homepage_grid .mgtop.home_banner {
+	MARGIN-TOP: 0px
+}
+.comments_counts {
+	MARGIN: -3px 0px 0px 7px
+}
+.top_explain {
+	WIDTH: 400px
+}
+UL.menu LI A.main {
+	WIDTH: 103px
+}
+UL.menu {
+	WIDTH: 620px
+}
+.search_cls {
+	MARGIN: 0px 206px 0px 0px
+}
+UL.submenu > LI {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 15px
+}
+UL.menu {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.newsletter H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.comment_here H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.links H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.panes H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.comment_here H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.comments H4 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.article_page_right H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.article_page_right H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.article_page_right H4 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.research_index .published_research .ritems H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.registration_right .get_account H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+UL.menu LI .top_submenu .menu_article P {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.presentation_full.article_page_left .recorded {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.ebook .txt H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.eBookRight H2 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+.eBookRight H3 {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+#content .tag_page_content .tab_content .grid.this_is P A.art_title {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+INPUT {
+	FONT-FAMILY: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', Î¢ÈíÑÅºÚ, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif
+}
+#article-guidelines {
+	LINE-HEIGHT: 1.8
+}
+#article-guidelines P {
+	MARGIN-BOTTOM: 20px
+}
+#article-guidelines H2 {
+	MARGIN-TOP: 20px
+}
+#article-guidelines A {
+	TEXT-DECORATION: underline
+}
+#article-guidelines UL {
+	CLEAR: both
+}
+#article-guidelines UL LI {
+	BACKGROUND: url(i/li_bg2.jpg) no-repeat left top; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 35px; PADDING-RIGHT: 0px
+}
+.cooperator {
+	WIDTH: 100%; BACKGROUND: #fff; PADDING-BOTTOM: 30px; PADDING-TOP: 50px; PADDING-LEFT: 0px; MARGIN: 0px auto; DISPLAY: block; PADDING-RIGHT: 0px
+}
+.cooperator LI {
+	LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: inside
+}
+.cooperator H3 {
+	MARGIN-BOTTOM: 27px; FONT-SIZE: 20px
+}
+.cooperator-partner UL {
+	MARGIN-BOTTOM: 50px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 22px; PADDING-RIGHT: 22px
+}
+.cooperator-partner UL LI {
+	LIST-STYLE-TYPE: none; DISPLAY: inline-block; MARGIN-RIGHT: 30px
+}
+.cooperator-forum LI {
+	LIST-STYLE-TYPE: none; MARGIN-BOTTOM: 32px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; DISPLAY: inline-block; MARGIN-RIGHT: 15px
+}
+.cooperator-forum UL LI IMG {
+	HEIGHT: 43px; WIDTH: 118px
+}
+#companyList {
+	MARGIN-BOTTOM: 4px
+}
+.decrease {
+	BOX-SIZING: border-box; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px
+}
+#companyList LI {
+	LIST-STYLE-TYPE: none; MARGIN-BOTTOM: 32px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; DISPLAY: inline-block; MARGIN-RIGHT: 17px
+}
+UNKNOWN {
+	MARGIN-RIGHT: 0px
+}
+#companyList LI A IMG {
+	HEIGHT: 43px; WIDTH: 118px
+}
+.cooperator-media {
+	MARGIN-BOTTOM: 34px; DISPLAY: none
+}
+.cooperator-media-content {
+	HEIGHT: 180px; WIDTH: 966px; BACKGROUND: #e6e6e7; MARGIN: 0px auto; DISPLAY: block
+}
+#messageGroup {
+	BOX-SIZING: content-box; DISPLAY: inline-block
+}
+#messageGroup LI {
+	BOX-SIZING: content-box; MARGIN-BOTTOM: 30px; WIDTH: 245px; VERTICAL-ALIGN: top; BORDER-BOTTOM: #ccc 1px solid; FLOAT: left; PADDING-BOTTOM: 30px; CLEAR: none; DISPLAY: block; PADDING-RIGHT: 117px
+}
+UNKNOWN {
+	PADDING-RIGHT: 0px
+}
+#messageGroup LI:unknown {
+	WIDTH: 100%
+}
+#messageGroup LI P {
+	FONT-SIZE: 12px; COLOR: #666566; MARGIN: 0px; LINE-HEIGHT: 1.8em
+}
+#messageGroup LI IMG {
+	MARGIN-BOTTOM: 25px; BORDER-TOP: #ddd 1px solid; HEIGHT: 43px; BORDER-RIGHT: #ddd 1px solid; WIDTH: 118px; BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid
+}
+#messageGroup LI H4 {
+	MARGIN-BOTTOM: 20px; FONT-SIZE: 14px; MARGIN-TOP: 0px
+}
+#messageGroup LI H4 SPAN:before {
+	CONTENT: ' '
+}
+#messageGroup LI H4 SPAN {
+	COLOR: #007f33
+}
+.cooperator-contact > H3 > A {
+	TEXT-DECORATION: none; COLOR: #1759a0
+}
+.cooperator-contact > H3 > A:focus {
+	TEXT-DECORATION: underline; COLOR: #1759a0
+}
+.cooperator-contact > H3 > A:hover {
+	TEXT-DECORATION: underline; COLOR: #1759a0
+}
+.cooperator-contact > H3 > A:visited {
+	TEXT-DECORATION: none; COLOR: #1759a0
+}
+.text_info {
+	LINE-HEIGHT: 1.8
+}
+.comment_here .submit#subButton {
+	BACKGROUND-COLOR: #47a756
+}
+B {
+	FONT-WEIGHT: 600
+}
+STRONG {
+	FONT-WEIGHT: 600
+}
+#content .privacy_policy > UL LI STRONG {
+	FONT-WEIGHT: 600
+}
+#popupLogin .label_login {
+	FONT-WEIGHT: 600
+}
+#forgotPopup .label_login {
+	FONT-WEIGHT: 600
+}
+#login_formPasswordReset .active.submit-resetPass {
+	FONT-WEIGHT: 600
+}
+#popupLogin .welcome_title {
+	FONT-WEIGHT: 600
+}
+#popupLogin .login-type-in {
+	FONT-WEIGHT: 600
+}
+#popupLogin .login-type A.open_id {
+	FONT-WEIGHT: 600
+}
+#popupLogin .login-type A.twitter_oa {
+	FONT-WEIGHT: 600
+}
+#popupLogin .more_links P A {
+	FONT-WEIGHT: 600
+}
+UL.menu LI .top_submenu UL.top_submenu_links LI {
+	FONT-WEIGHT: 600
+}
+UL.menu LI .top_submenu UL.top_submenu_links LI A {
+	FONT-WEIGHT: 600
+}
+UL.menu LI .top_submenu UL.top_submenu_links LI A.more {
+	FONT-WEIGHT: 600
+}
+UL.menu LI .top_submenu .menu_article H2 {
+	FONT-WEIGHT: 600
+}
+A.view_all_categ {
+	FONT-WEIGHT: 600
+}
+.qcon P STRONG {
+	FONT-WEIGHT: 600
+}
+UL.breadcrumbs LI A.articles {
+	FONT-WEIGHT: 600
+}
+.breadcrumbs A {
+	FONT-WEIGHT: 600
+}
+.newsletter H3 {
+	FONT-WEIGHT: 600
+}
+.newsletter .input_submit {
+	FONT-WEIGHT: 600
+}
+.load_more_articles A STRONG {
+	FONT-WEIGHT: 600
+}
+.fcls .title {
+	FONT-WEIGHT: 600
+}
+UL.footerMenu LI A.active {
+	FONT-WEIGHT: 600
+}
+UL.footerTxt1 LI STRONG {
+	FONT-WEIGHT: 600
+}
+UL.footerTxt2 LI STRONG {
+	FONT-WEIGHT: 600
+}
+UL.footerTxt3 LI {
+	FONT-WEIGHT: 600
+}
+UL.footerTxt3 LI A {
+	FONT-WEIGHT: 600
+}
+.our_events P {
+	FONT-WEIGHT: 600
+}
+.our_events .communities SPAN {
+	FONT-WEIGHT: 600
+}
+TABLE.last_content TD SPAN STRONG {
+	FONT-WEIGHT: 600
+}
+TABLE.last_content TD SPAN A {
+	FONT-WEIGHT: 600
+}
+.download_presentation SPAN.videolength2 {
+	FONT-WEIGHT: 600
+}
+.download_presentation UL LI {
+	FONT-WEIGHT: 600
+}
+.download_presentation UL LI A {
+	FONT-WEIGHT: 600
+}
+.presentation_full.article_page_left .presentation_v1 #top .rightSide H3 {
+	FONT-WEIGHT: 600
+}
+.presentation_full.article_page_left .presentation_v1 #bottom H3 {
+	FONT-WEIGHT: 600
+}
+SPAN.author_general Q {
+	FONT-WEIGHT: 600
+}
+SPAN.author_general A {
+	FONT-WEIGHT: 600
+}
+UL.sh_t LI A.read_later {
+	FONT-WEIGHT: 600
+}
+UL.sh_t LI A.read_later:hover {
+	FONT-WEIGHT: 600
+}
+UL.sh_t LI A.read_later_saved {
+	FONT-WEIGHT: 600
+}
+UL.sh_t LI A.reading_list {
+	FONT-WEIGHT: 600
+}
+UL.sh_t LI A.reading_list:hover {
+	FONT-WEIGHT: 600
+}
+.text_info P STRONG {
+	FONT-WEIGHT: 600
+}
+.aditional_info H3 {
+	FONT-WEIGHT: 600
+}
+UL.aditional LI {
+	FONT-WEIGHT: 600
+}
+UL.aditional LI A {
+	FONT-WEIGHT: 600
+}
+DIV.comments .comment_title > A STRONG {
+	FONT-WEIGHT: 600
+}
+.popupLoginComments #submit-reply {
+	FONT-WEIGHT: 600
+}
+.popupLoginComments #resubmit-reply {
+	FONT-WEIGHT: 600
+}
+.popupLoginComments .reset-reply {
+	FONT-WEIGHT: 600
+}
+.popupLoginComments .label_login {
+	FONT-WEIGHT: 600
+}
+#popupLogin .welcome_title {
+	FONT-WEIGHT: 600
+}
+#overlay_comments H4 STRONG {
+	FONT-WEIGHT: 600
+}
+.answers .popupLoginComments .label_login {
+	FONT-WEIGHT: 600
+}
+.answers .replyPopup.popupLoginComments .submit-reply {
+	FONT-WEIGHT: 600
+}
+.answers .replyPopup.popupLoginComments .reset-reply {
+	FONT-WEIGHT: 600
+}
+.article_page_right H2 {
+	FONT-WEIGHT: 600
+}
+.titleTab2 SPAN {
+	FONT-WEIGHT: 600
+}
+UL.news LI A {
+	FONT-WEIGHT: 600
+}
+UL.normal_list LI {
+	FONT-WEIGHT: 600
+}
+.related_video .related_news .txt P {
+	FONT-WEIGHT: 600
+}
+.related_video .related_news .txt P SPAN {
+	FONT-WEIGHT: 600
+}
+UL.listing_news_v3 LI {
+	FONT-WEIGHT: 600
+}
+A.link_v3 STRONG {
+	FONT-WEIGHT: 600
+}
+.registration_left2 .form_subtitle {
+	FONT-WEIGHT: 600
+}
+.registration_left2 .box_input P A {
+	FONT-WEIGHT: 600
+}
+.registration_left3 .form_subtitle {
+	FONT-WEIGHT: 600
+}
+.registration_left3 .box_input P A {
+	FONT-WEIGHT: 600
+}
+.registration_left .form_subtitle {
+	FONT-WEIGHT: 600
+}
+.registration_left .box_input SPAN.thick {
+	FONT-WEIGHT: 600
+}
+.registration_left #validateMessage {
+	FONT-WEIGHT: 600
+}
+.registration_left .box_input P A {
+	FONT-WEIGHT: 600
+}
+.submit_button {
+	FONT-WEIGHT: 600
+}
+.registration_right .get_account H2 {
+	FONT-WEIGHT: 600
+}
+UL.account_star LI {
+	FONT-WEIGHT: 600
+}
+.register_intro P A {
+	FONT-WEIGHT: 600
+}
+A.blue_button {
+	FONT-WEIGHT: 600
+}
+.newsletter_overlay .input_submit {
+	FONT-WEIGHT: 600
+}
+.newsletter_text P B {
+	FONT-WEIGHT: 600
+}
+.newsletter_text P STRONG {
+	FONT-WEIGHT: 600
+}
+.author_data STRONG {
+	FONT-WEIGHT: 600
+}
+.summary P STRONG {
+	FONT-WEIGHT: 600
+}
+.ebook .author_data A {
+	FONT-WEIGHT: 600
+}
+A.download_green {
+	FONT-WEIGHT: 600
+}
+.download_green_inside {
+	FONT-WEIGHT: 600
+}
+A.download_blue_small {
+	FONT-WEIGHT: 600
+}
+A.download_green_small {
+	FONT-WEIGHT: 600
+}
+.eBookLeft .text_field P STRONG SPAN {
+	FONT-WEIGHT: 600
+}
+.eBookRight P {
+	FONT-WEIGHT: 600
+}
+.eBookRight .random_links .orange_over {
+	FONT-WEIGHT: 600
+}
+UL.ebook_list_ul LI STRONG {
+	FONT-WEIGHT: 600
+}
+.eBookRight > UL LI STRONG {
+	FONT-WEIGHT: 600
+}
+.ebook .txt #sponsorParagraph .innerWindow .wpTitle {
+	FONT-WEIGHT: 600
+}
+.ebook_vqs .title {
+	FONT-WEIGHT: 600
+}
+.grey_box .leftSide .title {
+	FONT-WEIGHT: 600
+}
+.grey_box .leftSide UL LI A {
+	FONT-WEIGHT: 600
+}
+.grey_box .rightSide .title {
+	FONT-WEIGHT: 600
+}
+.grey_box .rightSide DIV {
+	FONT-WEIGHT: 600
+}
+.grey_box .rightSide UL LI {
+	FONT-WEIGHT: 600
+}
+.about_authors .title {
+	FONT-WEIGHT: 600
+}
+.about_authors .author .info P STRONG {
+	FONT-WEIGHT: 600
+}
+.news_related P STRONG {
+	FONT-WEIGHT: 600
+}
+.news_related P A {
+	FONT-WEIGHT: 600
+}
+.news_related UL LI A {
+	FONT-WEIGHT: 600
+}
+.bookmarks .bookmark_left .title {
+	FONT-WEIGHT: 600
+}
+.bookmarks .bookmark_right .title {
+	FONT-WEIGHT: 600
+}
+.bookmarks .bookmark_right UL LI A {
+	FONT-WEIGHT: 600
+}
+.comments_title {
+	FONT-WEIGHT: 600
+}
+.comment_here .area INPUT {
+	FONT-WEIGHT: 600
+}
+.comment_here .area TEXTAREA {
+	FONT-WEIGHT: 600
+}
+.comment_here .submit#subButton {
+	FONT-WEIGHT: 600
+}
+.comment_here H3 {
+	FONT-WEIGHT: 600
+}
+.search_page H1 SPAN {
+	FONT-WEIGHT: 600
+}
+.search_page .one_result H2 {
+	FONT-WEIGHT: 600
+}
+.search_page .one_result P A {
+	FONT-WEIGHT: 600
+}
+UL.search_pagination LI A {
+	FONT-WEIGHT: 600
+}
+.error_page P.r1 {
+	FONT-WEIGHT: 600
+}
+.error_page P.r2 {
+	FONT-WEIGHT: 600
+}
+.error_page P.r3 SPAN {
+	FONT-WEIGHT: 600
+}
+.error_page P.r0 {
+	FONT-WEIGHT: 600
+}
+.error_page .search_error_page P {
+	FONT-WEIGHT: 600
+}
+.error_page .search_error_page .search_error {
+	FONT-WEIGHT: 600
+}
+UL.error_pg_menu LI A {
+	FONT-WEIGHT: 600
+}
+BODY.fullSiteWidth #wrapper #site #content .presentation_full.article_page_left .presentation_v1 #top .leftSide H3 {
+	FONT-WEIGHT: 600
+}
+BODY.fullSiteWidth #wrapper #site #content .fullscreenIdentifier STRONG {
+	FONT-WEIGHT: 600
+}
+.interview_v1 .leftSide P B {
+	FONT-WEIGHT: 600
+}
+.interview_v1 .leftSide .total_playtime P STRONG {
+	FONT-WEIGHT: 600
+}
+.interview_v1 .rightSideInterview .qa P {
+	FONT-WEIGHT: 600
+}
+.interview_v1 .rightSideInterview .qa_categ {
+	FONT-WEIGHT: 600
+}
+.interview_v1 .rightSideInterview .qa_categ .title_categ {
+	FONT-WEIGHT: 600
+}
+DIV#postFormDeck H2 {
+	FONT-WEIGHT: 600
+}
+DIV#postFormDeck A {
+	FONT-WEIGHT: 600
+}
+DIV#postFormDeck DIV#getMost H2 {
+	FONT-WEIGHT: 600
+}
+.register_intro P A {
+	FONT-WEIGHT: 600
+}
+A.blue_button {
+	FONT-WEIGHT: 600
+}
+.register_intro_reskin P.company_link A {
+	FONT-WEIGHT: 600
+}
+.register_intro_reskin P.download_link A {
+	FONT-WEIGHT: 600
+}
+.register_new_content .reg_left .banner A.download {
+	FONT-WEIGHT: 600
+}
+.register_new_content .reg_left .banner A.email {
+	FONT-WEIGHT: 600
+}
+.register_new_content .reg_left UL.share_it LI {
+	FONT-WEIGHT: 600
+}
+.register_new_content .reg_right > UL LI STRONG {
+	FONT-WEIGHT: 600
+}
+.register_new_content .need_to_login_container .idp_register P {
+	FONT-WEIGHT: 600
+}
+.topics-search .search-label {
+	FONT-WEIGHT: 600
+}
+.topics-legend-title {
+	FONT-WEIGHT: 600
+}
+UL.tabs .tab_title {
+	FONT-WEIGHT: 600
+}
+UL.tabs2 LI A {
+	FONT-WEIGHT: 600
+}
+.related_sponsors P.title {
+	FONT-WEIGHT: 600
+}
+.related_sponsors .sponsored.related_editorial H3 A {
+	FONT-WEIGHT: 600
+}
+.related_sponsors .s .links A.learn_more {
+	FONT-WEIGHT: 600
+}
+.homepage_grid .presentations_type.grid .news > DIV .video_box > SPAN {
+	FONT-WEIGHT: 600
+}
+SPAN.videolength {
+	FONT-WEIGHT: 600
+}
+.homepage_grid .interviews_type.grid .news > DIV .video_box > SPAN {
+	FONT-WEIGHT: 600
+}
+.homepage_grid .research_type.grid .news > DIV P A {
+	FONT-WEIGHT: 600
+}
+.homepage_grid .research_type.grid .news .newsletter H3 {
+	FONT-WEIGHT: 600
+}
+.homepage_grid .ebooks_type.grid .news > DIV A.ebooks P {
+	FONT-WEIGHT: 600
+}
+.sponsored_links_section .sp_title {
+	FONT-WEIGHT: 600
+}
+.sponsored_links_section DIV {
+	FONT-WEIGHT: 600
+}
+.sponsored_links_section_i18n .sp_title {
+	FONT-WEIGHT: 600
+}
+.sponsored_links_section_i18n DIV {
+	FONT-WEIGHT: 600
+}
+.homepage_list > .tabs LI A {
+	FONT-WEIGHT: 600
+}
+.homepage_list .right .research_type .news > DIV P A {
+	FONT-WEIGHT: 600
+}
+.homepage_list .right .qconLondon A.bottom {
+	FONT-WEIGHT: 600
+}
+.homepage_list .right .qconLondon P {
+	FONT-WEIGHT: 600
+}
+.homepage_list .left .ebooks_type .news > DIV A.ebooks P {
+	FONT-WEIGHT: 600
+}
+.homepage_list .left .listed_news .news .posted_info A {
+	FONT-WEIGHT: 600
+}
+.news_in_tabs UL.tabs LI A {
+	FONT-WEIGHT: 600
+}
+.research_index .rleft .last_item P STRONG {
+	FONT-WEIGHT: 600
+}
+.research_index .rleft .last_item P SPAN {
+	FONT-WEIGHT: 600
+}
+.research_index .rleft .last_item P.subtitle {
+	FONT-WEIGHT: 600
+}
+.research_index A.all_of_categ {
+	FONT-WEIGHT: 600
+}
+.research_index .rright .title {
+	FONT-WEIGHT: 600
+}
+.research_index .rright A.suggest_topic {
+	FONT-WEIGHT: 600
+}
+.research_index .upcoming_search P.itemss STRONG {
+	FONT-WEIGHT: 600
+}
+.research_index .upcoming_search P.itemss SPAN {
+	FONT-WEIGHT: 600
+}
+.research_detail UL.share_btns LI STRONG {
+	FONT-WEIGHT: 600
+}
+.research_detail .title {
+	FONT-WEIGHT: 600
+}
+.standard.addthis_button {
+	FONT-WEIGHT: 600
+}
+.tag_page_content A.all_of_categ {
+	FONT-WEIGHT: 600
+}
+.tag_page_content .tab_warning P A {
+	FONT-WEIGHT: 600
+}
+.tag_page_content .tab_content .featured_article P A {
+	FONT-WEIGHT: 600
+}
+.tag_page_content .tab_content .list.research.this_is P A.read_more {
+	FONT-WEIGHT: 600
+}
+.tag_page_content .tab_content .list.ebooks.this_is P A.read_more {
+	FONT-WEIGHT: 600
+}
+.sponsored_label.tag_page_content .tag_sponored H2 {
+	FONT-WEIGHT: 600
+}
+UL.newsnav LI A.left {
+	FONT-WEIGHT: 600
+}
+UL.newsnav LI A.right {
+	FONT-WEIGHT: 600
+}
+DIV.with_small_image SPAN.duration {
+	FONT-WEIGHT: 600
+}
+DIV.all_topics {
+	FONT-WEIGHT: 600
+}
+.widget_div UL.books LI .one_book H3 {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .border_box .bubble_links A {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .border_box P A.und {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .border_box TABLE.core TD.c1 {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left P A {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left FORM.sgen .fakeradio LABEL {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .totals > DIV {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .totals > DIV SPAN {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left UL.list1 LI A {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .meet .opened.meet_team .editors .editor .text H4 {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .meet .opened.meet_team .editors .editor .text P {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .meet .meet_team .mtitle {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .left .meet .meet_team A.mview {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right UL.static_menu > LI A {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right UL.static_menu > LI.active > UL LI A {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .hear_editors .title {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .hear_editors P SPAN {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .conference_comitee_member .title {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .conference_comitee_member P {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .conference_comitee_member P SPAN {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .more_pics A.viewmorepics {
+	FONT-WEIGHT: 600
+}
+#content .static_pages .right .more_pics A.viewmorepics Q {
+	FONT-WEIGHT: 600
+}
+.rvcWidget .left_widget .title {
+	FONT-WEIGHT: 600
+}
+.rvcWidget .left_widget > A {
+	FONT-WEIGHT: 600
+}
+.rvcWidget .right_widget .txt {
+	FONT-WEIGHT: 600
+}
+.rvcWidget .right_widget .txt A {
+	FONT-WEIGHT: 600
+}
+.comments_counts .disquss {
+	FONT-WEIGHT: 600
+}
+#login_hop_form > P.short_info > EM {
+	FONT-WEIGHT: 600
+}
+.rhs_b_s__related H3 {
+	FONT-WEIGHT: 600
+}
+.inline_header .message {
+	FONT-WEIGHT: 600
+}
+.simple_btn {
+	FONT-WEIGHT: 600
+}
+.vcr_thanks .section .list .txt A.links {
+	FONT-WEIGHT: 600
+}
+.simple_btn {
+	FONT-WEIGHT: 600
+}
+#inline_content {
+	FONT-WEIGHT: 600
+}
+.inline_content_title {
+	FONT-WEIGHT: 600
+}
+.inline_header .message {
+	FONT-WEIGHT: 600
+}

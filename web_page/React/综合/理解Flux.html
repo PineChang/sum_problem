@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://sentsin.com/web/1011.html -->
+<html><style type="text/css" id="20330159000"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link href="./理解Flux_files/laycode.css" type="text/css" rel="stylesheet">
+<meta charset="gbk">
+<title>理解Flux</title>
+<meta name="description" content="理解Flux
+
+Flux是Facebook推出的一种组织web应用开发的架构思想，它的基本思想很简单：
+
+
+  在你的应用中，数据应该是单向流动的。
+
+
+这种思想可以被称为”单向数据流”，你也可以把它想象成一条鲨鱼：因为鲨鱼永远只能向前游动。
+
+到目前为止，Facebook自己推出了Flux实践的例子，同时至少有6个JS库进行了Flux架构的实现。在本文中，我们谈到的Flux，特指Facebook实现的Flux。
+
+一个Flux的例子
+
+为了真正理解Flux，我们还是从一个最基本的">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="./理解Flux_files/xu.css" media="all">
+<script src="./理解Flux_files/ca-pub-6111334333458862.js"></script><script type="text/javascript" async="" charset="utf-8" src="./理解Flux_files/core.php"></script><script type="text/javascript" async="" src="./理解Flux_files/embed.js" charset="UTF-8"></script><script src="./理解Flux_files/logger.js"></script><link href="./理解Flux_files/bdsstyle.css" rel="stylesheet" type="text/css"><link type="text/css" rel="stylesheet" href="./理解Flux_files/layer.css" id="skinlayercss"><link type="text/css" rel="stylesheet" href="./理解Flux_files/embed.default.css"></head>
+<body class="blogweb laycode body_ok"><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://sentsin.com/web/1011.html#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_renren rrw">人人网</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_douban db">豆瓣网</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_thx thx">和讯微博</a></li><li><a href="http://sentsin.com/web/1011.html#" class="bds_more">更多...</a></li></ul><p><a href="http://sentsin.com/web/1011.html#" class="goWebsite">百度分享</a></p></div></div></div>
+<div class="xutop"><i class="iconfont iconf_caidan"></i></div>
+<div class="box_index xunav">
+    <a href="http://sentsin.com/">首页</a><a href="http://sentsin.com/daohang/">前端江湖录</a><a href="http://fly.layui.com/">Fly社区</a>
+<i class="navpos" style="display: inline; width: 56px; left: 661px;"></i></div>
+<div class="box_index xuheader">
+    <div class="shadow xuheader_Bg"></div>
+    <a href="http://sentsin.com/" title="贤心博客" class="xulogo" target="_self"><img src="./理解Flux_files/logo.png" alt="贤心博客"></a>
+    <div class="xucard">
+        <p>你瞧那远古的光 裸露空荡</p>
+        <p>无穷无尽是你深邃的眼 传递遐想 </p>
+        <p style="margin-top: 8px;">――《远与暗》 写于2012・春・杭州</p>
+    </div>
+    <div class="icon_layer xuheader_yuan"></div>
+<form action="http://www.baidu.com/s"><input class="icon_old" autocomplete="off" placeholder="搜索内容" type="text" name="wd"></form></div>
+<div class="box_index timeline clearfix timeline_ok">
+    <ul class="timeline_left timeline_leftweb">
+		<li class="shadow timeline_content">
+            <div class="timeline_text">
+            	<div class="timeline_textH2">
+                    <h1><i class="icon_timeline"></i><a href="./理解Flux_files/理解Flux.html">理解Flux</a></h1>
+                    <div class="timeline_webtips"><span>作者：<em class="ws_auther">张小俊128</em></span><span class="timeline_time"><i class="icon_timeline" title="发布日期"></i>最后编辑：2015年03月20日</span></div>
+                </div>
+                <div class="timeline_desc">
+                    <div id="DetailAd"></div>
+                    
+                    <!-- 通用-728*90 -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+
+                    <div id="MyContent"><h1>理解Flux</h1>
+
+<p>Flux是Facebook推出的一种组织web应用开发的架构思想，它的基本思想很简单：</p>
+
+<blockquote>
+  <p>在你的应用中，数据应该是单向流动的。</p>
+</blockquote>
+
+<p>这种思想可以被称为”单向数据流”，你也可以把它想象成一条鲨鱼：因为鲨鱼永远只能向前游动。</p>
+
+<p>到目前为止，Facebook自己推出了Flux实践的例子，同时至少有6个JS库进行了Flux架构的实现。在本文中，我们谈到的Flux，特指Facebook实现的Flux。</p>
+
+<h1>一个Flux的例子</h1>
+
+<p>为了真正理解Flux，我们还是从一个最基本的Todo应用开始。当然，你也可以从Facebook的Flux仓库中找到这个例子。</p>
+
+<h2>加载ToDo项目</h2>
+
+<p><a href="./理解Flux_files/1421067510979-1.jpeg" target="_blank"><img src="./理解Flux_files/1421067510979-1.jpeg" alt="理解Flux" onmousewheel="return bbimg(this)" onload="javascript:resizepic(this)" border="0"></a></p>
+
+<p>当应用开始启动时，<code class="language-javascript">ToDoApp</code>这个React组件会从<code class="language-javascript">ToDoStore</code>中获取并展示数据。<code class="language-javascript">ToDoStore</code>则完全不会意识到<code class="language-javascript">ToDoApp</code>的存在。如果你把这个组件想象成一个视图，<code class="language-javascript">ToDoStore</code>则可以看做模型，那么到目前为止，Flux看起来和传统的MVC也没有什么差别。</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// 将初始化数据载入应用中：
+// ...
+/**
+ * 从ToDoStore种获取当前的TODO数据
+ */
+function getTodoState() {
+  return {
+    allTodos: TodoStore.getAll(),
+    areAllComplete: TodoStore.areAllComplete()
+  };
+}
+
+var TodoApp = React.createClass({
+
+  getInitialState: function() {
+    return getTodoState();
+  },
+
+// ...
+</code><ol class="code_nums" style="height:427px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<p>在这个简单的例子中，我们将不去关心ToDoStore如何载入初始数据。</p>
+
+<h2>创建一个新的ToDo项目</h2>
+
+<p><a href="./理解Flux_files/1421067579748-2.jpeg" target="_blank"><img src="./理解Flux_files/1421067579748-2.jpeg" alt="理解Flux" onmousewheel="return bbimg(this)" onload="javascript:resizepic(this)" border="0"></a></p>
+
+<p>ToDoApp组件中包含一个表单用于创建一个新的ToDo项目。当一个用户提交这个表单时，它将启动一个Flux系统种的数据流，具体流程如上图所示：</p>
+
+<ol>
+<li><p>步骤1，组件将通过调用回调函数来处理表单提交这个事件：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// 通过调用 `_onSave` 回调函数来存储一个新的ToDo项目
+ // ...
+  var Header = React.createClass({
+
+ /**
+  * @return {object}
+ */
+ render: function() {
+   return (
+    &lt;header id="header"&gt;
+    &lt;h1&gt;todos&lt;/h1&gt;
+    &lt;TodoTextInput
+      id="new-todo"
+      placeholder="What needs to be done?"
+      onSave={this._onSave}
+    /&gt;
+  &lt;/header&gt;
+);
+ },
+// ...
+</code><ol class="code_nums" style="height:450px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div></li>
+<li><p>步骤2，组件的回调函数将会调用<code class="language-javascript">ToDoActionCreator</code>中的一个方法：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// `_onSave`回调函数将会调用`TodoActions`方法来创建一个新的action
+  // ...
+  /**
+  * 事件处理函数在TodoTextInput中被调用
+  * TosoTextInput在这个定义，并可以在多个地方，以多种方式使用
+ * @param {string} text
+  */
+ _onSave: function(text) {
+  if (text.trim()){
+  TodoActions.create(text);
+}
+}
+</code><ol class="code_nums" style="height:266px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<p>3.步骤3，ToDoActionCreator创建一个TODO_CREATE类型的action：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">  // `create`方法创建一个`TODO_CREATE`类型的action
+ // ...
+  var TodoActions = {
+
+/**
+ * @param  {string} text
+  */
+ create: function(text) {
+  AppDispatcher.handleViewAction({
+  actionType: TodoConstants.TODO_CREATE,
+  text: text
+   });
+ },
+ // ...
+</code><ol class="code_nums" style="height:312px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<ol><li><p>步骤4，action被传递给派发器</p></li>
+<li><p>步骤5，派发器将这个action传递给所有来自Store中的注册回调函数：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// `handleViewAction`将action派发给所有的存储
+ // ...
+         var Dispatcher = require('flux').Dispatcher;
+          var assign = require('object-assign');
+
+ var AppDispatcher = assign(new Dispatcher(), {
+
+ /**
+ * 一个视图和派发器之间的连接函数，将action视作一个视图action。另一个变量可以是handleServerAction。
+ * @param  {object} 
+ */
+handleViewAction: function(action) {
+ this.dispatch({
+ source: 'VIEW_ACTION',
+action: action
+});
+ }
+ });
+// ...
+</code><ol class="code_nums" style="height:427px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div></li></ol>
+
+<p>6.步骤6，ToDoStore中包含一个注册的回调函数来监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>TODO_CREATE action，并更新相应的数据。</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// TodoStore中包含一个对应`TODO_CREATE` action的回调函数
+  // ...
+   /**
+   * Create a TODO item.
+* @param  {string} ToDo项目的内容
+*/
+  function create(text) {
+ // 
+ // 使用一个当前的时间戳 + 随机数来替代真实的id
+ var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+ _todos[id] = {
+   id: id,
+   complete: false,
+   text: text
+ };
+  }
+
+ // 处理所有的数据更新
+  AppDispatcher.register(function(payload) {
+ var action = payload.action;
+ var text;
+
+ switch(action.actionType) {
+   case TodoConstants.TODO_CREATE:
+  text = action.text.trim();
+  if (text !== '') {
+    create(text);
+  }
+  break;
+  // ...
+</code><ol class="code_nums" style="height:680px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li><li>32</li><li>33</li><li>34</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<p>7.步骤7，ToDoStore在更新相应数据之后触发一个change事件：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// TodoStore 在处理完action之后触发一个`change`事件
+ // ...
+  // 处理所有的更新
+ AppDispatcher.register(function(payload) {
+ var action = payload.action;
+ var text;
+
+ switch(action.actionType) {
+   case TodoConstants.TODO_CREATE:
+     text = action.text.trim();
+     if (text !== '') {
+       create(text);
+     }
+     break;
+  // ...
+
+   default:
+     return true;
+ }
+
+ // 在触发一个UI change之后通常需要调用这个方法。在每一个视图变化之后我们需要触发一个UI change，因此我们在这个调用这个方法来减少重复的代码。为了确保上述内容的进行，我们需要一个默认的方法。
+
+ TodoStore.emitChange();
+
+ return true; 
+  });
+  // ...
+</code><ol class="code_nums" style="height:634px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li><li>32</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<p>8.步骤8，ToDoApp组件监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>来自ToDoStore的change事件，然后根据ToDoStore种的最新数据来重新渲染UI</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">  // 这个组件通过调用`_onChange`回调函数来监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>change事件
+ // ...
+ var TodoApp = React.createClass({
+
+  getInitialState: function() {
+   return getTodoState();
+ },
+
+ componentDidMount: function() {
+TodoStore.addChangeListener(this._onChange);
+ },
+
+ componentWillUnmount: function() {
+  TodoStore.removeChangeListener(this._onChange);
+ },
+ // ...
+ /**
+ * 用于处理来自TodoStore中的`change`事件的方法
+  */
+          _onChange: function() {
+this.setState(getTodoState());
+  }
+ // ...
+</code><ol class="code_nums" style="height:519px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div></li>
+</ol>
+
+<h1>Flux vs. MVC</h1>
+
+<p>Flux被认为是MVC模式的一种替代方案。在Flux的文档中将其解释为“一种使用单向数据流而不是MVC”的应用架构模式。将Flux和MVC相比，你需要理解下面三点：</p>
+
+<ol>
+<li>在javascript的世界中，“MVC”意味着”MV*”</li>
+<li>Flux并不会比MV*要简单</li>
+<li>相较于MV*，Flux模式中的代码更具有可预测性</li>
+</ol>
+
+<blockquote>
+  <p>在javascript的世界中，“MVC”意味着”MV*”</p>
+</blockquote>
+
+<p>为了类比Flux和MVC，我们需要先理解MVC究竟是什么东西。</p>
+
+<p>在著名的ToDoMVC项目中，至少有15种javascript框架的例子，但是其中没有一个例子是严格实现了”模型，视图，控制器”的设计模式。比如说Backbone.js：它其中包含模型和视图，但是是否存在控制器这个问题却一直饱受争议。在许多javascript框架中，控制器的角色一般都融入了模型或者视图中，对于javascript框架来说还有其他更重要的角色，比如说一个路由。</p>
+
+<p>当我们在使用”MVC”或者”MV*”来描述一个javascript架构时，一般来说指的是将数据层逻辑和用户界面逻辑分开来考虑。数据存储抽象为”模型”，而数据呈现和用户交互抽象为”视图”。</p>
+
+<p>应用运行的流程一般来说是这样的：视图从模型获取数据，展示给用户。用户和界面发生交互。这些交互触发了视图去更新存储在模型中的数据，同时触发一次视图更新。</p>
+
+<p><a href="./理解Flux_files/1421067643617-3.jpeg" target="_blank"><img src="./理解Flux_files/1421067643617-3.jpeg" alt="理解Flux" onmousewheel="return bbimg(this)" onload="javascript:resizepic(this)" border="0"></a></p>
+
+<blockquote>
+  <p>Flux并不比MV*要简单</p>
+</blockquote>
+
+<p>用Facebook自己的话来说，”MVC不具有可扩展性”，并同时以下面的图作为佐证：</p>
+
+<p><a href="./理解Flux_files/1421067671341-4.jpeg" target="_blank"><img src="./理解Flux_files/1421067671341-4.jpeg" alt="理解Flux" onmousewheel="return bbimg(this)" onload="javascript:resizepic(this)" border="0"></a></p>
+
+<p>上面这张图让MVC看起来很让人疑惑 – 居然有这么多的箭头！看起来Flux似乎要更简单一些不是吗？</p>
+
+<p>但是Facebook却在Flux流程图种将复杂度大大减小，如下所示：</p>
+
+<p><a href="./理解Flux_files/1421067726546-5.jpeg" target="_blank"><img src="./理解Flux_files/1421067726546-5.jpeg" alt="理解Flux" onmousewheel="return bbimg(this)" onload="javascript:resizepic(this)" border="0"></a></p>
+
+<p>如果要实现一个大型的Flux应用，流程图并不简单，如下所示：</p>
+
+<p><a href="./理解Flux_files/1-ICpUjYrHJa9TdIDwEIhooQ.jpeg" target="_blank"><img src="./理解Flux_files/1-ICpUjYrHJa9TdIDwEIhooQ.jpeg" alt="理解Flux" onmousewheel="return bbimg(this)" onload="javascript:resizepic(this)" border="0"></a></p>
+
+<p>相比MVC，Flux并不简单。但是其中有一点关键的不同之处在于：Flux中所有的箭头都指向同一个方向。</p>
+
+<blockquote>
+  <p>Flux中的代码更具有可预测性</p>
+</blockquote>
+
+<p>虽然Flux并不比MVC简单，但是Flux图表种的可预测性要大大高于MVC图表。</p>
+
+<p>Flux种的派发器确保了系统中一次只会有一个action流。如果一个action还没有处理完，那么这时再派发一个action将会触发一个错误：</p>
+
+<p>这是使得代码可预测性提高的另一种方式。它促使开发者能够开发出让数据源之间的交互变得简单的代码。</p>
+
+<p>派发器也能让开发者指明回调函数执行的顺序，其中会使用<code class="language-javascript">waitFor</code>方法来告诉回调函数依次执行。</p>
+
+<p>在Facebook实现的Flux代码种，你可以明确的看到引发数据变化的部分。每一个store都包含一系列它所监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>的action：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">// 这个例子表明了store监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>的action
+// ...
+ThreadStore.dispatchToken = ChatAppDispatcher.register(function(payload) {
+  var action = payload.action;
+
+  switch(action.type) {
+
+    case ActionTypes.CLICK_THREAD:
+      _currentID = action.threadID;
+      _threads[_currentID].lastMessage.isRead = true;
+      ThreadStore.emitChange();
+      break;
+
+    case ActionTypes.RECEIVE_RAW_MESSAGES:
+      ThreadStore.init(action.rawMessages);
+      ThreadStore.emitChange();
+      break;
+
+    default:
+      // 默认的逻辑
+  }
+
+});
+// ...
+</code><ol class="code_nums" style="height:542px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<p>在上面这个例子中，ThreadStore监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>CLICK_THREAD action，和RECEIVE_RAW_MASSAGES action。如果store没有按照预期那样更新，register回调函数将进行一些调试工作。我们可以打印出接收到的任何action，并监视它们的数据荷载(payload of data)。</p>
+
+<p>与之类似，每一个组件都包含一个它所监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>的store的列表：</p>
+
+<div class="code_box code_skin0"><pre><code class="language-javascript">function getStateFromStores() {
+  return {
+    threads: ThreadStore.getAllChrono(),
+    currentThreadID: ThreadStore.getCurrentID(),
+    unreadCount: UnreadThreadStore.getCount()
+  };
+}
+
+var ThreadSection = React.createClass({
+
+  getInitialState: function() {
+    return getStateFromStores();
+  },
+
+  componentDidMount: function() {
+    ThreadStore.addChangeListener(this._onChange);
+    UnreadThreadStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    ThreadStore.removeChangeListener(this._onChange);
+    UnreadThreadStore.removeChangeListener(this._onChange);
+  },
+// ...
+</code><ol class="code_nums" style="height:542px;"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li></ol></pre><span class="code_title">代码<a href="http://sentsin.com/layui/laycode/" target="_blank">laycode - v1.1</a></span></div>
+
+<p>在上面的代码种，我们可以看到ThreadSection组件监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>来自ThreadStore和UnreadThreadStore种的变化。如果我们持续使用这个方法，我们可以保证没有其他的数据来源会影响组件的行为。</p>
+
+<p>Flux将数据的发送和数据的接收分开，因此当你调试应用时，你可以轻松地看到数据的流向，并找出错误究竟发生在哪里。</p>
+
+<h1>Flux的难点</h1>
+
+<p>没有哪一种模式是完美无缺的，Flux也一样。一般来说，它有以下几个缺点：</p>
+
+<ul>
+<li>代码编写更加模板化</li>
+<li>移植现有代码比较困难</li>
+<li>单元测试难以进行</li>
+</ul>
+
+<p>为了处理数据流，在Flux应用种我们需要添加更多的文件和代码。和为Flux应用中已经存在的一个数据源添加代码相比，我们为应用添加一个新的数据源将是一件无比痛苦的事情。在将来我们或许可以使用生成器是的Flux代码的设施变得简单。</p>
+
+<p>尝试Flux最简单的方式是开启一个新项目。在新项目种，要将其他的部分移植到Flux架构将是一件非常有挑战的事情。运用从本文和Flux文档中学到的知识，你完全可以像Facebook和其他使用Flux的公司一样，将Flux架构运用到你的项目中。</p>
+
+<p>当你将现有项目移植到Flux架构时，你可以每次为Flux架构添加一个数据源。然而，在尝试使用Flux管理一块数据时，你需要考虑有多少组件会使用这块数据。如果这块数据在大部分的组件中都有被使用，那么将这块数据移植到Flux中将是一件复杂的工作。当你初次尝试Flux时，你应该先用一些独立的数据块作为练习。</p>
+
+<p>在Flux中，你的组件开始依赖ActionCreators以及Store，以及其他的依赖项目。这将使得编写单元测试异常复杂。如果你在应用种将Store的交互严格限制在顶级的”controller”上，那么你可以对子组件进行单元测试而无需担心Stores。如果你要测试那些需要发送Actions以及监<a href="http://sentsin.com/web/1011.html#;" class="innerlink">听</a>Stores的组件，我们需要模拟一些Store种方法，或者模拟Actions和Stores用于接收数据的API。</p>
+
+<h1>开始尝试Flux了吗?</h1>
+
+<p>如果你还没有开始使用Flux，希望本文能够为你提供一些入门指引，并让你开始使用Flux组织你的项目。</p>
+
+<p>===========
+本文参考自What is the Flux
+Application Architecture?，原文地址https://medium.com/brigade-engineering/what-is-the-flux-application-architecture-b57ebca85b9e</p></div>
+
+                    
+                    <div style="padding:20px 0;text-align:center;">
+                        <!-- 336*280 -->
+                        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="8847462638" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+                    </div>
+                    
+                    <div class="timeshow_share">
+                        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                            <a class="bds_tsina" title="分享到新浪微博" href="http://sentsin.com/web/1011.html#;"></a>
+                            <a class="bds_qzone" title="分享到QQ空间" href="http://sentsin.com/web/1011.html#;"></a>
+                            <a class="bds_tqq" title="分享到腾讯微博" href="http://sentsin.com/web/1011.html#"></a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="line"></div>
+                    <ul class="web_shownext">
+                        <li>上一篇：<a href="http://sentsin.com/web/1010.html" title="前端开发者年度大会广州分享">前端开发者年度大会广州分享</a></li>
+                        <li>下一篇：<a href="http://sentsin.com/web/1012.html" title="Vue.js 0.10 -&gt; 0.11 升级指南">Vue.js 0.10 -&gt; 0.11 升级指南</a></li>
+                    </ul>
+                </div>
+            </div>
+            <span class="arrow_bg"></span>
+            <span class="icon_timeline arrow_dot"></span>
+        </li>
+    </ul>
+    <ul class="timeline_right timeline_weiboright">
+        <div id="DetailAdRight"><img src="./理解Flux_files/detail-350.jpg"></div>
+        <li class="shadow timeline_content xu">
+             <h3 class="main_title"><i class="i"></i>博文评论<i class="switch" title="收缩"></i></h3>
+            <div class="timeline_text xu">
+                <div class="timeline_desc" id="thirdComment">
+                    <!-- 多说评论框 start -->
+                    <div class="ds-thread ds-narrow" data-thread-key="113-1011" data-title="理解Flux" data-url="http://sentsin.com/web/1011.html" id="ds-thread"><div id="ds-reset"><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc ds-current">最新</a><a class="ds-order-asc">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-service-icon ds-duoshuo"></span>0</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">一个评论都不给的？</li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://sentsin.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://sentsin.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://sentsin.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://sentsin.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://sentsin.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://sentsin.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://sentsin.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://sentsin.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./理解Flux_files/121820.jpg" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1415877406970872640">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5707478c43dd3"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder=" "></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">多说</a></p></div></div>
+                    <!-- 多说评论框 end -->
+                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                    <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"sentsin"};
+                    (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] 
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                    </script>
+                </div>
+            </div>
+            <span class="arrow_bg"></span>
+            <span class="icon_timeline arrow_dot"></span>
+        </li>
+    </ul>
+    <div class="c"></div>
+    <span class="arrow_line"><i id="add_event_plus" class="icon_timeline spine_plus"></i></span>
+</div>
+<div class="box_index shadow xufooter">
+    <div class="bottomMsg">
+        <a href="http://sentsin.com/" class="footer_logo" title="贤心博客"><img src="./理解Flux_files/xin.gif" alt="贤心"></a>
+        <ul class="footer_me">
+            <li>贤心，自由职业者。这不是一个人的博客。</li>
+            <li><a href="http://sentsin.com/web/197.html">广告合作</a> - 站长邮箱：xu@sentsin.com</li>
+            <li><a href="http://weibo.com/SentsinXu" target="_blank">新浪微博</a>：<a href="http://weibo.com/SentsinXu" target="_blank">http://weibo.com/SentsinXu</a>
+</li>
+            <li><a href="http://sentsin.com/sitemap.xml">Sitemap</a> | 小众前端一枚，小众前端一枚</li>
+            <li>
+                <a href="http://say.sentsin.com/">Say前端技术论坛</a> 
+                <a href="http://sentsin.com/web/">前端开发</a> 
+                <a href="http://sentsin.com/mood/">轻微博</a>
+            </li>
+            <li>2011-3011  © sentsin.com <a href="javascript:;" onclick="paysentsin()">友情赞助</a></li>
+        </ul>
+        <ul class="ul footerLiuyan" id="liuyan"></ul>
+        <em id="eig_top"><i class="icon_old"></i>TOP</em>
+    </div>
+</div>
+<script async="" src="./理解Flux_files/adsbygoogle.js"></script>
+<script src="./理解Flux_files/sea.js"></script>
+<script>seajs.use('public');</script>
+
+<script id="bdshare_js" data="type=tools&amp;uid=139216" src="./理解Flux_files/bds_s_v2.js"></script>
+
+<script>
+var bds_config = {'snsKey': {'tsina': '1090010962'}, 'bdText':'理解Flux'};
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<script src="./理解Flux_files/c.php"></script>
+
+
+
+</body></html>

@@ -1,0 +1,652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://www.cnblogs.com/xdp-gacl/p/3637073.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/encoder.js"></script>
+
+<title>java基础学习总结——equals方法 - 孤傲苍狼 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/bundle-SimpleClear.css">
+<link type="text/css" rel="stylesheet" href="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/133816.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xdp-gacl/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xdp-gacl/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xdp-gacl/wlwmanifest.xml">
+<script src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xdp-gacl', cb_enable_mathjax=false;</script>
+<script src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<div id="page_begin_html"><!-- Baidu Button BEGIN -->
+<!--<div style="display: none" id="__document_write_ajax_div-1"></div><script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=6507240" >window['__document_write_ajax_callbacks__']['1']();</script>
+<div style="display: none" id="__document_write_ajax_div-2"></div><script type="text/javascript" id="bdshell_js">window['__document_write_ajax_callbacks__']['2']();</script>
+<div style="display: none" id="__document_write_ajax_div-3"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['3']();</script>-->
+<!-- Baidu Button END -->
+
+<!--添加博客目录-->
+
+
+<!--
+<head>
+
+DIY 博客全文界面的推荐、反对、加关注、返回顶部、快速评论等小功能的集成
+
+<div style="display: none" id="__document_write_ajax_div-5"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script>
+</head>
+--></div><script>load_page_begin_html();</script>
+
+<div id="main">
+<div id="header">
+<h1><a id="Header1_HeaderTitle" href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a></h1>
+<p id="tagline">只为成功找方法，不为失败找借口！</p></div>
+
+<div id="post_detail">
+<div class="post">
+    <h2 class="postTitle"><a id="cb_post_title_url" href="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/java基础学习总结——equals方法 - 孤傲苍狼 - 博客园.html">java基础学习总结——equals方法</a></h2>
+    <div class="postText"><div id="cnblogs_post_body"><h2 id="blogTitle0">一、equals方法介绍</h2>
+<p><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/312233226727212.png" alt=""></p>
+<h3 id="blogTitle1">1.1.通过下面的例子掌握<span style="font-family: Baskerville Old Face;">equals</span><span style="font-family: 宋体;">的用法</span></h3>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> cn.galc.test;
+</span><span style="color: #008080;"> 2</span> 
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> TestEquals {
+</span><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 5</span>         <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 6</span> <span style="color: #008000;">         * 这里使用构造方法Cat()在堆内存里面new出了两只猫，
+</span><span style="color: #008080;"> 7</span> <span style="color: #008000;">         * 这两只猫的color，weight，height都是一样的，
+</span><span style="color: #008080;"> 8</span> <span style="color: #008000;">         * 但c1和c2却永远不会相等，这是因为c1和c2分别为堆内存里面两只猫的引用对象，
+</span><span style="color: #008080;"> 9</span> <span style="color: #008000;">         * 里面装着可以找到这两只猫的地址，但由于两只猫在堆内存里面存储在两个不同的空间里面，
+</span><span style="color: #008080;">10</span> <span style="color: #008000;">         * 所以c1和c2分别装着不同的地址，因此c1和c2永远不会相等。
+</span><span style="color: #008080;">11</span>          <span style="color: #008000;">*/</span>
+<span style="color: #008080;">12</span>         Cat c1 = <span style="color: #0000ff;">new</span> Cat(1, 1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">13</span>         Cat c2 = <span style="color: #0000ff;">new</span> Cat(1, 1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">14</span>         System.out.println("c1==c2的结果是："+(c1==c2));<span style="color: #008000;">//</span><span style="color: #008000;">false</span>
+<span style="color: #008080;">15</span>         System.out.println("c1.equals(c2)的结果是："+c1.equals(c2));<span style="color: #008000;">//</span><span style="color: #008000;">false</span>
+<span style="color: #008080;">16</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">17</span> <span style="color: #000000;">}
+</span><span style="color: #008080;">18</span> 
+<span style="color: #008080;">19</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Cat {
+</span><span style="color: #008080;">20</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> color, weight, height;
+</span><span style="color: #008080;">21</span> 
+<span style="color: #008080;">22</span>     <span style="color: #0000ff;">public</span> Cat(<span style="color: #0000ff;">int</span> color, <span style="color: #0000ff;">int</span> weight, <span style="color: #0000ff;">int</span><span style="color: #000000;"> height) {
+</span><span style="color: #008080;">23</span>         <span style="color: #0000ff;">this</span>.color =<span style="color: #000000;"> color;
+</span><span style="color: #008080;">24</span>         <span style="color: #0000ff;">this</span>.weight =<span style="color: #000000;"> weight;
+</span><span style="color: #008080;">25</span>         <span style="color: #0000ff;">this</span>.height =<span style="color: #000000;"> height;
+</span><span style="color: #008080;">26</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">27</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3 class="p0" id="blogTitle2"><strong>1.2.画出内存分析图分析<span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">比较的结果</span></strong></h3>
+<p class="p0">程序：</p>
+<p class="p0">Cat&nbsp;c1&nbsp;=&nbsp;new&nbsp;Cat(1,1,1);</p>
+<p class="p0">Cat&nbsp;c2&nbsp;=&nbsp;new&nbsp;Cat(1,1,1);</p>
+<p class="p0">执行完之后内存之中的布局如下图所示，</p>
+<p class="p0"><strong><span style="font-family: 宋体;"><img src="data:image/png;base64,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" alt=""></span></strong></p>
+<p class="p0">　　<span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">指向一个对象，</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">也指向一个对象，</span><span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">里面装着的是这两只</span><span style="font-family: Baskerville Old Face;">Cat</span><span style="font-family: 宋体;">对象在堆内存里面存储的地址，由于这两只</span><span style="font-family: Baskerville Old Face;">Cat</span><span style="font-family: 宋体;">对象分别位于不同的存储空间，因此</span><span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">里面装着的地址肯定不相等，因此</span><span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">这两个引用对象也肯定不相等。因此执行：“</span>System.out.println(c1==c2);<span style="font-family: 宋体;">”打印出来的结果肯定是</span><span style="font-family: Baskerville Old Face;">false</span><span style="font-family: 宋体;">。因此你</span>new出来了两个对象，你放心，这两个对象的引用永远不一样，一样的话就会把其中一个给覆盖掉了，这个可不成。<span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">是不是等于</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">比较的是</span><span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">这两个引用里面装着的内容，因为</span>new出来的两个对象的它们的引用永远不一样，因此<span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">这两个引用的内容也永远不一样，因此</span><span style="font-family: Baskerville Old Face;">c1</span><span style="font-family: 宋体;">永远不可能等于</span><span style="font-family: Baskerville Old Face;">c2</span><span style="font-family: 宋体;">。因此通过比较两个对象的引用是永远无法使得两个对象相等的，一模一样的。</span></p>
+<p class="p0">　　<span style="color: #ff0000;"><strong>要想判断两个对象是否相等，不能通过比较两个对象的引用是否相等，这是永远都得不到相等的结果的，因为两个对象的引用永远不会相等，所以正确的比较方法是直接比较这两个对象，比较这两个对象的实质是不是一样的，即这两个对象里面的内容是不是相同的，通过比较这两个对象的属性值是否相同而决定这两个对象是否相等。</strong></span></p>
+<p class="p0">　　Object<span style="font-family: 宋体;">类提供了一个</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法来比较两个对象的内容是否相同，因此我们可以采用这个方法去比较两个对象是否在逻辑上“相等”。</span>如：c1.equals(c2);这里是调用从<span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类继承下来的</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，通过查阅</span><span style="font-family: Baskerville Old Face;">API</span><span style="font-family: 宋体;">文档得到</span><span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类里的</span><span style="font-family: Baskerville Old Face;">equals</span><span style="font-family: 宋体;">方法的定义如下：</span></p>
+<p class="p17">public&nbsp;boolean&nbsp;equals(<a title="class in java.lang" href="mk:@MSITStore:D:\java%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3\j2se7.chm::/j2se7/api/java/lang/Object.html">Object</a>&nbsp;obj)</p>
+<p class="p0">　　在<span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">这个类里面提供的</span><span style="font-family: Baskerville Old Face;">Equals()</span><span style="font-family: 宋体;">方法默认的实现是比较当前对象的引用和你要比较的那个引用它们指向的是否是同一个对象，即和“</span><span style="font-family: Baskerville Old Face;">c1==c2</span><span style="font-family: 宋体;">”这种写法是一样的，“</span><span style="font-family: Baskerville Old Face;">c1.equals(c2)</span><span style="font-family: 宋体;">”与“</span><span style="font-family: Baskerville Old Face;">c1==c2</span><span style="font-family: 宋体;">”是完全等价的。因此直接使用继承下来的</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法也是无法直接比较两个对象的内容是否相同的，为此，我们必须得重写</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，改变这个方法默认的实现。</span></p>
+<p class="p0">下面在<span style="font-family: Baskerville Old Face;">Cat</span><span style="font-family: 宋体;">类里面<span style="color: #ff0000;"><strong>重写这个继承下来的</strong></span></span><span style="color: #ff0000;"><strong><span style="font-family: Baskerville Old Face;">equals()</span></strong></span><span style="font-family: 宋体;"><span style="color: #ff0000;"><strong>方法</strong></span>：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Cat {
+</span><span style="color: #008080;"> 2</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> color, weight, height;
+</span><span style="color: #008080;"> 3</span> 
+<span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> Cat(<span style="color: #0000ff;">int</span> color, <span style="color: #0000ff;">int</span> weight, <span style="color: #0000ff;">int</span><span style="color: #000000;"> height) {
+</span><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">this</span>.color =<span style="color: #000000;"> color;
+</span><span style="color: #008080;"> 6</span>         <span style="color: #0000ff;">this</span>.weight =<span style="color: #000000;"> weight;
+</span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">this</span>.height =<span style="color: #000000;"> height;
+</span><span style="color: #008080;"> 8</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 9</span>     
+<span style="color: #008080;">10</span>     <span style="color: #008000;">/**</span>
+<span style="color: #008080;">11</span> <span style="color: #008000;">     * 这里是重写相等从Object类继承下来的equals()方法，改变这个方法默认的实现，
+</span><span style="color: #008080;">12</span> <span style="color: #008000;">     * 通过我们自己定义的实现来判断决定两个对象在逻辑上是否相等。
+</span><span style="color: #008080;">13</span> <span style="color: #008000;">     * 这里我们定义如果两只猫的color，weight，height都相同，
+</span><span style="color: #008080;">14</span> <span style="color: #008000;">     * 那么我们就认为这两只猫在逻辑上是一模一样的，即这两只猫是“相等”的。
+</span><span style="color: #008080;">15</span>      <span style="color: #008000;">*/</span>
+<span style="color: #008080;">16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> equals(Object obj){
+</span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">if</span> (obj==<span style="color: #0000ff;">null</span><span style="color: #000000;">){
+</span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+</span><span style="color: #008080;">19</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">else</span><span style="color: #000000;">{
+</span><span style="color: #008080;">21</span>             <span style="color: #008000;">/**</span>
+<span style="color: #008080;">22</span> <span style="color: #008000;">             * instanceof是对象运算符。
+</span><span style="color: #008080;">23</span> <span style="color: #008000;">             * 对象运算符用来测定一个对象是否属于某个指定类或指定的子类的实例。
+</span><span style="color: #008080;">24</span> <span style="color: #008000;">             * 对象运算符是一个组合单词instanceof。
+</span><span style="color: #008080;">25</span> <span style="color: #008000;">             * 该运算符是一个双目运算符，其左边的表达式是一个对象，右边的表达式是一个类，
+</span><span style="color: #008080;">26</span> <span style="color: #008000;">             * 如果左边的对象是右边的类创建的对象，则运算结果为true，否则为false。
+</span><span style="color: #008080;">27</span>              <span style="color: #008000;">*/</span>
+<span style="color: #008080;">28</span>             <span style="color: #0000ff;">if</span> (obj <span style="color: #0000ff;">instanceof</span><span style="color: #000000;"> Cat){
+</span><span style="color: #008080;">29</span>                 Cat c =<span style="color: #000000;"> (Cat)obj;
+</span><span style="color: #008080;">30</span>                 <span style="color: #0000ff;">if</span> (c.color==<span style="color: #0000ff;">this</span>.color &amp;&amp; c.weight==<span style="color: #0000ff;">this</span>.weight &amp;&amp; c.height==<span style="color: #0000ff;">this</span><span style="color: #000000;">.height){
+</span><span style="color: #008080;">31</span>                     <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+</span><span style="color: #008080;">32</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">33</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">34</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">35</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+</span><span style="color: #008080;">36</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">37</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p class="p0">此时在再<span style="font-family: Baskerville Old Face;">main</span><span style="font-family: 宋体;">方法里面执行打印的命令：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {
+</span><span style="color: #008080;"> 2</span>         <span style="color: #008000;">/**</span>
+<span style="color: #008080;"> 3</span> <span style="color: #008000;">         * 这里使用构造方法Cat()在堆内存里面new出了两只猫，
+</span><span style="color: #008080;"> 4</span> <span style="color: #008000;">         * 这两只猫的color，weight，height都是一样的，
+</span><span style="color: #008080;"> 5</span> <span style="color: #008000;">         * 但c1和c2却永远不会相等，这是因为c1和c2分别为堆内存里面两只猫的引用对象，
+</span><span style="color: #008080;"> 6</span> <span style="color: #008000;">         * 里面装着可以找到这两只猫的地址，但由于两只猫在堆内存里面存储在两个不同的空间里面，
+</span><span style="color: #008080;"> 7</span> <span style="color: #008000;">         * 所以c1和c2分别装着不同的地址，因此c1和c2永远不会相等。
+</span><span style="color: #008080;"> 8</span>          <span style="color: #008000;">*/</span>
+<span style="color: #008080;"> 9</span>         Cat c1 = <span style="color: #0000ff;">new</span> Cat(1, 1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">10</span>         Cat c2 = <span style="color: #0000ff;">new</span> Cat(1, 1, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">11</span>         System.out.println("c1==c2的结果是："+(c1==c2));<span style="color: #008000;">//</span><span style="color: #008000;">false</span>
+<span style="color: #008080;">12</span>         System.out.println("c1.equals(c2)的结果是："+c1.equals(c2));<span style="color: #008000;">//</span><span style="color: #008000;">true</span>
+<span style="color: #008080;">13</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p class="p0">　　这一次得到的结果就与上次没有重写<span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法时得到的结果就不一样了：</span></p>
+<p class="p0">　　<strong>“System.out.println(c1&nbsp;==&nbsp;c2);”打印出来的结果依然是<span style="font-family: Baskerville Old Face;">false</span></strong><span style="font-family: 宋体;">，因为这里是比较两个对象的引用里面的内容，这两个引用里面的内容当然不相等，而且永远不会相等，所以打印出来的结果肯定是</span><span style="font-family: Baskerville Old Face;">false</span><span style="font-family: 宋体;">。</span></p>
+<p class="p0">　　<strong><span style="color: #ff0000;">“System.out.println(c1.equals(c2));”打印出来的结果为</span><span style="font-family: Baskerville Old Face; color: #ff0000;">true</span></strong><span style="font-family: 宋体;">，因为我们在</span><span style="font-family: Baskerville Old Face;">Cat</span><span style="font-family: 宋体;">类里面重写了</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，改变了这个方法默认的实现，我们把方法的实现改为只要这个两个对象是真的存在，并且都是猫，并且它们的颜色</span><span style="font-family: Baskerville Old Face;">(color)</span><span style="font-family: 宋体;">，身高</span><span style="font-family: Baskerville Old Face;">(height)</span><span style="font-family: 宋体;">和体重</span><span style="font-family: Baskerville Old Face;">(weight)</span><span style="font-family: 宋体;">都相同，那么这两只猫在逻辑上就是一模一样的，是完全相同的两只猫，即这两只猫是“相等”的。所以这里打印出来的结果是</span><span style="font-family: Baskerville Old Face;">true</span><span style="font-family: 宋体;">。</span></p>
+<h3 class="p0" id="blogTitle3">1.3.如何比较两个字符串对象是否相等？</h3>
+<p class="p0">看下面的例子：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> TestEquals {
+</span><span style="color: #008080;">2</span>     
+<span style="color: #008080;">3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String args[]){
+</span><span style="color: #008080;">4</span>         String s1 = <span style="color: #0000ff;">new</span> String("hello"<span style="color: #000000;">);
+</span><span style="color: #008080;">5</span>         String s2 = <span style="color: #0000ff;">new</span> String("hello"<span style="color: #000000;">);
+</span><span style="color: #008080;">6</span>         System.out.println("s1 == s2的结果是："+(s1 == s2));<span style="color: #008000;">//</span><span style="color: #008000;">false</span>
+<span style="color: #008080;">7</span>         System.out.println("s1.equals(s2)的结果是："+s1.equals(s2));<span style="color: #008000;">//</span><span style="color: #008000;">true</span>
+<span style="color: #008080;">8</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">9</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p class="p0">这一次是比较两个字符串对象是否相等：</p>
+<p class="p0">　　System.out.println(s1&nbsp;==&nbsp;s2);</p>
+<p class="p0">　　打印出来的结果依然是<span style="font-family: Baskerville Old Face;">fase</span><span style="font-family: 宋体;">，因为这里比较的是</span><span style="font-family: Baskerville Old Face;">s1</span><span style="font-family: 宋体;">和</span><span style="font-family: Baskerville Old Face;">s2</span><span style="font-family: 宋体;">两个字符串对象的引用，两个对象的引用永远不会相等，所以打印出来的结果为</span><span style="font-family: Baskerville Old Face;">false</span><span style="font-family: 宋体;">。</span></p>
+<p class="p0">　　System.out.println(s1.equals(s2));</p>
+<p class="p0">　　打印出来的结果为<span style="font-family: Baskerville Old Face;">true</span><span style="font-family: 宋体;">，因为在</span>String<span style="font-family: 宋体;">类</span>里面重写了从<span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类继承</span>(所有的类都是从<span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类继承下来，</span>String类当然也不例外，从父类继承下来就拥有了父类的一切属性与方法，所以<span style="font-family: Baskerville Old Face;">Sting</span><span style="font-family: 宋体;">类里面也有</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，并且还把这个继承下来的</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法重写了</span>)下来的<span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，改变了这个方法默认的实现，</span></p>
+<p class="p0"><span style="color: #ff0000;"><strong>　　在String类里面是这样重写<span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法的实现的：用当前的这个字符串对象和指定的字符串对象比较，指定的字符串对象不能为空并且这个对象的字符序列和当前这个字符串对象的字符串序列一样，如果这些条件都满足，那么这两个字符串对象就是相等的。</span></strong></span></p>
+<p class="p0">因此这里的<span style="font-family: Baskerville Old Face;">s2</span><span style="font-family: 宋体;">已经满足了条件，所以打印出来的结果是</span><span style="font-family: Baskerville Old Face;">true</span><span style="font-family: 宋体;">。</span></p>
+<p class="p0">　　以后在某一个类里面比较两个对象是否相等时，首先去<span style="font-family: Baskerville Old Face;">API</span><span style="font-family: 宋体;">文档里面查找这个类是否重写了从</span><span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类继承下来的</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法。如果重写了</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，那么在比较两个对象是否相等时调用的就是重写以后的</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，如果没有重写，那么调用时就是直接调用从</span><span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类里面的继承下来的那个</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，并且采用</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法默认的实现去比较两个对象是否相等。因此每一个类都可以根据需要对从</span><span style="font-family: Baskerville Old Face;">Object</span><span style="font-family: 宋体;">类继承下来的</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法进行重写。</span></p>
+<p class="p0"><span style="font-family: 宋体;">　　对于在<span style="font-family: Baskerville Old Face;">API</span><span style="font-family: 宋体;">文档里面找某个类，如果一个类不用引入包就可以直接使用，那么这个类肯定是在</span><span style="font-family: Baskerville Old Face;">java.lang</span><span style="font-family: 宋体;">这个包里面，如这里的</span>String类，直接就可以使用了，所以String类一定是在<span style="font-family: Baskerville Old Face;">java.lang</span><span style="font-family: 宋体;">这个包里面。使用某个类时看这个类引入的是哪个包，然后就去这个包里面找这个类，不用引入包的类一定是位于</span><span style="font-family: Baskerville Old Face;">java.lang</span><span style="font-family: 宋体;">里面，直接去</span><span style="font-family: Baskerville Old Face;">java.lang</span><span style="font-family: 宋体;">里面找就可以了。</span></span></p>
+<p class="p0">　　总结：比较两个对象是否相等，我们采用<span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法，判断两个对象是否相等的条件是由我们重写</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法的实现后定义的，这样就可以比较灵活地使用</span><span style="font-family: Baskerville Old Face;">equals()</span><span style="font-family: 宋体;">方法在不同的类里面比较位于同一类下的两个对象是否相等了。</span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xdp-gacl/category/563690.html">java基础总结</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/xdp-gacl/tag/java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">java基础总结</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3637073,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/" target="_blank"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/20160221223904.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followees">关注 - 83</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followers">粉丝 - 4889</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3637073,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">6</span>
+    </div>
+	<div class="buryit" onclick="votePost(3637073,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xdp-gacl/p/3637407.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/3637407.html" title="发布于2014-04-01 18:13">java基础学习总结——static关键字</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/3636990.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/3636990.html" title="发布于2014-04-01 18:15">java基础学习总结——Object类</a><br></div>
+</div>
+
+</div>
+    <p class="postfoot">posted on <span id="post-date">2014-04-01 18:14</span> <a href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a> 阅读(<span id="post_view_count">11873</span>) 评论(<span id="post_comment_count">2</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3637073" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#" onclick="AddToWz(3637073);return false;">收藏</a></p>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=133816,cb_entryId=3637073,cb_blogApp=currentBlogApp,cb_blogUserGuid='f1774468-815f-e011-a53f-842b2b196315',cb_entryCreatedDate='2014/4/1 18:14:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#3424028" class="layer">#1楼</a><a name="3424028" id="comment_anchor_3424028"></a>
+					<span>
+						 <span class="comment_date">2016-05-06 09:39</span>
+					</span>
+				<a id="a_comment_author_3424028" href="http://www.cnblogs.com/feixiaohuijava/" target="_blank">费晓晖</a> <a href="http://msg.cnblogs.com/send/%E8%B4%B9%E6%99%93%E6%99%96" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3424028" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>第三次才看懂。。原来如此。。楼主好厉害</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3424028,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3424028,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#3427806" class="layer">#2楼</a><a name="3427806" id="comment_anchor_3427806"></a><span id="comment-maxId" style="display:none;">3427806</span><span id="comment-maxDate" style="display:none;">2016/5/10 16:33:50</span>
+					<span>
+						 <span class="comment_date">2016-05-10 16:33</span>
+					</span>
+				<a id="a_comment_author_3427806" href="http://www.cnblogs.com/bequt/" target="_blank">bequt</a> <a href="http://msg.cnblogs.com/send/bequt" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3427806" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>楼主写得很好，简单明了</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3427806,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3427806,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3427806_avatar" style="display:none;">http://pic.cnblogs.com/face/831240/20160508001609.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=SpreadJS&utm_campaign=community" target="_blank">【推荐】怎样将“在线Excel“嵌入你的开发系统中？</a><br><a href="http://click.aliyun.com/m/3037/" target="_blank">【推荐】阿里云高性能云服务器+SSD云盘，让业务响应0延迟</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/545131/" target="_blank">亚马逊创始人贝索斯过去三个月资产增加180亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/545130/" target="_blank">Facebook要做聊天机器人，一个月内吸引了上千开发者</a><br> ·  <a href="http://news.cnblogs.com/n/545129/" target="_blank">俞敏洪：不主张大学生创业，大学生的项目我不投！</a><br> ·  <a href="http://news.cnblogs.com/n/545128/" target="_blank">三个季度连续亏损 LG移动部门或将减员缩编</a><br> ·  <a href="http://news.cnblogs.com/n/545127/" target="_blank">微软手机最新黑科技：利用传感器“预知”用户行为</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./java基础学习总结——equals方法 - 孤傲苍狼 - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br> ·  <a href="http://kb.cnblogs.com/page/541740/" target="_blank">架构漫谈（六）：软件架构到底是要解决什么问题？</a><br> ·  <a href="http://kb.cnblogs.com/page/541188/" target="_blank">架构漫谈（五）：什么是软件</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="rightmenu">
+	
+		
+<div id="my_links">
+<h3>导航</h3>
+<ul>
+<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/xdp-gacl/">首页</a></li>
+<!--<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>-->
+<li><a id="MyLinks1_ContactLink" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC">联系</a></li>
+<li><a id="MyLinks1_Syndication" href="http://www.cnblogs.com/xdp-gacl/rss">订阅</a></li><!--<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/xdp-gacl/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>-->
+<li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+</div>
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalTodayDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>公告</h3>
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>园龄：<a href="http://home.cnblogs.com/u/xdp-gacl/" title="入园时间：2011-04-05">5年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xdp-gacl/followers/">4889</a><br>关注：<a href="http://home.cnblogs.com/u/xdp-gacl/followees/">83</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;f1774468-815f-e011-a53f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>		
+		
+<div id="blog_stats">
+<h3>统计</h3>
+<ul>
+<li>随笔 - 275
+</li><li>文章 - 0
+</li><li>评论 - 1503
+<!--<li>引用 - 0-->
+</li>
+</ul>
+</div>
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a>(62)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">java基础总结</a>(28)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Javascript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Javascript学习总结</a>(27)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Snmp%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Snmp学习总结</a>(15)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyEclipse%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">MyEclipse使用总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Android%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Android开发学习总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Maven%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Maven学习总结</a>(11)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/WebLogic%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">WebLogic使用总结</a>(9)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyBatis%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MyBatis学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MySQL%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MySQL学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xdp-gacl/category/431986.html">AJAX(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xdp-gacl/category/663970.html">Android开发(12)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xdp-gacl/category/431983.html">ASP.NET(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xdp-gacl/category/431981.html">C#(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xdp-gacl/category/647917.html">CSS学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xdp-gacl/category/557089.html">C语言学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/xdp-gacl/category/605855.html">FusionCharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/xdp-gacl/category/641669.html">H2数据库学习使用总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/xdp-gacl/category/601788.html">Hessian(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/xdp-gacl/category/557131.html">Hibernate</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/xdp-gacl/category/602554.html">Highcharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/xdp-gacl/category/544383.html">HTML(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/xdp-gacl/category/791376.html">html5学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/xdp-gacl/category/647915.html">Html学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/xdp-gacl/category/431984.html">Java(13)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/xdp-gacl/category/431982.html">JavaScript(27)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结(55)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/xdp-gacl/category/563691.html">Java基础加强总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/xdp-gacl/category/566451.html">java基础面试题(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/xdp-gacl/category/563690.html">java基础总结(28)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/xdp-gacl/category/595905.html">Java监控</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/xdp-gacl/category/607504.html">Java事务处理</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/xdp-gacl/category/600539.html">java字节码的处理技术</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/xdp-gacl/category/636007.html">JFinal学习研究</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/xdp-gacl/category/609326.html">JNDI(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/xdp-gacl/category/571424.html">Jquery EasyUI学习使用总结(7)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/xdp-gacl/category/600080.html">jwebap</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/xdp-gacl/category/599454.html">kafka</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/xdp-gacl/category/590574.html">LDAP</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/xdp-gacl/category/620197.html">Linux学习总结(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/xdp-gacl/category/544719.html">Maven(10)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/xdp-gacl/category/599453.html">Mina</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/xdp-gacl/category/655890.html">Mybatis(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/xdp-gacl/category/544414.html">MyEclipse(11)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/xdp-gacl/category/557132.html">MySQL(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/xdp-gacl/category/576035.html">Nginx(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/xdp-gacl/category/567838.html">Oracle学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/xdp-gacl/category/562877.html">PowerDesigner使用总结(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/xdp-gacl/category/640475.html">redis</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/xdp-gacl/category/591218.html">RESTful架构(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/xdp-gacl/category/649781.html">Servlet3.0(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/xdp-gacl/category/613358.html">Snmp学习总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/xdp-gacl/category/544380.html">Spring(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/xdp-gacl/category/654626.html">SpringMVC学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/xdp-gacl/category/543327.html">SQLServer(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/xdp-gacl/category/543338.html">Struts2(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/xdp-gacl/category/737796.html">SVN</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/xdp-gacl/category/544377.html">VB.NET(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/xdp-gacl/category/637206.html">WebLogic使用总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/xdp-gacl/category/629559.html">WebService学习总结(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/xdp-gacl/category/787823.html">WebSocket(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/xdp-gacl/category/554263.html">WinForm学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/xdp-gacl/category/602889.html">XML学习总结(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/xdp-gacl/category/551491.html">插件化开发</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/xdp-gacl/category/598077.html">创业知识(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/xdp-gacl/category/651090.html">大数据/hadoop(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/xdp-gacl/category/645953.html">代码注释(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/xdp-gacl/category/588156.html">单点登录(Yale_CAS_SSO)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/xdp-gacl/category/710266.html">电脑基本技能</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/xdp-gacl/category/636430.html">读书笔记</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/xdp-gacl/category/635429.html">负载均衡(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/xdp-gacl/category/543351.html">互联网基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/xdp-gacl/category/644775.html">缓存框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/xdp-gacl/category/801455.html">架构设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_64" href="http://www.cnblogs.com/xdp-gacl/category/661363.html">框架整合(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_65" href="http://www.cnblogs.com/xdp-gacl/category/810590.html">敏捷开发(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_66" href="http://www.cnblogs.com/xdp-gacl/category/591507.html">权限设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_67" href="http://www.cnblogs.com/xdp-gacl/category/431985.html">生活感悟(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_68" href="http://www.cnblogs.com/xdp-gacl/category/589802.html">数据库Sharding(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_69" href="http://www.cnblogs.com/xdp-gacl/category/562913.html">数据库理论基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_70" href="http://www.cnblogs.com/xdp-gacl/category/608526.html">微信开发(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_71" href="http://www.cnblogs.com/xdp-gacl/category/811446.html">我的开发框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_72" href="http://www.cnblogs.com/xdp-gacl/category/806539.html">项目管理(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_73" href="http://www.cnblogs.com/xdp-gacl/category/654566.html">英语学习</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_74" href="http://www.cnblogs.com/xdp-gacl/category/578277.html">原创小工具(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_75" href="http://www.cnblogs.com/xdp-gacl/category/594056.html">云计算(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_76" href="http://www.cnblogs.com/xdp-gacl/category/598078.html">哲学人生</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_77" href="http://www.cnblogs.com/xdp-gacl/category/596451.html">职场感悟(3)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xdp-gacl/archive/2016/04.html">2016年4月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xdp-gacl/archive/2016/03.html">2016年3月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xdp-gacl/archive/2016/02.html">2016年2月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xdp-gacl/archive/2016/01.html">2016年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xdp-gacl/archive/2015/07.html">2015年7月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xdp-gacl/archive/2015/03.html">2015年3月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xdp-gacl/archive/2015/02.html">2015年2月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xdp-gacl/archive/2015/01.html">2015年1月 (40)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xdp-gacl/archive/2014/12.html">2014年12月 (17)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xdp-gacl/archive/2014/11.html">2014年11月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xdp-gacl/archive/2014/10.html">2014年10月 (31)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xdp-gacl/archive/2014/08.html">2014年8月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xdp-gacl/archive/2014/07.html">2014年7月 (25)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xdp-gacl/archive/2014/06.html">2014年6月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xdp-gacl/archive/2014/05.html">2014年5月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xdp-gacl/archive/2014/04.html">2014年4月 (22)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xdp-gacl/archive/2014/03.html">2014年3月 (28)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xdp-gacl/archive/2014/02.html">2014年2月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xdp-gacl/archive/2014/01.html">2014年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xdp-gacl/archive/2013/12.html">2013年12月 (16)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xdp-gacl/archive/2012/11.html">2012年11月 (1)</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html#3427933">1. Re:Spring常用注解</a></li>
+        <li class="recent_comment_body">通俗易懂，谢谢博主的分享。</li>
+        <li class="recent_comment_author">--Xsum</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3637073.html#3427806">2. Re:java基础学习总结——equals方法</a></li>
+        <li class="recent_comment_body">楼主写得很好，简单明了</li>
+        <li class="recent_comment_author">--bequt</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3983253.html#3427770">3. Re:javaweb学习总结(三十六)——使用JDBC进行批处理</a></li>
+        <li class="recent_comment_body">顶</li>
+        <li class="recent_comment_author">--孟妹</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html#3427757">4. Re:MyBatis学习总结(一)——MyBatis快速入门</a></li>
+        <li class="recent_comment_body">感谢你，讲的很详细</li>
+        <li class="recent_comment_author">--zimu1990</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3908610.html#3427733">5. Re:javaweb学习总结(二十一)——JavaWeb的两种开发模式</a></li>
+        <li class="recent_comment_body">写的实在是太好了</li>
+        <li class="recent_comment_author">--寻影657</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4240930.html#3427216">6. Re:Maven学习总结(三)——使用Maven构建项目</a></li>
+        <li class="recent_comment_body">真心不错</li>
+        <li class="recent_comment_author">--奕p</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html#3426738">7. Re:javaweb学习总结(五)——Servlet开发(一)</a></li>
+        <li class="recent_comment_body">请教下楼主，上面为servlet映射url是在config里面的web.xml还是WEB-INF里的web.xml里创建啊？小白不懂求指导。</li>
+        <li class="recent_comment_author">--metaluo</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html#3425929">8. Re:JavaWeb学习总结(一)——JavaWeb开发入门</a></li>
+        <li class="recent_comment_body">LZ肯定对大家这么弱鸡而无语</li>
+        <li class="recent_comment_author">--March On</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html#3425801">9. Re:JavaWeb学习总结(五十)——文件上传和下载</a></li>
+        <li class="recent_comment_body">博主大赞，如果能有上传到数据库就更好了</li>
+        <li class="recent_comment_author">--Charming2Future</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html#3425140">10. Re:MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合</a></li>
+        <li class="recent_comment_body">博主 我的项目在运行时报错：org.springframework.beans.factory.BeanCreationException: Error creating bean with nam......</li>
+        <li class="recent_comment_author">--xkpactera</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(154164)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3497016.html">2. MyEclipse使用总结——MyEclipse10安装SVN插件(139728)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">3. JavaWeb学习总结(五十)——文件上传和下载(100170)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">4. javaweb学习总结(五)——Servlet开发(一)(99507)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(86497)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">6. Android开发学习总结(一)——搭建最新版本的Android开发环境(79094)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html">7. Spring常用注解(72114)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3777987.html">8. Java基础学习总结——Java对象的序列化和反序列化(61572)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">9. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57260)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3734395.html">10. JavaWeb学习总结(二)——Tomcat服务器学习和使用(一)(51493)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">1. JavaWeb学习总结(五十)——文件上传和下载(80)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">2. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(57)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">3. MyBatis学习总结(一)——MyBatis快速入门(52)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">4. javaweb学习总结(四)——Http协议(43)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(42)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">6. JavaScript自动生成博文目录导航(40)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">7. javaweb学习总结(五)——Servlet开发(一)(39)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4239501.html">8. 使用Maven搭建Struts2+Spring3+Hibernate4的整合开发环境(34)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">9. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(32)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">10. Android开发学习总结(一)——搭建最新版本的Android开发环境(31)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(63)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">2. javaweb学习总结(五)——Servlet开发(一)(56)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">3. JavaWeb学习总结(一)——JavaWeb开发入门(48)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">4. JavaWeb学习总结(五十)——文件上传和下载(47)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">5. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(41)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">6. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(37)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/5149171.html">7. 微信开发学习总结（一）——微信开发环境搭建(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">8. JavaScript自动生成博文目录导航(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html">9. Android开发学习总结(一)——搭建最新版本的Android开发环境(35)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">10. javaweb学习总结(四)——Http协议(34)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+        
+		
+<div id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © 孤傲苍狼
+</div>
+	
+</div>			
+			
+	
+
+<!--PageEndHtml Block Begin-->
+<!--评论，生成气泡效果标签代码-->
+<script type="text/javascript" language="javascript"> 
+    $(document).ready(function() {
+        var commentTime = setInterval(function(){if($("#comments_pager_bottom").length>0){CommentBubble();clearTimeout(commentTime);}},50);
+    }); 
+    function CommentBubble()
+    {
+var w1 = '<div class="list">' +
+        '<table class="out" border="0" cellspacing="0" cellpadding="0"> ' +
+            '<tr>' +
+                '<td class="icontd" align="right" valign="bottom">' +
+                    '<img src="http://pic.cnitblog.com/face/289233/20131202131125.png" width="70px" height="57px"/>' +
+                '</td>' +
+                '<td align="left" valign="bottom" class="q">' +
+                    '<table border="0" cellpadding="0" cellspacing="0" style=""> ' +
+                        '<tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> ' +
+                        '<tr><td class="left"></td> <td align="left" class="conmts"><p>';
+ 
+ 
+        var w2 = '</p> </td> <td class="right"></td></tr> ' +
+                        '<tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> ' +
+                    '</table>' +
+                '</td> ' +
+            '</tr> ' +
+        '</table> ' +
+    '</div>';
+ 
+        $.each($(".blog_comment_body"), function(i, t) {
+            $(t).html(w1 + $(t).html() + w2);
+        });
+$(".louzhu").closest(".feedbackItem").find(".out").removeClass("out").addClass("inc");
+        /*.find(".q").attr("align","right");*/
+        }
+</script>
+<!--PageEndHtml Block End-->
+
+
+<div class="sideBar" id="sideBar"><div id="sideBarTab"><h2>目录导航</h2></div><div id="sideBarContents" style="display: none;"><dl><dt name="0">一、equals方法介绍</dt><dd name="1">1.1.通过下面的例子掌握equals的用法</dd><dd name="2">1.2.画出内存分析图分析c1和c2比较的结果</dd><dd name="3">1.3.如何比较两个字符串对象是否相等？</dd></dl></div></div></body></html>
