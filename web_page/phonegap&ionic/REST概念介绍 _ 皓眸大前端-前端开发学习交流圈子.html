@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.haomou.net/2015/02/10/2015_server_rest/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  
+  <title>REST概念介绍 | 皓眸大前端-前端开发学习交流圈子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于RESThttp作为一种通用网络协议，是目前应用最多，最通用，也是相对较为稳定的协议，易于开发，易于扩展。其实REST并不是一种新兴的技术语言，也不是什么新的技术框架。准确来说说REST只是一种概念、风格或者约束，是回归HTTP本身的建议。
+教程索引：(持续更新)loopback中文教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="REST概念介绍">
+<meta property="og:url" content="http://haomou.net/2015/02/10/2015_server_rest/index.html">
+<meta property="og:site_name" content="皓眸大前端-前端开发学习交流圈子">
+<meta property="og:description" content="关于RESThttp作为一种通用网络协议，是目前应用最多，最通用，也是相对较为稳定的协议，易于开发，易于扩展。其实REST并不是一种新兴的技术语言，也不是什么新的技术框架。准确来说说REST只是一种概念、风格或者约束，是回归HTTP本身的建议。
+教程索引：(持续更新)loopback中文教程">
+<meta property="og:image" content="http://haomou.net/images/loopback.png">
+<meta property="og:image" content="http://haomou.net/images/rest.png">
+<meta property="og:updated_time" content="2016-05-10T05:36:26.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="REST概念介绍">
+<meta name="twitter:description" content="关于RESThttp作为一种通用网络协议，是目前应用最多，最通用，也是相对较为稳定的协议，易于开发，易于扩展。其实REST并不是一种新兴的技术语言，也不是什么新的技术框架。准确来说说REST只是一种概念、风格或者约束，是回归HTTP本身的建议。
+教程索引：(持续更新)loopback中文教程">
+<meta name="twitter:image" content="http://haomou.net/images/loopback.png">
+  
+  
+    <link rel="icon" href="http://www.haomou.net/favicon.png">
+  
+
+  <link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/style.css">
+  
+    <link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/style(1).css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/logo.png); }
+    </style>
+  
+
+  
+    <link href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/css" rel="stylesheet" type="text/css">
+    <link href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/css(1)" rel="stylesheet" type="text/css">
+  
+
+<script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/share.js"></script><script type="text/javascript" async="" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/embed.js" charset="UTF-8"></script><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_32.css"><link type="text/css" rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/embed.default.css"><link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/share_popup.css"><link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/select_share.css"><link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/imgshare.css"><link rel="stylesheet" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_24.css"></head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+
+  <embed id="bac_flash" allowscriptaccess="never" allownetworking="internal" invokeurls="false" src="/images/bck.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" quality="high" autostart="0" wmode="transparent" width="100%" height="300" align="middle" style="position: absolute;margin-top: -100px;margin-left: 5px;">
+
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <!-- <a href="/" class="logo"></a> -->
+             <a href="http://www.fed123.com/"><img alt="fedǰ��" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">前端开发(Front End Developer)</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/">主页</a></li>
+              
+                    <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link current" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></li>
+                  
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-2015_server_rest" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      REST概念介绍
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子.html" class="article-date">
+  <time datetime="2015-02-10T02:10:10.000Z" itemprop="datePublished">2015-02-10</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="关于REST"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#关于REST" class="headerlink" title="关于REST"></a>关于REST</h3><p>http作为一种通用网络协议，是目前应用最多，最通用，也是相对较为稳定的协议，易于开发，易于扩展。其实REST并不是一种新兴的技术语言，也不是什么新的技术框架。准确来说说REST只是一种概念、风格或者约束，是回归HTTP本身的建议。</p>
+<p>教程索引：(持续更新)<br><a href="http://www.haomou.net/2015/02/06/2015_loopback_learn/" target="_blank" rel="external">loopback中文教程</a><br><a id="more"></a><br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/loopback.png" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/loopback.png" data-bd-imgshare-binded="1"><span class="caption">皓眸大前端开发学习</span></p>
+<p>转载原文：<a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2011/09/restful.html</a></p>
+<h3 id="rest原理"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#rest原理" class="headerlink" title="rest原理"></a>rest原理</h3><p>REST的核心概念是资源，使用HTTP提供的基本方法来对资源进行操作，一般的操作定义如下：POST（创建资源）、GET（获取资源）、PUT（修改资源）、DELETE（删除）。它们正好对应了CRUD。对资源的表述，一般的选择会是XML，但是我更加推荐使用JSON来表述资源。在网络中的传输量也小，而且也便于JavaScript来解析，而且现在其他语言解析也是非常方便的事情。不过，最关键的还是占用更少的资源，让同样的资源能够服务更多的人。图中展示了REST围绕资源的关系。<br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/rest.png" data-bd-imgshare-binded="1" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/rest.png"><span class="caption">皓眸大前端开发学习</span><br>REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。Fielding是一个非常重要的人，他是HTTP协议（1.0版和1.1版）的主要设计者、Apache服务器软件的作者之一、Apache基金会的第一任主席。所以，他的这篇论文一经发表，就引起了关注，并且立即对互联网开发产生了深远的影响。</p>
+<h4 id="rest解释"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#rest解释" class="headerlink" title="rest解释"></a>rest解释</h4><p>Fielding将他对互联网软件的架构原则，定名为REST，即Representational State Transfer的缩写。我对这个词组的翻译是”表现层状态转化”。<br>如果一个架构符合REST原则，就称它为RESTful架构。<br>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。</p>
+<h4 id="资源（Resources）"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#资源（Resources）" class="headerlink" title="资源（Resources）"></a>资源（Resources）</h4><p>REST的名称”表现层状态转化”中，省略了主语。”表现层”其实指的是”资源”（Resources）的”表现层”。<br>所谓”资源”，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。<br>所谓”上网”，就是与互联网上一系列的”资源”互动，调用它的URI。</p>
+<h4 id="表现层（Representation）"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#表现层（Representation）" class="headerlink" title="表现层（Representation）"></a>表现层（Representation）</h4><p>“资源”是一种信息实体，它可以有多种外在表现形式。我们把”资源”具体呈现出来的形式，叫做它的”表现层”（Representation）。<br>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。<br>URI只代表资源的实体，不代表它的形式。严格地说，有些网址最后的”.html”后缀名是不必要的，因为这个后缀名表示格式，属于”表现层”范畴，而URI应该只代表”资源”的位置。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现层”的描述。</p>
+<h4 id="状态转化（State-Transfer）"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#状态转化（State-Transfer）" class="headerlink" title="状态转化（State Transfer）"></a>状态转化（State Transfer）</h4><p>访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。<br>互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生”状态转化”（State Transfer）。而这种转化是建立在表现层之上的，所以就是”表现层状态转化”。<br>客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的动词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。</p>
+<p>综合上面的解释，我们总结一下什么是RESTful架构：<br>　　（1）每一个URI代表一种资源；<br>　　（2）客户端和服务器之间，传递这种资源的某种表现层；<br>　　（3）客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。</p>
+<h3 id="restful设计"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#restful设计" class="headerlink" title="restful设计"></a>restful设计</h3><h4 id="设计误区"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#设计误区" class="headerlink" title="设计误区"></a>设计误区</h4><p>RESTful架构有一些典型的设计误区。<br>最常见的一种设计错误，就是URI包含动词。因为”资源”表示一种实体，所以应该是名词，URI不应该有动词，动词应该放在HTTP协议中。<br>举例来说，某个URI是/posts/show/1，其中show是动词，这个URI就设计错了，正确的写法应该是/posts/1，然后用GET方法表示show。<br>如果某些动作是HTTP动词表示不了的，你就应该把动作做成一种资源。比如网上汇款，从账户1向账户2汇款500元，错误的URI是：<br>　　POST /accounts/1/transfer/500/to/2<br>正确的写法是把动词transfer改成名词transaction，资源不能是动词，但是可以是一种服务：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　　POST /transaction HTTP/1.1</span><br><span class="line">　　Host: 127.0.0.1</span><br><span class="line">　　</span><br><span class="line">　　from=1&amp;to=2&amp;amount=500.00</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>另一个设计误区，就是在URI中加入版本号：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　http://www.example.com/app/1.0/foo</span><br><span class="line">　　http://www.example.com/app/1.1/foo</span><br><span class="line">　　http://www.example.com/app/2.0/foo</span><br></pre></td></tr></tbody></table></figure>
+<p>因为不同的版本，可以理解成同一种资源的不同表现形式，所以应该采用同一个URI。版本号可以在HTTP请求头信息的Accept字段中进行区分（参见Versioning REST Services）：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　Accept: vnd.example-com.foo+json; version=1.0</span><br><span class="line">　　Accept: vnd.example-com.foo+json; version=1.1</span><br><span class="line">　　Accept: vnd.example-com.foo+json; version=2.0</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="谢谢！"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#谢谢！" class="headerlink" title="谢谢！"></a>谢谢！</h3><p>转载请注明出处：<a href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2015/02/10/2015_server_rest/</a></p>
+<p>有问题请留言。T_T  皓眸大前端开发学习  T_T</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://haomou.net/2015/02/10/2015_server_rest/" data-id="cio2a30uh008dgskpl2p83ept" class="article-share-link">Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/loopback/">loopback</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/%E6%95%99%E7%A8%8B/">教程</a></li></ul>
+
+      </footer>
+<!-- 添加的分享 -->
+      <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1463014373985"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_more" data-cmd="more"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    </div>
+  </article>
+  
+  
+    <section id="comments">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="post-2015_server_rest" data-title="REST概念介绍" data-url="http://haomou.net/2015/02/10/2015_server_rest/" id="ds-thread"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">5</span>条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1331012701492609150"><div class="ds-post-self" data-post-id="1331012701492609150" data-thread-id="1331012701492609146" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt="admin"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">admin</span></div><p>感谢  受益匪浅</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-06-03T18:47:02+08:00" title="2015年6月3日 下午6:47:02">2015年6月3日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609218"><div class="ds-post-self" data-post-id="1331012701492609218" data-thread-id="1331012701492609146" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="8284422"><a rel="nofollow author" target="_blank" href="http://weibo.com/1195663185" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=8284422&#39;;" title="DoReMiC88"><img src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/1" alt="DoReMiC88"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/1195663185" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=8284422&#39;;" rel="nofollow" target="_blank" data-user-id="8284422">DoReMiC88</a></div><p>确实写的好，赞你一个</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-14T17:30:35+08:00" title="2015年8月14日 下午5:30:35">2015年8月14日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6213639065783239425"><div class="ds-post-self" data-post-id="6213639065783239425" data-thread-id="1331012701492609146" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt="tusitisi"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">tusitisi</span></div><p>阮一峰老湿的文章拿过来用也不标注一下。。。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-11-05T20:13:03+08:00" title="2015年11月5日 下午8:13:03">2015年11月5日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6233313537947599617"><div class="ds-post-self" data-post-id="6233313537947599617" data-thread-id="1331012701492609146" data-root-id="6213639065783239425" data-source="duoshuo"><div class="ds-avatar" data-user-id="8197503"><a rel="nofollow author" target="_blank" href="http://t.qq.com/cherohuan" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=8197503&#39;;" title="曹欢欢"><img src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/100" alt="曹欢欢"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/cherohuan" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=8197503&#39;;" rel="nofollow" target="_blank" data-user-id="8197503">曹欢欢</a></div><p><a class="ds-comment-context" data-post-id="6233313537947599617" data-parent-id="6213639065783239425">回复 tusitisi: </a>添加了 哈哈 是转载的</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-12-28T20:40:03+08:00" title="2015年12月28日 下午8:40:03">2015年12月28日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6233315133389538050"><div class="ds-post-self" data-post-id="6233315133389538050" data-thread-id="1331012701492609146" data-root-id="6213639065783239425" data-source="duoshuo"><div class="ds-avatar"><img src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt="hztusitisi"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">hztusitisi</span></div><p><a class="ds-comment-context" data-post-id="6233315133389538050" data-parent-id="6233313537947599617">回复 曹欢欢: </a>赞~</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-12-28T20:46:14+08:00" title="2015年12月28日 下午8:46:14">2015年12月28日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://haomou.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://haomou.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://haomou.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://haomou.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://haomou.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://haomou.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://haomou.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://haomou.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1331012701492609146">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5707478c43dd3"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">皓眸网正在使用多说</a></p></div></div>
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:'haomou'};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+      <!-- 多说公共JS代码 end -->
+    </section>
+    
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-myself" style="clear:both">
+      <link media="all" href="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/nav.css" type="text/css" rel="stylesheet">
+      <!--<div id="container">-->
+      	<!--<div class=flash-box>-->
+      		<!--<h2>网易微专业(优秀学员直接进网易/阿里/腾讯/百度等名企)</h2>-->
+      		<!--<div class="big-pic" id="SwitchBigPic">-->
+      		<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2360" target="_blank" title="自由职业摄影师"><IMG src="/nav/images/top1.png"></A> &ndash;&gt;-->
+            <!--&lt;!&ndash;<A href="http://s.click.taobao.com/r2lgLYx" id="top2365" target="_blank" title="床上大号电脑桌36元包邮"><IMG src="/nav/images/computerDesk.png"></A>&ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2359" target="_blank" title="前端工程师微专业"><IMG src="/nav/images/webfront.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+            <!--" id="top2366" target="_blank" title="《产品经理》微专业"><IMG src="/nav/images/pm.jpg"></A>-->
+            <!--<A href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2367" target="_blank" title="《JavaWeb开发工程师》微专业"><IMG src="/nav/images/java.jpg"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2361" target="_blank" title="MySQL数据库管理工程师"><IMG src="/nav/images/top2.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2362" target="_blank" title="大数据工程师"><IMG src="/nav/images/top3.png"></A>-->
+      	<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2363" target="_blank" title="自动化测试工程师"><IMG src="/nav/images/top4.png"></A> &ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2364" target="_blank" title="移动应用测试工程师"><IMG src="/nav/images/top5.png"></A>-->
+
+
+      		<!--</div>-->
+      		<!--<div class="pic-list_0810">-->
+      			<!--<div id="ul_recom">-->
+                    <!--&lt;!&ndash;<A title="床上大号电脑桌36元包邮" target="_blank" href="http://s.click.taobao.com/r2lgLYx" blockid="top2365"><IMG src="/nav/images/computerDesks.png"><SPAN><STRONG>IT项目经理</STRONG></SPAN><SPAN>IT互联网经理人培训机构光环国际</SPAN></A>&ndash;&gt;-->
+      			  <!--&lt;!&ndash; <A class="currA" title="自由职业摄影师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2360"><IMG  src="/nav/images/top1s.png"><SPAN><STRONG>自由职业摄影师</STRONG></SPAN><SPAN>国际摄影爱好者协会主席，咔图摄影教育中心</SPAN></A> &ndash;&gt;-->
+      			  <!--<A class="currA" title="前端工程师微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2359"><IMG  src="/nav/images/webfronts.png"><SPAN><STRONG>前端工程师微专业</STRONG></SPAN><SPAN>网易一线资深前端开发工程师倾情打造！</SPAN></A>-->
+      			  <!--<A title="《产品经理》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2366"><IMG src="/nav/images/pms.jpg"><SPAN><STRONG>《产品经理》微专业</STRONG></SPAN><SPAN>网易云音乐、LOFTER、考拉海购、易信、邮箱等亿级产品的产品负责人亲授，只为打造国内顶尖产品经理课程。带你掌握从需求挖掘、产品设计到数据分析、产品运营的全部技能，帮你成为一个合格产品人</SPAN></A>-->
+                  <!--<A title="《JavaWeb开发工程师》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2367"><IMG src="/nav/images/javas.jpg"><SPAN><STRONG>《JavaWeb开发工程师》微专业</STRONG></SPAN><SPAN>聚焦JavaWeb开发工程师必知必会的知识技能。既有系统的知识体系保证学生吸收，又有大量网易内部案例和实践，保证学生无缝对接企业需求。优秀学生还可获得工作推荐。</SPAN></A>-->
+      			  <!--<A title="MySQL数据库管理工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2361"><IMG  src="/nav/images/top2s.png"><SPAN><STRONG>MySQL数据库管理工程师</STRONG></SPAN><SPAN>网易一线DBA团队打造</SPAN></A>-->
+      			  <!--<A title="大数据工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2362"><IMG src="/nav/images/top3s.png"><SPAN><STRONG>大数据工程师</STRONG></SPAN><SPAN>国际学术出版商Wiley开发</SPAN></A>-->
+      			<!--&lt;!&ndash;  <A title="自动化测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate" blockid="top2363"><IMG src="/nav/images/top4s.png"><SPAN><STRONG>自动化测试工程师</STRONG></SPAN><SPAN>网易杭州研究院Web自动化测试</SPAN></A> &ndash;&gt;-->
+      			   <!--<A title="移动应用测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2364"><IMG src="/nav/images/top5s.png"><SPAN><STRONG>移动应用测试工程师</STRONG></SPAN><SPAN>支付宝资深测试工程师</SPAN></A>-->
+
+
+      			<!--</div>-->
+      	   <!--</div>-->
+
+      	<!--</div>-->
+      <!--</div>-->
+
+      <h1> 前端技术导航 </h1>
+      <p>
+        <span>前端类：</span>
+        <a href="http://fex.baidu.com/" target="_blank">百度FEX</a>
+        <a href="http://isux.tencent.com/" target="_blank">腾讯ISUX</a>
+        <a href="http://www.w3cplus.com/" target="_blank">W3CPlus</a>
+        <a href="http://www.imooc.com/course/list" target="_blank">幕课网</a>
+        <a href="http://tympanus.net/codrops/" target="_blank">Codrops</a>
+        <a href="http://www.ruanyifeng.com/home.html" target="_blank">阮一峰</a>
+        <a href="http://codepen.io/" target="_blank">CodePen</a>
+        <a href="https://segmentfault.com/" target="_blank">segmentfault</a>
+      </p>
+      <p>
+        <span>工具类：</span>
+        <a href="http://fontello.com/" target="_blank">fontello</a>
+        <a href="http://lab.hakim.se/reveal-js/#/" target="_blank">REVEAL</a>
+        <a href="https://www.shiyanlou.com/courses/" target="_blank">实验楼</a>
+        <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Awesome</a>
+        <a href="https://kuler.adobe.com/" target="_blank">配色工具</a>
+        <a href="https://monaca.io/" target="_blank">monaca</a>
+        <a href="http://caniuse.com/" target="_blank">CanIUse</a>
+        <a href="http://browsershots.org/" target="_blank">浏览器快照</a>
+      </p>
+      <p>
+         <span>资讯类：</span>
+        <a href="http://www.36kr.com/" target="_blank">36氪</a>
+        <a href="http://cn.engadget.com/" target="_blank">瘾科技</a>
+        <a href="http://www.huxiu.com/" target="_blank">虎嗅网</a>
+        <a href="http://www.ikanchai.com/" target="_blank">砍柴网</a>
+        <a href="http://www.cnbeta.com/" target="_blank">cnBeta</a>
+      </p>
+      <p>
+         <span>常用API：</span>
+        <a href="http://www.ionicframework.com/" target="_blank">Ionic</a>
+        <a href="http://cordova.apache.org/docs/en/5.0.0/" target="_blank">Cordova</a>
+        <a href="http://docs.phonegap.com/en/edge/index.html" target="_blank">PhoneGap</a>
+        <a href="http://ngcordova.com/" target="_blank">Ng-Cordova</a>
+        <a href="http://docs.strongloop.com/display/public/LB/LoopBack" target="_blank">Loopback</a>
+        <a href="http://docs.angularjs.cn/api" target="_blank">Angular</a>
+        <a href="http://nej.netease.com/" target="_blank">NEJ</a>
+        <a href="http://regularjs.github.io/" target="_blank">Regular</a>
+      </p>
+
+  </div>
+  <div class="sidebar-top">
+    <span>前端工程师学习交流群：345413787</span>
+    <br><span>1. <a href="http://www.haomou.net/2014/10/06/2014_ionic_learn/" target="_blank">Ionic系列教程【年薪15w】</a></span>
+    <br><span>2. <a href="http://www.haomou.net/2015/11/05/2015_svg_learn/" target="_blank">SVG系列教程【年薪10w】</a></span>
+    <br><span>3. <a href="http://www.haomou.net/2015/08/30/2015_threejs0/" target="_blank">WebGL系列教程【年薪20w】</a></span>
+    <br><span>4. <a href="http://www.haomou.net/2015/02/06/2015_loopback_learn/" target="_blank">LoopBack系列教程【年薪15w】</a></span>
+    <br><span>5. <a href="http://www.haomou.net/2015/12/09/2015_web_learn/" target="_blank">前端工程师修炼教程【年薪20w】</a></span>
+    <br><span>6. <a href="http://www.haomou.net/2016/03/31/2016_java_learn/" target="_blank">JAVA工程师系列教程【年薪20w】</a></span>
+    <!-- <br><span >那一刻创业项目：<a href="http://m.pictcake.cn/"  target="_blank">求点赞（m.pictcake.cn）</a></span>
+    <br><span >基础知识学习：<a href="http://www.icourse163.org/"  target="_blank">推荐中国大学MOOC</a></span> -->
+    <br><span><a href="http://www.gamelofter.com/" target="_blank">出售域名(&nbsp; gamelofter.com &nbsp;)</a>，需要的联系我</span>
+    <br><span>想到网易实习(或正职工作)吗，扫码加入网易校招实习或正职内推QQ群:478483951,不定期更新内推招聘岗位！</span>
+    <div style="text-align:center;margin-top:10px;"><img width="150" height="200" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/qrcode1.jpg" data-bd-imgshare-binded="1"></div>
+      <!-- <div style="text-align:center;margin-top:10px;"><a href="http://t.kaola.com/ZrIb2e" target="_blank"><img width="100%" height="100%" src="/images/kaola.jpg"/></a></div>-->
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="http://www.haomou.net/2015/02/25/2015_loopback/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          LoopBack简介
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">ionic调试插件开发</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-11前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="title">2016-05-11前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-11T03:10:10.000Z" itemprop="datePublished">2016-05-11</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-10前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="title">2016-05-10前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-10T02:10:10.000Z" itemprop="datePublished">2016-05-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-09前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="title">2016-05-09前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-09T02:10:10.000Z" itemprop="datePublished">2016-05-09</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="thumbnail">
+  
+    <span style="background-image:url(/images/test.gif
+)" alt="测试培训学习总结" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="title">测试培训学习总结</a></p>
+              <p class="item-date"><time datetime="2016-04-26T12:03:10.000Z" itemprop="datePublished">2016-04-26</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-04-20前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="title">2016-04-20前端早读</a></p>
+              <p class="item-date"><time datetime="2016-04-20T02:10:10.000Z" itemprop="datePublished">2016-04-20</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a><span class="category-list-count">57</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/04/">April 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/03/">March 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/01/">January 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/12/">December 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/10/">October 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/03/">March 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/02/">February 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/10/">October 2014</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/09/">September 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/08/">August 2014</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/07/">July 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="http://www.haomou.net/tags/API/" style="font-size: 10px;">API</a> <a href="http://www.haomou.net/tags/Android/" style="font-size: 10px;">Android</a> <a href="http://www.haomou.net/tags/AngularJS/" style="font-size: 14.55px;">AngularJS</a> <a href="http://www.haomou.net/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="http://www.haomou.net/tags/Grunt/" style="font-size: 10px;">Grunt</a> <a href="http://www.haomou.net/tags/Gulp/" style="font-size: 10.91px;">Gulp</a> <a href="http://www.haomou.net/tags/HTML5/" style="font-size: 10.91px;">HTML5</a> <a href="http://www.haomou.net/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="http://www.haomou.net/tags/HTTPS/" style="font-size: 10.91px;">HTTPS</a> <a href="http://www.haomou.net/tags/JAVA/" style="font-size: 10.91px;">JAVA</a> <a href="http://www.haomou.net/tags/JavaScript/" style="font-size: 16.36px;">JavaScript</a> <a href="http://www.haomou.net/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="http://www.haomou.net/tags/NodeJS/" style="font-size: 15.45px;">NodeJS</a> <a href="http://www.haomou.net/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="http://www.haomou.net/tags/RSA/" style="font-size: 10px;">RSA</a> <a href="http://www.haomou.net/tags/WebGL/" style="font-size: 13.64px;">WebGL</a> <a href="http://www.haomou.net/tags/Webpack/" style="font-size: 10.91px;">Webpack</a> <a href="http://www.haomou.net/tags/android/" style="font-size: 13.64px;">android</a> <a href="http://www.haomou.net/tags/bearer/" style="font-size: 10px;">bearer</a> <a href="http://www.haomou.net/tags/buffer/" style="font-size: 10px;">buffer</a> <a href="http://www.haomou.net/tags/bug/" style="font-size: 10px;">bug</a> <a href="http://www.haomou.net/tags/canvas/" style="font-size: 10.91px;">canvas</a> <a href="http://www.haomou.net/tags/centos/" style="font-size: 11.82px;">centos</a> <a href="http://www.haomou.net/tags/css/" style="font-size: 12.73px;">css</a> <a href="http://www.haomou.net/tags/fabric/" style="font-size: 10px;">fabric</a> <a href="http://www.haomou.net/tags/git/" style="font-size: 11.82px;">git</a> <a href="http://www.haomou.net/tags/html/" style="font-size: 10px;">html</a> <a href="http://www.haomou.net/tags/hybridApp/" style="font-size: 10px;">hybridApp</a> <a href="http://www.haomou.net/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="http://www.haomou.net/tags/ionic/" style="font-size: 18.18px;">ionic</a> <a href="http://www.haomou.net/tags/jQuery/" style="font-size: 11.82px;">jQuery</a> <a href="http://www.haomou.net/tags/loopback/" style="font-size: 17.27px;">loopback</a> <a href="http://www.haomou.net/tags/mongoDB/" style="font-size: 11.82px;">mongoDB</a> <a href="http://www.haomou.net/tags/phonegap/" style="font-size: 10.91px;">phonegap</a> <a href="http://www.haomou.net/tags/reapp/" style="font-size: 10px;">reapp</a> <a href="http://www.haomou.net/tags/scss/" style="font-size: 10px;">scss</a> <a href="http://www.haomou.net/tags/session/" style="font-size: 10px;">session</a> <a href="http://www.haomou.net/tags/storage/" style="font-size: 10px;">storage</a> <a href="http://www.haomou.net/tags/svg/" style="font-size: 13.64px;">svg</a> <a href="http://www.haomou.net/tags/token/" style="font-size: 10.91px;">token</a> <a href="http://www.haomou.net/tags/ubuntu/" style="font-size: 10.91px;">ubuntu</a> <a href="http://www.haomou.net/tags/weinre/" style="font-size: 10px;">weinre</a> <a href="http://www.haomou.net/tags/%E4%BC%AA%E7%B1%BB/" style="font-size: 10px;">伪类</a> <a href="http://www.haomou.net/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" style="font-size: 10px;">兼容性</a> <a href="http://www.haomou.net/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="http://www.haomou.net/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 10.91px;">加密</a> <a href="http://www.haomou.net/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="http://www.haomou.net/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 10.91px;">图像处理</a> <a href="http://www.haomou.net/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="http://www.haomou.net/tags/%E5%AE%89%E5%85%A8/" style="font-size: 11.82px;">安全</a> <a href="http://www.haomou.net/tags/%E5%BF%83%E6%83%85/" style="font-size: 10px;">心情</a> <a href="http://www.haomou.net/tags/%E6%80%9D%E8%80%83/" style="font-size: 10px;">思考</a> <a href="http://www.haomou.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="http://www.haomou.net/tags/%E6%95%99%E7%A8%8B/" style="font-size: 19.09px;">教程</a> <a href="http://www.haomou.net/tags/%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/" style="font-size: 10px;">数学理论</a> <a href="http://www.haomou.net/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 10px;">模板引擎</a> <a href="http://www.haomou.net/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="http://www.haomou.net/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="http://www.haomou.net/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.36px;">笔记</a> <a href="http://www.haomou.net/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="http://www.haomou.net/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="http://www.haomou.net/tags/%E8%B7%A8%E5%9F%9F/" style="font-size: 10px;">跨域</a> <a href="http://www.haomou.net/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a> <a href="http://www.haomou.net/tags/%E9%97%AD%E5%8C%85/" style="font-size: 10px;">闭包</a> <a href="http://www.haomou.net/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10.91px;">问题</a> <a href="http://www.haomou.net/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div id="haomou_ad" class="widget-wrap widget-list">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">前端工程师微专业【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《JavaWeb开发工程师》【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">大数据工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">自动化测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">移动应用测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《产品经理》微专业【年薪25w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/55001.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">IT项目经理【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">自由职业摄影师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">MySQL数据库管理工程师【年薪15w】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+<dl id="outline" style="position: relative; margin-top: 20px;"><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#关于REST" class="nslog:1026" title="关于REST" onclick="return false;" style="color: rgb(251, 101, 128);">关于REST</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">0</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#rest原理" class="nslog:1026" title="rest原理" onclick="return false;" style="color: rgb(251, 101, 128);">rest原理</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">1</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#restful设计" class="nslog:1026" title="restful设计" onclick="return false;" style="color: rgb(103, 169, 210);">restful设计</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">2</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#谢谢！" class="nslog:1026" title="谢谢！" onclick="return false;" style="color: rgb(103, 169, 210);">谢谢！</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">3</span></dd></dl></aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <!-- <a href="/" class="logo"></a> -->
+          <a href="http://www.fed123.com/"><img alt="fed前端" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+        </h1>
+        <p>© 2016 网易高级前端工程师</p>
+        <p>苏ICP备13018740号-6
+        <!-- <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5849006'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D5849006%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script> -->
+        </p>
+      </div>
+      <div class="foot-nav">
+        <img alt="FED前端开发" src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/hm.jpg" width="100" height="120" style="border-radius: 5px;margin-top: 5px;margin-right: 5px;float:left;" data-bd-imgshare-binded="1">
+          <div style="color: #428bca;text-align: center;font-size: 18px;padding:5px;">曹欢欢(chale)</div>中国科学技术大学硕士研究生，网易高级前端工程师，5年前端工作经验，刻苦专研，自学成才。FED123.com是前端开发（Front End Developer）工程师学习交流的家园，分享精彩的前端早读，前端后端开发相关的知识点，大家共同学习进步！
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/jquery.scrollLoading.js"></script>
+  <script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/main.js"></script>
+
+
+<script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/html-patch.js"></script>
+<script src="./REST概念介绍 _ 皓眸大前端-前端开发学习交流圈子_files/script.js"></script>
+
+  </div>
+
+
+<iframe frameborder="0" id="bdSharePopup_selectshare1463014373997bg" class="bdselect_share_bg" style="top: 928px; left: 810px; display: inline; width: 300px; height: 136px;"></iframe><div id="bdSharePopup_selectshare1463014373997box" style="top: 928px; left: 810px; display: block; width: 300px;" share-type="selectshare" class="bdselect_share_box" data-bd-bind="1463014373996"><div class="selectshare-mod-triangle"><div class="triangle-border"></div><div class="triangle-inset"></div></div><div class="bdselect_share_head" style="width: 300px;"><span>分享到</span><a href="http://www.baidu.com/s?wd=%E5%BF%83%E6%A6%82%E5%BF%B5%E6%98%AF%E8%B5%84%E6%BA%90%EF%BC%8C%E4%BD%BF%E7%94%A8HTTP%E6%8F%90%E4%BE%9B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E6%9D%A5%E5%AF%B9&tn=SE_hldp08010_vurs2xrp" class="bdselect_share_dialog_search" target="_blank"><i class="bdselect_share_dialog_search_i"></i><span class="bdselect_share_dialog_search_span">百度一下</span></a><a class="bdselect_share_dialog_close"></a></div><div class="bdselect_share_content"><ul class="bdselect_share_list bdshare-button-style0-32"><div class="bdselect_share_partners"><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_qzone" data-cmd="qzone"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_tsina" data-cmd="tsina"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_tqq" data-cmd="tqq"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_renren" data-cmd="renren"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_weixin" data-cmd="weixin"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_sqq" data-cmd="sqq"></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_youdao" data-cmd="youdao"></a></div><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" class="bds_more" data-cmd="more"></a></ul></div></div><div id="bdimgshare_1463014374003" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-24 sr-bdimgshare-black" style="height: 42px; line-height: 32px; font-size: 14px; position: absolute; top: 1226px; left: 511px; width: 479px; display: none;" data-bd-bind="1463014374002"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-24"><label class="bdimgshare-lbl">分享到：</label><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_tqq" data-cmd="tqq" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_renren" data-cmd="renren" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_sqq" data-cmd="sqq" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_youdao" data-cmd="youdao" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_server_rest/#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>

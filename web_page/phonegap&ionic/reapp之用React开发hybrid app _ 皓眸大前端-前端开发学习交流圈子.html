@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.haomou.net/2015/05/31/2015_reapp/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  
+  <title>reapp之用React开发hybrid app | 皓眸大前端-前端开发学习交流圈子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是Reapp用了这么久Ionic，是不是发现很多问题。我们来介绍一下Reapp吧。如果Ionic框架可以看成Angular与cordova的结合，那么Reapp可以看成是reactjs与cordova的结合。Reapp是一款使用React来开发混合应用的开源框架，为开发者提供了他们开发所需的一切，其中包括各式模块的集合、UI工具包、引导应用的CLI，以及一个预配置的构建服务器，支持Androi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reapp之用React开发hybrid app">
+<meta property="og:url" content="http://haomou.net/2015/05/31/2015_reapp/index.html">
+<meta property="og:site_name" content="皓眸大前端-前端开发学习交流圈子">
+<meta property="og:description" content="什么是Reapp用了这么久Ionic，是不是发现很多问题。我们来介绍一下Reapp吧。如果Ionic框架可以看成Angular与cordova的结合，那么Reapp可以看成是reactjs与cordova的结合。Reapp是一款使用React来开发混合应用的开源框架，为开发者提供了他们开发所需的一切，其中包括各式模块的集合、UI工具包、引导应用的CLI，以及一个预配置的构建服务器，支持Androi">
+<meta property="og:image" content="http://haomou.net/images/reapp.jpg">
+<meta property="og:image" content="http://haomou.net/images/reapp1.jpg">
+<meta property="og:image" content="http://haomou.net/images/reapp2.jpg">
+<meta property="og:updated_time" content="2016-05-10T05:36:25.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reapp之用React开发hybrid app">
+<meta name="twitter:description" content="什么是Reapp用了这么久Ionic，是不是发现很多问题。我们来介绍一下Reapp吧。如果Ionic框架可以看成Angular与cordova的结合，那么Reapp可以看成是reactjs与cordova的结合。Reapp是一款使用React来开发混合应用的开源框架，为开发者提供了他们开发所需的一切，其中包括各式模块的集合、UI工具包、引导应用的CLI，以及一个预配置的构建服务器，支持Androi">
+<meta name="twitter:image" content="http://haomou.net/images/reapp.jpg">
+  
+  
+    <link rel="icon" href="http://www.haomou.net/favicon.png">
+  
+
+  <link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/style.css">
+  
+    <link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/style(1).css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/logo.png); }
+    </style>
+  
+
+  
+    <link href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/css" rel="stylesheet" type="text/css">
+    <link href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/css(1)" rel="stylesheet" type="text/css">
+  
+
+<script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/share.js"></script><script type="text/javascript" async="" src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/embed.js" charset="UTF-8"></script><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_32.css"><link type="text/css" rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/embed.default.css"><link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/imgshare.css"><link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_24.css"><link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/share_popup.css"><link rel="stylesheet" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/select_share.css"></head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+
+  <embed id="bac_flash" allowscriptaccess="never" allownetworking="internal" invokeurls="false" src="/images/bck.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" quality="high" autostart="0" wmode="transparent" width="100%" height="300" align="middle" style="position: absolute;margin-top: -100px;margin-left: 5px;">
+
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <!-- <a href="/" class="logo"></a> -->
+             <a href="http://www.fed123.com/"><img alt="fedǰ��" src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">前端开发(Front End Developer)</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/">主页</a></li>
+              
+                    <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link current" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></li>
+                  
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-2015_reapp" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      reapp之用React开发hybrid app
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子.html" class="article-date">
+  <time datetime="2015-05-31T01:06:09.000Z" itemprop="datePublished">2015-05-31</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="什么是Reapp"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#什么是Reapp" class="headerlink" title="什么是Reapp"></a>什么是Reapp</h3><p>用了这么久Ionic，是不是发现很多问题。我们来介绍一下Reapp吧。如果Ionic框架可以看成Angular与cordova的结合，那么Reapp可以看成是reactjs与cordova的结合。Reapp是一款使用React来开发混合应用的开源框架，为开发者提供了他们开发所需的一切，其中包括各式模块的集合、UI工具包、引导应用的CLI，以及一个预配置的构建服务器，支持Android、iOS。起先，Reapp的构建并不是以成为一个框架为目的，相反，它是作为一个UI工具包开始的。Reapp很简单，你甚至可以只是用其中的UI工具包就能构建出一款应用。首先，我们通过一张图表来看一下Reapp与其他几款框架的区别：</p>
+<p>教程索引：(持续更新)<br><a href="http://www.haomou.net/2015/05/31/2015_reapp_learn/" target="_blank" rel="external">Reapp中文教程</a><br><a id="more"></a><br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/reapp.jpg" src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/reapp.jpg" data-bd-imgshare-binded="1"><span class="caption">皓眸大前端开发学习</span></p>
+<p>转载请注明出处：<a href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2015/05/31/2015_reapp/</a></p>
+<h3 id="React与Reapp"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#React与Reapp" class="headerlink" title="React与Reapp"></a>React与Reapp</h3><p>React是一个构建用户界面的客户端JavaScript框架，由Facebook最初开发并开源。React使用一个称为JSX的声明式语法和JavaScript语法扩展来描述HTML布局。每个React组件都通过属性和状态得以支持和配置，对它们的改变将通过单向数据流触发更新。这些更新是通过虚拟DOM优化的，它区别对待不同的组件，确保只有状态变换导致的那些修改才得到刷新。</p>
+<p>表面上，Reapp与React Native有着惊人的相似之处，二者都使用React来创建应用程序用户界面的框架。然而，在底层机制上这两个框架之间却具有明显的哲学差异。React Native 将React组件绑定到原生UI控件中，构建与设备操作系统匹配的界面。而Reapp却是将React组件绑定到一个跨平台的UI-Kit来创建混搭应用。</p>
+<p>接下来，我们详细了解一下Reapp的各个部分及功能。</p>
+<h3 id="Reapp功能"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#Reapp功能" class="headerlink" title="Reapp功能"></a>Reapp功能</h3><h4 id="CLI组件"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#CLI组件" class="headerlink" title="CLI组件"></a>CLI组件</h4><p>CLI拥有两个主要功能：首先是构建新的应用；其次是可以运行你的应用。Reapp服务器是一个可以与默认应用结构工作默契的简单的express服务器。<br>CLI的使用：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Usage: reapp [options] [command]  </span><br><span class="line">Commands:  </span><br><span class="line">  new [name]  creates a directory with a new reapp-starter scaffold  </span><br><span class="line">  run         runs a reapp application with express/webpack-dev-server  </span><br><span class="line">  build       builds a reapp application to a bundle in ./build  </span><br><span class="line">  debug       use this to for opening issues!  </span><br><span class="line">  help [cmd]  display help for [cmd]</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h4 id="UI-Kit"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#UI-Kit" class="headerlink" title="UI Kit"></a>UI Kit</h4><p>动画：动态和完全交互式的JavaScript编写的动画。<br>样式：JavaScript + Flexbox，可组合、动态、可声明接口。<br>主题：混合匹配物理场数、风格样式和动画来制作自己的主题。<br>视图：使用Views、ViewLists甚至是嵌套的ViewLists来构建视图。<br>多态：所有的动画和样式都可以混合使用，让设计多样化。</p>
+<h3 id="具体模块"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#具体模块" class="headerlink" title="具体模块"></a>具体模块</h3><h4 id="reapp-ui"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#reapp-ui" class="headerlink" title="reapp-ui"></a>reapp-ui</h4><p>reapp-ui是React组件的一个合集，用于构建应用的UI：</p>
+<p>能够很好的协同工作<br>具有极少依赖性的轻量级代码<br>主题化<br>适应众多平台</p>
+<h4 id="reapp-pack"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#reapp-pack" class="headerlink" title="reapp-pack"></a>reapp-pack</h4><p>生成webpack配置的一个辅助，还带有其他一些小的辅助功能。包括能够简单使用webpack开发服务器的./webpackServer。</p>
+<p>使用：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var config = require('./config/webpack.run.js');  </span><br><span class="line">var webpackServer = require('reapp-pack/webpackServer');  </span><br><span class="line">webpackServer(config, {  </span><br><span class="line">  port: 3011,  </span><br><span class="line">  debug: true,  </span><br><span class="line">  hot: true  </span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h4 id="reapp-routes"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#reapp-routes" class="headerlink" title="reapp-routes"></a>reapp-routes</h4><p>reapp-routes是一个生成表示路线树的小型库，同时映射到路径。它最主要的作用就是节省代码和执行的一致性。</p>
+<p>使用前：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var App = require('./components/App');  </span><br><span class="line">var Sub = require('./components/app/Sub');  </span><br><span class="line">var OtherSub = require('./components/app/OtherSub');  </span><br><span class="line">module.exports =  </span><br><span class="line">  &lt;Route handler={App} path="/"&gt;  </span><br><span class="line">    &lt;Route name="sub" handler={Sub} /&gt;  </span><br><span class="line">    &lt;Route name="otherSub" handler={OtherSub} /&gt;  </span><br><span class="line">  &lt;/Route&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>使用后：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module.exports = routes(require,  </span><br><span class="line">  route('app',  </span><br><span class="line">    route('sub'),  </span><br><span class="line">    route('otherSub')  </span><br><span class="line">  )  </span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>更多模块具体细节可以点击查看。</p>
+<p>Reapp提供了两个示例应用，并将代码托管至Github上。</p>
+<p><a href="https://github.com/reapp/kitchen-sink" target="_blank" rel="external">Kitchen_Sink</a><br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/reapp1.jpg" data-bd-imgshare-binded="1"><span class="caption">皓眸大前端开发学习</span></p>
+<p><a href="https://github.com/reapp/hacker-news-app" target="_blank" rel="external">Hacker News Reader</a><br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/reapp2.jpg" data-bd-imgshare-binded="1"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="谢谢！"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#谢谢！" class="headerlink" title="谢谢！"></a>谢谢！</h3><p>转载请注明出处：<a href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2015/05/31/2015_reapp/</a></p>
+<p>有问题请留言。T_T  皓眸大前端开发学习  T_T</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://haomou.net/2015/05/31/2015_reapp/" data-id="cio2a30u7007pgskphroe6l5g" class="article-share-link">Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/hybridApp/">hybridApp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/reapp/">reapp</a></li></ul>
+
+      </footer>
+<!-- 添加的分享 -->
+      <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1463014405729"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_more" data-cmd="more"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    </div>
+  </article>
+  
+  
+    <section id="comments">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="post-2015_reapp" data-title="reapp之用React开发hybrid app" data-url="http://haomou.net/2015/05/31/2015_reapp/" id="ds-thread"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">0条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">还没有评论，沙发等你来抢</li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://haomou.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://haomou.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://haomou.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://haomou.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://haomou.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://haomou.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://haomou.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://haomou.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1331012701492609184">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5707478c43dd3"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">皓眸网正在使用多说</a></p></div></div>
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:'haomou'};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+      <!-- 多说公共JS代码 end -->
+    </section>
+    
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-myself" style="clear:both">
+      <link media="all" href="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/nav.css" type="text/css" rel="stylesheet">
+      <!--<div id="container">-->
+      	<!--<div class=flash-box>-->
+      		<!--<h2>网易微专业(优秀学员直接进网易/阿里/腾讯/百度等名企)</h2>-->
+      		<!--<div class="big-pic" id="SwitchBigPic">-->
+      		<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2360" target="_blank" title="自由职业摄影师"><IMG src="/nav/images/top1.png"></A> &ndash;&gt;-->
+            <!--&lt;!&ndash;<A href="http://s.click.taobao.com/r2lgLYx" id="top2365" target="_blank" title="床上大号电脑桌36元包邮"><IMG src="/nav/images/computerDesk.png"></A>&ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2359" target="_blank" title="前端工程师微专业"><IMG src="/nav/images/webfront.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+            <!--" id="top2366" target="_blank" title="《产品经理》微专业"><IMG src="/nav/images/pm.jpg"></A>-->
+            <!--<A href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2367" target="_blank" title="《JavaWeb开发工程师》微专业"><IMG src="/nav/images/java.jpg"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2361" target="_blank" title="MySQL数据库管理工程师"><IMG src="/nav/images/top2.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2362" target="_blank" title="大数据工程师"><IMG src="/nav/images/top3.png"></A>-->
+      	<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2363" target="_blank" title="自动化测试工程师"><IMG src="/nav/images/top4.png"></A> &ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2364" target="_blank" title="移动应用测试工程师"><IMG src="/nav/images/top5.png"></A>-->
+
+
+      		<!--</div>-->
+      		<!--<div class="pic-list_0810">-->
+      			<!--<div id="ul_recom">-->
+                    <!--&lt;!&ndash;<A title="床上大号电脑桌36元包邮" target="_blank" href="http://s.click.taobao.com/r2lgLYx" blockid="top2365"><IMG src="/nav/images/computerDesks.png"><SPAN><STRONG>IT项目经理</STRONG></SPAN><SPAN>IT互联网经理人培训机构光环国际</SPAN></A>&ndash;&gt;-->
+      			  <!--&lt;!&ndash; <A class="currA" title="自由职业摄影师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2360"><IMG  src="/nav/images/top1s.png"><SPAN><STRONG>自由职业摄影师</STRONG></SPAN><SPAN>国际摄影爱好者协会主席，咔图摄影教育中心</SPAN></A> &ndash;&gt;-->
+      			  <!--<A class="currA" title="前端工程师微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2359"><IMG  src="/nav/images/webfronts.png"><SPAN><STRONG>前端工程师微专业</STRONG></SPAN><SPAN>网易一线资深前端开发工程师倾情打造！</SPAN></A>-->
+      			  <!--<A title="《产品经理》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2366"><IMG src="/nav/images/pms.jpg"><SPAN><STRONG>《产品经理》微专业</STRONG></SPAN><SPAN>网易云音乐、LOFTER、考拉海购、易信、邮箱等亿级产品的产品负责人亲授，只为打造国内顶尖产品经理课程。带你掌握从需求挖掘、产品设计到数据分析、产品运营的全部技能，帮你成为一个合格产品人</SPAN></A>-->
+                  <!--<A title="《JavaWeb开发工程师》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2367"><IMG src="/nav/images/javas.jpg"><SPAN><STRONG>《JavaWeb开发工程师》微专业</STRONG></SPAN><SPAN>聚焦JavaWeb开发工程师必知必会的知识技能。既有系统的知识体系保证学生吸收，又有大量网易内部案例和实践，保证学生无缝对接企业需求。优秀学生还可获得工作推荐。</SPAN></A>-->
+      			  <!--<A title="MySQL数据库管理工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2361"><IMG  src="/nav/images/top2s.png"><SPAN><STRONG>MySQL数据库管理工程师</STRONG></SPAN><SPAN>网易一线DBA团队打造</SPAN></A>-->
+      			  <!--<A title="大数据工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2362"><IMG src="/nav/images/top3s.png"><SPAN><STRONG>大数据工程师</STRONG></SPAN><SPAN>国际学术出版商Wiley开发</SPAN></A>-->
+      			<!--&lt;!&ndash;  <A title="自动化测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate" blockid="top2363"><IMG src="/nav/images/top4s.png"><SPAN><STRONG>自动化测试工程师</STRONG></SPAN><SPAN>网易杭州研究院Web自动化测试</SPAN></A> &ndash;&gt;-->
+      			   <!--<A title="移动应用测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2364"><IMG src="/nav/images/top5s.png"><SPAN><STRONG>移动应用测试工程师</STRONG></SPAN><SPAN>支付宝资深测试工程师</SPAN></A>-->
+
+
+      			<!--</div>-->
+      	   <!--</div>-->
+
+      	<!--</div>-->
+      <!--</div>-->
+
+      <h1> 前端技术导航 </h1>
+      <p>
+        <span>前端类：</span>
+        <a href="http://fex.baidu.com/" target="_blank">百度FEX</a>
+        <a href="http://isux.tencent.com/" target="_blank">腾讯ISUX</a>
+        <a href="http://www.w3cplus.com/" target="_blank">W3CPlus</a>
+        <a href="http://www.imooc.com/course/list" target="_blank">幕课网</a>
+        <a href="http://tympanus.net/codrops/" target="_blank">Codrops</a>
+        <a href="http://www.ruanyifeng.com/home.html" target="_blank">阮一峰</a>
+        <a href="http://codepen.io/" target="_blank">CodePen</a>
+        <a href="https://segmentfault.com/" target="_blank">segmentfault</a>
+      </p>
+      <p>
+        <span>工具类：</span>
+        <a href="http://fontello.com/" target="_blank">fontello</a>
+        <a href="http://lab.hakim.se/reveal-js/#/" target="_blank">REVEAL</a>
+        <a href="https://www.shiyanlou.com/courses/" target="_blank">实验楼</a>
+        <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Awesome</a>
+        <a href="https://kuler.adobe.com/" target="_blank">配色工具</a>
+        <a href="https://monaca.io/" target="_blank">monaca</a>
+        <a href="http://caniuse.com/" target="_blank">CanIUse</a>
+        <a href="http://browsershots.org/" target="_blank">浏览器快照</a>
+      </p>
+      <p>
+         <span>资讯类：</span>
+        <a href="http://www.36kr.com/" target="_blank">36氪</a>
+        <a href="http://cn.engadget.com/" target="_blank">瘾科技</a>
+        <a href="http://www.huxiu.com/" target="_blank">虎嗅网</a>
+        <a href="http://www.ikanchai.com/" target="_blank">砍柴网</a>
+        <a href="http://www.cnbeta.com/" target="_blank">cnBeta</a>
+      </p>
+      <p>
+         <span>常用API：</span>
+        <a href="http://www.ionicframework.com/" target="_blank">Ionic</a>
+        <a href="http://cordova.apache.org/docs/en/5.0.0/" target="_blank">Cordova</a>
+        <a href="http://docs.phonegap.com/en/edge/index.html" target="_blank">PhoneGap</a>
+        <a href="http://ngcordova.com/" target="_blank">Ng-Cordova</a>
+        <a href="http://docs.strongloop.com/display/public/LB/LoopBack" target="_blank">Loopback</a>
+        <a href="http://docs.angularjs.cn/api" target="_blank">Angular</a>
+        <a href="http://nej.netease.com/" target="_blank">NEJ</a>
+        <a href="http://regularjs.github.io/" target="_blank">Regular</a>
+      </p>
+
+  </div>
+  <div class="sidebar-top">
+    <span>前端工程师学习交流群：345413787</span>
+    <br><span>1. <a href="http://www.haomou.net/2014/10/06/2014_ionic_learn/" target="_blank">Ionic系列教程【年薪15w】</a></span>
+    <br><span>2. <a href="http://www.haomou.net/2015/11/05/2015_svg_learn/" target="_blank">SVG系列教程【年薪10w】</a></span>
+    <br><span>3. <a href="http://www.haomou.net/2015/08/30/2015_threejs0/" target="_blank">WebGL系列教程【年薪20w】</a></span>
+    <br><span>4. <a href="http://www.haomou.net/2015/02/06/2015_loopback_learn/" target="_blank">LoopBack系列教程【年薪15w】</a></span>
+    <br><span>5. <a href="http://www.haomou.net/2015/12/09/2015_web_learn/" target="_blank">前端工程师修炼教程【年薪20w】</a></span>
+    <br><span>6. <a href="http://www.haomou.net/2016/03/31/2016_java_learn/" target="_blank">JAVA工程师系列教程【年薪20w】</a></span>
+    <!-- <br><span >那一刻创业项目：<a href="http://m.pictcake.cn/"  target="_blank">求点赞（m.pictcake.cn）</a></span>
+    <br><span >基础知识学习：<a href="http://www.icourse163.org/"  target="_blank">推荐中国大学MOOC</a></span> -->
+    <br><span><a href="http://www.gamelofter.com/" target="_blank">出售域名(&nbsp; gamelofter.com &nbsp;)</a>，需要的联系我</span>
+    <br><span>想到网易实习(或正职工作)吗，扫码加入网易校招实习或正职内推QQ群:478483951,不定期更新内推招聘岗位！</span>
+    <div style="text-align:center;margin-top:10px;"><img width="150" height="200" src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/qrcode1.jpg" data-bd-imgshare-binded="1"></div>
+      <!-- <div style="text-align:center;margin-top:10px;"><a href="http://t.kaola.com/ZrIb2e" target="_blank"><img width="100%" height="100%" src="/images/kaola.jpg"/></a></div>-->
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="http://www.haomou.net/2015/06/04/2015_webpack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Webpack模块加载神器
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="http://www.haomou.net/2015/05/19/2015_chromeOS_apk/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">chrome运行android应用</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-11前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="title">2016-05-11前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-11T03:10:10.000Z" itemprop="datePublished">2016-05-11</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-10前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="title">2016-05-10前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-10T02:10:10.000Z" itemprop="datePublished">2016-05-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-09前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="title">2016-05-09前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-09T02:10:10.000Z" itemprop="datePublished">2016-05-09</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="thumbnail">
+  
+    <span style="background-image:url(/images/test.gif
+)" alt="测试培训学习总结" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="title">测试培训学习总结</a></p>
+              <p class="item-date"><time datetime="2016-04-26T12:03:10.000Z" itemprop="datePublished">2016-04-26</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-04-20前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="title">2016-04-20前端早读</a></p>
+              <p class="item-date"><time datetime="2016-04-20T02:10:10.000Z" itemprop="datePublished">2016-04-20</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a><span class="category-list-count">57</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/04/">April 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/03/">March 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/01/">January 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/12/">December 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/10/">October 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/03/">March 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/02/">February 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/10/">October 2014</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/09/">September 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/08/">August 2014</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/07/">July 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="http://www.haomou.net/tags/API/" style="font-size: 10px;">API</a> <a href="http://www.haomou.net/tags/Android/" style="font-size: 10px;">Android</a> <a href="http://www.haomou.net/tags/AngularJS/" style="font-size: 14.55px;">AngularJS</a> <a href="http://www.haomou.net/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="http://www.haomou.net/tags/Grunt/" style="font-size: 10px;">Grunt</a> <a href="http://www.haomou.net/tags/Gulp/" style="font-size: 10.91px;">Gulp</a> <a href="http://www.haomou.net/tags/HTML5/" style="font-size: 10.91px;">HTML5</a> <a href="http://www.haomou.net/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="http://www.haomou.net/tags/HTTPS/" style="font-size: 10.91px;">HTTPS</a> <a href="http://www.haomou.net/tags/JAVA/" style="font-size: 10.91px;">JAVA</a> <a href="http://www.haomou.net/tags/JavaScript/" style="font-size: 16.36px;">JavaScript</a> <a href="http://www.haomou.net/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="http://www.haomou.net/tags/NodeJS/" style="font-size: 15.45px;">NodeJS</a> <a href="http://www.haomou.net/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="http://www.haomou.net/tags/RSA/" style="font-size: 10px;">RSA</a> <a href="http://www.haomou.net/tags/WebGL/" style="font-size: 13.64px;">WebGL</a> <a href="http://www.haomou.net/tags/Webpack/" style="font-size: 10.91px;">Webpack</a> <a href="http://www.haomou.net/tags/android/" style="font-size: 13.64px;">android</a> <a href="http://www.haomou.net/tags/bearer/" style="font-size: 10px;">bearer</a> <a href="http://www.haomou.net/tags/buffer/" style="font-size: 10px;">buffer</a> <a href="http://www.haomou.net/tags/bug/" style="font-size: 10px;">bug</a> <a href="http://www.haomou.net/tags/canvas/" style="font-size: 10.91px;">canvas</a> <a href="http://www.haomou.net/tags/centos/" style="font-size: 11.82px;">centos</a> <a href="http://www.haomou.net/tags/css/" style="font-size: 12.73px;">css</a> <a href="http://www.haomou.net/tags/fabric/" style="font-size: 10px;">fabric</a> <a href="http://www.haomou.net/tags/git/" style="font-size: 11.82px;">git</a> <a href="http://www.haomou.net/tags/html/" style="font-size: 10px;">html</a> <a href="http://www.haomou.net/tags/hybridApp/" style="font-size: 10px;">hybridApp</a> <a href="http://www.haomou.net/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="http://www.haomou.net/tags/ionic/" style="font-size: 18.18px;">ionic</a> <a href="http://www.haomou.net/tags/jQuery/" style="font-size: 11.82px;">jQuery</a> <a href="http://www.haomou.net/tags/loopback/" style="font-size: 17.27px;">loopback</a> <a href="http://www.haomou.net/tags/mongoDB/" style="font-size: 11.82px;">mongoDB</a> <a href="http://www.haomou.net/tags/phonegap/" style="font-size: 10.91px;">phonegap</a> <a href="http://www.haomou.net/tags/reapp/" style="font-size: 10px;">reapp</a> <a href="http://www.haomou.net/tags/scss/" style="font-size: 10px;">scss</a> <a href="http://www.haomou.net/tags/session/" style="font-size: 10px;">session</a> <a href="http://www.haomou.net/tags/storage/" style="font-size: 10px;">storage</a> <a href="http://www.haomou.net/tags/svg/" style="font-size: 13.64px;">svg</a> <a href="http://www.haomou.net/tags/token/" style="font-size: 10.91px;">token</a> <a href="http://www.haomou.net/tags/ubuntu/" style="font-size: 10.91px;">ubuntu</a> <a href="http://www.haomou.net/tags/weinre/" style="font-size: 10px;">weinre</a> <a href="http://www.haomou.net/tags/%E4%BC%AA%E7%B1%BB/" style="font-size: 10px;">伪类</a> <a href="http://www.haomou.net/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" style="font-size: 10px;">兼容性</a> <a href="http://www.haomou.net/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="http://www.haomou.net/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 10.91px;">加密</a> <a href="http://www.haomou.net/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="http://www.haomou.net/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 10.91px;">图像处理</a> <a href="http://www.haomou.net/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="http://www.haomou.net/tags/%E5%AE%89%E5%85%A8/" style="font-size: 11.82px;">安全</a> <a href="http://www.haomou.net/tags/%E5%BF%83%E6%83%85/" style="font-size: 10px;">心情</a> <a href="http://www.haomou.net/tags/%E6%80%9D%E8%80%83/" style="font-size: 10px;">思考</a> <a href="http://www.haomou.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="http://www.haomou.net/tags/%E6%95%99%E7%A8%8B/" style="font-size: 19.09px;">教程</a> <a href="http://www.haomou.net/tags/%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/" style="font-size: 10px;">数学理论</a> <a href="http://www.haomou.net/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 10px;">模板引擎</a> <a href="http://www.haomou.net/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="http://www.haomou.net/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="http://www.haomou.net/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.36px;">笔记</a> <a href="http://www.haomou.net/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="http://www.haomou.net/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="http://www.haomou.net/tags/%E8%B7%A8%E5%9F%9F/" style="font-size: 10px;">跨域</a> <a href="http://www.haomou.net/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a> <a href="http://www.haomou.net/tags/%E9%97%AD%E5%8C%85/" style="font-size: 10px;">闭包</a> <a href="http://www.haomou.net/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10.91px;">问题</a> <a href="http://www.haomou.net/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div id="haomou_ad" class="widget-wrap widget-list">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">前端工程师微专业【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《JavaWeb开发工程师》【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">大数据工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">自动化测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">移动应用测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《产品经理》微专业【年薪25w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/55001.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">IT项目经理【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">自由职业摄影师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">MySQL数据库管理工程师【年薪15w】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+<dl id="outline" style="position: relative; margin-top: 20px;"><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#什么是Reapp" class="nslog:1026" title="什么是Reapp" onclick="return false;" style="color: rgb(251, 101, 128);">什么是Reapp</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">0</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#React与Reapp" class="nslog:1026" title="React与Reapp" onclick="return false;" style="color: rgb(251, 101, 128);">React与Reapp</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">1</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#Reapp功能" class="nslog:1026" title="Reapp功能" onclick="return false;" style="color: rgb(251, 101, 128);">Reapp功能</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">2</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#具体模块" class="nslog:1026" title="具体模块" onclick="return false;" style="color: rgb(251, 101, 128);">具体模块</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">3</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#谢谢！" class="nslog:1026" title="谢谢！" onclick="return false;" style="color: rgb(103, 169, 210);">谢谢！</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">4</span></dd></dl></aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <!-- <a href="/" class="logo"></a> -->
+          <a href="http://www.fed123.com/"><img alt="fed前端" src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+        </h1>
+        <p>© 2016 网易高级前端工程师</p>
+        <p>苏ICP备13018740号-6
+        <!-- <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5849006'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D5849006%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script> -->
+        </p>
+      </div>
+      <div class="foot-nav">
+        <img alt="FED前端开发" src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/hm.jpg" width="100" height="120" style="border-radius: 5px;margin-top: 5px;margin-right: 5px;float:left;" data-bd-imgshare-binded="1">
+          <div style="color: #428bca;text-align: center;font-size: 18px;padding:5px;">曹欢欢(chale)</div>中国科学技术大学硕士研究生，网易高级前端工程师，5年前端工作经验，刻苦专研，自学成才。FED123.com是前端开发（Front End Developer）工程师学习交流的家园，分享精彩的前端早读，前端后端开发相关的知识点，大家共同学习进步！
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/jquery.scrollLoading.js"></script>
+  <script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/main.js"></script>
+
+
+<script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/html-patch.js"></script>
+<script src="./reapp之用React开发hybrid app _ 皓眸大前端-前端开发学习交流圈子_files/script.js"></script>
+
+  </div>
+
+
+<iframe frameborder="0" id="bdSharePopup_selectshare1463014405738bg" class="bdselect_share_bg" style="display:none;"></iframe><div id="bdSharePopup_selectshare1463014405738box" style="display: none;" share-type="selectshare" class="bdselect_share_box" data-bd-bind="1463014405738"><div class="selectshare-mod-triangle"><div class="triangle-border"></div><div class="triangle-inset"></div></div><div class="bdselect_share_head"><span>分享到</span><a href="http://www.baidu.com/s?wd=&tn=SE_hldp08010_vurs2xrp" class="bdselect_share_dialog_search" target="_blank"><i class="bdselect_share_dialog_search_i"></i><span class="bdselect_share_dialog_search_span">百度一下</span></a><a class="bdselect_share_dialog_close"></a></div><div class="bdselect_share_content"><ul class="bdselect_share_list bdshare-button-style0-32"><div class="bdselect_share_partners"><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_qzone" data-cmd="qzone"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_tsina" data-cmd="tsina"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_tqq" data-cmd="tqq"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_renren" data-cmd="renren"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_weixin" data-cmd="weixin"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_sqq" data-cmd="sqq"></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_youdao" data-cmd="youdao"></a></div><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" class="bds_more" data-cmd="more"></a></ul></div></div><div id="bdimgshare_1463014405742" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-24 sr-bdimgshare-black" style="height: 42px; line-height: 32px; font-size: 14px; position: absolute; top: 749.609px; left: 500.5px; width: 500px; display: none;" data-bd-bind="1463014405742"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-24"><label class="bdimgshare-lbl">分享到：</label><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_tqq" data-cmd="tqq" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_renren" data-cmd="renren" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_sqq" data-cmd="sqq" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_youdao" data-cmd="youdao" hidefocus=""></a><a href="http://www.haomou.net/2015/05/31/2015_reapp/#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>

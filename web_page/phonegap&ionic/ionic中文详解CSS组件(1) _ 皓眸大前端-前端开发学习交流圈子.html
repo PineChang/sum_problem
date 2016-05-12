@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://www.haomou.net/2014/08/09/2014_ionic_api_css/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  
+  <title>ionic中文详解CSS组件(1) | 皓眸大前端-前端开发学习交流圈子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ionic组件本来不想写这个的，因为毕竟官网已经列的很详细了css component,国内的网络由于种种原因，有时候右边并不会显示一个手机框用于展示效果。我这里将一些相关组件的介绍合在一起，给出综合例子和显示效果，方便自己查阅。另外官网的JS API介绍文档有问题，国内访问不能跳转，请参考我的另一篇ionic中文javascript API.
+教程索引：(持续更新)ionic中文教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ionic中文详解CSS组件(1)">
+<meta property="og:url" content="http://haomou.net/2014/08/09/2014_ionic_api_css/index.html">
+<meta property="og:site_name" content="皓眸大前端-前端开发学习交流圈子">
+<meta property="og:description" content="ionic组件本来不想写这个的，因为毕竟官网已经列的很详细了css component,国内的网络由于种种原因，有时候右边并不会显示一个手机框用于展示效果。我这里将一些相关组件的介绍合在一起，给出综合例子和显示效果，方便自己查阅。另外官网的JS API介绍文档有问题，国内访问不能跳转，请参考我的另一篇ionic中文javascript API.
+教程索引：(持续更新)ionic中文教程">
+<meta property="og:image" content="http://haomou.net/images/ionic.png">
+<meta property="og:image" content="http://haomou.net/images/ionic_css1.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css2.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css3.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css4.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css5.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css6.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css7.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css8.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css9.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css10.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css11.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css12.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css13.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css14.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css15.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css16.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css17.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css18.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css19.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css20.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css21.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css22.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css23.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css24.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css25.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css26.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css27.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css27.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css29.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css30.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css31.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css32.jpg">
+<meta property="og:image" content="http://haomou.net/images/ionic_css33.jpg">
+<meta property="og:updated_time" content="2016-05-10T05:36:26.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ionic中文详解CSS组件(1)">
+<meta name="twitter:description" content="ionic组件本来不想写这个的，因为毕竟官网已经列的很详细了css component,国内的网络由于种种原因，有时候右边并不会显示一个手机框用于展示效果。我这里将一些相关组件的介绍合在一起，给出综合例子和显示效果，方便自己查阅。另外官网的JS API介绍文档有问题，国内访问不能跳转，请参考我的另一篇ionic中文javascript API.
+教程索引：(持续更新)ionic中文教程">
+<meta name="twitter:image" content="http://haomou.net/images/ionic.png">
+  
+  
+    <link rel="icon" href="http://www.haomou.net/favicon.png">
+  
+
+  <link rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/style.css">
+  
+    <link rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/style(1).css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/logo.png); }
+    </style>
+  
+
+  
+    <link href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/css" rel="stylesheet" type="text/css">
+    <link href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/css(1)" rel="stylesheet" type="text/css">
+  
+
+<script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/share.js"></script><script type="text/javascript" async="" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/embed.js" charset="UTF-8"></script><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_32.css"><link type="text/css" rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/embed.default.css"><link rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/imgshare.css"><link rel="stylesheet" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_24.css"></head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+
+  <embed id="bac_flash" allowscriptaccess="never" allownetworking="internal" invokeurls="false" src="/images/bck.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" quality="high" autostart="0" wmode="transparent" width="100%" height="300" align="middle" style="position: absolute;margin-top: -100px;margin-left: 5px;">
+
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <!-- <a href="/" class="logo"></a> -->
+             <a href="http://www.fed123.com/"><img alt="fedǰ��" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">前端开发(Front End Developer)</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/">主页</a></li>
+              
+                    <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link current" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></li>
+                  
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-2014_ionic_api_css" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      ionic中文详解CSS组件(1)
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子.html" class="article-date">
+  <time datetime="2014-08-09T01:40:49.000Z" itemprop="datePublished">2014-08-09</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="ionic组件"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#ionic组件" class="headerlink" title="ionic组件"></a>ionic组件</h3><p>本来不想写这个的，因为毕竟官网已经列的很详细了<a href="http://ionicframework.com/docs/components/" target="_blank" rel="external">css component</a>,国内的网络由于种种原因，有时候右边并不会显示一个手机框用于展示效果。我这里将一些相关组件的介绍合在一起，给出综合例子和显示效果，方便自己查阅。另外官网的JS API介绍文档有问题，国内访问不能跳转，请参考我的另一篇<a href="http://www.haomou.net/2014/08/11/2014_ionic_api/" target="_blank" rel="external">ionic中文javascript API</a>.</p>
+<p>教程索引：(持续更新)<br><a href="http://www.haomou.net/2014/10/06/2014_ionic_learn/" target="_blank" rel="external">ionic中文教程</a><br><a id="more"></a><br><img alt="皓眸大前端开发学习" class="floatnone scrollLoading" data-url="/images/ionic.png" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic.png" data-bd-imgshare-binded="1"><span class="caption">皓眸大前端开发学习</span><br>转载请注明出处：<a href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2014/08/09/2014_ionic_api_css/</a></p>
+<h3 id="Header"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#Header" class="headerlink" title="Header"></a>Header</h3><p>Header是固定在屏幕顶部的组件。可以包含如标题和左右的功能按钮。Sub Header同样是固定在顶部，只是是在Header的下面，就算没有写Header这个，Sub Header这个样式也会距离顶部有一个Header的距离。<br>如：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-view&gt;</span><br><span class="line">    &lt;ion-content class="no-header"&gt;</span><br><span class="line">        &lt;div class="bar bar-header  bar-royal"&gt;</span><br><span class="line">            &lt;a href="#/app/capture" class="button button-icon icon ion-gear-a"&gt;&lt;/a&gt;</span><br><span class="line">            &lt;h1 class="title"&gt;Header&lt;/h1&gt;</span><br><span class="line">            &lt;a href="#/app/playlists" class="button button-icon icon ion-heart"&gt;&lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class="bar bar-subheader"&gt;</span><br><span class="line">            &lt;h2 class="title"&gt;Sub Header&lt;/h2&gt;</span><br><span class="line">            &lt;a href="#/app/playlists" class="button button-icon icon ion-ios7-undo-outline"&gt;&lt;/a&gt;</span><br><span class="line">            &lt;a href="#/app/capture" class="button button-icon icon ion-ios7-redo-outline"&gt;&lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/ion-content&gt;</span><br><span class="line">&lt;/ion-view&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css1.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css1.jpg"><span class="caption">皓眸大前端开发学习</span><br>仔细的读者可能发现，我在header和subheader里面各自放了两个按钮，我并没有定位，ionic会自动将两个分开在两边。经测试，ionic会自动把header或subheader里面的最后一个图标靠右，其他的靠左依次摆开。</p>
+<h3 id="Footer"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#Footer" class="headerlink" title="Footer"></a>Footer</h3><p>footer是显示在屏幕底部的边栏，你可以用这个做导航栏或者添加一些菜单操作，示例如下：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div class="bar bar-footer bar-balanced"&gt;</span><br><span class="line">        &lt;button class="button button-clear"&gt;Left&lt;/button&gt;</span><br><span class="line">        &lt;div class="title"&gt; &lt;button ng-click="captureVideo();" class="button button-clear button-icon icon ion-ios7-videocam-outline"&gt;&lt;/button&gt;&lt;/div&gt;</span><br><span class="line">        &lt;button class="button button-clear"&gt;Right&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css2.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css2.jpg"><span class="caption">皓眸大前端开发学习</span><br>值得注意的是，在bar-footer和bar-header里面一样，class=title的元素都会被自动居中。如果没有的话，会自动向左排列。可以使用如下pull-right方式让其靠右排列：（header里面也一样）<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="bar bar-footer"&gt;</span><br><span class="line">  &lt;button class="button button-clear pull-right"&gt;Right&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="button"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#button" class="headerlink" title="button"></a>button</h3><ol>
+<li>button的默认情况是按照display: inline-block来显示，宽度是随其内部文字长度增长的。<br>有许多不同的显示样式。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class="button"&gt;</span><br><span class="line">  Default</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-light"&gt;</span><br><span class="line">  button-light</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-stable"&gt;</span><br><span class="line">  button-stable</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-positive"&gt;</span><br><span class="line">  button-positive</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-calm"&gt;</span><br><span class="line">  button-calm</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-balanced"&gt;</span><br><span class="line">  button-balanced</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-energized"&gt;</span><br><span class="line">  button-energized</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-assertive"&gt;</span><br><span class="line">  button-assertive</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-royal"&gt;</span><br><span class="line">  button-royal</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button button-dark"&gt;</span><br><span class="line">  button-dark</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css3.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css3.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>如果想让button占满父元素宽度，父元素没有padding的话，就是屏幕宽度，需要加上 button-block 样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class="button button-full button-positive"&gt;</span><br><span class="line">  Full Width Block Button</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css4.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css4.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>当然还有可以控制button大小的默认样式，button-small，button-large <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class="button button-small button-assertive"&gt;</span><br><span class="line">  Small Button</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">&lt;button class="button button-large button-positive"&gt;</span><br><span class="line">  Large Button</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css5.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css5.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>还有只显示框线的button，样式button-outline<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class="button button-outline button-positive"&gt;</span><br><span class="line">  Outlined Button</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css6.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css6.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>还有不显示框的button，样式button-clear<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class="button button-clear button-positive"&gt;</span><br><span class="line">  Clear Button</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css7.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css7.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带icon的button，可以控制icon的位置，直接看代码<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class="button"&gt;</span><br><span class="line">  &lt;i class="icon ion-loading-c"&gt;&lt;/i&gt; Loading...</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button icon-left ion-home"&gt;Home&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button icon-left ion-star button-positive"&gt;Favorites&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;a class="button icon-right ion-chevron-right button-calm"&gt;Learn More&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;a class="button icon-left ion-chevron-left button-clear button-dark"&gt;Back&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;button class="button icon ion-gear-a"&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;a class="button button-icon icon ion-settings"&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;a class="button button-outline icon-right ion-navicon button-balanced"&gt;Reorder&lt;/a&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css8.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css8.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>放在header的button，注意button-icon样式和button-clear样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="bar bar-header"&gt;</span><br><span class="line">  &lt;button class="button icon ion-navicon"&gt;&lt;/button&gt;</span><br><span class="line">  &lt;h1 class="title"&gt;Header Buttons&lt;/h1&gt;</span><br><span class="line">  &lt;button class="button"&gt;Edit&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class="bar bar-header"&gt;</span><br><span class="line">  &lt;button class="button button-icon icon ion-navicon"&gt;&lt;/button&gt;</span><br><span class="line">  &lt;div class="h1 title"&gt;Header Buttons&lt;/div&gt;</span><br><span class="line">  &lt;button class="button button-clear button-positive"&gt;Edit&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css9.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css9.jpg"><span class="caption">皓眸大前端开发学习</span><br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css10.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css10.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>一组button，注意button-bar样式，可以与其他的icon组合<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="button-bar"&gt;</span><br><span class="line">  &lt;a class="button"&gt;First&lt;/a&gt;</span><br><span class="line">  &lt;a class="button"&gt;Second&lt;/a&gt;</span><br><span class="line">  &lt;a class="button"&gt;Third&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css11.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css11.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="List"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#List" class="headerlink" title="List"></a>List</h3><ol>
+<li>list列表是一个比较常用的组件，list views支持很多的交互操作，比如编辑，划屏幕编辑，拖拽排序，下拉刷新等等。可以参看javascript API中的list介绍，这里给个综合的例子：<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-list ng-controller="MyCtrl"</span><br><span class="line">          show-delete="shouldShowDelete"</span><br><span class="line">          show-reorder="shouldShowReorder"</span><br><span class="line">          can-swipe="listCanSwipe"&gt;</span><br><span class="line">  &lt;ion-item ng-repeat="item in items"</span><br><span class="line">            class="item-thumbnail-left"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;img ng-src="{{item.img}}"&gt;</span><br><span class="line">    &lt;h2&gt;{{item.title}}&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;{{item.description}}&lt;/p&gt;</span><br><span class="line">    &lt;ion-option-button class="button-positive"</span><br><span class="line">                       ng-click="share(item)"&gt;</span><br><span class="line">      Share</span><br><span class="line">    &lt;/ion-option-button&gt;</span><br><span class="line">    &lt;ion-option-button class="button-info"</span><br><span class="line">                       ng-click="edit(item)"&gt;</span><br><span class="line">      Edit</span><br><span class="line">    &lt;/ion-option-button&gt;</span><br><span class="line">    &lt;ion-delete-button class="ion-minus-circled"</span><br><span class="line">                       ng-click="items.splice($index, 1)"&gt;</span><br><span class="line">    &lt;/ion-delete-button&gt;</span><br><span class="line">    &lt;ion-reorder-button class="ion-navicon"</span><br><span class="line">                        on-reorder="reorderItem(item, $fromIndex, $toIndex)"&gt;</span><br><span class="line">    &lt;/ion-reorder-button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/ion-item&gt;</span><br><span class="line">&lt;/ion-list&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css12.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css12.jpg"><span class="caption">皓眸大前端开发学习</span><br>上图中那个有一行是向左划屏出现的效果。</p>
+<ol>
+<li>list分栏，主意item-divider样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-divider"&gt;</span><br><span class="line">    Candy Bars</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a class="item" href="#"&gt;</span><br><span class="line">    Butterfinger</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css13.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css13.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有icon的list，可以通过i标签添加icon到item中，通过item-icon-left或item-icon-right指定icon在左边还是右边。下面的例子中使用a或button标签做每个item，主要是为了让这每个item可以tappable，还有一个特点是当没有添加任何icon时，会自动在右边添加一个小的向右的箭头图标。直接看例子：<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a class="item item-icon-left" href="#"&gt;</span><br><span class="line">    &lt;i class="icon ion-email"&gt;&lt;/i&gt;</span><br><span class="line">    Check mail</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a class="item item-icon-left item-icon-right" href="#"&gt;</span><br><span class="line">    &lt;i class="icon ion-chatbubble-working"&gt;&lt;/i&gt;</span><br><span class="line">    Call Ma</span><br><span class="line">    &lt;i class="icon ion-ios7-telephone-outline"&gt;&lt;/i&gt;</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a class="item item-icon-left" href="#"&gt;</span><br><span class="line">    &lt;i class="icon ion-mic-a"&gt;&lt;/i&gt;</span><br><span class="line">    Record album</span><br><span class="line">    &lt;span class="item-note"&gt;</span><br><span class="line">      Grammy</span><br><span class="line">    &lt;/span&gt;</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a class="item item-icon-left" href="#"&gt;</span><br><span class="line">    &lt;i class="icon ion-person-stalker"&gt;&lt;/i&gt;</span><br><span class="line">    Friends</span><br><span class="line">    &lt;span class="badge badge-assertive"&gt;0&lt;/span&gt;</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css14.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css14.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有button的list，注意item-button-right or item-button-left样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-button-right"&gt;</span><br><span class="line">    Call Ma</span><br><span class="line">    &lt;button class="button button-positive"&gt;</span><br><span class="line">      &lt;i class="icon ion-ios7-telephone"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css15.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css15.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有头像的item，主意item-avatar样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a class="item item-avatar" href="#"&gt;</span><br><span class="line">      &lt;img src="venkman.jpg"&gt;</span><br><span class="line">      &lt;h2&gt;Venkman&lt;/h2&gt;</span><br><span class="line">      &lt;p&gt;Back off, man. I'm a scientist.&lt;/p&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css16.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css16.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有缩略图的list，注意item-thumbnail-left 和 item-thumbnail-right样式，可以指定缩略图不同的显示位置。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a class="item item-thumbnail-left" href="#"&gt;</span><br><span class="line">      &lt;img src="cover.jpg"&gt;</span><br><span class="line">      &lt;h2&gt;Pretty Hate Machine&lt;/h2&gt;</span><br><span class="line">      &lt;p&gt;Nine Inch Nails&lt;/p&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css17.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css17.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>表格样式的list，这个主要是有了margin的样式，显示两边的框线。注意样式list list-inset。可以参考后面的inset-forms效果。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list list-inset"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class="item"&gt;</span><br><span class="line">      Raiders of the Lost Ark</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css18.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css18.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="卡片card"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#卡片card" class="headerlink" title="卡片card"></a>卡片card</h3><ol>
+<li>card卡片一起整洁内容涵盖丰富的表现形式，在应用中使用的越来越多。card默认样式带有box-shadow，由于性能的原因，和他类似的元素像list list-inset 并没有shadow。如果你有很多的card，每个card都有很多子元素，建议使用inset list。下面是一个简单的带有footer和header的card。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="card"&gt;</span><br><span class="line">  &lt;div class="item item-divider"&gt;</span><br><span class="line">    I'm a Header in a Card!</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class="item item-text-wrap"&gt;</span><br><span class="line">    This is a basic Card with some text.</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class="item item-divider"&gt;</span><br><span class="line">    I'm a Footer in a Card!</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css19.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css19.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>列表形式的card，主意list card 样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list card"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a href="#" class="item item-icon-left"&gt;</span><br><span class="line">    &lt;i class="icon ion-home"&gt;&lt;/i&gt;</span><br><span class="line">    Enter home address</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a href="#" class="item item-icon-left"&gt;</span><br><span class="line">    &lt;i class="icon ion-ios7-telephone"&gt;&lt;/i&gt;</span><br><span class="line">    Enter phone number</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a href="#" class="item item-icon-left"&gt;</span><br><span class="line">    &lt;i class="icon ion-wifi"&gt;&lt;/i&gt;</span><br><span class="line">    Enter wireless password</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a href="#" class="item item-icon-left"&gt;</span><br><span class="line">    &lt;i class="icon ion-card"&gt;&lt;/i&gt;</span><br><span class="line">    Enter card information</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css20.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css20.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有图像的组合显示的card<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list card"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-avatar"&gt;</span><br><span class="line">    &lt;img src="avatar.jpg"&gt;</span><br><span class="line">    &lt;h2&gt;Pretty Hate Machine&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;Nine Inch Nails&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-image"&gt;</span><br><span class="line">    &lt;img src="cover.jpg"&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a class="item item-icon-left assertive" href="#"&gt;</span><br><span class="line">    &lt;i class="icon ion-music-note"&gt;&lt;/i&gt;</span><br><span class="line">    Start listening</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css21.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css21.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>card显示风格的示例。该实例综合多种元素，主意item-avatar，item-body，item-divider等样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list card"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-avatar"&gt;</span><br><span class="line">    &lt;img src="mcfly.jpg"&gt;</span><br><span class="line">    &lt;h2&gt;Marty McFly&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;November 05, 1955&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-body"&gt;</span><br><span class="line">    &lt;img class="full-image" src="delorean.jpg"&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,</span><br><span class="line">      the content is from a card-body consisting of an image and paragraph text. The footer</span><br><span class="line">      consists of tabs, icons aligned left, within the card-footer.</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;a href="#" class="subdued"&gt;1 Like&lt;/a&gt;</span><br><span class="line">      &lt;a href="#" class="subdued"&gt;5 Comments&lt;/a&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item tabs tabs-secondary tabs-icon-left"&gt;</span><br><span class="line">    &lt;a class="tab-item" href="#"&gt;</span><br><span class="line">      &lt;i class="icon ion-thumbsup"&gt;&lt;/i&gt;</span><br><span class="line">      Like</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a class="tab-item" href="#"&gt;</span><br><span class="line">      &lt;i class="icon ion-chatbox"&gt;&lt;/i&gt;</span><br><span class="line">      Comment</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a class="tab-item" href="#"&gt;</span><br><span class="line">      &lt;i class="icon ion-share"&gt;&lt;/i&gt;</span><br><span class="line">      Share</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css22.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css22.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="表单输入"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#表单输入" class="headerlink" title="表单输入"></a>表单输入</h3><p>关于html5支持的输入类型，参考我的另外一篇<a href="">HTML5输入类型</a></p>
+<ol>
+<li>基本的表单，主意textarea标签，其他的主意placeholder属性<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;input type="text" placeholder="First Name"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;input type="text" placeholder="Last Name"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;textarea placeholder="Comments"&gt;&lt;/textarea&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css23.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css23.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有标签的输入框,注意input-label样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;Username&lt;/span&gt;</span><br><span class="line">    &lt;input type="text"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;Password&lt;/span&gt;</span><br><span class="line">    &lt;input type="password"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css24.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css24.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>堆栈式的表单，注意item-stacked-label样式<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line">  &lt;label class="item item-input item-stacked-label"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;First Name&lt;/span&gt;</span><br><span class="line">    &lt;input type="text" placeholder="John"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input item-stacked-label"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;Last Name&lt;/span&gt;</span><br><span class="line">    &lt;input type="text" placeholder="Suhr"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input item-stacked-label"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;Email&lt;/span&gt;</span><br><span class="line">    &lt;input type="text" placeholder="john@suhr.com"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css25.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css25.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>动态显示标签的堆栈式表单，注意item-floating-label样式，而且这个是和input-label样式的元素对应的，两者搭配使用。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line">  &lt;label class="item item-input item-floating-label"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;First Name&lt;/span&gt;</span><br><span class="line">    &lt;input type="text" placeholder="First Name"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input item-floating-label"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;Last Name&lt;/span&gt;</span><br><span class="line">    &lt;input type="text" placeholder="Last Name"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input item-floating-label"&gt;</span><br><span class="line">    &lt;span class="input-label"&gt;Email&lt;/span&gt;</span><br><span class="line">    &lt;input type="text" placeholder="Email"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css26.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css26.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>默认的form是满屏宽度的，还有一种 inset form 是带有padding的，类似inset list的样式。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list list-inset"&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;input type="text" placeholder="First Name"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;input type="text" placeholder="Last Name"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css27.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css27.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>内嵌输入样式，和form一样，这种输入框并不是100%宽的。注意item-input-inset样式。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class="item item-input-inset"&gt;</span><br><span class="line">    &lt;label class="item-input-wrapper"&gt;</span><br><span class="line">      &lt;input type="text" placeholder="Email"&gt;</span><br><span class="line">    &lt;/label&gt;</span><br><span class="line">    &lt;button class="button button-small"&gt;</span><br><span class="line">      Submit</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css27.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css27.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>带有icon的输入框，可以很轻松的给item-input元素添加icon，也可以添加placeholder内容<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list list-inset"&gt;</span><br><span class="line">  &lt;label class="item item-input"&gt;</span><br><span class="line">    &lt;i class="icon ion-search placeholder-icon"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;input type="text" placeholder="Search"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css29.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css29.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<ol>
+<li>header上的输入框<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="bar bar-header item-input-inset"&gt;</span><br><span class="line">  &lt;label class="item-input-wrapper"&gt;</span><br><span class="line">    &lt;i class="icon ion-ios7-search placeholder-icon"&gt;&lt;/i&gt;</span><br><span class="line">    &lt;input type="search" placeholder="Search"&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;button class="button button-clear"&gt;</span><br><span class="line">    Cancel</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css30.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css30.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="Toggle选择"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#Toggle选择" class="headerlink" title="Toggle选择"></a>Toggle选择</h3><p>toggle是一种比较容易操作的多选框，类似于checkbox，只不过表现上更容易操作，这里是用label标签包裹toggle组件，为了是更容易操作。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;li class="item item-toggle"&gt;</span><br><span class="line">     HTML5</span><br><span class="line">     &lt;label class="toggle toggle-assertive"&gt;</span><br><span class="line">       &lt;input type="checkbox"&gt;</span><br><span class="line">       &lt;div class="track"&gt;</span><br><span class="line">         &lt;div class="handle"&gt;&lt;/div&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">     &lt;/label&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css31.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css31.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="checkbox多选框"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#checkbox多选框" class="headerlink" title="checkbox多选框"></a>checkbox多选框</h3><p>多选框是一种常见的html组件，这里同样使用label包裹多选框，为了方便实现tap操作，label标签中可以使用checkbox-assertive来指定选中激活时的颜色。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;li class="item item-checkbox"&gt;</span><br><span class="line">     &lt;label class="checkbox"&gt;</span><br><span class="line">       &lt;input type="checkbox"&gt;</span><br><span class="line">     &lt;/label&gt;</span><br><span class="line">     Flux Capacitor</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css32.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css32.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="radio单选框"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#radio单选框" class="headerlink" title="radio单选框"></a>radio单选框</h3><p>通过item-radio来表示单选框，每个都有相同的name属性，radio-icon样式的标签用来指定显示勾选的icon。这里同样使用label包裹整个组件，为了方便操作<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="list"&gt;</span><br><span class="line"></span><br><span class="line">  &lt;label class="item item-radio"&gt;</span><br><span class="line">    &lt;input type="radio" name="group"&gt;</span><br><span class="line">    &lt;div class="item-content"&gt;</span><br><span class="line">      Go</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/ionic_css33.jpg" data-bd-imgshare-binded="1" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic_css33.jpg"><span class="caption">皓眸大前端开发学习</span></p>
+<h3 id="ionic中文详解CSS组件2"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#ionic中文详解CSS组件2" class="headerlink" title="ionic中文详解CSS组件2"></a>ionic中文详解CSS组件2</h3><p><a href="http://www.haomou.net/2014/10/09/2014_ionic_api_css1/" target="_blank" rel="external">参看ionic中文详解CSS组件（2）</a><br><a href="http://www.haomou.net/2014/10/09/2014_ionic_api_css1/" target="_blank" rel="external">http://www.haomou.net/2014/10/09/2014_ionic_api_css1/</a></p>
+<h3 id="谢谢！"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#谢谢！" class="headerlink" title="谢谢！"></a>谢谢！</h3><p>转载请注明出处：<a href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2014/08/09/2014_ionic_api_css/</a></p>
+<p>有问题请留言。T_T  皓眸大前端开发学习  T_T</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://haomou.net/2014/08/09/2014_ionic_api_css/" data-id="cio2a30on001agskpkknc46sj" class="article-share-link">Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/ionic/">ionic</a></li></ul>
+
+      </footer>
+<!-- 添加的分享 -->
+      <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1463013185742"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_more" data-cmd="more"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    </div>
+  </article>
+  
+  
+    <section id="comments">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="post-2014_ionic_api_css" data-title="ionic中文详解CSS组件(1)" data-url="http://haomou.net/2014/08/09/2014_ionic_api_css/" id="ds-thread"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"><span class="ds-highlight">2</span> 人喜欢</span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">9</span>条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1331012701492609136"><div class="ds-post-self" data-post-id="1331012701492609136" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6299446"><a rel="nofollow author" target="_blank" href="http://weibo.com/zero7u" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=6299446&#39;;" title="zero_qiu"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/1" alt="zero_qiu"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/zero7u" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=6299446&#39;;" rel="nofollow" target="_blank" data-user-id="6299446">zero_qiu</a></div><p>非常感谢，不支持皓眸大前端都不好意思了！</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-27T17:14:37+08:00" title="2015年5月27日 下午5:14:37">2015年5月27日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609142"><div class="ds-post-self" data-post-id="1331012701492609142" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt="Dream"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">Dream</span></div><p>非常给力！！！赞！！</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-31T15:42:46+08:00" title="2015年5月31日 下午3:42:46">2015年5月31日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609192"><div class="ds-post-self" data-post-id="1331012701492609192" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt="yy0908"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">yy0908</span></div><p>什么也不说了，赞！</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-07-09T14:57:39+08:00" title="2015年7月9日 下午2:57:39">2015年7月9日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609217"><div class="ds-post-self" data-post-id="1331012701492609217" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="13160536"><a rel="nofollow author" target="_blank" href="http://t.qq.com/weibo123126252" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13160536&#39;;" title="12312"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/50" alt="12312"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/weibo123126252" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13160536&#39;;" rel="nofollow" target="_blank" data-user-id="13160536">12312</a></div><p>怎么不把js也贴出来啊</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-14T15:37:03+08:00" title="2015年8月14日 下午3:37:03">2015年8月14日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609250"><div class="ds-post-self" data-post-id="1331012701492609250" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt="木心易"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">木心易</span></div><p>赞！！！</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-09-08T21:07:24+08:00" title="2015年9月8日 下午9:07:24">2015年9月8日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6210984363166761729"><div class="ds-post-self" data-post-id="6210984363166761729" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="14067139"><a rel="nofollow author" target="_blank" href="http://t.qq.com/zm_1126" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=14067139&#39;;" title="Zimmy"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/100" alt="Zimmy"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/zm_1126" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=14067139&#39;;" rel="nofollow" target="_blank" data-user-id="14067139">Zimmy</a></div><p>大赞！！！感谢！</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-10-29T16:31:27+08:00" title="2015年10月29日 下午4:31:27">2015年10月29日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6226221472185058049"><div class="ds-post-self" data-post-id="6226221472185058049" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6226220857459475202"><a rel="nofollow author" target="_blank" href="javascript:void(0)" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=6226220857459475202&#39;;" title="数据调取错误"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/0" alt="数据调取错误"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="javascript:void(0)" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=6226220857459475202&#39;;" rel="nofollow" target="_blank" data-user-id="6226220857459475202">数据调取错误</a></div><p>大神，radio单选框要改变图标样式该怎么办，比如：未选中样式用图标.ion-ios-circle-outline,选中后用图标ion-ios-circle-filled</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-12-09T17:59:12+08:00" title="2015年12月9日 下午5:59:12">2015年12月9日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6228412900206183169"><div class="ds-post-self" data-post-id="6228412900206183169" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="10512022"><a rel="nofollow author" target="_blank" href="http://tigerkang.w146.mc-test.com/sort/meinv/" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=10512022&#39;;" title="最胸虎牙妹"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/u104718544-2.jpg" alt="最胸虎牙妹"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://tigerkang.w146.mc-test.com/sort/meinv/" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=10512022&#39;;" rel="nofollow" target="_blank" data-user-id="10512022">最胸虎牙妹</a></div><p>我的妈呀，爱死你了</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-12-15T15:43:04+08:00" title="2015年12月15日 下午3:43:04">2015年12月15日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6244311179850679041"><div class="ds-post-self" data-post-id="6244311179850679041" data-thread-id="1331012701492609132" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="8850063"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/100(1)" alt="愉静则雅"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-user-id="8850063" data-qqt-account="">愉静则雅</span></div><p>赞！！把要注意点说的很清楚              <br>
+ionic 中checkbox可以实现全选吗<br>
+就是点一个按钮，自动全选</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-01-27T11:56:31+08:00" title="2016年1月27日 上午11:56:31">1月27日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://haomou.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://haomou.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://haomou.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://haomou.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://haomou.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://haomou.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://haomou.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://haomou.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1331012701492609132">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5707478c43dd3"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">皓眸网正在使用多说</a></p></div></div>
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:'haomou'};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+      <!-- 多说公共JS代码 end -->
+    </section>
+    
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-myself" style="clear:both">
+      <link media="all" href="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/nav.css" type="text/css" rel="stylesheet">
+      <!--<div id="container">-->
+      	<!--<div class=flash-box>-->
+      		<!--<h2>网易微专业(优秀学员直接进网易/阿里/腾讯/百度等名企)</h2>-->
+      		<!--<div class="big-pic" id="SwitchBigPic">-->
+      		<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2360" target="_blank" title="自由职业摄影师"><IMG src="/nav/images/top1.png"></A> &ndash;&gt;-->
+            <!--&lt;!&ndash;<A href="http://s.click.taobao.com/r2lgLYx" id="top2365" target="_blank" title="床上大号电脑桌36元包邮"><IMG src="/nav/images/computerDesk.png"></A>&ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2359" target="_blank" title="前端工程师微专业"><IMG src="/nav/images/webfront.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+            <!--" id="top2366" target="_blank" title="《产品经理》微专业"><IMG src="/nav/images/pm.jpg"></A>-->
+            <!--<A href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2367" target="_blank" title="《JavaWeb开发工程师》微专业"><IMG src="/nav/images/java.jpg"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2361" target="_blank" title="MySQL数据库管理工程师"><IMG src="/nav/images/top2.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2362" target="_blank" title="大数据工程师"><IMG src="/nav/images/top3.png"></A>-->
+      	<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2363" target="_blank" title="自动化测试工程师"><IMG src="/nav/images/top4.png"></A> &ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2364" target="_blank" title="移动应用测试工程师"><IMG src="/nav/images/top5.png"></A>-->
+
+
+      		<!--</div>-->
+      		<!--<div class="pic-list_0810">-->
+      			<!--<div id="ul_recom">-->
+                    <!--&lt;!&ndash;<A title="床上大号电脑桌36元包邮" target="_blank" href="http://s.click.taobao.com/r2lgLYx" blockid="top2365"><IMG src="/nav/images/computerDesks.png"><SPAN><STRONG>IT项目经理</STRONG></SPAN><SPAN>IT互联网经理人培训机构光环国际</SPAN></A>&ndash;&gt;-->
+      			  <!--&lt;!&ndash; <A class="currA" title="自由职业摄影师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2360"><IMG  src="/nav/images/top1s.png"><SPAN><STRONG>自由职业摄影师</STRONG></SPAN><SPAN>国际摄影爱好者协会主席，咔图摄影教育中心</SPAN></A> &ndash;&gt;-->
+      			  <!--<A class="currA" title="前端工程师微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2359"><IMG  src="/nav/images/webfronts.png"><SPAN><STRONG>前端工程师微专业</STRONG></SPAN><SPAN>网易一线资深前端开发工程师倾情打造！</SPAN></A>-->
+      			  <!--<A title="《产品经理》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2366"><IMG src="/nav/images/pms.jpg"><SPAN><STRONG>《产品经理》微专业</STRONG></SPAN><SPAN>网易云音乐、LOFTER、考拉海购、易信、邮箱等亿级产品的产品负责人亲授，只为打造国内顶尖产品经理课程。带你掌握从需求挖掘、产品设计到数据分析、产品运营的全部技能，帮你成为一个合格产品人</SPAN></A>-->
+                  <!--<A title="《JavaWeb开发工程师》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2367"><IMG src="/nav/images/javas.jpg"><SPAN><STRONG>《JavaWeb开发工程师》微专业</STRONG></SPAN><SPAN>聚焦JavaWeb开发工程师必知必会的知识技能。既有系统的知识体系保证学生吸收，又有大量网易内部案例和实践，保证学生无缝对接企业需求。优秀学生还可获得工作推荐。</SPAN></A>-->
+      			  <!--<A title="MySQL数据库管理工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2361"><IMG  src="/nav/images/top2s.png"><SPAN><STRONG>MySQL数据库管理工程师</STRONG></SPAN><SPAN>网易一线DBA团队打造</SPAN></A>-->
+      			  <!--<A title="大数据工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2362"><IMG src="/nav/images/top3s.png"><SPAN><STRONG>大数据工程师</STRONG></SPAN><SPAN>国际学术出版商Wiley开发</SPAN></A>-->
+      			<!--&lt;!&ndash;  <A title="自动化测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate" blockid="top2363"><IMG src="/nav/images/top4s.png"><SPAN><STRONG>自动化测试工程师</STRONG></SPAN><SPAN>网易杭州研究院Web自动化测试</SPAN></A> &ndash;&gt;-->
+      			   <!--<A title="移动应用测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2364"><IMG src="/nav/images/top5s.png"><SPAN><STRONG>移动应用测试工程师</STRONG></SPAN><SPAN>支付宝资深测试工程师</SPAN></A>-->
+
+
+      			<!--</div>-->
+      	   <!--</div>-->
+
+      	<!--</div>-->
+      <!--</div>-->
+
+      <h1> 前端技术导航 </h1>
+      <p>
+        <span>前端类：</span>
+        <a href="http://fex.baidu.com/" target="_blank">百度FEX</a>
+        <a href="http://isux.tencent.com/" target="_blank">腾讯ISUX</a>
+        <a href="http://www.w3cplus.com/" target="_blank">W3CPlus</a>
+        <a href="http://www.imooc.com/course/list" target="_blank">幕课网</a>
+        <a href="http://tympanus.net/codrops/" target="_blank">Codrops</a>
+        <a href="http://www.ruanyifeng.com/home.html" target="_blank">阮一峰</a>
+        <a href="http://codepen.io/" target="_blank">CodePen</a>
+        <a href="https://segmentfault.com/" target="_blank">segmentfault</a>
+      </p>
+      <p>
+        <span>工具类：</span>
+        <a href="http://fontello.com/" target="_blank">fontello</a>
+        <a href="http://lab.hakim.se/reveal-js/#/" target="_blank">REVEAL</a>
+        <a href="https://www.shiyanlou.com/courses/" target="_blank">实验楼</a>
+        <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Awesome</a>
+        <a href="https://kuler.adobe.com/" target="_blank">配色工具</a>
+        <a href="https://monaca.io/" target="_blank">monaca</a>
+        <a href="http://caniuse.com/" target="_blank">CanIUse</a>
+        <a href="http://browsershots.org/" target="_blank">浏览器快照</a>
+      </p>
+      <p>
+         <span>资讯类：</span>
+        <a href="http://www.36kr.com/" target="_blank">36氪</a>
+        <a href="http://cn.engadget.com/" target="_blank">瘾科技</a>
+        <a href="http://www.huxiu.com/" target="_blank">虎嗅网</a>
+        <a href="http://www.ikanchai.com/" target="_blank">砍柴网</a>
+        <a href="http://www.cnbeta.com/" target="_blank">cnBeta</a>
+      </p>
+      <p>
+         <span>常用API：</span>
+        <a href="http://www.ionicframework.com/" target="_blank">Ionic</a>
+        <a href="http://cordova.apache.org/docs/en/5.0.0/" target="_blank">Cordova</a>
+        <a href="http://docs.phonegap.com/en/edge/index.html" target="_blank">PhoneGap</a>
+        <a href="http://ngcordova.com/" target="_blank">Ng-Cordova</a>
+        <a href="http://docs.strongloop.com/display/public/LB/LoopBack" target="_blank">Loopback</a>
+        <a href="http://docs.angularjs.cn/api" target="_blank">Angular</a>
+        <a href="http://nej.netease.com/" target="_blank">NEJ</a>
+        <a href="http://regularjs.github.io/" target="_blank">Regular</a>
+      </p>
+
+  </div>
+  <div class="sidebar-top">
+    <span>前端工程师学习交流群：345413787</span>
+    <br><span>1. <a href="http://www.haomou.net/2014/10/06/2014_ionic_learn/" target="_blank">Ionic系列教程【年薪15w】</a></span>
+    <br><span>2. <a href="http://www.haomou.net/2015/11/05/2015_svg_learn/" target="_blank">SVG系列教程【年薪10w】</a></span>
+    <br><span>3. <a href="http://www.haomou.net/2015/08/30/2015_threejs0/" target="_blank">WebGL系列教程【年薪20w】</a></span>
+    <br><span>4. <a href="http://www.haomou.net/2015/02/06/2015_loopback_learn/" target="_blank">LoopBack系列教程【年薪15w】</a></span>
+    <br><span>5. <a href="http://www.haomou.net/2015/12/09/2015_web_learn/" target="_blank">前端工程师修炼教程【年薪20w】</a></span>
+    <br><span>6. <a href="http://www.haomou.net/2016/03/31/2016_java_learn/" target="_blank">JAVA工程师系列教程【年薪20w】</a></span>
+    <!-- <br><span >那一刻创业项目：<a href="http://m.pictcake.cn/"  target="_blank">求点赞（m.pictcake.cn）</a></span>
+    <br><span >基础知识学习：<a href="http://www.icourse163.org/"  target="_blank">推荐中国大学MOOC</a></span> -->
+    <br><span><a href="http://www.gamelofter.com/" target="_blank">出售域名(&nbsp; gamelofter.com &nbsp;)</a>，需要的联系我</span>
+    <br><span>想到网易实习(或正职工作)吗，扫码加入网易校招实习或正职内推QQ群:478483951,不定期更新内推招聘岗位！</span>
+    <div style="text-align:center;margin-top:10px;"><img width="150" height="200" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/qrcode1.jpg" data-bd-imgshare-binded="1"></div>
+      <!-- <div style="text-align:center;margin-top:10px;"><a href="http://t.kaola.com/ZrIb2e" target="_blank"><img width="100%" height="100%" src="/images/kaola.jpg"/></a></div>-->
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="http://www.haomou.net/2014/08/11/2014_ionic_api/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          ionic中文javascript API(1)
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="http://www.haomou.net/2014/08/07/2014_session/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">关于SESSION的理解</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-11前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="title">2016-05-11前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-11T03:10:10.000Z" itemprop="datePublished">2016-05-11</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-10前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="title">2016-05-10前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-10T02:10:10.000Z" itemprop="datePublished">2016-05-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-09前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="title">2016-05-09前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-09T02:10:10.000Z" itemprop="datePublished">2016-05-09</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="thumbnail">
+  
+    <span style="background-image:url(/images/test.gif
+)" alt="测试培训学习总结" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="title">测试培训学习总结</a></p>
+              <p class="item-date"><time datetime="2016-04-26T12:03:10.000Z" itemprop="datePublished">2016-04-26</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-04-20前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="title">2016-04-20前端早读</a></p>
+              <p class="item-date"><time datetime="2016-04-20T02:10:10.000Z" itemprop="datePublished">2016-04-20</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a><span class="category-list-count">57</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/04/">April 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/03/">March 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/01/">January 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/12/">December 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/10/">October 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/03/">March 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/02/">February 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/10/">October 2014</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/09/">September 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/08/">August 2014</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/07/">July 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="http://www.haomou.net/tags/API/" style="font-size: 10px;">API</a> <a href="http://www.haomou.net/tags/Android/" style="font-size: 10px;">Android</a> <a href="http://www.haomou.net/tags/AngularJS/" style="font-size: 14.55px;">AngularJS</a> <a href="http://www.haomou.net/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="http://www.haomou.net/tags/Grunt/" style="font-size: 10px;">Grunt</a> <a href="http://www.haomou.net/tags/Gulp/" style="font-size: 10.91px;">Gulp</a> <a href="http://www.haomou.net/tags/HTML5/" style="font-size: 10.91px;">HTML5</a> <a href="http://www.haomou.net/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="http://www.haomou.net/tags/HTTPS/" style="font-size: 10.91px;">HTTPS</a> <a href="http://www.haomou.net/tags/JAVA/" style="font-size: 10.91px;">JAVA</a> <a href="http://www.haomou.net/tags/JavaScript/" style="font-size: 16.36px;">JavaScript</a> <a href="http://www.haomou.net/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="http://www.haomou.net/tags/NodeJS/" style="font-size: 15.45px;">NodeJS</a> <a href="http://www.haomou.net/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="http://www.haomou.net/tags/RSA/" style="font-size: 10px;">RSA</a> <a href="http://www.haomou.net/tags/WebGL/" style="font-size: 13.64px;">WebGL</a> <a href="http://www.haomou.net/tags/Webpack/" style="font-size: 10.91px;">Webpack</a> <a href="http://www.haomou.net/tags/android/" style="font-size: 13.64px;">android</a> <a href="http://www.haomou.net/tags/bearer/" style="font-size: 10px;">bearer</a> <a href="http://www.haomou.net/tags/buffer/" style="font-size: 10px;">buffer</a> <a href="http://www.haomou.net/tags/bug/" style="font-size: 10px;">bug</a> <a href="http://www.haomou.net/tags/canvas/" style="font-size: 10.91px;">canvas</a> <a href="http://www.haomou.net/tags/centos/" style="font-size: 11.82px;">centos</a> <a href="http://www.haomou.net/tags/css/" style="font-size: 12.73px;">css</a> <a href="http://www.haomou.net/tags/fabric/" style="font-size: 10px;">fabric</a> <a href="http://www.haomou.net/tags/git/" style="font-size: 11.82px;">git</a> <a href="http://www.haomou.net/tags/html/" style="font-size: 10px;">html</a> <a href="http://www.haomou.net/tags/hybridApp/" style="font-size: 10px;">hybridApp</a> <a href="http://www.haomou.net/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="http://www.haomou.net/tags/ionic/" style="font-size: 18.18px;">ionic</a> <a href="http://www.haomou.net/tags/jQuery/" style="font-size: 11.82px;">jQuery</a> <a href="http://www.haomou.net/tags/loopback/" style="font-size: 17.27px;">loopback</a> <a href="http://www.haomou.net/tags/mongoDB/" style="font-size: 11.82px;">mongoDB</a> <a href="http://www.haomou.net/tags/phonegap/" style="font-size: 10.91px;">phonegap</a> <a href="http://www.haomou.net/tags/reapp/" style="font-size: 10px;">reapp</a> <a href="http://www.haomou.net/tags/scss/" style="font-size: 10px;">scss</a> <a href="http://www.haomou.net/tags/session/" style="font-size: 10px;">session</a> <a href="http://www.haomou.net/tags/storage/" style="font-size: 10px;">storage</a> <a href="http://www.haomou.net/tags/svg/" style="font-size: 13.64px;">svg</a> <a href="http://www.haomou.net/tags/token/" style="font-size: 10.91px;">token</a> <a href="http://www.haomou.net/tags/ubuntu/" style="font-size: 10.91px;">ubuntu</a> <a href="http://www.haomou.net/tags/weinre/" style="font-size: 10px;">weinre</a> <a href="http://www.haomou.net/tags/%E4%BC%AA%E7%B1%BB/" style="font-size: 10px;">伪类</a> <a href="http://www.haomou.net/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" style="font-size: 10px;">兼容性</a> <a href="http://www.haomou.net/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="http://www.haomou.net/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 10.91px;">加密</a> <a href="http://www.haomou.net/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="http://www.haomou.net/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 10.91px;">图像处理</a> <a href="http://www.haomou.net/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="http://www.haomou.net/tags/%E5%AE%89%E5%85%A8/" style="font-size: 11.82px;">安全</a> <a href="http://www.haomou.net/tags/%E5%BF%83%E6%83%85/" style="font-size: 10px;">心情</a> <a href="http://www.haomou.net/tags/%E6%80%9D%E8%80%83/" style="font-size: 10px;">思考</a> <a href="http://www.haomou.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="http://www.haomou.net/tags/%E6%95%99%E7%A8%8B/" style="font-size: 19.09px;">教程</a> <a href="http://www.haomou.net/tags/%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/" style="font-size: 10px;">数学理论</a> <a href="http://www.haomou.net/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 10px;">模板引擎</a> <a href="http://www.haomou.net/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="http://www.haomou.net/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="http://www.haomou.net/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.36px;">笔记</a> <a href="http://www.haomou.net/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="http://www.haomou.net/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="http://www.haomou.net/tags/%E8%B7%A8%E5%9F%9F/" style="font-size: 10px;">跨域</a> <a href="http://www.haomou.net/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a> <a href="http://www.haomou.net/tags/%E9%97%AD%E5%8C%85/" style="font-size: 10px;">闭包</a> <a href="http://www.haomou.net/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10.91px;">问题</a> <a href="http://www.haomou.net/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div id="haomou_ad" class="widget-wrap widget-list">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">前端工程师微专业【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《JavaWeb开发工程师》【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">大数据工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">自动化测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">移动应用测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《产品经理》微专业【年薪25w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/55001.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">IT项目经理【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">自由职业摄影师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">MySQL数据库管理工程师【年薪15w】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+<dl id="outline" style="position: relative; margin-top: 20px;"><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#ionic组件" class="nslog:1026" title="ionic组件" onclick="return false;" style="color: rgb(103, 169, 210);">ionic组件</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">0</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#Header" class="nslog:1026" title="Header" onclick="return false;" style="color: rgb(103, 169, 210);">Header</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">1</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#Footer" class="nslog:1026" title="Footer" onclick="return false;" style="color: rgb(103, 169, 210);">Footer</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">2</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#button" class="nslog:1026" title="button" onclick="return false;" style="color: rgb(103, 169, 210);">button</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">3</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#List" class="nslog:1026" title="List" onclick="return false;" style="color: rgb(103, 169, 210);">List</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">4</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#卡片card" class="nslog:1026" title="卡片card" onclick="return false;" style="color: rgb(103, 169, 210);">卡片card</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">5</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#表单输入" class="nslog:1026" title="表单输入" onclick="return false;" style="color: rgb(103, 169, 210);">表单输入</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">6</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#Toggle选择" class="nslog:1026" title="Toggle选择" onclick="return false;" style="color: rgb(103, 169, 210);">Toggle选择</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">7</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#checkbox多选框" class="nslog:1026" title="checkbox多选框" onclick="return false;" style="color: rgb(103, 169, 210);">checkbox多选框</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">8</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#radio单选框" class="nslog:1026" title="radio单选框" onclick="return false;" style="color: rgb(103, 169, 210);">radio单选框</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">9</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#ionic中文详解CSS组件2" class="nslog:1026" title="ionic中文详解CSS组件2" onclick="return false;" style="color: rgb(103, 169, 210);">ionic中文详解CSS组件2</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">10</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#谢谢！" class="nslog:1026" title="谢谢！" onclick="return false;" style="color: rgb(103, 169, 210);">谢谢！</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">11</span></dd></dl></aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <!-- <a href="/" class="logo"></a> -->
+          <a href="http://www.fed123.com/"><img alt="fed前端" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+        </h1>
+        <p>© 2016 网易高级前端工程师</p>
+        <p>苏ICP备13018740号-6
+        <!-- <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5849006'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D5849006%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script> -->
+        </p>
+      </div>
+      <div class="foot-nav">
+        <img alt="FED前端开发" src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/hm.jpg" width="100" height="120" style="border-radius: 5px;margin-top: 5px;margin-right: 5px;float:left;" data-bd-imgshare-binded="1">
+          <div style="color: #428bca;text-align: center;font-size: 18px;padding:5px;">曹欢欢(chale)</div>中国科学技术大学硕士研究生，网易高级前端工程师，5年前端工作经验，刻苦专研，自学成才。FED123.com是前端开发（Front End Developer）工程师学习交流的家园，分享精彩的前端早读，前端后端开发相关的知识点，大家共同学习进步！
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/jquery.scrollLoading.js"></script>
+  <script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/main.js"></script>
+
+
+<script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/html-patch.js"></script>
+<script src="./ionic中文详解CSS组件(1) _ 皓眸大前端-前端开发学习交流圈子_files/script.js"></script>
+
+  </div>
+
+
+<iframe frameborder="0" id="bdSharePopup_selectshare1463013185753bg" class="bdselect_share_bg" style="display:none;"></iframe><div id="bdSharePopup_selectshare1463013185753box" style="display:none;" share-type="selectshare" class="bdselect_share_box" data-bd-bind="1463013185753"><div class="selectshare-mod-triangle"><div class="triangle-border"></div><div class="triangle-inset"></div></div><div class="bdselect_share_head"><span>分享到</span><a href="http://www.baidu.com/s?wd=&tn=SE_hldp08010_vurs2xrp" class="bdselect_share_dialog_search" target="_blank"><i class="bdselect_share_dialog_search_i"></i><span class="bdselect_share_dialog_search_span">百度一下</span></a><a class="bdselect_share_dialog_close"></a></div><div class="bdselect_share_content"><ul class="bdselect_share_list bdshare-button-style0-32"><div class="bdselect_share_partners"></div><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" class="bds_more" data-cmd="more"></a></ul></div></div><div id="bdimgshare_1463013185759" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-24 sr-bdimgshare-black" style="height: 42px; line-height: 32px; font-size: 14px; position: absolute; top: 13263.8px; left: 535px; width: 431px; display: none;" data-bd-bind="1463013185758"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-24"><label class="bdimgshare-lbl">分享到：</label><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_tqq" data-cmd="tqq" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_renren" data-cmd="renren" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_sqq" data-cmd="sqq" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_youdao" data-cmd="youdao" hidefocus=""></a><a href="http://www.haomou.net/2014/08/09/2014_ionic_api_css/#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>

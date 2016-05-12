@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.haomou.net/2015/02/10/2015_ionic_plugin/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  
+  <title>ionic调试插件开发 | 皓眸大前端-前端开发学习交流圈子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于自定义插件其实ionic关于插件这块，主要可以参考cordova，cordova上面的所有插件可以稍作修改，应用到ionic中来，但是由于涉及到一个js注入的问题，所以目前还有另外一个开源项目ng-cordova（www.ngcordova.com ）, 也就是组合了cordova和angular，已angular的方式封装注册了cordova的一些插件。教程索引：(持续更新)ionic中文教">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ionic调试插件开发">
+<meta property="og:url" content="http://haomou.net/2015/02/10/2015_ionic_plugin/index.html">
+<meta property="og:site_name" content="皓眸大前端-前端开发学习交流圈子">
+<meta property="og:description" content="关于自定义插件其实ionic关于插件这块，主要可以参考cordova，cordova上面的所有插件可以稍作修改，应用到ionic中来，但是由于涉及到一个js注入的问题，所以目前还有另外一个开源项目ng-cordova（www.ngcordova.com ）, 也就是组合了cordova和angular，已angular的方式封装注册了cordova的一些插件。教程索引：(持续更新)ionic中文教">
+<meta property="og:image" content="http://haomou.net/images/plugin.png">
+<meta property="og:image" content="http://haomou.net/images/plugin1.png">
+<meta property="og:updated_time" content="2016-05-10T05:36:24.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ionic调试插件开发">
+<meta name="twitter:description" content="关于自定义插件其实ionic关于插件这块，主要可以参考cordova，cordova上面的所有插件可以稍作修改，应用到ionic中来，但是由于涉及到一个js注入的问题，所以目前还有另外一个开源项目ng-cordova（www.ngcordova.com ）, 也就是组合了cordova和angular，已angular的方式封装注册了cordova的一些插件。教程索引：(持续更新)ionic中文教">
+<meta name="twitter:image" content="http://haomou.net/images/plugin.png">
+  
+  
+    <link rel="icon" href="http://www.haomou.net/favicon.png">
+  
+
+  <link rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/style.css">
+  
+    <link rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/style(1).css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/logo.png); }
+    </style>
+  
+
+  
+    <link href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/css" rel="stylesheet" type="text/css">
+    <link href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/css(1)" rel="stylesheet" type="text/css">
+  
+
+<script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/share.js"></script><script type="text/javascript" async="" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/embed.js" charset="UTF-8"></script><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_32.css"><link type="text/css" rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/embed.default.css"><link rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/imgshare.css"><link rel="stylesheet" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/share_style0_24.css"></head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+
+  <embed id="bac_flash" allowscriptaccess="never" allownetworking="internal" invokeurls="false" src="/images/bck.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" quality="high" autostart="0" wmode="transparent" width="100%" height="300" align="middle" style="position: absolute;margin-top: -100px;margin-left: 5px;">
+
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <!-- <a href="/" class="logo"></a> -->
+             <a href="http://www.fed123.com/"><img alt="fedǰ��" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">前端开发(Front End Developer)</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/">主页</a></li>
+              
+                    <li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link current" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></li>
+                  
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-2015_ionic_plugin" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      ionic调试插件开发
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子.html" class="article-date">
+  <time datetime="2015-02-10T01:09:09.000Z" itemprop="datePublished">2015-02-10</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="关于自定义插件"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#关于自定义插件" class="headerlink" title="关于自定义插件"></a>关于自定义插件</h3><p>其实ionic关于插件这块，主要可以参考cordova，cordova上面的所有插件可以稍作修改，应用到ionic中来，但是由于涉及到一个js注入的问题，所以目前还有另外一个开源项目ng-cordova（www.ngcordova.com ）, 也就是组合了cordova和angular，已angular的方式封装注册了cordova的一些插件。<br>教程索引：(持续更新)<br><a href="http://www.haomou.net/2014/10/06/2014_ionic_learn/" target="_blank" rel="external">ionic中文教程</a><br><a id="more"></a><br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/plugin.png" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/plugin.png" data-bd-imgshare-binded="1"><span class="caption">皓眸大前端开发学习</span></p>
+<p>转载请注明出处：<a href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2015/02/10/2015_ionic_plugin/</a></p>
+<h3 id="ionic插件开发"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#ionic插件开发" class="headerlink" title="ionic插件开发"></a>ionic插件开发</h3><p>这里主要介绍如何开发ionic插件，我们将开发一款用于输出信息到android控制台的插件myconsole。新建一个文件夹名为console，目录结构如下：<br><img class="floatnone scrollLoading" alt="皓眸大前端开发学习" data-url="/images/plugin1.png" data-bd-imgshare-binded="1" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/plugin1.png"><span class="caption">皓眸大前端开发学习</span><br>目录说明：<br>src 存放对应平台的native源代码<br>android 存放Android平台要编译到apk的对应src的包目录<br>ios 存放对应IOS平台的文件<br>www<br>存放cordova plugin插件js文件，网页上的方法会先调用到这个plugin中对应的方法，然后根据配置文件调用到android或者ios中对应的类和方法。<br>LICENSE 存放开源的许可证，这个不是必须的<br>plugin.xml插件描述文件，当执行ionic plugin add命令时会解析该文件<br>readme.md说明文件</p>
+<h4 id="编写js"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#编写js" class="headerlink" title="编写js"></a>编写js</h4><p>先编写www目录下的console.js文件，代码如下：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var exec = require('cordova/exec');  </span><br><span class="line">module.exports = {  </span><br><span class="line">  </span><br><span class="line">    /** </span><br><span class="line">     * 一共5个参数 </span><br><span class="line">       第一个 :成功会掉 </span><br><span class="line">       第二个 :失败回调 </span><br><span class="line">       第三个 :将要调用的类的配置名字(在config.xml中配置 稍后在下面会讲解) </span><br><span class="line">       第四个 :调用的方法名(一个类里可能有多个方法 靠这个参数区分) </span><br><span class="line">       第五个 :传递的参数  以json的格式 </span><br><span class="line">     */  </span><br><span class="line">    log: function(mills,callback,err) {  </span><br><span class="line">        exec(function(winParam){  </span><br><span class="line">            callback(winParam);  </span><br><span class="line">        }, function(errParam){  </span><br><span class="line">            err(errParam);  </span><br><span class="line">        }, "MyConsole", "log", [mills]);  </span><br><span class="line">    },  </span><br><span class="line">    err: function(mills,callback,err) {  </span><br><span class="line">        exec(function(winParam){  </span><br><span class="line">            callback(winParam);  </span><br><span class="line">        }, function(errParam){  </span><br><span class="line">            err(errParam);  </span><br><span class="line">        }, "MyConsole", "err", [mills]);  </span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h4 id="编写java文件"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#编写java文件" class="headerlink" title="编写java文件"></a>编写java文件</h4><p>我们在这里定义了两个方法log和err，这两个方法是暴露给前台js调用的方法。然后我们编写对应android平台的java文件，我暂时放在com.haomou包目录下，MyConsole.java代码如下：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package com.haomou;</span><br><span class="line">import android.app.Activity;</span><br><span class="line">import org.apache.cordova.CallbackContext;</span><br><span class="line">import org.apache.cordova.CordovaPlugin;</span><br><span class="line">import org.json.JSONArray;</span><br><span class="line">import org.json.JSONException;</span><br><span class="line">import android.net.Uri;</span><br><span class="line">import android.util.Log;</span><br><span class="line">/**</span><br><span class="line"> * js调用java方法 </span><br><span class="line"> * 必须继承CordovaPlugin   </span><br><span class="line"> * 我使用的   cordova  3.3.0版本</span><br><span class="line"> * @author chale  haomou.net</span><br><span class="line">*/</span><br><span class="line">public class MyConsole extends CordovaPlugin {</span><br><span class="line">    public String message="";</span><br><span class="line">	/**</span><br><span class="line">	 * 注意 构造方法不能为</span><br><span class="line">	 * MyConsole(){}</span><br><span class="line">	 * 可以不写或者 定义为如下</span><br><span class="line">	 */</span><br><span class="line">	public MyConsole() {</span><br><span class="line">	}</span><br><span class="line">	CallbackContext callbackContext;</span><br><span class="line">	@Override</span><br><span class="line">	public boolean execute(String action, JSONArray args,</span><br><span class="line">			CallbackContext callbackContext) throws JSONException {</span><br><span class="line">		this.callbackContext = callbackContext;</span><br><span class="line">		if (action.equals("log")) {</span><br><span class="line">			// 获取args的第一个参数</span><br><span class="line">			message = args.getString(0);</span><br><span class="line">			Log.i("myConsole", message);</span><br><span class="line">			return true;</span><br><span class="line">		}</span><br><span class="line">		if (action.equals("err")) {</span><br><span class="line">			// 获取args的第一个参数</span><br><span class="line">			message = args.getString(0);</span><br><span class="line">			Log.d("myConsole", message);</span><br><span class="line">			return true;</span><br><span class="line">		}</span><br><span class="line">		return false;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>从上面的代码可以看到，我们在excute方法中会捕获获取的参数，如果是log则用info的方式输出信息，如果是err，则通过debug的方式输出信息。</p>
+<h4 id="编写配置文件"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h4><p>最后一步我们开始编写配置文件，安装插件的时候，ionic会根据这个配置文件来动态配置android项目，编写plugin.xml内容如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"</span><br><span class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">  id="com.haomou.console"</span><br><span class="line">  version="0.0.1"&gt;</span><br><span class="line">	&lt;!-- 插件名称 --&gt;</span><br><span class="line">	&lt;name&gt;console&lt;/name&gt;</span><br><span class="line">	&lt;!-- 插件描述 --&gt;</span><br><span class="line">	&lt;description&gt;</span><br><span class="line">		This plugin allows print msg in logcat</span><br><span class="line">	&lt;/description&gt;</span><br><span class="line">	&lt;!-- 插件license --&gt;</span><br><span class="line">	&lt;license&gt;MIT&lt;/license&gt;</span><br><span class="line">	&lt;!-- 插件所依赖的cordova版本 --&gt;</span><br><span class="line">	&lt;engines&gt;</span><br><span class="line">		&lt;engine name="cordova" version="&gt;=3.0.0" /&gt;</span><br><span class="line">	&lt;/engines&gt;  </span><br><span class="line">	&lt;!-- 插件模块，src指明js文件路径，clobbers指明前台js调用的接口名,这个配置会被ionic自动编译到项目的platforms/android/assets/cordova_plugin.js 文件中,其中本配置文件中的开头的id指定了src所编译后存放的目录，version指定了本插件的版本 --&gt;</span><br><span class="line">	&lt;js-module src="www/console.js" name="console"&gt;</span><br><span class="line">		&lt;clobbers target="navigator.console" /&gt;</span><br><span class="line">	&lt;/js-module&gt;</span><br><span class="line">	&lt;!-- android --&gt;</span><br><span class="line">	&lt;platform name="android"&gt;</span><br><span class="line">		&lt;!-- 配置Android项目中的 res/xml/config.xml 文件，编译后会将feature配置到widget中，注意这个feature的name 值，这个值和我们www/console.js 文件中的第三个参数对应--&gt;</span><br><span class="line">		&lt;config-file target="res/xml/config.xml" parent="/*"&gt;</span><br><span class="line">			&lt;feature name="MyConsole"&gt;</span><br><span class="line">				&lt;param name="android-package" value="com.haomou.MyConsole"/&gt;</span><br><span class="line">			&lt;/feature&gt;</span><br><span class="line">		&lt;/config-file&gt;</span><br><span class="line">		&lt;!-- 指定编译后的文件位置 --&gt;</span><br><span class="line">		&lt;source-file src="src/android/com/haomou/MyConsole.java" target-dir="src/com/haomou" /&gt;</span><br><span class="line">	&lt;/platform&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>关于这个配置文件，注释中我已经写的很清楚了。这里我们要编写的工作就完成了。下面介绍如何安装和卸载ionic插件。</p>
+<h3 id="调用方法"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#调用方法" class="headerlink" title="调用方法"></a>调用方法</h3><p>在js代码中直接使用 MyConsole 全局对象<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyConsole.log('123141')</span><br><span class="line">MyConsole.err('1231233')</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="ionic插件安装与卸载"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#ionic插件安装与卸载" class="headerlink" title="ionic插件安装与卸载"></a>ionic插件安装与卸载</h3><p>使用下面的命令查询、安装、卸载插件：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ionic plugin list //列出所有已安装插件</span><br><span class="line">ionic plugin remove 插件名  //先根据上面的list列出插件，然后根据插件名卸载</span><br><span class="line">ionic plugin  add  插件地址 //这个插件地址可以是github的项目地址，也可以是一个文件夹路径</span><br><span class="line">ionic –help  //查看帮助文件</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="虚拟机调试ionic项目"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#虚拟机调试ionic项目" class="headerlink" title="虚拟机调试ionic项目"></a>虚拟机调试ionic项目</h3><p>通过ionic emulate Android命令可以直接启动虚拟机，并启动应用程序，但是启动后，就断开了，这时候我们需要使用adb连接虚拟机或者Android设备查看日志信息。<br>先在控制台执行adb命令，如果没有反应，需要把Android sdk目录下的platform-tools目录加入到环境变量path中。然后执行下面的命令：<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adb devices //列出可用的Android设备</span><br><span class="line">adb logcat  //进入Android日志打印控制台</span><br><span class="line">adb shell //进入Android系统的shell </span><br><span class="line">adb install apk路径 //给Android设备安装应用</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="其他技巧"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h3><h4 id="如何指定编译的android版本，也就是API-Level？"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#如何指定编译的android版本，也就是API-Level？" class="headerlink" title="如何指定编译的android版本，也就是API Level？"></a>如何指定编译的android版本，也就是API Level？</h4><p>修改项目下的 platforms/android/project.properties和platforms/android/CordovaLib/project.properties中的target=android-19 即可。修改成你想要的版本，前提是你已经安装了对应的api版本的sdk ，否则编译会出错</p>
+<h3 id="谢谢！"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#谢谢！" class="headerlink" title="谢谢！"></a>谢谢！</h3><p>转载请注明出处：<a href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子.html" target="_blank" rel="external">http://www.haomou.net/2015/02/10/2015_ionic_plugin/</a></p>
+<p>有问题请留言。T_T  皓眸大前端开发学习  T_T</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://haomou.net/2015/02/10/2015_ionic_plugin/" data-id="cio2a30st005ogskps28bdnxg" class="article-share-link">Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/ionic/">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://www.haomou.net/tags/%E6%95%99%E7%A8%8B/">教程</a></li></ul>
+
+      </footer>
+<!-- 添加的分享 -->
+      <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1463014324644"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_more" data-cmd="more"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin","sqq","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    </div>
+  </article>
+  
+  
+    <section id="comments">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="post-2015_ionic_plugin" data-title="ionic调试插件开发" data-url="http://haomou.net/2015/02/10/2015_ionic_plugin/" id="ds-thread"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">7</span>条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1331012701492609196"><div class="ds-post-self" data-post-id="1331012701492609196" data-thread-id="1331012701492609145" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="12797423"><a rel="nofollow author" target="_blank" href="http://weibo.com/newyoungerhao" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=12797423&#39;;" title="nicenight888"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/1" alt="nicenight888"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/newyoungerhao" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=12797423&#39;;" rel="nofollow" target="_blank" data-user-id="12797423">nicenight888</a></div><p>MyConsole.java多了个 }</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-07-15T16:35:05+08:00" title="2015年7月15日 下午4:35:05">2015年7月15日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609202"><div class="ds-post-self" data-post-id="1331012701492609202" data-thread-id="1331012701492609145" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="12913913"><a rel="nofollow author" target="_blank" href="http://t.qq.com/jianhong_2011" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=12913913&#39;;" title="HONGJian"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/50" alt="HONGJian"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/jianhong_2011" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=12913913&#39;;" rel="nofollow" target="_blank" data-user-id="12913913">HONGJian</a></div><p>请教一下，ionic app里面怎么使用自己定义的plugin？</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-07-24T16:22:58+08:00" title="2015年7月24日 下午4:22:58">2015年7月24日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609214"><div class="ds-post-self" data-post-id="1331012701492609214" data-thread-id="1331012701492609145" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="13107624"><a rel="nofollow author" target="_blank" href="http://t.qq.com/hqwlkj" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13107624&#39;;" title="求学者"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/50(1)" alt="求学者"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/hqwlkj" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13107624&#39;;" rel="nofollow" target="_blank" data-user-id="13107624">求学者</a></div><p>请问有没有。ngCordova 的支付插件？</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-10T09:19:44+08:00" title="2015年8月10日 上午9:19:44">2015年8月10日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1331012701492609252"><div class="ds-post-self" data-post-id="1331012701492609252" data-thread-id="1331012701492609145" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="13107624"><a rel="nofollow author" target="_blank" href="http://t.qq.com/hqwlkj" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13107624&#39;;" title="求学者"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/50(1)" alt="求学者"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/hqwlkj" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13107624&#39;;" rel="nofollow" target="_blank" data-user-id="13107624">求学者</a></div><p>求教一下，cordova 在ios应用上如何实现自动推送更新。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-09-09T10:42:08+08:00" title="2015年9月9日 上午10:42:08">2015年9月9日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6208296916229718786"><div class="ds-post-self" data-post-id="6208296916229718786" data-thread-id="1331012701492609145" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="13993425"><a rel="nofollow author" target="_blank" href="http://t.qq.com/dqr139" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13993425&#39;;" title="丁全仁"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/50(2)" alt="丁全仁"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/dqr139" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=13993425&#39;;" rel="nofollow" target="_blank" data-user-id="13993425">丁全仁</a></div><p>怎么调用呢</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-10-22T10:42:47+08:00" title="2015年10月22日 上午10:42:47">2015年10月22日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6227077345816085249"><div class="ds-post-self" data-post-id="6227077345816085249" data-thread-id="1331012701492609145" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6226288499025249026"><a rel="nofollow author" target="_blank" href="http://blog.sina.com.cn/u/5795390623" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=6226288499025249026&#39;;" title="男人记博客"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/u101097550-2.jpg" alt="男人记博客"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://blog.sina.com.cn/u/5795390623" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=6226288499025249026&#39;;" rel="nofollow" target="_blank" data-user-id="6226288499025249026">男人记博客</a></div><p>我顶啊。接着顶</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-12-12T01:20:26+08:00" title="2015年12月12日 上午1:20:26">2015年12月12日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6270646005738242818"><div class="ds-post-self" data-post-id="6270646005738242818" data-thread-id="1331012701492609145" data-root-id="6208296916229718786" data-source="duoshuo"><div class="ds-avatar" data-user-id="8197503"><a rel="nofollow author" target="_blank" href="http://t.qq.com/cherohuan" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=8197503&#39;;" title="曹欢欢"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/100" alt="曹欢欢"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/cherohuan" onclick="this.href=&#39;http://haomou.duoshuo.com/user-url/?user_id=8197503&#39;;" rel="nofollow" target="_blank" data-user-id="8197503">曹欢欢</a></div><p><a class="ds-comment-context" data-post-id="6270646005738242818" data-parent-id="6208296916229718786">回复 丁全仁: </a>直接用，这个挂在window全局下</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-04-07T11:09:05+08:00" title="2016年4月7日 上午11:09:05">4月7日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://haomou.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://haomou.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://haomou.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://haomou.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://haomou.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://haomou.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://haomou.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://haomou.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1331012701492609145">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5707478c43dd3"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">皓眸网正在使用多说</a></p></div></div>
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:'haomou'};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+      <!-- 多说公共JS代码 end -->
+    </section>
+    
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-myself" style="clear:both">
+      <link media="all" href="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/nav.css" type="text/css" rel="stylesheet">
+      <!--<div id="container">-->
+      	<!--<div class=flash-box>-->
+      		<!--<h2>网易微专业(优秀学员直接进网易/阿里/腾讯/百度等名企)</h2>-->
+      		<!--<div class="big-pic" id="SwitchBigPic">-->
+      		<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2360" target="_blank" title="自由职业摄影师"><IMG src="/nav/images/top1.png"></A> &ndash;&gt;-->
+            <!--&lt;!&ndash;<A href="http://s.click.taobao.com/r2lgLYx" id="top2365" target="_blank" title="床上大号电脑桌36元包邮"><IMG src="/nav/images/computerDesk.png"></A>&ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2359" target="_blank" title="前端工程师微专业"><IMG src="/nav/images/webfront.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+            <!--" id="top2366" target="_blank" title="《产品经理》微专业"><IMG src="/nav/images/pm.jpg"></A>-->
+            <!--<A href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2367" target="_blank" title="《JavaWeb开发工程师》微专业"><IMG src="/nav/images/java.jpg"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" id="top2361" target="_blank" title="MySQL数据库管理工程师"><IMG src="/nav/images/top2.png"></A>-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2362" target="_blank" title="大数据工程师"><IMG src="/nav/images/top3.png"></A>-->
+      	<!--&lt;!&ndash;	<A href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2363" target="_blank" title="自动化测试工程师"><IMG src="/nav/images/top4.png"></A> &ndash;&gt;-->
+      		<!--<A href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate-->
+<!--" id="top2364" target="_blank" title="移动应用测试工程师"><IMG src="/nav/images/top5.png"></A>-->
+
+
+      		<!--</div>-->
+      		<!--<div class="pic-list_0810">-->
+      			<!--<div id="ul_recom">-->
+                    <!--&lt;!&ndash;<A title="床上大号电脑桌36元包邮" target="_blank" href="http://s.click.taobao.com/r2lgLYx" blockid="top2365"><IMG src="/nav/images/computerDesks.png"><SPAN><STRONG>IT项目经理</STRONG></SPAN><SPAN>IT互联网经理人培训机构光环国际</SPAN></A>&ndash;&gt;-->
+      			  <!--&lt;!&ndash; <A class="currA" title="自由职业摄影师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2360"><IMG  src="/nav/images/top1s.png"><SPAN><STRONG>自由职业摄影师</STRONG></SPAN><SPAN>国际摄影爱好者协会主席，咔图摄影教育中心</SPAN></A> &ndash;&gt;-->
+      			  <!--<A class="currA" title="前端工程师微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2359"><IMG  src="/nav/images/webfronts.png"><SPAN><STRONG>前端工程师微专业</STRONG></SPAN><SPAN>网易一线资深前端开发工程师倾情打造！</SPAN></A>-->
+      			  <!--<A title="《产品经理》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2366"><IMG src="/nav/images/pms.jpg"><SPAN><STRONG>《产品经理》微专业</STRONG></SPAN><SPAN>网易云音乐、LOFTER、考拉海购、易信、邮箱等亿级产品的产品负责人亲授，只为打造国内顶尖产品经理课程。带你掌握从需求挖掘、产品设计到数据分析、产品运营的全部技能，帮你成为一个合格产品人</SPAN></A>-->
+                  <!--<A title="《JavaWeb开发工程师》微专业" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2367"><IMG src="/nav/images/javas.jpg"><SPAN><STRONG>《JavaWeb开发工程师》微专业</STRONG></SPAN><SPAN>聚焦JavaWeb开发工程师必知必会的知识技能。既有系统的知识体系保证学生吸收，又有大量网易内部案例和实践，保证学生无缝对接企业需求。优秀学生还可获得工作推荐。</SPAN></A>-->
+      			  <!--<A title="MySQL数据库管理工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2361"><IMG  src="/nav/images/top2s.png"><SPAN><STRONG>MySQL数据库管理工程师</STRONG></SPAN><SPAN>网易一线DBA团队打造</SPAN></A>-->
+      			  <!--<A title="大数据工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2362"><IMG src="/nav/images/top3s.png"><SPAN><STRONG>大数据工程师</STRONG></SPAN><SPAN>国际学术出版商Wiley开发</SPAN></A>-->
+      			<!--&lt;!&ndash;  <A title="自动化测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate" blockid="top2363"><IMG src="/nav/images/top4s.png"><SPAN><STRONG>自动化测试工程师</STRONG></SPAN><SPAN>网易杭州研究院Web自动化测试</SPAN></A> &ndash;&gt;-->
+      			   <!--<A title="移动应用测试工程师" target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate" blockid="top2364"><IMG src="/nav/images/top5s.png"><SPAN><STRONG>移动应用测试工程师</STRONG></SPAN><SPAN>支付宝资深测试工程师</SPAN></A>-->
+
+
+      			<!--</div>-->
+      	   <!--</div>-->
+
+      	<!--</div>-->
+      <!--</div>-->
+
+      <h1> 前端技术导航 </h1>
+      <p>
+        <span>前端类：</span>
+        <a href="http://fex.baidu.com/" target="_blank">百度FEX</a>
+        <a href="http://isux.tencent.com/" target="_blank">腾讯ISUX</a>
+        <a href="http://www.w3cplus.com/" target="_blank">W3CPlus</a>
+        <a href="http://www.imooc.com/course/list" target="_blank">幕课网</a>
+        <a href="http://tympanus.net/codrops/" target="_blank">Codrops</a>
+        <a href="http://www.ruanyifeng.com/home.html" target="_blank">阮一峰</a>
+        <a href="http://codepen.io/" target="_blank">CodePen</a>
+        <a href="https://segmentfault.com/" target="_blank">segmentfault</a>
+      </p>
+      <p>
+        <span>工具类：</span>
+        <a href="http://fontello.com/" target="_blank">fontello</a>
+        <a href="http://lab.hakim.se/reveal-js/#/" target="_blank">REVEAL</a>
+        <a href="https://www.shiyanlou.com/courses/" target="_blank">实验楼</a>
+        <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Awesome</a>
+        <a href="https://kuler.adobe.com/" target="_blank">配色工具</a>
+        <a href="https://monaca.io/" target="_blank">monaca</a>
+        <a href="http://caniuse.com/" target="_blank">CanIUse</a>
+        <a href="http://browsershots.org/" target="_blank">浏览器快照</a>
+      </p>
+      <p>
+         <span>资讯类：</span>
+        <a href="http://www.36kr.com/" target="_blank">36氪</a>
+        <a href="http://cn.engadget.com/" target="_blank">瘾科技</a>
+        <a href="http://www.huxiu.com/" target="_blank">虎嗅网</a>
+        <a href="http://www.ikanchai.com/" target="_blank">砍柴网</a>
+        <a href="http://www.cnbeta.com/" target="_blank">cnBeta</a>
+      </p>
+      <p>
+         <span>常用API：</span>
+        <a href="http://www.ionicframework.com/" target="_blank">Ionic</a>
+        <a href="http://cordova.apache.org/docs/en/5.0.0/" target="_blank">Cordova</a>
+        <a href="http://docs.phonegap.com/en/edge/index.html" target="_blank">PhoneGap</a>
+        <a href="http://ngcordova.com/" target="_blank">Ng-Cordova</a>
+        <a href="http://docs.strongloop.com/display/public/LB/LoopBack" target="_blank">Loopback</a>
+        <a href="http://docs.angularjs.cn/api" target="_blank">Angular</a>
+        <a href="http://nej.netease.com/" target="_blank">NEJ</a>
+        <a href="http://regularjs.github.io/" target="_blank">Regular</a>
+      </p>
+
+  </div>
+  <div class="sidebar-top">
+    <span>前端工程师学习交流群：345413787</span>
+    <br><span>1. <a href="http://www.haomou.net/2014/10/06/2014_ionic_learn/" target="_blank">Ionic系列教程【年薪15w】</a></span>
+    <br><span>2. <a href="http://www.haomou.net/2015/11/05/2015_svg_learn/" target="_blank">SVG系列教程【年薪10w】</a></span>
+    <br><span>3. <a href="http://www.haomou.net/2015/08/30/2015_threejs0/" target="_blank">WebGL系列教程【年薪20w】</a></span>
+    <br><span>4. <a href="http://www.haomou.net/2015/02/06/2015_loopback_learn/" target="_blank">LoopBack系列教程【年薪15w】</a></span>
+    <br><span>5. <a href="http://www.haomou.net/2015/12/09/2015_web_learn/" target="_blank">前端工程师修炼教程【年薪20w】</a></span>
+    <br><span>6. <a href="http://www.haomou.net/2016/03/31/2016_java_learn/" target="_blank">JAVA工程师系列教程【年薪20w】</a></span>
+    <!-- <br><span >那一刻创业项目：<a href="http://m.pictcake.cn/"  target="_blank">求点赞（m.pictcake.cn）</a></span>
+    <br><span >基础知识学习：<a href="http://www.icourse163.org/"  target="_blank">推荐中国大学MOOC</a></span> -->
+    <br><span><a href="http://www.gamelofter.com/" target="_blank">出售域名(&nbsp; gamelofter.com &nbsp;)</a>，需要的联系我</span>
+    <br><span>想到网易实习(或正职工作)吗，扫码加入网易校招实习或正职内推QQ群:478483951,不定期更新内推招聘岗位！</span>
+    <div style="text-align:center;margin-top:10px;"><img width="150" height="200" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/qrcode1.jpg" data-bd-imgshare-binded="1"></div>
+      <!-- <div style="text-align:center;margin-top:10px;"><a href="http://t.kaola.com/ZrIb2e" target="_blank"><img width="100%" height="100%" src="/images/kaola.jpg"/></a></div>-->
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="http://www.haomou.net/2015/02/10/2015_server_rest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          REST概念介绍
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="http://www.haomou.net/2015/02/10/2015_ionic_debug/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">ionic开发APP版本调试</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-11前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/11/2016_05_11_read/" class="title">2016-05-11前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-11T03:10:10.000Z" itemprop="datePublished">2016-05-11</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-10前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/10/2016_05_10_read/" class="title">2016-05-10前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-10T02:10:10.000Z" itemprop="datePublished">2016-05-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-05-09前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/05/09/2016_05_09_read/" class="title">2016-05-09前端早读</a></p>
+              <p class="item-date"><time datetime="2016-05-09T02:10:10.000Z" itemprop="datePublished">2016-05-09</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="thumbnail">
+  
+    <span style="background-image:url(/images/test.gif
+)" alt="测试培训学习总结" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/26/2016_test_summery/" class="title">测试培训学习总结</a></p>
+              <p class="item-date"><time datetime="2016-04-26T12:03:10.000Z" itemprop="datePublished">2016-04-26</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="thumbnail">
+  
+    <span style="background-image:url(/images/read.jpg
+)" alt="2016-04-20前端早读" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a></p>
+              <p class="item-title"><a href="http://www.haomou.net/2016/04/20/2016_04_20_read/" class="title">2016-04-20前端早读</a></p>
+              <p class="item-date"><time datetime="2016-04-20T02:10:10.000Z" itemprop="datePublished">2016-04-20</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/Angular-React/">Angular|React</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/HTML5-CSS3/">HTML5|CSS3</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/JavaScript-NodeJs/">JavaScript|NodeJs</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/WebGL-ThreeJs/">WebGL|ThreeJs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/ionic-reapp/">ionic|reapp</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/loopback-%E6%9C%8D%E5%8A%A1%E7%AB%AF/">loopback|服务端</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="http://www.haomou.net/categories/%E5%89%8D%E7%AB%AF%E6%97%A9%E8%AF%BB/">前端早读</a><span class="category-list-count">57</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/04/">April 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/03/">March 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2016/01/">January 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/12/">December 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/10/">October 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/03/">March 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/02/">February 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/10/">October 2014</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/09/">September 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/08/">August 2014</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://www.haomou.net/archives/2014/07/">July 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="http://www.haomou.net/tags/API/" style="font-size: 10px;">API</a> <a href="http://www.haomou.net/tags/Android/" style="font-size: 10px;">Android</a> <a href="http://www.haomou.net/tags/AngularJS/" style="font-size: 14.55px;">AngularJS</a> <a href="http://www.haomou.net/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="http://www.haomou.net/tags/Grunt/" style="font-size: 10px;">Grunt</a> <a href="http://www.haomou.net/tags/Gulp/" style="font-size: 10.91px;">Gulp</a> <a href="http://www.haomou.net/tags/HTML5/" style="font-size: 10.91px;">HTML5</a> <a href="http://www.haomou.net/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="http://www.haomou.net/tags/HTTPS/" style="font-size: 10.91px;">HTTPS</a> <a href="http://www.haomou.net/tags/JAVA/" style="font-size: 10.91px;">JAVA</a> <a href="http://www.haomou.net/tags/JavaScript/" style="font-size: 16.36px;">JavaScript</a> <a href="http://www.haomou.net/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="http://www.haomou.net/tags/NodeJS/" style="font-size: 15.45px;">NodeJS</a> <a href="http://www.haomou.net/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="http://www.haomou.net/tags/RSA/" style="font-size: 10px;">RSA</a> <a href="http://www.haomou.net/tags/WebGL/" style="font-size: 13.64px;">WebGL</a> <a href="http://www.haomou.net/tags/Webpack/" style="font-size: 10.91px;">Webpack</a> <a href="http://www.haomou.net/tags/android/" style="font-size: 13.64px;">android</a> <a href="http://www.haomou.net/tags/bearer/" style="font-size: 10px;">bearer</a> <a href="http://www.haomou.net/tags/buffer/" style="font-size: 10px;">buffer</a> <a href="http://www.haomou.net/tags/bug/" style="font-size: 10px;">bug</a> <a href="http://www.haomou.net/tags/canvas/" style="font-size: 10.91px;">canvas</a> <a href="http://www.haomou.net/tags/centos/" style="font-size: 11.82px;">centos</a> <a href="http://www.haomou.net/tags/css/" style="font-size: 12.73px;">css</a> <a href="http://www.haomou.net/tags/fabric/" style="font-size: 10px;">fabric</a> <a href="http://www.haomou.net/tags/git/" style="font-size: 11.82px;">git</a> <a href="http://www.haomou.net/tags/html/" style="font-size: 10px;">html</a> <a href="http://www.haomou.net/tags/hybridApp/" style="font-size: 10px;">hybridApp</a> <a href="http://www.haomou.net/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="http://www.haomou.net/tags/ionic/" style="font-size: 18.18px;">ionic</a> <a href="http://www.haomou.net/tags/jQuery/" style="font-size: 11.82px;">jQuery</a> <a href="http://www.haomou.net/tags/loopback/" style="font-size: 17.27px;">loopback</a> <a href="http://www.haomou.net/tags/mongoDB/" style="font-size: 11.82px;">mongoDB</a> <a href="http://www.haomou.net/tags/phonegap/" style="font-size: 10.91px;">phonegap</a> <a href="http://www.haomou.net/tags/reapp/" style="font-size: 10px;">reapp</a> <a href="http://www.haomou.net/tags/scss/" style="font-size: 10px;">scss</a> <a href="http://www.haomou.net/tags/session/" style="font-size: 10px;">session</a> <a href="http://www.haomou.net/tags/storage/" style="font-size: 10px;">storage</a> <a href="http://www.haomou.net/tags/svg/" style="font-size: 13.64px;">svg</a> <a href="http://www.haomou.net/tags/token/" style="font-size: 10.91px;">token</a> <a href="http://www.haomou.net/tags/ubuntu/" style="font-size: 10.91px;">ubuntu</a> <a href="http://www.haomou.net/tags/weinre/" style="font-size: 10px;">weinre</a> <a href="http://www.haomou.net/tags/%E4%BC%AA%E7%B1%BB/" style="font-size: 10px;">伪类</a> <a href="http://www.haomou.net/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" style="font-size: 10px;">兼容性</a> <a href="http://www.haomou.net/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="http://www.haomou.net/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 10.91px;">加密</a> <a href="http://www.haomou.net/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="http://www.haomou.net/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 10.91px;">图像处理</a> <a href="http://www.haomou.net/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="http://www.haomou.net/tags/%E5%AE%89%E5%85%A8/" style="font-size: 11.82px;">安全</a> <a href="http://www.haomou.net/tags/%E5%BF%83%E6%83%85/" style="font-size: 10px;">心情</a> <a href="http://www.haomou.net/tags/%E6%80%9D%E8%80%83/" style="font-size: 10px;">思考</a> <a href="http://www.haomou.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="http://www.haomou.net/tags/%E6%95%99%E7%A8%8B/" style="font-size: 19.09px;">教程</a> <a href="http://www.haomou.net/tags/%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/" style="font-size: 10px;">数学理论</a> <a href="http://www.haomou.net/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 10px;">模板引擎</a> <a href="http://www.haomou.net/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="http://www.haomou.net/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="http://www.haomou.net/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.36px;">笔记</a> <a href="http://www.haomou.net/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="http://www.haomou.net/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="http://www.haomou.net/tags/%E8%B7%A8%E5%9F%9F/" style="font-size: 10px;">跨域</a> <a href="http://www.haomou.net/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a> <a href="http://www.haomou.net/tags/%E9%97%AD%E5%8C%85/" style="font-size: 10px;">闭包</a> <a href="http://www.haomou.net/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10.91px;">问题</a> <a href="http://www.haomou.net/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div id="haomou_ad" class="widget-wrap widget-list">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/12001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">前端工程师微专业【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85002.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《JavaWeb开发工程师》【年薪20w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/16001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">大数据工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/50002.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">自动化测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/51001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">移动应用测试工程师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/85003.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">《产品经理》微专业【年薪25w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/55001.htm?utm_source=caohuanhuan&utm_medium=cps&utm_campaign=affiliate">IT项目经理【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/28001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">自由职业摄影师【年薪15w】</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://mooc.study.163.com/smartSpec/detail/20001.htm?utm_source=676375&utm_medium=cps&utm_campaign=affiliate">MySQL数据库管理工程师【年薪15w】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+<dl id="outline" style="position: relative; margin-top: 20px;"><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#关于自定义插件" class="nslog:1026" title="关于自定义插件" onclick="return false;" style="color: rgb(103, 169, 210);">关于自定义插件</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">0</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#ionic插件开发" class="nslog:1026" title="ionic插件开发" onclick="return false;" style="color: rgb(103, 169, 210);">ionic插件开发</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">1</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#调用方法" class="nslog:1026" title="调用方法" onclick="return false;" style="color: rgb(103, 169, 210);">调用方法</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">2</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#ionic插件安装与卸载" class="nslog:1026" title="ionic插件安装与卸载" onclick="return false;" style="color: rgb(103, 169, 210);">ionic插件安装与卸载</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">3</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#虚拟机调试ionic项目" class="nslog:1026" title="虚拟机调试ionic项目" onclick="return false;" style="color: rgb(103, 169, 210);">虚拟机调试ionic项目</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">4</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#其他技巧" class="nslog:1026" title="其他技巧" onclick="return false;" style="color: rgb(103, 169, 210);">其他技巧</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">5</span></dd><dd class="sideCatalog-item2" id="sideToolbar-item--1_3"><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#谢谢！" class="nslog:1026" title="谢谢！" onclick="return false;" style="color: rgb(103, 169, 210);">谢谢！</a><span class="sideCatalog-dot"></span><span class="sideCatalog-index2">6</span></dd></dl></aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <!-- <a href="/" class="logo"></a> -->
+          <a href="http://www.fed123.com/"><img alt="fed前端" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/logo.png" width="121px" height="75px" style="display: block;" data-bd-imgshare-binded="1"></a>
+        </h1>
+        <p>© 2016 网易高级前端工程师</p>
+        <p>苏ICP备13018740号-6
+        <!-- <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5849006'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D5849006%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script> -->
+        </p>
+      </div>
+      <div class="foot-nav">
+        <img alt="FED前端开发" src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/hm.jpg" width="100" height="120" style="border-radius: 5px;margin-top: 5px;margin-right: 5px;float:left;" data-bd-imgshare-binded="1">
+          <div style="color: #428bca;text-align: center;font-size: 18px;padding:5px;">曹欢欢(chale)</div>中国科学技术大学硕士研究生，网易高级前端工程师，5年前端工作经验，刻苦专研，自学成才。FED123.com是前端开发（Front End Developer）工程师学习交流的家园，分享精彩的前端早读，前端后端开发相关的知识点，大家共同学习进步！
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/jquery.scrollLoading.js"></script>
+  <script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/main.js"></script>
+
+
+<script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/html-patch.js"></script>
+<script src="./ionic调试插件开发 _ 皓眸大前端-前端开发学习交流圈子_files/script.js"></script>
+
+  </div>
+
+
+<iframe frameborder="0" id="bdSharePopup_selectshare1463014324656bg" class="bdselect_share_bg" style="display:none;"></iframe><div id="bdSharePopup_selectshare1463014324656box" style="display:none;" share-type="selectshare" class="bdselect_share_box" data-bd-bind="1463014324655"><div class="selectshare-mod-triangle"><div class="triangle-border"></div><div class="triangle-inset"></div></div><div class="bdselect_share_head"><span>分享到</span><a href="http://www.baidu.com/s?wd=&tn=SE_hldp08010_vurs2xrp" class="bdselect_share_dialog_search" target="_blank"><i class="bdselect_share_dialog_search_i"></i><span class="bdselect_share_dialog_search_span">百度一下</span></a><a class="bdselect_share_dialog_close"></a></div><div class="bdselect_share_content"><ul class="bdselect_share_list bdshare-button-style0-32"><div class="bdselect_share_partners"></div><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" class="bds_more" data-cmd="more"></a></ul></div></div><div id="bdimgshare_1463014324661" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-24 sr-bdimgshare-black" style="height: 42px; line-height: 32px; font-size: 14px; position: absolute; top: 636.813px; left: 436px; width: 629px; display: none;" data-bd-bind="1463014324661"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-24"><label class="bdimgshare-lbl">分享到：</label><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_tqq" data-cmd="tqq" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_renren" data-cmd="renren" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_sqq" data-cmd="sqq" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_youdao" data-cmd="youdao" hidefocus=""></a><a href="http://www.haomou.net/2015/02/10/2015_ionic_plugin/#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>
