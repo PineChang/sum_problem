@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html -->
+<html lang="zh-hans" dir="ltr" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" class="js"><head profile="http://www.w3.org/1999/xhtml/vocab"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="znBdcsStyle" type="text/css">.bdcs-container .bdcs-main,.bdcs-container .bdcs-main *{box-sizing:content-box;margin:0;padding:0;float:none;clear:none;overflow:hidden;white-space:nowrap;word-wrap:normal;border:0;background:0 0;width:auto;height:auto;max-width:none;min-width:none;max-height:none;min-height:none;border-radius:0;box-shadow:none;transition:none;text-align:left}.bdcs-container .bdcs-clearfix:after{content:'';display:block;clear:both;height:0}.bdcs-container .bdcs-clearfix{zoom:1}.bdcs-container .bdcs-main{overflow:visible}.bdcs-container .bdcs-search{display:block;overflow:visible;position:relative;border-style:solid}.bdcs-container .bdcs-search-form-input-wrap{display:inline-block}.bdcs-container .bdcs-search-form-input{border-width:1px;border-style:solid;display:inline-block;vertical-align:top;text-indent:5px;background-color:#fff;float:left}.bdcs-container .bdcs-search-form-input:focus{border-width:1px;border-style:solid;outline:0}.bdcs-container .bdcs-search-form-submit-wrap{display:inline-block}.bdcs-container .bdcs-search-form-submit{display:inline-block;cursor:pointer;border-width:1px;border-style:solid;vertical-align:top;text-align:center;width:50px;//_overflow:hidden}.bdcs-container .bdcs-search-form-submit-magnifier{width:45px;padding:0;text-indent:-999em;overflow:hidden;background:url(http://znsv.baidu.com/static/customer-search/component/search/magnifier-icon.png) no-repeat center center;_background:url(http://znsv.baidu.com/static/customer-search/component/search/magnifier-icon_ie6.png) no-repeat center center}div#default-searchbox .default-channel-meun{position:relative;width:75px;display:inline-block;vertical-align:middle;cursor:pointer;background:#fff;float:left;overflow:visible}div#default-searchbox .default-channel-current{border:1px solid;position:relative;width:100%;border-right:0}div#default-searchbox .default-channel-current span{margin-left:8px}div#default-searchbox .default-channel-current i{overflow:hidden;width:0;height:0;border-width:6px 6px 0;border-color:#9E9E9E #fff;border-style:solid;display:block;position:absolute;right:10px;top:11px}div.cse-default-channel-container{display:block;position:absolute;z-index:30061000000}div.cse-default-channel-container .default-channel-list{display:none;width:99%;list-style:none;background:#fff;border:1px solid #DDD;border-top:0;margin:0;padding:0}div.cse-default-channel-container .default-channel-list li{background:0 0;line-height:24px;list-style:none;display:block;padding-left:7px;cursor:pointer}div.cse-default-channel-container .default-channel-list li:hover{background:#DDD}.bdcs-container .bdcs-search-form-input-wrap{}.bdcs-container .bdcs-search-form-input-notspan{margin-left:0px;font-family:null;color:null;font-size:14px;}.bdcs-container .bdcs-search-form-input .icon-nofocus{left:;right:;top:;height:;width:;}.bdcs-container .bdcs-search{width:auto;height:px;overflow:visible;border-color:#ffffff;border-radius:0px;border-width:0px;box-shadow:none;background-color:none;}.bdcs-container .bdcs-search-form-input{border-color:#a6a6a6;margin-right:px;width:146px;height:26px;line-height:26px;font-family:null;color:null;font-size:14px;border-radius:0px;background-color:#FFFFFF;}.bdcs-container .bdcs-search-form-input:focus{border-color:null;}.bdcs-container .bdcs-search-form-submit-wrap{}.bdcs-container .bdcs-search-form-submit{border-color:#a6a6a6;height:26px;width:50px;background-color:#f5f5f5;color:null;font-family:null;font-size:14px;border-radius:0px;}.bdcs-container .bdcs-search-sug-list{width:px;}.bdcs-container .bdcs-search-sug-list-item{height:28px;line-height:28px;font-family:Arial,Microsoft YaHei,sans-serif;font-size:14px;}.bdcs-container .bdcs-search-sug-list-item-value{color:#595959;}.bdcs-container .bdcs-clearfix:after{content:'';display:block;clear:both;height:0}.bdcs-container .bdcs-clearfix{zoom:1}.bdcs-container .bdcs-search{overflow:visible;position:relative}.bdcs-container .bdcs-search-sug,.bdcs-container .bdcs-search-sug *{box-sizing:content-box;margin:0;padding:0;float:none;clear:none;overflow:hidden;white-space:nowrap;word-wrap:normal;border:0;background:0 0;width:auto;height:auto;max-width:none;min-width:none;max-height:none;min-height:none;border-radius:0;box-shadow:none;transition:none;text-align:left}.bdcs-container .bdcs-search-sug{display:none;position:absolute;z-index:2147483647}.bdcs-container .bdcs-search-sug-list{list-style:none;border:1px solid #DDD;background-color:#FFF}.bdcs-container .bdcs-search-sug-list{}.bdcs-container .bdcs-search-sug-list-item{display:block;list-style:none;cursor:pointer;padding:0 5px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.bdcs-container .bdcs-search-sug-list-item-current{background-color:#EBEBEB}.bdcs-container .bdcs-search-sug-list-item-author-novel,.bdcs-container .bdcs-search-sug-list-item-author-music,.bdcs-container .bdcs-search-sug-list-item-type-movie{color:#BABABA}.bdcs-container .bdcs-search-sug-list-item-author-novel,.bdcs-container .bdcs-search-sug-list-item-author-music{margin-left:5px}.bdcs-container .bdcs-search-sug-list-item-music{overflow:hidden;*zoom:1}.bdcs-container .bdcs-search-sug-list-item-value-movie{float:left}.bdcs-container .bdcs-search-sug-list-item-type-movie{float:right}.bdcs-container .bdcs-search-sug-skin{display:none;width:85px;height:85px;position:absolute;right:1px;bottom:1px}.bdcs-container .bdcs-search-sug-skin-img{width:85px;height:85px}.bdcs-container .bdcs-search-sug-i{color:#e64fa3;font-weight:700;margin-left:10px;font-family:simsun;font-style:normal}.bdcs-container .bdcs-search-sug-adv{width:105px;position:absolute;right:1px;top:1px;display:none}.bdcs-container .bdcs-search-sug-adv-img{position:absolute;top:0;right:0}.bdcs-container{overflow:visible;}.bdcs-container .bdcs-search-form-submit{*height:28px;*margin-top:1px;}.bdcs-container .bdcs-search-form-submit{line-height:26px;}.bdcs-container .bdcs-search-sug-list-item{height:28px;line-height:28px;font-family:Arial,Microsoft YaHei,sans-serif;font-size:14px;}.bdcs-container .bdcs-search-sug-list-item-value{color:#595959;}#bdcs-rec{display:none;}</style>
+  
+<link rel="shortcut icon" href="http://cdn1.w3cplus.com/cdn/farfuture/6I7SmeJ6bvYzRevkkH6pjf9WnDTRa7YEBbsCyi6dPro/mtime:1414079820/sites/all/themes/w3cplusV2/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="dns-prefetch" href="http://cdn2.w3cplus.com/">
+<meta content="一个先进的App框架:使用Ionic创建一个简单的APP" about="/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html" property="dc:title">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="http://cdn.w3cplus.com/">
+<link rel="dns-prefetch" href="http://cdn1.w3cplus.com/">
+<meta name="description" content="自Hybrid Mobile技术发展以来，Web开发者转到移动开发的人数大大增加了。Hybrid Mobile开发技术使得一个Web开发者能够去开发一个运行在多个平台上的移动应用。完全不用去学习相应的平台语言和使用已经存在的技术。Hybrid Mobile技术已经发展了很多，有很多不同类型的平台存在，比如说PhoneGap和Titanium。一个值得考虑的Hybrid Mobile开发新平台就是Ionic。">
+<meta name="keywords" content="前端,mobile, Ionic,教程">
+<meta name="generator" content="Drupal 7 (http://drupal.org)">
+<link rel="canonical" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus.html">
+<link rel="shortlink" href="http://www.w3cplus.com/node/1563">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta itemprop="name" content="W3cplus">
+  <meta itemprop="image" content="http://www.w3cplus.com/w3cplus-logo.jpg">
+  <meta name="baidu-site-verification" content="ftyq813qEZgpw9nb">
+  <meta name="applicable-device" content="pc,mobile">
+  <title>一个先进的App框架:使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus</title>
+  <link type="text/css" rel="stylesheet" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/css_UmjYWbn8Yf1MjxlPR0E074Surjy3buZG43uTKL-Fjxw.css" media="all">
+<link type="text/css" rel="stylesheet" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/css_hYCLW089C9S9sP3ZYkuG6R-Q5ZHbEhblZBFjwZ_bE_I.css" media="all">
+<link type="text/css" rel="stylesheet" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/css_QmXPVGhcTv8mB_NIV1AEdR5Bj-0k_d2pHiGsSSa2yRs.css" media="all">
+<link type="text/css" rel="stylesheet" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/css_2Cqg6RQQR_iryo9qgJuclQk_4r7nWVPWD30VzlqEIHQ.css" media="all">
+  <script src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/hm.js"></script><script type="text/javascript" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/respond.min.js"></script>
+<script type="text/javascript" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/js_oCVMDTeSNt-_QxknevWyf6yO5OzmME3AhRz3ggZgNtg.js"></script>
+<script type="text/javascript" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/js_DO0x1KTxkDKTHlBnQqGbYtLC4Xfvi0W4B9Exxl7_qG0.js"></script>
+<script type="text/javascript" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/js_TBqACwJ2O6XDwB-OMOlsrbWqFrjJKxG0GDB2_o13-e8.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"w3cplusV2","theme_token":"cGXnGwkfL7xMaeQHd4cMV3Nx1CpaMl0cy1gUaiMYA6U","js":{"modules\/statistics\/statistics.js":1,"sites\/all\/modules\/contrib\/respondjs\/lib\/respond.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"public:\/\/languages\/zh-hans_Oq970VelHN9fa2F_FV03LgDp5jSIv3m9KbI0_jJ9cjM.js":1,"sites\/all\/themes\/w3cplusV2\/js\/highlight.pack.js":1,"sites\/all\/themes\/w3cplusV2\/js\/main.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ckeditor\/ckeditor.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/w3cplusV2\/css\/style.css":1}},"statistics":{"data":{"nid":"1563"},"url":"\/modules\/statistics\/statistics.php"}});
+//--><!]]>
+</script>
+<!-- w3cplus.com Baidu tongji analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?177319b798978621f83845b12c86fa29";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/share.js"></script><script type="text/javascript" async="" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/embed.js" charset="UTF-8"></script><script src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/js" charset="utf-8"></script><link rel="stylesheet" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/share_style2_16.css"><link type="text/css" rel="stylesheet" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/embed.default.css"></head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-1563 node-type-blog featured" style="">
+  <div id="skip-link">
+    <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#main-content" class="element-invisible element-focusable">跳转到主要内容</a>
+  </div>
+    <div id="header" role="header">
+  <div class="container">
+    <h1 id="logo">
+      <a href="http://www.w3cplus.com/" title="记述前端那些事,引领web前沿,打造精品css3教程" id="site_name">w3cplus</a>
+    </h1>
+    <div class="toggle-topbar menu-icon" id="pull">
+      <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#"><span>Menu</span></a>
+    </div>
+    <div class="toogle-topbar-content" id="pull-menu">
+              <ul class="menu clearfix"><li class="first leaf"><a href="http://www.w3cplus.com/blog/css3" title="">CSS3</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/mobile" title="">Mobile</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/blog/tags/302.html" title="Sass教程">Sass</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/blog/JavaScript" title="JavaScript">JavaScript</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/responsive" title="响应式设计">Responsive</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/blog/translations" title="译文">译文</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/blog/tags/411.html" title="SVG">SVG</a></li>
+<li class="leaf"><a href="http://www.w3cplus.com/source/front-end-developer-excellent-tool.html" title="在线工具">工具</a></li>
+<li class="last leaf"><a href="http://www.w3cplus.com/tags" title="标签云">标签云</a></li>
+</ul>        <!-- /#main-menu -->
+          </div>
+  </div>
+</div>
+
+  <div id="branding" role="branding">
+    <div class="container">
+        <div class="region region-branding">
+    <div id="block-block-44" class="block block-block">
+
+    
+  <div class="content">
+    <div class="ct-ad-article-wrapper" id="content-ad1" style="margin:0;padding:0;">
+  <div class="ct-ad-article">
+    <div class="bsap">
+     <a href="http://web.wuxianedu.com/yideng/" target="_blank">
+      <img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/yidengxuetang.png">
+     </a>
+    </div>
+  </div>
+</div>  </div>
+</div>
+  </div>
+    </div>
+  </div> 
+
+<div id="page" role="page">
+  <div class="container">
+    
+    <div class="col-main">
+      <div class="main-wrap">
+        
+                    <div class="region region-featured">
+    <div id="block-block-22" class="block block-block">
+
+    
+  <div class="content">
+    <div class="ct-ad-article-wrapper" id="content-ad1">
+  <div class="ct-ad-article">
+    <div class="bsap">
+     <a href="http://moyu-edu.com/" target="_blank">
+      <img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/moyu-content.png">
+     </a>
+    </div>
+  </div>
+</div>  </div>
+</div>
+  </div>
+                
+        <div class="page-inner">
+                      <div id="breadcrumb" role="breadcrumb">
+              <h2 class="element-invisible">你在这里</h2><div class="breadcrumb"><a href="http://www.w3cplus.com/">首页</a> » <a href="http://www.w3cplus.com/blog">博客</a> » <a href="http://www.w3cplus.com/blogs/%E4%B8%80%E5%8D%8A%E4%B8%80%E5%8D%8A">一半一半的博客</a></div>            </div>
+          
+          
+          <a id="main-content"></a>
+                                <h1 class="title" id="page-title">
+              一个先进的App框架:使用Ionic创建一个简单的APP            </h1>
+          
+                    
+                                <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="node-1563" class="node node-blog node-promoted node-full clearfix" about="/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html" typeof="sioc:Post sioct:BlogPost">
+  
+  <div class="node-header">
+              <div class="submitted">
+          作者：<span>一半一半</span>          日期：<span>2015-05-18</span>          点击：<span>15651</span>        </div>
+            <div class="tags">
+        <div class="field field-name-field-blog-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="http://www.w3cplus.com/mobile" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="" target="_blank">mobile</a></div><div class="field-item odd"><a href="http://www.w3cplus.com/blog/tags/481.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="" target="_blank">Ionic</a></div></div></div>      </div>
+  </div>
+
+      <div id="node-top" class="node-top">
+      <div id="block-block-38" class="block block-block">
+
+    
+  <div class="content">
+    <div class="ct-ad-article-wrapper" id="content-ad">
+  <div class="ct-ad-article">
+    <div class="bsap">
+     <a href="http://www.miaov.com/2013/download/video_download.html" target="_blank">
+      <img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/miaomei.png">
+     </a>
+    </div>
+  </div>
+</div>  </div>
+</div>
+    </div>
+  
+  <div class="body-content clearfix">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>介绍</h2>
+
+<p>自Hybrid Mobile技术发展以来，Web开发者转到移动开发的人数大大增加了。</p>
+
+<p>Hybrid Mobile开发技术使得一个Web开发者能够去开发一个运行在多个平台上的移动应用。完全不用去学习相应的平台语言和使用已经存在的技术。</p>
+
+<p>Hybrid Mobile技术已经发展了很多，有很多不同类型的平台存在，比如说<a href="http://phonegap.com/" target="_blank">PhoneGap</a>和<a href="http://www.appcelerator.com/product/" target="_blank">Titanium</a>。</p>
+
+<p>一个值得考虑的Hybrid Mobile开发新平台就是<a href="http://ionicframework.com/" target="_blank">Ionic</a>。</p>
+
+<p>Ionic 是一个先进的HTML5(Hybrid Mobile)技术App框架。它是一个可以使用HTML5来创建一个漂亮的移动应用的前端开源框架。</p>
+
+<p>Ionic的App都是基于<a href="http://cordova.apache.org/" target="_blank">Cordova</a>的，所以Cordova工具可以
+用来构建，部署和测试App。Ionic重点研究App的外观和感觉，它目前使用<a href="https://angularjs.org/" target="_blank">AngularJS</a>来构建一个看起来很棒的前端。</p>
+
+<h2>安装</h2>
+
+<p>要开始使用Ionic，首先要确保你已经安装了<a href="https://nodejs.org/" target="_blank">Node.js</a>。</p>
+
+<p>然后，根据你所想要开发的App平台，安装所需的<a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide" target="_blank">Android</a>或者<a href="http://cordova.apache.org/docs/en/3.3.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide" target="_blank">IOS</a>平台附件。在这篇文章里，我们将试着创建一个Android的App。</p>
+
+<p>再下一步，安装最新版本的Cordova和Ionic，命令行工具如下：</p>
+
+<pre class="undefined"><code class="undefined">npm install -g cordova ionic
+</code></pre>
+
+<p>当安装完成时，试着用一个标签模版如下图所示创建一个新的项目：</p>
+
+<pre class="sql"><code class="sql">ionic <span class="operator"><span class="keyword"><span class="operator"><span class="keyword">start</span></span></span><span class="operator"> myIonicApp tabs
+</span></span></code></pre>
+
+<p>切换到项目目录，添加ionic平台，如下所示建立app和效仿它：</p>
+
+<pre class="undefined"><code class="undefined">cd myIonicApp
+ionic platform add android
+ionic build android
+ionic emulate android
+</code></pre>
+
+<p>这是一个默认标签模版的app:</p>
+
+<p><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/default.png" alt="APP" title="APP"></p>
+
+<h2>入门</h2>
+
+<p>我们将要创建一个简单的 <code>ToDo List</code>应用程序。让我们使用一个空模版来建立一个简单
+的app,这样能够让我们从零开始。如下所示使用一个空模版建立一个新app：</p>
+
+<pre class="sql"><code class="sql">ionic <span class="operator"><span class="keyword"><span class="operator"><span class="keyword">start</span></span></span><span class="operator"> myToDoList blank
+</span></span></code></pre>
+
+<p>如果你切换到<code>myToDoList/www</code>的目录下你可以看到AngularJS的文件。这就是我们将要添
+加相关代码的地方，以便于用来创建我们的app。</p>
+
+<h2>创建和显示列表</h2>
+
+<p>首先，我们需要创建一个列表用来显示“任务列表”。为此我们将利用到<a href="http://ionicframework.com/docs/api/directive/ionList/" target="_blank">ion-list</a>命令。如下所示将<code>ion-list</code>添加到我们的<code>www/index.html</code>中：</p>
+
+<pre class="xml"><code class="xml"><span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-list</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>Scuba Diving<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>Climb Mount Everest<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-list</span></span>&gt;</span></span>
+</code></pre>
+
+<p>在添加上述的<code>ion-list</code>到<code>index.html</code>之后，这里是html中所有的代码的样子：</p>
+
+<pre class="xml"><code class="xml"><span class="doctype"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span>
+<span class="tag"><span class="tag">&lt;<span class="title"><span class="title">html</span></span>&gt;</span></span>
+
+<span class="tag"><span class="tag">&lt;<span class="title"><span class="title">head</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">meta</span></span> <span class="attribute"><span class="attribute">charset</span></span>=<span class="value"><span class="value">"utf-8"</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">meta</span></span> <span class="attribute"><span class="attribute">name</span></span>=<span class="value"><span class="value">"viewport"</span></span> <span class="attribute"><span class="attribute">content</span></span>=<span class="value"><span class="value">"initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">title</span></span>&gt;</span></span><span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">title</span></span>&gt;</span></span>
+
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">link</span></span> <span class="attribute"><span class="attribute">href</span></span>=<span class="value"><span class="value">"lib/ionic/css/ionic.css"</span></span> <span class="attribute"><span class="attribute">rel</span></span>=<span class="value"><span class="value">"stylesheet"</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">link</span></span> <span class="attribute"><span class="attribute">href</span></span>=<span class="value"><span class="value">"css/style.css"</span></span> <span class="attribute"><span class="attribute">rel</span></span>=<span class="value"><span class="value">"stylesheet"</span></span>&gt;</span></span>
+
+  <span class="comment"><span class="comment">&lt;!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    &lt;link href="css/ionic.app.css" rel="stylesheet"&gt;
+    --&gt;</span></span>
+
+  <span class="comment"><span class="comment">&lt;!-- ionic/angularjs js --&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">script</span></span> <span class="attribute"><span class="attribute">src</span></span>=<span class="value"><span class="value">"lib/ionic/js/ionic.bundle.js"</span></span>&gt;</span></span><span class="javascript"></span><span class="tag"><span class="javascript"></span><span class="tag">&lt;/<span class="title"><span class="title">script</span></span>&gt;</span></span>
+
+  <span class="comment"><span class="comment">&lt;!-- cordova script (this will be a 404 during development) --&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">script</span></span> <span class="attribute"><span class="attribute">src</span></span>=<span class="value"><span class="value">"cordova.js"</span></span>&gt;</span></span><span class="javascript"></span><span class="tag"><span class="javascript"></span><span class="tag">&lt;/<span class="title"><span class="title">script</span></span>&gt;</span></span>
+
+  <span class="comment"><span class="comment">&lt;!-- your app's js --&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">script</span></span> <span class="attribute"><span class="attribute">src</span></span>=<span class="value"><span class="value">"js/app.js"</span></span>&gt;</span></span><span class="javascript"></span><span class="tag"><span class="javascript"></span><span class="tag">&lt;/<span class="title"><span class="title">script</span></span>&gt;</span></span>
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">head</span></span>&gt;</span></span>
+
+<span class="tag"><span class="tag">&lt;<span class="title"><span class="title">body</span></span> <span class="attribute"><span class="attribute">ng-app</span></span>=<span class="value"><span class="value">"starter"</span></span>&gt;</span></span>
+
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-pane</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-header-bar</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"bar-stable"</span></span>&gt;</span></span>
+      <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">h1</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"title"</span></span>&gt;</span></span>My ToDo List<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">h1</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-header-bar</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-content</span></span>&gt;</span></span>
+      <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-list</span></span>&gt;</span></span>
+        <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>Scuba Diving<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>
+        <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>Climb Mount Everest<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>
+      <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-list</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-content</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-pane</span></span>&gt;</span></span>
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">body</span></span>&gt;</span></span>
+
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">html</span></span>&gt;</span></span>
+</code></pre>
+
+<p>现在，让我们动手来重建和仿真出app来得到这个列表。</p>
+
+<p>就像上面看到的代码，使用<code>ion-list</code>我们给我们的任务列表硬编码出2个项目。为了让app的功能更加完善，我们应该能够动态的添加和查看项目列表。</p>
+
+<p>在里面，<code>www/js/</code>创建了一个<code>controllers.js</code>文件和定义了一个叫做<code>ToDoListCtrl</code>新的控制器。这是<code>controllers.js</code>文件的样子：</p>
+
+<pre class="php"><code class="php">angular.module(<span class="string"><span class="string">'starter.controllers'</span></span>, [])
+    .controller(<span class="string"><span class="string">'ToDoListCtrl'</span></span>, <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">(<span class="variable"><span class="variable">$scope</span></span>)</span></span> {</span></span>
+});
+</code></pre>
+
+<p>在上面的代码中，我们定义了一个新的模块<code>starter.controller</code>和一个新的控制器<code>ToDoListCtrl</code>。</p>
+
+<p>接下来，我们需要将这个模块添加到我们已经存在的应用中。打开<code>www/js/app.js</code>然后将这个模块添加进去。</p>
+
+<p>这是添加了新的<code>starter.controller</code>模块之后的app.js代码：</p>
+
+<pre class="php"><code class="php">angular.module(<span class="string"><span class="string">'starter'</span></span>, [<span class="string"><span class="string">'ionic'</span></span>, <span class="string"><span class="string">'starter.controllers'</span></span>])
+.run(<span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">(<span class="variable"><span class="variable">$ionicPlatform</span></span>)</span></span> {</span></span>
+  <span class="variable"><span class="variable">$ionicPlatform</span></span>.ready(<span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">()</span></span> {</span></span>
+    <span class="keyword"><span class="keyword">if</span></span> (window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+</code></pre>
+
+<p>下一步，定义一个<code>$scope</code>来支撑任务列表项目。在里面，<code>ToDoListCtrl</code>声明了一个新的<code>$scope</code>变量<code>toDoListItems</code>，如下所示：</p>
+
+<pre class="php"><code class="php">.controller(<span class="string"><span class="string">'ToDoListCtrl'</span></span>, <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">(<span class="variable"><span class="variable">$scope</span></span>)</span></span> {</span></span>
+  <span class="variable"><span class="variable">$scope</span></span>.toDoListItems = [{
+    task: <span class="string"><span class="string">'Scuba Diving'</span></span>,
+    status: <span class="string"><span class="string">'not done'</span></span>
+  }, {
+    task: <span class="string"><span class="string">'Climb Everest'</span></span>,
+    status: <span class="string"><span class="string">'not done'</span></span>
+  }]
+});
+</code></pre>
+
+<p>在<code>index.html</code>里的<code>app.js</code>包含着<code>controllers.js</code>。</p>
+
+<p>我们需要将上述的控制器逻辑添加到我们<code>index.html</code>里的<code>ion-list</code>中,如下图所示修改<code>ion-list</code>：</p>
+
+<pre class="xml"><code class="xml"><span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-list</span></span> <span class="attribute"><span class="attribute">ng-controller</span></span>=<span class="value"><span class="value">"ToDoListCtrl"</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-item</span></span> <span class="attribute"><span class="attribute">ng-repeat</span></span>=<span class="value"><span class="value">"item in toDoListItems"</span></span>&gt;</span></span>
+    {{item.task}}
+  <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-item</span></span>&gt;</span></span>
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-list</span></span>&gt;</span></span>
+</code></pre>
+
+<p>正如你在上述代码中所看到的，我们使用<code>ng-controller</code>指令来将控制器添加到<code>ion-list</code>中。我们使用了<code>ng-repeat</code>指令在<code>$scope</code>的变量中反复定义了<code>toDoListItems</code>将它展示在列表中。</p>
+
+<p>现在，通过行动来重建app和仿真出你想要做的列表。</p>
+
+<h2>在列表中添加项目</h2>
+
+<p>接下来，我们需要实现出可以将项目添加到已存在的列表中的一种方式。为此，我们将会利用<a href="http://ionicframework.com/docs/api/service/$ionicModal/" target="_blank">ionicModal</a>，它可以在按钮被点击之后让展开的列表向上滚动起来。</p>
+
+<p>首先在展开的页面的顶部添加一个按钮，以便于给列表添加新的项目。</p>
+
+<p>然后，让我们利用<a href="http://ionicframework.com/docs/api/directive/ionHeaderBar/" target="_blank">ion-header-bar</a>来使我们列表的头部看起来更加富有色彩的。如下所示修改代码：</p>
+
+<pre class="xml"><code class="xml"><span class="tag"><span class="tag">&lt;<span class="title"><span class="title">ion-header-bar</span></span> <span class="attribute"><span class="attribute">align-title</span></span>=<span class="value"><span class="value">"left"</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"bar-positive"</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">h1</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"title"</span></span>&gt;</span></span>My ToDo List<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">h1</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">div</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"buttons"</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">button</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"button"</span></span> <span class="attribute"><span class="attribute">ng-click</span></span>=<span class="value"><span class="value">"openModal()"</span></span>&gt;</span></span>Add<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">button</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">div</span></span>&gt;</span></span>
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">ion-header-bar</span></span>&gt;</span></span>
+</code></pre>
+
+<p>正如你在上面的代码中所看到的，我们添加了一个类名为<code>bar-positive</code>的<code>ion-header-bar</code>标签，它可以为列表添加颜色。你可以很多不同类型的头部，请参考<a href="http://ionicframework.com/docs/components/#header" target="_blank">这里</a>的详细文档。</p>
+
+<p>我们也已经在我们列表的头部的右侧添加了一个名为<code>Add</code>的新按钮，它将会调用一个函数来打开一个模式窗口（我们将会立即定义这个模式）。</p>
+
+<p>如下所示在<code>index.html</code>中添加一个模式弹出：</p>
+
+<pre class="xml"><code class="xml"><span class="tag"><span class="tag">&lt;<span class="title"><span class="title">script</span></span> <span class="attribute"><span class="attribute">id</span></span>=<span class="value"><span class="value">"modal.html"</span></span> <span class="attribute"><span class="attribute">type</span></span>=<span class="value"><span class="value">"text/ng-template"</span></span>&gt;</span></span><span class="javascript"><span class="javascript">
+&lt;div class=<span class="string"><span class="string">"modal"</span></span>&gt;
+  <span class="xml"><span class="tag"><span class="xml"><span class="tag">&lt;<span class="title"><span class="title">div</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"bar bar-header bar-calm"</span></span>&gt;</span></span></span><span class="xml">
+    <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">button</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"button"</span></span> <span class="attribute"><span class="attribute">ng-click</span></span>=<span class="value"><span class="value">"closeModal()"</span></span>&gt;</span></span>back<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">button</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">h1</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"title"</span></span>&gt;</span></span>Add Item<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">h1</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">div</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">br</span></span>&gt;</span></span><span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">br</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">br</span></span>&gt;</span></span><span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">br</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">form</span></span> <span class="attribute"><span class="attribute">ng-submit</span></span>=<span class="value"><span class="value">"AddItem(data)"</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">div</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"list"</span></span>&gt;</span></span>
+      <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">div</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"list list-inset"</span></span>&gt;</span></span>
+        <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">label</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"item item-input"</span></span>&gt;</span></span>
+          <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">input</span></span> <span class="attribute"><span class="attribute">type</span></span>=<span class="value"><span class="value">"text"</span></span> <span class="attribute"><span class="attribute">placeholder</span></span>=<span class="value"><span class="value">"ToDo Item"</span></span> <span class="attribute"><span class="attribute">ng-model</span></span>=<span class="value"><span class="value">"data.newItem"</span></span>&gt;</span></span>
+        <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">label</span></span>&gt;</span></span>
+      <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">div</span></span>&gt;</span></span>
+      <span class="tag"><span class="tag">&lt;<span class="title"><span class="title">button</span></span> <span class="attribute"><span class="attribute">class</span></span>=<span class="value"><span class="value">"button button-block button-positive"</span></span> <span class="attribute"><span class="attribute">type</span></span>=<span class="value"><span class="value">"submit"</span></span>&gt;</span></span>
+        Add Item
+      <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">button</span></span>&gt;</span></span>
+    <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">div</span></span>&gt;</span></span>
+  <span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">form</span></span>&gt;</span></span>
+<span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">div</span></span>&gt;</span></span>
+</span></span></span><span class="xml"></span></span><span class="tag"><span class="tag">&lt;/<span class="title"><span class="title">script</span></span>&gt;</span></span>
+</code></pre>
+
+<p>按照上面的代码，我们有一个头部文件在我们的模式集中，一个输入框和一个将新项目添加到任务列表中的添加按钮。</p>
+
+<p>我们在头部文件中有一个返回按钮，我们给它添加了一个<code>closeModal()</code>函数来使用<code>ng-click</code>来关闭模式。我们使用<code>ng-submit</code>给表单添加了一个叫做<code>AddItem</code>的函数，当表单
+提交的时候将会添加项目到已有的列表中。</p>
+
+<p>现在，我们需要将ionic模式结合到我们的控制器中。我们将<code>$ionicModal</code>添加到控制器并定义所需要到的函数，如下所示：</p>
+
+<pre class="php"><code class="php">angular.module(<span class="string"><span class="string">'starter.controllers'</span></span>, [])
+
+.controller(<span class="string"><span class="string">'ToDoListCtrl'</span></span>, <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">(<span class="variable"><span class="variable">$scope</span></span>, <span class="variable"><span class="variable">$ionicModal</span></span>)</span></span> {</span></span>
+
+<span class="comment"><span class="comment">// array list which will contain the items added</span></span>
+<span class="variable"><span class="variable">$scope</span></span>.toDoListItems = [];
+
+<span class="comment"><span class="comment">//init the modal</span></span>
+<span class="variable"><span class="variable">$ionicModal</span></span>.fromTemplateUrl(<span class="string"><span class="string">'modal.html'</span></span>, {
+  scope: <span class="variable"><span class="variable">$scope</span></span>,
+  animation: <span class="string"><span class="string">'slide-in-up'</span></span>
+}).then(<span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">(modal)</span></span> {</span></span>
+  <span class="variable"><span class="variable">$scope</span></span>.modal = modal;
+});
+
+<span class="comment"><span class="comment">// function to open the modal</span></span>
+<span class="variable"><span class="variable">$scope</span></span>.openModal = <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">()</span></span> {</span></span>
+  <span class="variable"><span class="variable">$scope</span></span>.modal.show();
+};
+
+<span class="comment"><span class="comment">// function to close the modal</span></span>
+<span class="variable"><span class="variable">$scope</span></span>.closeModal = <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">()</span></span> {</span></span>
+  <span class="variable"><span class="variable">$scope</span></span>.modal.hide();
+};
+
+<span class="comment"><span class="comment">//Cleanup the modal when we're done with it!</span></span>
+<span class="variable"><span class="variable">$scope</span></span>.<span class="variable"><span class="variable">$on</span></span>(<span class="string"><span class="string">'$destroy'</span></span>, <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">()</span></span> {</span></span>
+  <span class="variable"><span class="variable">$scope</span></span>.modal.remove();
+});
+
+<span class="comment"><span class="comment">//function to add items to the existing list</span></span>
+<span class="variable"><span class="variable">$scope</span></span>.AddItem = <span class="function"><span class="keyword"><span class="function"><span class="keyword">function</span></span></span><span class="function"> <span class="params"><span class="params">(data)</span></span> {</span></span>
+  <span class="variable"><span class="variable">$scope</span></span>.toDoListItems.push({
+    task: data.newItem,
+    status: <span class="string"><span class="string">'not done'</span></span>
+  });
+  data.newItem = <span class="string"><span class="string">''</span></span>;
+  <span class="variable"><span class="variable">$scope</span></span>.closeModal();
+};
+});
+</code></pre>
+
+<p>正如在上述代码中所看到的，我们使用<code>.fromTemlateUrl</code>来加载html文本，在给<code>$scope</code>定义初始化时定义了两个选项还有当文本加载的时候的动画类型。</p>
+
+<p>我们同样定义了打开，关闭模式的函数，同时还定义了一个向已存在的数组中添加项目的函数。</p>
+
+<h2>演示屏幕</h2>
+
+<p>我们的实现已经完成，我们已经准备好要运行和仿真我们的app。保存所有文件，重建并且仿真app。我们任务列表的app的两个屏幕应该是这个样子的：</p>
+
+<p><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/demo.png" alt="APP" title="APP"></p>
+
+<p>在这里输入图片描述</p>
+
+<h2>结束语</h2>
+
+<p>在这篇文章里，我们看到了如何从零开始使用Ionic——混合应用程序开发中的一个先进的HTML5框架。我们使用一些Ionic的工具如<code>ionicModal</code>和<code>ion-list</code>来开发一个简单的基础的任务列表app。</p>
+
+<p>这个app可以扩展出更多的功能，<a href="http://ionicframework.com/docs/" target="_blank">这里</a>有详细说明。为了更好的去理解AngularJS，我建议参考<a href="https://docs.angularjs.org/guide" target="_blank">AngularJS文档</a>。同时上述文章中的代码可以在<a href="https://github.com/jay3dec/IonicSampleApp" target="_blank">GitHub</a>上得到。</p>
+
+<blockquote>
+  <p>本文根据<a href="http://www.sitepoint.com/author/jraj/" target="_blank">@Jay Raj</a>的《<a href="http://www.sitepoint.com/building-simple-app-using-ionic-advanced-html5-mobile-app-framework/" target="_blank">Building a Simple App Using Ionic, an Advanced Mobile App Framework</a>》所译，整个译文带有我们自己的理解与思想，如果译得不好或有不对之处还请同行朋友指点。如需转载此译文，需注明英文出处：<a href="http://www.sitepoint.com/building-simple-app-using-ionic-advanced-html5-mobile-app-framework/" target="_blank">http://www.sitepoint.com/building-simple-app-using-ionic-advanced-html5-mobile-app-framework/</a>。</p>
+</blockquote>
+
+<div class="blog-author media"><a class="media-object" href="https://github.com/heweixiao" target="_blank"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/yibanyiban.jpg"></a><div class="media-body"><h3 class="media-heading"><a href="https://github.com/heweixiao" target="_blank">一半一半</a></h3><div class="media-des">大连民族大学在校生，网络工程专业。喜欢编程，对JS的特效编写感兴趣，享受从努力到获取成果的整个过程。在工作室团队的带领下，为人一半安静，一半逗比。</div></div></div>
+
+<p>如需转载，烦请注明出处：<a href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus.html" target="_blank">http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html</a></p>
+</div></div></div>  </div>
+
+  
+   
+    <div id="node_footer" class="clearfix">
+              <div class="previous-next"><span class="prev">上一篇: </span><a href="http://www.w3cplus.com/css3/adding-appeal-to-your-animations-on-the-web.html" target="_blank">给你的网页添加动画效果</a> | <span class="next">下一篇: </span><a href="http://www.w3cplus.com/css3/how-to-create-a-css3-progress-bar.html" target="_blank">如何用纯CSS3制作进度条</a></div>            <div class="bdsharebuttonbox bdshare-button-style2-16" data-bd-bind="1463103178914">
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" target="_blank"></a>
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_twi" data-cmd="twi" title="分享到Twitter" target="_blank"></a>
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" target="_blank"></a>
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin" target="_blank"></a>
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook" target="_blank"></a>
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记" target="_blank"></a>
+        <a href="http://www.w3cplus.com/mobile/building-simple-app-using-ionic-advanced-html5-mobile-app-framework.html#" class="bds_more" data-cmd="more" target="_blank"></a>
+      </div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自于W3cplus","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+
+          <div id="node_bottom">
+        <div id="block-block-23" class="block block-block">
+
+    
+  <div class="content">
+    <div class="alipay" style="overflow:hidden;">
+       <div style="width: 48%;padding: 0 1%;float:left;">
+	<h4 class="title">(^_^)打个赏喝个咖啡(^_^)</h4>
+	<div class="des"><a title="小小赞助大大帮助" href="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/apr2rfygtefwlap154.png" target="_blank"><img align="absmiddle" width="258" height="258" alt="(^_^)如果您觉得此文对您有帮助，打个赏喝个咖啡(^_^)" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/apr2rfygtefwlap154.png"></a></div>
+        </div>
+       <div style="width: 48%;padding: 0 1%;float:left;">
+	<h4 class="title">(^_^)欢迎关注我们(^_^)</h4>
+	<div class="des"><img align="absmiddle" width="258" height="258" alt="欢迎关注我们" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/w3cplus-weixin.jpg"></div>
+        </div>
+</div>
+
+
+        </div>
+</div>
+      </div>
+        
+
+</div>  </div>
+</div>
+<div id="block-block-45" class="block block-block">
+
+    
+  <div class="content">
+    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="1563" data-title="一个先进的App框架:使用Ionic创建一个简单的APP" data-author-key="15545" id="ds-thread"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">5</span>条评论</a></li> <li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);"><span class="ds-highlight">4</span>条新浪微博</a></li> </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1326669630562907227"><div class="ds-post-self" data-post-id="1326669630562907227" data-thread-id="1326669630562895830" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="9472484"><a rel="nofollow author" target="_blank" href="http://weibo.com/liufeihualuo" onclick="this.href=&#39;http://w3cplus.duoshuo.com/user-url/?user_id=9472484&#39;;" title="柳飞花落"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/u3687313-4.jpg" alt="柳飞花落"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/liufeihualuo" onclick="this.href=&#39;http://w3cplus.duoshuo.com/user-url/?user_id=9472484&#39;;" rel="nofollow" target="_blank" data-user-id="9472484">柳飞花落</a></div><p>angular <img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/mb_org.gif" alt="[太开心]" title="[太开心]" class="ds-smiley"> </p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-06-23T17:42:17+08:00" title="2015年6月23日 下午5:42:17">2015年6月23日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1326669630562907942"><div class="ds-post-self" data-post-id="1326669630562907942" data-thread-id="1326669630562895830" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="13032566"><a rel="nofollow author" target="_blank" href="http://weibo.com/pigeon0312" onclick="this.href=&#39;http://w3cplus.duoshuo.com/user-url/?user_id=13032566&#39;;" title="Gezii"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/1" alt="Gezii"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/pigeon0312" onclick="this.href=&#39;http://w3cplus.duoshuo.com/user-url/?user_id=13032566&#39;;" rel="nofollow" target="_blank" data-user-id="13032566">Gezii</a></div><p>请问下用Ionic开发的页面放在微信里面可以吗</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-03T15:35:03+08:00" title="2015年8月3日 下午3:35:03">2015年8月3日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1326669630562907993"><div class="ds-post-self" data-post-id="1326669630562907993" data-thread-id="1326669630562895830" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/noavatar_default.png" alt="aaa"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">aaa</span></div><p>还是很卡的，在android机器上跑的话</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-10T10:44:04+08:00" title="2015年8月10日 上午10:44:04">2015年8月10日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1326669630562908135"><div class="ds-post-self" data-post-id="1326669630562908135" data-thread-id="1326669630562895830" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/noavatar_default.png" alt="Voyga"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">Voyga</span></div><p>虽然不想用ionic的样式和angular，但是羡慕它的文档，社区和各种工具啊。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-19T23:52:40+08:00" title="2015年8月19日 下午11:52:40">2015年8月19日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6205046274526757634"><div class="ds-post-self" data-post-id="6205046274526757634" data-thread-id="1326669630562895830" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="11809928"><a rel="nofollow author" target="_blank" href="http://weibo.com/vanessamaomao" onclick="this.href=&#39;http://w3cplus.duoshuo.com/user-url/?user_id=11809928&#39;;" title="Vanessa_Maomao"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/0" alt="Vanessa_Maomao"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/vanessamaomao" onclick="this.href=&#39;http://w3cplus.duoshuo.com/user-url/?user_id=11809928&#39;;" rel="nofollow" target="_blank" data-user-id="11809928">Vanessa_Maomao</a></div><p>麻烦给份完整的代码看看呀，一个地方没看懂，后面都看不懂啦，多谢啦。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-10-13T16:28:38+08:00" title="2015年10月13日 下午4:28:38">2015年10月13日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://w3cplus.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://w3cplus.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://w3cplus.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://w3cplus.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://w3cplus.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://w3cplus.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://w3cplus.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://w3cplus.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1326669630562895830">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5707478c43dd3"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a><a class="ds-toolbar-button ds-add-image" title="插入图片"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">W3CPLUS正在使用多说</a></p></div></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"w3cplus"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  </div>
+</div>
+  </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    
+          <div id="sidebar-second" class="col-extra">
+        <script type="text/javascript">document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://rp.baidu.com/rp3w/3w.js?sid=10994702955876242907') + '&t=' + (Math.ceil(new Date()/3600000)) + unescape('"%3E%3C/script%3E'));</script><div id="bdcs"><div class="bdcs-container"><meta http-equiv="x-ua-compatible" content="IE=9">   <!-- 嵌入式 -->  <div class="bdcs-main bdcs-clearfix" id="default-searchbox">      <div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">          <form action="http://zhannei.baidu.com/cse/search" method="get" target="_blank" class="bdcs-search-form" autocomplete="off" id="bdcs-search-form">              <input type="hidden" name="s" value="10994702955876242907">              <input type="hidden" name="entry" value="1">                                                                        <input type="text" name="q" class="bdcs-search-form-input" id="bdcs-search-form-input" placeholder="请输入关键字" autocomplete="off" style="height: 40px; line-height: 40px;">              <input type="submit" class="bdcs-search-form-submit " id="bdcs-search-form-submit" value="搜索">                       </form>      </div>                <div class="bdcs-search-sug" id="bdcs-search-sug" style="top: 50px; width: 259px;">              <ul class="bdcs-search-sug-list" id="bdcs-search-sug-list"></ul>          </div>                  </div>                           </div></div><script charset="utf-8" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/3w.js"></script>
+          <div class="region region-sidebar-second">
+    <div id="block-block-33" class="block block-block">
+
+    
+  <div class="content">
+    <div><a href="mailto:w3cplus@hotmail.com" target="_blank" title="诚征AD"><img alt="诚征AD" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/w3cplus300.png" style="width: 300px; height: 160px;"></a>
+</div>
+  </div>
+</div>
+<div id="block-block-32" class="block block-block">
+
+    
+  <div class="content">
+    <p><a href="mailto:w3cplus@hotmail.com" target="_blank" title="诚征AD"><img alt="诚征AD" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/w3cplus300.png" style="width: 300px; height: 160px;"></a></p>
+  </div>
+</div>
+<div id="block-block-31" class="block block-block">
+
+    
+  <div class="content">
+    <div>
+	<a href="http://www.html5dw.com/" target="_blank"><img alt="" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/html5-s.jpg" style="width: 300px; height: 160px;"></a></div>
+  </div>
+</div>
+<div id="block-block-18" class="block block-block">
+
+    <h2>合作网站</h2>
+  
+  <div class="content">
+    <ul class="clearfix" id="join_hands"><li>
+		<a href="http://moyu-edu.com/js.html" target="_blank" title="墨鱼前端培训">墨鱼前端培训</a></li>
+	<li>
+		<a href="http://www.html5dw.com/" target="_blank" title="HTML5梦工场">HTML5梦工场</a></li>
+	<li>
+		<a href="http://www.w3cplus.com/sassguide/index.html" target="_blank" title="Sass入门指南">Sass入门指南</a></li>
+	<li>
+		<a href="http://www.w3cplus.com/solution/index/index.html" target="_blank" title="CSS解决方案">CSS解决方案</a></li>
+	<li>
+		<a href="http://www.w3ctech.com/" target="_blank" title="中国最大的前端技术社区">W3ctech</a></li>
+	<li>
+		<a href="http://drupalchina.cn/" target="_blank">Drupal中国</a></li>
+	<li>
+		<a href="http://www.zhufengpeixun.cn/" target="_blank">珠峰JavaScript培训</a></li>
+</ul>  </div>
+</div>
+<div id="block-block-36" class="block block-block">
+
+    <h2>关注我们</h2>
+  
+  <div class="content">
+    <p style="text-align:center;"><img alt="" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/w3cplus-weixin.jpg" style="width: 258px; height: 258px;"></p>
+  </div>
+</div>
+<div id="block-views-friend-block-1" class="block block-views">
+
+    <h2>友情链接</h2>
+  
+  <div class="content">
+    <div class="view view-friend view-id-friend view-display-id-block_1 view-dom-id-a2226af3decd1e87a2c5c967933cc823">
+        
+  
+  
+      <div class="view-content">
+      <div class="item-list">    <ul>          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://moyu-edu.com/js.html">墨鱼前端开发培训</a></span>  </div></li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.zbj.com/ydyykf/">猪八戒网</a></span>  </div></li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.html5dw.com/">HTML5梦工场</a></span>  </div></li>
+          <li class="views-row views-row-4 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.php-z.com/">PHP教程</a></span>  </div></li>
+          <li class="views-row views-row-5 views-row-odd">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.proginn.com/">程序员客栈</a></span>  </div></li>
+          <li class="views-row views-row-6 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://imweb.io/">imweb 前端社区</a></span>  </div></li>
+          <li class="views-row views-row-7 views-row-odd">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.w3cmark.com/">前端笔记</a></span>  </div></li>
+          <li class="views-row views-row-8 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.imooc.com/">慕课网</a></span>  </div></li>
+          <li class="views-row views-row-9 views-row-odd">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://drupal001.net/">Drupal大学</a></span>  </div></li>
+          <li class="views-row views-row-10 views-row-even views-row-last">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="http://www.drupalproject.org/">Drupal项目社区</a></span>  </div></li>
+      </ul></div>    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+</div>
+  </div>
+      </div>
+    
+
+  </div>
+</div>
+
+  <div id="footer-col" class="footer-col">
+    <div class="container">
+        <div class="region region-footer-col">
+    <div id="block-block-39" class="block block-block">
+
+    <h2>关于我们</h2>
+  
+  <div class="content">
+    <a class="media-object" href="http://www.w3cplus.com/">W3cplus</a>
+<div class="media-body">
+	<p>W3cplus是一个致力于推广国内前端行业的技术博客。它以探索为己任，不断活跃在行业技术最前沿，努力提供高质量前端技术博文；其文章范围广泛，主要以CSS3、HTML5、Sass、Mobile和各类DEMO为主。</p>
+	<p>W3cplus具有一支强大的团队，提供长期的前端项目外包，Drupal建站，Drupal主题制作服务，以及提供企业广告展示与招聘发布，有需要的请联系：QQ:<a href="http://wpa.qq.com/msgrd?v=3&uin=81059347&site=qq&menu=yes" target="_blank">81059347</a>，E-mail:<a href="mailto:w3cplus@hotmail.com" target="_blank">w3cplus@hotmail.com</a></p>
+</div>
+  </div>
+</div>
+<div id="block-block-40" class="block block-block">
+
+    <h2>关于站长</h2>
+  
+  <div class="content">
+    <p><a class="media-object" href="http://www.w3cplus.com/" target="_blank">大漠</a></p>
+<div class="media-body">
+	<p>常用昵称“大漠”，<a href="http://www.w3cplus.com/" target="_blank">W3CPlus</a>创始人，目前就职于淘宝。中国Drupal社区核心成员之一。对HTML5、CSS3和Sass等前端脚本语言有非常深入的认识和丰富的实践经验，尤其专注对CSS3、Sass和Mobile的研究，是国内最早研究和使用CSS3和Sass技术的一批人。CSS3、Sass和Drupal中国布道者。2014年出版《<a href="http://www.w3cplus.com/book-comment.html">图解CSS3：核心技术与案例实战</a>》。</p>
+	<div class="social">
+		<a class="github" href="https://github.com/airen" target="_blank" title="github">github</a> <a class="weibo" href="http://weibo.com/w3cplus" target="_blank" title="weibo">weibo</a> <a class="facebook" href="https://www.facebook.com/w3cplus" target="_blank" title="facebook">facebook</a> <a class="google" href="https://plus.google.com/+AirenLiao" target="_blank" title="google">google</a> <a class="twitter" href="https://twitter.com/w3cplus" target="_blank" title="twitter">twitter</a> <a class="linkedin" href="http://cn.linkedin.com/in/w3cplus" target="_blank" title="linkedin">linkedin</a></div>
+</div>
+<p>&nbsp;</p>
+  </div>
+</div>
+<div id="block-block-41" class="block block-block">
+
+    <h2>我的作品</h2>
+  
+  <div class="content">
+    <a class="media-object" href="http://www.w3cplus.com/book-comment.html" target="_blank">图解CSS3</a>
+<div class="media-body">
+	<p>本书是国内著名的Web前端专家历时2载的心血之作，根据最新的CSS3撰写，融入了作者在CSS领域多年的使用经验，旨在将本书打造成为CSS3领域最权威和实用的专业著作，供没有经验的读者系统学习，供有经验的读者参考备查。</p>
+<p>本书理论知识系统全面，详细讲解了选择器、伸缩布局盒模型、渐变、过渡、动画等主题下涵盖的所有CSS3新特性。</p></div>
+  </div>
+</div>
+  </div>
+    </div>
+  </div> 
+
+  <div id="footer" class="footer">
+    <div class="container">
+        <div class="region region-footer">
+    <div id="block-block-12" class="block block-block">
+
+    
+  <div class="content">
+    <p>湘ICP备13003850号-12，版权所有 衡阳瑞思信息技术有限公司 © 2011-2016 <a href="http://www.w3cplus.com/page/26.html" target="_blank">W3CPLUS</a>，感谢<a href="http://www.drupal.org/" target="_blank">Drupal</a>开源技术。感谢<a href="http://www.qiniu.com/" target="_blank">七牛云存储</a>提供静态资源空间。</p>
+<script type="application/ld+json" async="">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "W3cplus",
+  "url": "http://www.w3cplus.com",
+  "image" : "http://tp4.sinaimg.cn/1167075935/180/22838101204/1",
+  "sameAs" : [
+    "https://twitter.com/w3cplus",
+    "https://www.facebook.com/w3cplus",
+    "https://cn.linkedin.com/in/w3cplus",
+    "https://weibo.com/w3cplus/",
+    "https://plus.google.com/+AirenLiao",
+    "https://github.com/airen"
+  ]
+}
+</script>  </div>
+</div>
+  </div>
+    </div>
+  </div> 
+
+<div id="totop" style="position: fixed; bottom: 50px; right: 15px; cursor: pointer; z-index: 999999; display: block; opacity: 1;">
+    <a title="返回顶部">返回顶部</a>
+</div>
+
+  <script type="text/javascript" src="./一个先进的App框架_使用Ionic创建一个简单的APP_mobile, Ionic 教程_w3cplus_files/js_VU7P4CTgUZdF2SyFko5LLAg9ZK0OSVjXVaAFnTLgVt0.js"></script>
+  
+  
+  
+
+
+<!-- Page cached by Boost @ 2016-05-11 21:11:13, expires @ 2016-05-18 21:11:13, lifetime 1 周 --></body></html>
