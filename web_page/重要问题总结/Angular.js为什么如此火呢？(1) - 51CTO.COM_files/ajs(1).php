@@ -1,0 +1,3 @@
+var OX_61a171bc = '';
+OX_61a171bc += "<"+"a href=\'//gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3572__zoneid=255__cb=3c6fcb0310__oadest=http%3A%2F%2Fwww.sangfor.com.cn%2Ftopic%2F2016%2Fex_pc%2F51cto.html\' target=\'_blank\'><"+"font color=\'red\'>深信服亚太巡展火热报名中<"+"/font><"+"/a><"+"div id=\'beacon_3c6fcb0310\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'//gg3.51cto.com/www/delivery/lg.php?bannerid=3572&amp;campaignid=785&amp;zoneid=255&amp;loc=1&amp;referer=http%3A%2F%2Fdeveloper.51cto.com%2Fart%2F201308%2F406932.htm&amp;cb=3c6fcb0310\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\n";
+document.write(OX_61a171bc);

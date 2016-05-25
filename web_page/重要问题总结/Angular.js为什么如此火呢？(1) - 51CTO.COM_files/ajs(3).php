@@ -1,0 +1,3 @@
+var OX_c86b74a4 = '';
+OX_c86b74a4 += "<"+"a href=\'//gg3.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3613__zoneid=257__cb=35f8e311a1__oadest=http%3A%2F%2Fbbs.51cto.com%2Fthread-1357281-1.html\' target=\'_blank\'><"+"font color=\'red\'>注册安全狗服云4.0 赢大奖<"+"/font><"+"/a><"+"div id=\'beacon_35f8e311a1\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'//gg.51cto.com/www/delivery/lg.php?bannerid=3613&amp;campaignid=791&amp;zoneid=257&amp;loc=1&amp;referer=http%3A%2F%2Fdeveloper.51cto.com%2Fart%2F201308%2F406932.htm&amp;cb=35f8e311a1\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\n";
+document.write(OX_c86b74a4);
