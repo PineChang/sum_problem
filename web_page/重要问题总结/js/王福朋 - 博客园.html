@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://www.cnblogs.com/wangfupeng1988/ -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>王福朋 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./王福朋 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./王福朋 - 博客园_files/bundle-darkgreentrip.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/wangfupeng1988/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/wangfupeng1988/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/wangfupeng1988/wlwmanifest.xml">
+<script src="./王福朋 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'wangfupeng1988', cb_enable_mathjax=false;</script>
+<script src="./王福朋 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="./王福朋 - 博客园_files/王福朋 - 博客园.html"><img id="blogLogo" src="./王福朋 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="./王福朋 - 博客园_files/王福朋 - 博客园.html">王福朋的博客</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="./王福朋 - 博客园_files/王福朋 - 博客园.html">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/wangfupeng1988/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/wangfupeng1988/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 131&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 1833</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+<!--done-->
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl00_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2016/03/22.html">2016年3月22日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl00_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/5302738.html">使用React并做一个简单的to-do-list</a>
+			</div>
+			<div class="postCon"><div class="cnblogs-post-body" id="postlist_postbody_5302738"><h1>1. 前言</h1>
+<p>说到React，我从一年之前就开始试着了解并且看了相关的入门教程，而且还买过一本《React：引领未来的用户界面开发框架&nbsp;》拜读。React的轻量组件化的思想及其virtual-dom的这种技术创新，也算是早就有了初步了解。一来没有学的太深入，二来后来在工作中和业余项目中都没有用到，因此慢慢的就更加生疏了。</p>
+<p>近期，因为我想把自己的开源项目<a href="http://wangeditor.github.io/" target="_blank">wangEditor</a>能放在React、angular和vuejs中使用。先从react开始，顺手自己也重试一下React的基础知识，顺便再做一个小demo，体验一下React写程序的一些提倡的思路。经过几天的回顾学习，我也写了一个在React中集成<a href="http://wangeditor.github.io/" target="_blank">wangEditor</a>的简单demo：<a href="http://www.kancloud.cn/wangfupeng/wangeditor2/129376" target="_blank">http://www.kancloud.cn/wangfupeng/wangeditor2/129376</a></p>
+<p>不得不说一下，React风靡世界、功能强大、适应性强，但是入门起来相当简单。反观angularjs，学习成本就比较高，我还没弄明白1.x呢，2.0已经出来了。纵然我非常努力，但是某些方面还是摆脱不了out的命运（见笑...）。</p>
+<h1>2. 基础入门</h1>
+<p>想入门React，首先你得有比较扎实的javascript语法基础以及前端开发的基础知识，否则我下面推荐的教程讲的再好，你也咂摸不出啥滋味来。所以如果你是初学者，不要被现在前端这些琳琅满目的框架、库迷惑了眼睛，以为学会了这个那个就行了——基础不行学啥都白搭。</p>
+<p>闲话不多扯。前人栽树后人乘凉，给大家推荐两个我看过的非常好的React入门教程，一个文字一个视频。</p>
+<ul>
+<li>阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank">《React 入门实例教程》</a></li>
+<li>慕课网的<a href="http://www.imooc.com/learn/504" target="_blank">《React入门》</a></li>
+</ul>
+<p>这两篇教程的篇幅都不长 ，阅读加练习的话，两个晚上（正常下班吃完饭之后的剩余时间）绝对能搞定的。当然你如果具备程序员优质的熬夜技能，一晚上搞定也说不定啊，创造奇迹的同时照顾一下身体，哈哈。看完这两篇教程，你能基本了解react的设计思想，技术特点，使用的语法和技巧。做个hello word什么的，完全没啥问题的。</p>
+<p>&nbsp;</p>
+<h1>3. 入门之后</h1>
+<p>记得几年前上大学乃至刚毕业那会儿，无论是学java还是php还是.net的，会了语法、会写个hello world肯定不能算是入门的。当时跟hello world齐名还有一个东西叫做『留言板』。师生之间经常有这样的对话。</p>
+<ul>
+<li>老师：xxx技术会用了吗？</li>
+<li>学生：会了</li>
+<li>老师：那写个留言板系统吧，能留言、查看、删除、回复</li>
+<li>学生：不会</li>
+<li>老师：....</li>
+</ul>
+<p>上述的『留言板』也随着几年之前流行的bbs、论坛、校内网等没几年就河了西了（《大宅门》学的），目前用来做demo的一般都是todolist，例如backbone的官方demo就是一个todolist。</p>
+<p>无论是『留言板』还是『todolist』，我们需要用它来表达的就是——我们如何通过这项技术去实现基本的『增删改查』 这种能力，因为一个系统其他所有的业务逻辑操作，都是『增删改查』这几个功能的拼接。<strong>所以，我们在刚刚接触一个新东西的时候，就用它来做一个简单的todolist吧。</strong></p>
+<p>&nbsp;</p>
+<h1>4. todolist</h1>
+<p>做出来大约是这样子的，很简单很丑，too 羊 too 森破 sometime native 。不过没关系，虽然它很丑，但是很温柔啊。我们只是抛开了其他内容，专注于这项技术实现的本身而已。如果你想漂亮一点，自己写一个css样式喽。</p>
+<p><img src="./王福朋 - 博客园_files/138012-20160321154128276-71600562.png" alt="" width="278" height="96"></p>
+<p>下面我将一步一步讲解如何使用React来制作出一个简单的todolist，不过还是需要你耐心把文章读完，我也尽量写的可读性强一些，不至于太乏味。</p>
+<h2>4.1 整体分析</h2>
+<p>React最大的卖点是轻量<strong>组件化。</strong>我们分析一下以上截图中的页面，如果要分组件的话，我们大约可以分成一个总组件和两个子组件。一个输入内容的组件，一个显示内容列表（带删除功能）的组件，外面再用一个总组件将两个子组件包括起来。</p>
+<p><img src="./王福朋 - 博客园_files/138012-20160321154813745-1310129985.png" alt="" width="351" height="125"></p>
+<p>因此，我们的代码的整体结构大约是这么写的：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #008000;">//</span><span style="color: #008000;"> TodoList 组件是一个整体的组件，最终的React渲染也将只渲染这一个组件</span>
+<span style="color: #008080;"> 2</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 该组件用于将『新增』和『列表』两个组件集成起来</span>
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">var</span> TodoList =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;"> 4</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;"> 6</span>             &lt;div&gt;
+<span style="color: #008080;"> 7</span>                 &lt;TypeNew  /&gt;
+<span style="color: #008080;"> 8</span>                 &lt;ListTodo /&gt;
+<span style="color: #008080;"> 9</span>             &lt;/div&gt;
+<span style="color: #008080;">10</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">11</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">12</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">13</span> 
+<span style="color: #008080;">14</span> <span style="color: #008000;">//</span><span style="color: #008000;"> TypeNew 组件用于新增数据，</span>
+<span style="color: #008080;">15</span> <span style="color: #0000ff;">var</span> TypeNew =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">16</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">18</span>             &lt;form&gt;
+<span style="color: #008080;">19</span>                 &lt;input type="text" placeholder="typing a newthing todo" autoComplete="off" /&gt;
+<span style="color: #008080;">20</span>             &lt;/form&gt;
+<span style="color: #008080;">21</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">22</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">23</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">24</span> 
+<span style="color: #008080;">25</span> <span style="color: #008000;">//</span><span style="color: #008000;"> ListTodo 组件用于展示列表，并可以删除某一项内容，</span>
+<span style="color: #008080;">26</span> <span style="color: #0000ff;">var</span> ListTodo =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">27</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">28</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">29</span>             &lt;ul id="todo-list"&gt;
+<span style="color: #008080;">30</span>                 {<span style="color: #008000;">/*</span><span style="color: #008000;"> 其中显示数据列表 </span><span style="color: #008000;">*/</span><span style="color: #000000;">}
+</span><span style="color: #008080;">31</span>             &lt;/ul&gt;
+<span style="color: #008080;">32</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">33</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">34</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">35</span> 
+<span style="color: #008080;">36</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 将 TodoList 组件渲染到页面</span>
+<span style="color: #008080;">37</span> React.render(&lt;TodoList /&gt;, document.getElementById('container'));</pre>
+</div>
+<p>&nbsp;</p>
+<h2>4.2. 显示数据</h2>
+<p>下面，我们要把todolist的数据，显示到列表中，并且每个数据项后面都显示一个『删除』按钮，就像这样：</p>
+<p><img src="./王福朋 - 博客园_files/138012-20160321155737042-3075283.png" alt="" width="319" height="111"></p>
+<p>既然是展示数据，首先要考虑数据存储在哪里，来自于哪里。现在这里放一句话——<strong>React提倡所有的数据都是由父组件来管理，通过props的形式传递给子组件来处理</strong>——先记住，接下来再解释这句话。</p>
+<p>上文提到，做一个todolist页面需要一个父组件，两个子组件。父组件当然就是todolist的『总指挥』，两个子组件分别用来add和show、delete。<strong>用通俗的方式讲来，父组件就是领导，两个子组件就是协助领导开展工作的，一切的资源和调动资源的权利，都在领导层级，子组件配合领导工作，需要资源或者调动资源，只能申请领导的批准</strong>。</p>
+<p>这么说来就明白了吧。数据完全由父组件来管理和控制，子组件用来显示、操作数据，得经过父组件的批准，即——父组件通过props的形式将数据传递给子组件，子组件拿到父组件传递过来的数据，再进行展示。</p>
+<p>另外，根据React开发的规范，组件内部的数据由state控制，外部对内部传递数据时使用 props 。这么看来，针对父组件来说，要存储todolist的数据，那就是内部信息（本身就是自己可控的资源，而不是『领导』控制的资源），用state来存储即可。而父组件要将todolist数据传递给子组件，对子组件来说，那就是传递进来的外部信息（是『领导』的资源，交付给你来处理），需要使用props。</p>
+<p>好了，我们再修改一下代码，用代码表述一下这个问题：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #008000;">//</span><span style="color: #008000;"> TodoList 组件是一个整体的组件，最终的React渲染也将只渲染这一个组件</span>
+<span style="color: #008080;"> 2</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 该组件用于将『新增』和『列表』两个组件集成起来</span>
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">var</span> TodoList =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;"> 4</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 初始化数据，todolist的数据由state来控制</span>
+<span style="color: #008080;"> 5</span>     getInitialState: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;"> 6</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 7</span> <span style="color: #000000;">            todolist: []
+</span><span style="color: #008080;"> 8</span> <span style="color: #000000;">        };
+</span><span style="color: #008080;"> 9</span> <span style="color: #000000;">    },
+</span><span style="color: #008080;">10</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">11</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">12</span>             &lt;div&gt;
+<span style="color: #008080;">13</span>                 &lt;TypeNew  /&gt;
+<span style="color: #008080;">14</span>                 {<span style="color: #008000;">/*</span>
+<span style="color: #008080;">15</span> <span style="color: #008000;">                    集成 ListTodo 组件
+</span><span style="color: #008080;">16</span> <span style="color: #008000;">                    todo - 将todolist的数据传入到组件，用于组件展示数据
+</span><span style="color: #008080;">17</span>                 <span style="color: #008000;">*/</span><span style="color: #000000;">}
+</span><span style="color: #008080;">18</span>                 &lt;ListTodo todo={<span style="color: #0000ff;">this</span>.state.todolist} /&gt;
+<span style="color: #008080;">19</span>             &lt;/div&gt;
+<span style="color: #008080;">20</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">21</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">22</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">23</span> 
+<span style="color: #008080;">24</span> <span style="color: #008000;">//</span><span style="color: #008000;"> TypeNew 组件用于新增数据，</span>
+<span style="color: #008080;">25</span> <span style="color: #0000ff;">var</span> TypeNew =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">26</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 此处省略 ... 字</span>
+<span style="color: #008080;">27</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">28</span> 
+<span style="color: #008080;">29</span> <span style="color: #008000;">//</span><span style="color: #008000;"> ListTodo 组件用于展示列表，并可以删除某一项内容，</span>
+<span style="color: #008080;">30</span> <span style="color: #0000ff;">var</span> ListTodo =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">31</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">32</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">33</span>             &lt;ul id="todo-list"&gt;
+<span style="color: #008080;">34</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;">35</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> this.props.todo 获取父组件传递过来的数据</span>
+<span style="color: #008080;">36</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> {/* 遍历数据 */}</span>
+<span style="color: #008080;">37</span>                 <span style="color: #0000ff;">this</span>.props.todo.map(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (item, i) {
+</span><span style="color: #008080;">38</span>                     <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">39</span>                         &lt;li&gt;
+<span style="color: #008080;">40</span>                             &lt;label&gt;{item}&lt;/label&gt;
+<span style="color: #008080;">41</span>                             &lt;button&gt;<span style="color: #0000ff;">delete</span>&lt;/button&gt;
+<span style="color: #008080;">42</span>                         &lt;/li&gt;
+<span style="color: #008080;">43</span> <span style="color: #000000;">                    );
+</span><span style="color: #008080;">44</span>                 })
+<span style="color: #008080;">45</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">46</span>             &lt;/ul&gt;
+<span style="color: #008080;">47</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">48</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">49</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">50</span> 
+<span style="color: #008080;">51</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 将 TodoList 组件渲染到页面</span>
+<span style="color: #008080;">52</span> React.render(&lt;TodoList /&gt;, document.getElementById('container'));</pre>
+</div>
+<p>&nbsp;</p>
+<h2>4.3 新增数据</h2>
+<p>刚才都把数据展示讲完了，但是想展示一下，目前还没有数据呢，那就新增一个吧。如下图：</p>
+<p><img src="./王福朋 - 博客园_files/138012-20160321163819620-757690684.png" alt="" width="320" height="110"></p>
+<p>根据刚才的拐弯抹角、高谈阔论、旁征博引的那几句话，我们知道，子组件得到数据后，就需要将新数据添加到todolist的数据中。而todolist的数据是由父组件来管理的，子组件不能说改就改呀，得申请父组件的允许和同意呀。因此，我们需要让父组件开放一个可以修改数据的接口，然后将这个接口作为props传递给子组件，让其能修改数据。</p>
+<p>另外，子组件调用父组件的接口对todolist数据进行修改了之后，相当于修改了React对象的state数据，此时就会触发React的自动更新（就是通过virtual-dom对比，然后更新真实的dom那一套），React会将UI实时随着数据更新，就不用我们操心了，这也是React比较强大的地方之一。</p>
+<p>因此，代码将改为：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #008000;">//</span><span style="color: #008000;"> TodoList 组件是一个整体的组件，最终的React渲染也将只渲染这一个组件</span>
+<span style="color: #008080;"> 2</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 该组件用于将『新增』和『列表』两个组件集成起来</span>
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">var</span> TodoList =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;"> 4</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 初始化数据，todolist的数据由state来控制</span>
+<span style="color: #008080;"> 5</span>     getInitialState: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;"> 6</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 7</span> <span style="color: #000000;">            todolist: []
+</span><span style="color: #008080;"> 8</span> <span style="color: #000000;">        };
+</span><span style="color: #008080;"> 9</span> <span style="color: #000000;">    },
+</span><span style="color: #008080;">10</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 接收一个传入的数据，并将它实时更新到组件的 state 中，以便组件根据数据重新render</span>
+<span style="color: #008080;">11</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 只要改变了 state ，react自动执行 reader 计算</span>
+<span style="color: #008080;">12</span>     handleChange: <span style="color: #0000ff;">function</span><span style="color: #000000;"> (rows) {
+</span><span style="color: #008080;">13</span>         <span style="color: #0000ff;">this</span><span style="color: #000000;">.setState({
+</span><span style="color: #008080;">14</span> <span style="color: #000000;">            todolist: rows
+</span><span style="color: #008080;">15</span> <span style="color: #000000;">        });
+</span><span style="color: #008080;">16</span> <span style="color: #000000;">    },
+</span><span style="color: #008080;">17</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">18</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">19</span>             &lt;div&gt;
+<span style="color: #008080;">20</span>                 {<span style="color: #008000;">/*</span> 
+<span style="color: #008080;">21</span> <span style="color: #008000;">                    集成 TypeNews 组件，传入两个属性 onAdd 和 todo
+</span><span style="color: #008080;">22</span> <span style="color: #008000;">                    todo - 将todolist的数据传入到组件，当新增时，更新todolist数据
+</span><span style="color: #008080;">23</span> <span style="color: #008000;">                    onAdd -  将 handleChange 函数传入到组件，新增时，用它来处理最新的todolist数据
+</span><span style="color: #008080;">24</span>                 <span style="color: #008000;">*/</span><span style="color: #000000;">}
+</span><span style="color: #008080;">25</span>                 &lt;TypeNew onAdd={<span style="color: #0000ff;">this</span>.handleChange} todo={<span style="color: #0000ff;">this</span>.state.todolist} /&gt;
+<span style="color: #008080;">26</span>                 {<span style="color: #008000;">/*</span>
+<span style="color: #008080;">27</span> <span style="color: #008000;">                    集成 ListTodo 组件
+</span><span style="color: #008080;">28</span> <span style="color: #008000;">                    todo - 将todolist的数据传入到组件，用于组件展示数据
+</span><span style="color: #008080;">29</span>                 <span style="color: #008000;">*/</span><span style="color: #000000;">}
+</span><span style="color: #008080;">30</span>                 &lt;ListTodo todo={<span style="color: #0000ff;">this</span>.state.todolist} /&gt;
+<span style="color: #008080;">31</span>             &lt;/div&gt;
+<span style="color: #008080;">32</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">33</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">34</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">35</span> 
+<span style="color: #008080;">36</span> <span style="color: #008000;">//</span><span style="color: #008000;"> TypeNew 组件用于新增数据，它需要 todo 和 onAdd 两个属性，上文已经提到过</span>
+<span style="color: #008080;">37</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 基本逻辑是：当从 input 中获取数据时，将新数据 push 到todo中，</span>
+<span style="color: #008080;">38</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 然后使用 onAdd 调用 TodoList 的 handleChange 来更新state，然后react自动render</span>
+<span style="color: #008080;">39</span> <span style="color: #0000ff;">var</span> TypeNew =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">40</span>     handleAdd: <span style="color: #0000ff;">function</span><span style="color: #000000;"> (e) {
+</span><span style="color: #008080;">41</span> <span style="color: #000000;">        e.preventDefault();
+</span><span style="color: #008080;">42</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 通过 refs 获取dom元素，然后获取输入的内容</span>
+<span style="color: #008080;">43</span>         <span style="color: #0000ff;">var</span> inputDom = <span style="color: #0000ff;">this</span><span style="color: #000000;">.refs.inputnew.getDOMNode();
+</span><span style="color: #008080;">44</span>         <span style="color: #0000ff;">var</span> newthing =<span style="color: #000000;"> inputDom.value.trim();
+</span><span style="color: #008080;">45</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 获取传入的todolist数据</span>
+<span style="color: #008080;">46</span>         <span style="color: #0000ff;">var</span> rows = <span style="color: #0000ff;">this</span><span style="color: #000000;">.props.todo;
+</span><span style="color: #008080;">47</span>         <span style="color: #0000ff;">if</span> (newthing !== ''<span style="color: #000000;">) {
+</span><span style="color: #008080;">48</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中</span>
+<span style="color: #008080;">49</span> <span style="color: #000000;">            rows.push(newthing);
+</span><span style="color: #008080;">50</span>             <span style="color: #0000ff;">this</span><span style="color: #000000;">.props.onAdd(rows);
+</span><span style="color: #008080;">51</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">52</span>         inputDom.value = ''<span style="color: #000000;">;
+</span><span style="color: #008080;">53</span> <span style="color: #000000;">    },
+</span><span style="color: #008080;">54</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">55</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">56</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> form submit 时，触发 handleAdd 事件</span>
+<span style="color: #008080;">57</span>             &lt;form onSubmit={<span style="color: #0000ff;">this</span>.handleAdd}&gt;
+<span style="color: #008080;">58</span>                 &lt;input type="text" ref="inputnew" id="todo-new" placeholder="typing a newthing todo" autoComplete="off" /&gt;
+<span style="color: #008080;">59</span>             &lt;/form&gt;
+<span style="color: #008080;">60</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">61</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">62</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">63</span> 
+<span style="color: #008080;">64</span> <span style="color: #008000;">//</span><span style="color: #008000;"> ListTodo 组件用于展示列表，并可以删除某一项内容，</span>
+<span style="color: #008080;">65</span> <span style="color: #0000ff;">var</span> ListTodo =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">66</span>     render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">67</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">68</span>             &lt;ul id="todo-list"&gt;
+<span style="color: #008080;">69</span> <span style="color: #000000;">            {
+</span><span style="color: #008080;">70</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> this.props.todo 获取父组件传递过来的数据</span>
+<span style="color: #008080;">71</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> {/* 遍历数据 */}</span>
+<span style="color: #008080;">72</span>                 <span style="color: #0000ff;">this</span>.props.todo.map(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (item, i) {
+</span><span style="color: #008080;">73</span>                     <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">74</span>                         &lt;li&gt;
+<span style="color: #008080;">75</span>                             &lt;label&gt;{item}&lt;/label&gt;
+<span style="color: #008080;">76</span>                             &lt;button&gt;<span style="color: #0000ff;">delete</span>&lt;/button&gt;
+<span style="color: #008080;">77</span>                         &lt;/li&gt;
+<span style="color: #008080;">78</span> <span style="color: #000000;">                    );
+</span><span style="color: #008080;">79</span> <span style="color: #000000;">                }) 
+</span><span style="color: #008080;">80</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">81</span>             &lt;/ul&gt;
+<span style="color: #008080;">82</span> <span style="color: #000000;">        );
+</span><span style="color: #008080;">83</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">84</span> <span style="color: #000000;">});
+</span><span style="color: #008080;">85</span> 
+<span style="color: #008080;">86</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 将 TodoList 组件渲染到页面</span>
+<span style="color: #008080;">87</span> React.render(&lt;TodoList /&gt;, document.getElementById('container'));</pre>
+</div>
+<p>&nbsp;</p>
+<h2>4.4 删除数据</h2>
+<p>删除数据和新增数据，逻辑上是一样的，都是需要父组件提供一个修改数据的接口，通过props形式传递给子组件，然后让子组件来调用。就不再赘述了，直接上代码，注意看注释：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> TodoList 组件是一个整体的组件，最终的React渲染也将只渲染这一个组件</span>
+<span style="color: #008080;"> 2</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 该组件用于将『新增』和『列表』两个组件集成起来，并且存储 todolist 的数据</span>
+<span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">var</span> TodoList =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;"> 4</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 初始化数据</span>
+<span style="color: #008080;"> 5</span>         getInitialState: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;"> 6</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> {
+</span><span style="color: #008080;"> 7</span> <span style="color: #000000;">                todolist: []
+</span><span style="color: #008080;"> 8</span> <span style="color: #000000;">            };
+</span><span style="color: #008080;"> 9</span> <span style="color: #000000;">        },
+</span><span style="color: #008080;">10</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 接收一个传入的数据，并将它实时更新到组件的 state 中，以便组件根据数据重新render</span>
+<span style="color: #008080;">11</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 只要改变了 state ，react自动执行 reader 计算</span>
+<span style="color: #008080;">12</span>         handleChange: <span style="color: #0000ff;">function</span><span style="color: #000000;"> (rows) {
+</span><span style="color: #008080;">13</span>             <span style="color: #0000ff;">this</span><span style="color: #000000;">.setState({
+</span><span style="color: #008080;">14</span> <span style="color: #000000;">                todolist: rows
+</span><span style="color: #008080;">15</span> <span style="color: #000000;">            });
+</span><span style="color: #008080;">16</span> <span style="color: #000000;">        },
+</span><span style="color: #008080;">17</span>         render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">19</span>                 &lt;div&gt;
+<span style="color: #008080;">20</span>                     {<span style="color: #008000;">/*</span> 
+<span style="color: #008080;">21</span> <span style="color: #008000;">                        集成 TypeNews 组件，传入两个属性 onAdd 和 todo
+</span><span style="color: #008080;">22</span> <span style="color: #008000;">                        todo - 将todolist的数据传入到组件，当新增时，更新todolist数据
+</span><span style="color: #008080;">23</span> <span style="color: #008000;">                        onAdd -  将 handleChange 函数传入到组件，新增时，用它来处理最新的todolist数据
+</span><span style="color: #008080;">24</span>                     <span style="color: #008000;">*/</span><span style="color: #000000;">}
+</span><span style="color: #008080;">25</span>                     &lt;TypeNew onAdd={<span style="color: #0000ff;">this</span>.handleChange} todo={<span style="color: #0000ff;">this</span>.state.todolist} /&gt;
+<span style="color: #008080;">26</span>                     {<span style="color: #008000;">/*</span>
+<span style="color: #008080;">27</span> <span style="color: #008000;">                        集成 ListTodo 组件，传入两个属性 onDel 和 todo
+</span><span style="color: #008080;">28</span> <span style="color: #008000;">                        todo - 将todolist的数据传入到组件，当删除时，更新todolist数据
+</span><span style="color: #008080;">29</span> <span style="color: #008000;">                        onDel - 将 handleChange 函数传入到组件，删除时，用它来处理最新的todolist数据
+</span><span style="color: #008080;">30</span>                     <span style="color: #008000;">*/</span><span style="color: #000000;">}
+</span><span style="color: #008080;">31</span>                     &lt;ListTodo onDel={<span style="color: #0000ff;">this</span>.handleChange} todo={<span style="color: #0000ff;">this</span>.state.todolist} /&gt;
+<span style="color: #008080;">32</span>                 &lt;/div&gt;
+<span style="color: #008080;">33</span> <span style="color: #000000;">            );
+</span><span style="color: #008080;">34</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">35</span> <span style="color: #000000;">    });
+</span><span style="color: #008080;">36</span> 
+<span style="color: #008080;">37</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> TypeNew 组件用于新增数据，它需要 todo 和 onAdd 两个属性，上文已经提到过</span>
+<span style="color: #008080;">38</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 基本逻辑是：当从 input 中获取数据时，将新数据 push 到todo中，</span>
+<span style="color: #008080;">39</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 然后使用 onAdd 调用 TodoList 的 handleChange 来更新state，然后react自动render</span>
+<span style="color: #008080;">40</span>     <span style="color: #0000ff;">var</span> TypeNew =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">41</span>         handleAdd: <span style="color: #0000ff;">function</span><span style="color: #000000;"> (e) {
+</span><span style="color: #008080;">42</span> <span style="color: #000000;">            e.preventDefault();
+</span><span style="color: #008080;">43</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> 通过 refs 获取dom元素，然后获取输入的内容</span>
+<span style="color: #008080;">44</span>             <span style="color: #0000ff;">var</span> inputDom = <span style="color: #0000ff;">this</span><span style="color: #000000;">.refs.inputnew.getDOMNode();
+</span><span style="color: #008080;">45</span>             <span style="color: #0000ff;">var</span> newthing =<span style="color: #000000;"> inputDom.value.trim();
+</span><span style="color: #008080;">46</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> 获取传入的todolist数据</span>
+<span style="color: #008080;">47</span>             <span style="color: #0000ff;">var</span> rows = <span style="color: #0000ff;">this</span><span style="color: #000000;">.props.todo;
+</span><span style="color: #008080;">48</span>             <span style="color: #0000ff;">if</span> (newthing !== ''<span style="color: #000000;">) {
+</span><span style="color: #008080;">49</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中</span>
+<span style="color: #008080;">50</span> <span style="color: #000000;">                rows.push(newthing);
+</span><span style="color: #008080;">51</span>                 <span style="color: #0000ff;">this</span><span style="color: #000000;">.props.onAdd(rows);
+</span><span style="color: #008080;">52</span> <span style="color: #000000;">            }
+</span><span style="color: #008080;">53</span>             inputDom.value = ''<span style="color: #000000;">;
+</span><span style="color: #008080;">54</span> <span style="color: #000000;">        },
+</span><span style="color: #008080;">55</span>         render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">56</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">57</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> form submit 时，触发 handleAdd 事件</span>
+<span style="color: #008080;">58</span>                 &lt;form onSubmit={<span style="color: #0000ff;">this</span>.handleAdd}&gt;
+<span style="color: #008080;">59</span>                     &lt;input type="text" ref="inputnew" id="todo-new" placeholder="typing a newthing todo" autoComplete="off" /&gt;
+<span style="color: #008080;">60</span>                 &lt;/form&gt;
+<span style="color: #008080;">61</span> <span style="color: #000000;">            );
+</span><span style="color: #008080;">62</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">63</span> <span style="color: #000000;">    });
+</span><span style="color: #008080;">64</span> 
+<span style="color: #008080;">65</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> ListTodo 组件用于展示列表，并可以删除某一项内容，它有 noDel todo 两个属性，上文已经提到过</span>
+<span style="color: #008080;">66</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 它的基本逻辑是：遍历 todo 的内容，生成数据列表和删除按钮</span>
+<span style="color: #008080;">67</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 对某一项执行删除时，想将 todo 中的数据删除，</span>
+<span style="color: #008080;">68</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 然后通过 onDel 事件调用 TodoList 的 handleChange 来更新state，然后react自动render</span>
+<span style="color: #008080;">69</span>     <span style="color: #0000ff;">var</span> ListTodo =<span style="color: #000000;"> React.createClass({
+</span><span style="color: #008080;">70</span>         handleDel: <span style="color: #0000ff;">function</span><span style="color: #000000;"> (e) {
+</span><span style="color: #008080;">71</span>             <span style="color: #0000ff;">var</span> delIndex = e.target.getAttribute('data-key'<span style="color: #000000;">);
+</span><span style="color: #008080;">72</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> 更新数据，并使用 onDel 更新到 TodoList 的 state 中，以便 React自动render</span>
+<span style="color: #008080;">73</span>             <span style="color: #0000ff;">this</span>.props.todo.splice(delIndex, 1<span style="color: #000000;">);
+</span><span style="color: #008080;">74</span>             <span style="color: #0000ff;">this</span>.props.onDel(<span style="color: #0000ff;">this</span><span style="color: #000000;">.props.todo);
+</span><span style="color: #008080;">75</span> <span style="color: #000000;">        },
+</span><span style="color: #008080;">76</span>         render: <span style="color: #0000ff;">function</span><span style="color: #000000;"> () {
+</span><span style="color: #008080;">77</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">78</span>                 &lt;ul id="todo-list"&gt;
+<span style="color: #008080;">79</span> <span style="color: #000000;">                {
+</span><span style="color: #008080;">80</span>                     <span style="color: #008000;">//</span><span style="color: #008000;"> {/* 遍历数据 */}</span>
+<span style="color: #008080;">81</span>                     <span style="color: #0000ff;">this</span>.props.todo.map(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (item, i) {
+</span><span style="color: #008080;">82</span>                         <span style="color: #0000ff;">return</span><span style="color: #000000;"> (
+</span><span style="color: #008080;">83</span>                             &lt;li&gt;
+<span style="color: #008080;">84</span>                                 &lt;label&gt;{item}&lt;/label&gt;
+<span style="color: #008080;">85</span>                                 &lt;button className="destroy" onClick={<span style="color: #0000ff;">this</span>.handleDel} data-key={i}&gt;<span style="color: #0000ff;">delete</span>&lt;/button&gt;
+<span style="color: #008080;">86</span>                             &lt;/li&gt;
+<span style="color: #008080;">87</span> <span style="color: #000000;">                        );
+</span><span style="color: #008080;">88</span>                     }.bind(<span style="color: #0000ff;">this</span>)) <span style="color: #008000;">//</span><span style="color: #008000;"> {/* 绑定函数的执行this - 以便 this.handleDel */}</span>
+<span style="color: #008080;">89</span> <span style="color: #000000;">                }
+</span><span style="color: #008080;">90</span>                 &lt;/ul&gt;
+<span style="color: #008080;">91</span> <span style="color: #000000;">            );
+</span><span style="color: #008080;">92</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">93</span> <span style="color: #000000;">    });
+</span><span style="color: #008080;">94</span> 
+<span style="color: #008080;">95</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 将 TodoList 组件渲染到页面</span>
+<span style="color: #008080;">96</span>     React.render(&lt;TodoList /&gt;, document.getElementById('container'));</pre>
+</div>
+<p>&nbsp;</p>
+<h1>5. 总结</h1>
+<p>入门React的基本语法和使用比较简单，但是想要了解它的工作过程和基本的设计思想，还是需要一点时间的。接下来，在大型系统中使用React肯定又需要更多的时间，你可能还会遇到很多坑，等着你去填。</p>
+<p>但是无论现在用还是不用，咱们都不能落伍，该学的还是得掌握一些比较好。大家共勉。</p>
+<p>最后，此文章参考了&nbsp;<a href="http://react-china.org/t/todolist/1075" target="_blank">http://react-china.org/t/todolist/1075</a> 感谢本文作者</p>
+<p>-------------------------------------------------------------------------------------------------------------</p>
+<p>欢迎关注我的教程：</p>
+<p><strong>《<a href="http://study.163.com/course/courseMain.htm?courseId=1103003" target="_blank">使用grunt搭建全自动web前端开发环境</a>》</strong><strong>《<a href="http://study.163.com/course/courseMain.htm?courseId=691008" target="_blank">json2.js源码解读视频</a>》</strong></p>
+<p>《<strong><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html" target="_blank">深入理解javascript原型和闭包系列</a></strong>》《<a href="http://www.cnblogs.com/wangfupeng1988/p/4325007.html" target="_blank">css知多少</a>》《<a href="http://study.163.com/course/courseMain.htm?courseId=655003#/courseMain" target="_blank">微软petshop4.0源码解读视频</a>》</p>
+<p>------------------------------------------------------------------------------------------------------------</p>
+<p><strong><a href="http://wangeditor.github.io/" target="_blank">wangEditor，轻量化web富文本编辑器</a></strong></p>
+<p><a href="http://wangeditor.github.io/m/" target="_blank"><strong>wangEditor-mobile，适用于手机的富文本编辑器</strong></a></p>
+<p>-------------------------------------------------------------------------------------------------------------</p>
+<p>&nbsp;</p></div><script type="text/javascript">getBlogPostBody(5302738);</script></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2016-03-22 08:17 王福朋 阅读(1309) 评论(3)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=5302738" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl01_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/12/31.html">2015年12月31日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl01_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/5090148.html">我开发 wangEditor-mobile 的故事</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: wangEditor-mobile 是一款适用于手机、手指操作的富文本编辑器，wangEditor-mobile 官网1. 写在前面其实，我一开始并没有想做什么手机端操作的富文本编辑器。wangEditor 是我2014年11月份开始做的一个富文本编辑器，代码托管在github，开源、分享以及和大家...<a href="http://www.cnblogs.com/wangfupeng1988/p/5090148.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-12-31 09:45 王福朋 阅读(824) 评论(15)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=5090148" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl02_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/11/03.html">2015年11月3日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl02_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4931999.html">【我的产品观】开发wangEditor一年总结</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 1. 引言 标题说是一周年，其实是不是正好是一周年，我也忘记了，光从github的提交记录看也不准确。印象中觉得，如果要论想法，到现在一年多了，如果要论实际写代码，可能差不多正好一年。 从8月底在济南离职来到北京，一直熟悉新的工作环境和工作节奏，好久没有更新博客了。今天来总结一下这一年的wang...<a href="http://www.cnblogs.com/wangfupeng1988/p/4931999.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-11-03 08:43 王福朋 阅读(1651) 评论(18)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4931999" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl03_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/09/06.html">2015年9月6日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl03_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4784203.html">初探百度F.I.S — 由工具到解决方案</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 1. 前言 阅兵放假三天，我哪儿也没去，宅着看了一些东东：git命令行、svn命令以及下面的主角——百度FIS。对看过的git、svn的命令也做了一些总结，请参见：《git命令学习笔记》和《svn命令学习笔记》 另外，我是开源富文本编辑器 wangEditor 的作者，欢迎大家关注我的项目。下文...<a href="http://www.cnblogs.com/wangfupeng1988/p/4784203.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-09-06 09:03 王福朋 阅读(1487) 评论(5)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4784203" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl04_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/08/28.html">2015年8月28日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl04_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4764702.html">更加简洁易用——wangEditor富文本编辑器新版本发布</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 1. 前言 wangEditor富文本编辑器（www.wangEditor.com）从去年11月份发布，至今已经有将近10各月了。它就像一个襁褓中的小婴儿，在我的努力以及众多使用者的支持下不断摸索、成长。就像这么大的小孩一样，它的下一个目标是要自己站起来、自己走下去。 而这一版本的更新，已经可以...<a href="http://www.cnblogs.com/wangfupeng1988/p/4764702.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-08-28 08:29 王福朋 阅读(981) 评论(5)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4764702" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl05_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/07/16.html">2015年7月16日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl05_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4649709.html">自己总结的web前端知识体系大全【欢迎补充】</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 1. 前言 大约在几个月之前，让我看完了《webkit技术内幕》这本书的时候，突然有了一个想法。想把整个web前端开发所需要的知识都之中在一个视图中，形成一个完整的web前端知识体系，目的是想要颠覆人们对于前端只有三大块（html、css、js）的认识——做web前端需要的比这三大块要多得多。 ...<a href="http://www.cnblogs.com/wangfupeng1988/p/4649709.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-07-16 08:40 王福朋 阅读(29452) 评论(74)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4649709" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl06_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/07/03.html">2015年7月3日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl06_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4617184.html">做一个有想法的程序员，做一个属于自己的神器</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 1. 引言 我就是那位之前在博客园上发布富文本编辑器wangEditor的那位。目前wangEditor编辑器慢慢趋于稳定，虽然用户量还算比较少，但是目前提问题的人也不是特别多了。于是，慢慢的这段时间又开始有时间可以“作”了。 我是一个闲不住的人。于是，我就利用了大约半个月的时间，做出了随机视频...<a href="http://www.cnblogs.com/wangfupeng1988/p/4617184.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-07-03 08:40 王福朋 阅读(8274) 评论(87)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4617184" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl07_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/06/09.html">2015年6月9日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl07_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4561993.html">【前端福利】用grunt搭建自动化的web前端开发环境-完整教程</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: jQuery在使用grunt，bootstrap在使用grunt，百度UEditor在使用grunt，你没有理由不学、不用！1. 前言 各位web前端开发人员，如果你现在还不知道grunt或者听说过、但是不会熟练使用grunt，那你就真的真的真的out了（三个“真的”重复，表示重点）。至于...<a href="http://www.cnblogs.com/wangfupeng1988/p/4561993.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-06-09 08:38 王福朋 阅读(18302) 评论(76)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4561993" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl08_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/05/11.html">2015年5月11日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl08_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4492962.html">轻量级富文本编辑器wangEditor源码结构介绍</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 1. 引言 wangEditor——一款轻量级html富文本编辑器（开源软件）网站：http://www.wangeditor.com/demo演示：http://www.wangeditor.com/wangEditor/demo.html下载（github）：https://github.co...<a href="http://www.cnblogs.com/wangfupeng1988/p/4492962.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-05-11 08:24 王福朋 阅读(3639) 评论(24)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4492962" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+
+<div class="day">
+	<div class="dayTitle">
+		<a id="homepage1_HomePageDays_DaysList_ctl09_ImageLink" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/03/26.html">2015年3月26日</a>				  
+	</div>
+
+	
+			<div class="postTitle">
+				<a id="homepage1_HomePageDays_DaysList_ctl09_DayList_TitleUrl_0" class="postTitle2" href="http://www.cnblogs.com/wangfupeng1988/p/4366994.html">我为什么要做富文本编辑器【wangEditor5个月总结】</a>
+			</div>
+			<div class="postCon"><div class="c_b_p_desc">摘要: 请访问wangEditor官网：www.wangEditor.com---------------------------------------------------------------------1. 为什么要做富文本框？ 一说到web富文本编辑器，很多人的印象就是网上一搜一大把，恨不得...<a href="http://www.cnblogs.com/wangfupeng1988/p/4366994.html" class="c_b_p_desc_readmore">阅读全文</a></div></div>
+			<div class="clear"></div>
+			<div class="postDesc">posted @ 2015-03-26 08:42 王福朋 阅读(12777) 评论(92)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4366994" rel="nofollow">编辑</a></div>
+			<div class="clear"></div>
+		
+</div>
+
+<div class="topicListFooter"><div id="nav_next_page"><a href="http://www.cnblogs.com/wangfupeng1988/default.html?page=2">下一页</a></div></div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/wangfupeng1988/">王福朋</a><br>园龄：<a href="http://home.cnblogs.com/u/wangfupeng1988/" title="入园时间：2010-06-05">5年11个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/wangfupeng1988/followers/">1538</a><br>关注：<a href="http://home.cnblogs.com/u/wangfupeng1988/followees/">15</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;b23cbd90-9e70-df11-ba8f-001cf0cd104b&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalTodayDay" align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/wangfupeng1988/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="http://www.cnblogs.com/wangfupeng1988/#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/wangfupeng1988/tag/javascript/">javascript</a>(46)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%8E%9F%E5%9E%8B/">原型</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域链</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">富文本编辑器</a>(18)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/wangEditor/">wangEditor</a>(18)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/css/">css</a>(13)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/css%E7%9F%A5%E5%A4%9A%E5%B0%91/">css知多少</a>(11)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/petshop4.0/">petshop4.0</a>(11)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/wangfupeng1988/category/652232.html">css知多少(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/wangfupeng1988/category/564238.html">javascript便签笔记系列(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/wangfupeng1988/category/643425.html">wangEditor使用手册(12)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/wangfupeng1988/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/11.html">2015年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/09.html">2015年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/08.html">2015年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/07.html">2015年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/06.html">2015年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/05.html">2015年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/03.html">2015年3月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/02.html">2015年2月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/01.html">2015年1月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/12.html">2014年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/11.html">2014年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/10.html">2014年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/09.html">2014年9月 (23)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/08.html">2014年8月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/07.html">2014年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/06.html">2014年6月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/05.html">2014年5月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/04.html">2014年4月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/03.html">2014年3月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/wangfupeng1988/archive/2012/05.html">2012年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/wangfupeng1988/archive/2012/03.html">2012年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/12.html">2011年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/10.html">2011年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/08.html">2011年8月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/07.html">2011年7月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/05.html">2011年5月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/04.html">2011年4月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/03.html">2011年3月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/02.html">2011年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/01.html">2011年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/wangfupeng1988/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/wangfupeng1988/archive/2010/09.html">2010年9月 (6)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html#3439071">1. Re:深入理解javascript原型和闭包系列</a></li>
+        <li class="recent_comment_body">收藏  看看。。</li>
+        <li class="recent_comment_author">--.伊泽瑞尔</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979290.html#3438959">2. Re:深入理解javascript原型和闭包（4）——隐式原型</a></li>
+        <li class="recent_comment_body">@王福朋这边的说的所有的对象的隐式原型都指向object.prototype.可是函数也是对象啊,函数的隐式原型不是指向Function.prototype嘛...</li>
+        <li class="recent_comment_author">--8t5t</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3978131.html#3436778">3. Re:深入理解javascript原型和闭包（3）——prototype原型</a></li>
+        <li class="recent_comment_body">比方说:var arr = ['123', '456'];arr 是由Array创建的，但是为什么arr.prototype没有继承自Array.prototype, 而是undefined呢？...</li>
+        <li class="recent_comment_author">--wusp</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3991151.html#3436285">4. Re:深入理解javascript原型和闭包（12）——简介【作用域】</a></li>
+        <li class="recent_comment_body">默默的看，这系列真的给予我很大的帮助，谢谢了</li>
+        <li class="recent_comment_author">--码农何时</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3994950.html#3435245">5. Re:深入理解javascript原型和闭包（16）——完结</a></li>
+        <li class="recent_comment_body">太赞了，之前看javascript一直带有着java的思想，很难转变过来，先在看了楼主的系列文章之后明白了太多太多</li>
+        <li class="recent_comment_author">--YWNWA</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4649709.html">1. 自己总结的web前端知识体系大全【欢迎补充】(29452)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html">2. 深入理解javascript原型和闭包（完结）(24831)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4129500.html">3. 请用fontAwesome代替网页icon小图标(24590)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/3647166.html">4. 如何有效使用Project（1）——编制进度计划、保存基准(20110)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html">5. 深入理解javascript原型和闭包系列(18379)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/wangfupeng1988/p/3943389.html">1. 来给罗永浩和王自如打个分（上）(113)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/archive/2010/09/18/1830467.html">2. 写给自学asp.net的年轻人，特别是大学生(111)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4366994.html">3. 我为什么要做富文本编辑器【wangEditor5个月总结】(92)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4617184.html">4. 做一个有想法的程序员，做一个属于自己的神器(87)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/archive/2011/12/26/2302216.html">5. 【轻松学排序算法】眼睛直观感受几种常用排序算法(78)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html">1. 深入理解javascript原型和闭包系列(168)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/archive/2011/12/26/2302216.html">2. 【轻松学排序算法】眼睛直观感受几种常用排序算法(148)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4561993.html">3. 【前端福利】用grunt搭建自动化的web前端开发环境-完整教程(136)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4649709.html">4. 自己总结的web前端知识体系大全【欢迎补充】(121)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4366994.html">5. 我为什么要做富文本编辑器【wangEditor5个月总结】(80)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 王福朋
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

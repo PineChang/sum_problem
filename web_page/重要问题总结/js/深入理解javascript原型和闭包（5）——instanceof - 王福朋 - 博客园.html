@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://www.cnblogs.com/wangfupeng1988/p/3979533.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/bundle-darkgreentrip.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/wangfupeng1988/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/wangfupeng1988/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/wangfupeng1988/wlwmanifest.xml">
+<script src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'wangfupeng1988', cb_enable_mathjax=false;</script>
+<script src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/wangfupeng1988/"><img id="blogLogo" src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/wangfupeng1988/">王福朋的博客</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/wangfupeng1988/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/wangfupeng1988/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/wangfupeng1988/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 131&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 1833</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园.html">深入理解javascript原型和闭包（5）——instanceof</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>又介绍一个老朋友——instanceof。</p>
+<p>对于值类型，你可以通过typeof判断，string/number/boolean都很清楚，但是typeof在判断到引用类型的时候，返回值只有object/function，你不知道它到底是一个object对象，还是数组，还是new Number等等。</p>
+<p>这个时候就需要用到instanceof。例如：</p>
+<p><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/181635128935132.png" alt=""></p>
+<p>上图中，f1这个对象是被Foo创建，但是“f1 instanceof Object”为什么是true呢？</p>
+<p>&nbsp;</p>
+<p>至于为什么过会儿再说，先把instanceof判断的规则告诉大家。根据以上代码看下图：</p>
+<p><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/181635468939277.png" alt=""></p>
+<p>Instanceof运算符的第一个变量是一个对象，暂时称为A；第二个变量一般是一个函数，暂时称为B。</p>
+<p>Instanceof的判断队则是：<span style="background-color: #ffff00;">沿着A的__proto__这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false</span>。</p>
+<p>按照以上规则，大家看看“ f1 instanceof Object ”这句代码是不是true？ 根据上图很容易就能看出来，就是true。</p>
+<p>&nbsp;</p>
+<p>通过上以规则，你可以解释很多比较怪异的现象，例如：</p>
+<p><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/181636252689920.png" alt=""></p>
+<p>这些看似很混乱的东西，答案却都是true，这是为何？</p>
+<p>正好，这里也接上了咱们上一节说的“乱”。</p>
+<p>上一节咱们贴了好多的图片，其实那些图片是可以联合成一个整体的，即：</p>
+<p><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/181637013624694.png" alt=""></p>
+<p>看这个图片，千万不要嫌烦，必须一条线一条线挨着分析。如果上一节你看的比较仔细，再结合刚才咱们介绍的instanceof的概念，相信能看懂这个图片的内容。</p>
+<p>看看这个图片，你也就知道为何上面三个看似混乱的语句返回的是true了。</p>
+<p>&nbsp;</p>
+<p>问题又出来了。Instanceof这样设计，到底有什么用？到底instanceof想表达什么呢？</p>
+<p>重点就这样被这位老朋友给引出来了——<span style="background-color: #ffff00;">继承</span>——<span style="background-color: #ffff00;">原型链</span>。</p>
+<p>即，<span style="background-color: #ffff00;">instanceof表示的就是一种继承关系，或者原型链的结构</span>。请看下节分解。</p>
+<p>（注：本节的图片来源于http://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/figure1.jpg）</p>
+<p>---------------------------------------------------------------------------</p>
+<p>本文已更新到《<a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank">深入理解javascript原型和闭包系列</a>》的目录，更多内容可参见《<a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank">深入理解javascript原型和闭包系列</a>》。</p>
+<p>另外，欢迎关注<a href="http://weibo.com/madai01" target="_blank">我的微博</a>。</p>
+<p>也欢迎关注我的其他教程：</p>
+<p><strong>《<a href="http://study.163.com/course/courseMain.htm?courseId=1103003" target="_blank">用grunt搭建自动化的web前端开发环境</a>》<strong>《<a href="http://study.163.com/course/courseMain.htm?courseId=752006#/courseMain" target="_blank">从设计到模式</a>》《<a href="http://pan.baidu.com/s/1bnphrFD" target="_blank">json2.js源码解读视频</a>》《<a href="http://study.163.com/course/courseMain.htm?courseId=655003#/courseMain" target="_blank">微软petshop4.0源码解读视频</a>》</strong></strong></p>
+<p>--------------------------------------------------------------------------</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/wangfupeng1988/tag/javascript/">javascript</a>, <a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%8E%9F%E5%9E%8B/">原型</a>, <a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>, <a href="http://www.cnblogs.com/wangfupeng1988/tag/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a>, <a href="http://www.cnblogs.com/wangfupeng1988/tag/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域链</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3979533,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/wangfupeng1988/" target="_blank"><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/20140923142153.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/wangfupeng1988/">王福朋</a><br>
+<a href="http://home.cnblogs.com/u/wangfupeng1988/followees">关注 - 15</a><br>
+<a href="http://home.cnblogs.com/u/wangfupeng1988/followers">粉丝 - 1538</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3979533,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">14</span>
+    </div>
+	<div class="buryit" onclick="votePost(3979533,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979290.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/wangfupeng1988/p/3979290.html" title="发布于2014-09-18 15:14">深入理解javascript原型和闭包（4）——隐式原型</a><br><a href="http://www.cnblogs.com/wangfupeng1988/p/3979985.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/wangfupeng1988/p/3979985.html" title="发布于2014-09-18 20:17">深入理解javascript原型和闭包（6）——继承</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-09-18 16:38</span> <a href="http://www.cnblogs.com/wangfupeng1988/">王福朋</a> 阅读(<span id="post_view_count">8572</span>) 评论(<span id="post_comment_count">22</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3979533" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#" onclick="AddToWz(3979533);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=76089,cb_entryId=3979533,cb_blogApp=currentBlogApp,cb_blogUserGuid='b23cbd90-9e70-df11-ba8f-001cf0cd104b',cb_entryCreatedDate='2014/9/18 16:38:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3039279" class="layer">#1楼</a><a name="3039279" id="comment_anchor_3039279"></a>  <span class="comment_date">2014-10-06 22:38</span> <a id="a_comment_author_3039279" href="http://www.cnblogs.com/jiejie_peng/" target="_blank">jiejiep</a> <a href="http://msg.cnblogs.com/send/jiejiep" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3039279" class="blog_comment_body">楼主思路清晰缜密，受教。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3039279,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3039279,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3039279_avatar" style="display:none;">http://pic.cnblogs.com/face/u122171.jpg?id=19130923</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3043476" class="layer">#2楼</a><a name="3043476" id="comment_anchor_3043476"></a>  <span class="comment_date">2014-10-14 11:27</span> <a id="a_comment_author_3043476" href="http://www.cnblogs.com/dafeifei0218/" target="_blank">大飞飞0218</a> <a href="http://msg.cnblogs.com/send/%E5%A4%A7%E9%A3%9E%E9%A3%9E0218" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3043476" class="blog_comment_body">还是没懂...</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3043476,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3043476,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044940" class="layer">#3楼</a><a name="3044940" id="comment_anchor_3044940"></a>  <span class="comment_date">2014-10-16 13:09</span> <a id="a_comment_author_3044940" href="http://www.cnblogs.com/youxia/" target="_blank">京山游侠</a> <a href="http://msg.cnblogs.com/send/%E4%BA%AC%E5%B1%B1%E6%B8%B8%E4%BE%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044940" class="blog_comment_body">还是有错误。特别是图。请记住，是Function.prototype.constructor===Object，而不是Function.prototype.constructor===Function。应该是(new Function()).constructor===Function。其它的错误也以此类推，请自己测试。<br><br>所以你上一节和这一节都没讲对，图也没画对，本不应该存在这么多循环引用。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044940,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044940,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3044940_avatar" style="display:none;">http://pic.cnblogs.com/face/16576/20150217205716.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044949" class="layer">#4楼</a><a name="3044949" id="comment_anchor_3044949"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-16 13:16</span> <a id="a_comment_author_3044949" href="http://www.cnblogs.com/wangfupeng1988/" target="_blank">王福朋</a> <a href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044949" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044940" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3044940);">@</a>
+京山游侠<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044940" title="查看引用原文">引用</a></legend>还是有错误。特别是图。请记住，是Function.prototype.constructor===Object，而不是Function.prototype.constructor===Function。应该是(new Function()).constructor===Function。其它的错误也以此类推，请自己测试。<br><br>所以你上一节和这一节都没讲对，图也没画对，本不应该存在这么多循环引用。</fieldset><br><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/161316030139131.png" alt="" border="0" "=""></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044949,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044949,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3044949_avatar" style="display:none;">http://pic.cnblogs.com/face/138012/20140923142153.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044953" class="layer">#5楼</a><a name="3044953" id="comment_anchor_3044953"></a>  <span class="comment_date">2014-10-16 13:19</span> <a id="a_comment_author_3044953" href="http://www.cnblogs.com/youxia/" target="_blank">京山游侠</a> <a href="http://msg.cnblogs.com/send/%E4%BA%AC%E5%B1%B1%E6%B8%B8%E4%BE%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044953" class="blog_comment_body">不是Foo.prototype.constructor===Foo，而是Foo.prototype.constructor===Object和(new Foo()).constructor===Foo。同时(new Foo()).__proto__===(new Foo()).constructor.prototype===Foo.prototype,所以，(new Foo()).__proto__.__proto__===Foo.prototype.__proto__===Object.prototype。是一个链式结构，不知道我说清楚了没有？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044953,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044953,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3044953_avatar" style="display:none;">http://pic.cnblogs.com/face/16576/20150217205716.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044959" class="layer">#6楼</a><a name="3044959" id="comment_anchor_3044959"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-16 13:22</span> <a id="a_comment_author_3044959" href="http://www.cnblogs.com/wangfupeng1988/" target="_blank">王福朋</a> <a href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044959" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044953" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3044953);">@</a>
+京山游侠<br>“请记住，是Function.prototype.constructor===Object，而不是Function.prototype.constructor===Function”——这句话不知道你有没有真正的测试过。测试结果我已经截图回复给你了，自己看看就知道了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044959,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044959,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3044959_avatar" style="display:none;">http://pic.cnblogs.com/face/138012/20140923142153.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044961" class="layer">#7楼</a><a name="3044961" id="comment_anchor_3044961"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-16 13:26</span> <a id="a_comment_author_3044961" href="http://www.cnblogs.com/wangfupeng1988/" target="_blank">王福朋</a> <a href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044961" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044953" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3044953);">@</a>
+京山游侠<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3044953" title="查看引用原文">引用</a></legend>不是Foo.prototype.constructor===Foo，而是Foo.prototype.constructor===Object和(new Foo()).constructor===Foo。同时(new Foo()).__proto__===(new Foo()).constructor.prototype===Foo.prototype,所以，(new Foo()).__proto__.__proto__===Foo.prototype.__proto__===Object.prototype。是一个链式结构，不知道我说清楚了没有？</fieldset><br>单说第一句话——“不是Foo.prototype.constructor===Foo，而是Foo.prototype.constructor===Object”，测试结果截图如下：<br><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/161325038412289.png" alt="" border="0" "=""><br>当别人提出不一样的意见时，你首先要做的应该是去实际的测试一下。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044961,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044961,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3044961_avatar" style="display:none;">http://pic.cnblogs.com/face/138012/20140923142153.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3045017" class="layer">#8楼</a><a name="3045017" id="comment_anchor_3045017"></a>  <span class="comment_date">2014-10-16 14:28</span> <a id="a_comment_author_3045017" href="http://www.cnblogs.com/youxia/" target="_blank">京山游侠</a> <a href="http://msg.cnblogs.com/send/%E4%BA%AC%E5%B1%B1%E6%B8%B8%E4%BE%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3045017" class="blog_comment_body">我刚发完评论就觉得有疑问，正回头在自己找自己的错误。你测试得还真快。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3045017,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3045017,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3045017_avatar" style="display:none;">http://pic.cnblogs.com/face/16576/20150217205716.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3045029" class="layer">#9楼</a><a name="3045029" id="comment_anchor_3045029"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-16 14:36</span> <a id="a_comment_author_3045029" href="http://www.cnblogs.com/wangfupeng1988/" target="_blank">王福朋</a> <a href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3045029" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3045017" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3045017);">@</a>
+京山游侠<br>var a = Function.prototype;  //将Function.prototype看作一个基本对象a，此时：<br>a.constructor === Function;<br>a.__proto__.constructor === Object; //a.__proto__指向Object.pototype</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3045029,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3045029,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3045029_avatar" style="display:none;">http://pic.cnblogs.com/face/138012/20140923142153.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3045271" class="layer">#10楼</a><a name="3045271" id="comment_anchor_3045271"></a>  <span class="comment_date">2014-10-16 20:04</span> <a id="a_comment_author_3045271" href="http://www.cnblogs.com/youxia/" target="_blank">京山游侠</a> <a href="http://msg.cnblogs.com/send/%E4%BA%AC%E5%B1%B1%E6%B8%B8%E4%BE%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3045271" class="blog_comment_body">首先，为我错误的评论道歉。<br><br>其次，感谢楼主让我认识到什么对象的constructor===object。下面是我的测试截图：<br><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/162003090606626.png" alt="" border="0" "=""><br><br><img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/162003167791217.png" alt="" border="0" "=""><br><br>我也准备近期写一篇关于JavaScript的随笔，也想讨论JavaScript的原型链和面向对象编程。希望能和博主共同探讨、共同进步。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3045271,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3045271,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3045271_avatar" style="display:none;">http://pic.cnblogs.com/face/16576/20150217205716.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3139728" class="layer">#11楼</a><a name="3139728" id="comment_anchor_3139728"></a>  <span class="comment_date">2015-03-12 16:28</span> <a id="a_comment_author_3139728" href="http://www.cnblogs.com/huowujiyx/" target="_blank">别惹蚂蚁</a> <a href="http://msg.cnblogs.com/send/%E5%88%AB%E6%83%B9%E8%9A%82%E8%9A%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3139728" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3045271" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3045271);">@</a>
+京山游侠<br>请教下，你们用的什么浏览器，什么调试工具啊？<br>为什么我用Chrome打印出来的只有object，没有其结构，你们是怎么看到他的属性和结构的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3139728,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3139728,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3139728_avatar" style="display:none;">http://pic.cnblogs.com/face/u32611.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3139734" class="layer">#12楼</a><a name="3139734" id="comment_anchor_3139734"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-03-12 16:32</span> <a id="a_comment_author_3139734" href="http://www.cnblogs.com/wangfupeng1988/" target="_blank">王福朋</a> <a href="http://msg.cnblogs.com/send/%E7%8E%8B%E7%A6%8F%E6%9C%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3139734" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3139728" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3139728);">@</a>
+别惹蚂蚁<br>我就是用chrome的控制台。<br>遇到过你说的这种情况，我记得当时我重新刷新页面就好了。<br>如果还是不行，建议你使用firefox的firebug，这个东西很强大，可配置性也好。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3139734,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3139734,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3139734_avatar" style="display:none;">http://pic.cnblogs.com/face/138012/20140923142153.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3172532" class="layer">#13楼</a><a name="3172532" id="comment_anchor_3172532"></a>  <span class="comment_date">2015-04-29 09:32</span> <a id="a_comment_author_3172532" href="http://www.cnblogs.com/Aralic/" target="_blank">Aralic</a> <a href="http://msg.cnblogs.com/send/Aralic" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3172532" class="blog_comment_body">为博主点赞 写的太好了 受教了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3172532,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3172532,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3172532_avatar" style="display:none;">http://pic.cnblogs.com/face/735955/20150512130343.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3213021" class="layer">#14楼</a><a name="3213021" id="comment_anchor_3213021"></a>  <span class="comment_date">2015-06-22 18:27</span> <a id="a_comment_author_3213021" href="http://www.cnblogs.com/Lumia1020/" target="_blank">Lumia1020</a> <a href="http://msg.cnblogs.com/send/Lumia1020" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3213021" class="blog_comment_body">你好 还是有一个地方想问问<br>比如 <br>function F()<br>{<br><br>}<br>即该函数 F._proto_ 指向了 Function.prototype<br><br>而通过该函数创建的对象 var f1=new F() <br>f1._proto_ 指向了 F.prototype <br><br>感觉这图里面 这个地方 有时候容易搞晕   <br><br>A instanceof B  沿着A的__proto__这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false<br><br>而 B 如果是一个函数  那么 B.prototype 又指向了谁 这点我还是想不通 求指教</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3213021,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3213021,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3227464" class="layer">#15楼</a><a name="3227464" id="comment_anchor_3227464"></a>  <span class="comment_date">2015-07-14 12:09</span> <a id="a_comment_author_3227464" href="http://www.cnblogs.com/u2fish/" target="_blank">i蒹葭从风</a> <a href="http://msg.cnblogs.com/send/i%E8%92%B9%E8%91%AD%E4%BB%8E%E9%A3%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3227464" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3213021" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3213021);">@</a>
+Lumia1020<br>而 B 如果是一个函数 那么 B.prototype 又指向了谁 这点我还是想不通 求指教.<br>B是函数，B.prototype是一个对象，属性的集合。例如，B.prototype就默认有constructor属性，所以B.prototype.__proto__ === Object.prototype。因为对象的__proto__属性指向创建该对象的函数的prototype。这下明白了吧</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3227464,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3227464,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3227464_avatar" style="display:none;">http://pic.cnblogs.com/face/573216/20140625100814.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3239725" class="layer">#16楼</a><a name="3239725" id="comment_anchor_3239725"></a>  <span class="comment_date">2015-08-02 11:39</span> <a id="a_comment_author_3239725" href="http://www.cnblogs.com/famingyuan/" target="_blank">famingyuan</a> <a href="http://msg.cnblogs.com/send/famingyuan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3239725" class="blog_comment_body">拜读中，，，感谢楼主辛勤劳作。<br>建议楼主在该图<img src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/021138049239263.png" alt="" border="0" "=""><br>中加入 constructor ,这样子就完美了，可以的话，再整理下关于原型链中constructor的关系。个人建议哈，感谢楼主分享如此优质的内容。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3239725,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3239725,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3264018" class="layer">#17楼</a><a name="3264018" id="comment_anchor_3264018"></a>  <span class="comment_date">2015-09-10 12:03</span> <a id="a_comment_author_3264018" href="http://home.cnblogs.com/u/678413/" target="_blank">知悉</a> <a href="http://msg.cnblogs.com/send/%E7%9F%A5%E6%82%89" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3264018" class="blog_comment_body">楼主，我想请教一个问题:这个原型图是否可以理解为：<br>1、最主要的两个函数是Function(){}和Object(){}<br>2、所有对象的创建和函数的创建都离不开这两个函数。<br>3、所有函数的__proto__都指向Function.prototype（包括Object.__proto__）<br>4、所有原型对象的__proto__都指向Object.prototype（包括Function.prototype.__proto__）</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3264018,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3264018,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3341601" class="layer">#18楼</a><a name="3341601" id="comment_anchor_3341601"></a>  <span class="comment_date">2016-01-05 19:23</span> <a id="a_comment_author_3341601" href="http://www.cnblogs.com/pramper/" target="_blank">木林木</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E6%9E%97%E6%9C%A8" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3341601" class="blog_comment_body">第一次看没看懂，时隔一个多月再看才知道是好东西！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3341601,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3341601,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3341601_avatar" style="display:none;">http://pic.cnblogs.com/face/864090/20151225091454.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3354356" class="layer">#19楼</a><a name="3354356" id="comment_anchor_3354356"></a>  <span class="comment_date">2016-01-26 15:08</span> <a id="a_comment_author_3354356" href="http://home.cnblogs.com/u/887122/" target="_blank">蚊子吃青蛙_s</a> <a href="http://msg.cnblogs.com/send/%E8%9A%8A%E5%AD%90%E5%90%83%E9%9D%92%E8%9B%99_s" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3354356" class="blog_comment_body">楼主，问下new Foo().constructor  指向的是什么内容？也是创建此对象的函数吗？ 我感觉看懂了你的图，但是看了评论就有迷糊了！  是不是每个对象都有constructor这个属性！  都指向了什么啊？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3354356,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3354356,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3363676" class="layer">#20楼</a><a name="3363676" id="comment_anchor_3363676"></a>  <span class="comment_date">2016-02-19 13:47</span> <a id="a_comment_author_3363676" href="http://www.cnblogs.com/seven007/" target="_blank">柒君</a> <a href="http://msg.cnblogs.com/send/%E6%9F%92%E5%90%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3363676" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3354356" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3354356);">@</a>
+蚊子吃青蛙_s<br>new Foo().constructor有constructor么？<br>new Foo()应该是函数生成的对象，拥有的是__proto__，<br>这个__proto__指向的是Foo.prototype.<br>Foo的prototype里面挂载着constructor，而constructor指向Foo本身。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3363676,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3363676,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3363676_avatar" style="display:none;">http://pic.cnblogs.com/face/895134/20160219132208.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3363683" class="layer">#21楼</a><a name="3363683" id="comment_anchor_3363683"></a>  <span class="comment_date">2016-02-19 13:52</span> <a id="a_comment_author_3363683" href="http://www.cnblogs.com/seven007/" target="_blank">柒君</a> <a href="http://msg.cnblogs.com/send/%E6%9F%92%E5%90%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3363683" class="blog_comment_body"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3354356" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3354356);">@</a>
+蚊子吃青蛙_s<br>我上面说错了，又看了一次，我觉得这个constructor 里面应该指向的就是对象本身。。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3363683,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3363683,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3363683_avatar" style="display:none;">http://pic.cnblogs.com/face/895134/20160219132208.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#3430164" class="layer">#22楼</a><a name="3430164" id="comment_anchor_3430164"></a><span id="comment-maxId" style="display:none;">3430164</span><span id="comment-maxDate" style="display:none;">2016/5/13 9:06:42</span>  <span class="comment_date">2016-05-13 09:06</span> <a id="a_comment_author_3430164" href="http://home.cnblogs.com/u/723832/" target="_blank">vcdaren</a> <a href="http://msg.cnblogs.com/send/vcdaren" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3430164" class="blog_comment_body"><div class="cnblogs_Highlighter sh-gutter"><div><div id="highlighter_530163" class="syntaxhighlighter  javascript"><div class="toolbar"><span><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript plain">Instanceof的判断队则是：沿着A的__proto__这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回</code><code class="javascript keyword">true</code><code class="javascript plain">。如果找到终点还未重合，则返回</code><code class="javascript keyword">false</code><code class="javascript plain">。</code></div></div></td></tr></tbody></table></div></div></div><br><br>沿着__proto__这条线好理解，沿着prototype这条线来找是什么意思？<br>具体指的是哪条线，能不能再详细的解释下？ 谢谢了<br><br>另外还有个小问题也请教下，<br><br><div class="cnblogs_Highlighter sh-gutter"><div><div id="highlighter_774290" class="syntaxhighlighter  javascript"><div class="toolbar"><span><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript keyword">var</code> <code class="javascript plain">a = {</code></div><div class="line number2 index1 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">x: 1,</code></div><div class="line number3 index2 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">y: {z: 2}</code></div><div class="line number4 index3 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">};</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript keyword">var</code> <code class="javascript plain">b = {};</code></div><div class="line number7 index6 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">b.__proto__ = a;</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">console.log(a.x);</code></div><div class="line number10 index9 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">console.log(b.x);</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">b.x = 22;</code></div><div class="line number13 index12 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">console.log(a.x);</code></div><div class="line number14 index13 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">console.log(b.x);</code></div><div class="line number15 index14 alt2">&nbsp;</div><div class="line number16 index15 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">b.y.z = 33;</code></div><div class="line number17 index16 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">console.log(a.y.z);</code></div><div class="line number18 index17 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">console.log(b.y.z);</code></div></div></td></tr></tbody></table></div></div></div><br>为什么执行b.x的时候，是给b新增加了一个x的属性，而执行b.y.z的时候，是修改原型中的数值？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3430164,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3430164,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/activereports/excel.htm?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=AR&utm_campaign=community" target="_blank">【推荐】Excel 报表开发18 招式，人人都能做报表</a><br><a href="http://group.cnblogs.com/topic/74539.html" target="_blank">【推荐】阿里云万网域名：.xin .com将推出重磅优惠</a><br><a href="http://t.cn/RqDmMiB" target="_blank">【活动】高性能+大数据的HTML5 App开发交流会（深圳站）</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/546212/" target="_blank">星巴克打算在上海开一家2700平米的全球最大门店</a><br> ·  <a href="http://news.cnblogs.com/n/546211/" target="_blank">微软发布16.0.6925.1016版Office for Android</a><br> ·  <a href="http://news.cnblogs.com/n/546210/" target="_blank">中国Model S比美国贵48% 特斯拉在华建厂可以降价</a><br> ·  <a href="http://news.cnblogs.com/n/546209/" target="_blank">谷歌Doodle纪念摇摆舞传奇大师Frankie Manning诞辰102周年</a><br> ·  <a href="http://news.cnblogs.com/n/546208/" target="_blank">Edge浏览器上的Office Online扩展程序新版上线</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./深入理解javascript原型和闭包（5）——instanceof - 王福朋 - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/545476/" target="_blank">快速学习者的高效学习策略</a><br> ·  <a href="http://kb.cnblogs.com/page/545784/" target="_blank">一个前端的自我修养</a><br> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"><b>历史上的今天:</b><br>2010-09-18 <a href="http://www.cnblogs.com/wangfupeng1988/archive/2010/09/18/1830467.html">写给自学asp.net的年轻人，特别是大学生</a><br></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/wangfupeng1988/">王福朋</a><br>园龄：<a href="http://home.cnblogs.com/u/wangfupeng1988/" title="入园时间：2010-06-05">5年11个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/wangfupeng1988/followers/">1538</a><br>关注：<a href="http://home.cnblogs.com/u/wangfupeng1988/followees/">15</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;b23cbd90-9e70-df11-ba8f-001cf0cd104b&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="日历">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalTodayDay" align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/wangfupeng1988/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="http://www.cnblogs.com/wangfupeng1988/p/3979533.html#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/wangfupeng1988/tag/javascript/">javascript</a>(46)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%8E%9F%E5%9E%8B/">原型</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域链</a>(20)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">富文本编辑器</a>(18)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/wangEditor/">wangEditor</a>(18)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/css/">css</a>(13)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/css%E7%9F%A5%E5%A4%9A%E5%B0%91/">css知多少</a>(11)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/petshop4.0/">petshop4.0</a>(11)</li><li><a href="http://www.cnblogs.com/wangfupeng1988/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/wangfupeng1988/category/652232.html">css知多少(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/wangfupeng1988/category/564238.html">javascript便签笔记系列(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/wangfupeng1988/category/643425.html">wangEditor使用手册(12)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/wangfupeng1988/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/11.html">2015年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/09.html">2015年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/08.html">2015年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/07.html">2015年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/06.html">2015年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/05.html">2015年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/03.html">2015年3月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/02.html">2015年2月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/wangfupeng1988/archive/2015/01.html">2015年1月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/12.html">2014年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/11.html">2014年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/10.html">2014年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/09.html">2014年9月 (23)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/08.html">2014年8月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/07.html">2014年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/06.html">2014年6月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/05.html">2014年5月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/04.html">2014年4月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/wangfupeng1988/archive/2014/03.html">2014年3月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/wangfupeng1988/archive/2012/05.html">2012年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/wangfupeng1988/archive/2012/03.html">2012年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/12.html">2011年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/10.html">2011年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/08.html">2011年8月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/07.html">2011年7月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/05.html">2011年5月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/04.html">2011年4月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/03.html">2011年3月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/02.html">2011年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/wangfupeng1988/archive/2011/01.html">2011年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/wangfupeng1988/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/wangfupeng1988/archive/2010/09.html">2010年9月 (6)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html#3439071">1. Re:深入理解javascript原型和闭包系列</a></li>
+        <li class="recent_comment_body">收藏  看看。。</li>
+        <li class="recent_comment_author">--.伊泽瑞尔</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3979290.html#3438959">2. Re:深入理解javascript原型和闭包（4）——隐式原型</a></li>
+        <li class="recent_comment_body">@王福朋这边的说的所有的对象的隐式原型都指向object.prototype.可是函数也是对象啊,函数的隐式原型不是指向Function.prototype嘛...</li>
+        <li class="recent_comment_author">--8t5t</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3978131.html#3436778">3. Re:深入理解javascript原型和闭包（3）——prototype原型</a></li>
+        <li class="recent_comment_body">比方说:var arr = ['123', '456'];arr 是由Array创建的，但是为什么arr.prototype没有继承自Array.prototype, 而是undefined呢？...</li>
+        <li class="recent_comment_author">--wusp</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3991151.html#3436285">4. Re:深入理解javascript原型和闭包（12）——简介【作用域】</a></li>
+        <li class="recent_comment_body">默默的看，这系列真的给予我很大的帮助，谢谢了</li>
+        <li class="recent_comment_author">--码农何时</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wangfupeng1988/p/3994950.html#3435245">5. Re:深入理解javascript原型和闭包（16）——完结</a></li>
+        <li class="recent_comment_body">太赞了，之前看javascript一直带有着java的思想，很难转变过来，先在看了楼主的系列文章之后明白了太多太多</li>
+        <li class="recent_comment_author">--YWNWA</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4649709.html">1. 自己总结的web前端知识体系大全【欢迎补充】(29451)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html">2. 深入理解javascript原型和闭包（完结）(24829)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4129500.html">3. 请用fontAwesome代替网页icon小图标(24590)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/3647166.html">4. 如何有效使用Project（1）——编制进度计划、保存基准(20107)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html">5. 深入理解javascript原型和闭包系列(18378)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/wangfupeng1988/p/3943389.html">1. 来给罗永浩和王自如打个分（上）(113)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/archive/2010/09/18/1830467.html">2. 写给自学asp.net的年轻人，特别是大学生(111)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4366994.html">3. 我为什么要做富文本编辑器【wangEditor5个月总结】(92)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4617184.html">4. 做一个有想法的程序员，做一个属于自己的神器(87)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/archive/2011/12/26/2302216.html">5. 【轻松学排序算法】眼睛直观感受几种常用排序算法(78)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html">1. 深入理解javascript原型和闭包系列(168)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/archive/2011/12/26/2302216.html">2. 【轻松学排序算法】眼睛直观感受几种常用排序算法(148)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4561993.html">3. 【前端福利】用grunt搭建自动化的web前端开发环境-完整教程(136)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4649709.html">4. 自己总结的web前端知识体系大全【欢迎补充】(121)</a></li><li><a href="http://www.cnblogs.com/wangfupeng1988/p/4366994.html">5. 我为什么要做富文本编辑器【wangEditor5个月总结】(80)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 王福朋
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

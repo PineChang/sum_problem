@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.cnblogs.com/dolphinX/p/3486214.html -->
+<html lang="zh-cn"><style type="text/css" id="17360343000"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>JavaScript 正则表达式上——基本语法 - Samaritans - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/bundle-BlueSky.css">
+<link type="text/css" rel="stylesheet" href="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/101421.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/dolphinX/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/dolphinX/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/dolphinX/wlwmanifest.xml">
+<script type="text/javascript" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/encoder.js"></script><script src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'dolphinX', cb_enable_mathjax=false;</script>
+<script src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/dolphinX/"><img id="blogLogo" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/dolphinX/">Samaritan</a></h1>
+<h2>It always seems impossible until it's done.</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/dolphinX/">首页</a></li>
+<li></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/Samaritans">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/dolphinX/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/dolphinX/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 108&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 1600</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/JavaScript 正则表达式上——基本语法 - Samaritans - 博客园.html">JavaScript 正则表达式上——基本语法</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><h3>定义</h3>
+<p>JavaScript种正则表达式有两种定义方式，定义一个匹配类似<span style="background-color: #c0c0c0;"> &lt;%XXX%&gt;</span> 的字符串</p>
+<p>1. 构造函数</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> reg=<span style="color: #0000ff;">new</span> RegExp('&lt;%[^%&gt;]+%&gt;','g');</pre>
+</div>
+<p>2. 字面量</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> reg=/&lt;%[^%&gt;]%&gt;/g;</pre>
+</div>
+<ul>
+<li><strong>g：&nbsp;</strong>global，全文搜索，默认搜索到第一个结果接停止</li>
+<li><strong>i：&nbsp;</strong>ingore case，忽略大小写，默认大小写敏感</li>
+<li><strong>m：</strong>&nbsp;multiple lines，多行搜索（更改^ 和$的含义，使它们分别在任意一行对待行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配）</li>
+</ul>
+<h3>元字符</h3>
+<p>正则表达式让人望而却步以一个重要原因就是其转义字符太多了，组合非常之多，但是正则表达式的<em>元字符</em>（<span>在正则表达式中具有特殊意义的专用字符，可以用来规定其前导字符</span>）并不多</p>
+<p>元字符：<span>( [ { \ ^ $ | ) ? * + .</span></p>
+<p>并不是每个元字符都有其特定意义，在不同的组合中元字符有不同的意义，分类看一下</p>
+<h3>预定义特殊字符</h3>
+<table style="width: 600px;" border="2" align="left">
+<tbody>
+<tr>
+<td><span style="font-size: 14px;"><strong>字符</strong></span></td>
+<td><span style="font-size: 14px;"><strong>含义</strong></span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\t</span></td>
+<td><span style="font-size: 14px;">水平制表符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\r</span></td>
+<td><span style="font-size: 14px;">回车符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\n</span></td>
+<td><span style="font-size: 14px;">换行符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\f</span></td>
+<td><span style="font-size: 14px;">换页符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\c<strong>X</strong></span></td>
+<td><span style="font-size: 14px;">与X对应的控制字符(Ctrl+X)</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\v</span></td>
+<td><span style="font-size: 14px;">垂直制表符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\0</span></td>
+<td><span style="font-size: 14px;">空字符</span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>字符类</h3>
+<p>一般情况下正则表达式一个字符（转义字符算一个）对应字符串一个字符，表达式<span style="background-color: #c0c0c0;"> ab\t</span> 的含义是</p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22170925-c407955edac64a3c866bf516eb99de14.png" alt=""></p>
+<p>但是我们可以使用元字符[]来构建一个简单的类，所谓类是指，符合某些特征的对象，是一个泛指，而不是特指某个字符了，我们可以使用表达式 [abc] 把字符a或b或c归为一类，表达式可以匹配这类的字符</p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22171404-eb03cac8e56f4e54a5ddfb2a6ca590cd.png" alt=""></p>
+<p>元字符<strong>[]组合可以创建一个类</strong>，我们还可以使用<strong>元字符^创建反向类/负向类，</strong>反向类的意思是不属于XXX类的内容，表达式 <span style="background-color: #c0c0c0;">[^abc]</span> 表示不是字符a或b或c的内容</p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22171749-8e1e82acb09d4570a741b0ff4803579b.png" alt=""></p>
+<h3>范围类</h3>
+<p>按照上面的说明要是我们希望匹配单个数字那么表达式是这样的</p>
+<p><span style="background-color: #c0c0c0;">[0123456789]</span></p>
+<p>如果是字母那么。。。，好麻烦，正则表达式还提供了范围类，我们可以使用 x-y来连接两个字符表示从x到y的任意字符，这是个闭区间，也就是说包含x和ybenshen，这样匹配小写字母就很简单了</p>
+<p><span style="background-color: #c0c0c0;">[a-z]</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22172809-4e611fbc512a4569a87ee934931a569a.png" alt=""></p>
+<p>要是想匹配所有字母呢？在[]组成的类内部是可以连写的，我们还可以这样写&nbsp;<span style="background-color: #c0c0c0;">[a-zA-Z]</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22173032-31642481efd44312886806a4c8e51e76.png" alt=""></p>
+<h3>预定义类</h3>
+<p>刚才使用正则我们创建了几个类，来表示数字，字母等，但这样写也很是麻烦，正则表达式为我们提供了几个常用的预定义类来匹配常见的字符</p>
+<table style="width: 600px;" border="2" align="left">
+<tbody>
+<tr>
+<td><span style="font-size: 14px;">字符</span></td>
+<td><span style="font-size: 14px;">等价类</span></td>
+<td><span style="font-size: 14px;">含义</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">.</span></td>
+<td><span style="font-size: 14px;">[^\n\r]</span></td>
+<td><span style="font-size: 14px;">除了回车符和换行符之外的所有字符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\d</span></td>
+<td><span style="font-size: 14px;">[0-9]</span></td>
+<td><span style="font-size: 14px;">数字字符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\D</span></td>
+<td><span style="font-size: 14px;">[^0-9]</span></td>
+<td><span style="font-size: 14px;">非数字字符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\s</span></td>
+<td><span style="font-size: 14px;">[ \t\n\x0B\f\r]</span></td>
+<td><span style="font-size: 14px;">空白符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\S</span></td>
+<td><span style="font-size: 14px;">[^ \t\n\x0B\f\r]</span></td>
+<td><span style="font-size: 14px;">非空白符</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\w</span></td>
+<td><span style="font-size: 14px;">[a-zA-Z_0-9]</span></td>
+<td><span style="font-size: 14px;">单词字符（字母、数字、下划线）</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">\W</span></td>
+<td><span style="font-size: 14px;">[^a-zA-Z_0-9]</span></td>
+<td><span style="font-size: 14px;">非单词字符</span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>有了这些预定义类，写一些正则就很方便了，比如我们希望匹配一个 ab+数字+任意字符 的字符串，就可以这样写了 <span style="background-color: #888888;">ab\d.</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22174429-6636dc941e194ce6b2037313b159e58b.png" alt="">&nbsp;</p>
+<h3>边界</h3>
+<p>正则表达式还提供了几个常用的边界匹配字符</p>
+<div style="width: 100%;">
+<table style="width: 600px;" border="2" align="left">
+<tbody>
+<tr>
+<td>
+<p><span style="font-size: 14px;">字符</span></p>
+</td>
+<td>
+<p><span style="font-size: 14px;">含义</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-size: 14px;">^</span></p>
+</td>
+<td>
+<p><span style="font-size: 14px;">以xx开头</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-size: 14px;">$</span></p>
+</td>
+<td>
+<p><span style="font-size: 14px;">以xx结尾</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-size: 14px;">\b</span></p>
+</td>
+<td>
+<p><span style="font-size: 14px;">单词边界，指[a-zA-Z_0-9]之外的字符</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-size: 14px;">\B</span></p>
+</td>
+<td>
+<p><span style="font-size: 14px;">非单词边界</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>看个不负责任的邮箱正则匹配（切勿模仿，小括号后面会讲到）&nbsp;<span style="background-color: #888888;">\w+@\w+\.(com)$</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22184716-639dc46360ce4f27b6df4f0a9257a73a.png" alt=""></p>
+<h3>量词</h3>
+<p>之前我们介绍的方法都是一一匹配的，如果我们希望匹配一个连续出现20次数字的字符串难道我们需要写成这样</p>
+<p><span style="background-color: #888888;">\d\d\d\d...</span></p>
+<p>为此正则表达式引入了一些量词</p>
+<table style="width: 600px;" border="2" align="left">
+<tbody>
+<tr>
+<td><span style="font-size: 14px;">字符</span></td>
+<td><span style="font-size: 14px;">含义</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">?</span></td>
+<td><span style="font-size: 14px;">出现零次或一次（最多出现一次）</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">+</span></td>
+<td><span style="font-size: 14px;">出现一次或多次（至少出现一次）</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">*</span></td>
+<td><span style="font-size: 14px;">出现零次或多次（任意次）</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">{n}</span></td>
+<td><span style="font-size: 14px;">出现n次</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">{n,m}</span></td>
+<td><span style="font-size: 14px;">出现n到m次</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">{n,}</span></td>
+<td><span style="font-size: 14px;">至少出现n次</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">&nbsp;</span></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>看几个使用量词的例子</p>
+<p><span style="background-color: #888888;">\w+\b Byron</span> 匹配 单词＋边界＋Byron</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code">
+<pre>(/\w+\b Byron/).test('Hi Byron'); //true
+<span style="color: #000000;">
+(</span>/\w+\b Byron/).test('Welcome Byron'); //true
+<span style="color: #000000;">
+(</span>/\w+\b Byron/).test('HiByron'); //false</pre>
+</div>
+<p>&nbsp;<span style="background-color: #888888;">\d+\.\d{1,3}</span> 匹配三位小数的数字</p>
+<p><img style="border: 3px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22180101-fcffa3e319314165aacf09acf95f51a4.png" alt=""></p>
+<h3>&nbsp;贪婪模式与非贪婪模式</h3>
+<p>看了上面介绍的量词，也许爱思考的同学会想到关于匹配原则的一些问题，比如{3,5}这个量词，要是在句子种出现了十次，那么他是每次匹配三个还是五个，反正3、4、5都满足3～5的条件，量词在默认下是尽可能多的匹配的，也就是大家常说的贪婪模式</p>
+<div class="cnblogs_code">
+<pre>'123456789'.match(/\d{3,5}/g); <span style="color: #008000;">//</span><span style="color: #008000;">["12345", "6789"] </span></pre>
+</div>
+<p>&nbsp;既然有贪婪模式，那么肯定会有非贪婪模式，让正则表达式尽可能少的匹配，也就是说一旦成功匹配不不再继续尝试，做法很简单，在量词后加上 ? 即可</p>
+<div class="cnblogs_code">
+<pre>'123456789'.match(/\d{3,5}?/g); <span style="color: #008000;">//</span><span style="color: #008000;">["123", "456", "789"]</span></pre>
+</div>
+<h3>&nbsp;分组</h3>
+<p>有时候我们希望使用量词的时候匹配多个字符，而不是像上面例子只是匹配一个，比如希望匹配Byron出现20次的字符串，我们如果写成&nbsp;<span style="background-color: #888888;">Byron{20}</span> 的话匹配的是Byro＋n出现20次，怎么把Byron作为一个整体呢？使用()就可以达到次目的，我们称为分组</p>
+<p><span style="background-color: #888888;">(Byron){20}</span></p>
+<p>&nbsp;<img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22182142-6b1688e29b584aa28af938a079a793d0.png" alt=""></p>
+<p>&nbsp;如果希望匹配Byron或Casper出现20次该怎么办呢？可以使用字符 ｜ 达到或的功效</p>
+<p><span style="background-color: #888888;">(Byron|Casper){20}</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22182815-593022d45eba482aaddd936f3b24beb4.png" alt="">&nbsp;</p>
+<p>&nbsp;我们看到图中有个＃1的东东，那是什么？使用分组的正则表达式会把匹配项也放到分组中，默认就是按数字编号分发的，各异根据编号获得捕获的分组内容，这个在一些希望具体操作第几个匹配项的函数中很有用</p>
+<p><span style="background-color: #888888;">(Byron).(ok)</span></p>
+<p>&nbsp;<img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22183347-1db4325c096a43f3a5796b7d25c74b77.png" alt=""></p>
+<p>如果有分组嵌套的情况，外面的组的编号靠前</p>
+<p><span style="background-color: #888888;">((^|%&gt;)[^\t]*)</span></p>
+<p>&nbsp;<img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/23222603-20a2c64f182a4b49b05a83ef6a3d414d.png" alt=""></p>
+<p>有时候我们不希望捕获某些分组，只需要在分组内加上 ?: 就可以了，着并不意味着该分组内容不属于正则表达式，只是不会给这个分组加编号了而已</p>
+<p><span style="background-color: #888888;">(?:Byron).(ok)</span></p>
+<p>&nbsp;<img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22183600-8865bffe0f1e48e3829aad75461f9bc8.png" alt=""></p>
+<p>&nbsp;其实在C#等语言中分组还可以起名字，不过JavaScript不支持</p>
+<h3>前瞻</h3>
+<div>
+<table style="height: 95px; width: 504px;" border="2" align="left">
+<tbody>
+<tr>
+<td><span style="font-size: 14px;">表达式</span></td>
+<td><span style="font-size: 14px;">含义</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">exp1(?=exp2)</span></td>
+<td><span style="font-size: 14px;">匹配后面是exp2的exp1</span></td>
+</tr>
+<tr>
+<td><span style="font-size: 14px;">exp1(?!exp2)</span></td>
+<td><span style="font-size: 14px;">匹配后面不是exp2的exp1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>说的有些抽象，看个例子&nbsp;<span style="background-color: #888888;">good(?=Byron)</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22191434-fc2c05f77d2b4002a91032e44e49815c.png" alt=""></p>
+<div class="cnblogs_code">
+<pre>(/good(?=Byron)/).exec('goodByron123'); <span style="color: #008000;">//</span><span style="color: #008000;">['good']</span>
+(/good(?=Byron)/).exec('goodCasper123'); <span style="color: #008000;">//</span><span style="color: #008000;">null</span>
+(/bad(?=Byron)/).exec('goodCasper123');<span style="color: #008000;">//</span><span style="color: #008000;">null</span></pre>
+</div>
+<p>通过上面例子可以看出 exp1(?=exp2) 表达式会匹配exp1表达式，但只有其后面内容是exp2的时候才会匹配，也就是两个条件，exp1(?!exp2) 比较类似</p>
+<p><span style="background-color: #888888;">good(?!Byron)</span></p>
+<p><img style="border: 2px solid black;" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p>
+<div class="cnblogs_code">
+<pre>(/good(?!Byron)/).exec('goodByron123'); <span style="color: #008000;">//</span><span style="color: #008000;">null</span>
+(/good(?!Byron)/).exec('goodCasper123'); <span style="color: #008000;">//</span><span style="color: #008000;">['good']</span>
+(/bad(?!Byron)/).exec('goodCasper123');<span style="color: #008000;">//</span><span style="color: #008000;">null</span></pre>
+</div>
+<h3>参考&nbsp;</h3>
+<p><a href="http://www.cnblogs.com/rubylouvre/" target="_blank">司徒正美</a> <a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html" target="_blank">JavaScript正则表达式</a></p>
+<p><a href="http://www.regexper.com/" target="_blank">Regexper</a></p>
+<p>PS:博客中的图都是用第二个链接做的，帮助人图形化理解正则表达式，真心不错</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/dolphinX/category/347116.html">JavaScript Core</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3486214,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/Samaritans" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/dolphinX/" target="_blank"><img src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/20141207171254.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/dolphinX/">Samaritans</a><br>
+<a href="http://home.cnblogs.com/u/dolphinX/followees">关注 - 12</a><br>
+<a href="http://home.cnblogs.com/u/dolphinX/followers">粉丝 - 2122</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3486214,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">66</span>
+    </div>
+	<div class="buryit" onclick="votePost(3486214,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">3</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/dolphinX/p/3485345.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/dolphinX/p/3485345.html" title="发布于2013-12-22 14:56">node.js调试</a><br><a href="http://www.cnblogs.com/dolphinX/p/3486136.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/dolphinX/p/3486136.html" title="发布于2013-12-24 08:24">JavaScript正则表达式下——相关方法</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2013-12-23 09:59</span> <a href="http://www.cnblogs.com/dolphinX/">Samaritans</a> 阅读(<span id="post_view_count">30181</span>) 评论(<span id="post_comment_count">35</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3486214" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/dolphinX/p/3486214.html#" onclick="AddToWz(3486214);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=101421,cb_entryId=3486214,cb_blogApp=currentBlogApp,cb_blogUserGuid='0c473040-b30a-e111-b7b9-842b2b196315',cb_entryCreatedDate='2013/12/23 9:59:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842737" class="layer">#1楼</a><a name="2842737" id="comment_anchor_2842737"></a>  <span class="comment_date">2013-12-23 11:06</span> <a id="a_comment_author_2842737" href="http://www.cnblogs.com/samir/" target="_blank">Still</a> <a href="http://msg.cnblogs.com/send/Still" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842737" class="blog_comment_body">图文并茂，很容易理解。由于用的少，正则一直都只会一点很简单的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842737,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842737,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842738" class="layer">#2楼</a><a name="2842738" id="comment_anchor_2842738"></a>  <span class="comment_date">2013-12-23 11:08</span> <a id="a_comment_author_2842738" href="http://www.cnblogs.com/keeley/" target="_blank">我的田俊</a> <a href="http://msg.cnblogs.com/send/%E6%88%91%E7%9A%84%E7%94%B0%E4%BF%8A" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842738" class="blog_comment_body">写的太好了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842738,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842738,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2842738_avatar" style="display:none;">http://pic.cnblogs.com/face/589581/20131207154426.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842761" class="layer">#3楼</a><a name="2842761" id="comment_anchor_2842761"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-23 11:34</span> <a id="a_comment_author_2842761" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842761" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842737" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2842737);">@</a>
+Still<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842737" title="查看引用原文">引用</a></legend>图文并茂，很容易理解。由于用的少，正则一直都只会一点很简单的。</fieldset><br>其实主要功劳还是人家那个工具，有了它后理解正则太简单了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842761,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842761,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2842761_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842762" class="layer">#4楼</a><a name="2842762" id="comment_anchor_2842762"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-23 11:34</span> <a id="a_comment_author_2842762" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842762" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842738" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2842738);">@</a>
+我的田俊<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842738" title="查看引用原文">引用</a></legend>写的太好了</fieldset><br>过奖了，大部分是图形化工具的功劳</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842762,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842762,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2842762_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842763" class="layer">#5楼</a><a name="2842763" id="comment_anchor_2842763"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-23 11:36</span> <a id="a_comment_author_2842763" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842763" class="blog_comment_body">莫非在博客园和人结仇了，为什么无论写什么都有人无理由反对。。。。<br><br>其实反对和批评我是很欢迎的，帮助人提高，但是无理由的反对让人摸不着头脑啊，真心希望反对的人不吝赐教，博客的问题在哪里，大家可以多多交流，共同进步</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842763,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842763,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2842763_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842917" class="layer">#6楼</a><a name="2842917" id="comment_anchor_2842917"></a>  <span class="comment_date">2013-12-23 15:23</span> <a id="a_comment_author_2842917" href="http://www.cnblogs.com/FreeDong/" target="_blank">alert(dong)</a> <a href="http://msg.cnblogs.com/send/alert%28dong%29" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842917" class="blog_comment_body">好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842917,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842917,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2842917_avatar" style="display:none;">http://pic.cnblogs.com/face/u132575.jpg?id=04211741</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842966" class="layer">#7楼</a><a name="2842966" id="comment_anchor_2842966"></a>  <span class="comment_date">2013-12-23 16:14</span> <a id="a_comment_author_2842966" href="http://www.cnblogs.com/arliang/" target="_blank">Arliang</a> <a href="http://msg.cnblogs.com/send/Arliang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2842966" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842763" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2842763);">@</a>
+dolphinX<br>反对的按钮是拿来干嘛的，真心不知道，是根据这个撤下首页？<br>顺便贴一个图<br><a href="http://www.regexper.com/#%2F%22%5B%5E%22%5C%5C%5Cn%5Cr%5D*%22%7Ctrue%7Cfalse%7Cnull%7C-%3F%5Cd%2B(%3F%3A%5C.%5Cd*)%3F(%3F%3A%5BeE%5D%5B%2B%5C-%5D%3F%5Cd%2B)%3F%2F" target="_blank">/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/</a><br><br>这样显眼些</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2842966,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2842966,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2842966_avatar" style="display:none;">http://pic.cnblogs.com/face/299020/20130715000953.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843065" class="layer">#8楼</a><a name="2843065" id="comment_anchor_2843065"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-23 18:12</span> <a id="a_comment_author_2843065" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843065" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842917" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2842917);">@</a>
+alert(dong)<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842917" title="查看引用原文">引用</a></legend>好</fieldset><br>谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843065,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843065,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843065_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843067" class="layer">#9楼</a><a name="2843067" id="comment_anchor_2843067"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-23 18:13</span> <a id="a_comment_author_2843067" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843067" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842966" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2842966);">@</a>
+Arliang<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2842966" title="查看引用原文">引用</a></legend>@dolphinX<br>反对的按钮是拿来干嘛的，真心不知道，是根据这个撤下首页？<br>顺便贴一个图<br>/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/<br><br>这样显眼些</fieldset><br>果真拉风<br>其实反对也有作用，写的不好就是不好，允许批评，不能只叫好，我只是希望反对的时候能告诉我为什么，好让我改正</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843067,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843067,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843067_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843145" class="layer">#10楼</a><a name="2843145" id="comment_anchor_2843145"></a>  <span class="comment_date">2013-12-23 21:59</span> <a id="a_comment_author_2843145" href="http://www.cnblogs.com/purediy/" target="_blank">雨知</a> <a href="http://msg.cnblogs.com/send/%E9%9B%A8%E7%9F%A5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843145" class="blog_comment_body">非常喜欢楼主这样的，博客写的认真、整齐、清晰，从头到尾看了一遍，本来我也想写一篇关于JavaScript正则的文章，看了博主的估计不用写了，呵呵，推荐加关注，期待楼主下篇文章。欢迎交流，我的博客 <a href="http://www.cnblogs.com/purediy/" target="_blank">http://www.cnblogs.com/purediy/</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843145,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843145,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843145_avatar" style="display:none;">http://pic.cnblogs.com/face/u275810.jpg?id=23115623</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843152" class="layer">#11楼</a><a name="2843152" id="comment_anchor_2843152"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-23 22:08</span> <a id="a_comment_author_2843152" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843152" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843145" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2843145);">@</a>
+purediy<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843145" title="查看引用原文">引用</a></legend>非常喜欢楼主这样的，博客写的认真、整齐、清晰，从头到尾看了一遍，本来我也想写一篇关于JavaScript正则的文章，看了博主的估计不用写了，呵呵，推荐加关注，期待楼主下篇文章。欢迎交流，我的博客 http://www.cnblogs.com/purediy/</fieldset><br>真的过奖了，不过写博客不全是为了让别人看，写的过程也是知识的梳理，我觉得对个人知识积累帮助还是挺大的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843152,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843152,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843152_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843242" class="layer">#12楼</a><a name="2843242" id="comment_anchor_2843242"></a>  <span class="comment_date">2013-12-24 09:25</span> <a id="a_comment_author_2843242" href="http://www.cnblogs.com/wangding890217/" target="_blank">llllboy</a> <a href="http://msg.cnblogs.com/send/llllboy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843242" class="blog_comment_body">MARK</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843242,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843242,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843242_avatar" style="display:none;">http://pic.cnblogs.com/face/327120/20130211222920.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843246" class="layer">#13楼</a><a name="2843246" id="comment_anchor_2843246"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-24 09:26</span> <a id="a_comment_author_2843246" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843246" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843242" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2843242);">@</a>
+llllboy<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843242" title="查看引用原文">引用</a></legend>MARK</fieldset><br>~~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843246,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843246,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843246_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843261" class="layer">#14楼</a><a name="2843261" id="comment_anchor_2843261"></a>  <span class="comment_date">2013-12-24 09:52</span> <a id="a_comment_author_2843261" href="http://home.cnblogs.com/u/533973/" target="_blank">zh89233</a> <a href="http://msg.cnblogs.com/send/zh89233" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843261" class="blog_comment_body">粉丝：250···</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843261,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843261,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843277" class="layer">#15楼</a><a name="2843277" id="comment_anchor_2843277"></a>  <span class="comment_date">2013-12-24 09:59</span> <a id="a_comment_author_2843277" href="http://home.cnblogs.com/u/227254/" target="_blank">玉菜园</a> <a href="http://msg.cnblogs.com/send/%E7%8E%89%E8%8F%9C%E5%9B%AD" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843277" class="blog_comment_body">好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843277,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843277,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843284" class="layer">#16楼</a><a name="2843284" id="comment_anchor_2843284"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-24 10:02</span> <a id="a_comment_author_2843284" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843284" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843261" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2843261);">@</a>
+zh89233<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843261" title="查看引用原文">引用</a></legend>粉丝：250···</fieldset><br>不知道有没有小伙伴儿来帮我摆脱这尴尬的氛围</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843284,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843284,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843284_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843286" class="layer">#17楼</a><a name="2843286" id="comment_anchor_2843286"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-24 10:02</span> <a id="a_comment_author_2843286" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2843286" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843277" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2843277);">@</a>
+玉菜园<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2843277" title="查看引用原文">引用</a></legend>好</fieldset><br>谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2843286,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2843286,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2843286_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2845157" class="layer">#18楼</a><a name="2845157" id="comment_anchor_2845157"></a>  <span class="comment_date">2013-12-26 15:39</span> <a id="a_comment_author_2845157" href="http://www.cnblogs.com/yxb88858/" target="_blank">天朝码农</a> <a href="http://msg.cnblogs.com/send/%E5%A4%A9%E6%9C%9D%E7%A0%81%E5%86%9C" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2845157" class="blog_comment_body">特意登录顶一下，虽然这种文章很多，但是你的排版确实漂亮，nice！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2845157,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2845157,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2845157_avatar" style="display:none;">http://pic.cnblogs.com/face/u62216.jpg?id=12151459</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2845193" class="layer">#19楼</a><a name="2845193" id="comment_anchor_2845193"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-12-26 16:03</span> <a id="a_comment_author_2845193" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2845193" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2845157" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2845157);">@</a>
+洛阳码农<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#2845157" title="查看引用原文">引用</a></legend>特意登录顶一下，虽然这种文章很多，但是你的排版确实漂亮，nice！</fieldset><br>谢谢支持i</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2845193,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2845193,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2845193_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3073093" class="layer">#20楼</a><a name="3073093" id="comment_anchor_3073093"></a>  <span class="comment_date">2014-11-27 15:47</span> <a id="a_comment_author_3073093" href="http://www.cnblogs.com/zifeiyu/" target="_blank">叶知秋红</a> <a href="http://msg.cnblogs.com/send/%E5%8F%B6%E7%9F%A5%E7%A7%8B%E7%BA%A2" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3073093" class="blog_comment_body">很有帮助，清晰明了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3073093,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3073093,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3073093_avatar" style="display:none;">http://pic.cnblogs.com/face/503784/20130312144951.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3103593" class="layer">#21楼</a><a name="3103593" id="comment_anchor_3103593"></a>  <span class="comment_date">2015-01-09 13:55</span> <a id="a_comment_author_3103593" href="http://www.cnblogs.com/blue86/" target="_blank">一枚蜗牛</a> <a href="http://msg.cnblogs.com/send/%E4%B8%80%E6%9E%9A%E8%9C%97%E7%89%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3103593" class="blog_comment_body">图文并茂，非常好理解，赞一个！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3103593,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3103593,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3103593_avatar" style="display:none;">http://pic.cnblogs.com/face/u337148.jpg?id=30142852</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3103607" class="layer">#22楼</a><a name="3103607" id="comment_anchor_3103607"></a>  <span class="comment_date">2015-01-09 14:04</span> <a id="a_comment_author_3103607" href="http://www.cnblogs.com/blue86/" target="_blank">一枚蜗牛</a> <a href="http://msg.cnblogs.com/send/%E4%B8%80%E6%9E%9A%E8%9C%97%E7%89%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3103607" class="blog_comment_body">另外问一下楼主～～请问那个图形化工具叫啥～～～我也想去try一下</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3103607,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3103607,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3103607_avatar" style="display:none;">http://pic.cnblogs.com/face/u337148.jpg?id=30142852</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3128817" class="layer">#23楼</a><a name="3128817" id="comment_anchor_3128817"></a>  <span class="comment_date">2015-02-12 17:24</span> <a id="a_comment_author_3128817" href="http://www.cnblogs.com/chaiyesong/" target="_blank">温柔的鲨鱼</a> <a href="http://msg.cnblogs.com/send/%E6%B8%A9%E6%9F%94%E7%9A%84%E9%B2%A8%E9%B1%BC" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3128817" class="blog_comment_body">(/good(?!Byron)/).exec('goodCasper123'); //['good']<br>(/bad(?!Byron)/).exec('goodCasper123');//null<br>后面一行是错误的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3128817,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3128817,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3128817_avatar" style="display:none;">http://pic.cnblogs.com/face/623472/20150129091545.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3151502" class="layer">#24楼</a><a name="3151502" id="comment_anchor_3151502"></a>  <span class="comment_date">2015-03-29 14:01</span> <a id="a_comment_author_3151502" href="http://www.cnblogs.com/cgf19920817/" target="_blank">cgf1993</a> <a href="http://msg.cnblogs.com/send/cgf1993" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3151502" class="blog_comment_body">有时候反对是一不小心点错了，比如我就是点错了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3151502,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3151502,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3177903" class="layer">#25楼</a><a name="3177903" id="comment_anchor_3177903"></a>  <span class="comment_date">2015-05-07 10:56</span> <a id="a_comment_author_3177903" href="http://home.cnblogs.com/u/593676/" target="_blank">ceteve</a> <a href="http://msg.cnblogs.com/send/ceteve" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3177903" class="blog_comment_body">楼主你好。。我是正则小白。。刚才试了下文中例子：</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3177903,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3177903,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3177914" class="layer">#26楼</a><a name="3177914" id="comment_anchor_3177914"></a>  <span class="comment_date">2015-05-07 11:02</span> <a id="a_comment_author_3177914" href="http://home.cnblogs.com/u/593676/" target="_blank">ceteve</a> <a href="http://msg.cnblogs.com/send/ceteve" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3177914" class="blog_comment_body">楼主你好。。我是正则小白。。刚才试了下文中例子：<br>(/\w+\bByron).test('Hi Byron'); //true<br>返回的结果报错 ：缺少最后的结束符/<br>加上结束符后：(/\w+\bByron/).test('Hi Byron');//返回 false<br>改为：(/\w+\b Byron/).test('Hi Byron') //返回true<br>额 是我打开的方式不对么</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3177914,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3177914,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3177924" class="layer">#27楼</a><a name="3177924" id="comment_anchor_3177924"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-05-07 11:13</span> <a id="a_comment_author_3177924" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3177924" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3177914" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3177914);">@</a>
+ceteve<br><br>不好意思，例子有些问题，修正了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3177924,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3177924,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3177924_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3178063" class="layer">#28楼</a><a name="3178063" id="comment_anchor_3178063"></a>  <span class="comment_date">2015-05-07 14:10</span> <a id="a_comment_author_3178063" href="http://home.cnblogs.com/u/593676/" target="_blank">ceteve</a> <a href="http://msg.cnblogs.com/send/ceteve" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3178063" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3177924" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3177924);">@</a>
+Samaritans<br>是不是应该是 /\w+\sByron/</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3178063,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3178063,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3352426" class="layer">#29楼</a><a name="3352426" id="comment_anchor_3352426"></a>  <span class="comment_date">2016-01-22 13:02</span> <a id="a_comment_author_3352426" href="http://www.cnblogs.com/susuccomeon/" target="_blank">sub12050223</a> <a href="http://msg.cnblogs.com/send/sub12050223" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3352426" class="blog_comment_body">一般</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3352426,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3352426,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3352426_avatar" style="display:none;">http://pic.cnblogs.com/face/851476/20151213184414.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3362981" class="layer">#30楼</a><a name="3362981" id="comment_anchor_3362981"></a>  <span class="comment_date">2016-02-18 14:08</span> <a id="a_comment_author_3362981" href="http://home.cnblogs.com/u/894633/" target="_blank">魔王来了</a> <a href="http://msg.cnblogs.com/send/%E9%AD%94%E7%8E%8B%E6%9D%A5%E4%BA%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3362981" class="blog_comment_body">m： multiple lines，多行搜索 <br>博主搞错了吧，这是更改^ 和$的含义，使它们分别在任意一行对待行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配。博主真的可以随便用词？<br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br><br>&lt;h1&gt;我的一个 Web 页面&lt;/h1&gt;<br>&lt;script&gt;<br>var patt1=new RegExp("\\b\\w+\\b$","m");<br>	var p=patt1.exec("The best things\r\in life are love");<br>		document.write("多行模式");<br>		document.write(p);<br>	patt1=new RegExp("\\b\\w+\\b$","g");<br>	var p=patt1.exec("The best things\r\in life are love");<br>		document.write("&lt;br/&gt;全局模式");<br>		document.write(p);<br>&lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3362981,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3362981,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3363002" class="layer">#31楼</a><a name="3363002" id="comment_anchor_3363002"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-02-18 14:34</span> <a id="a_comment_author_3363002" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3363002" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3362981" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3362981);">@</a>
+魔王来了<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3362981" title="查看引用原文">引用</a></legend>m： multiple lines，多行搜索 <br>博主搞错了吧，这是更改^ 和$的含义，使它们分别在任意一行对待行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配。博主真的可以随便用词？<br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br><br>&lt;h1&gt;我的一个 Web 页面&lt;/h1&gt;<br>&lt;script&gt;<br>var pa...</fieldset><br><br><br>谢谢批评，含义没有问题，这种叫法不是我独创，看了很多，确实大多都写成多行搜索，不过你的表述更加清楚</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3363002,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3363002,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3363002_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3368206" class="layer">#32楼</a><a name="3368206" id="comment_anchor_3368206"></a>  <span class="comment_date">2016-02-28 23:04</span> <a id="a_comment_author_3368206" href="http://www.cnblogs.com/lxweb/" target="_blank">linvy</a> <a href="http://msg.cnblogs.com/send/linvy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3368206" class="blog_comment_body">图文并茂，非常感谢！<br><br>发现个小问题：<br>g： global，全文搜索，默认搜索到第一个结果接停止；<br>//global模式应用于所有字符串，而非在发现第一个匹配时停止<br><br>var re = new RegExp("he","g");<br>re.test("hellohello");<br>console.log(re.lastIndex);//2<br>re.test("hellohello");<br>console.log("re.lastIndex");//7</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3368206,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3368206,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3368206_avatar" style="display:none;">http://pic.cnblogs.com/face/695816/20151217111036.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3368279" class="layer">#33楼</a><a name="3368279" id="comment_anchor_3368279"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-02-29 08:47</span> <a id="a_comment_author_3368279" href="http://www.cnblogs.com/dolphinX/" target="_blank">Samaritans</a> <a href="http://msg.cnblogs.com/send/Samaritans" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3368279" class="blog_comment_body"><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3368206" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3368206);">@</a>
+linvy<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3368206" title="查看引用原文">引用</a></legend>图文并茂，非常感谢！<br><br>发现个小问题：<br>g： global，全文搜索，默认搜索到第一个结果接停止；<br>//global模式应用于所有字符串，而非在发现第一个匹配时停止<br><br>var re = new RegExp("he","g");<br>re.test("hellohello");<br>console.log(re.lastIndex);//2<br>re.test("hellohello");<br>console.log("re.lastIndex");//7</fieldset><br><br>我的意思是，正则表达式对象默认并不是global的，想全局搜索就要设置这个标志</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3368279,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3368279,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3368279_avatar" style="display:none;">http://pic.cnblogs.com/face/349217/20141207171254.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3378487" class="layer">#34楼</a><a name="3378487" id="comment_anchor_3378487"></a>  <span class="comment_date">2016-03-11 23:25</span> <a id="a_comment_author_3378487" href="http://www.cnblogs.com/always-chang/" target="_blank">Acelit</a> <a href="http://msg.cnblogs.com/send/Acelit" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3378487" class="blog_comment_body">多谢分享，以前一直觉得正则很深奥，现在豁然开朗了不少！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3378487,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3378487,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3378487_avatar" style="display:none;">http://pic.cnblogs.com/face/897567/20160224175939.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dolphinX/p/3486214.html#3417601" class="layer">#35楼</a><a name="3417601" id="comment_anchor_3417601"></a><span id="comment-maxId" style="display:none;">3417601</span><span id="comment-maxDate" style="display:none;">2016/4/26 13:52:42</span>  <span class="comment_date">2016-04-26 13:52</span> <a id="a_comment_author_3417601" href="http://home.cnblogs.com/u/207878/" target="_blank">chqsh</a> <a href="http://msg.cnblogs.com/send/chqsh" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3417601" class="blog_comment_body">全文查找 ![title](图片链接地址) 的正则表达式怎么写啊？<br>我用了 /!\[.+\]\(.+\)/gi  这个，但是只能找到全文中的第一个，后面的就没有检测到。<br>谢谢。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3417601,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3417601,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/dolphinX/p/3486214.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/activereports/excel.htm?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=AR&utm_campaign=community" target="_blank">【推荐】Excel 报表开发18 招式，人人都能做报表</a><br><a href="http://group.cnblogs.com/topic/74539.html" target="_blank">【推荐】阿里云万网域名：.xin .com将推出重磅优惠</a><br><a href="http://t.cn/RqDmMiB" target="_blank">【活动】高性能+大数据的HTML5 App开发交流会（深圳站）</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/546211/" target="_blank">微软发布16.0.6925.1016版Office for Android</a><br> ·  <a href="http://news.cnblogs.com/n/546210/" target="_blank">中国Model S比美国贵48% 特斯拉在华建厂可以降价</a><br> ·  <a href="http://news.cnblogs.com/n/546209/" target="_blank">谷歌Doodle纪念摇摆舞传奇大师Frankie Manning诞辰102周年</a><br> ·  <a href="http://news.cnblogs.com/n/546208/" target="_blank">Edge浏览器上的Office Online扩展程序新版上线</a><br> ·  <a href="http://news.cnblogs.com/n/546207/" target="_blank">两年前花数亿美元收购的视频广告平台，Facebook说关就关</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/545476/" target="_blank">快速学习者的高效学习策略</a><br> ·  <a href="http://kb.cnblogs.com/page/545784/" target="_blank">一个前端的自我修养</a><br> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">阿里巴巴国际站招前端<br>
+ <a style="color:#f90;" href="mailto:luyong.sunly@alibaba-inc.com">luyong.sunly@alibaba-inc.com</a><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/dolphinX/">Samaritans</a><br>园龄：<a href="http://home.cnblogs.com/u/dolphinX/" title="入园时间：2011-11-09">4年6个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/dolphinX/followers/">2122</a><br>关注：<a href="http://home.cnblogs.com/u/dolphinX/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;0c473040-b30a-e111-b7b9-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/dolphinX/p/5181660.html">1. 前端零基础学习提纲</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/5116629.html">2. 阿里前端两年随想</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4385862.html">3. JavaScript面向对象</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4381855.html">4. 前端模块化</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4097693.html">5. 你可能没注意的CSS单位</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4087817.html">6. CSS 实现打字效果</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4087816.html">7. direction和unicode-bidi</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4085075.html">8. CSS3 滤镜</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4082747.html">9. EDM制作要点</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4081828.html">10. Outlook HTML渲染引擎</a></li>
+</ul>
+</div>
+</div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(107)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/dolphinX/category/389048.html">ASP.NET(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/dolphinX/category/503848.html">CSS(21)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/dolphinX/category/519616.html">ECMAScript5(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/dolphinX/category/530314.html">HTML(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/dolphinX/category/347116.html">JavaScript Core(22)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/dolphinX/category/532015.html">JavaScript应用(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/dolphinX/category/530304.html">jQuery(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/dolphinX/category/540916.html">node.js(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/dolphinX/category/517487.html">PHP step by step(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/dolphinX/category/517466.html">Web综合(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/dolphinX/category/459660.html">设计模式(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/dolphinX/category/514895.html">我所理解的OOP(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/dolphinX/category/525268.html">杂谈(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/dolphinX/category/514894.html">自备JavaScript库(6)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(108)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/dolphinX/archive/2016/02.html">2016年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/dolphinX/archive/2016/01.html">2016年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/dolphinX/archive/2015/04.html">2015年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/dolphinX/archive/2015/03.html">2015年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/dolphinX/archive/2014/11.html">2014年11月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/dolphinX/archive/2014/01.html">2014年1月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/dolphinX/archive/2013/12.html">2013年12月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/dolphinX/archive/2013/11.html">2013年11月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/dolphinX/archive/2013/10.html">2013年10月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/dolphinX/archive/2013/09.html">2013年9月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/dolphinX/archive/2013/08.html">2013年8月 (22)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/dolphinX/archive/2013/04.html">2013年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/dolphinX/archive/2012/11.html">2012年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/dolphinX/archive/2012/10.html">2012年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/dolphinX/archive/2012/09.html">2012年9月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	301976
+	</li>
+	<li class="liRank">
+		排名 -	407
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/dolphinX/p/3510346.html">1. 找工作的一些感悟——前端小菜的成长(301)</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/3347677.html">2. 了解了这些才能开始发挥jQuery的威力(78)</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/3511300.html">3. 容易被忽略CSS特性(66)</a></li><li><a href="./JavaScript 正则表达式上——基本语法 - Samaritans - 博客园_files/JavaScript 正则表达式上——基本语法 - Samaritans - 博客园.html">4. JavaScript 正则表达式上——基本语法(66)</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/3460545.html">5. 简单理解Socket(60)</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/3286177.html">6. JavaScript prototype(55)</a></li><li><a href="http://www.cnblogs.com/dolphinX/archive/2012/09/29/2708763.html">7. JavaScript 闭包究竟是什么(49)</a></li><li><a href="http://www.cnblogs.com/dolphinX/archive/2012/10/13/2722501.html">8. CSS布局 ——从display，position， float属性谈起(46)</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/4385862.html">9. JavaScript面向对象(36)</a></li><li><a href="http://www.cnblogs.com/dolphinX/p/3508869.html">10. CSS清浮动处理（Clear与BFC）(33)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 Samaritans
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
