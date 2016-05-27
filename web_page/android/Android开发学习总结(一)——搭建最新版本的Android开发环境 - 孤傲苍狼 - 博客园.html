@@ -1,0 +1,1040 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://www.cnblogs.com/xdp-gacl/p/4322165.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/bundle-SimpleClear.css">
+<link type="text/css" rel="stylesheet" href="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/133816.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xdp-gacl/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xdp-gacl/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xdp-gacl/wlwmanifest.xml">
+<script src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xdp-gacl', cb_enable_mathjax=false;</script>
+<script src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<div id="page_begin_html"><!-- Baidu Button BEGIN -->
+<!--<div style="display: none" id="__document_write_ajax_div-1"></div><script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=6507240" >window['__document_write_ajax_callbacks__']['1']();</script>
+<div style="display: none" id="__document_write_ajax_div-2"></div><script type="text/javascript" id="bdshell_js">window['__document_write_ajax_callbacks__']['2']();</script>
+<div style="display: none" id="__document_write_ajax_div-3"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['3']();</script>-->
+<!-- Baidu Button END -->
+
+<!--添加博客目录-->
+
+
+<!--
+<head>
+
+DIY 博客全文界面的推荐、反对、加关注、返回顶部、快速评论等小功能的集成
+
+<div style="display: none" id="__document_write_ajax_div-5"></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script>
+</head>
+--></div><script>load_page_begin_html();</script>
+
+<div id="main">
+<div id="header">
+<h1><a id="Header1_HeaderTitle" href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a></h1>
+<p id="tagline">只为成功找方法，不为失败找借口！</p></div>
+
+<div id="post_detail">
+<div class="post">
+    <h2 class="postTitle"><a id="cb_post_title_url" href="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园.html">Android开发学习总结(一)——搭建最新版本的Android开发环境</a></h2>
+    <div class="postText"><div id="cnblogs_post_body"><p>　　最近由于工作中要负责开发一款Android的App，之前都是做JavaWeb的开发，Android开发虽然有所了解，但是一直没有搭建开发环境去学习，Android的更新速度比较快了，Android1.0是2008年发布的，截止到目前为止Android已经更新Android5.0.1，学习Android开发的第一步就是搭建Android的开发环境，博客园里面有不少人也写了关于如何搭建Android开发环境的文章，我也看了一下，但是感觉都比较旧了，对照着做不一定能够搭建成功，但是有些搭建步骤是还是可以借鉴的！这篇文章就是我借鉴了一些园友们的文章再加上自己亲自实践过之后一步步整理出来的！唉，由于天朝对Google的全面封杀，导致Google的很多产品都用不了，都需要通过FQ才能够正常使用，所以在国内要是想从事Android的开发，还是弄一个VPN吧，android也是google的产品之一，搭建Android开发使用到的相关软件也都需要通过FQ才能够正常下载下来，这无形中增加了Android的学习成本，搭建一个最基本的Android开发环境下载所需软件都千难万难的，并且搭建开发环境的步骤也挺繁琐的，或许就是这些入门的门槛把很多开发者挡在了Android开发的门外！</p>
+<h2 id="blogTitle0">一、下载相关软件</h2>
+<p>　　android开发环境</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/061523519617593.png" alt=""></p>
+<p>　　准备工作：下载Eclipse、JDK、Android SDK、ADT插件</p>
+<p>　　下载地址：JDK：<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+<p>　　　　　　　Eclipse:<a href="http://www.eclipse.org/downloads/" target="_blank">http://www.eclipse.org/downloads/</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 　　Android SDK:<a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/sdk/index.html</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 　　ADT:<a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
+<p>　　上面要下载的4个软件中，除了JDK之外，Eclipse、Android SDK、ADT插件这三个都需要FQ才能够正常下载，如果不FQ，那么上述列出来的URL地址都无法正常访问，所以提前准备好FQ工具吧，&nbsp;我使用的是PGFast，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082005014301034.png" alt=""></p>
+<h3 id="blogTitle1">第一步：下载JDK</h3>
+<p>　　我下载的是JDK1.7的版本，下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html</a></p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082009450552116.png" alt="" width="950"></p>
+<p>　　下载到本地电脑后双击进行安装。JDK的安装过程比较简单，做Java开发的人都会，在安装的时候注意将JDK和JRE安装到同一个目录即可，JDK默认安装成功后，会在系统目录下出现两个文件夹，一个代表jdk，一个代表jre</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082012345551299.png" alt=""></p>
+<div>　　JDK的全称是Java SE Development Kit，也就是Java 开发工具箱。SE表示标准版。JDK是Java的核心，包含了Java的运行环境（Java Runtime Environment），一堆Java工具和给开发者开发应用程序时调用的Java类库。</div>
+<div>　　我们可以打开jdk的安装目录下的Bin目录，里面有许多后缀名为exe的可执行程序，如下图所示：</div>
+<div>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082019144302896.png" alt=""></div>
+<div>　　这些都是JDK包含的工具，通过配置JDK的变量环境，我们可以方便地调用这些工具及它们的命令。</div>
+<div>　　JDK包含的基本工具主要有：</div>
+<ul>
+<li>javac：Java编译器，将源代码转成字节码。</li>
+<li>jar：打包工具，将相关的类文件打包成一个文件。</li>
+<li>javadoc：文档生成器，从源码注释中提取文档。</li>
+<li>java：运行编译后的java程序。</li>
+</ul>
+<h3 id="blogTitle2">第二步：配置Windows上JDK的变量环境</h3>
+<div>　　为了配置JDK的系统变量环境，我们需要设置两个系统变量，分别是JAVA_HOME，Path。下面是这两个变量的设置。</div>
+<div><strong>　　1、JAVA_HOME</strong></div>
+<div>　　　　先设置这个系统变量名称，变量值为JDK在你电脑上的安装路径：E:\Program Files\Java\jdk1.7.0_75创建好后则可以利用%JAVA_HOME%作为JDK安装目录的统一引用路径。</div>
+<div>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082026103677033.png" alt=""></div>
+<div><strong>　　2、Path</strong></div>
+<div>　　　　PATH属性已存在，可直接编辑，在原来变量后追加：;%JAVA_HOME%\bin</div>
+<div>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082029212589119.png" alt=""></div>
+<div>　　JDK环境变量的配置做Java开发的人都应该会，这里就不细讲了！</div>
+<h3 id="blogTitle3">第三步：下载安装Eclipse</h3>
+<div>　　Eclipse的版本有多个，这里选择下载Eclipse IDE for Java Developers这个版本。</div>
+<div>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082041539618207.png" alt=""></div>
+<div>　　点击【Windows 64Bit】超链接，进入如下图所示的下载页面</div>
+<div>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082044486029294.png" alt=""></div>
+<div>　　下载成功后，得到一个如下图所示的压缩包：</div>
+<div>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082047259616369.png" alt=""></div>
+<div>　　Eclipse为Java应用程序及Android开发的IDE（集成开发环境）。Eclipse本身是不需要安装，下载后直接把解压包解压后就可以使用了，如下图所示：</div>
+<div>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082053142584842.png" alt=""></div>
+<div>　　到此，Eclipse的下载和安装工作就算是全部完成了。</div>
+<h3 id="blogTitle4">第四步：下载Android SDK</h3>
+<p>　　Android SDK提供了开发Android应用程序所需的API库和构建、测试和调试Android应用程序所需的开发工具。</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082101450087279.png" alt=""></p>
+<p>　　这里为了免去安装步骤，我们选择下载SDK的压缩包，点击【android-sdk_r24.0.2-windows.zip】这个超链接，进入下载页面，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082104413839395.png" alt=""></p>
+<p>　　下载成功之后，得到一个如下图所示的压缩包：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082107547115426.png" alt=""></p>
+<p>　　到此，Android的SDK就下载好了！</p>
+<h3 id="blogTitle5">第五步：下载ADT插件</h3>
+<p>　　为了使得Android应用的创建，运行和调试更加方便快捷，Android的开发团队专门针对Eclipse IDE定制了一个插件：Android Development Tools（ADT）。</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082122331336421.png" alt=""></p>
+<p>　　下载成功之后，得到一个如下图所示的压缩包</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082125296174337.png" alt=""></p>
+<p>　　到此，Android开发需要使用到的相关软件就全部下载好了。</p>
+<h2 id="blogTitle6">&nbsp;二、使用下载好的软件搭建Android开发环境</h2>
+<p>　　为了便于管理Android开发使用到的相关软件，我们可以在磁盘上建立一个AndroidDevelopTool的文件夹，将相关软件统一放到这个文件夹中，如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082136093996228.png" alt=""></p>
+<h3 id="blogTitle7">第一步：安装Android的SDK</h3>
+<p>　　在上面的操作中，我们已经下载好了Android的SDK的压缩包，现在我们就要将这个android-sdk_r24.0.2-windows.zip压缩包解压缩，解压后得到一个【android-sdk-windows】文件夹，这样就算是完成了Android的SDK的安装工作，文件夹里面的内容如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082140229149346.png" alt=""></p>
+<p>　　在Android SDK的安装目录下，双击“SDK Manager.exe”，打开Android SDK&nbsp;Manager，Android SDK&nbsp;Manage负责下载或更新不同版本的SDK包，我们看到默认安装的Android SDK&nbsp;Manager只安装了一个版本的sdk tools，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082146530246292.png" alt=""></p>
+<p>　　同时SDK Manager会自动帮我们选中Android最新的版本，我们只需要点击【install】按钮就可以将选中的包下载下来，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082150298204125.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082155331643566.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/082156593368658.png" alt=""></p>
+<p>　　SDK Manager下载安装Android开发包的过程如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090014538366298.png" alt=""></p>
+<p>　　使用SDK Manager下载Android开发包同样也需要FQ才能够正常下载，有些园友们的做法是不FQ，修改Host文件的方法，如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091032165345489.png" alt=""></p>
+<p>　　上面两行放在host文件的意思是将本地访问dl.google.com和dl-ssl.google.com定向到ip地址为203.208.46.146的服务器上，然后<strong>将Android SDK Manage上的https请求改成http请求</strong></p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091034416595726.png" alt=""></p>
+<p>　　这种方法我试了一下，不成功，或许是我运气太背了，所以我还是老老实实弄个VPN去FQ下载吧，我家里是4M的网络，下载速度还不错，下载完成之后如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090015541959970.png" alt=""></p>
+<p>　　这个下载和安装过程及其漫长，我用了将近2个小时才下载完成。已经安装好的Android开发包和相关工具如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090017235248094.png" alt=""></p>
+<p>　　我就只下载了SDK Manager默认帮我选中的那些包，这些包是搭建Android开发环境所需要的最少的安装包了，其他的包有需要再去下载！</p>
+<h3 id="blogTitle8">第二步：为Eclipse安装ADT插件</h3>
+<p>　　这里我们直接通过下载好的ADT插件压缩包进行安装（此种方式可以在离线环境下进行）。解压eclipse-jee-luna-SR2-win32-x86_64.zip压缩包，解压成功之后，得到一个eclipse文件夹，如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090025127273372.png" alt=""></p>
+<p>　　用鼠标双击eclipse.exe启动Eclipse，第一次启动Eclipse时需要设置Eclipse的workspace，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090032207581306.png" alt=""></p>
+<p>　　设置好Eclipse的WorkSpace之后，点击【OK】按钮继续启动Eclipse，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090033452273611.png" alt=""></p>
+<p>　　Eclipse启动完成之后，点击&nbsp;【Help】菜单 -&gt;&nbsp;【Install New Software…】，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090114574872206.png" alt=""></p>
+<p>　　点击弹出对话框中的【Add…&nbsp;】按钮，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090117047057371.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090118127684566.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090119204712015.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090120274404008.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090121371129259.png" alt=""></p>
+<p>　　这个安装过程稍微要一点时间，因为在安装的过程中会去下载一些东西，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090122455345796.png" alt=""></p>
+<p>　　安装的过程中会弹出一次警告，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090124192524194.png" alt=""></p>
+<p>　　无视这个警告，直接点击【OK】按钮，继续安装。安装完成之后，弹出提示消息框，提示信息告诉我们需要重启Eclipse，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090125437842986.png" alt=""></p>
+<p>　　点击【Yes】按钮重启Eclipse。Eclipse重启之后会根据目录的位置智能地和它相同目录下Android sdk进行关联，如果Eclipse没有自动关联Android sdk的安装目录，那么就会弹出如下图所示的提示信息，要求我们设置Android SDK的安装目录</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090127240805760.png" alt=""></p>
+<p>　　点击【Open Preferences】按钮，在弹出面板中就会看到Android设置项，填上安装的SDK路径，则会出现刚才在SDK中安装的各平台包，按OK完成配置。如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090132510961832.png" alt=""></p>
+<p>　　我们刚才使用SDK Manager只下载了Android5.0的相关包，所以这里只显示Android5.0平台的。</p>
+<p>　　到这里，我们在windows上的Android上的开发环境搭建就完成了，这时候，你用Eclipse的File——》New——》Project...新建一个项目的时候，就会看到建立Android项目的选项了。如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090138196434106.png" alt=""></p>
+<h3 id="blogTitle9">第三步：测试Android开发环境是否搭建成功</h3>
+<p>　　使用Eclipse新建Android一个项目，创建步骤如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090147241276381.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090138196434106.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090155520181046.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090210367848646.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090211376748647.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090212321126246.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090214259874602.png" alt=""></p>
+<p>　　创建好的项目如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090215502688851.png" alt=""></p>
+<p>　　项目创建成功之后，我们直接运行这个Android项目，在Eclipse中运行Android项目的步骤如下：选中项目-----》鼠标右键------》【Run As】------》【Android Application】，如下图所示：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090223385182971.png" alt=""></p>
+<p>　　选择调试Android应用的模拟器，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090225132684784.png" alt=""></p>
+<p>　　我开启了手机的USB调试模式，直接使用手机作为模拟器运行这个Android应用了，Console打印出来的Log信息如下：</p>
+<p>　　<img style="border: 1px solid black;" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090239530026280.png" alt="" width="950"></p>
+<p>　　应用在手机上面的运行结果如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090227160964974.png" alt=""></p>
+<p>　　运行成功。手机上面也会有我们这个应用的图标，如下图所示：</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/090234599249576.png" alt=""></p>
+<p>　　到此，我们的Android开发环境的测试工作就算是全部完成了。</p>
+<h2 id="blogTitle10">三、配置Android SDK的环境变量</h2>
+<p>　　配置Android SDK的环境变量不是搭建Android开发环境必须要做的工作，但是配置了之后就可以很方便在命令行窗口使用Android SDK安装目录下的platform-tools和tools目录中的工具了，所以还是配置一下比较好，方便使用！</p>
+<p>　　Android SDK的环境变量值为SDK安装目录下的platform-tools文件夹和tools文件夹子目录路径，如我的分别为：E:\AndroidDevelopTool\android-sdk-windows\platform-tools、E:\AndroidDevelopTool\android-sdk-windows\tools，在变量值中，两个路径用逗号隔开。</p>
+<p><span style="font-size: 14px;">（1）添加环境变量：</span></p>
+<p><strong><span style="font-size: 14px;">　　变量名：<span style="color: #ff0000;">ANDROID_SDK_HOME</span></span></strong></p>
+<p><span style="font-size: 14px;">　　变量值：<span style="color: #ff0000;"><strong>E:\AndroidDevelopTool\android-sdk-windows<span style="font-family: 宋体;">（这个Android的SDK的安装目录）</span></strong></span></span></p>
+<p><span style="font-size: 14px;"><span style="color: #ff0000;"><span style="font-family: 宋体;">　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091054093937509.png" alt=""></span></span></span></p>
+<p><span style="font-size: 14px;">（2）在path中添加如下内容：</span></p>
+<p><span style="color: #ff0000; font-size: 14px;">　　%ANDROID_SDK_HOME%\tools;%ANDROID_SDK_HOME%\platform-tools</span></p>
+<p><span style="color: #ff0000; font-size: 14px;">　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091108366126082.png" alt=""></span></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091109357846526.png" alt=""></p>
+<p>　　<span style="font-size: 14px;">使用快捷键"Win+R"，然后输入CMD，进入命令行</span>，分别输入android -h和adb命令，显示如下图则说明Android SDK环境变量已经配置好了</p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091113364091205.png" alt=""></p>
+<p>　　<img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/091115067213029.png" alt=""></p>
+<p><span style="font-size: 14px;">　　简单说一下platform-tools目录下的adb这个工具的主要功能：</span></p>
+<ul>
+<li><span style="font-size: 14px;">运行设备的shell(命令行)</span></li>
+<li><span style="font-size: 14px;">管理模拟器或设备的端口映射</span></li>
+<li><span style="font-size: 14px;">计算机和设备之间上传/下载文件</span></li>
+<li><span style="font-size: 14px;">将本地apk软件安装至模拟器或android设备</span></li>
+</ul>
+<h2 id="blogTitle11">四、总结</h2>
+<p><span style="font-size: 14px;">　　以上就是搭建最新版本的Android的开发环境的全部内容，搭建步骤和过程是我亲自实践过的，按照上述的搭建过程应该都可以正常搭建Android的开发环境，写这一篇文章花了很多时间，本着不误人子弟，认真负责的态度，把每一个过程以及可能会遇到的问题都尽可能写清楚，希望所有看了这篇文章的朋友们都能够正常搭建起Android的开发环境，踏入Android开发的大门！本文中的有些内容参照了以下几位园友的文章：</span></p>
+<p><span style="font-size: 14px;">　　1、<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/smyhvae/">生命壹号</a>&nbsp;的<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/smyhvae/p/3788555.html">Android配置----Android开发环境搭建</a></span></p>
+<p>　　2、<a href="http://home.cnblogs.com/u/allenzheng/">郑毅</a>&nbsp;的 <a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/allenzheng/archive/2012/11/10/2762379.html">Android基础之用Eclipse搭建Android开发环境和创建第一个Android项目（Windows平台）</a></p>
+<p>　　3、<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zoupeiyang/">边写边唱</a>&nbsp;的 <a id="cb_post_title_url" href="http://www.cnblogs.com/zoupeiyang/p/4034517.html">五步搞定Android开发环境部署——非常详细的Android开发环境搭建教程</a>&nbsp;</p>
+<p>　　再次感谢这几位园友，本人Android开发刚刚入门，希望以后能够有更多的机会和博客园的朋友们一起学习Android的开发！</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xdp-gacl/category/663970.html">Android开发</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/xdp-gacl/tag/Android/">Android</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4322165,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/" target="_blank"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20160221223904.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followees">关注 - 83</a><br>
+<a href="http://home.cnblogs.com/u/xdp-gacl/followers">粉丝 - 5149</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4322165,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">35</span>
+    </div>
+	<div class="buryit" onclick="votePost(4322165,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">2</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xdp-gacl/p/4321012.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/4321012.html" title="发布于2015-03-07 22:04">Android开发中遇到的问题(一)——Android模拟器端口被占用问题的解决办法</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/4329469.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xdp-gacl/p/4329469.html" title="发布于2015-07-04 10:32">Android开发学习总结(二)——使用Android Studio搭建Android集成开发环境</a><br></div>
+</div>
+
+</div>
+    <p class="postfoot">posted on <span id="post-date">2015-03-09 11:36</span> <a href="http://www.cnblogs.com/xdp-gacl/">孤傲苍狼</a> 阅读(<span id="post_view_count">82975</span>) 评论(<span id="post_comment_count">31</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4322165" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#" onclick="AddToWz(4322165);return false;">收藏</a></p>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=133816,cb_entryId=4322165,cb_blogApp=currentBlogApp,cb_blogUserGuid='f1774468-815f-e011-a53f-842b2b196315',cb_entryCreatedDate='2015/3/9 11:36:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137543" class="layer">#1楼</a><a name="3137543" id="comment_anchor_3137543"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 12:44</span>
+					</span>
+				<a id="a_comment_author_3137543" href="http://www.cnblogs.com/xjxz/" target="_blank">程序媛鼓励师</a> <a href="http://msg.cnblogs.com/send/%E7%A8%8B%E5%BA%8F%E5%AA%9B%E9%BC%93%E5%8A%B1%E5%B8%88" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137543" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>为什么不用android studio</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137543,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137543,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3137543_avatar" style="display:none;">http://pic.cnblogs.com/face/466574/20160323095216.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137563" class="layer">#2楼</a><a name="3137563" id="comment_anchor_3137563"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 13:22</span>
+					</span>
+				<a id="a_comment_author_3137563" href="http://www.cnblogs.com/yankliu-vip/" target="_blank">Cooper_Liu</a> <a href="http://msg.cnblogs.com/send/Cooper_Liu" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137563" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>Why not android studio?</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137563,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137563,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137640" class="layer">#3楼</a><a name="3137640" id="comment_anchor_3137640"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 14:46</span>
+					</span>
+				<a id="a_comment_author_3137640" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137640" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>为什么安装个软件的介绍也上首页？</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137640,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137640,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3137640_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137685" class="layer">#4楼</a><a name="3137685" id="comment_anchor_3137685"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 15:29</span>
+					</span>
+				<a id="a_comment_author_3137685" href="http://www.cnblogs.com/antineutrino/" target="_blank">Antineutrino</a> <a href="http://msg.cnblogs.com/send/Antineutrino" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137685" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>写的很好！超详细！楼主好样的</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137685,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137685,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3137685_avatar" style="display:none;">http://pic.cnblogs.com/face/341593/20140606130947.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137791" class="layer">#5楼</a><a name="3137791" id="comment_anchor_3137791"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 17:56</span>
+					</span>
+				<a id="a_comment_author_3137791" href="http://www.cnblogs.com/liqiu1987/" target="_blank">QiuL</a> <a href="http://msg.cnblogs.com/send/QiuL" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137791" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>我比较关心楼主的加速器....多少钱..</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137791,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137791,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137872" class="layer">#6楼</a><a name="3137872" id="comment_anchor_3137872"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 20:36</span>
+					</span>
+				<a id="a_comment_author_3137872" href="http://www.cnblogs.com/tlink/" target="_blank">Tlink</a> <a href="http://msg.cnblogs.com/send/Tlink" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137872" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137791" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3137791);">@</a>
+liqiu1987<br></p><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137791" title="查看引用原文">引用</a></legend>    我比较关心楼主的加速器....多少钱..       </fieldset><p></p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137872,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137872,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3137872_avatar" style="display:none;">http://pic.cnblogs.com/face/394390/20141224154824.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137901" class="layer">#7楼</a><a name="3137901" id="comment_anchor_3137901"></a>
+					<span>
+						 <span class="comment_date">2015-03-09 22:01</span>
+					</span>
+				<a id="a_comment_author_3137901" href="http://www.cnblogs.com/networkcomms/" target="_blank">networkcomms通信框架</a> <a href="http://msg.cnblogs.com/send/networkcomms%E9%80%9A%E4%BF%A1%E6%A1%86%E6%9E%B6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3137901" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>好详细，mark</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3137901,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3137901,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3137901_avatar" style="display:none;">http://pic.cnblogs.com/face/586310/20150130160527.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3138249" class="layer">#8楼</a><a name="3138249" id="comment_anchor_3138249"></a>
+					<span>
+						 <span class="comment_date">2015-03-10 14:26</span>
+					</span>
+				<a id="a_comment_author_3138249" href="http://www.cnblogs.com/tang-sword/" target="_blank">唐大侠</a> <a href="http://msg.cnblogs.com/send/%E5%94%90%E5%A4%A7%E4%BE%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3138249" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>问下楼主你用的加速器速度怎么样，要是fq看视频的话如何</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3138249,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3138249,&#39;Bury&#39;,this)">反对(1)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3138709" class="layer">#9楼</a><a name="3138709" id="comment_anchor_3138709"></a>
+					<span>
+						 <span class="comment_date">2015-03-11 09:43</span>
+					</span>
+				<a id="a_comment_author_3138709" href="http://www.cnblogs.com/bluedoctor/" target="_blank">深蓝医生</a> <a href="http://msg.cnblogs.com/send/%E6%B7%B1%E8%93%9D%E5%8C%BB%E7%94%9F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3138709" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>开发工具要FQ下载的确很恼火.<br>请问搂主 可否把 "手机的USB调试模式，直接使用手机作为模拟器运行这个Android应用了" 这个说具体点呢?<br>我电脑装不了模拟器,想知道如何直接用手机调试.</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3138709,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3138709,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3138709_avatar" style="display:none;">http://pic.cnblogs.com/face/u114517.png?id=23112533</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3138722" class="layer">#10楼</a><a name="3138722" id="comment_anchor_3138722"></a>[<span class="louzhu">楼主</span>]
+					<span>
+						 <span class="comment_date">2015-03-11 09:49</span>
+					</span>
+				<a id="a_comment_author_3138722" href="http://www.cnblogs.com/xdp-gacl/" target="_blank">孤傲苍狼</a> <a href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3138722" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3138709" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3138709);">@</a>
+深蓝医生<br>Android的手机在设置那个里面会有USB模式，找到那个地方，开启就可以了，当然不同的手机的开启USB调试模式的方式不太一样，比如红米note移动4 增强版更新成了安卓4.4.4版本之后打开USB调试设置步骤：<br>　　设置，关于手机，点击MIUI版本七次，返回设置根目录，其他高级设置，开发者选项，USB调试</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3138722,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3138722,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3138722_avatar" style="display:none;">http://pic.cnblogs.com/face/289233/20160221223904.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3138805" class="layer">#11楼</a><a name="3138805" id="comment_anchor_3138805"></a>
+					<span>
+						 <span class="comment_date">2015-03-11 11:25</span>
+					</span>
+				<a id="a_comment_author_3138805" href="http://www.cnblogs.com/siikee/" target="_blank">siikee</a> <a href="http://msg.cnblogs.com/send/siikee" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3138805" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>Eclipse 貌似不用翻墙</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3138805,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3138805,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3146212" class="layer">#12楼</a><a name="3146212" id="comment_anchor_3146212"></a>
+					<span>
+						 <span class="comment_date">2015-03-22 17:01</span>
+					</span>
+				<a id="a_comment_author_3146212" href="http://www.cnblogs.com/iflytek/" target="_blank">{name:"代码屠夫"}</a> <a href="http://msg.cnblogs.com/send/%7Bname%3A%26quot%3B%E4%BB%A3%E7%A0%81%E5%B1%A0%E5%A4%AB%26quot%3B%7D" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3146212" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>期待楼主的这个系列</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3146212,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3146212,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3146212_avatar" style="display:none;">http://pic.cnblogs.com/face/438252/20140709183200.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3150401" class="layer">#13楼</a><a name="3150401" id="comment_anchor_3150401"></a>
+					<span>
+						 <span class="comment_date">2015-03-27 15:18</span>
+					</span>
+				<a id="a_comment_author_3150401" href="http://www.cnblogs.com/changwei0708/" target="_blank">changwei0708</a> <a href="http://msg.cnblogs.com/send/changwei0708" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3150401" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>过两个月就可以升级用 eclipse mars了</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3150401,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3150401,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3150401_avatar" style="display:none;">http://pic.cnblogs.com/face/337245/20150210152121.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3194179" class="layer">#14楼</a><a name="3194179" id="comment_anchor_3194179"></a>
+					<span>
+						 <span class="comment_date">2015-05-27 10:12</span>
+					</span>
+				<a id="a_comment_author_3194179" href="http://www.cnblogs.com/wygyxrssxz/" target="_blank">自信乐观</a> <a href="http://msg.cnblogs.com/send/%E8%87%AA%E4%BF%A1%E4%B9%90%E8%A7%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3194179" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>金字塔最底层应该是JAVA JDK而不是JAVA SDK</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3194179,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3194179,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3194179_avatar" style="display:none;">http://pic.cnblogs.com/face/751474/20150429135153.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3196485" class="layer">#15楼</a><a name="3196485" id="comment_anchor_3196485"></a>
+					<span>
+						 <span class="comment_date">2015-05-29 20:56</span>
+					</span>
+				<a id="a_comment_author_3196485" href="http://www.cnblogs.com/ouysq/" target="_blank">阳阳（ysq）</a> <a href="http://msg.cnblogs.com/send/%E9%98%B3%E9%98%B3%EF%BC%88ysq%EF%BC%89" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3196485" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>PGfast这个怎么是收费的啊？怎么做才可以做到免费的啊</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3196485,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3196485,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3196485_avatar" style="display:none;">http://pic.cnblogs.com/face/717338/20150123235556.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3225075" class="layer">#16楼</a><a name="3225075" id="comment_anchor_3225075"></a>
+					<span>
+						 <span class="comment_date">2015-07-10 00:01</span>
+					</span>
+				<a id="a_comment_author_3225075" href="http://home.cnblogs.com/u/783599/" target="_blank">dgma</a> <a href="http://msg.cnblogs.com/send/dgma" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3225075" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>博主的文章都非常有诚意，读来就是一种享受。</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3225075,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3225075,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3237325" class="layer">#17楼</a><a name="3237325" id="comment_anchor_3237325"></a>
+					<span>
+						 <span class="comment_date">2015-07-29 11:17</span>
+					</span>
+				<a id="a_comment_author_3237325" href="http://home.cnblogs.com/u/651631/" target="_blank">Harmonia</a> <a href="http://msg.cnblogs.com/send/Harmonia" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3237325" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>太感谢了！</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3237325,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3237325,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3268569" class="layer">#18楼</a><a name="3268569" id="comment_anchor_3268569"></a>
+					<span>
+						 <span class="comment_date">2015-09-17 15:40</span>
+					</span>
+				<a id="a_comment_author_3268569" href="http://home.cnblogs.com/u/111939/" target="_blank">命运</a> <a href="http://msg.cnblogs.com/send/%E5%91%BD%E8%BF%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3268569" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>感谢楼主<br><br>加速器 180   人民币  （年费）<br>  我用的 豆荚  <br><br><br>有需要用 android SDK  和 ADT的  <br><br>android-sdk_r24.3.4-windows.zip<br>ADT-23.0.6.zip<br><br> 邮件 286953042@qq.com<br><br>看到会发一份改你</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3268569,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3268569,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3277701" class="layer">#19楼</a><a name="3277701" id="comment_anchor_3277701"></a>
+					<span>
+						 <span class="comment_date">2015-10-01 19:40</span>
+					</span>
+				<a id="a_comment_author_3277701" href="http://www.cnblogs.com/xiaoweihuang/" target="_blank">前端民工</a> <a href="http://msg.cnblogs.com/send/%E5%89%8D%E7%AB%AF%E6%B0%91%E5%B7%A5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3277701" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3137640" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3137640);">@</a>
+Wuya<br>你嫉妒？</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3277701,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3277701,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3279711" class="layer">#20楼</a><a name="3279711" id="comment_anchor_3279711"></a>
+					<span>
+						 <span class="comment_date">2015-10-08 00:11</span>
+					</span>
+				<a id="a_comment_author_3279711" href="http://www.cnblogs.com/1342183836com/" target="_blank">Forever&amp;U</a> <a href="http://msg.cnblogs.com/send/Forever%26amp%3BU" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3279711" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>写的相当的细致，很好用。一看就懂的，非常推荐</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3279711,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3279711,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3282047" class="layer">#21楼</a><a name="3282047" id="comment_anchor_3282047"></a>
+					<span>
+						 <span class="comment_date">2015-10-10 17:06</span>
+					</span>
+				<a id="a_comment_author_3282047" href="http://www.cnblogs.com/SSYYGAM/" target="_blank">SSYYGAM</a> <a href="http://msg.cnblogs.com/send/SSYYGAM" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3282047" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>楼主：<br>      最底层应该是Java jdk吧</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3282047,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3282047,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3282047_avatar" style="display:none;">http://pic.cnblogs.com/face/706251/20160130200300.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3283051" class="layer">#22楼</a><a name="3283051" id="comment_anchor_3283051"></a>
+					<span>
+						 <span class="comment_date">2015-10-12 16:35</span>
+					</span>
+				<a id="a_comment_author_3283051" href="http://home.cnblogs.com/u/821565/" target="_blank">十三月i</a> <a href="http://msg.cnblogs.com/send/%E5%8D%81%E4%B8%89%E6%9C%88i" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3283051" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>100兆网速哈哈</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3283051,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3283051,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3296385" class="layer">#23楼</a><a name="3296385" id="comment_anchor_3296385"></a>
+					<span>
+						 <span class="comment_date">2015-11-01 18:12</span>
+					</span>
+				<a id="a_comment_author_3296385" href="http://home.cnblogs.com/u/830684/" target="_blank">coolsharp</a> <a href="http://msg.cnblogs.com/send/coolsharp" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3296385" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>楼主：<br>使用了PGFast，但是在安装SDK时，一直卡在done loading packages，怎么破？</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3296385,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3296385,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3301498" class="layer">#24楼</a><a name="3301498" id="comment_anchor_3301498"></a>
+					<span>
+						 <span class="comment_date">2015-11-09 00:44</span>
+					</span>
+				<a id="a_comment_author_3301498" href="http://home.cnblogs.com/u/834089/" target="_blank">prth125dfd</a> <a href="http://msg.cnblogs.com/send/prth125dfd" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3301498" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>感谢博主的无私奉献 以后会多多关注的 。写的很详细很实用。</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3301498,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3301498,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3307376" class="layer">#25楼</a><a name="3307376" id="comment_anchor_3307376"></a>
+					<span>
+						 <span class="comment_date">2015-11-16 14:39</span>
+					</span>
+				<a id="a_comment_author_3307376" href="http://www.cnblogs.com/xfile/" target="_blank">xfile</a> <a href="http://msg.cnblogs.com/send/xfile" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3307376" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3194179" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3194179);">@</a>
+自信乐观<br></p><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3194179" title="查看引用原文">引用</a></legend>    金字塔最底层应该是JAVA JDK而不是JAVA SDK       </fieldset><br>SDK的意思是Software Development Kit，软件开发工具包，是一个广义的概念，任何编程工具几乎都可以看成SDK。而JDK是Java Development Kit，是Sun公司针对Java编程的产品，范围仅限于Java。也就是说，JDK是SDK的一种，两者不是完全一样的。楼主写成sdk也是没问题的。<p></p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3307376,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3307376,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3307376_avatar" style="display:none;">http://pic.cnblogs.com/face/629446/20140727005135.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3325392" class="layer">#26楼</a><a name="3325392" id="comment_anchor_3325392"></a>
+					<span>
+						 <span class="comment_date">2015-12-11 18:30</span>
+					</span>
+				<a id="a_comment_author_3325392" href="http://home.cnblogs.com/u/855737/" target="_blank">ylrocks</a> <a href="http://msg.cnblogs.com/send/ylrocks" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3325392" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>楼主您好~ <br>能不能把eclipse SDK ADT 打包发给我一份，，谢谢 490374517@qq.com</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3325392,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3325392,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3331248" class="layer">#27楼</a><a name="3331248" id="comment_anchor_3331248"></a>
+					<span>
+						 <span class="comment_date">2015-12-21 15:01</span>
+					</span>
+				<a id="a_comment_author_3331248" href="http://www.cnblogs.com/Brook-L/" target="_blank">南柯一夢</a> <a href="http://msg.cnblogs.com/send/%E5%8D%97%E6%9F%AF%E4%B8%80%E5%A4%A2" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3331248" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>楼主辛苦了，这篇文章对于新手来说很有价值，非常感谢！<br><br><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/709085-20151221144915671-1074099997.png" alt="" border="0" "=""><br>图1<br><br>另外，图1中关于修改hosts文件的问题，起初我也无法正常更新，后面花了些时间在网上找到了一个解决办法，在此分享一下：<br>1. 在<a href="http://www.ip138.com/" target="_blank">http://www.ip138.com/</a>中查询图1中2个网址（dl.google.com和dl-ssl.google.com）的IP地址，查询结果与图1中的不一样<br>2. 用第1步中查询得到的IP地址替换图1中的IP地址，并保存hosts文件，如图2<br>3. 重新打开Android SDK Manager，此时就可以正常下载更新了<br><br><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/709085-20151221150030874-125707080.png" alt="" border="0" "=""><br>图2</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3331248,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3331248,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3331248_avatar" style="display:none;">http://pic.cnblogs.com/face/709085/20150515202143.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3333721" class="layer">#28楼</a><a name="3333721" id="comment_anchor_3333721"></a>
+					<span>
+						 <span class="comment_date">2015-12-24 15:26</span>
+					</span>
+				<a id="a_comment_author_3333721" href="http://www.cnblogs.com/free5ddvd/" target="_blank">freewzx2005</a> <a href="http://msg.cnblogs.com/send/freewzx2005" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3333721" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>这篇教程写得超好！</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3333721,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3333721,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3354986" class="layer">#29楼</a><a name="3354986" id="comment_anchor_3354986"></a>
+					<span>
+						 <span class="comment_date">2016-01-27 15:12</span>
+					</span>
+				<a id="a_comment_author_3354986" href="http://home.cnblogs.com/u/188131/" target="_blank">Froyo</a> <a href="http://msg.cnblogs.com/send/Froyo" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3354986" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>可以试试 Android studio</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3354986,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3354986,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3388059" class="layer">#30楼</a><a name="3388059" id="comment_anchor_3388059"></a>
+					<span>
+						 <span class="comment_date">2016-03-22 14:25</span>
+					</span>
+				<a id="a_comment_author_3388059" href="http://www.cnblogs.com/zhanglm125/" target="_blank">半瓶子水</a> <a href="http://msg.cnblogs.com/send/%E5%8D%8A%E7%93%B6%E5%AD%90%E6%B0%B4" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3388059" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3331248" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3331248);">@</a>
+南柯一夢<br>好用，我修改之后下载速度还挺快的呢</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3388059,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3388059,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#3403731" class="layer">#31楼</a><a name="3403731" id="comment_anchor_3403731"></a><span id="comment-maxId" style="display:none;">3403731</span><span id="comment-maxDate" style="display:none;">2016/4/9 1:10:08</span>
+					<span>
+						 <span class="comment_date">2016-04-09 01:10</span>
+					</span>
+				<a id="a_comment_author_3403731" href="http://home.cnblogs.com/u/903000/" target="_blank">李永康</a> <a href="http://msg.cnblogs.com/send/%E6%9D%8E%E6%B0%B8%E5%BA%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3403731" class="blog_comment_body"><div class="list"><table class="out" border="0" cellspacing="0" cellpadding="0"> <tbody><tr><td class="icontd" align="right" valign="bottom"><img src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/20131202131125.png" width="70px" height="57px"></td><td align="left" valign="bottom" class="q"><table border="0" cellpadding="0" cellspacing="0" style=""> <tbody><tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> <tr><td class="left"></td> <td align="left" class="conmts"><p>写得太棒了，特别是对我这样的新手，非常感谢！最开始关注是从MyBatis开始，真的，看过的每一篇博文都写得非常好，非常用心！赞</p> </td> <td class="right"></td></tr> <tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> </tbody></table></td> </tr> </tbody></table> </div></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3403731,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3403731,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xdp-gacl/p/4322165.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/activereports/excel.htm?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=AR&utm_campaign=community" target="_blank">【推荐】Excel 报表开发18 招式，人人都能做报表</a><br><a href="http://group.cnblogs.com/topic/74539.html" target="_blank">【推荐】阿里云万网域名：.xin .com将推出重磅优惠</a><br><a href="http://t.cn/RqDmMiB" target="_blank">【活动】高性能+大数据的HTML5 App开发交流会（深圳站）</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblogs&utm_medium=banner&utm_campaign=orangemarch" target="_blank"><img width="300" height="250" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/cnblogs-300x250-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/546214/" target="_blank">《魔兽》6月8日零点首映场 花钱都看不到</a><br> ·  <a href="http://news.cnblogs.com/n/546213/" target="_blank">从百万美元收入到2次裁员：除了运气还差什么</a><br> ·  <a href="http://news.cnblogs.com/n/546212/" target="_blank">星巴克打算在上海开一家2700平米的全球最大门店</a><br> ·  <a href="http://news.cnblogs.com/n/546211/" target="_blank">微软发布16.0.6925.1016版Office for Android</a><br> ·  <a href="http://news.cnblogs.com/n/546210/" target="_blank">中国Model S比美国贵48% 特斯拉在华建厂可以降价</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/24442-20160307140747632-1210035054.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/545476/" target="_blank">快速学习者的高效学习策略</a><br> ·  <a href="http://kb.cnblogs.com/page/545784/" target="_blank">一个前端的自我修养</a><br> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br> ·  <a href="http://kb.cnblogs.com/page/542257/" target="_blank">架构漫谈（七）：不要空设架构师这个职位，给他实权</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="rightmenu">
+	
+		
+<div id="my_links">
+<h3>导航</h3>
+<ul>
+<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/xdp-gacl/">首页</a></li>
+<!--<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>-->
+<li><a id="MyLinks1_ContactLink" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%AD%A4%E5%82%B2%E8%8B%8D%E7%8B%BC">联系</a></li>
+<li><a id="MyLinks1_Syndication" href="http://www.cnblogs.com/xdp-gacl/rss">订阅</a></li><!--<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/xdp-gacl/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>-->
+<li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+</div>
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&lt;</a></td><td align="center">2016年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalTodayDay" align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>公告</h3>
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xdp-gacl/">孤傲苍狼</a><br>园龄：<a href="http://home.cnblogs.com/u/xdp-gacl/" title="入园时间：2011-04-05">5年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xdp-gacl/followers/">5149</a><br>关注：<a href="http://home.cnblogs.com/u/xdp-gacl/followees/">83</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;f1774468-815f-e011-a53f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>		
+		
+<div id="blog_stats">
+<h3>统计</h3>
+<ul>
+<li>随笔 - 275
+</li><li>文章 - 0
+</li><li>评论 - 1600
+<!--<li>引用 - 0-->
+</li>
+</ul>
+</div>
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">JavaWeb学习总结</a>(62)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">java基础总结</a>(28)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Javascript%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Javascript学习总结</a>(27)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Snmp%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Snmp学习总结</a>(15)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyEclipse%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">MyEclipse使用总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Android%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Android开发学习总结</a>(13)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/Maven%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Maven学习总结</a>(11)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/WebLogic%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">WebLogic使用总结</a>(9)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MyBatis%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MyBatis学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/MySQL%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">MySQL学习总结</a>(8)</li><li><a href="http://www.cnblogs.com/xdp-gacl/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xdp-gacl/category/431986.html">AJAX(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xdp-gacl/category/663970.html">Android开发(12)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xdp-gacl/category/431983.html">ASP.NET(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xdp-gacl/category/431981.html">C#(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xdp-gacl/category/647917.html">CSS学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xdp-gacl/category/557089.html">C语言学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/xdp-gacl/category/605855.html">FusionCharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/xdp-gacl/category/641669.html">H2数据库学习使用总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/xdp-gacl/category/601788.html">Hessian(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/xdp-gacl/category/557131.html">Hibernate</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/xdp-gacl/category/602554.html">Highcharts</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/xdp-gacl/category/544383.html">HTML(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/xdp-gacl/category/791376.html">html5学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/xdp-gacl/category/647915.html">Html学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/xdp-gacl/category/431984.html">Java(13)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/xdp-gacl/category/431982.html">JavaScript(27)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/xdp-gacl/category/574705.html">JavaWeb学习总结(55)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/xdp-gacl/category/563691.html">Java基础加强总结(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/xdp-gacl/category/566451.html">java基础面试题(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/xdp-gacl/category/563690.html">java基础总结(28)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/xdp-gacl/category/595905.html">Java监控</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/xdp-gacl/category/607504.html">Java事务处理</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/xdp-gacl/category/600539.html">java字节码的处理技术</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/xdp-gacl/category/636007.html">JFinal学习研究</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/xdp-gacl/category/609326.html">JNDI(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/xdp-gacl/category/571424.html">Jquery EasyUI学习使用总结(7)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/xdp-gacl/category/600080.html">jwebap</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/xdp-gacl/category/599454.html">kafka</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/xdp-gacl/category/590574.html">LDAP</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/xdp-gacl/category/620197.html">Linux学习总结(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/xdp-gacl/category/544719.html">Maven(10)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/xdp-gacl/category/599453.html">Mina</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/xdp-gacl/category/655890.html">Mybatis(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/xdp-gacl/category/544414.html">MyEclipse(11)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/xdp-gacl/category/557132.html">MySQL(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/xdp-gacl/category/576035.html">Nginx(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/xdp-gacl/category/567838.html">Oracle学习使用总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/xdp-gacl/category/562877.html">PowerDesigner使用总结(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/xdp-gacl/category/640475.html">redis</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/xdp-gacl/category/591218.html">RESTful架构(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/xdp-gacl/category/649781.html">Servlet3.0(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/xdp-gacl/category/613358.html">Snmp学习总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/xdp-gacl/category/544380.html">Spring(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/xdp-gacl/category/654626.html">SpringMVC学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/xdp-gacl/category/543327.html">SQLServer(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/xdp-gacl/category/543338.html">Struts2(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/xdp-gacl/category/737796.html">SVN</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/xdp-gacl/category/544377.html">VB.NET(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/xdp-gacl/category/637206.html">WebLogic使用总结(8)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/xdp-gacl/category/629559.html">WebService学习总结(4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/xdp-gacl/category/787823.html">WebSocket(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/xdp-gacl/category/554263.html">WinForm学习总结</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/xdp-gacl/category/602889.html">XML学习总结(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/xdp-gacl/category/551491.html">插件化开发</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/xdp-gacl/category/598077.html">创业知识(5)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/xdp-gacl/category/651090.html">大数据/hadoop(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/xdp-gacl/category/645953.html">代码注释(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/xdp-gacl/category/588156.html">单点登录(Yale_CAS_SSO)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/xdp-gacl/category/710266.html">电脑基本技能</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/xdp-gacl/category/636430.html">读书笔记</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/xdp-gacl/category/635429.html">负载均衡(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/xdp-gacl/category/543351.html">互联网基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/xdp-gacl/category/644775.html">缓存框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/xdp-gacl/category/801455.html">架构设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_64" href="http://www.cnblogs.com/xdp-gacl/category/661363.html">框架整合(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_65" href="http://www.cnblogs.com/xdp-gacl/category/810590.html">敏捷开发(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_66" href="http://www.cnblogs.com/xdp-gacl/category/591507.html">权限设计</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_67" href="http://www.cnblogs.com/xdp-gacl/category/431985.html">生活感悟(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_68" href="http://www.cnblogs.com/xdp-gacl/category/589802.html">数据库Sharding(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_69" href="http://www.cnblogs.com/xdp-gacl/category/562913.html">数据库理论基础(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_70" href="http://www.cnblogs.com/xdp-gacl/category/608526.html">微信开发(3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_71" href="http://www.cnblogs.com/xdp-gacl/category/811446.html">我的开发框架</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_72" href="http://www.cnblogs.com/xdp-gacl/category/806539.html">项目管理(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_73" href="http://www.cnblogs.com/xdp-gacl/category/654566.html">英语学习</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_74" href="http://www.cnblogs.com/xdp-gacl/category/578277.html">原创小工具(1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_75" href="http://www.cnblogs.com/xdp-gacl/category/594056.html">云计算(2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_76" href="http://www.cnblogs.com/xdp-gacl/category/598078.html">哲学人生</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_77" href="http://www.cnblogs.com/xdp-gacl/category/596451.html">职场感悟(3)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xdp-gacl/archive/2016/04.html">2016年4月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xdp-gacl/archive/2016/03.html">2016年3月 (5)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xdp-gacl/archive/2016/02.html">2016年2月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xdp-gacl/archive/2016/01.html">2016年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xdp-gacl/archive/2015/07.html">2015年7月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xdp-gacl/archive/2015/03.html">2015年3月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xdp-gacl/archive/2015/02.html">2015年2月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xdp-gacl/archive/2015/01.html">2015年1月 (40)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xdp-gacl/archive/2014/12.html">2014年12月 (17)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xdp-gacl/archive/2014/11.html">2014年11月 (12)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xdp-gacl/archive/2014/10.html">2014年10月 (31)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xdp-gacl/archive/2014/08.html">2014年8月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xdp-gacl/archive/2014/07.html">2014年7月 (25)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xdp-gacl/archive/2014/06.html">2014年6月 (6)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xdp-gacl/archive/2014/05.html">2014年5月 (10)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xdp-gacl/archive/2014/04.html">2014年4月 (22)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xdp-gacl/archive/2014/03.html">2014年3月 (28)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xdp-gacl/archive/2014/02.html">2014年2月 (11)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xdp-gacl/archive/2014/01.html">2014年1月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xdp-gacl/archive/2013/12.html">2013年12月 (16)</a> </li>
+			
+				<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xdp-gacl/archive/2012/11.html">2012年11月 (1)</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4230220.html#3440379">1. Re:大数据以及Hadoop相关概念介绍</a></li>
+        <li class="recent_comment_body">楼主，以后跟你混了，你对知识的组织和信息的搜集好让我佩服</li>
+        <li class="recent_comment_author">--实真唯</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4262895.html#3440324">2. Re:MyBatis学习总结(二)——使用MyBatis对表执行CRUD操作</a></li>
+        <li class="recent_comment_body">Cause: org.xml.sax.SAXParseException; lineNumber: 22; columnNumber: 43; 必须为元素类型 "mapper" 声明属性 "class......</li>
+        <li class="recent_comment_author">--joevin88</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3788369.html#3440153">3. Re:javaweb学习总结(十九)——JSP标签</a></li>
+        <li class="recent_comment_body">楼主，本人在自学java，我把你写的文章全部弄懂，可以找个入门工作么？</li>
+        <li class="recent_comment_author">--天才小菜鸟</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3859416.html#3440151">4. Re:JavaWeb学习总结(十三)——使用Session防止表单重复提交</a></li>
+        <li class="recent_comment_body">最后一个案例，前提是要先访问FormServlet，如果用户直接访问的是form.jsp，那么验证是不是就是失效了。</li>
+        <li class="recent_comment_author">--天才小菜鸟</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3619249.html#3440142">5. Re:关系型数据库理论</a></li>
+        <li class="recent_comment_body">不错</li>
+        <li class="recent_comment_author">--秋风扫落木</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3636997.html#3440140">6. Re:java基础学习总结——哈希编码</a></li>
+        <li class="recent_comment_body">@梁卓远引用 你好： 你在学java的基础的时候是怎么样学容器？ @梁卓远引用 你好： 你在学java的基础的时候是怎么样学容器？ @梁卓远引用......</li>
+        <li class="recent_comment_author">--秋风扫落木</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html#3439958">7. Re:javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册</a></li>
+        <li class="recent_comment_body">@yiran1003你好，我想问一下那个DB.xml中的内容可以导出来然后放到数据库中嘛？...</li>
+        <li class="recent_comment_author">--Ricky丶李斌</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/4102862.html#3439909">8. Re:少走弯路的10条忠告</a></li>
+        <li class="recent_comment_body">若电话老是不响，你该打出去<br><br>我的电话就是老是不响   该怎么办</li>
+        <li class="recent_comment_author">--盛小白</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html#3439886">9. Re:javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册</a></li>
+        <li class="recent_comment_body">@Dreamer-1你好，我不理解博主这个注册成功后的注册信息保存在哪里的。能不能告诉我一下？谢谢。我想把注册信息保存到数据库中。这样就不会重启tomcat一开始注册的用户的用户信息就不会消失了。...</li>
+        <li class="recent_comment_author">--Ricky丶李斌</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html#3439801">10. Re:javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册</a></li>
+        <li class="recent_comment_body">咦~~  博主，这个注册之后的注册信息保存在哪里的？</li>
+        <li class="recent_comment_author">--Ricky丶李斌</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(168647)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3497016.html">2. MyEclipse使用总结——MyEclipse10安装SVN插件(144403)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">3. javaweb学习总结(五)——Servlet开发(一)(107358)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">4. JavaWeb学习总结(五十)——文件上传和下载(106404)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">5. JavaWeb学习总结(一)——JavaWeb开发入门(93137)</a></li><li><a href="./Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园_files/Android开发学习总结(一)——搭建最新版本的Android开发环境 - 孤傲苍狼 - 博客园.html">6. Android开发学习总结(一)——搭建最新版本的Android开发环境(82973)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3495887.html">7. Spring常用注解(75874)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3777987.html">8. Java基础学习总结——Java对象的序列化和反序列化(65241)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">9. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(60744)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3734395.html">10. JavaWeb学习总结(二)——Tomcat服务器学习和使用(一)(54515)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">1. JavaWeb学习总结(五十)——文件上传和下载(92)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">2. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(61)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">3. MyBatis学习总结(一)——MyBatis快速入门(57)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">4. JavaWeb学习总结(一)——JavaWeb开发入门(45)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">5. javaweb学习总结(四)——Http协议(44)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">6. javaweb学习总结(五)——Servlet开发(一)(43)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">7. JavaScript自动生成博文目录导航(40)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4239501.html">8. 使用Maven搭建Struts2+Spring3+Hibernate4的整合开发环境(34)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">9. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(34)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3789624.html">10. javaweb学习总结(七)——HttpServletResponse对象(一)(31)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html">1. MyBatis学习总结(一)——MyBatis快速入门(65)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3760336.html">2. javaweb学习总结(五)——Servlet开发(一)(58)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3729033.html">3. JavaWeb学习总结(一)——JavaWeb开发入门(52)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4200090.html">4. JavaWeb学习总结(五十)——文件上传和下载(50)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3902537.html">5. javaweb学习总结(二十二)——基于Servlet+JSP+JavaBean开发模式的用户登录注册(44)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/4271627.html">6. MyBatis学习总结(八)——Mybatis3.x与Spring4.x整合(40)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3751277.html">7. javaweb学习总结(四)——Http协议(37)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/5149171.html">8. 微信开发学习总结（一）——微信开发环境搭建(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">9. JavaScript自动生成博文目录导航(36)</a></li><li><a href="http://www.cnblogs.com/xdp-gacl/p/3777987.html">10. Java基础学习总结——Java对象的序列化和反序列化(35)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+        
+		
+<div id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © 孤傲苍狼
+</div>
+	
+</div>			
+			
+	
+
+<!--PageEndHtml Block Begin-->
+<!--评论，生成气泡效果标签代码-->
+<script type="text/javascript" language="javascript"> 
+    $(document).ready(function() {
+        var commentTime = setInterval(function(){if($("#comments_pager_bottom").length>0){CommentBubble();clearTimeout(commentTime);}},50);
+    }); 
+    function CommentBubble()
+    {
+var w1 = '<div class="list">' +
+        '<table class="out" border="0" cellspacing="0" cellpadding="0"> ' +
+            '<tr>' +
+                '<td class="icontd" align="right" valign="bottom">' +
+                    '<img src="http://pic.cnitblog.com/face/289233/20131202131125.png" width="70px" height="57px"/>' +
+                '</td>' +
+                '<td align="left" valign="bottom" class="q">' +
+                    '<table border="0" cellpadding="0" cellspacing="0" style=""> ' +
+                        '<tr><td class="topleft"></td><td class="top"></td><td class="topright"></td></tr> ' +
+                        '<tr><td class="left"></td> <td align="left" class="conmts"><p>';
+ 
+ 
+        var w2 = '</p> </td> <td class="right"></td></tr> ' +
+                        '<tr><td class="bottomleft"></td><td class="bottom"></td><td class="bottomright"></td></tr> ' +
+                    '</table>' +
+                '</td> ' +
+            '</tr> ' +
+        '</table> ' +
+    '</div>';
+ 
+        $.each($(".blog_comment_body"), function(i, t) {
+            $(t).html(w1 + $(t).html() + w2);
+        });
+$(".louzhu").closest(".feedbackItem").find(".out").removeClass("out").addClass("inc");
+        /*.find(".q").attr("align","right");*/
+        }
+</script>
+<!--PageEndHtml Block End-->
+
+
+<div class="sideBar" id="sideBar"><div id="sideBarTab"><h2>目录导航</h2></div><div id="sideBarContents" style="display: none;"><dl><dt name="0">一、下载相关软件</dt><dd name="1">第一步：下载JDK</dd><dd name="2">第二步：配置Windows上JDK的变量环境</dd><dd name="3">第三步：下载安装Eclipse</dd><dd name="4">第四步：下载Android SDK</dd><dd name="5">第五步：下载ADT插件</dd><dt name="6">二、使用下载好的软件搭建Android开发环境</dt><dd name="7">第一步：安装Android的SDK</dd><dd name="8">第二步：为Eclipse安装ADT插件</dd><dd name="9">第三步：测试Android开发环境是否搭建成功</dd><dt name="10">三、配置Android SDK的环境变量</dt><dt name="11">四、总结</dt></dl></div></div></body></html>

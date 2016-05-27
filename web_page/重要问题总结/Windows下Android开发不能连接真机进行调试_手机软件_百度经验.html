@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://jingyan.baidu.com/album/851fbc37cce3213e1e15ab5a.html -->
+<html><style type="text/css" id="23457790000"></style><!--STATUS OK--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta charset="utf-8"><title>
+Windows下Android开发不能连接真机进行调试_手机软件_百度经验</title>
+<script async="" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/element.min.js"></script><script async="" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/monkey.min.js"></script><script async="" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/dp.min.js"></script><script src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/hm.js"></script><script async="" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/alog.min.js"></script><script>
+    window.alogObjectConfig = {
+        product: '132',  
+        page: '132_1210',  
+        monkey_page: '',  
+        speed_page: '',  
+ 
+        speed: {
+            sample: '0.12'   
+        },
+ 
+        monkey: {
+            sample: '0.12'   
+        },
+ 
+        exception: { 
+            sample: '0.12'   
+        },
+ 
+        feature: {
+            sample: '0.12'   
+        },
+ 
+        cus: {
+            sample: '0'   
+        },
+ 
+        csp: {
+            sample: '0.12',  
+            'default-src': [
+                {match: '*bae.baidu.com', target: 'Accept,Warn'},
+                {match: '*.baidu.com,*.bdstatic.com,*.baidustatic.com,*.baiduimg.com,*.bdimg.com,localhost,*.hao123.com,*.hao123img.com', target: 'Accept'},
+                {match: /^(127|172|192|10)(\.\d+){3}$/, target: 'Accept'},
+                {match: '*', target: 'Accept,Warn'}
+            ]
+        }
+    };
+ 
+    void function(a,b,c,d,e,f,g){if(a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,"https:"===a.location.protocol){if(d="https://gss2.bdstatic.com/70cFsjip0QIZ8tyhnq"+d,!a.alogObjectConfig||!a.alogObjectConfig.sample)return}else d="http://img.baidu.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d,g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>
+
+<meta name="keywords" content="Windows下Android开发不能连接真机进行调试,手机软件,手机,游戏/数码">
+
+<meta name="description" content="Windows下Android开发不能连接真机进行调试,进行Adroid开发有些功能无法通过模拟器进行调试必须使用真机，但是有时候会出现无法识别真机的问题，现将我遇到的一些情况与解决方案做一个简单分享。">
+<script type="text/javascript">!function(){var n={},e={};n.context=function(n,r){var t=arguments.length;if(t>1)e[n]=r;else if(1==t){if("object"!=typeof n)return e[n];for(var i in n)n.hasOwnProperty(i)&&(e[i]=n[i])}else if(0==t)return e},"F"in window||(window.F=n)}();;</script><!--[if lt IE 9]><script type="text/javascript" src="/static/common/tool/html5.js"></script><![endif]--><script>var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "//hm.baidu.com/hm.js?46c8852ae89f7d9526f0082fafa15edd"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();</script><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/common_sync_css_0_2c483be.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/common_async_css_0_29661d1.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/step_e409b7d.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/redbox_12741a0.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/userbar_372af9d.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/special-msg_60ee8b9.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/msg_aabec48.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/amazing-2016_12ce25d.css"><link rel="stylesheet" type="text/css" href="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/jquery-ui_2118283.css"><script> 
+	if(typeof(alog) !== 'undefined') {
+		alog('speed.set', 'ht', +new Date); 
+	}
+</script></head>
+<body class=""><header class="header">
+<div class="top clearfix">
+<div class="top-left">
+<a href="http://jingyan.baidu.com/article/851fbc37cce3213e1e15ab5a.html" class="back" log="pos:step_read_all,expGroup:G3"></a>
+</div>
+<div class="top-right">
+<ul class="options clearfix">
+<li>
+<a href="javascript:;" id="vote-btn" class="vote" log="pos:step_vote">
+<b class="num">3</b>
+<b class="hover-tip">投票</b>
+<b class="tip">已投票</b>
+</a>
+</li>
+<li>
+<a href="javascript:;" id="favor-btn" class="favor" log="pos:step_favor">
+<b class="num">8</b>
+<b class="hover-tip">收藏+1</b>
+<b class="tip">已收藏</b>
+</a>
+</li>
+</ul>
+</div>
+<div class="title" id="exp-title" style="left: 492px;">
+<h1>Windows下Android开发不能连接真机进行调试</h1>
+</div>
+<form action="http://jingyan.baidu.com/search" name="step-search-form" method="get" id="step-search-form" class="step-search-form" style="display: block; left: 1440px; width: 330px;">
+<input class="keyword" id="keyword" autocomplete="off" maxlength="256" tabindex="1" size="23" name="word" placeholder="请输入搜索内容" value="" style="width: 250px;">
+<input type="submit" id="submit" class="submit" value="搜索经验">
+</form>
+</div>
+</header>
+<div class="waiting-step-loading" id="waiting-step-loading" style="display: none;">
+<div class="tip-placehoder"></div>
+<div class="loading-tip">
+<p class="exp-tip">
+百度经验</p>
+<p class="loading-data-tip">
+页面数据加载中...</p>
+</div>
+</div>
+<section class="body-wrapper"><section class="body" id="body" style="height: 762px;">
+<div class="step-container">
+<div class="left-cover" id="left-cover" style="height: 762px; width: 492px; display: none;">
+<div class="previous-arrow"></div>
+</div>
+<div class="step-play-container" id="step-play-container" style="left: 492px;">
+<div class="step-play-list" id="step-play-list" style="left: 0px;">
+<div class="step-item-container step-item-brief clearfix" id="step-item-0">
+<div class="writer-info left" id="brief-writer-info" style="height: 760.379px;">
+<div class="place_holder" style="height: 13%"></div>
+<div class="writer-info-inner" style="height: 74%">
+<div class="writer-portrait">
+<a href="http://jingyan.baidu.com/user/npublic?un=xjhznick" target="_blank" title="xjhznick" class="writer-portrait-container">
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/19e3786a687a6e69636bc509.jpg" title="xjhznick" width="87px" height="87px" alt="xjhznick">
+<div class="portrait-cover"></div>
+</a>
+</div>
+<div class="writer-basic">
+<div class="writer-basic-name">
+xjhznick
+</div>
+<div class="icon-wrp">
+<div class="icon-huiz">
+<a class="u-icon cpm3" title="签约作者" href="http://jingyan.baidu.com/help?page=income-author" target="_blank" rel="nofollow"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="place_holder" style="height: 13%"></div>
+</div>
+<div class="brief-info left">
+<div class="place_holder" style="height:9%"></div>
+<div class="brief-info-inner brief-info-inner-withoutimg clearfix" style="height: 70%">
+<div class="brief-info-text left">
+<span class="left-quote" id="brief-left-quote" style="top: 208.011px;"></span>
+<div class="step-text-wrapper brief-text-area" texttype="brief-text-area" id="step-text-wrapper-0" style="position: absolute; top: 208.011px;">
+<p>进行Android开发有些功能无法通过模拟器进行调试必须使用真机，但是有时候会出现无法识别真机的问题，现将我遇到的一些情况与解决方案做一个简单分享。</p>
+</div>
+<span class="right-quote" id="brief-right-quote" style="display: block; bottom: 208.011px;"></span>
+</div>
+</div>
+<div class="place_holder" style="height: 15%"></div>
+</div>
+</div>
+<div class="step-item-container" id="step-item-1">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-item-textimg-inner clearfix" style="height:82%">
+<section class="step-text-container left">
+<header>
+<h3 class="step-item-header">
+<span class="current-order-in-step">1</span>/6
+</h3>
+</header>
+<div class="step-text-wrapper img-text-area" texttype="img-text-area" id="step-text-wrapper-1">
+<p>1.调出开发人员选项，选择USB调试：</p><p>1)较新版本的Android系统默认在设置是不显示开发人员选项的，因此进入设置-&gt;关于手机-&gt;多次点击版本号(一定次数之后设置中出现开发人员选项)；开发人员选择出现之后就无需再设置了。</p>
+</div>
+</section>
+<section class="step-img-container left">
+<div class="step-img-wrapper step-two-img step-two-img-top" steptype="step-two-img" imgloaded="2" style="height: 270.753px;">
+<div class="img-cover" style="height: 636px; width: 360px; margin-top: -183px;">
+<div class="inner-img-cover" data-src="906289dda144ad34e60f3f34d3a20cf430ad8596" style="height: 636px; width: 360px;"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/1b4c510fd9f9d72adfd4a8aed72a2834359bbbd5.jpg" data-src="http://h.hiphotos.baidu.com/exp/w=480/sign=c479875261d9f2d3201125e799ed8a53/1b4c510fd9f9d72adfd4a8aed72a2834359bbbd5.jpg" _height="636" _width="360"></div>
+</div>
+<div class="step-img-wrapper step-two-img" steptype="step-two-img" imgloaded="2" style="height: 270.753px;">
+<div class="img-cover" style="height: 853px; width: 480px; margin-top: -291.5px;">
+<div class="inner-img-cover" data-src="27d647ee3d6d55fb35dcce956e224f4a20a4dd28" style="height: 853px; width: 480px;"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/a08b87d6277f9e2f802fa5bb1c30e924b899f36f.jpg" data-src="http://h.hiphotos.baidu.com/exp/w=480/sign=566420c8d21373f0f53f6e97940e4b8b/a08b87d6277f9e2f802fa5bb1c30e924b899f36f.jpg" _height="853" _width="480"></div>
+</div>
+</section>
+</div>
+<div class="place_holder" style="height: 9%"></div>
+</div>
+<div class="step-item-container" id="step-item-2">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-item-textimg-inner clearfix" style="height:82%">
+<section class="step-text-container left">
+<header>
+<h3 class="step-item-header">
+<span class="current-order-in-step">2</span>/6
+</h3>
+</header>
+<div class="step-text-wrapper img-text-area" texttype="img-text-area" id="step-text-wrapper-2">
+<p>2)设置-&gt;开发人员选项(开启)-&gt;选择USB调试，之后一般会出现允许连接调试和安装调试证书的选项，都选择是。</p><p>大部分情况下到这个时候Eclipse开发环境就能够识别手机并可以进行软件的编译下载安装与调试。</p>
+</div>
+</section>
+<section class="step-img-container left">
+<div class="step-img-wrapper step-two-img step-two-img-top" steptype="step-two-img" imgloaded="2" style="height: 270.753px;">
+<div class="img-cover" style="height: 629px; width: 352px; margin-top: -179.5px;">
+<div class="inner-img-cover" data-src="d041a4a1cd11728b5f4f3491cbfcc3cec2fd2ce7" style="height: 629px; width: 352px;"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/d009b3de9c82d158d4e0e102830a19d8bc3e4226.jpg" data-src="http://a.hiphotos.baidu.com/exp/w=480/sign=215eacbcbb0e7bec23da02e91f2fb9fa/d009b3de9c82d158d4e0e102830a19d8bc3e4226.jpg" _height="629" _width="352"></div>
+</div>
+<div class="step-img-wrapper step-two-img" steptype="step-two-img" imgloaded="2" style="height: 270.753px;">
+<div class="img-cover" style="height: 641px; width: 361px; margin-top: -185.5px;">
+<div class="inner-img-cover" data-src="91138622720e0cf345edf6480946f21fbe09aa28" style="height: 641px; width: 361px;"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/6f061d950a7b0208e9d3875261d9f2d3572cc86f.jpg" data-src="http://c.hiphotos.baidu.com/exp/w=480/sign=ead77ab5acc379317d688721dbc5b784/6f061d950a7b0208e9d3875261d9f2d3572cc86f.jpg" _height="641" _width="361"></div>
+</div>
+</section>
+</div>
+<div class="place_holder" style="height: 9%"></div>
+</div>
+<div class="step-item-container" id="step-item-3">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-item-textimg-inner clearfix" style="height:82%">
+<section class="step-text-container left">
+<header>
+<h3 class="step-item-header">
+<span class="current-order-in-step">3</span>/6
+</h3>
+</header>
+<div class="step-text-wrapper img-text-area" texttype="img-text-area" id="step-text-wrapper-3">
+<p>3)USB连接方式需要选择正确，如下图四个选项中，只有选中PC助手方式，才可以被电脑和开发环境识别。</p>
+</div>
+</section>
+<section class="step-img-container left">
+<div class="step-img-wrapper step-one-img" steptype="step-one-img" imgloaded="0" style="height: 560.962px;">
+<div class="img-cover">
+<div class="inner-img-cover" data-src="ac754782b2b7d0a2ae419a33ceef76094a369a51"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/exp_loading.gif" data-src="http://c.hiphotos.baidu.com/exp/w=480/sign=5066fcb214dfa9ecfd2e571f52d1f754/d62a6059252dd42a8a819f05063b5bb5c8eab890.jpg"></div>
+</div>
+</section>
+</div>
+<div class="place_holder" style="height: 9%"></div>
+</div>
+<div class="step-item-container" id="step-item-4">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-item-textimg-inner clearfix" style="height:82%">
+<section class="step-text-container left">
+<header>
+<h3 class="step-item-header">
+<span class="current-order-in-step">4</span>/6
+</h3>
+</header>
+<div class="step-text-wrapper img-text-area" texttype="img-text-area" id="step-text-wrapper-4">
+<p>2.如果还不能识别有的时候是将Android设备与PC机通过USB接口相连时未能正确，可以尝试使用刷机软件如甜椒刷机助手，启动软件后连接Android设备，如果设备没有正确安装或者驱动程序版本不正确，它会自动下载和安装合适的驱动程序</p>
+</div>
+</section>
+<section class="step-img-container left">
+<div class="step-img-wrapper step-two-img step-two-img-top" steptype="step-two-img" imgloaded="0" style="height: 270.753px;">
+<div class="img-cover">
+<div class="inner-img-cover" data-src="78701455b319ebc4f91bce2a8126cffc1f1716e6"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/exp_loading.gif" data-src="http://g.hiphotos.baidu.com/exp/w=480/sign=e68d709c4234970a47731127a5cbd1c0/b7fd5266d0160924e5461aa8d70735fae6cd3425.jpg"></div>
+</div>
+<div class="step-img-wrapper step-two-img" steptype="step-two-img" imgloaded="0" style="height: 270.753px;">
+<div class="img-cover">
+<div class="inner-img-cover" data-src="34bbf8cd7b899e5138ed82a741a7d933c9950de6"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/exp_loading.gif" data-src="http://h.hiphotos.baidu.com/exp/w=480/sign=6b3eb92b5ddf8db1bc2e7d6c3922dddb/bba1cd11728b47108e4c457fc0cec3fdfc032325.jpg"></div>
+</div>
+</section>
+</div>
+<div class="place_holder" style="height: 9%"></div>
+</div>
+<div class="step-item-container" id="step-item-5">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-item-textimg-inner clearfix" style="height:82%">
+<section class="step-text-container left">
+<header>
+<h3 class="step-item-header">
+<span class="current-order-in-step">5</span>/6
+</h3>
+</header>
+<div class="step-text-wrapper img-text-area" texttype="img-text-area" id="step-text-wrapper-5">
+<p>3.还有就是Manifest.xml中minSdkVersion的的API level不能高于设备上Android系统版本对应的API level。如下图，对应于Android4.4.2对应的API 19，如果minSdkVersion&gt;=20,则Android Device Chooser中无法显示设备</p>
+</div>
+</section>
+<section class="step-img-container left">
+<div class="step-img-wrapper step-one-img" steptype="step-one-img" imgloaded="0" style="height: 560.962px;">
+<div class="img-cover">
+<div class="inner-img-cover" data-src="566d0fdfa9ec8a131f00ef53f403918fa0ecc028"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/exp_loading.gif" data-src="http://e.hiphotos.baidu.com/exp/w=480/sign=eb0c598436fae6cd0cb4aa693fb20f9e/b21bb051f81986184a5d573749ed2e738bd4e66f.jpg"></div>
+</div>
+</section>
+</div>
+<div class="place_holder" style="height: 9%"></div>
+</div>
+<div class="step-item-container" id="step-item-6">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-item-textimg-inner clearfix" style="height:82%">
+<section class="step-text-container left">
+<header>
+<h3 class="step-item-header">
+<span class="current-order-in-step">6</span>/6
+</h3>
+</header>
+<div class="step-text-wrapper img-text-area" texttype="img-text-area" id="step-text-wrapper-6">
+<p>4.还有Eclipse开发环境通过adb连接调试Android设备，有一些刷机软件也会运行adb程序，造成与开发环境的adb调试器冲突，需要关闭刷机软件，杀死所有adb进程重启开发环境。</p>
+</div>
+</section>
+<section class="step-img-container left">
+<div class="step-img-wrapper step-one-img" steptype="step-one-img" imgloaded="0" style="height: 560.962px;">
+<div class="img-cover">
+<div class="inner-img-cover" data-src="8b527d2762d0f703eacd316f0bfa513d2797c5c3"></div>
+<img src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/exp_loading.gif" data-src="http://d.hiphotos.baidu.com/exp/w=480/sign=9d8fea0a9d510fb37819769fe932c893/8718367adab44aed55311a57b01c8701a18bfb02.jpg"></div>
+</div>
+</section>
+</div>
+<div class="place_holder" style="height: 9%"></div>
+</div>
+<div class="step-item-container step-item-recommand" id="step-item-7">
+<div class="place_holder" style="height:9%"></div>
+<div class="step-recommand-inner" style="height: 72%;">
+<div class="replay">
+<dl class="clearfix">
+<dt class="replay-img left">
+<a class="replay-img-container" href="javascript:;" id="replay-step-e">
+<img class="recommand-img" alt="Windows下Android开发不能连接真机进行调试" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/exp_loading.gif" data-src="http://h.hiphotos.baidu.com/exp/whcrop=160,120/sign=28502cc7ae345982c5dfb3d063840c9c/1b4c510fd9f9d72adfd4a8aed72a2834359bbbd5.jpg" width="160px" height="120px">
+<div class="img-border"></div>
+</a>
+</dt>
+<dd class="replay-title left">
+<h4>
+Windows下Android开发不能连接真机进行调试
+</h4>
+<a href="javascript:;" id="replay-step" class="replay-step">[重新阅读]</a>
+</dd>
+</dl>
+</div>
+<div class="recommand-list clearfix" id="recommend-list-container"></div>
+</div>
+<div class="place_holder" style="height: 14%"></div>
+</div>
+</div>
+</div>
+<div class="right-cover" id="right-cover" style="height: 762px; width: 508px;">
+<div class="next-arrow"></div>
+</div>
+</div>
+<script type="text/javascript">window.PDC && PDC.first_screen && PDC.first_screen();</script>
+</section></section><footer class="footer">
+<script>
+    void function(e,t){for(var n=t.getElementsByTagName("img"),a=+new Date,i=[],o=function(){this.removeEventListener&&this.removeEventListener("load",o,!1),i.push({img:this,time:+new Date})},s=0;s< n.length;s++)!function(){var e=n[s];e.addEventListener?!e.complete&&e.addEventListener("load",o,!1):e.attachEvent&&e.attachEvent("onreadystatechange",function(){"complete"==e.readyState&&o.call(e,o)})}();alog("speed.set",{fsItems:i,fs:a})}(window,document);
+</script>
+<div class="step-pager" id="step-pager">
+<ul id="step-pager-list" class="clearfix" style="width: 320px;"><li class="item step" style="display: block;"><a href="javascript:;" class="step-cover current" step-index="0">封</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="preview" data="1.调出开发人员选项，选择USB调试：1)较新版..." data-type="0" step-index="1">1</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="preview" data="2)设置-&gt;开发人员选项(开启)-&gt;..." data-type="0" step-index="2">2</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="preview" data="3)USB连接方式需要选择正确，如下图四个选项中..." data-type="0" step-index="3">3</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="preview" data="2.如果还不能识别有的时候是将Android设备..." data-type="0" step-index="4">4</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="preview" data="3.还有就是Manifest.xml中minSd..." data-type="0" step-index="5">5</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="preview" data="4.还有Eclipse开发环境通过adb连接调试..." data-type="0" step-index="6">6</a></li><li class="item step" style="display: block;"><a href="javascript:;" class="step-last" step-index="7">尾</a></li></ul>
+</div>
+</footer>
+<script type="text/javascript">
+    (function() {
+        //解决ie图片缓存闪烁问题
+        try {
+            document.execCommand("BackgroundImageCache", false, true);
+        } catch(err) {}
+    })();
+    //异步接口集
+    F.context({
+        //与个人相关
+        'submit_follow' : '/submit/follow',
+        'submit_vote' : '/submit/vote',
+        'submit_author' : '/submit/author',
+        'submit_user' : '/submit/user',
+        'submit_favor' : '/submit/favor',
+        'submit_notice' : '/submit/notice',
+        //公共的异步接口部分
+        'common_isLogin' : '/common/isLogin',
+        'common_isVersionExist' : '/common/isVersionExist',
+        'common_isTitleValid' : '/common/isTitleValid',
+        'common_needToTitle' : '/common/needToTitle',
+        'asyncreq' : '/asyncreq',
+        //评论相关
+        'cid' : '20',
+        'submit_comment' : '/submit/comment',
+        'submit_feedback' : '/submit/exp'
+    });
+</script>
+<script type="text/javascript">var pageId = "jy-album";</script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/monkey.jingyan.min.js"></script>
+<script>
+	if(typeof(alog) !== 'undefined'){
+    	alog('speed.set', 'drt', +new Date); 
+    }//请利用js框架在domreday时调用该代码，或在body的尾部
+</script>
+<script>
+    void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;if("https:"===a.location.protocol){if(d="https://gss2.bdstatic.com/70cFsjip0QIZ8tyhnq"+d,!k||!l)return}else d="http://img.baidu.com"+d;k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+</script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/common_sync_js_0_b9e45a9.js"></script>
+<script type="text/javascript">require.resourceMap({"res":{"common:widget/lib/tangram/fx/move/move.js":{"url":"http://exp.bdstatic.com/static/common/widget/lib/tangram/fx/move/move_4f6a3cf.js","pkg":"common:p1","deps":["common:widget/lib/tangram/base/base.js","common:widget/lib/tangram/fx/create/create.js"]},"common:widget/ui/red-bao/red-bao.js":{"url":"http://exp.bdstatic.com/static/common/widget/ui/red-bao/red-bao_5d7852c.js","pkg":"common:p11","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/dialog/dialog.js"]},"common:widget/lib/tangram/ui/Carousel/Carousel.js":{"url":"http://exp.bdstatic.com/static/common/widget/lib/tangram/ui/Carousel/Carousel_9ed0987.js","pkg":"common:p2","deps":["common:widget/lib/tangram/base/base.js","common:widget/lib/tangram/uiBase/uiBase.js"]},"activity:widget/ui/redbox/redbox.js":{"url":"http://exp.bdstatic.com/static/activity/widget/ui/redbox/redbox_58a8c80.js","pkg":"activity:p2","deps":["common:widget/lib/tangram/base/base.js","common:widget/ui/dialog/dialog.js"]},"common-jquery:widget/lib/jquery/jquery.js":{"url":"http://exp.bdstatic.com/static/common-jquery/widget/lib/jquery/jquery_250bf24.js","pkg":"common-jquery:p1"},"common-jquery:widget/js/util/event/event.js":{"url":"http://exp.bdstatic.com/static/common-jquery/widget/js/util/event/event_7282486.js","pkg":"common-jquery:p2","deps":["common-jquery:widget/lib/jquery/jquery.js"]},"common:widget/lib/tangram/base/base.js":{"url":"http://exp.bdstatic.com/static/common/widget/lib/tangram/base/base_e37cc01.js","pkg":"common:p0"}}});</script><script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/common_async_js_0_18c6036.js"></script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/common_sync_js_1_2e1ab46.js"></script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/common_sync_js_2_fa2e9a7.js"></script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/return_60f55cc.js"></script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/framework_93ed9d4.js"></script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/base_fa51adf.js"></script>
+<script type="text/javascript" src="./Windows下Android开发不能连接真机进行调试_手机软件_百度经验_files/step_0b169d5.js"></script>
+<script type="text/javascript">!function(){require.async("common:widget/baidu-tongji/baidu-tongji.js", function(B){ B.init('28782546954312616136'); });}();
+!function(){    require.async('step:widget/ui/brand-ads/brand-ads.js',function(ad_log){
+        ad_log.init('');
+    });
+}();
+!function(){	        F.context('expGroup', 'G3');
+    	require.async(["common:widget/lib/tangram/base/base.js", "step:widget/pager/pager.js"], function(T, pager){
+	    T.dom.ready(function(){
+	        pager.init(0);
+	    });
+
+	            T.sio.callByBrowser('http://ecmb.bdimg.com/public03/expglobal/loader.js', function(){
+            ecom.ma.expLoader.load('album', function(){});
+        });
+        	});
+	}();
+!function(){        if(typeof PDC != 'undefined'){
+            PDC.init({
+                is_login   : 0,
+                sample     : 1,
+                product_id : 132,
+                page_id    : 3
+            });
+        }
+        F.context({
+            //请求地址
+            "common":'/common',
+            "uoper": '/uoperation',
+            "edit": '/edit/',
+            "logo": 'http://img.baidu.com/img/iknow/exp/logo_uui.jpg',
+            "comment": '/comment/',
+            "hi": 'http://hiphotos.baidu.com/exp/abpic/item/',//空间缩略图片地址
+            "hiori": 'http://hiphotos.baidu.com/exp/pic/item/',//空间图片地址
+            "ucFollowing": '/user/nuc/following',
+            "ucFavorexp": '/user/nuc/favorexp',
+            "title": 'Windows下Android开发不能连接真机进行调试',
+            "isLogin" : 0,
+            "username": '',
+            "writerId": '',
+            "maxFollowVote": 9999999,
+            "eid": '851fbc37cce3213e1e15ab5a',
+            "isFavor":0,
+            "expFavorNum": 8,
+            "feedbackSuc": 1,
+            "MAX_SUC_FAIL_TIMES": 999999,
+            "stepPic": {"amount":9,"stepPic":[{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/906289dda144ad34e60f3f34d3a20cf430ad8596.jpg","stepIndex":1,"picIndex":1,"picIndexInStep":1,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/27d647ee3d6d55fb35dcce956e224f4a20a4dd28.jpg","stepIndex":1,"picIndex":2,"picIndexInStep":2,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/d041a4a1cd11728b5f4f3491cbfcc3cec2fd2ce7.jpg","stepIndex":2,"picIndex":3,"picIndexInStep":1,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/91138622720e0cf345edf6480946f21fbe09aa28.jpg","stepIndex":2,"picIndex":4,"picIndexInStep":2,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/ac754782b2b7d0a2ae419a33ceef76094a369a51.jpg","stepIndex":3,"picIndex":5,"picIndexInStep":1,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/78701455b319ebc4f91bce2a8126cffc1f1716e6.jpg","stepIndex":4,"picIndex":6,"picIndexInStep":1,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/34bbf8cd7b899e5138ed82a741a7d933c9950de6.jpg","stepIndex":4,"picIndex":7,"picIndexInStep":2,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/566d0fdfa9ec8a131f00ef53f403918fa0ecc028.jpg","stepIndex":5,"picIndex":8,"picIndexInStep":1,"type":"step"},{"src":"http:\/\/hiphotos.baidu.com\/exp\/pic\/item\/8b527d2762d0f703eacd316f0bfa513d2797c5c3.jpg","stepIndex":6,"picIndex":9,"picIndexInStep":1,"type":"step"}]},
+            "BdStoken" : "d6909b28a439e7da9d3d032c642aece5",
+            "bdstt" : "1464333457",
+            'typeId': 2016
+        });
+        require.async(["common:widget/lib/tangram/base/base.js", "step:widget/ui/adjust-size/adjust-size.js", "step:widget/ui/step-album/step-album.js", "step:widget/ui/vote-favor/vote-favor.js", "step:widget/ui/user-guide/user-guide.js", "common:widget/ui/log/log.js"], function(T, adjustSize, stepAlbum, header, userGuide, log){
+            T.dom.ready(function(){
+                if(T.browser.ie && T.browser.ie == 6){
+                    T.dom.setStyle("waiting-step-loading", "height", T.page.getViewHeight()-75);
+                }
+                if(F.context('isBrandAd')){
+                    adjustSize.init({
+                        'img-text-area-withhead':{
+                            height: 360,
+                            width:270,
+                            spaceHeight:107
+                        }
+                    });
+                }else{
+                    adjustSize.init();
+                }
+                
+                adjustSize.resize(1);
+                T.hide("waiting-step-loading");
+                T.on(window, "resize", function(){
+                    adjustSize.resize();
+                });
+                userGuide.init();
+                stepAlbum.init();
+                header.init("vote-btn", "favor-btn", F.context("isFavor"));
+
+                log.init({
+                    query : 'a',        //需要绑定的标签元素，可选，默认为a标签
+                    evtType : 'click',   //鼠标事件定义，可选，默认是click
+                    type: F.context('typeId'),
+                    page: 'step'
+                });
+
+                //左侧推广位
+                /*LeftPromotion.init({
+                    imgSrc: 'http://jingyan.baidu.com/event/img/hb92X240.gif',
+                    url: 'http://jingyan.baidu.com/activity/hongbao201411?fr=step',
+                    target: 'step-play-container'
+                });*/
+            });
+        });
+
+    }();</script>
+<script> var _trace_page_logid = 1057539298; </script></body></html>
