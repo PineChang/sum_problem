@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://www.zhetao.com/content240 -->
+<html><style type="text/css" id="4362679000"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<title>如何区分Oracle的数据库，实例，服务名，SID</title>
+<meta name="Keywords" content="如何区分Oracle的数据库，实例，服务名，SID">
+<meta name="Description" content="如何区分Oracle的数据库，实例，服务名，SID">
+<meta name="Author" content="上海哲涛网络科技">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<link rel="stylesheet" type="text/css" href="./如何区分Oracle的数据库，实例，服务名，SID_files/default.css">
+<link rel="stylesheet" type="text/css" href="./如何区分Oracle的数据库，实例，服务名，SID_files/default(1).css">
+<link href="./如何区分Oracle的数据库，实例，服务名，SID_files/style.css" rel="stylesheet" type="text/css" media="all">
+
+<script type="text/javascript" async="" src="./如何区分Oracle的数据库，实例，服务名，SID_files/insideText.js"></script><script type="text/javascript" async="" src="./如何区分Oracle的数据库，实例，服务名，SID_files/dcim"></script><script type="text/javascript" async="" src="./如何区分Oracle的数据库，实例，服务名，SID_files/dcim(1)"></script><script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/verip1.0.js"></script><link type="text/css" rel="stylesheet" href="./如何区分Oracle的数据库，实例，服务名，SID_files/webui.v.1.0.css"><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/lang_gbk.js" language="javascript" charset="utf-8"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/zt.core.v.1.0.js" language="javascript"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/zt.ui.v.1.0.js" language="javascript"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/ztxmenu.js" language="javascript"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/calendar.js" language="javascript"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/omsnavmenu.js" language="javascript"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/g.js" language="javascript"></script><script src="./如何区分Oracle的数据库，实例，服务名，SID_files/zt.uiwin.1.0.js" language="javascript"></script>
+<script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/cms.js"></script>
+<script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/zt.player.js"></script>
+<script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/zt.js"></script>
+<script type="text/javascript">_depMenu.offtop = 41;_depMenu.minWidth = 97;_depMenu.offleft = -10;_depMenu.showType = 0;_depMenu.appendWidth=0;</script>
+<style type="text/css">
+.camera_thumb{width:140px;height:50px;overflow:hidden}
+.fixednav{display: none;position: fixed;height: 60px;width: 100%;z-index: 9;top: -60px;left: 0;background: #fff;opacity: 0.975 ! important;filter:alpha(opacity=0.975) ! important;}
+#productnavfixed{display: none;position: fixed;height: 70px;margin:0 auto;width: 100%;z-index: 10;top: -60px;left: 0;background:#ddd;opacity: 0.975 ! important;filter:alpha(opacity=0.975) ! important;}
+#productnavfixed .cms_frame_tabs{margin:0 auto;}
+.logintosum, .logintosum:visited, .logintosum:link{background:#D63B37;color:#fff;font-size:12px;border:1px solid #f00; border-radius:5px;padding-left:10px;padding-right:10px;padding-top:0;}
+.logintosum:hover{background:#fff;color:#D63B37}
+.sharedicons a img{margin-top:2px;display:block}
+/* style="font-size:12px;border:1px solid #f00; border-radius:5px;padding-left:10px;padding-right:10px;"*/
+.bodyresponse600{
+	
+}
+.cms_frame_left_menus{display:none}
+.bodyresponse600 .top-grid, .bodyresponse600 .cms_allitem_block, .bodyresponse600 .cms_allitem_block .cms_iteminner{clear:both;width:100%;}
+.bodyresponse600 .mid-grid, .bodyresponse600 .artblock{clear:both;width:100%;}
+.bodyresponse600 .gallery, .bodyresponse600 .gallery li, .bodyresponse600 .terminals{clear:both;width:100%;}
+.bodyresponse600 .cms_frame_left{display:none}
+.bodyresponse600 .cms_frame_right{width:100%;clear:both}
+
+.bodyresponse600 .cms_frame_left_menus{display:block;clear:both;text-align:left}
+.bodyresponse600 .wrap{width:95%}
+.bodyresponse600 .cdir{display:none}
+.bodyresponse600 .ptextcontent, .bodyresponse600 .cms_gwidth{width:100%;clear:both}
+
+.bodyresponse600 .header{height:auto}
+.bodyresponse600 .header .wrap{width:100%;}
+.bodyresponse600 .top-nav{clear:both;width:100%;float:none;text-align:left;padding:0;margin:10px;overflow:hidden;}
+.bodyresponse600 .top-nav ul{float:left;padding-top:10px;}
+.bodyresponse600 .top-nav li{float:left;width:25%;height:40px;overflow:hidden;text-align:center;padding:0;}
+.bodyresponse600 .top-nav li a{padding:10px;padding-left:5px;padding-right:5px;line-height:170%;}
+.bodyresponse600 .logocon{width:90%;margin:0px auto;margin-left:10px;display:none}
+
+.bodyresponse600 .cms_frame_tabs{height:auto;}
+.bodyresponse600 .cms_tabs{clear:both}
+.bodyresponse600 .cms_tab{height:35px;line-height:35px;}
+
+.bodyresponse600 .header{border-top:5px solid #D63B37}
+.bodyresponse600 .top-grids{margin:1em 0;}
+.bodyresponse600 .top-grid{margin-top:20px;}
+.bodyresponse600 .isum_packtable{width:100%;}
+.bodyresponse600 .isum_packtable td{display:block;clear:both;padding-top:20px;overflow:hidden}
+
+.bodyresponse600 #try_apply_data td{text-align:left;display:block;clear:both;padding:5px;overflow:hidden}
+.bodyresponse600 #online_apply_data td{text-align:left;display:block;clear:both;padding:5px;overflow:hidden}
+
+.bodyresponse600 .gallery img{width:100%;margin-top:10px;}
+
+.facemainbg{background:#D63B37}
+.facemaincc{color:#D63B37}
+.facemainfc{color:#313232}
+.facemainfw{color:#fff}
+</style> 
+<script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/jquery.min.js"></script>
+<script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/jquery.easing.1.3.js"></script> 
+
+<script type="text/javascript">
+function fixedNavBar($){
+	$(document).scroll(function(){
+		var scrollTop = $(document).scrollTop();
+		var pf = zt.g("productnavfixed");
+		 var w = zt.w();
+		 if(w <= 800)return;
+		if(scrollTop > 200)
+		{
+			if(pf){
+				$('#productnavfixed').css({display:'block'}).stop().animate({'opacity':'1',top:0},300);
+			}
+			else{
+				$('.fixednav').css({display:'block'}).stop().animate({'opacity':'1',top:0},300);
+			}
+		}
+		else
+		{
+			if(pf){
+				$('#productnavfixed').css({display:'none'}).stop().animate({'opacity':'0',top:"-60px"},300);
+			}
+			else{
+				$('.fixednav').css({display:'none'}).stop().animate({'opacity':'0',top:"-60px"},300);
+			}
+		}
+	});
+}
+
+function ResponseWidth()
+{
+	 var w = zt.w();
+	 var waaobj = null;
+	 try{
+		waaobj = waa_style ? waa_style.obj : null;
+	 }catch(xc){}
+		if(w <= 800){
+			document.body.className = "bodyresponse600";
+			if(waaobj)waaobj.style.display = "none";
+			try{jQuery(".bdshare-slide-button-box").css({"display":"none"});}catch(xc){}
+		}else{
+			document.body.className = "";
+			if(waaobj)waaobj.style.display = "block";
+			try{jQuery(".bdshare-slide-button-box").css({"display":"block"});}catch(xc){}
+		}
+}
+jQuery(document).ready(function($) {
+	
+	try{
+		ResponseWidth();
+		setTimeout(ResponseWidth, 1000);
+	}catch(xc){}
+	$(".scroll").click(function(event){		
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+	});
+	try{
+		fixedNavBar($);
+	}catch(xcd){}
+	
+	$(window).resize(function() {
+       ResponseWidth();
+    });
+});
+zt.addevent("load", function(){
+	var pid = "43";
+	var ppid = "23";
+	var pppid = "12";
+	var ppppid = "0";
+	
+	if(pid == "")
+	{
+		pid = "43";
+		ppid = "23";
+		pppid = "12";
+		ppppid = "0";
+	}
+	
+	//verip_cmscat_
+	if(pid != "")
+	{
+		var ids = ["verip_cmscat_"+pid, "verip_cmscat_"+ppid, "verip_cmscat_"+pppid, "verip_cmscat_"+ppppid];
+		for(var i = 0; i < ids.length ;i ++)
+		{
+			var o = zt.g("top_nav_" + ids[i]);
+			if(o){
+				if(o.className != "active"){
+					o.className = "active";
+					o = zt.g("float_nav_" + ids[i]);
+					if(o)o.className = "active";
+					return;
+				}else{
+					return;
+				}
+			}
+		}
+	}
+});
+</script>
+				
+<script src="./如何区分Oracle的数据库，实例，服务名，SID_files/share.js"></script><link rel="stylesheet" href="./如何区分Oracle的数据库，实例，服务名，SID_files/slide_share.css"></head>
+
+<body class=""><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;"><iframe id="BAIDU_DUP_fp_iframe" src="./如何区分Oracle的数据库，实例，服务名，SID_files/o.html" style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe></div>
+<div id="alltopblock" style="overflow:hidden">
+<div style="background:#313232;margin:0 auto;overflow:hidden;clear:both"><div class="wrap">
+  <div class="top-links" id="top">
+          
+          <div style="text-align:right;padding:5px;overflow:hidden" id="sharedicons">
+          <a href="https://sum.zhetao.com/" class="logintosum" target="_blank">登录在线监控平台</a>
+          <a href="http://weibo.com/zhetaosum" target="_blank" title="哲涛官方微博"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/weibo16x16r.png" align="absmiddle" alt="哲涛官方微博" border="0"> </a>
+<a href="http://t.qq.com/zhetao-sum" target="_blank" title="哲涛QQ微博"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/t16.png" align="absmiddle" alt="哲涛QQ微博" border="0"> </a>
+<a href="http://t.qq.com/zhetao-sum" target="_blank" title="哲涛微信"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/w16.png" align="absmiddle" alt="哲涛微信" border="0"> </a>
+	
+          </div>
+          <div class="clear"> </div>
+      </div>
+</div></div>
+  <div class="header" style="clear:both">
+      <div class="wrap">
+      <div class="logocon">
+          <div class="logo">
+              <a href="http://www.zhetao.com/index.oms"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/logo2016.png" title="logo"></a>
+          </div>
+      </div>
+      <div class="top-nav">
+          <ul> <li id="top_nav_index" class="ive"><a href="http://www.zhetao.com/" target="_self" class="">首页</a></li>
+          <li id="top_nav_verip_cmscat_2_8" class="ive"><a href="http://www.zhetao.com/list8" target="_self" class="">服务器监控软件</a></li>
+          
+              <li id="top_nav_verip_cmscat_31" class="ive"><a href="http://www.zhetao.com/list31" class="">在线监控</a></li>
+          
+              <li id="top_nav_verip_cmscat_20" class="ive"><a href="http://www.zhetao.com/list20" class="">试用中心</a></li>
+          <li id="top_nav_verip_cmscat_9" class="ive"><a href="http://www.zhetao.com/list9" target="_self" class="">解决方案</a></li>
+          
+              <li id="top_nav_verip_cmscat_21" class="ive"><a href="http://www.zhetao.com/list21" class="">典型案例</a></li>
+          
+              <li id="top_nav_verip_cmscat_12" class="active"><a href="http://www.zhetao.com/list12" class="">知识库</a></li>
+          
+              <li id="top_nav_verip_cmscat_6" class="ive"><a href="http://www.zhetao.com/list6" class="">联系我们</a></li>
+          
+              <li id="top_nav_verip_cmscat_90" class="ive"><a href="http://www.zhetao.com/list90" class="">工具</a></li>
+          
+              
+              <div class="clear"> </div>
+          </ul>
+      </div>
+      <div class="clear"> </div>
+  </div>
+  <!---End-header---->
+</div>
+</div>
+
+<div class="cms_container" id="cms_cintainer"><div class="cms_gwidth"><div class="cms_swidth">
+	
+    
+
+
+<div id="cms_frames" class="cms_frames lrframe">
+	<div class="cms_pageguides">
+<div class="cms_pageguide pageguides">
+	<div class="cms_guidetext">
+    <a href="http://www.zhetao.com/index.oms">首页</a> 
+     &gt;&gt; <a href="http://www.zhetao.com/list12">知识库</a> &gt;&gt; <a href="http://www.zhetao.com/list23">IT运维管理软件</a> &gt;&gt; <a href="http://www.zhetao.com/list43">Oracle配置管理技术</a>
+	</div>
+</div></div>
+    
+	<div class="cms_frame_left" id="cms_frame_left"><div class="cms_frame_left_inner" id="cms_frame_left_inner">
+    	
+
+
+
+
+
+<div class="cms_blocks">
+<div class="titlebar"><div class="txt"><a href="http://www.zhetao.com/list12">知识库</a></div></div>
+<ul class="lister">
+
+	<li class=""><a href="http://www.zhetao.com/list22">SUM服务器监控软件</a></li>
+    
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list28">SNMP配置</a></li>
+        
+            <li class="" style="padding-left:40px;"><a href="http://www.zhetao.com/list29">网络设备</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list61">SUM知识库</a></li>
+        
+	
+
+	<li class=""><a href="http://www.zhetao.com/list23">IT运维管理软件</a></li>
+    
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list41">Windows运维技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list42">Linux运维技术</a></li>
+        
+	
+		<li class="act" style="padding-left:25px;"><a href="http://www.zhetao.com/list43">Oracle配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list44">Tomcat配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list45">JBoss配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list46">WEB服务器架设</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list47">Resin配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list48">Weblogic配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list49">Websphere配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list59">IT运维管理知识</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list87">MySQL配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list105">APACHE配置管理技术</a></li>
+        
+	
+
+	<li class=""><a href="http://www.zhetao.com/list51">开发与编程</a></li>
+    
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list109">移动开发</a></li>
+        
+	
+
+	<li class=""><a href="http://www.zhetao.com/list60">行业动态</a></li>
+    
+
+
+</ul></div>
+
+
+        
+    </div></div>
+    <div class="cms_frame_right" id="cms_frame_right"><div class="cms_frame_right_inner" id="cms_frame_right_inner">
+    	              
+        <div class="cms_show">        	
+        	
+        	
+
+
+<div class="cmsarticle" id="cmsarticle">
+	<div class="article_title"><h1 class="txt">如何区分Oracle的数据库，实例，服务名，SID</h1></div>
+	<div class="article_info">类别：Oracle配置管理技术 阅读：22657 次 </div>
+    <div class="article_content" id="article_content">
+    	
+        <div style="float:right">
+   <script type="text/javascript">
+    /*300*250 创建于 2015-07-06*/
+    var cpro_id = "u2190976";
+</script>
+<script src="./如何区分Oracle的数据库，实例，服务名，SID_files/c.js" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u2190976_0"><iframe id="iframeu2190976_0" src="./如何区分Oracle的数据库，实例，服务名，SID_files/dcim.html" width="300" height="250" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true"></iframe></div>
+		</div>
+        
+    	<div class="blog_title" style="margin-bottom: 15px; font-family: Helvetica, Tahoma, Arial, sans-serif; font-size: 12px; line-height: 18px;"><h3><font color="#108ac6"><u>绝对清楚的区分数据库，实例，服务名，SID</u></font><em class="actions"></em></h3><ul class="blog_categories">在实际的开发应用中，关于Oracle数据库，经常听见有人说建立一个数据库，建立一个Instance，启动一个Instance之类的话。其实问他们什么是数据库，什么是Instance，很可能他们给的答案就是数据库就是Instance，Instance就是数据库啊，没有什么区别。</ul></div><div id="blog_content" class="blog_content" style="line-height: 1.8em; font-family: Helvetica, Tahoma, Arial, sans-serif;"><div><br>
+在这里，只能说虽然他们Oracle用了可能有了一定的经验，不过基础的概念还是不太清楚。<p>&nbsp;&nbsp;&nbsp; 什么是数据库，其实很简单，数据库就是存储数据的一种媒介。比如常用的文件就是一种，在Oracle10G中，数据的存储有好几种。第一种是文件形式，也就是在你的磁盘中创建一批文件，然后在这些文件中存储信息。第二种就是磁盘阵列形式，这个是什么意思呢，这个就是说明数据库不是存放为某个文件，而是把一个或者多个磁盘格式化成Oracle的一种格式了，等于整个磁盘就是存放Oracle数据库的，不能作为别的用途。这样的优点是存储性能高，因为不再借助别的文件格式了，而是把整个磁盘都成为Oracle最适应的文件系统格式。当然还可能有别的形式，比如网络什么的。不过我们最常用的还是文件格式的，在文件格式中，数据库指的就是那些数据文件，控制文件以及REDO文件等等一系列文件。</p><p>&nbsp;&nbsp;&nbsp; 而什么是Instance呢，Instance其实就是指的操作系统中一系列的进程以及为这些进程所分配的内存块。在Oracle中，我们可以新建一个Oracle的Instance，这个时候虽然有了进程还有SGA等一系列的内存快，但是这个时候并没有把数据库文件读取进来。所以只是一个实例，在后来，你可以通过命令手动或者自动地把数据库文件加载进我们的数据库Instance中，这个时候的数据库才可以让我们真正的开始访问操作。</p><p>&nbsp;&nbsp;&nbsp; 所以说，数据库的应用如果想实现，数据库和数据库Instance是缺一不可的，如果只有数据库的那些文件，那么，只能代表数据在这个文件中，但是我们无法直接进行操作。而如果只有数据库Instance，那么我们虽然可以急性操作，但是也不知道操作哪些数据，操作生成的数据也无法保存等等。所以，当一个Oracle Instance真正Load了一个Oracle Database了以后，数据库才可以被我们使用。</p><p>&nbsp;&nbsp;&nbsp; 在这里要注意一点的是，Oracle的实例在启动以后，只能load一次数据库，如果想把数据库与Instance断开，然后再重新挂在一个数据库Instance，那么就需要你首先把数据库Instance进程结束，然后重新建立这个instance的一个进程，再load另外一个数据库。否则肯定要抛除ORA-16169错误，说数据库已经被打开。因为一个数据库Instance在其生存期中最多只能load和打开一个instance.</p><p>&nbsp;</p><p>&nbsp;</p><table border="0"><tbody><tr><td><div class="cnt"><div>刚接触ORACLE的人肯定会对实例和数据库感到困惑，实例到底代表些什么？为什么会有这个概念的出现？</div><div>ORACLE实例 = 进程 + 进程所使用的内存(SGA)</div><div>实例是一个临时性的东西，你也可以认为它代表了数据库某一时刻的状态！</div><div>数据库 = 重做文件 + 控制文件 + 数据文件 + 临时文件</div><div>数据库是永久的，是一个文件的集合。</div><div>ORACLE实例和数据库之间的关系</div><div>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;临时性和永久性</div><div>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实例可以在没有数据文件的情况下单独启动 startup nomount , 通常没什么意义</div><div>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个实例在其生存期内只能装载(alter database mount)和打开(alter database open)一个数据库</div><div>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个数据库可被许多实例同时装载和打开(即RAC)，RAC环境中实例的作用能够得到充分的体现!<br>
+<br>
+下面对实例和数据库做详细的诠释：<br>
+<p style="margin-top: 4.5pt; text-indent: 20pt;">在Oracle领域中有两个词很容易混淆，这就是“实例”（instance）和“数据库”（database）。作为Oracle术语，这两个词的定义如下：</p><p class="a2" style="margin-top: 3.45pt;">&nbsp;数据库（database）：物理操作系统文件或磁盘（disk）的集合。使用Oracle 10<em>g</em>的自动存储管理（Automatic Storage Management，ASM）或RAW分区时，数据库可能不作为操作系统中单独的文件，但定义仍然不变。</p><p class="a2" style="margin-top: 0cm;">&nbsp;实例（instance）：一组Oracle后台进程/线程以及一个共享内存区，这些内存由同一个计算机上运行的线程/进程所共享。这里可以维护易失的、非持久性内容（有些可以刷新输出到磁盘）。就算没有磁盘存储，数据库实例也能存在。也许实例不能算是世界上最有用的事物，不过你完全可以把它想成是最有用的事物，这有助于对实例和数据库划清界线。</p><p style="margin-top: 3.45pt; text-indent: 20pt;">这两个词有时可互换使用，不过二者的概念完全不同。实例和数据库之间的关系是：数据库可以由多个实例装载和打开，而实例可以在任何时间点装载和打开一个数据库。实际上，准确地讲，实例在其整个生存期中最多能装载和打开一个数据库！稍后就会介绍这样的一个例子。</p><p style="margin-top: 3.45pt; text-indent: 20pt;">是不是更糊涂了？我们还会做进一步的解释，应该能帮助你搞清楚这些概念。实例就是一组操作系统进程（或者是一个多线程的进程）以及一些内存。这些进程可以操作数据库；而数据库只是一个文件集合（包括数据文件、临时文件、重做日志文件和控制文件）。在任何时刻，一个实例只能有一组相关的文件（与一个数据库关联）。大多数情况下，反过来也成立：一个数据库上只有一个实例对其进行操作。不过，Oracle的真正应用集群（Real Application Clusters，RAC）是一个例外，这是Oracle提供的一个选项，允许在集群环境中的多台计算机上操作，这样就可以有多台实例同时装载并打开一个数据库（位于一组共享物理磁盘上）。由此，我们可以同时从多台不同的计算机访问这个数据库。Oracle RAC能支持高度可用的系统，可用于构建可扩缩性极好的解决方案。</p></div></div></td></tr></tbody></table><p>&nbsp;</p><p>实例 就是治理相关库的内存结构的名字（由SGA、PGA、服务器进程、用户进程、后台进程等组成）</p><p>数据库 就是实际的磁盘上的文件（数据文件、日志文件、控制文件等），负责保存数据，但由对应的实例来操作它的数据</p><p>服务名 就是对外公布的名称，为网络监听服务</p><p>其实，在我们传统的概念里，数据库是一个统称的名字，在Oracle中，你可以把“数据库”理解成一个大概念，也要把它理解成一个小概念</p><p>&nbsp;</p><p>1、一个Oracle数据库系统中可以同时安装几个数据库，每一个数据库对应一个唯<br>
+一的实例，但是OPS系统除外，可以多个实例同时对一个数据库操作，称为并行服务<br>
+器</p><p>2、只是一个名字，SID即是INSTANCE_NAME，SERVICE_NAMES主要用在监听器中，<br>
+为了方便吧，有些是为了传统习惯的延续，有些是为了更方便的使用</p><p>3、NET EASY CONFIG操纵的应该是主机字符串，是为客户端服务的<br>
+一个数据库可以对外公布多个服务名（SERVICE_NAMES）<br>
+一个客户端也可以用多个主机字符串连接到同一个数据库服务器上</p><p>4、一个OS上可以装多个Oracle数据库（小的概念），每个库可以对外公布多个服<br>
+务名，都通过init.ora和listener.ora来实现</p><p><br>
+今天运气真好，竟碰到了高手。<br>
+我得抓紧时间。<br>
+那么再问：<br>
+假如按你的解释，主机字符串，数据库服务名，数据库别名应该是同一个概念吧？</p><p>不太一样</p><p>service_names是对外的服务名，是服务器端使用的，一个库可以设置多个对外服<br>
+务名，以实现不同的目的</p><p><br>
+“主机字符串”的叫法主要在SQL*Plus中使用，是在客户端使用，<br>
+“数据库别名”主要用在一些开发工具连接Oracle服务器时使用，是通俗叫法<br>
+还有像配置ODBC时的Data Source的Service Name，</p><p>它们都是一个道理，指向的都是客户端tnsnames.ora文件中的一小段文本</p><p>差不多明白了。<br>
+但我还要问：<br>
+1。在SQL/PLUS中的登陆中，用USER/PWD@***,那么，这个***是什么呢？是主机字<br>
+符串还是服务名呢？<br>
+2。在设置ODBC时的用户和密码是不是一定要是ORACLE中的合法用户和密码？<br>
+3。 若要向ORACLE代理商购买ORACLE，是以用户数来算钱的。<br>
+那么，这个“用户”跟我们在ORACLE中通过CREATE USER USERNAME IDENTIFIED&nbsp;<br>
+BY PASSWord创建的用户是一个概念吗？若不是一样的话，他们有什么区别？</p><p>还有，ORCLE是通过什么机制来控制用户的最大数量的？要是我买了8个用户的，我<br>
+能开12个用户吗？<br>
+能给我的EMAIL吗？</p><p>&nbsp;</p><p>1、主机字符串<br>
+2、是的，但不输也行，引用ODBC名时再给出也可以<br>
+3、不是，“用户数”指的是并发访问用户数<br>
+（我理解是同时间访问同一个内存地址的进程数）</p><p>买8个用户，建几十、上百个用户也没问题，只要峰值达不到并发数就可以了<br>
+（这里的用户数不是Oracle内部的自己建立的那种用户，应该是进程数）<br>
+（多台机器，每个Oracle内部用户多次调用，开多个进程）</p><p>&nbsp;</p><pre class="reply-text mb10">打个比方，你的名字叫小明，但是你有很多外号。你父母叫你小明，但是朋友都叫你的外号。
+
+这里你的父母就是oracle实例，小明就是sid，service name就是你的外号。
+
+sid用于实例区分各个数据库，service name用于外部链接。</pre></div><div><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;对于初接触Oracle&nbsp;数据库的人来讲，很容易混淆的两个概念即是Oracle&nbsp;实例和Oracle&nbsp;数据库。这两</p><p style="margin: 0cm 0cm 0pt;">概念不同于SQL sever下的实例与数据库，当然也有些相似之处。只是在SQL server我们根本不需要花费太</p><p style="margin: 0cm 0cm 0pt;">多的精力去搞清SQL实例和数据库，因为它简单易于理解。下面简要说明一下SQL实例、数据库，更多的是讲</p><p style="margin: 0cm 0cm 0pt;">述Oracle下的实例及数据库。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;</p><p style="margin: 0cm 0cm 0pt;">一、SQL server中的实例与数据库</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.SQL中的实例指的是一个SQL server服务器上仅有一个缺省实例。缺省实例名即为机器名ServerName</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(或IP)，如果在同一台机器上再安装SQL server，我们可以对实例命名如ServerName/InstanceName。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即一台SQL server服务器上可以存在多个不同的实例。一个实例下可以存在多个不同的数据库。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于不同实例下的数据库的访问，使用ServerName/InstanceName：PortNo即可实现访问，缺省实例</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为ServerName：PortNo。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.对不同的实例配置IP地址，相关的访问协议，端口等等。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.实例的可访问性需要启动该实例对应的相关服务。此处需要注意的是实例名和实例的服务名并不是相</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同的。缺省的实例的服务名为MSSQLSERVER，而命名实例的服务名为MSSQL$INSTANCE_NAME。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.实例的相关功能性的设置可以通过外围应用配置来实现。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.上述完成后，即可实现对数据库的访问。</p><p style="margin: 0cm 0cm 0pt;">二、Oracle&nbsp;实例</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个Oracle Server由一个Oracle实例和一个Oracle数据库组成。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即：Oracle Server = Oracle Instance + Oracle Database</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oracle实例</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包括了内存结构(SGA)和一系列后台进程(Background Process),两者合起来称为一个Oracle实例</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即：Oracle Instance = SGA + Background Process</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oracle内存结构</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包含系统全局区(SGA)和程序全局区(PGA)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即Oracle Memory Structures = SGA + PGA</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SGA由服务器和后台进程共享</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PGA包含单个服务器进程或单个后台进程的数据和控制信息,与几个进程共享的SGA&nbsp;正相反，PGA是</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只被一个进程使用的区域，PGA&nbsp;在创建进程时分配在终止进程时回收。即由服务器进程产生。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;1.SGA</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统全局区SGA，SGA =&nbsp;数据缓冲区+&nbsp;重做日志缓冲区+&nbsp;共享池+&nbsp;大池+ Java&nbsp;池+&nbsp;流池</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统全局区是动态的，由参数SGA＿MAX＿SIZE决定。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看当前系统的SGA大小：show parameter sga_max_size;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要修改：alter system set sga_max_size=1200m scope=spfile;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为实例内存的分配是在数据库启动时进行的，所以要让修改生效，要重启数据库。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORACLE 10G&nbsp;引入了ASMM（自动共享内存管理），DBA只需设置SGA＿TARGET，ORACLE就会</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自动的对共享池、JAVA池、大池、数据缓冲区、流池进行自动调配。取消自动调配就是</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sga_target设为。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据缓冲区(Database buffer cache):存储从数据文件中获得的数据块的镜像</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大小由db_cache_size&nbsp;决定</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看：show parameter db_cache_size;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置：alter system set db_cache_size=800M;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重做日志缓冲区(Redo log buffer):对数据库的任何修改都按顺序被记录在该缓冲，然后由LGWR进程将</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;它写入磁盘,大小由LOG＿BUFFER决定</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享池(Shared pool):是SGA中最关键的内存片段,共享池主要由库缓存(共享SQL区和PL/SQL区)和数据</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字典缓存组成，它的作用是存放频繁使用的sql，在有限的容量下，数据库系统根据一定的算法决</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定何时释放共享池中的sql。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库缓存大小由shared_pool_size&nbsp;决定</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看：show parameter shared_pool_size</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改：alter system set shared_pool_size=120m;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据字典缓存：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存储数据库中数据文件、表、索引、列、用户和其它数据对象的定义和权限信息</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大小由shared_pool_size&nbsp;决定，不能单独指定</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大池(Large pool):是一个可选的区域，用于一些大型的进程如Oracle的备份恢复操作、IO服务器进程等</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java&nbsp;池：该程序缓冲区就是为Java&nbsp;程序保留的。如果不用Java程序没有必要改变该缓冲区的默认大小</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流池(Stream pool)：被Oracle流所使用</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;2.PGA</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是为每个用户进程连接ORACLE数据库保留的内存</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程创建时分配，进程结束时释放，只能被一个进程使用</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PGA包括了以下几个结构：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（）排序区</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（）游标状态区</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（）会话信息区</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（）堆栈区</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由参数：pga_aggregate_target&nbsp;决定</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;3.几类进程：用户进程，服务器进程，后台进程，其它可选进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在用户连接数据库产生，请求oracle服务器连接，必须要先建立一个连接，不会直接和oracle服务器连接</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当连接实例并建立用户会话时产生，独立服务器或者提供共享服务器都能产生</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后台进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;维持物理和内存之间的联系，用来管理数据库的读写，恢复和监视等工作。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server Process主要是通过他和user process进行联系和沟通，并由他和user process进行数据的交换。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Unix机器上，Oracle后台进程相对于操作系统进程，也就是说，一个Oracle后台进程将启动一个操作</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统进程。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Windows机器上，Oracle后台进程相对于操作系统线程，打开任务管理器，我们只能看到一个</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORACLE.EXE的进程，但是通过另外的工具，就可以看到包含在这里进程中的线程。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;必须要有的后台进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBWn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;数据库写进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PMON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;程序监控进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SMON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;系统监控进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LGWr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;日志写进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CKPT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;检查点进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可选进程：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARCN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归档进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RECO</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Snnn</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnnn</p><p style="margin: 0cm 0cm 0pt;">&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBWn(数据库写进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;负责将修改过的数据块从数据库缓冲区高速缓存写入磁盘上的数据文件中</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写入条件：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发生检查点</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;脏缓存达到限制</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;没有自由的缓存</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超时发生</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表空间离线</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表空间只读</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表被删除或者截断</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始备份表空间</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以修改数据写进程的数量</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter system set db_writer_processes=3 scope=spfile;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PMON(程序监控进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清除失效的用户进程，释放用户进程所用的资源。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如PMON将回滚未提交的工作，释放锁，释放分配给失败进程的SGA资源。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清除失败的进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回滚事务</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;释放锁</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;释放其他资源</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SMON(系统监控进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检查数据库的一致性,当启动失败时完成灾难恢复等</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实列恢复时，前滚所有重做日志中的文件，打开数据库为了用户能访问，回滚未提交的事务，释放临时表空间</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清除临时空间，聚结空闲空间，从不可用的文件中恢复事务的活动，OPS中失败节点的实例恢复</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清除OBJ$表</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缩减回滚段</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使回滚段脱机</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LGWr(日志写进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将重做日志缓冲区中的更改写入在线重做日志文件</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;条件：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提交的时候（commit)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;达到／满</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每隔秒</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有大于M&nbsp;重做日志缓冲区未被写入磁盘</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBWR需要写入的数据的SCN号大于LGWR&nbsp;记录的SCN号，DBWR&nbsp;触发LGWR写入</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超时</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在dbwr进程些之前写日志</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CKPT(检查点进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBWR/LGWR的工作原理，造成了数据文件，日志文件，控制文件的不一致，CKPT进程负责同步数据文件，</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日志文件和控制文件</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CKPT会更新数据文件/控制文件的头信息</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;条件：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在日志切换的时候</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库用immediate&nbsp;，transaction&nbsp;，normal选项shutdown数据库的时候</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据初始话文件LOG_CHECKPOINT_INTERVAL、LOG_CHECKPOINT_TIMEOUT、FAST_START_IO_TARGET&nbsp;的设置的数值来确定</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户触发</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARCN(归档进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在每次日志切换时把已满的日志组进行备份或归档</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;条件：</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库以归档方式运行的时候</p><p style="margin: 0cm 0cm 0pt;">&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RECO</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;负责解决分布事物中的故障。Oracle可以连接远程的多个数据库，当由于网络问题，有些事物处于悬而未决的状态。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RECO进程试图建立与远程服务器的通信，当故障消除后，RECO进程自动解决所有悬而未决的会话。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server Process(服务进程)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分为专用服务进程(Dedicated Server Process)和共享服务进程(MultiTreaded Server Process)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专用服务进程：一个服务进程对应多个用户进程，轮流为用户进程服务。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户进程(User Process)、服务进程(Server Process)、后台进程(Background Processes)的启动</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户进程:&nbsp;数据库用户请求Oralce server会话时被启动</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务进程：当用户会话启动后，连接到Oracle实例时该进程被启动</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后台进程：当Oracle实例被启动时，启动相关的后台进程</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">三、Oracle&nbsp;数据库</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一系列物理文件的集合</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包括控制文件、数据文件、联机日志文件、参数文件、密码文件等&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即：Oracle Database = Controlfile + datafile + logfiel + spfile +..</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;1.控制文件(controlfile)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库的名字，检查点信息，数据库创建的时间戳</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有的数据文件，联机日志文件，归档日志文件信息</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备份信息等</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;2.数据文件(datafile)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包含了用户和应用程序的所有数据</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--查看数据文件信息</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;3.联机日志文件</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录了用户对数据库的所有操作，一个数据库中至少要有两个日志组文件，每个日志组中至少有一个日志成员</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日志组中的多个日志成员是互为镜相关系</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;4.归档日志文件</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oracle可以运行在两种模式之中，归档模式和非归档模式。在归档模式中，为了保存用户的所有修改，</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在联机日志文件切换后和被覆盖之间系统将他们另外保存成一组连续的文件系列，该文件系列就是归档日志文件。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户恢复意外情况出现的数据丢失、异常等。</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;5.参数文件(pfile和spfile)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initSID.ora或init.ora文件,通常位于：$ORACLE_BASE/admin/&lt;SID&gt;/pfile</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初始化文件记载了许多数据库的启动参数，如内存，控制文件，进程数等，在数据库启动的时候加载(Nomount时加载)</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;6.其他文件</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码文件：用于Oracle&nbsp;的具有sysdba权限用户的认证.</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;告警日志文件：报警日志文件(alert.log或alrt.ora），记录数据库启动，关闭和一些重要的出错信息</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看路径：select value from v$PARAMETER where name =‘background_dump_dest’;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;7.数据库逻辑组织结构</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表空间、段、区、块</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个数据库由一个或多个表空间组成，一个表空间只能属于一个数据库</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个表空间由一个或多个多个数据文件组成，一个数据文件只能属于一个表空间</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个数据文件由一个或多个操作系统块组成，每一个操作系统块只能数以一个数据文件</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个表空间可以包含一个或多个段，一个段只能属于一个表空间</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个段由一个或多个区组成，每一个区只能属于一个段</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个区由一个或多个Oracle&nbsp;块组成，每一个Oracle块只能属于一个区</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个区只能属于一个数据文件，数据文件的空间可以分配到一个或多个区</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个Oracle&nbsp;块由一个或多个操作系统块组成，一个操作系统块是一个Oracle块的一部分</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">四、Oracle实例和Oracle数据库的关系</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;1.一个实例能够装载及打开仅仅一个数据库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;2.一个数据库能够被多个实例装载并打开</p><p style="margin: 0cm 0cm 0pt;">&nbsp;&nbsp;&nbsp;&nbsp;3.实例与数据库的对应关系是一对一或多对一的关系</p></div></div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    /* 创建于 2015-07-14*/
+var cpro_id = "u2207099";
+</script>
+<script src="./如何区分Oracle的数据库，实例，服务名，SID_files/cnw.js" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u2207099_0"><script id="ScriptIdu2207099_0" src="./如何区分Oracle的数据库，实例，服务名，SID_files/dcim(2)" charset="utf-8"></script></div>
+
+        </div>
+        
+    </div></div>
+    
+    <div class="cms_frame_left_menus" id="cms_frame_left_menus"><div class="cms_frame_left_inner" id="cms_frame_left_innerx">
+    	
+
+
+
+
+
+<div class="cms_blocks">
+<div class="titlebar"><div class="txt"><a href="http://www.zhetao.com/list12">知识库</a></div></div>
+<ul class="lister">
+
+	<li class=""><a href="http://www.zhetao.com/list22">SUM服务器监控软件</a></li>
+    
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list28">SNMP配置</a></li>
+        
+            <li class="" style="padding-left:40px;"><a href="http://www.zhetao.com/list29">网络设备</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list61">SUM知识库</a></li>
+        
+	
+
+	<li class=""><a href="http://www.zhetao.com/list23">IT运维管理软件</a></li>
+    
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list41">Windows运维技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list42">Linux运维技术</a></li>
+        
+	
+		<li class="act" style="padding-left:25px;"><a href="http://www.zhetao.com/list43">Oracle配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list44">Tomcat配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list45">JBoss配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list46">WEB服务器架设</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list47">Resin配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list48">Weblogic配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list49">Websphere配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list59">IT运维管理知识</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list87">MySQL配置管理技术</a></li>
+        
+	
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list105">APACHE配置管理技术</a></li>
+        
+	
+
+	<li class=""><a href="http://www.zhetao.com/list51">开发与编程</a></li>
+    
+		<li class="" style="padding-left:25px;"><a href="http://www.zhetao.com/list109">移动开发</a></li>
+        
+	
+
+	<li class=""><a href="http://www.zhetao.com/list60">行业动态</a></li>
+    
+
+
+</ul></div>
+
+
+        
+    </div></div>
+    
+    <div class="clears"></div>
+    <div class="blanklines"></div>
+</div>	
+</div></div></div>
+
+
+<!---start-footer---->
+<div id="footerblank"></div>
+<div id="footerblocks">
+		 <div class="footer">
+		 	<div class="wrap">
+		 		<div class="footer-grid">
+		 			<h3><a href="http://www.zhetao.com/list1">关于我们</a></h3>
+		 			<ul>
+			 			
+                		<li><a href="http://www.zhetao.com/list50">公司介绍</a></li><li><a href="http://www.zhetao.com/list5">公司动态</a></li><li><a href="http://www.zhetao.com/list6">联系我们</a></li><li><a href="http://www.zhetao.com/list7">公司资质</a></li><li><a href="http://www.zhetao.com/list19">服务与支持</a></li>
+			 		</ul>
+		 		</div>
+		 		<div class="footer-grid footer-gridbig">
+		 			<h3><a name="lk">友情连接</a></h3>
+		 			<ul>
+                        
+                		<li><a href="http://www.zhetao.com/">哲涛科技</a></li>
+                		<li><a href="http://www.9553.com/" onclick="javascript:cms_count(&#39;460&#39;);" target="_blank">9553下载</a></li><li><a href="http://www.zhetao.com/vg.html" onclick="javascript:cms_count(&#39;456&#39;);" target="_blank">哲涛绘图(VG)</a></li><li><a href="http://api.verip.org/" onclick="javascript:cms_count(&#39;376&#39;);" target="_blank">Verip API</a></li><li><a href="https://www.zhetao.com/application.oms" onclick="javascript:cms_count(&#39;199&#39;);" target="_blank">后台管理</a></li><li><a href="http://www.zhetao.com/list74" onclick="javascript:cms_count(&#39;230&#39;);" target="_blank">网络工具</a></li><li><a href="http://posc.zhetao.com/" onclick="javascript:cms_count(&#39;217&#39;);" target="_blank">哲涛服务中心</a></li><li><a href="http://www.zhetao.com/list8" onclick="javascript:cms_count(&#39;180&#39;);" target="_blank">服务器监控</a></li><li><a href="http://www.zhetao.com/omscms.oms?omsv=list&cid=131" onclick="javascript:cms_count(&#39;194&#39;);" target="_blank">旧版服务器监控</a></li><li><a href="http://m.zhetao.com/" onclick="javascript:cms_count(&#39;183&#39;);" target="_blank">短信课堂答题</a></li><li><a href="http://oms.zhetao.com/phyvlab/" onclick="javascript:cms_count(&#39;182&#39;);" target="_blank">虚拟实验</a></li><li><a href="http://3d.phywork.cn/" onclick="javascript:cms_count(&#39;181&#39;);" target="_blank">哲涛3D</a></li><li><a href="http://www.duote.com/" onclick="javascript:cms_count(&#39;179&#39;);" target="_blank">软件下载</a></li><li><a href="http://tools.zhetao.com/" onclick="javascript:cms_count(&#39;177&#39;);" target="_blank">实用软件</a></li><li><a href="http://lx-lab.tongji.edu.cn/" onclick="javascript:cms_count(&#39;176&#39;);" target="_blank">同济力学实验中心</a></li><li><a href="http://cai.tongji.edu.cn/" onclick="javascript:cms_count(&#39;184&#39;);" target="_blank">同济物理</a></li>
+			 		</ul>
+		 		</div>
+		 		<div class="clear"> </div>
+		 	</div>
+		 </div>
+		 <!---End-footer---->
+		 <!---start-copy-right----->
+		 <div class="copy-right">
+				<div class="top-to-page">
+						<a href="http://www.zhetao.com/content240#top" class="scroll"> </a>
+						<div class="clear"> </div>
+					</div>
+					<p>
+                    	业务热线电话：(+86)021-52765253 021-61172807 &nbsp;&nbsp;&nbsp;&nbsp;
+         电子邮箱：sum@zhetao.com  sales@zhetao.com &nbsp;&nbsp;&nbsp;&nbsp;
+        上海哲涛网络科技有限公司版权所有 <font style="font-family:&#39;Times New Roman&#39;, Times, serif;font-weight:bold">©</font> 2005-2015 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        沪ICP备06058430-1号
+       
+                    </p>
+                    <p style="text-align:center">
+                     		 	</p><div style="width:300px;margin:0 auto; padding:20px 0;">
+		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302000898" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/ghs.png" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">沪公网安备 31011302000898号</p></a>
+		 	</div>
+		 
+                    <p></p>
+			</div>
+		 <!---End-copy-right---->
+</div>
+<script type="text/javascript" charset="gb2312" src="./如何区分Oracle的数据库，实例，服务名，SID_files/zt-web-tools-stat.js"></script>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"4","bdPos":"right","bdTop":"100"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+<script type="text/javascript"> 
+document.write('<s'+'c'+'ri'+'pt id="ZTWAAFloatWindows" type="text/javascript" charset="gb2312" src="http://waa.zhetao.com/waa/waaclient.js?pos=0&enpId=zhetao&offsetx=5&offsety=130&lang=newface&domain=zhetao.com&rd='+Math.random()+'"><'+'/s'+'cr'+'ipt>');
+</script><script id="ZTWAAFloatWindows" type="text/javascript" charset="gb2312" src="./如何区分Oracle的数据库，实例，服务名，SID_files/waaclient.js"></script><div id="zt_waa_web_shell"><script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/webchatcheck.demo"></script></div><div id="zt_waa_web_tip_bg" onselectstart="return false;" style="display: none; overflow: hidden; position: absolute; z-index: 2500; opacity: 0.5; left: 0px; top: 300px; width: 1063px; height: 760px; background-color: rgb(204, 204, 204);">&nbsp;</div><div id="zt_waa_web_tip" onselectstart="return false;" style="border: 2px solid rgb(255, 0, 0); border-radius: 20px; display: none; overflow: hidden; position: absolute; z-index: 2506; width: 400px; height: 150px; left: 336.5px; top: 510px; background: url(http://www.zhetao.com/content240) rgb(223, 223, 223);"><div style="width:100%;height:29px;overflow:hidden;cursor:move;" onmousedown="WAA_BeginTipDrag(this,event)" onmousemove="WAA_DragTipMove(this,event)" onmouseup="WAA_EndTipDrag(this,event)">&nbsp;</div><div style="float:left;margin-top:0px;width:100px;height:100px;overflow:hidden;margin-left:10px;"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/tiplogo.jpg" width="100" height="100"></div><div style="float:left;margin-top:0px;overflow:hidden;width:260px;height:100px;overflow:hidden;margin-left:10px;"><div id="zt_waa_web_tip_text" style="font-size:14px;width:260px;height:70px;overflow:hidden;text-align:left;line-height:25px;">来自 <span style="font-weight:bold;color:#800">上海市</span> 的朋友 您好，<span style="font-weight:bold;color:#00f">在线咨询</span> 邀请您加入咨询对话中。若现在参与对话，请点击"<b>接受</b>"；不参与对话，请点击"<b>稍候再说</b>"。</div><div id="zt_waa_buttons" style="text-align:right;width:260px;height:30px;overflow:hidden"><input type="button" onclick="waa_style.OnClick()" value="接受" id="zt_waa_botton_accept"> <input type="button" onclick="WAA_Pop_NoTip()" value="稍候再说"></div></div></div><div id="WAA_ZT_FLOAT_ID" onclick="waa_style.OnClick(event);" title="" style="z-index: 2500; cursor: pointer; width: 105px; height: 105px; display: block; overflow: hidden; position: absolute; left: 5px; top: 7596px;"><img id="WAA_ZT_FLOAT_IMG_ID" src="./如何区分Oracle的数据库，实例，服务名，SID_files/waa01.gif" width="105" height="105" align="absmiddle"></div>
+<script type="text/javascript" src="./如何区分Oracle的数据库，实例，服务名，SID_files/waasmallshell.js" charset="gb2312"></script><div id="zt_waa_small_button_shell" style="display:none;visiblity:hidden"></div>
+
+<div class="fixednav" style="display: block; opacity: 1; top: 0px;">
+    <div class="header">
+        <div class="wrap">
+        <div class="logocon">
+            <div class="logo">
+                <a href="http://www.zhetao.com/index.oms"><img src="./如何区分Oracle的数据库，实例，服务名，SID_files/logo.png" title="logo"></a>
+            </div>
+        </div>
+        <div class="top-nav">
+            <ul>
+                <li id="float_nav_index" class="ive"><a href="http://www.zhetao.com/" target="_self" class="">首页</a></li>
+            <li id="float_nav_verip_cmscat_2_8" class="ive"><a href="http://www.zhetao.com/list8" target="_self" class="">服务器监控软件</a></li>
+            
+                <li id="float_nav_verip_cmscat_31" class="ive"><a href="http://www.zhetao.com/list31" class="">在线监控</a></li>
+            
+                <li id="float_nav_verip_cmscat_20" class="ive"><a href="http://www.zhetao.com/list20" class="">试用中心</a></li>
+            <li id="float_nav_verip_cmscat_9" class="ive"><a href="http://www.zhetao.com/list9" target="_self" class="">解决方案</a></li>
+            
+                <li id="float_nav_verip_cmscat_21" class="ive"><a href="http://www.zhetao.com/list21" class="">典型案例</a></li>
+            
+                <li id="float_nav_verip_cmscat_12" class="active"><a href="http://www.zhetao.com/list12" class="">知识库</a></li>
+            
+                <li id="float_nav_verip_cmscat_6" class="ive"><a href="http://www.zhetao.com/list6" class="">联系我们</a></li>
+            
+                <li id="float_nav_verip_cmscat_90" class="ive"><a href="http://www.zhetao.com/list90" class="">工具</a></li>
+            
+                
+                <div class="clear"> </div>
+            </ul>
+        </div>
+        <div class="clear"> </div>
+    </div>
+    <!---End-header---->
+	</div>
+</div>
+
+
+
+
+
+<div class="bdshare-slide-button-box bdshare-slide-style-r4" style="top: 100px; width: 0px; z-index: 99999; right: 0px; display: block;" data-bd-bind="1466042289239"><a href="http://www.zhetao.com/content240#" onclick="return false;" class="bdshare-slide-button" style="left: -24px;"></a><div class="bdshare-slide-list-box" style="width: 0px; display: none;"><div class="bdshare-slide-top">分享到</div><div class="bdshare-slide-list"><ul class="bdshare-slide-list-ul" style="width: 226px;"></ul></div><div class="bdshare-slide-bottom" style="width: 226px;"><a href="http://www.zhetao.com/content240#" onclick="return false;" class="slide-more" data-cmd="more">更多...</a></div></div></div><div id="verip_auto_editbg" style="z-index: 100; position: absolute; opacity: 0.8; right: 0px; left: 0px; bottom: 0px; top: 0px; display: none; background: rgb(0, 0, 0);"></div></body></html>

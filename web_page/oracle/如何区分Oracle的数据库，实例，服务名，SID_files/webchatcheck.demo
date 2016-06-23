@@ -1,0 +1,25 @@
+
+var _SERVICE_ONLINE_COUNT = "1";
+var _SERVICE_NOTICE_XML = "";
+var _SERVICE_ONLINE_STATUS = "";
+var _SERVICE_ACT = "getsc";
+
+if("onlinetest" != _SERVICE_ACT)
+{
+	if(_ztwebshell)
+	{
+		if(_ztwebshell.ShellNotify)
+		{
+			_ztwebshell.ShellNotify("getsc", _SERVICE_ONLINE_COUNT, _SERVICE_NOTICE_XML);
+		}
+	}
+}else
+{
+	if(_ztwaasmallshell)
+	{
+		if(_ztwaasmallshell.ShellNotify)
+		{
+			_ztwaasmallshell.ShellNotify(_SERVICE_ONLINE_STATUS);
+		}
+	}
+}
