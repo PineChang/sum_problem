@@ -1,0 +1,534 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0037)http://www.jb51.net/article/29893.htm -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-CN"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="gb2312"> 
+<META name="applicable-device" content="pc"> 
+<META name="viewport" content="width=device-width, initial-scale=1"> 
+<META http-equiv="Cache-Control" content="no-siteapp"> 
+<META http-equiv="Cache-Control" content="no-transform"> <TITLE>JSON.stringify 
+语法实例讲解_json_脚本之家</TITLE> 
+<META http-equiv="X-UA-Compatible" content="IE=EDGE"> 
+<META name="keywords" content="JSON,stringify"> 
+<META name="description" content="可能有些人对系列化这个词过敏，我的理解很简单。就是说把原来是对象的类型转换成字符串类型（或者更确切的说是json类型的）。就这么简单。打个比方说，你有一个类，那么你可以通过这个方法转换成相应的json类型的"> 
+<LINK href="http://m.jb51.net/article/29893.htm" rel="alternate" media="only screen and(max-width: 640px)"> 
+<META http-equiv="mobile-agent" content="format=html5; url=http://m.jb51.net/article/29893.htm"> 
+<META http-equiv="mobile-agent" content="format=xhtml; url=http://m.jb51.net/article/29893.htm"> 
+<SCRIPT type="text/javascript">
+var tougao="mdxy-dxy";var lmname="JavaScript";var ourl="";
+(function(){var reWriteUrl=function(url){if(url){var Splits=url.split("/"),siteName=window.location.pathname;if(typeof siteName!=="undefined"){return"http://m.jb51.net"+siteName}}};if(/Android|webOS|iPhone|iPad|Windows Phone|iPod|BlackBerry|SymbianOS|Nokia|Mobile/i.test(navigator.userAgent)){var url=window.location.href;var pathname=window.location.pathname;if(url.indexOf("?pc")<0){try{window.location.href=reWriteUrl(url)}catch(e){}}}})();
+</SCRIPT>
+ <LINK href="JSON_stringify%20语法实例讲解_json_脚本之家_files/base.css" rel="stylesheet" 
+type="text/css"> <LINK href="JSON_stringify%20语法实例讲解_json_脚本之家_files/common.css" 
+rel="stylesheet" type="text/css"> 
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/jquery.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/base.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18349"></HEAD> 
+<BODY><!--head Star --> 
+<DIV id="head">
+<DIV class="toolBar">
+<DIV class="main"><!--topNav Star -->     
+<DIV class="topNav clearfix">
+<UL class="navList fl">
+  <LI>
+  <DIV class="one"><A href="http://www.jb51.net/" 
+  target="_blank">脚本之家</A></DIV></LI>
+  <LI>
+  <DIV class="one"><A href="http://www.jb51.net/softs/" target="_blank">软件下载<I 
+  class="icon"></I></A></DIV>
+  <DIV class="two"><A href="http://www.jb51.net/softs/android.html" target="_blank">android软件</A><A 
+  href="http://www.jb51.net/softs/mac.html" target="_blank">MAC软件</A><A href="http://www.jb51.net/qudong/" 
+  target="_blank">驱动下载</A><A href="http://www.jb51.net/fonts/" 
+  target="_blank">字体下载</A><A href="http://www.jb51.net/dll/" 
+  target="_blank">DLL下载</A></DIV></LI>
+  <LI>
+  <DIV class="one"><A href="http://www.jb51.net/codes/" target="_blank">源码下载<I 
+  class="icon"></I></A></DIV>
+  <DIV class="two"><A href="http://www.jb51.net/codes/asp.html" 
+  target="_blank">asp源码</A><A href="http://www.jb51.net/codes/php.html" target="_blank">php源码</A><A 
+  href="http://www.jb51.net/codes/aspnet.html" target="_blank">asp.net源码</A><A 
+  href="http://www.jb51.net/codes/jsp.html" target="_blank">jsp源码</A><A href="http://www.jb51.net/codes/editor.html" 
+  target="_blank">网页编辑器</A><A href="http://www.jb51.net/codes/list123_1.html" 
+  target="_blank">数据库管理</A><A href="http://www.jb51.net/codes/list124_1.html" 
+  target="_blank">常用组件</A><A href="http://www.jb51.net/jiaoben/" 
+  target="_blank">脚本下载</A></DIV></LI>
+  <LI>
+  <DIV class="one"><A href="http://tools.jb51.net/" target="_blank">在线工具<I 
+  class="icon"></I></A></DIV>
+  <DIV class="two"><A href="http://www.jb51.net/shouce/" 
+  target="_blank">在线手册</A><A href="http://www.jb51.net/tools/cssyasuo.shtml" 
+  target="_blank">CSS格式化</A><A href="http://tools.jb51.net/tools/js_geshihua.asp" 
+  target="_blank">JS格式化</A><A href="http://www.jb51.net/tools/html-js.htm" 
+  target="_blank">Html转化为Js</A><A href="http://tools.jb51.net/regex/javascript" 
+  target="_blank">js正则表达式</A></DIV></LI>
+  <LI>
+  <DIV class="one"><A href="http://www.jb51.net/w3school/" 
+  target="_blank">网页教程基础</A></DIV></LI>
+  <LI>
+  <DIV class="one"><A href="http://s.jb51.net/" 
+  target="_blank">服务器常用软件</A></DIV></LI>
+  <LI>
+  <DIV class="one"><A href="http://m.jb51.net/" target="_blank">手机版</A></DIV>
+  <DIV class="two"><IMG src="JSON_stringify%20语法实例讲解_json_脚本之家_files/m.jb51.net.png" 
+  data-baiduimageplus-ignore=""></DIV></LI>
+  <LI class="watch">
+  <DIV class="one"><A href="http://weibo.com/jb51net" target="_blank" rel="nofollow"><I 
+  class="icon"></I>关注微信</A></DIV>
+  <DIV class="two"><IMG src="JSON_stringify%20语法实例讲解_json_脚本之家_files/weixin_200.gif" 
+  data-baiduimageplus-ignore=""></DIV></LI></UL>
+<DIV class="navUser mt5 fr" id="jb51_topbar"></DIV></DIV><!--topNav End -->   
+</DIV></DIV>
+<DIV class="main clearfix">
+<DIV class="mtb10 clearfix">
+<DIV class="logo"><A href="http://www.jb51.net/"><IMG title="脚本之家" alt="脚本之家" 
+src="JSON_stringify%20语法实例讲解_json_脚本之家_files/logo.gif"></A></DIV>
+<DIV class="logom fl"><SPAN class="jbTestPos" id="logo_m"></SPAN></DIV>
+<DIV class="logor fr"><SPAN class="jbTestPos" id="logo_r"></SPAN></DIV></DIV><!-- 导航--> 
+<DIV class="nav_top clearfix">
+<UL>
+  <LI><A href="http://www.jb51.net/web/">网页制作</A></LI>
+  <LI><A href="http://www.jb51.net/list/index_1.htm">网络编程</A></LI>
+  <LI><A href="http://www.jb51.net/list/index_96.htm">脚本专栏</A></LI>
+  <LI><A href="http://www.jb51.net/jiaoben/">脚本下载</A></LI>
+  <LI><A href="http://www.jb51.net/list/index_104.htm">数据库</A></LI>
+  <LI><A href="http://www.jb51.net/cms/">CMS教程</A></LI>
+  <LI><A href="http://www.jb51.net/books/">电子书籍</A></LI>
+  <LI><A href="http://www.jb51.net/pingmian/">平面设计</A></LI>
+  <LI><A href="http://www.jb51.net/media/">媒体动画</A></LI>
+  <LI><A href="http://www.jb51.net/os/">操作系统</A></LI>
+  <LI><A href="http://www.jb51.net/yunying/">网站运营</A></LI>
+  <LI><A href="http://www.jb51.net/hack/">网络安全</A></LI>
+  <LI class="last"><A href="http://www.jb51.net/shouce/">在线手册</A></LI></UL></DIV><!--导航结束--> 
+<DIV class="subnav clearfix">
+<UL>
+  <LI><A title="YUI.Ext相关" 
+  href="http://www.jb51.net/list/list_170_1.htm">YUI.Ext相关</A></LI> 
+  <LI><A title="prototype" 
+  href="http://www.jb51.net/list/list_171_1.htm">prototype</A></LI> 
+  <LI><A title="jquery" 
+  href="http://www.jb51.net/list/list_172_1.htm">jquery</A></LI> 
+  <LI><A title="AngularJS" 
+  href="http://www.jb51.net/list/list_253_1.htm">AngularJS</A></LI> 
+  <LI><A title="json" 
+  href="http://www.jb51.net/list/list_187_1.htm">json</A></LI> 
+  <LI><A title="lib_js" 
+  href="http://www.jb51.net/list/list_194_1.htm">lib_js</A></LI> 
+  <LI><A title="js面向对象" 
+  href="http://www.jb51.net/list/list_198_1.htm">js面向对象</A></LI> 
+  <LI><A title="extjs" 
+  href="http://www.jb51.net/list/list_217_1.htm">extjs</A></LI> 
+  <LI><A title="Mootools" 
+  href="http://www.jb51.net/list/list_225_1.htm">Mootools</A></LI> 
+  <LI><A title="Seajs" 
+  href="http://www.jb51.net/list/list_241_1.htm">Seajs</A></LI> 
+  <LI><A title="dojo" 
+  href="http://www.jb51.net/list/list_181_1.htm">dojo</A></LI> 
+  <LI><A title="其它" href="http://www.jb51.net/list/list_240_1.htm">其它</A></LI> 
+</UL></DIV>
+<DIV class="NavBar clearfix ptb10">
+<DIV class="fl w690">
+<DIV class="box mb15 mt10"><I class="icon"></I>您的位置：<A href="http://www.jb51.net/">首页</A> 
+→ <A title="网络编程" href="http://www.jb51.net/list/index_1.htm">网络编程</A> → <A 
+title="JavaScript" href="http://www.jb51.net/list/list_3_1.htm">JavaScript</A> → 
+<A title="javascript类库" 
+href="http://www.jb51.net/list/list_23_1.htm">javascript类库</A> → <A title="json" 
+href="http://www.jb51.net/list/list_187_1.htm">json</A> → 正文内容 
+JSON.stringify</DIV></DIV>
+<DIV class="fr w300">
+<DIV class="search">
+<FORM action="http://so.jb51.net/cse/search" 
+target="_blank"><INPUT name="s" type="hidden" value="10520733385329581432">     
+<INPUT name="ie" type="hidden" value="gbk">     <INPUT name="q" class="key_input" type="text" placeholder="请输入关键词" value=""> 
+    <INPUT class="c_btn" type="submit" value="搜索"> 
+</FORM></DIV></DIV></DIV></DIV><!--head End --> 
+<DIV class="main mb10 clearfix">
+<DIV class="clearfix"><SPAN class="jbTestPos" id="tonglan1"></SPAN></DIV></DIV><!--content Star --> 
+<DIV id="contents">
+<DIV class="main clearfix">
+<DIV class="w690 fl">
+<DIV class="article-content border">
+<DIV class="title">
+<H1 class="YaHei">JSON.stringify 语法实例讲解</H1>
+<P>作者：  字体：[<A href="javascript:turnbig()">增加</A> <A href="javascript:turnsmall()">减小</A>] 
+类型：转载 时间：2012-03-14<A 
+href="http://www.jb51.net/article/29893.htm#comments">我要评论</A></P></DIV>
+<DIV class="art_desc mt10">
+<DIV 
+id="art_demo">可能有些人对系列化这个词过敏，我的理解很简单。就是说把原来是对象的类型转换成字符串类型（或者更确切的说是json类型的）。就这么简单。打个比方说，你有一个类，那么你可以通过这个方法转换成相应的json类型的</DIV></DIV>
+<DIV class="lbd clearfix"><SPAN class="jbTestPos" id="art_up"></SPAN></DIV>
+<DIV id="content">
+认识javascript也不短的时间了，可是这个用法说实在的，我还是第一次见过，惭愧啊惭愧啊。于是乎，在网上找了写资料，写了些例子 希望能给园子们一些帮助。 
+<BR><STRONG>作用：这个函数的作用主要是为了系列化对象的。</STRONG> 
+<BR>可能有些人对系列化这个词过敏，我的理解很简单。就是说把原来是对象的类型转换成字符串类型（或者更确切的说是json类型的）。就这么简单。打个比方说，你有一个类，那么你可以通过这个方法转换成相应的json类型的。很简单吧。 
+<BR>接着看。 <BR><STRONG>语法：</STRONG> <BR>JSON.stringify(value [, replacer] [, 
+space]) <BR>value：是必须要的字段。就是你输入的对象，比如数组啊，类啊等等。 
+<BR>replacer：这个是可选的。它又分为2种方式，一种是方法，第二种是数组。 
+<BR>情况一：我们先说数据，通过我们后面的实验可以知道，它是和第一个有关系的。一般来说，我们系列化后的结果是通过键值对来进行表示的。 <BR>比如说： 
+<BR>name:"lan",age:25 <BR>这种形式。 
+<BR>所以，如果这种形式的话，如果第二个的值在第一个存在，那么的话就以第二个的值做key，第一个值为value进行表示，如果不存在，sorry，忽略。【是不是有点抽象，我也这么觉得，不过你等一下看实验 
+就OK了。。呼呼。】 <BR>情况二：如果是方法，那很简单，就是说把系列化后的每一个对象（记住 是每一个）传进方法里面进行处理。 
+<BR>space：很好理解，用什么来做分隔符的。 <BR>1.如果省略的话，那么显示出来的值 就没有分隔符。直接输出来 
+<BR>2.如果是一个数字的话，那么它就定义缩进几个字符，当然 如果大于10 ，则最大值为10. 
+<BR>3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。 
+<BR>4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。 
+<BR><STRONG>开始用实例说明；</STRONG> <BR>1.只有一个参数的情况下： <BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut4099" style="cursor: pointer;" 
+onclick="doCopy('code4099')" data="4099"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code4099"><BR>var student = new Object(); 
+<BR>student.name = "Lanny"; <BR>student.age = "25"; <BR>student.location = 
+"China"; <BR>var json = JSON.stringify(student); <BR>alert(student); 
+<BR></DIV><BR>结果如下: <BR><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150604999.png"><BR>有些人可能会怀疑JSON.stringify的作用，OK。那假如，我们不要这个函数。代码下面的样子： 
+<BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut95813" style="cursor: pointer;" 
+onclick="doCopy('code95813')" data="95813"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code95813"><BR>var student = new Object(); 
+<BR>student.name = "Lanny"; <BR>student.age = "25"; <BR>student.location = 
+"China"; <BR><BR>// var json = JSON.stringify(student); <BR>alert(student); 
+<BR></DIV><BR>　恭喜你 得到的结果是： <BR>
+<P><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150604479.png"></P>
+<P>没骗你吧，继续。<BR><STRONG>2.第二个参数存在，并且第二个参数还是function的时候</STRONG> <BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut73787" style="cursor: pointer;" 
+onclick="doCopy('code73787')" data="73787"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code73787"><BR>var students = new Array() ; 
+<BR>students[0] = "Lanny"; <BR>students[1] = "dong"; <BR>students[2] = "I love 
+you"; <BR>var json = JSON.stringify(students,switchUpper); <BR>function 
+switchUpper(key, value) { <BR>return value.toString().toUpperCase(); <BR>} 
+<BR>alert(json); <BR><BR>　　　　　　　　//var json = JSON.stringify(students, function 
+(key,value) { <BR><BR>　　　　　　　　//return value.toString().toUpperCase(); 
+<BR><BR>　　　　　　　//}); <BR></DIV><BR>　　　　上面的方法也可以换成下面的，2个都是一样，只是写法有那么一点点的不一样而已。 
+<BR>　得到结果如下： <BR><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150604337.png">
+<P></P>
+<P><STRONG>3.第二个参数存在，并且第二个参数不是function，而是数组的时候。</STRONG> <BR>3.1 
+【误区】如果第一个参数是数组，第二个参数也是数组的话，只显示第一个参数的值。 <BR>比如： <BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut13308" style="cursor: pointer;" 
+onclick="doCopy('code13308')" data="13308"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code13308"><BR>var students = new Array() ; 
+<BR>students[0] = "Lanny"; <BR>students[1] = "dong"; <BR>students[2] = "I love 
+you"; <BR>var stu = new Array(); <BR>stu[0] = "1"; <BR>stu[1] = "2"; <BR>var 
+json = JSON.stringify(students,stu); <BR>alert(json); <BR></DIV><BR>　sorry 
+得到的结果就是： <BR><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150605876.png"><BR>第二个被忽略了，只是第一个被系列化了。 
+<BR><BR>3.2 如果第一个是对象（这里说的对象就像在C#里面可以进行new的），第二个是数组的。 
+<BR><BR>那么如果第二个的value在第一个存在，那么的话就以第二个的值做key，第一个值为value进行表示 <BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut94745" style="cursor: pointer;" 
+onclick="doCopy('code94745')" data="94745"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code94745"><BR>var student = new Object(); 
+<BR>student.qq = "5485891512"; <BR>student.name = "Lanny"; <BR>student.age = 25; 
+<BR><BR>var stu = new Array(); <BR>stu[0] = "qq"; <BR>stu[1] = "age"; <BR>stu[2] 
+= "Hi";//这个student对象里不存在。 <BR><BR>var json = JSON.stringify(student,stu); 
+<BR>alert(json); <BR></DIV><BR>　得到的结果如下： <BR><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150606776.png"><BR>因为stu[2] 
+= "Hi";这个Hi 在第一个找不到，所以就不进行显示了。 <BR><BR>4.第三个参数 <BR><BR>4.1.如果省略的话，那么显示出来的值 
+就没有分隔符。直接输出来 <BR><BR>比如： <BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut76991" style="cursor: pointer;" 
+onclick="doCopy('code76991')" data="76991"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code76991"><BR>var student = new Object(); 
+<BR>student.qq = "5485891512"; <BR>student.name = "Lanny"; <BR>student.age = 25; 
+<BR><BR>var stu = new Array(); <BR>stu[0] = "qq"; <BR>stu[1] = "age"; <BR>stu[2] 
+= "Hi"; <BR><BR>var json = JSON.stringify(student,stu); <BR>alert(json); 
+<BR></DIV><BR>　输出的就是： <BR><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150606776.png"><BR>4.2.如果是一个数字的话，那么它就定义缩进几个字符，当然 
+如果大于10 ，则最大值为10. <BR>
+<DIV class="codetitle"><SPAN><A class="copybut" id="copybut3695" style="cursor: pointer;" 
+onclick="doCopy('code3695')" data="3695"><U>复制代码</U></A></SPAN> 代码如下:</DIV>
+<DIV class="codebody" id="code3695"><BR>var student = new Object(); 
+<BR>student.qq = "5485891512"; <BR>student.name = "Lanny"; <BR>student.age = 25; 
+<BR><BR>var stu = new Array(); <BR>stu[0] = "qq"; <BR>stu[1] = "age"; <BR>stu[2] 
+= "Hi"; <BR><BR>var json = JSON.stringify(student,stu,100);//注意这里的100 
+<BR>alert(json); <BR></DIV><BR>那么得到的是： <BR><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150606953.png"><BR>空开来了10个字符。 
+<BR><BR>4.3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。 <BR><BR>也是一样。 
+<BR><BR>4.4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。 <BR><BR>如果是var 
+json = JSON.stringify(student,stu,“HaiKou”);// 
+<P></P>
+<P><IMG alt="" src="JSON_stringify%20语法实例讲解_json_脚本之家_files/20120314150606568.png"></P>
+<P>就这样吧 。good night。 <BR>文章出处 http://www.cnblogs.com/damonlan/</P></DIV><!--endmain--> 
+<DIV class="art_xg">
+<H4>您可能感兴趣的文章:</H4>
+<UL>
+  <LI><A title="Javascript将string类型转换int类型" href="http://www.jb51.net/article/25576.htm" 
+  target="_blank">Javascript将string类型转换int类型</A></LI>
+  <LI><A title="js中的string.format函数代码" href="http://www.jb51.net/article/27745.htm" 
+  target="_blank">js中的string.format函数代码</A></LI>
+  <LI><A title="js字符串的各种格式的转换 ToString，Format" href="http://www.jb51.net/article/27952.htm" 
+  target="_blank">js字符串的各种格式的转换 ToString，Format</A></LI>
+  <LI><A title="js中字符替换函数String.replace()使用技巧" href="http://www.jb51.net/article/28009.htm" 
+  target="_blank">js中字符替换函数String.replace()使用技巧</A></LI>
+  <LI><A title="js String对象中常用方法小结(字符串操作)" href="http://www.jb51.net/article/29547.htm" 
+  target="_blank">js String对象中常用方法小结(字符串操作)</A></LI>
+  <LI><A title="JavaScript中json对象和string对象之间相互转化" href="http://www.jb51.net/article/32825.htm" 
+  target="_blank">JavaScript中json对象和string对象之间相互转化</A></LI>
+  <LI><A title="js解析与序列化json数据(一)json.stringify()的基本用法" href="http://www.jb51.net/article/33694.htm" 
+  target="_blank">js解析与序列化json数据(一)json.stringify()的基本用法</A></LI>
+  <LI><A title="js string 转 int 注意的问题小结" href="http://www.jb51.net/article/40622.htm" 
+  target="_blank">js string 转 int 注意的问题小结</A></LI>
+  <LI><A title="js中substr,substring,indexOf,lastIndexOf的用法小结" href="http://www.jb51.net/article/44921.htm" 
+  target="_blank">js中substr,substring,indexOf,lastIndexOf的用法小结</A></LI>
+  <LI><A title="JSON.parse()和JSON.stringify()使用介绍" href="http://www.jb51.net/article/51331.htm" 
+  target="_blank">JSON.parse()和JSON.stringify()使用介绍</A></LI>
+  <LI><A title="js中string转int把String类型转化成int类型" href="http://www.jb51.net/article/53680.htm" 
+  target="_blank">js中string转int把String类型转化成int类型</A></LI>
+  <LI><A title="Javascript之String对象详解" href="http://www.jb51.net/article/86146.htm" 
+  target="_blank">Javascript之String对象详解</A></LI></UL></DIV>
+<DIV class="lbd clearfix"><SPAN class="jbTestPos" id="art_down"></SPAN> </DIV>
+<DIV id="shoucang"></DIV>
+<DIV class="tags mt10"><STRONG>Tags：</STRONG><A title="搜索关于JSON的文章" href="http://img.jb51.net/tag/JSON/1.htm" 
+target="_blank">JSON</A> <A title="搜索关于stringify的文章" href="http://img.jb51.net/tag/stringify/1.htm" 
+target="_blank">stringify</A> </DIV>
+<DIV class="relatedarticle clearfix mt5">
+<H2>相关文章</H2>
+<UL>
+  <LI><SPAN>2010-02-02</SPAN><A title="json-lib出现There is a cycle in the hierarchy解决办法" 
+  href="http://www.jb51.net/article/22224.htm" target="_blank">json-lib出现There 
+  is a cycle in the hierarchy解决办法</A></LI>
+  <LI><SPAN>2008-06-06</SPAN><A title="告诉大家什么是JSON" href="http://www.jb51.net/article/14737.htm" 
+  target="_blank">告诉大家什么是JSON</A></LI>
+  <LI><SPAN>2012-09-09</SPAN><A title="说说JSON和JSONP 也许你会豁然开朗" href="http://www.jb51.net/article/31167.htm" 
+  target="_blank">说说JSON和JSONP 也许你会豁然开朗</A></LI>
+  <LI><SPAN>2009-10-10</SPAN><A title="json 实例详细说明教程" href="http://www.jb51.net/article/20689.htm" 
+  target="_blank">json 实例详细说明教程</A></LI>
+  <LI><SPAN>2008-10-10</SPAN><A title="javascript表单域与json数据间的交互" href="http://www.jb51.net/article/16189.htm" 
+  target="_blank">javascript表单域与json数据间的交互</A></LI>
+  <LI><SPAN>2011-01-01</SPAN><A title="Chrome中JSON.parse的特殊实现" href="http://www.jb51.net/article/25988.htm" 
+  target="_blank">Chrome中JSON.parse的特殊实现</A></LI>
+  <LI><SPAN>2010-07-07</SPAN><A title="javascript 循环读取JSON数据的代码" href="http://www.jb51.net/article/24263.htm" 
+  target="_blank">javascript 循环读取JSON数据的代码</A></LI>
+  <LI><SPAN>2015-09-09</SPAN><A title="深入分析jsonp协议原理" href="http://www.jb51.net/article/72797.htm" 
+  target="_blank">深入分析jsonp协议原理</A></LI>
+  <LI><SPAN>2013-05-05</SPAN><A title="用nodejs写的一个简单项目打包工具" href="http://www.jb51.net/article/36711.htm" 
+  target="_blank">用nodejs写的一个简单项目打包工具</A></LI>
+  <LI><SPAN>2014-11-11</SPAN><A title="对比分析json及XML" href="http://www.jb51.net/article/57934.htm" 
+  target="_blank">对比分析json及XML</A></LI></UL></DIV>
+<DIV class="lbd clearfix mt5"><SPAN class="jbTestPos" id="art_down2"></SPAN> 
+</DIV><A href="http://www.jb51.net/article/29893.htm#comments"></A> 
+<DIV id="comments">
+<H2>最新评论</H2>
+<DIV class="pd5">
+<DIV id="SOHUCS" sid="art_29893"></DIV></DIV></DIV></DIV><!--endborder-->       
+</DIV><!--end fl-->       
+<DIV class="w300 fr">
+<DIV class="r300 clearfix"><SPAN class="jbTestPos" id="side_up"></SPAN></DIV>
+<DIV class="tabTitleBar mt10 bgf borderTblue">
+<DIV class="borderTnone pb10 YaHei">
+<H4 class="blue">大家感兴趣的内容</H4>
+<UL class="newsList newList-in">
+  <LI><EM class="no1">1</EM><A title="Json对象与Json字符串互转(4种转换方式)" href="http://www.jb51.net/article/35090.htm" 
+  target="_blank">Json对象与Json字符串互转(4种转</A></LI>
+  <LI><EM class="no2">2</EM><A title="js中将字符串转换成json的三种方式" href="http://www.jb51.net/article/25987.htm" 
+  target="_blank">js中将字符串转换成json的三种方</A></LI>
+  <LI><EM class="no3">3</EM><A title="JSON.stringify 语法实例讲解" href="http://www.jb51.net/article/29893.htm" 
+  target="_blank">JSON.stringify 语法实例讲解</A></LI>
+  <LI><EM class="no4">4</EM><A title="JS对象与JSON格式数据相互转换" href="http://www.jb51.net/article/29729.htm" 
+  target="_blank">JS对象与JSON格式数据相互转换</A></LI>
+  <LI><EM class="no5">5</EM><A title="解决json日期格式问题的3种方法" href="http://www.jb51.net/article/46456.htm" 
+  target="_blank">解决json日期格式问题的3种方法</A></LI>
+  <LI><EM class="no6">6</EM><A title="jQuery 遍历json数组的实现代码" href="http://www.jb51.net/article/22813.htm" 
+  target="_blank">jQuery 遍历json数组的实现代码</A></LI>
+  <LI><EM class="no7">7</EM><A title="js解析与序列化json数据(一)json.stringify()的基本用法" 
+  href="http://www.jb51.net/article/33694.htm" 
+  target="_blank">js解析与序列化json数据(一)json</A></LI>
+  <LI><EM class="no8">8</EM><A title="json的定义、标准格式及json字符串检验" href="http://www.jb51.net/article/50009.htm" 
+  target="_blank">json的定义、标准格式及json字符</A></LI>
+  <LI><EM class="no9">9</EM><A title="javascript 循环读取JSON数据的代码" href="http://www.jb51.net/article/24263.htm" 
+  target="_blank">javascript 循环读取JSON数据的代</A></LI>
+  <LI><EM class="no10">10</EM><A title="js解析与序列化json数据(二)序列化探讨" href="http://www.jb51.net/article/33695.htm" 
+  target="_blank">js解析与序列化json数据(二)序列</A></LI></UL></DIV></DIV>
+<DIV class="r300 clearfix mt10"><SPAN class="jbTestPos" id="idctu"></SPAN></DIV>
+<DIV class="tabTitleBar mt10 bgf borderTblue">
+<DIV class="borderTnone pb10 YaHei">
+<H4 class="blue">最近更新的内容</H4>
+<UL class="newsListA">
+  <UL>
+    <LI><A title="用 JSON 处理缓存" href="http://www.jb51.net/article/9716.htm" 
+    target="_blank">用 JSON 处理缓存</A></LI>
+    <LI><A title="使用Json比用string返回数据更友好，也更面向对象一些" href="http://www.jb51.net/article/28264.htm" 
+    target="_blank">使用Json比用string返回数据更友好，也更</A></LI>
+    <LI><A title="Jquery+asp.net后台数据传到前台js进行解析的方法" href="http://www.jb51.net/article/50007.htm" 
+    target="_blank">Jquery+asp.net后台数据传到前台js进行解</A></LI>
+    <LI><A title="打印json对象的内容及JSON.stringify函数应用" href="http://www.jb51.net/article/35142.htm" 
+    target="_blank">打印json对象的内容及JSON.stringify函数</A></LI>
+    <LI><A title="利用NodeJS的子进程(child_process)调用系统命令的方法分享" href="http://www.jb51.net/article/37951.htm" 
+    target="_blank">利用NodeJS的子进程(child_process)调用系</A></LI>
+    <LI><A title="改进版通过Json对象实现深复制的方法" href="http://www.jb51.net/article/31627.htm" 
+    target="_blank">改进版通过Json对象实现深复制的方法</A></LI>
+    <LI><A title="json 入门基础教程 推荐" href="http://www.jb51.net/article/20688.htm" 
+    target="_blank">json 入门基础教程 推荐</A></LI>
+    <LI><A title="将nodejs打包工具整合到鼠标右键的方法" href="http://www.jb51.net/article/36712.htm" 
+    target="_blank">将nodejs打包工具整合到鼠标右键的方法</A></LI>
+    <LI><A title="Ajax+Json 级联菜单实现代码" href="http://www.jb51.net/article/20618.htm" 
+    target="_blank">Ajax+Json 级联菜单实现代码</A></LI>
+    <LI><A title="js+json用表格实现简单网站左侧导航" href="http://www.jb51.net/article/22891.htm" 
+    target="_blank">js+json用表格实现简单网站左侧导航</A></LI></UL></UL></DIV></DIV>
+<DIV class="r300 clearfix mt10"><SPAN class="jbTestPos" 
+id="idctu1"></SPAN></DIV>
+<DIV class="tabTitleBar mt10 bgf borderTblue">
+<DIV class="borderTnone pb10 YaHei">
+<H4 class="blue">常用在线小工具</H4>
+<UL class="newsListA"><SPAN class="jbTestPos" 
+id="bctools"></SPAN></UL></DIV></DIV>
+<DIV class="r300 clearfix mt10" id="idctu2"><SPAN class="jbTestPos" 
+id="idctu2"></SPAN></DIV>
+<DIV class="mt10 rFixedBox"><SPAN class="jbTestPos" id="r_2"></SPAN> 
+</DIV></DIV><!--end fr-->       </DIV></DIV><!--end content--> 
+<DIV id="footer">
+<DIV class="main clearfix">
+<P><A href="http://www.jb51.net/about.htm" target="_blank">关于我们</A> -  <A href="http://www.jb51.net/support.htm" 
+target="_blank">广告合作</A> -  <A href="http://www.jb51.net/linkus.htm" target="_blank">联系我们</A> 
+-   <A href="http://www.jb51.net/sm.htm" target="_blank">免责声明</A> -   <A href="http://www.jb51.net/sitemap.htm" 
+target="_blank">网站地图</A> -  <A href="tencent://message/?uin=461478385&amp;Site=http://www.jb51.net" 
+target="_blank">投诉建议</A> -  <A href="http://www.jb51.net/up.htm" 
+target="_blank">在线投稿</A> </P>
+<P>&copy;CopyRight 2006-2016 JB51.Net Inc All Rights Reserved. 脚本之家 
+版权所有</P></DIV></DIV><!--end footer--> <LINK href="JSON_stringify%20语法实例讲解_json_脚本之家_files/shCore.css" 
+rel="stylesheet" type="text/css"> <LINK href="JSON_stringify%20语法实例讲解_json_脚本之家_files/shThemeDefault.css" 
+rel="Stylesheet" type="text/css"> 
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/shCore.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/shAutoloader.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript"> 
+if (top.location != self.location)top.location=self.location;
+$('#content').find('img').each(function(){
+        var img = this;
+        if (img.width >= 650){
+            img.style.width = "650px";
+            img.style.height = "auto";
+            //$(img).removeAttr('height');
+            var aTag = document.createElement('a');
+            aTag.href = img.src;
+			aTag.target="_blank";
+            $(aTag).addClass('bPic')
+            .insertAfter(img).append(img)
+          }
+    });
+ $(window).scroll(function()
+    {	
+    	//rFixedBox跟随滚动
+    	var h = $(window).height();
+        var top = $(window).scrollTop();
+    	var rFixedBox = $('.rFixedBox').prev().offset();
+        var fixedTop = rFixedBox.top;
+		
+        if(top>=fixedTop+344)
+        {
+			var h1 = parseInt($('#content').children('.main').height());
+			if(parseInt(top) + 340 < h1){
+				$('.rFixedBox').css({'position':'fixed','top': 0});
+			}else{
+				$('.rFixedBox').css({'position':'absolute','top': h1-510});
+			}
+        }
+        else
+        {
+            $('.rFixedBox').css({'position':'static', 'top':0});   
+        }	
+       /* return true;*/
+    });
+SyntaxHighlighter.autoloader(
+	'applescript			/jslib/syntaxhighlighter/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		/jslib/syntaxhighlighter/scripts/shBrushAS3.js',
+	'bash shell				/jslib/syntaxhighlighter/scripts/shBrushBash.js',
+	'coldfusion cf			/jslib/syntaxhighlighter/scripts/shBrushColdFusion.js',
+	'cpp c					/jslib/syntaxhighlighter/scripts/shBrushCpp.js',
+	'obj-c objc				/jslib/syntaxhighlighter/scripts/shBrushObjC.js',
+	'c# c-sharp csharp		/jslib/syntaxhighlighter/scripts/shBrushCSharp.js',
+	'css					/jslib/syntaxhighlighter/scripts/shBrushCss.js',
+	'delphi pascal			/jslib/syntaxhighlighter/scripts/shBrushDelphi.js',
+	'diff patch pas			/jslib/syntaxhighlighter/scripts/shBrushDiff.js',
+	'erl erlang				/jslib/syntaxhighlighter/scripts/shBrushErlang.js',
+	'groovy					/jslib/syntaxhighlighter/scripts/shBrushGroovy.js',
+	'haxe hx				/jslib/syntaxhighlighter/scripts/shBrushHaxe.js',
+	'java					/jslib/syntaxhighlighter/scripts/shBrushJava.js',
+	'jfx javafx				/jslib/syntaxhighlighter/scripts/shBrushJavaFX.js',
+	'js jscript javascript	/jslib/syntaxhighlighter/scripts/shBrushJScript.js',
+	'perl pl				/jslib/syntaxhighlighter/scripts/shBrushPerl.js',
+	'php					/jslib/syntaxhighlighter/scripts/shBrushPhp.js',
+	'text plain				/jslib/syntaxhighlighter/scripts/shBrushPlain.js',
+	'py python				/jslib/syntaxhighlighter/scripts/shBrushPython.js',
+	'ruby rails ror rb		/jslib/syntaxhighlighter/scripts/shBrushRuby.js',
+	'scala					/jslib/syntaxhighlighter/scripts/shBrushScala.js',
+	'sql					/jslib/syntaxhighlighter/scripts/shBrushSql.js',
+	'vb vbnet				/jslib/syntaxhighlighter/scripts/shBrushVb.js',
+	'ps powershell			/jslib/syntaxhighlighter/scripts/shBrushPowerShell.js',
+	'xml xhtml xslt html	/jslib/syntaxhighlighter/scripts/shBrushXml.js'
+);
+SyntaxHighlighter.all();
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</SCRIPT>
+ 
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/jbLoader.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<SCRIPT>jbLoader();</SCRIPT>
+
+<SCRIPT class="closetag">jbLoader(true);</SCRIPT>
+ 
+<DIV id="tongji">
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/tongji.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT>
+(function(){
+var appid = 'cyrHH3dwi',
+conf = 'prod_1dc5dc80970106099d43fe242b7465fc';
+var doc = document,
+s = doc.createElement('script'),
+h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+s.type = 'text/javascript';
+s.charset = 'utf-8';
+s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+h.insertBefore(s,h.firstChild);
+window.SCS_NO_IFRAME = true;
+})();
+</SCRIPT>
+ </DIV>
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/pl.htm" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="JSON_stringify%20语法实例讲解_json_脚本之家_files/js.js" type="text/javascript" charset="utf-8"></SCRIPT>
+ </DIV></BODY></HTML><!-- published at 2016-6-17 1:26:05By dxycms qq:461478385  -->

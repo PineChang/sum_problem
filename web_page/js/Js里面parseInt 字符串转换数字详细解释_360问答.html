@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://wenda.so.com/q/1363731618061584 -->
+<html xmlns:wb="http://open.weibo.com/wb"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><title>Js里面parseInt 字符串转换数字详细解释_360问答</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta property="qc:admins" content="15232376514163763757"><!--qq login--><meta name="keywords" content="问答 奇虎问答 Js里面parseInt 字符串转换数字详细解释_360问答"><meta name="description" content="Js里面parseInt 字符串转换数字详细解释 例：08为何转换成0以及进制之间的转换问题 首先看parseInt语法：parseInt(string, radix);其中string为要转换的字符串，radix为二进制，八进制，十六进制或十进制。 
+在默认不指定radix时，当以0x开关时，为十六进制；如果以0开关且第二位不为x,则让为是八进制，（因为八进制不能有8，9所以报错返回0）。 
+所以，在我们用时还是明确指定进位制，以防出错。 
+如我们平时都用十进制位，我们就 parseInt( 08 , 10);  可以看一下这篇文章，说的很详细，可能对你会..."><link rel="stylesheet" href="./Js里面parseInt 字符串转换数字详细解释_360问答_files/base_html_new.combo.css"><!--[if IE 6]><script src="http://s12.qhimg.com/static/6baddcf8e3a46311/fixie6.120320.js" ></script><![endif]-->
+<link rel="stylesheet" href="./Js里面parseInt 字符串转换数字详细解释_360问答_files/detail.combo.css">
+<script type="text/javascript">var $INFO = {};$INFO['serverTime'] = 1466993017000;$INFO['pageTime'] = new Date();$INFO['qid'] = "";$INFO['username'] = "";$INFO['headerUrl'] = "";$INFO['experter_flag'] = "";$INFO['bubbled'] = "";$INFO['level'] = "";$INFO['adoption'] = "";$INFO['ansnum'] = "";$INFO['asknum'] = "";$INFO['coin'] = "";$INFO['addCoin'] = "";$INFO['beyoundRate'] = "";$INFO['root_domain'] = "so.com";$INFO['root_name'] = "360搜索";$INFO['wenda_domain'] = "wenda.so.com";$INFO['wenda_name'] = "360问答";</script>
+
+<script type="text/javascript">$INFO['askId'] = "1363731618061584";
+		$INFO['askCid'] = "20";
+		$INFO['isHide'] = "0";
+		$INFO['isResolved'] = "1";
+		/*$INFO['isMyAsk'] = "";*/
+		$INFO['realViews'] = "183";
+		$INFO['askMid'] = "";
+		$INFO['askType'] = "";
+		$INFO['askTag'] = "";
+		window.monitorTrackDisabled = true;</script>
+
+<style type="text/css">#g-hd{display:block}</style><style type="text/css">#g-hd-searchs{display:block}</style><style type="text/css">@media screen{.smnoscreen {display:none}} @media print{.smnoprint{display:none}}</style></head><body><!-- 垂搜提供的导航模块 --><div id="g-hd"><div id="g-hd-inner"><div id="g-hd-nav"><ul id="g-hd-tabs"><li class=""><a data-home="http://news.so.com/?src=tab_wenda" data-s="http://news.so.com/ns?q=%q%&amp;src=tab_wenda" href="http://news.so.com/ns?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">新闻</a></li><li class=""><a data-home="http://www.so.com/?src=tab_wenda" data-s="http://www.so.com/s?q=%q%&amp;src=tab_wenda" href="http://www.so.com/s?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">网页</a></li><li class="g-hd-cur"><a data-home="http://wenda.so.com/?src=tab_wenda" data-s="http://wenda.so.com/search/?q=%q%&amp;src=tab_wenda" href="http://wenda.so.com/search/?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">问答</a></li><li class=""><a data-home="http://video.so.com/?src=tab_wenda" data-s="http://video.so.com/v?q=%q%&amp;src=tab_wenda" href="http://video.so.com/v?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">视频</a></li><li class=""><a data-home="http://image.so.com/?src=tab_wenda" data-s="http://image.so.com/i?q=%q%&amp;src=tab_wenda" href="http://image.so.com/i?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">图片</a></li><li class=""><a data-home="http://music.so.com/?src=tab_wenda" data-s="http://s.music.so.com/s?q=%q%&amp;src=tab_wenda" href="http://s.music.so.com/s?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">音乐</a></li><li class=""><a data-home="http://ditu.so.com/?src=tab_wenda" data-s="http://ditu.so.com/?k=%q%&amp;src=tab_wenda" href="http://ditu.so.com/?k=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">地图</a></li><li class=""><a data-home="http://baike.so.com/?src=tab_wenda" data-s="http://baike.so.com/doc/search?word=%q%&amp;src=tab_wenda" href="http://baike.so.com/doc/search?word=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">百科</a></li><li class=""><a data-home="http://ly.so.com/?src=tab_wenda" data-s="http://ly.so.com/s?q=%q%&amp;src=tab_wenda" href="http://ly.so.com/s?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">良医</a></li><li class=""><a data-home="http://soft.so.com/?src=tab_wenda" data-s="http://soft.so.com/search?q=%q%&amp;src=tab_wenda" href="http://soft.so.com/search?q=parseInt()%E6%97%B6%E4%BF%9D%E5%AD%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%840&src=tab_wenda">软件</a></li></ul></div></div></div><!--/垂搜提供的导航模块 --><!--以下是垂搜提供的JS代码，未压缩版本在support/so-top-hd目录，这里必须是内链--><script type="text/javascript">window.hd_init=function(){var e=function(e,t,n){var r,i={};t=t||{};for(r in e)i[r]=e[r],t[r]!=null&&(n?e.hasOwnProperty[r]&&(i[r]=t[r]):i[r]=t[r]);return i},t=function(e){return document.getElementById(e)},n=function(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n},r=function(e){return e||window.event},i=function(e){return e.target||e.srcElement},s={check:function(){var e=this,t=!1;try{switch(external.smartwiz()*1){case 0:s.render(0);break;case 1:s.render(1,"");break;case 2:s.render(1,"isXdu");break;case 3:s.render(1,"haslogo")}}catch(n){try{var r=external.GetSID(window),i=parseInt(external.GetVersion(r).split(".").join(""),10);i<730126||i>730130?external.AppCmd(external.GetSID(window),"","getsearchbarstatus","","",s.render):s.render(0)}catch(n){s.render(0)}return}},render:function(e,t){var n=this,r="",i=null,o=!1,u=document.getElementsByTagName("head")[0];document.cookie.indexOf("ED351A52-EE52-47f8-8616-3355B59424C1")>=0&&(o=!0),e==1||o?(r=document.getElementsByTagName("body")[0].className,r+=t==""?" g-hide-hd":" g-hide-all",document.getElementsByTagName("body")[0].className=r):(s.insertStyle("#g-hd","display:block"),s.insertStyle("#g-hd-searchs","display:block"))},insertStyle:function(e,t){var n=document.getElementsByTagName("head")[0],r=null;document.createStyleSheet?(r=document.createStyleSheet(),r.addRule(e,t)):(r=document.createElement("style"),r.type="text/css",r.innerHTML=e+"{"+t+"}",n.appendChild(r))}};return function(o){o=e({inputId:"keyword",getValue:null},o);var u=t("g-hd"),a=t(o.inputId),f=function(){return typeof o.getValue=="function"?o.getValue():a?a.value.replace(/^\s+|\s+$/g,""):""},l=f();if(u){var c=t("g-hd-more-title"),h=t("g-hd-more-div");if(c&&h){var p=function(e){if(e.relatedTarget)return e.relatedTarget;var t=e.fromElement,n=e.target||e.srcElement,r=t===n?e.toElement:t;return r},d=function(e,t){if(e.contains)return e.contains(t);if(e.compareDocumentPosition)return e.compareDocumentPosition(t)&16;while(t=t.parentNode)if(t==e)return!0;return!1},v=function(e,t){function u(t){t=r(t);var n=p(t);if(!n||n!==e&&!d(e,n))t.type=="mouseover"?i(arguments):s(arguments)}t=t||{};var i=t.enter||function(){},s=t.leave||function(){},o="onmouseenter"in document.createElement("div");if(o){n(e,"mouseenter",i),n(e,"mouseleave",s);return}n(e,"mouseover",u),n(e,"mouseout",u)},m=function(){clearTimeout(g),g=setTimeout(function(){h.style.display=""},300)},g,y=function(){clearTimeout(g),g=setTimeout(function(){h.style.display="none"},300)},b=[c,h];for(var w=0;w<b.length;w++){var E=b[w];v(E,{enter:m,leave:y})}}var S=function(e){try{e=r(e);var t=i(e);if(t&&t.tagName&&t.tagName.toUpperCase()==="A"){var n=t.getAttribute("data-s"),s=f();n&&(a&&(t.getAttribute("data-home")||t.setAttribute("data-home",t.href),s?t.href=n.replace(/%q%/g,encodeURIComponent(s)):t.href=t.getAttribute("data-home")),d(h,t)&&(h.style.display="none"))}}catch(o){}};function x(){var e=u.getElementsByTagName("A"),t=[],n="";for(var r=0,i=e.length;r<i;r++){n=e[r].getAttribute("data-s");if(!n)continue;n=n.replace("%q%",encodeURIComponent(l)),e[r].setAttribute("href",n),t.push(e[r])}}s.check(),x(),n(u,"click",S);var T=t("g-hd-searchs");T&&n(T,"click",S)}}}();</script><div class="js-fixed fixed-nav" style="display: none;"><div class="fixed-nav-in clearfix"><div class="nav-home-opt fl js-nav-home"><a href="http://wenda.so.com/" class="nav-home" text="fix导航_首页1点击"></a><div class="nav-opts"><ul class="nav-opts-list"><li><a href="http://wenda.so.com/" class="nav-ico-home" text="fix导航_首页2点击">问答首页</a></li><li><a href="http://wenda.so.com/team" class="nav-ico-team" text="fix导航_乐帮团点击">乐帮团</a></li><li><a href="http://wenda.so.com/userMgr/mgrcommunity" class="nav-ico-admin" text="fix导航_管理团点击">管理团</a></li><li><a href="http://jifen.so.com/" class="nav-ico-mall" text="fix导航_知识商城点击">知识商城</a></li></ul><i class="cover-line"></i></div></div><form class="nav-form" action="http://wenda.so.com/search/" method="get"><div class="ipt-sh"><input maxlength="100" class="js-sh-ipt" type="text" name="q" value="parseInt()时保存字符串前面的0" autocomplete="off"></div><button hidefocus="" class="green-search-btn js-search-bt js-suggest-search-btn" type="submit" text="fix导航_搜索答案点击">搜索答案</button><button hidefocus="" class="green-ask-btn js-ask-layer" text="fix导航_我要提问点击">我要提问</button></form><a class="nav-btn user-login" text="fix导航_文字连接1点击">去答题赚金币</a><a href="http://wenda.so.com/team" target="_blank" class="nav-btn" text="fix导航_文字连接2点击">加入乐帮团</a></div></div><div class="activity" id="wenda-content-wrap"><div class="mod-mini" id="mod-search"><div class="search clearfix"><div class="logo"><a href="http://wenda.so.com/" text="hd-logo" hidefocus="true">360问答</a></div><form class="sh-form" action="http://wenda.so.com/search/" method="get"><div class="ipt-sh" id="js-sh-input"><input maxlength="100" class="js-sh-ipt" type="text" name="q" value="parseInt()时保存字符串前面的0" autocomplete="off" id="js-sh-ipt"><div class="suggest-container js-suggest-area" style="display:none;"><div class="content"><ul class="js-suggest-list suggest-list"></ul></div></div></div><button hidefocus="" class="green-search-btn js-search-bt js-suggest-search-btn" type="submit" text="&lt;网站&gt;【顶部搜索答案】点击">搜索答案</button><button hidefocus="" class="green-ask-btn js-ask-layer" text="&lt;网站&gt;【顶部我要提问】点击">我要提问</button></form><a class="top-search-banner" href="http://wenda.so.com/team" target="_blank" text="问答导航右侧">
+    <img src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/t01c30a4fc429f713bf.png" width="210" height="60">
+</a></div></div><!--初始化顶部搜索导航，要保证在DOM元素id="js-sh-ipt"的后面--><script type="text/javascript">window.hd_init({inputId : "js-sh-ipt"});</script><div id="doc4" class="doc-mini"><div id="hd"><div class="main-nav clearfix"><ul class="list"><li><a class="home" href="http://wenda.so.com/" text="hd-home"><span class="s0">首页</span></a></li><li id="navStore"><a class="store" href="http://wenda.so.com/c/" text="hd-store"><span class="s1">问题库<i></i></span></a></li><li><a href="http://wenda.so.com/team" text="hd-club"><span class="s2">乐帮团<i></i></span></a></li><li class=""><a href="http://wenda.so.com/userMgr/mgrcommunity" text="hd-mgr"><span class="s2">管理团</span></a></li><li class=""><a target="_blank" href="http://jifen.so.com/" text="hd-jifen"><span class="s2">知识商城</span></a></li><li class=""><a href="http://wenda.so.com/weiquan" text="hd-weiquan"><span class="s2">维权平台</span></a></li><li><a target="_blank" href="http://bbs.360safe.com/forum-231-1.html" text="hd-forum"><span class="s2">论坛</span></a></li></ul><div id="hd-tools" class="mod-top-tools js-top-tools"><div class="user" id="user_info" qid="" role="" username="" imageurl="" bubbled="" isdaren="" level="" ansnum=""><div id="js-not-login"><!-- logo回首页模块 --><div class="user-item"><a href="http://wenda.so.com/q/1363731618061584#" class="user-login" text="&lt;网站&gt;【顶部导航登录按钮】点击">登录</a></div><div class="user-item"><span class="hd-tools-sep">|</span><a href="http://wenda.so.com/q/1363731618061584#" text="&lt;网站&gt;【顶部导航注册按钮】点击" class="user-reg">注册</a></div><div class="clear"></div></div><div id="js-has-login" style="display:none;"><div class="user-item user-menu" style="z-index:10;"><span class="setting"><a id="topbar_username" class="g-ellipsis" href="http://wenda.so.com/u/"></a></span><div class="tips-daily" style="display:none;"><div class="ui-sub-suc"><div class="ui-sub-suc-inner">每天登录问答 <span>+2</span> 经验值，<span>+2</span> 金币</div></div></div><div class="panel-setting"><div class="g-point g-point-top" style="position: absolute;left: 27px;top: -13px;"><ins class="bg"></ins><ins class="border" style="border-color:transparent transparent #b9b9b9;"></ins></div><div class="hd"></div><div class="bd"><ul><li><a class="js-user-ask-link" href="http://wenda.so.com/user/asklist/" text="topbar-myAsk">我的提问</a></li><li><a class="js-user-answer-link" href="http://wenda.so.com/user/answerlist/" text="topbar-myAnswer">我的回答</a></li><li><a href="http://wenda.so.com/q/1363731618061584#" class="js-user-logout" text="topbar-logout">退出</a></li></ul></div></div></div><div class="user-item" style="z-index:9;"><span class="hd-tools-sep">&nbsp;</span><a href="http://wenda.so.com/user/noticelist/" data-sum="0" text="消息预览框_信封点击"><span class="mail-img"></span></a></div><div class="clear:both;"></div></div></div></div>
+</div></div><div id="bd" class="mod-detail" style="margin-top:16px;">
+
+<div style="display:none;">
+<script>
+var up = new Image;up.src = "http://e.tf.360.cn/search/rec?p=mUivOYsoa5ccA%2FGAidV6z6EZTUf6oCt2a3eEJtLRVxAMQu2sw7S2CKbMkMmEECFBIB%2F87Suwv%2Fd10CRidiHN%2FSxk5PpgBqmg9leqt3vAadE%2FPTtLYu%2FqdX0Nyhpsd12HWe4V9PH5IcXL77EuoG5Zzup5YWDU8vqYU5I6cOogkSJ%2Bv7mOIdeuFHpd3%2F2nEhTeICW58xGw1pwJGEYML7gJT1Nuxe%2FRj1cYEr7w6uhBSZy5gaBvCyPVv4LaXDU9IbxoYFlVQCFIkzxNBCk4dXKzZncvmsJwBvEuAoXWyCuvnb27pDsrQHi21PGinhGFvqxbuQFw%2Bof%2FNyJXhodkDApV3RcQLVWtL6qAjr34yogM%2F6FDSlzCFd15pyVtt%2BjP%2F%2FND3wrQEbHDGsFu6Dkx11Ndha0gAvmLb0%2F1RHTwhEamyvg3HC%2B1iuTB16GNEPv66jJ7GThKqHBki%2BuGmuj0vzwuVvWXxY2bcJIRG%2FbTnFBNrlX6cFTXt6J2nW%2FDbsXgPYVdnW9O0SYBa7a9S%2FXCpucbkBll3ymvxpFe3Q%2FcvFPcb3YptJvttG4fJA%3D%3D&pl=568&t=14669930176348";
+</script>
+</div><!-- 面包屑导航 -->
+
+
+<!-- 右侧滚动新闻 -->
+
+
+
+
+<div style="clear:both"></div>
+<div class="grid clearfix"><!-- 填空回答，安仔提示  -->
+
+
+
+<div class="article border-green" id="js-detail">
+
+
+
+
+<div class="mod-q js-form" ask_id="1363731618061584"><div class="question_logo" style="display:none;"></div><div class="hd"><h2 class="title js-ask-title">Js里面parseInt 字符串转换数字详细解释</h2>
+
+
+
+
+
+<div class="mod-user-label">
+<div class="l-ask clearfix">
+<div class="text" style="float:left;">
+
+
+
+
+<span><a target="_blank" href="http://wenda.so.com/u/1904084775" class="ask-author  " index="1904084775">vcbs3088</a></span>
+
+
+
+
+<span>11级</span>
+
+
+<!-- 分类 -->
+
+
+<i class="line"></i>
+分类：
+			<span><a href="http://wenda.so.com/c/20">编程开发</a></span>
+
+<!-- /分类 -->
+
+
+<i class="line"></i>
+<span>被浏览183次</span>
+
+
+
+<i class="line"></i>
+<span>2013.03.19</span>
+
+</div>
+
+<p class="action" style="float:right;">
+<span class="js-operate" style="visibility: hidden;">
+<a href="javascript:;" class="weibo_daren js-weibo_daren" text="请微博专家回答-他人的提问">请微博专家回答</a>
+<a href="javascript:;" data-type="ask" qid="1904084775" class="js-report ui-report" text="【详情页】-提问检举">检举</a>
+</span>
+
+</p>
+</div>
+
+</div>
+
+<input type="hidden" value="Js里面parseInt 字符串转换数字详细解释" id="js-ask-title"><input type="hidden" value="imp-导入-19" class="js-wenda-src-moniter"></div><div class="bd"><div class="q-cnt">例：08为何转换成0以及进制之间的转换问题</div><div class="mod-added-qa js-added-area" style=""><ul></ul></div></div></div>
+
+
+
+<div class="mod-resolved-ans js-form" ans_id="1363731618061593" qid="1904813304" data-resolved-type="best"><div class="top-line"></div><i class="ico best"></i><div class="bd">
+
+
+
+
+
+<div class="mod-user-label">
+
+<div class="l-ans clearfix">
+<div class="info">
+
+<a target="_blank" href="http://wenda.so.com/u/1904813304" class="pic   " index="1904813304">
+<img src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/t01878a3c8e168d11c9.jpg">
+</a>
+</div>
+
+<div class="text">
+
+
+
+
+
+<div style="margin-bottom:2px;display:block;">
+<span>
+
+<a target="_blank" href="http://wenda.so.com/u/1904813304" class="ask-author  " index="1904813304">xxjy656</a>
+</span>
+
+
+
+
+</div>
+
+
+
+
+
+
+<span title="采纳率越高回答质量越高">采纳率：<span style="margin-right:0;" class="o">44%</span></span>
+
+<span>11级</span>
+
+
+
+
+
+
+<i class="line"></i><span>2013.03.20</span>
+
+</div>
+
+</div>
+</div>
+
+<div class="resolved-cnt">首先看parseInt语法：parseInt(string,&nbsp;radix);其中string为要转换的字符串，radix为<a style="color:#87B5F3;cursor:pointer;" data-id="link-to-so" data-c="点击实体词http%3A%2F%2Fwenda.so.com%2Fq%2F13637316180615841.0.0_1.0.1二进制" text="点击实体词" target="_blank" href="http://www.so.com/s?q=%E4%BA%8C%E8%BF%9B%E5%88%B6&ie=utf-8&src=wenda_link">二进制</a>，八进制，<a style="color:#87B5F3;cursor:pointer;" data-id="link-to-so" data-c="点击实体词http%3A%2F%2Fwenda.so.com%2Fq%2F13637316180615841.0.0_1.0.1十六进制" text="点击实体词" target="_blank" href="http://www.so.com/s?q=%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6&ie=utf-8&src=wenda_link">十六进制</a>或十进制。 
+在默认不指定radix时，当以0x开关时，为十六进制；如果以0开关且第二位不为x,则让为是<a style="color:#87B5F3;cursor:pointer;" data-id="link-to-so" data-c="点击实体词http%3A%2F%2Fwenda.so.com%2Fq%2F13637316180615841.0.0_1.0.1八进制" text="点击实体词" target="_blank" href="http://www.so.com/s?q=%E5%85%AB%E8%BF%9B%E5%88%B6&ie=utf-8&src=wenda_link">八进制</a>，（因为八进制不能有8，9所以报错返回0）。 
+所以，在我们用时还是明确指定进位制，以防出错。 
+如我们平时都用<a style="color:#87B5F3;cursor:pointer;" data-id="link-to-so" data-c="点击实体词http%3A%2F%2Fwenda.so.com%2Fq%2F13637316180615841.0.0_1.0.1十进制" text="点击实体词" target="_blank" href="http://www.so.com/s?q=%E5%8D%81%E8%BF%9B%E5%88%B6&ie=utf-8&src=wenda_link">十进制</a>位，我们就 parseInt("08", 10); &nbsp;可以看一下这篇<a style="color:#87B5F3;cursor:pointer;" data-id="link-to-so" data-c="点击实体词http%3A%2F%2Fwenda.so.com%2Fq%2F13637316180615841.0.0_1.0.1文章，" text="点击实体词" target="_blank" href="http://www.so.com/s?q=%E6%96%87%E7%AB%A0%EF%BC%8C&ie=utf-8&src=wenda_link">文章，</a>说的很详细，可能对你会有帮助http://www.neoease.com/javascript-get-integer-via-parseint/</div><div class="mod-added-qa js-added-area" style=""><ul></ul></div><div class="gift js-gift" style="display:none"><span class="name"></span>送给回答者一份礼物送香吻 赠言：好帅的回答，楼主送上香吻一枚，以表诚挚谢意！</div> <div class="laud" data-clicked="" data-ans_id="1363731618061593"><a href="javascript:;" class="js-laud good" data-op="1" data-num="0"><span>0</span></a><a href="javascript:;" class="js-laud bad" data-op="0" data-num="0"><span>0</span></a></div><div class="mod-share mod-share-fl clearfix" data-con="Js里面parseInt 字符串转换数字详细解释"><ul><li><a href="javascript:;" title="分享到QQ空间" text="详情页QQ空间分享" class="qzone"></a></li><li><a href="javascript:;" title="分享到新浪微博" text="详情页新浪分享" class="sina"></a></li><li><a href="javascript:;" title="分享到微信" text="详情页微信分享" class="weixin"></a><div class="weixin-box"><div class="box-bg"></div><i class="arrow"></i><div class="box-inner"><a href="javascript:;" class="close">x</a><div class="qrcode"></div><span class="desc">用微信扫描二维码<br>分享至好友和朋友圈</span></div></div></li></ul><h4>分享到：</h4></div>
+<div class="action"><span class="js-operate" style="visibility: hidden; float: right; margin-top: -27px; margin-right: 152px;"><a href="javascript:;" class="weibo_daren js-weibo_daren" data-type="answer" text="请微博专家鉴定-他人的回答">请微博专家鉴定</a><a href="javascript:;" qid="1904813304" text="【详情页】-回答检举" data-type="answer" class="js-report ui-report">检举</a><!-- <span class="line ui-line last-line"></span> --></span><a href="javascript:;" class="approve js-approve " data-num="0"></a></div></div></div>
+
+
+
+
+
+
+
+<div id="mod-onebox-map" class="mod-onebox-map" data-title="Js里面parseInt 字符串转换数字详细解释"><img class="anan" src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/t01bbf5f310e44b4b1a.png" alt=""><div class="info clearfix"><div class="desc">答答<span>360问答团队最勤劳最可爱的答答</span></div><i>2013.03.19</i></div><p class="content">下面是答答童鞋给您的小建议，您看靠谱吗？初来乍到，弄错了您不要生气哦(*^__^*)</p><div class="map"><div class="arrow"><span>答答小贴士</span><i></i></div><div class="box"></div></div></div><div id="mod-onebox-vote" class="mod-onebox-vote" data-title="Js里面parseInt 字符串转换数字详细解释"></div>
+
+<div class="mod-related-question" id="ask-relate"><div class="hd"><h2>相关问题</h2></div><div class="bd"><ul><li class="clearfix"><a target="_blank" href="http://wenda.so.com/q/1378692203075460?src=9999" class="s0" data-cid-pre="1000204"><b>Js里面parseInt 字符串转换数字详细解释</b></a><span class="s1">2013.09.08</span></li><li class="clearfix"><a target="_blank" href="http://wenda.so.com/q/1449340171726625?src=9999" class="s0" data-cid-pre="1000204"><b>Js里面parseInt 字符串转换数字详细解释</b></a><span class="s1">2013.08.14</span></li><li class="clearfix"><a target="_blank" href="http://wenda.so.com/q/1378199314060078?src=9999" class="s0" data-cid-pre="1000204"><b>js</b>怎么把<b>字符串转换</b>成<b>数字</b></a><span class="s1">2013.09.03</span></li><li class="clearfix"><a target="_blank" href="http://wenda.so.com/q/1362032863066391?src=9999" class="s0" data-cid-pre="1000204"><b>js</b>中<b>数字转换</b>为<b>字符串</b>的问题</a><span class="s1">2013.02.27</span></li></ul><p class="more js-more-rel"><a text="more-rel" href="http://wenda.so.com/search?q=Js%E9%87%8C%E9%9D%A2parseInt+%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B0%E5%AD%97%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A" target="_blank">查看更多关于<span style="color:#ff7800;" class="js-rel-kw">parseInt()时保存字符串前面的0</span>的问题<span>&nbsp;&gt;&gt;</span></a></p></div></div>
+<div class="mod-related_search" id="js-rel-list" style="display: block;"><div class="hd"><h2>相关搜索</h2></div><div class="bd"><ul class="clearfix js-list-item"><li><a href="http://wenda.so.com/search/?q=parseint" target="_blank">parseint</a></li> <li><a href="http://wenda.so.com/search/?q=integer.parseint" target="_blank">integer.parseint</a></li> <li><a href="http://wenda.so.com/search/?q=parseint%E5%87%BD%E6%95%B0" target="_blank">parseint函数</a></li> <li><a href="http://wenda.so.com/search/?q=js%20parseint" target="_blank">js parseint</a></li> <li><a href="http://wenda.so.com/search/?q=parseint%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D" target="_blank">parseint什么意思</a></li> <li><a href="http://wenda.so.com/search/?q=jquery%20parseint" target="_blank">jquery parseint</a></li> <li><a href="http://wenda.so.com/search/?q=java%20parseint" target="_blank">java parseint</a></li> <li><a href="http://wenda.so.com/search/?q=java%20parseint%E5%87%BD%E6%95%B0" target="_blank">java parseint函数</a></li></ul></div></div>
+<div class="mod-related-city js-related-city" style="display: block;"><div class="hd"><h2>等您帮助的附近的朋友</h2><span class="change-icon js-city-change" text="【同城问题—换一换】-点击" data-page="0" data-maxpage="-1">换一换</span></div><div class="bd"><ul class="js-city-list"><li class="clearfix"><a href="http://wenda.so.com/q/1466992486724441" target="_blank" class="title" text="【详情页-同城问题】-点击" title="上海即富旗下有哪些分公司啊？"><span class="city">【上海】</span>上海即富旗下有哪些分公司啊？</a><span class="time">8分钟前</span></li><li class="clearfix"><a href="http://wenda.so.com/q/1466992205724687" target="_blank" class="title" text="【详情页-同城问题】-点击" title="上海外国语学校专业问题"><span class="city">【上海】</span>上海外国语学校专业问题</a><span class="time">13分钟前</span></li><li class="clearfix"><a href="http://wenda.so.com/q/1466991411723494" target="_blank" class="title" text="【详情页-同城问题】-点击" title="上海即富是一家怎么样的公司?"><span class="city">【上海】</span>上海即富是一家怎么样的公司?</a><span class="time">26分钟前</span></li><li class="clearfix"><a href="http://wenda.so.com/q/1466990192721634" target="_blank" class="title" text="【详情页-同城问题】-点击" title="上海展会融艺墙布会出新的刺绣墙布？"><span class="city">【上海】</span>上海展会融艺墙布会出新的刺绣墙布？</a><span class="time">47分钟前</span></li><li class="clearfix"><a href="http://wenda.so.com/q/1466989432720091" target="_blank" class="title" text="【详情页-同城问题】-点击" title="青浦人才市场招聘会联系电话"><span class="city">【上海】</span>青浦人才市场招聘会联系电话</a><span class="time">59分钟前</span></li></ul><p class="more js-more-rel-city"><a text="更多同城问题点击" href="http://wenda.so.com/c/?id_type=1&tid=11676" target="_blank" dat-cid-pre="2000203">更多等您帮助的提问<span style="font-family:&#39;宋体&#39;">&nbsp;&gt;&gt;</span></a></p></div></div>
+
+
+
+
+
+<!-- 没有解决的问题，不显示同城问题 -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="clearfix" style="clear:both;width:714px;max-height:90px;margin-top:10px;overflow:hidden;"> 
+						
+
+<iframe width="714" height="90" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/detail.html"></iframe>
+</div>
+</div>
+
+
+<div id="js-aside" class="aside">
+<div style="display:none">$is_forced_adv:;$is_login:;is_adoption:; $is_done_novice_task:; level:</div><div class="mod-novice-task" id="js-mod-novice-task">
+  <div class="title">
+    <i class="icon icon-search"></i>360问答总能找到你的答案
+  </div>
+  <div class="msg">
+    登录一下，也成为分享知识的一员<br>
+    首次登录可获：金币+20，经验+20
+  </div>
+
+  <button type="button" class="button js-user-login">马上登录</button>
+  <button type="button" class="button js-user-reg" style="margin-bottom: 0;">立即注册</button>
+</div><div class="mod-recom-q" id="recom-q" data-tag-id="" data-cid="20" data-tag="" style="display: block;"><h4 style="color:#3eaf0e;"><!-- 回答下面问题可获得金币哦 -->答题中大奖啦</h4><ul class="q-l"><li><div class="q-content"><span class="wen">问：</span><a title="W7系统IE9浏览器怎么把英文改成中文，更新语言包也不行" href="http://wenda.so.com/q/1466988464495708" target="_blank" class="js-q" text="&lt;网站&gt;【详情页右侧推荐问题】&lt;未登录&gt;&lt;已解决&gt;&lt;分类&gt;点击" data-pre-cid="1000201">W7系统IE9浏览器怎么把英文改成中文，...</a><span class="time">1小时前</span></div></li><li><div class="q-content"><span class="wen">问：</span><a title="jsp 引用的问题" href="http://wenda.so.com/q/1466985970493886" target="_blank" class="js-q" text="&lt;网站&gt;【详情页右侧推荐问题】&lt;未登录&gt;&lt;已解决&gt;&lt;分类&gt;点击" data-pre-cid="1000201">jsp 引用的问题</a><span class="time">1小时前</span></div></li><li><div class="q-content"><span class="wen">问：</span><a title="成都师范学院的川内代码是多少？？急求！！！！" href="http://wenda.so.com/q/1466959809729136" target="_blank" class="js-q" text="&lt;网站&gt;【详情页右侧推荐问题】&lt;未登录&gt;&lt;已解决&gt;&lt;分类&gt;点击" data-pre-cid="1000201">成都师范学院的川内代码是多少？？急...</a><span class="time">今天</span></div></li><li><div class="q-content"><span class="wen">问：</span><a title="这个怎么修改啊刚学习的菜鸟求大神帮忙" href="http://wenda.so.com/q/1466957839727254" target="_blank" class="js-q" text="&lt;网站&gt;【详情页右侧推荐问题】&lt;未登录&gt;&lt;已解决&gt;&lt;分类&gt;点击" data-pre-cid="1000201">这个怎么修改啊刚学习的菜鸟求大神帮忙</a><span class="time">今天</span></div></li></ul><div class="more clearfix"><a href="http://wenda.so.com/q/1363731618061584###" class="change-group js-recom-q-change" text="换一批">换一批</a><a href="http://wenda.so.com/c/20" text="更多问题">更多等您帮助的提问<span style="font-family:&#39;宋体&#39;;color: #2e2e2e;">&gt;&gt;</span></a></div></div><div class="garllery_ad" id="garllery"><a text="http://baike.so.com/activity/16/index.html?src=wdyx" href="http://baike.so.com/activity/16/index.html?src=wdyx" target="_blank"><img src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/t01722d232c8645739e.png"></a></div>
+<script>(function(){function r(){var r=[],i,s;if(e==="ALL")for(var o in t)r=r.concat(t[o]);else if(Object.prototype.toString.call(e)==="[object Array]")for(var o;o<e.length;o++)r=r.concat(t[e[o]]);i=r[Math.floor(Math.random()*r.length)],s=document.getElementById("garllery"),i&&(s.innerHTML='<a text="'+n[i]+'" href="'+n[i]+'" target="_blank"><img src="'+i+'"></a>')}var e="ALL",t={shouyou:["http://p7.qhimg.com/t01722d232c8645739e.png"]},n={"http://p7.qhimg.com/t01722d232c8645739e.png":"http://baike.so.com/activity/16/index.html?src=wdyx"};r()})()</script><!--<div id="tuiguang"></div>--><style>/*广告部分，初始状态是隐藏的，等待高度计算完毕后，再判断显示还是删除*/#e_idea_wenda_detail_rightBox {visibility: hidden;}</style><div class="mod-haosou-q" id="js-haosou-qlist"><h4>大家都在搜</h4><ul></ul></div></div>
+
+
+</div>
+
+
+
+<div id="search_level" style="display:none">6</div>
+</div>
+<div class="js-panels">
+
+<div id="bottom_ask" class="bottom-fixed" style=""><a class="bottom-close" href="javascript:;"></a><div class="bd"><i class="left"></i><span class="center"><input id="bottom_ask_con" type="text" value="parseInt()时保存字符串前面的0" placeholder="填写您的问题，5分钟就可以收到回答哦！"><a id="bottom_ask_btn" class="btn btn-2-b" href="javascript:void(0)"><span>提问</span></a></span></div></div>
+<div class="mod-lift g-mod-fixed" style="bottom: 250px;"><a href="javascript:;" class="ui-back-top" id="back_top" style="visibility: hidden;"><span>返回顶部</span></a><a href="http://wenda.so.com/sundry/tortindex" target="_blank" class="ui-tort"><span>侵权投诉</span></a><a href="javascript:;" class="ui-fadeback" id="feedback_detail"><span>意见反馈</span></a><a href="http://e.weibo.com/qihooask" target="_blank" class="ui-weibo"><span>微博</span></a></div>
+
+
+
+<script type="text/tmpl" id="js-added-form"><div class="mod-added-form js-added-form"><div class="g-point g-point-top"><ins class="bg"></ins><ins class="border"></ins></div><form action="{$url}" method="post" type="{$type}"><div class="editor"><div class="textarea"><textarea name="content" cols="30" rows="10" placeholder="{$placeholder}"></textarea><input name="ask_id" type="hidden" value="{$ask_id}"/><input name="ans_id" type="hidden" value="{$ans_id}"/><input name="verify" type="hidden" value=""/></div><div class="erro js-form-error"><span class="err-cnt"></span></div></div><div class="extra clearfix"><span><a herf= "javascript:;" class="submit-btn js-added-submit">提交</a></span><div class="btn-submiting js-submiting"></div><div class="captcha" style="display:none"><span>验证码</span><input class="js-captcha-input" type="text" name="captcha" maxlength="4"><img class="js-captcha-btn"><a href="#" class="js-captcha-btn">换一换</a></div></div></form></div></script>
+
+<div id="daily_ans_panel" style="display:none"><div class="mod-daily-ans"><div class="title">您已经连续回答 <em class="org">196</em> 天了</div><div class="day">第<span>9</span>天</div><div class="detail"><p>生活就像海洋，只有意志坚强的人才能达到生命的彼岸。</p></div><div class="know">知道了</div></div></div>
+<div id="usercard_box" class="mod-usercard"></div>
+
+</div>
+<div id="ft"><ul class="nav"><li class="first"><a target="_blank" href="http://wenda.so.com/other/help">问答协议及帮助</a></li><li><a target="_blank" id="feedback" href="http://wenda.so.com/q/1363731618061584#">用户反馈</a></li><!--<ul><li><a target="_blank" href="http://wenda.so.com/sundry/tortindex">侵权投诉</a></li></ul> --><li><a target="_blank" href="http://bbs.360safe.com/forum-231-1.html">论坛</a></li><li><a target="_blank" href="http://e.weibo.com/qihooask">官方微博</a></li><li><a target="_blank" href="http://wenda.so.com/static/ent/index.html">问答开放平台</a></li><li><a target="_blank" href="http://wenda.so.com/other/safedwn?ref=safedwn_daohang">问答电脑版</a></li></ul><p class="copyright">Copyright © 360.CN 奇虎360旗下搜索服务&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备08010314号-19   京公网安备110000000006号</a></p></div><div id="bread-crumbs" class="panel-q-store" style="display:none;"><div class="list"><ul class="clearfix"><li><a href="http://wenda.so.com/c/1">电脑网络</a></li><li><a href="http://wenda.so.com/c/2">手机数码</a></li><li><a href="http://wenda.so.com/c/3">生活</a></li><li><a href="http://wenda.so.com/c/4">游戏</a></li><li><a href="http://wenda.so.com/c/5">体育运动</a></li><li><a href="http://wenda.so.com/c/6">明星影音</a></li><li><a href="http://wenda.so.com/c/7">休闲爱好</a></li><li><a href="http://wenda.so.com/c/8">文化艺术</a></li><li><a href="http://wenda.so.com/c/9">社会民生</a></li><li><a href="http://wenda.so.com/c/10">教育科学</a></li><li><a href="http://wenda.so.com/c/11">医疗健康</a></li><li><a href="http://wenda.so.com/c/12">金融管理</a></li><li><a href="http://wenda.so.com/c/13">情感社交</a></li><li><a href="http://wenda.so.com/c/14">地区</a></li><li><a href="http://wenda.so.com/c/573">其它</a></li></ul></div></div></div></div><div class="js-global-panels"><script type="text/template" id="levelUp"><div class="mod-level-up"><h2 class="title">恭喜您，成功升至级！</h2><p>您的经验值领先了<span>%</span>的用户。</div></script></div><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/1141.js"></script><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/jquery,require,qw.core.js"></script><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/QHPass-5.0.3.js"></script><link type="text/css" rel="stylesheet" href="./Js里面parseInt 字符串转换数字详细解释_360问答_files/458d9383b5f2765d.css"><script charset="utf-8" src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/ebb72ce91c73a645.js"></script><script>window.namespace=function(e,t){var n=e.split("."),r=0,i;t=t||window;for(;i=n[r++];)t[i]||(t[i]={}),t=t[i];return t}</script><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/underscore-1.8.3.js"></script><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/monitor-1.2.3.js"></script><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/base_html.combo.js"></script><!--[if IE 6]><script>DD_belatedPNG.fix(".close")</script><![endif]--><!--[if IE 6]><script>DD_belatedPNG.fix(".close,.pro-num,.green-bar,.pro-bar,.success,.invite,.analyze")</script><![endif]-->
+
+<script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/js"></script><script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/10066.js" type="text/javascript"></script>
+<!--[if IE 6]><script>DD_belatedPNG.fix(".mod-music-add-toolbar span")</script><![endif]-->
+<script src="./Js里面parseInt 字符串转换数字详细解释_360问答_files/detail.combo.js"></script>
+</body></html>
