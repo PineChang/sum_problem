@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://www.tuicool.com/articles/22auqa2 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="authenticity_token" name="csrf-param">
+<meta content="D0ZmVtmQ2OB9LElpjeiXBl4pz6blwEXau7QfNN/ZUHw=" name="csrf-token">
+    <title>
+            Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷
+   </title>
+    <meta name="description" content="Webkit Flex伸缩盒模型属性备忘 - 忘语">
+  <link rel="shortcut icon" href="http://static0.tuicool.com/favicon.ico" type="image/x-icon">
+  <link href="http://static0.tuicool.com/images/icon114.png" rel="Bookmark">
+  <link rel="apple-touch-icon" sizes="57x57" href="http://static1.tuicool.com/images/icon57.png"> 
+  <link rel="apple-touch-icon" sizes="72x72" href="http://static2.tuicool.com/images/icon72.png">  
+  <link rel="apple-touch-icon" sizes="114x114" href="http://static0.tuicool.com/images/icon114.png">    
+  <link rel="apple-touch-icon" sizes="144x144" href="http://static1.tuicool.com/images/icon144.png">  
+  <link href="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/application-07c7c256e97caf3ea332c0048bb7f147.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/font-awesome.min.css" rel="stylesheet">
+  <script src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/ca-pub-7054762349007490.js"></script><script src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/application-5bab7cdd7e785d1b4f1cb667f9495dc1.js" type="text/javascript"></script>
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" href="http://assets.tuicool.com/assets/font-awesome-ie7.min.css">
+  <![endif]--> 
+    <script type="text/javascript" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/tip.js"></script>
+  
+  <script type="text/javascript" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/spin.min.js"></script><style type="text/css"></style>
+<link rel="stylesheet" href="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/github.css">
+
+</head>
+<body class=" pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+  
+  <div id="header" class="navbar-fixed-top">
+    <div class="container">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </a>
+          <a href="http://www.tuicool.com/" class="brand">推酷</a>        
+        <nav class="nav-collapse collapse">
+            <ul class="nav navbar primary-nav">                            
+              <li class="active">
+                <a href="http://www.tuicool.com/ah">
+                  文章
+                </a>
+              </li>              
+              <li class="">
+                <a href="http://www.tuicool.com/sites/hot">
+                  站点
+                </a>
+              </li>
+              <li class="">
+                <a href="http://www.tuicool.com/topics">
+                  主题
+                </a>
+              </li>
+              <li class="">
+                <a href="http://course.tuicool.com/">
+                  公开课
+                </a>
+              </li>
+              <li class="">
+                <a href="http://huodong.tuicool.com/">
+                  活动
+                </a>
+              </li>
+              <li class="">
+                <a href="http://www.tuicool.com/mobile">
+                  客户端
+                    <sup style="font-size:0.8em;color: #16A085;">荐</sup>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="http://www.tuicool.com/articles/22auqa2#" class="dropdown-toggle" data-toggle="dropdown">周刊 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.tuicool.com/mags">编程狂人</a></li>
+                  <li><a href="http://www.tuicool.com/mags/design">设计匠艺</a></li> 
+                  <li><a href="http://www.tuicool.com/mags/startup">创业周刊</a></li> 
+                  <li><a href="http://www.tuicool.com/mags/tech">科技周刊</a></li>      
+                  <li><a href="http://www.tuicool.com/mags/guru">Guru Weekly</a></li> 
+                  <li><a href="http://www.tuicool.com/articles/weekly">一周拾遗</a></li>                  
+                </ul>
+              </li>
+              
+              </ul>
+            <form class="navbar-search pull-left" action="http://www.tuicool.com/search">
+              <input type="text" class="search-query span2" name="kw" placeholder="搜索">
+            </form>
+            <ul class="nav pull-right">
+                <li><a href="http://www.tuicool.com/login">登录</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+  </div>   
+</div>
+  <div id="flash_container" class="noPrint">    
+  </div>
+  
+  <div class="container-fluid">  
+      
+<div class="row-fluid article_row_fluid">
+    <div class="span8 contant article_detail_bg">
+        <h1>Webkit Flex伸缩盒模型属性备忘 - 忘语</h1>
+        <div class="article_meta">
+            <div style="margin-bottom: 5px;">
+            <span class="timestamp">时间&nbsp;2014-09-26 13:24:00
+            </span>
+            <span class="from">
+                <i class="icon-globe"></i>
+                    <a class="cut cut28 from" href="http://www.tuicool.com/sites/QbYvau" target="_blank">博客园-所有随笔区
+                    </a>
+            </span>
+            </div>
+            <div class="source">
+                <i style="float:left;">原文</i>&nbsp; 
+                <a class="cut cut70" href="http://www.cnblogs.com/wangjiajun/p/3994263.html?utm_source=tuicool&utm_medium=referral" style="display:inline-block;">http://www.cnblogs.com/wangjiajun/p/3994263.html</a>
+            </div>
+            <div>
+                <span>主题</span>
+                <a href="http://www.tuicool.com/topics/11110022" target="_blank">
+                    <span class="new-label">WebKit</span>
+                </a>
+                <a href="http://www.tuicool.com/topics/11060002" target="_blank">
+                    <span class="new-label">CSS</span>
+                </a>
+            </div>
+        </div>
+        <div class="article_body" id="nei">
+            <div> 
+ <p>一个元素被定义display:-webkit-flex;则此元素即为伸缩盒模型中的伸缩容器，其包含的子元素是伸缩项目。 flex是一个复合属性。Flexbox伸缩布局盒模型中的伸缩容器及伸缩特性定义。 由多个伸缩项目组成其具体的布局方式。 是为了呈现复杂的应用与页面而设计出来的。</p> 
+ <p> <strong>display:</strong> -webkit-flex;&nbsp; </p> 
+ <p> <strong>-webkit-flex:</strong> none | [flex-grow flex-shrink || flex-basis] | initial | auto </p> 
+ <table class="table table-bordered"> 
+  <tbody> 
+   <tr> 
+    <th>none</th> 
+    <td>在任何情况都不会发生伸缩</td> 
+   </tr> 
+   <tr> 
+    <th>flex-grow</th> 
+    <td>扩展比率</td> 
+   </tr> 
+   <tr> 
+    <th>flex-shrink</th> 
+    <td>收缩比率</td> 
+   </tr> 
+   <tr> 
+    <th>flex-basis</th> 
+    <td>伸缩基准值</td> 
+   </tr> 
+   <tr> 
+    <th>initial</th> 
+    <td>在有剩余空间的情况下不会有任何变化，但是在必要的情况下会被收缩</td> 
+   </tr> 
+   <tr> 
+    <th>auto</th> 
+    <td>会根据主轴自动伸缩以占用所有剩余空间，非常类似于普通流中的自动外边距</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <p>示例：</p> 
+ <p>CSS</p> 
+ <pre class="prettyprint css"><span style="color: #008080;">1</span> <span style="color: #800000;"><span class="class">.flexBox</span></span><span class="rules">{<span style="color: #ff0000;"> <span class="rule"><span class="attribute">display</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value">-webkit-flex</span></span><span class="value">;</span></span><span style="color: #ff0000;"><span class="rule"><span class="attribute">-webkit-flex-flow</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"> row</span></span><span class="value">;</span></span><span style="color: #ff0000;"><span class="rule"><span class="attribute">-webkit-flex-wrap</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"> nowrap</span></span><span class="value">;</span></span><span style="color: #ff0000;"> <span class="rule"><span class="attribute">width</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="number">600</span>px</span></span><span class="value">;</span></span><span style="color: #ff0000;"> <span class="rule"><span class="attribute">margin</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="number">50</span>px auto</span></span><span class="value">;</span></span><span style="color: #ff0000;"> <span class="rule"><span class="attribute">background-color</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="hexcolor">#9CF</span></span></span><span class="value">}</span></span></span>
+<span style="color: #008080;">2</span> <span style="color: #800000;"><span class="class">.flexBox</span> <span class="tag">div</span></span><span class="rules">{<span style="color: #ff0000;"> <span class="rule"><span class="attribute">height</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="number">100</span>px</span></span><span class="value">;</span></span><span class="rule">}</span></span>
+<span style="color: #008080;">3</span> <span style="color: #800000;"><span class="class">.flexBox</span> <span class="class">.item1</span></span><span class="rules">{<span style="color: #ff0000;"><span class="rule"><span class="attribute">-webkit-flex</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="number">1</span></span></span><span class="value">;</span></span><span style="color: #ff0000;"><span class="rule"><span class="attribute">background</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="hexcolor">#ff9900</span></span></span><span class="value">;</span></span><span class="rule">}</span></span>
+<span style="color: #008080;">4</span> <span style="color: #800000;"><span class="class">.flexBox</span> <span class="class">.item2</span></span><span class="rules">{<span style="color: #ff0000;"><span class="rule"><span class="attribute">-webkit-flex</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="number">1</span></span></span><span class="value">;</span></span><span style="color: #ff0000;"><span class="rule"><span class="attribute">background</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="hexcolor">#936</span></span></span><span class="value">;</span></span><span class="rule">}</span></span>
+<span style="color: #008080;">5</span> <span style="color: #800000;"><span class="class">.flexBox</span> <span class="class">.item3</span></span><span class="rules">{<span style="color: #ff0000;"><span class="rule"><span class="attribute">-webkit-flex</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="number">1</span></span></span><span class="value">;</span></span><span style="color: #ff0000;"><span class="rule"><span class="attribute">background</span></span></span><span class="rule">:<span style="color: #0000ff;"><span class="value"><span class="hexcolor">#39C</span></span></span><span class="value">;</span></span><span class="rule">}</span></span></pre> 
+ <p>HTML：</p> 
+ <pre class="prettyprint xml"><span style="color: #008080;">1</span> <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"flexBox"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">2</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item1"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>1<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">3</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item2"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>2<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">4</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item3"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>3<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">5</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">style</span></span><span style="color: #0000ff;">=<span class="value">" width:300px; background-color:#96F"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>固定宽度300px<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">6</span> <span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span></pre> 
+ <p>结果：</p> 
+ <p> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/yYRRNz.png!web" alt="" class="alignCenter"> </p> 
+ <p>总宽度，600px,给子元素4定义了width:300px，子元素1、2、3定义了flex伸缩属性，那么剩余空间就会按照1:1:1分割给这三个子元素</p> 
+ <p> <span>-webkit-flex-basis：</span> 用来设置「flex-basis」长度并指定伸缩基准值，也就是根据可伸缩比率计算出剩余空间的分布之前，伸缩项目主轴长度的起始数值，若在「flex」缩写省略了此部件，则「flex-basis」的指定值是长度零。 若「flex-basis」的指定值是「auto」，则伸缩基准值的指定值是元素主轴长度属性的值。（这个值可能是关键字「auto」，代表元素的长度取决于其内容。） </p> 
+ <p>有点绕，即是说对子元素设置了-webkit-flex-basis基准值，在计算剩余空间前，该项在基准值上进行伸缩，例如</p> 
+ <pre class="prettyprint xml"><span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"flexBox"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+ <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item1"</span></span><span style="color: #ff0000;"> <span class="attribute">style</span></span><span style="color: #0000ff;">=<span class="value">"-webkit-flex-basis:150px;"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>1<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+ <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item2"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>2<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+ <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item3"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>3<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+ <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">style</span></span><span style="color: #0000ff;">=<span class="value">" width:300px; background-color:#96F"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>固定宽度300px<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span></pre> 
+ <p>CSS同上面的例子，仅仅修改了HTML的第一个子元素，为这个子元素添加了一个样式属性-webkit-flex-basis:150px;，设置第一个元素的基准值为150px,结果如下：</p> 
+ <p> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/fuQnaa.png!web" alt="" class="alignCenter"> </p> 
+ <p>未设基准值以前，1、2、3 三个元素的长度都是200px，也就是容器总宽度600px减去固定宽度300px后剩余300xp再1:1:1进行伸缩的结果。</p> 
+ <p>设置第一个子元素-webkit-flex-basis:150px;后，1、2、3三个元素的宽度分别为：200px、50px、50px。</p> 
+ <p>个人理解在计算出剩余空间300px后，先算出每个元素的伸缩基准值(不写默认为0px)，剩余空间减去每个元素的伸缩基准值后的空间再按比例进行分配，所以上面的结果是</p> 
+ <p>300px-150px=150px,这150px按照1:1:1分配应该给1、2、3号元素各分50px,由于1号子元素的基准值是150px，所以1号元素的宽度为150+50=200px，2、3号元素为50+0=50px.</p> 
+ <p>如果给元素设置了width属性，-webkit-flex-basis的值就是width值</p> 
+ <p> <span>-webkit-flex-direction</span> ：row(子元素优先排成一行)|row-reverse(反转)|column(子元素优先排成多行，每行排列一个)|column-reverse(反转) </p> 
+ <p>具体实例地址：http://ued.ctrip.com/blog/wp-content/webkitcss/demo/flex-direction.html</p> 
+ <p> <span>-webkit-flex-grow</span> ：指定扩展比率，也就是剩余空间是正值的时候此伸缩项目相对于伸缩容器里其他伸缩项目能分配到空间比例。若省略了此部件，则它会被设为「1」，如果设置为0，则该元素将不会参与空间分配，必须加上auto参数(-webkit-flex:0 auto;),其宽度依据内容而定，如果不加auto参数，宽度将会是0px,导致内容不可见。 </p> 
+ <p> <span>-webkit-flex-shrink</span> ：指定收缩比率，也就是剩余空间是负值的时候此伸缩项目相对于伸缩容器里其他伸缩项目能收缩的空间比例。若省略了此部件，则它会被设为「1」。在收缩的时候收缩比率会以伸缩基准值加权。 </p> 
+ <p>收缩示例：</p> 
+ <p>CSS/HTML：</p> 
+ <pre class="prettyprint xml"><span style="color: #008080;"> 1</span> <span style="color: #000000;">.flexBox{ display:-webkit-flex;-webkit-flex-flow: row;-webkit-flex-wrap: nowrap; width:600px; margin:50px auto; background-color:#9CF}
+</span><span style="color: #008080;"> 2</span> <span style="color: #000000;">.flexBox div{ height:100px; width:150px}
+</span><span style="color: #008080;"> 3</span> <span style="color: #000000;">.flexBox .item1{background:#ff9900;}
+</span><span style="color: #008080;"> 4</span> <span style="color: #000000;">.flexBox .item2{background:#936;}
+</span><span style="color: #008080;"> 5</span> <span style="color: #000000;">.flexBox .item3{background:#39C;}
+</span><span style="color: #008080;"> 6</span> 
+<span style="color: #008080;"> 7</span> <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"flexBox"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;"> 8</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item1"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>1<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;"> 9</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item2"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>2<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">10</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">class</span></span><span style="color: #0000ff;">=<span class="value">"item3"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>3<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">11</span>  <span style="color: #0000ff;"><span class="tag">&lt;</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span> </span><span style="color: #ff0000;"><span class="attribute">style</span></span><span style="color: #0000ff;">=<span class="value">" width:300px; background-color:#96F"</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>固定宽度300px<span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span>
+<span style="color: #008080;">12</span> <span style="color: #0000ff;"><span class="tag">&lt;/</span></span><span class="tag"><span style="color: #800000;"><span class="title">div</span></span><span style="color: #0000ff;">&gt;</span></span><span style="color: #0000ff;"></span></pre> 
+ <p>结果：</p> 
+ <p> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/a2U3ii.png!web" alt="" class="alignCenter"> </p> 
+ <p>初始设定1、2、3号元素的宽度为150px,4号元素宽度为300px。而实际1、2、3、4号元素的宽度分别是120px、120px、120px、240px。这是伸缩盒缩的结果。</p> 
+ <p>容器总宽度为600px，如果按照实际，4个子元素的总宽度应该为750px，所以容器应该差150px才能满足要求，而容器宽度不会自动增大，为了满足现实，就必须缩小每个子元素的宽度。</p> 
+ <p>由于未设-webkit-flex-basis基准值，所以每一个子元素的基准值就是它的宽度，所以1、2、3、4的基准值分别为150px,150px,150px和300px;。</p> 
+ <p>在收缩的时候收缩比率会以伸缩基准值加权，初始收缩比率是1:1:1:1，由于4号元素的基准值是300px，所以收缩率要加权，结果300/150=2，所以它们的收缩比率分别为1:1:1:2。</p> 
+ <p>计算收缩宽度为（差值*比率）1:150*1/5=30px、2:150*1/5=30px、3:150*1/5=30px、4:150*2/5=60px；</p> 
+ <p>四个元素的宽度分别为150-30=120、150-30=120、150-30=120、300-60=240。</p> 
+ <p> <span>-webkit-flex-wrap</span> ：控制伸缩容器是单行还是多行，也决定了侧轴方向 ― 新的一行的排列方向 </p> 
+ <table class="table table-bordered"> 
+  <tbody> 
+   <tr> 
+    <th>nowrap</th> 
+    <td>伸缩容器为单行。侧轴起点方向等同于当前书写模式的起点或前／头在侧轴的那一边，而侧轴终点方向是侧轴起点的相反方向</td> 
+   </tr> 
+   <tr> 
+    <th>wrap</th> 
+    <td>伸缩容器可以创建多行,新增的伸缩行根据侧轴的方向添加</td> 
+   </tr> 
+   <tr> 
+    <th>wrap-reverse</th> 
+    <td>除了侧轴起点与侧轴终点方向交换以外同「wrap」</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <p>示例地址：http://ued.ctrip.com/blog/wp-content/webkitcss/demo/flex-wrap.html</p> 
+ <p>在属性设置为wrap时，容器会自动判断子元素的宽度决定是否换行，可以给子元素设置min-width或width属性配合使用。</p> 
+ <p>接着上一个例子收缩来说，如果设定了子元素宽度而又不愿意收缩，可以设置-webkit-flex-wrap：wrap</p> 
+ <p>结果为：</p> 
+ <p> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/QjAzIzZ.png!web" alt="" class="alignCenter"> </p> 
+ <p>1、2、3、4号元素宽度就是实际的值150、150、150、300px。一行排不下时自动换行，由于未设置-webkit-flex属性，所以不会自动拉伸。</p> 
+ <p> <span>-webkit-align-content</span> ：基于Flex布局，用来指定多行伸缩容器的对齐。在使用 wrap 关键字的多行伸缩容器上，你也可以指定行与行之间空白的分配方法。仅在伸缩容器在侧轴占有固定的空间时（例：伸缩子元素横排的时候伸缩容器有固定高）才有作用 </p> 
+ <table class="table table-bordered"> 
+  <tbody> 
+   <tr> 
+    <th>flex-start</th> 
+    <td>将伸缩行捆在主轴起始端，将空白留到结尾端</td> 
+   </tr> 
+   <tr> 
+    <th>flex-end</th> 
+    <td>将伸缩行捆在主轴结尾端，将空白留到起始端</td> 
+   </tr> 
+   <tr> 
+    <th>center</th> 
+    <td>将伸缩行捆在主轴的中间位置，将空白平均分到两端</td> 
+   </tr> 
+   <tr> 
+    <th>stretch</th> 
+    <td>将所有项目伸长，让项目占据了整个侧轴的长度</td> 
+   </tr> 
+   <tr> 
+    <th>space-around</th> 
+    <td>沿着侧轴将空白均分到伸缩行之间与外侧（行之间空白的二分之一）</td> 
+   </tr> 
+   <tr> 
+    <th>space-between</th> 
+    <td>跟 space-around 的效果很相像，但是分配到开始、结尾两端的空间比较少</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <p>基于上一个例子，设置容器属性&lt;div class="flexBox" style="-webkit-flex-wrap:wrap; height:300px;-webkit-align-content:space-between "&gt;，给一个固定的高度。</p> 
+ <p>flex-start： &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;flex-end： &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;center： &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;space-around: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;space-between:</p> 
+ <p> <img title="flex-start" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/ziYZza.png!web" alt="flex-start" class="alignCenter"> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/iYvqiua.png!web" alt="" class="alignCenter"> <img title="center" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/RfQ3u2.png!web" alt="center" class="alignCenter"> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/yYNJju.png!web" alt="" class="alignCenter"> <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/VrAjU3q.png!web" alt="" class="alignCenter"> </p> 
+</div>
+        </div>
+        <div class="article_social">
+         <div class="article_like">
+    <div class="circle circle-like" id="my_zan" data_id="22auqa2">  </div>
+
+</div>
+        <div id="share_weixin_image">
+            <img width="100px" height="100px" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/qrcode.php">
+        </div>
+<div class="article_share_fav">
+    <div class="share" id="ckepop">
+        <span>分享</span>
+        <button class="share_weibo" id="share_weibo_id" title="分享到新浪微博"></button>
+        <button class="share_qq" id="share_qq_id" title="分享到QQ空间"></button>
+        <button class="share_weixin" id="share_weixin_id"></button>
+    </div>
+    <div class="fav_correct">
+        <button id="my_fav" data_id="22auqa2">
+            <i class="icon icon-star-empty"></i> <span id="fav_tip">收藏</span>
+        </button>
+        <button id="article-correct" data_id="22auqa2" uid="0">
+            <i class="icon icon-warning-sign"></i>
+            <span>纠错</span>
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+$("#share_weibo_id").click( function() {
+   window.open("http://share.baidu.com/s?type=text&searchPic=0&sign=on&to=tsina&url=http://www.tuicool.com/articles/22auqa2&title=Webkit+Flex%E4%BC%B8%E7%BC%A9%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%B1%9E%E6%80%A7%E5%A4%87%E5%BF%98+-+%E5%BF%98%E8%AF%AD++%28%E5%88%86%E4%BA%AB%E8%87%AA+%40%E6%8E%A8%E9%85%B7%E7%BD%91%29&key=3113829255");
+});
+$("#share_qq_id").click( function() {
+   window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.tuicool.com/articles/22auqa2&title=Webkit+Flex%E4%BC%B8%E7%BC%A9%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%B1%9E%E6%80%A7%E5%A4%87%E5%BF%98+-+%E5%BF%98%E8%AF%AD&desc=&summary=&site=");
+});
+$("#share_weixin_id").click( function() {
+  $("#share_weixin_image").toggle();
+});
+</script>
+
+
+            <div class="bottom_ad huodong-detail-ad-banner clearfix">
+                  <a href="http://www.vc3market.com/?f=tc" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/vc3market700.jpg"></a>
+
+            </div>
+        </div>
+        <div id="site_articles" style="clear:both;">
+              <div class="article-part-title">
+                <span>推荐文章</span>
+              </div>
+          <ul class="side_article_list">
+                <li class="side_article_list_item">
+                    1.<a href="http://www.tuicool.com/articles/QfemIfQ" target="_blank" title="微软自夸Edge浏览器的电源效率">
+                    微软自夸Edge浏览器的电源效率
+                    </a>
+                </li>
+                <li class="side_article_list_item">
+                    2.<a href="http://www.tuicool.com/articles/zayeeuR" target="_blank" title="如何搭建高质量、高效率的前端工程体系--页面结构继承">
+                    如何搭建高质量、高效率的前端工程体系--页面结构继承
+                    </a>
+                </li>
+                <li class="side_article_list_item">
+                    3.<a href="http://www.tuicool.com/articles/bENFVfy" target="_blank" title="全响应式web前端开发">
+                    全响应式web前端开发
+                    </a>
+                </li>
+                <li class="side_article_list_item">
+                    4.<a href="http://www.tuicool.com/articles/RRFZfiq" target="_blank" title="11款好看的 Checkbox 切换开关样式 – Switcher styles collection">
+                    11款好看的 Checkbox 切换开关样式 – Switcher styles collection
+                    </a>
+                </li>
+                <li class="side_article_list_item">
+                    5.<a href="http://www.tuicool.com/articles/m6Nj2mm" target="_blank" title="ReactMix：基于HTML+JS+CSS写APP的最佳实践">
+                    ReactMix：基于HTML+JS+CSS写APP的最佳实践
+                    </a>
+                </li>
+                <li class="side_article_list_item">
+                    6.<a href="http://www.tuicool.com/articles/aYra63B" target="_blank" title="CSS中的数据类型">
+                    CSS中的数据类型
+                    </a>
+                </li>
+          </ul>
+        </div>
+        <div id="kan_articles"> <div class="article-part-title"> <span>相关推刊</span></div><ul class="kan-list">          <li class="kan-item">            <a href="http://www.tuicool.com/kans/1757338726" target="_blank" class="kan-item-head">              <small>刊主：洋冰川</small>              <img class="kan-cover" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/i2aUj2y.png!kan">            </a>            <span class="kan-detail">              <a href="http://www.tuicool.com/kans/1757338726" target="_blank">《css》</a>              <i class="kan-num">126</i>            </span>          </li>                  <li class="kan-item">            <a href="http://www.tuicool.com/kans/1443406915" target="_blank" class="kan-item-head">              <small>刊主：中文</small>              <img class="kan-cover" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/yiyIri.png!kan">            </a>            <span class="kan-detail">              <a href="http://www.tuicool.com/kans/1443406915" target="_blank">《CSS》</a>              <i class="kan-num">309</i>            </span>          </li>        </ul><i class="clearfix"></i></div>
+        <div id="article_weibo" style="display:none;">
+            <div class="article-part-title">
+                <span>相关微博</span>
+                <sub>
+                    <a href="http://www.tuicool.com/articles/weibo_list/22auqa2" target="_blank">(<i id="weibo_num"></i>)</a> 
+               </sub>
+            </div>
+            <div class="related-weibo-list"></div>
+        </div>
+        <div class="comments">
+    <div class="comments-area">
+    <div class="comments-header">
+        <h5>我来评几句</h5>
+        <div class="alert comment-alert alert-error" style="display:none;">
+            错误
+        </div>
+            <textarea cols="60" rows="5" id="comment-body" placeholder="请输入评论内容..." style="resize: none;"></textarea>
+            <span class="btn btn-medium btn-submit" id="comment-submit">登录后评论</span>
+        <p style="margin-top: 5px;margin-left:10px;">
+            已发表评论数(<span class="comment_cnt">0</span>)
+        </p>
+    </div>
+    <div class="comments-list">
+        <div class="empty-cmts alert alert-success" style="display:none;">
+            没有更多评论了^^
+        </div>
+    </div>
+    <div class="more-comments" style="display:none;">
+        <a href="">更多评论</a>
+    </div>
+    <div class="load-fail" style="display:none;">
+        评论加载失败，<a href="javascript:reload_comments('22auqa2',1,0,-1);">重新加载</a>
+    </div>
+    </div>
+</div>
+
+    </div>
+        <div class="span4 article_right_side">
+            <div class="right_top">
+    <div class="article_related_site article_detail_bg">
+    <h4 class="article-part-title">相关站点</h4>
+    <div class="article_related_site_body clearfix">
+        <div class="logo">
+            <img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/QbYvau.png">
+        </div>
+        <div class="name">
+            <div>
+                <a href="http://www.tuicool.com/sites/QbYvau" target="_blank"> 博客园-所有随笔区</a>
+            </div>
+            <div>
+                <div class="btn btn-success right_site_follow" id="my_follow" data_id="QbYvau">＋订阅</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="right_site_articles" class="article_detail_bg">
+    <div class="article-part-title">
+        <span>热门文章</span>
+    </div>
+    <ul class="side_article_list">
+        <li class="side_article_list_item">
+            1.<a href="http://www.tuicool.com/articles/QfemIfQ" target="_blank" title="微软自夸Edge浏览器的电源效率"> 微软自夸Edge浏览器的电源效率 </a>
+        </li>
+        <li class="side_article_list_item">
+            2.<a href="http://www.tuicool.com/articles/zayeeuR" target="_blank" title="如何搭建高质量、高效率的前端工程体系--页面结构继承"> 如何搭建高质量、高效率的前端工程体系--页面结构继承 </a>
+        </li>
+        <li class="side_article_list_item">
+            3.<a href="http://www.tuicool.com/articles/ARbuQjZ" target="_blank" title="REmap入门示例"> REmap入门示例 </a>
+        </li>
+        <li class="side_article_list_item">
+            4.<a href="http://www.tuicool.com/articles/bENFVfy" target="_blank" title="全响应式web前端开发"> 全响应式web前端开发 </a>
+        </li>
+        <li class="side_article_list_item">
+            5.<a href="http://www.tuicool.com/articles/RRFZfiq" target="_blank" title="11款好看的 Checkbox 切换开关样式 – Switcher styles collection"> 11款好看的 Checkbox 切换开关样式 – Switcher styles collection </a>
+        </li>
+    </ul>
+</div>
+<div class="right-ad">
+      <a href="http://www.vc3market.com/?f=tc" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/vc3market120.jpg"></a>
+
+</div>
+<div class="right-ad" style="margin-top: 5px">
+      <a href="https://www.jiguang.cn/?from=tuicool01" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/jpush120.jpg"></a>
+
+</div>
+<div class="right-ad" style="margin-top: 5px">
+      <a href="https://www.teambition.com/?utm_source=tuicool&utm_medium=banner01" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/teambition120.jpg"></a>
+
+</div>
+
+<div class="right-ad" style="margin-top: 5px">
+      <a href="http://click.aliyun.com/m/5043/" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/aliyun120.jpg"></a>
+
+</div>
+      <div class="right-ad" style="margin-top: 5px">
+              <a href="http://yacebao.com/?f=tuicool" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/jiankongbao120.jpg"></a>
+
+      </div>
+<div class="right-ad" style="margin-top: 5px">
+      <a href="http://www.handone.com/?f=tc" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/handone300.jpg"></a>
+
+</div>
+</div>
+<div class="operate_zone" style="position: inherit; top: 0px;">
+      <div class="right-ad" style="margin-top: 0px">
+              <a href="http://www.bigniu.com/?f=tc" target="_blank"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/bigniu120.jpg"></a>
+
+      </div>
+        <div class="frd_pos">
+        <script async="" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-7054762349007490" data-ad-slot="5705695566" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+</div>
+         </div>
+</div>
+
+<div>
+   <!-- add_article to kan -->
+<div id="add-article-to-kan" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <span class="add-title">收藏到推刊</span>
+    <a href="http://www.tuicool.com/articles/22auqa2#new-kan" class="btn pull-right" data-toggle="modal">创建推刊</a>
+    <i class="clearfix"></i>
+  </div>
+  <div class="modal-body">
+    <ul id="add-kan-list">
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <input type="hidden" value="22auqa2" class="article-id"> 
+    <button class="btn btn-primary pull-left add-to-btn">  收 藏  </button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true" style="margin-right: 15px">取消</button>
+  </div>
+</div>
+
+   <div id="new-kan" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <input type="text" name="name" id="new-kan-name" placeholder="推刊名(必填)" required="" data-validation-required-message="请填写推刊名">
+    <span class="new-ness-name">请填写推刊名</span>
+    <br>
+    <textarea name="desc" id="desc" rows="6" placeholder="推刊描述"></textarea>
+    <span class="new-ness-desc">描述不能大于100个字符!</span>
+    <br>
+    权限设置：<input type="radio" name="type" value="1" checked="checked"> 公开
+    <input type="radio" name="type" value="0"> 仅自己可见
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary pull-left create-kan-btn" disabled="">创建</button>
+    <button class="btn dismiss-new-kan" data-dismiss="modal" aria-hidden="true">取消</button>
+  </div>
+</div>
+
+
+</div>
+<div id="article-correct-modal" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            ×
+        </button>
+        <h3>文章纠错</h3>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" value="22auqa2" id="article-correct-source">
+        <div>
+            <label for="article-correct-email">
+                邮箱地址
+            </label>
+            <input type="email" id="article-correct-email" class="input-large">
+        </div>
+        <div>
+            <label for="article-correct-select">
+                错误类型
+            </label>
+            <select id="article-correct-select">
+                <option value="正文不准确">正文不准确</option>
+                <option value="标题不准确">标题不准确</option>
+                <option value="排版有问题">排版有问题</option>
+                <option value="没有分页内容">没有分页内容</option>
+                <option value="图片无法显示">图片无法显示</option>
+                <option value="视频无法显示">视频无法显示</option>
+                <option value="与原文不一致">与原文不一致</option>
+            </select>
+        </div>
+        <div>
+            <label for="article-correct-other">
+                补充信息
+            </label>
+            <textarea id="article-correct-other" class="span6"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary pull-right huodong_correct_submit" id="article-correct-submit">
+            &nbsp;&nbsp;提交&nbsp;&nbsp;
+        </button>
+    </div>
+</div>
+
+<style type="text/css">
+    .btn-large {
+        padding: 0;
+    }
+    .load-fail {
+        display: none;
+    }
+</style>
+<script src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/highlight.pack.js"></script>
+<script type="text/javascript">
+    $('table').each(function(i) {
+        var size = $(this).children().size();
+        if (size > 1) {
+            $(this).attr('class',"table table-bordered");
+        } else if (size == 1) {
+            var e11 = $(this).children(":first");
+            var e1 = e11[0];
+            var name = e1.nodeName.toLowerCase();
+            if ("tbody" == name) {
+                if (e1.children.length > 1) {
+                    $(this).attr('class',"table table-bordered");
+                } else if (e1.children.length == 1){
+                    var e12 = e1.children[0];
+                    var name2 = e12.nodeName.toLowerCase();
+                    if ("tr" == name2) {
+                       if (e12.children.length > 1) {
+                         $(this).attr('class',"table table-bordered");
+                       }
+                    }
+                }
+            }
+        }
+    });
+            related_kan("22auqa2");
+        window.page = 0;
+        window.last = 0;    
+        window.first = true;
+        resize_article_image('#nei', 550);
+                load_comments("22auqa2",1,0,-1);
+                window.uid = -1;
+        open_add_article_to_kan("false");
+        async_do_zan_article(); 
+        $('pre').each(function(i, e) {
+            hljs.highlightBlock(e, "<span class='indent'>  </span>", false)
+        });
+       
+          
+       handle_follow_site("#my_follow","已订阅","+ 订阅");
+</script>
+
+
+
+  
+
+    <div class="loader-inner ball-pulse ball-loading-center" id="page-loading" style="display: none">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="read-later-alert"></div>
+  </div>
+
+    <div class="footer">
+    <div class="footer-inner">
+    <dl class="about-link site-link">
+        <dt>
+            网站相关
+        </dt>
+        <dd>
+            <a target="_blank" href="http://www.tuicool.com/about">关于我们</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.tuicool.com/mobile">移动应用</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.tuicool.com/bbs/go/issues">建议反馈</a>
+        </dd>
+    </dl>
+    <dl class="site-link follow-link">
+        <dt>
+            关注我们
+        </dt>
+        <dd>
+            <a target="_blank" href="http://e.weibo.com/tuicool2012"><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/weibo-32.png">推酷网</a>
+        </dd>
+        <dd><img src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/weixin-32.png">tuicool2012
+        </dd>
+    </dl>
+    <dl class="site-link links">
+        <dt>
+            友情链接
+        </dt>
+        <dd>
+                <a href="http://www.woshipm.com/" title="人人都是产品经理" target="_blank">人人都是产品经理</a>
+                <a href="http://www.pm265.com/" title="PM256" target="_blank">PM256</a>
+                <a href="http://www.yidonghua.com/" title="移动信息化" target="_blank">移动信息化</a>
+                <a href="http://www.snsiu.com/" title="行晓网" target="_blank">行晓网</a>
+                <a href="http://www.taskcity.com/" title="智城外包网" target="_blank">智城外包网</a>
+                <a href="http://www.huxiu.com/" title="虎嗅" target="_blank">虎嗅</a>
+                <a href="http://www.iterduo.com/" title="IT耳朵" target="_blank">IT耳朵</a>
+                <a href="http://mediaworks.caixin.com/" title="创媒工场" target="_blank">创媒工场</a>
+                <a href="http://www.managershare.com/" title="经理人分享" target="_blank">经理人分享</a>
+                <a href="http://www.shichangbu.com/" title="市场部网" target="_blank">市场部网</a>
+                <a href="http://www.ikanchai.com/" title="砍柴网" target="_blank">砍柴网</a>
+                <a href="http://www.cocoachina.com/" title="CocoaChina" target="_blank">CocoaChina</a>
+                <a href="http://www.ibeifeng.com/" title="北风网" target="_blank">北风网</a>
+                <a href="http://www.jiankongbao.com/" title="云智慧" target="_blank">云智慧</a>
+                <a href="http://www.wyzc.com/" title="我赢职场" target="_blank">我赢职场</a>
+                <a href="http://www.thebigdata.cn/" title="大数据时代" target="_blank">大数据时代</a>
+                <a href="http://www.qidic.com/" title="奇笛网" target="_blank">奇笛网</a>
+                <a href="http://www.cngulu.com/" title="咕噜网" target="_blank">咕噜网</a>
+                <a href="http://www.linuxdiyf.com/" title="红联linux" target="_blank">红联linux</a>
+                <a href="http://win10.ithome.com/" title="Win10之家" target="_blank">Win10之家</a>
+                <a href="http://www.niaogebiji.com/" title="鸟哥笔记" target="_blank">鸟哥笔记</a>
+                <a href="http://www.play.cn/" title="爱游戏" target="_blank">爱游戏</a>
+                <a href="http://www.investide.cn/" title="投资潮" target="_blank">投资潮</a>
+                <a href="http://www.31huiyi.com/" title="31会议网" target="_blank">31会议网</a>
+                <a href="https://www.jiguang.cn/" title="极光推送" target="_blank">极光推送</a>
+                <a href="https://www.teambition.com/" title="Teambition" target="_blank">Teambition</a>
+                <a href="http://www.guigu.org/" title="硅谷网" target="_blank">硅谷网</a>
+                <a href="https://home.leangoo.com/" title="leangoo" target="_blank">leangoo</a>
+                <a href="http://www.zealer.com/" title="ZEALER中国" target="_blank">ZEALER中国</a>
+                <a href="http://www.opensns.cn/" title="OpenSNS" target="_blank">OpenSNS</a>
+                <a href="http://www.edu360.cn/" title="小牛学堂" target="_blank">小牛学堂</a>
+                <a href="http://www.handone.com/" title="handone" target="_blank">handone</a>
+                <a href="http://www.scrumcn.com/" title="Scrum中文网" target="_blank">Scrum中文网</a>
+                <a href="http://www.bigniu.com/" title="比戈大牛" target="_blank">比戈大牛</a>
+                <a href="https://www.upyun.com/" title="又拍云" target="_blank">又拍云</a>
+            <a href="http://www.tuicool.com/links">更多链接&gt;&gt;</a>&nbsp;&nbsp;
+        </dd>
+    </dl>
+    <div class="clear"></div>
+    </div>
+</div>
+
+<div style="display:none;">
+   <script src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/stat.php" language="JavaScript"></script><script src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=5541078" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./Webkit Flex伸缩盒模型属性备忘 - 忘语 - 推酷_files/pic.gif"></a>
+</div>
+
+
+
+
+<div class="return" title="返回顶部" style="display: none;"></div></body></html>

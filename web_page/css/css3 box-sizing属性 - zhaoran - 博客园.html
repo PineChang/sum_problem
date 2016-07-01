@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0062)http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>css3 box-sizing属性 - zhaoran - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./css3 box-sizing属性 - zhaoran - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./css3 box-sizing属性 - zhaoran - 博客园_files/bundle-clover.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zhaoran/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zhaoran/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zhaoran/wlwmanifest.xml">
+<script type="text/javascript" src="./css3 box-sizing属性 - zhaoran - 博客园_files/encoder.js"></script><script src="./css3 box-sizing属性 - zhaoran - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'zhaoran', cb_enable_mathjax=false;</script>
+<script src="./css3 box-sizing属性 - zhaoran - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+<tbody><tr>
+	<td width="299" background="./css3 box-sizing属性 - zhaoran - 博客园_files/banner1.jpg"></td>
+	<td background="./css3 box-sizing属性 - zhaoran - 博客园_files/banner.jpg">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zhaoran/">zhaoran</a><br>
+		
+	</div>
+</div>
+</td>
+	<td width="296" background="./css3 box-sizing属性 - zhaoran - 博客园_files/banner2.jpg"></td>
+</tr>
+</tbody></table>
+<div id="mylinks"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a>&nbsp; &nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/zhaoran/">首页</a>&nbsp; &nbsp;
+<a href="http://q.cnblogs.com/" class="menu" target="_blank">博问</a>&nbsp; &nbsp;
+<a href="http://home.cnblogs.com/ing/" class="menu" target="_blank">闪存</a>&nbsp; &nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp; &nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/zhaoran/rss">订阅</a>
+<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/zhaoran/rss"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/xml.gif" alt="订阅"></a>&nbsp; &nbsp;
+<a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a>
+<!-- <a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/zhaoran">联系</a>&nbsp;&nbsp;&nbsp; -->
+</div>
+<div id="mytopmenu">
+	
+		<div id="mystats">
+			
+<!--done-->
+<div class="blogStats">
+posts - 11,&nbsp;
+comments - 15,&nbsp;
+trackbacks - 0
+
+</div></div>
+	
+</div>
+<div id="centercontent">
+	
+<div id="post_detail">
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="cb_post_title_url" class="postTitle2" href="./css3 box-sizing属性 - zhaoran - 博客园_files/css3 box-sizing属性 - zhaoran - 博客园.html">css3 box-sizing属性</a>
+	</div>
+	<div id="cnblogs_post_body"><p>box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。</p>
+<p>content-box，border和padding不计算入width之内</p>
+<p>padding-box，padding计算入width内</p>
+<p>border-box，border和padding计算入width之内，其实就是怪异模式了~</p>
+<p>&nbsp;</p>
+<p>ie8+浏览器支持content-box和border-box；</p>
+<p>ff则支持全部三个值。</p>
+<p>&nbsp;</p>
+<p>使用时：</p>
+<p>-webkit-box-sizing: 100px; // for ios-safari, android</p>
+<p>-moz-box-sizing:100px; //for ff</p>
+<p>box-sizing:100px; //for other</p>
+<p>栗子：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #800000;">&lt;style type="text/css"&gt;
+    .content-box</span>{<span style="color: #ff0000;">
+        box-sizing</span>:<span style="color: #0000ff;">content-box</span>;<span style="color: #ff0000;">
+        -moz-box-sizing</span>:<span style="color: #0000ff;">content-box</span>;<span style="color: #ff0000;">
+        width</span>:<span style="color: #0000ff;"> 100px</span>;<span style="color: #ff0000;">
+        height</span>:<span style="color: #0000ff;"> 100px</span>;<span style="color: #ff0000;">
+        padding</span>:<span style="color: #0000ff;"> 20px</span>;<span style="color: #ff0000;">
+        border</span>:<span style="color: #0000ff;"> 5px solid #E6A43F</span>;<span style="color: #ff0000;">
+        background</span>:<span style="color: #0000ff;"> blue</span>;
+    }<span style="color: #800000;">
+    .padding-box</span>{<span style="color: #ff0000;">
+        box-sizing</span>:<span style="color: #0000ff;">padding-box</span>;<span style="color: #ff0000;">
+        -moz-box-sizing</span>:<span style="color: #0000ff;">padding-box</span>;<span style="color: #ff0000;">
+        width</span>:<span style="color: #0000ff;"> 100px</span>;<span style="color: #ff0000;">
+        height</span>:<span style="color: #0000ff;"> 100px</span>;<span style="color: #ff0000;">
+        padding</span>:<span style="color: #0000ff;"> 20px</span>;<span style="color: #ff0000;">
+        border</span>:<span style="color: #0000ff;"> 5px solid #186645</span>;<span style="color: #ff0000;">
+        background</span>:<span style="color: #0000ff;"> red</span>;                
+    }<span style="color: #800000;">
+    .border-box</span>{<span style="color: #ff0000;">
+        box-sizing</span>:<span style="color: #0000ff;">border-box</span>;<span style="color: #ff0000;">
+        -moz-box-sizing</span>:<span style="color: #0000ff;">border-box</span>;<span style="color: #ff0000;">
+        width</span>:<span style="color: #0000ff;"> 100px</span>;<span style="color: #ff0000;">
+        height</span>:<span style="color: #0000ff;"> 100px</span>;<span style="color: #ff0000;">
+        padding</span>:<span style="color: #0000ff;"> 20px</span>;<span style="color: #ff0000;">
+        border</span>:<span style="color: #0000ff;"> 5px solid #3DA3EF</span>;<span style="color: #ff0000;">
+        background</span>:<span style="color: #0000ff;"> yellow</span>;
+    }<span style="color: #800000;">
+&lt;/style&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>截图（ff）：</p>
+<p><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/24193946-a9254dc02c674541a4f41f284564948c.png" alt=""></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/zhaoran/tag/css3/">css3</a>, <a href="http://www.cnblogs.com/zhaoran/tag/box-sizing/">box-sizing</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3097482,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/zhaoran" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/zhaoran/" target="_blank"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/zhaoran/">zhaoran</a><br>
+<a href="http://home.cnblogs.com/u/zhaoran/followees">关注 - 1</a><br>
+<a href="http://home.cnblogs.com/u/zhaoran/followers">粉丝 - 13</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3097482,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">8</span>
+    </div>
+	<div class="buryit" onclick="votePost(3097482,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/23/3094951.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/zhaoran/archive/2013/05/23/3094951.html" title="发布于2013-05-23 15:26">ie7下利用iframe异步上传文件时name属性的问题</a><br><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/27/3102487.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/zhaoran/archive/2013/05/27/3102487.html" title="发布于2013-05-27 20:46">文件上传input简便美化方案（需求变更）</a><br></div>
+</div>
+
+
+	<div class="postDesc">posted on <span id="post-date">2013-05-24 19:13</span> <a href="http://www.cnblogs.com/zhaoran/">zhaoran</a> 阅读(<span id="post_view_count">39226</span>) 评论(<span id="post_comment_count">11</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3097482" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#" onclick="AddToWz(3097482);return false;">收藏</a></div>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=130294,cb_entryId=3097482,cb_blogApp=currentBlogApp,cb_blogUserGuid='82fdbf01-878b-e011-a53f-842b2b196315',cb_entryCreatedDate='2013/5/24 19:13:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<br>
+<b>FeedBack:</b>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3038914" class="layer">#1楼</a><a name="3038914" id="comment_anchor_3038914"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2014-10-05 13:30</span> | <a id="a_comment_author_3038914" href="http://home.cnblogs.com/u/607985/" target="_blank">幼幼</a> <a href="http://msg.cnblogs.com/send/%E5%B9%BC%E5%B9%BC" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3038914" class="blog_comment_body">咦，看了半天的文档，你一个例子加图片加说明直接就给我整明白了，棒，啥也不说了，赞一个！！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3038914,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3038914,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3113529" class="layer">#2楼</a><a name="3113529" id="comment_anchor_3113529"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-01-23 16:20</span> | <a id="a_comment_author_3113529" href="http://home.cnblogs.com/u/65529/" target="_blank">维●▂●维</a> <a href="http://msg.cnblogs.com/send/%E7%BB%B4%E2%97%8F%E2%96%82%E2%97%8F%E7%BB%B4" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3113529" class="blog_comment_body">看例子直接就明白了，赞一个~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3113529,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3113529,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3127349" class="layer">#3楼</a><a name="3127349" id="comment_anchor_3127349"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-02-10 22:57</span> | <a id="a_comment_author_3127349" href="http://www.cnblogs.com/tbz888/" target="_blank">阿鲁巴</a> <a href="http://msg.cnblogs.com/send/%E9%98%BF%E9%B2%81%E5%B7%B4" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3127349" class="blog_comment_body">通俗易懂，赞一个。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3127349,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3127349,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3127349_avatar" style="display:none;">http://pic.cnblogs.com/face/584151/20131120141849.png</span>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3154014" class="layer">#4楼</a><a name="3154014" id="comment_anchor_3154014"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-04-01 10:58</span> | <a id="a_comment_author_3154014" href="http://www.cnblogs.com/coolasm/" target="_blank">闫亚迪</a> <a href="http://msg.cnblogs.com/send/%E9%97%AB%E4%BA%9A%E8%BF%AA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3154014" class="blog_comment_body">感谢分享！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3154014,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3154014,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3154014_avatar" style="display:none;">http://pic.cnblogs.com/face/u163092.jpg</span>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3195285" class="layer">#5楼</a><a name="3195285" id="comment_anchor_3195285"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-05-28 13:55</span> | <a id="a_comment_author_3195285" href="http://www.cnblogs.com/coldfishdt/" target="_blank">coldfishdt</a> <a href="http://msg.cnblogs.com/send/coldfishdt" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3195285" class="blog_comment_body"><img src="./css3 box-sizing属性 - zhaoran - 博客园_files/281353578609787.jpg" alt="" border="0" "=""><br>   我写的同样的代码，可是为什么我的效果和你的不一样？第一个和第二个展现的是相同的效果!!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3195285,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3195285,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3232800" class="layer">#6楼</a><a name="3232800" id="comment_anchor_3232800"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-07-22 10:04</span> | <a id="a_comment_author_3232800" href="http://www.cnblogs.com/jingjing-blog/" target="_blank">泥wawa</a> <a href="http://msg.cnblogs.com/send/%E6%B3%A5wawa" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3232800" class="blog_comment_body"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3195285" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3195285);">@</a>
+coldfishdt<br>可能是浏览器的原因，我在谷歌浏览器上就是你这样的效果，但是火狐就是正常的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3232800,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3232800,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3232800_avatar" style="display:none;">http://pic.cnblogs.com/face/735573/20150325100009.png</span>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3253798" class="layer">#7楼</a><a name="3253798" id="comment_anchor_3253798"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-08-25 13:35</span> | <a id="a_comment_author_3253798" href="http://www.cnblogs.com/miraclesakura/" target="_blank">樱花飞落ll</a> <a href="http://msg.cnblogs.com/send/%E6%A8%B1%E8%8A%B1%E9%A3%9E%E8%90%BDll" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3253798" class="blog_comment_body"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3195285" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3195285);">@</a>
+coldfishdt<br>safari/chrome上也是这个效果，火狐的测试结果跟楼主一样，content-box加不加意义不大，padding-box存在浏览器差异不好用，border-box safari/chrome/firefox均是一样的效果</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3253798,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3253798,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3309772" class="layer">#8楼</a><a name="3309772" id="comment_anchor_3309772"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-11-19 10:27</span> | <a id="a_comment_author_3309772" href="http://home.cnblogs.com/u/840659/" target="_blank">遗失季节</a> <a href="http://msg.cnblogs.com/send/%E9%81%97%E5%A4%B1%E5%AD%A3%E8%8A%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3309772" class="blog_comment_body">写的很清楚，一看就明白。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3309772,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3309772,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3319808" class="layer">#9楼</a><a name="3319808" id="comment_anchor_3319808"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-12-03 13:56</span> | <a id="a_comment_author_3319808" href="http://www.cnblogs.com/yansj1997/" target="_blank">yansj1997</a> <a href="http://msg.cnblogs.com/send/yansj1997" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3319808" class="blog_comment_body">padding-box这个值好像只有在firefox下是和楼主说的表现一致，在safari和chrome都喝content-box表现一致。mac下测试。IE，手头没有浏览器，没有实验。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3319808,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3319808,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3331305" class="layer">#10楼</a><a name="3331305" id="comment_anchor_3331305"></a></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2015-12-21 16:09</span> | <a id="a_comment_author_3331305" href="http://home.cnblogs.com/u/862005/" target="_blank">runningnoob</a> <a href="http://msg.cnblogs.com/send/runningnoob" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3331305" class="blog_comment_body">有没有跟我说下这个属性到底是起什么作用的....自学CSS的时候不懂这个属性，然后百度找过来的 T.T</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3331305,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3331305,&#39;Bury&#39;,this)">反对(0)</a></div>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3420018" class="layer">#11楼</a><a name="3420018" id="comment_anchor_3420018"></a><span id="comment-maxId" style="display:none;">3420018</span><span id="comment-maxDate" style="display:none;">2016/4/29 11:45:23</span></div>
+			<div class="feedbackListSubtitle">
+				 <span class="comment_date">2016-04-29 11:45</span> | <a id="a_comment_author_3420018" href="http://www.cnblogs.com/alanzhang906536936/" target="_blank">_AlanZhang_</a> <a href="http://msg.cnblogs.com/send/_AlanZhang_" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><br>
+				<div align="left"><div id="comment_body_3420018" class="blog_comment_body"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3253798" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3253798);">@</a>
+樱花飞落ll<br>w3c 没有定义padding-box 这个属性值</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3420018,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3420018,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3420018_avatar" style="display:none;">http://pic.cnblogs.com/face/688158/20151115151648.png</span>&nbsp;&nbsp;<span class="comment_actions"></span></div>
+			</div>
+			
+			
+		</div>
+	
+
+
+
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/activereports/excel.htm?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=AR&utm_campaign=community" target="_blank">【推荐】报表开发别头大！类Excel 复杂报表开发实例，即学即用</a><br><a href="http://group.cnblogs.com/topic/74774.html" target="_blank">【推荐】福利Time，讯飞开放平台注册即送好礼！</a><br><a href="http://click.aliyun.com/m/5124/" target="_blank">【推荐】你的分布式应用真的需要那么多同步调用么？</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="https://www.wilddog.com/?utm_source=cnblog&utm_medium=banner&utm_content=contenct_bottom&utm_campaign=suzhoucodingcamp" target="_blank"><img width="300" height="250" src="./css3 box-sizing属性 - zhaoran - 博客园_files/cnblogs-300x250-x2-1.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/548424/" target="_blank">中国的自拍市场被美图做穷尽了还没赚钱，它接下来要怎么走？</a><br> ·  <a href="http://news.cnblogs.com/n/548423/" target="_blank">上海钢联调整收购中关村在线方案：45%现金+55%新股</a><br> ·  <a href="http://news.cnblogs.com/n/548422/" target="_blank">APP倒闭：你充值的钱会蒸发吗？</a><br> ·  <a href="http://news.cnblogs.com/n/548421/" target="_blank">快鹿兑付危机再现波折 发公告免去董事长徐琪职务</a><br> ·  <a href="http://news.cnblogs.com/n/548420/" target="_blank">支付宝为实名新规限额 非实名用户仅享受1000元额度</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./css3 box-sizing属性 - zhaoran - 博客园_files/24442-20160613130538213-1713265809.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/207265/" target="_blank">遇见程序员男友</a><br> ·  <a href="http://kb.cnblogs.com/page/511529/" target="_blank">设计师的视觉设计五项修炼</a><br> ·  <a href="http://kb.cnblogs.com/page/514193/" target="_blank">我听到过的最精彩的一个软件纠错故事</a><br> ·  <a href="http://kb.cnblogs.com/page/522554/" target="_blank">如何避免软件工程中最昂贵错误的发生</a><br> ·  <a href="http://kb.cnblogs.com/page/545228/" target="_blank">拒绝传统，看 Facebook 如何以三大法宝化茧成蝶</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="leftcontent">
+	
+		<div id="leftcontentcontainer">
+			
+<!--done-->
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/zhaoran/">zhaoran</a><br>园龄：<a href="http://home.cnblogs.com/u/zhaoran/" title="入园时间：2011-05-31">5年</a><br>粉丝：<a href="http://home.cnblogs.com/u/zhaoran/followers/">13</a><br>关注：<a href="http://home.cnblogs.com/u/zhaoran/followees/">1</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;82fdbf01-878b-e011-a53f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+<br>			
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2013/04/01&#39;);return false;">&lt;</a></td><td align="center">2013年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2013/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td class="CalWeekendDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalWeekendDay" align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/23.html"><u>23</u></a></td><td align="center"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24.html"><u>24</u></a></td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/27.html"><u>27</u></a></td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td></tr><tr><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhaoran/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/zhaoran/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/zhaoran/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/zhaoran/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/zhaoran/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/zhaoran/tag/input/">input</a>(2)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/js/">js</a>(2)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/file/">file</a>(2)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/ie7/">ie7</a>(2)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/iframe/">iframe</a>(1)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/absolute/">absolute</a>(1)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/array/">array</a>(1)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/box-sizing/">box-sizing</a>(1)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/css3/">css3</a>(1)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/DOM/">DOM</a>(1)</li><li><a href="http://www.cnblogs.com/zhaoran/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<!--done-->
+
+		<h1 class="catListTitle">随笔档案</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2015/01.html">2015年1月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2013/11.html">2013年11月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2013/07.html">2013年7月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_3" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2013/06.html">2013年6月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_4" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2013/05.html">2013年5月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_5" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2013/01.html">2013年1月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_6" class="listitem" href="http://www.cnblogs.com/zhaoran/archive/2012/12.html">2012年12月 (2)</a></li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3420018">1. Re:css3 box-sizing属性</a></li>
+        <li class="recent_comment_body">@樱花飞落llw3c 没有定义padding-box 这个属性值...</li>
+        <li class="recent_comment_author">--_AlanZhang_</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3331305">2. Re:css3 box-sizing属性</a></li>
+        <li class="recent_comment_body">有没有跟我说下这个属性到底是起什么作用的....自学CSS的时候不懂这个属性，然后百度找过来的 T.T</li>
+        <li class="recent_comment_author">--runningnoob</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3319808">3. Re:css3 box-sizing属性</a></li>
+        <li class="recent_comment_body">padding-box这个值好像只有在firefox下是和楼主说的表现一致，在safari和chrome都喝content-box表现一致。mac下测试。IE，手头没有浏览器，没有实验。</li>
+        <li class="recent_comment_author">--yansj1997</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3309772">4. Re:css3 box-sizing属性</a></li>
+        <li class="recent_comment_body">写的很清楚，一看就明白。</li>
+        <li class="recent_comment_author">--遗失季节</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html#3253798">5. Re:css3 box-sizing属性</a></li>
+        <li class="recent_comment_body">@coldfishdtsafari/chrome上也是这个效果，火狐的测试结果跟楼主一样，content-box加不加意义不大，padding-box存在浏览器差异不好用，border-box saf......</li>
+        <li class="recent_comment_author">--樱花飞落ll</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="./css3 box-sizing属性 - zhaoran - 博客园_files/css3 box-sizing属性 - zhaoran - 博客园.html">1. css3 box-sizing属性(39227)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/3132360.html">2. js DOM Element属性和方法整理(6682)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/3167117.html">3. tab标签切换(4343)</a></li><li><a href="http://www.cnblogs.com/zhaoran/archive/2013/01/05/2846663.html">4. 文件上传input简便美化方案(2371)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/4264744.html">5. webapp开发要点记录(2109)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="./css3 box-sizing属性 - zhaoran - 博客园_files/css3 box-sizing属性 - zhaoran - 博客园.html">1. css3 box-sizing属性(11)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/3167117.html">2. tab标签切换(2)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/3132360.html">3. js DOM Element属性和方法整理(1)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/4264744.html">4. webapp开发要点记录(1)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="./css3 box-sizing属性 - zhaoran - 博客园_files/css3 box-sizing属性 - zhaoran - 博客园.html">1. css3 box-sizing属性(8)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/4264744.html">2. webapp开发要点记录(3)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/3167117.html">3. tab标签切换(1)</a></li><li><a href="http://www.cnblogs.com/zhaoran/p/3132360.html">4. js DOM Element属性和方法整理(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script></div>
+	
+</div>
+
+
+<!--done-->
+<div class="footer">
+	
+	Copyright ©2016 zhaoran Powered By<a href="http://www.cnblogs.com/">博客园</a> 模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+</div>
+
+
+</body></html>

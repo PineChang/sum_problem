@@ -1,0 +1,1185 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>   
+   
+
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>  
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+  
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <title>nodejs系列之七——nodejs与mongoDB - cike110120的专栏
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="xxxxxxxxxxxx ..." />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+      <script type="text/javascript" src="http://static.blog.csdn.net/scripts/jquery-version.js"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+        <!--new top-->
+               <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/css/index.css">        <!--new top-->
+    
+      <!-- ad begin -->
+         <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/tracking.js"></script>
+    <!-- ad end-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/dark1/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/cike110120/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+ 
+
+
+</head>
+<body>
+    <!-- 广告位开始 -->
+        <ins data-revive-zoneid="149" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/cike110120">cike110120的专栏</a></h2>
+            <h3></h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            
+                <li id="btnContents"><a href="http://blog.csdn.net/cike110120?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/cike110120?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/cike110120/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+            
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "cike110120";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/cike110120";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+
+<a href="http://blog.csdn.net/kakashi8841/article/details/51735510">
+<font color=blue>【专家图书】蔡俊鸿翻译的Unity3D书籍上市啦</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://lib.csdn.net/base/swift/resource">
+<font color=red>【知识库】Swift资源大集合
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/csdnproduct/article/details/51668917">
+<font color=blue>【公告】博客新皮肤上线啦</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://blog.csdn.net/robbin2015/article/details/51683764">
+<font color=red>快来领福利：C币、机械键盘
+</font></a>
+&nbsp;&nbsp;&nbsp;
+</font></a>
+</div>                        </div>
+                        
+
+
+
+<!-- 广告位开始 -->
+<ins data-revive-zoneid="72" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->
+
+  
+<link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+<link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+<script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+<link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+<link rel="stylesheet" href="http://static.blog.csdn.net/css/category.css?v=1.0" />
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/web-storage-cache.min.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/replace.min.js"></script>
+
+<link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_code.css" />
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/saveToCode.js"></script>
+
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Repost"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/cike110120/article/details/17251843">
+        nodejs系列之七——nodejs与mongoDB            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_r">
+            <span class="link_postdate">2013-12-10 22:08</span>
+            <span class="link_view" title="阅读次数">9533人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(1)</span>
+            <span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('nodejs系列之七——nodejs与mongoDB','17251843');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(17251843,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>
+    <div class="embody"  style="display:none" id="embody">
+        <span class="embody_t">本文章已收录于：</span>
+        <div class="embody_c" id="lib" value="{&quot;err&quot;:0,&quot;msg&quot;:&quot;ok&quot;,&quot;data&quot;:[]}"></div>
+    </div>
+    <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+    <script  type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+    <script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>  
+
+  
+
+  
+  
+     
+
+<div id="article_content" class="article_content">
+
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<span style="margin:0px; padding:0px">原文：&nbsp;http://ramonblog.cloudfoundry.com/blog/4fd4536715d8f0d91e000002</span></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<br style="margin:0px; padding:0px">
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<span style="margin:0px; padding:0px"></span></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<span style="margin:0px; padding:0px">参考其它内容请看本blog中的nodejs系列提纲</span></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+更多关于MongoDB的NodeJS驱动内容请参考MongoDB NodeJS Driver</p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+简介</h3>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+No-SQL的一篇比较详细的中文介绍来自于我自然的博客。而MongoDB也是NoSQL中的一个实现。只不过它现在比较流行于Web开发，尤其是跟NodeJS的结合。</p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+开始</h3>
+<h4 style="margin:0px; padding:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+1. 安装mongodb on Mac</h4>
+<ul style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<li style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word">
+<span style="margin:0px; padding:0px">安装包管理软件brew</span>&nbsp;<br style="margin:0px; padding:0px">
+访问HomeBrew可以轻易地安装brew，它可以很轻松地为你在Mac上安装Unix的程序，譬如mongodb在linux上很容易安装，但是并没有Mac原始的安装包，由于Mac本身也是基于Unix的，所以brew究提供了类&#20284;于Linux的简单安装方式。</li><li style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word">
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px">
+<span style="margin:0px; padding:0px">安装mongodb</span>&nbsp;<br style="margin:0px; padding:0px">
+首先更新brew</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px">
+<code style="margin:0px; padding:0px">brew update</code></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px">
+然后安装mongodb：</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px">
+<code style="margin:0px; padding:0px">brew install mongodb</code></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px">
+安装成功之后，会自动把mongodb/bin加入到PATH底下，也就是说你可以直接在命令行下运行mongodb相关的命令。启动mongodb如下：</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px">
+<code style="margin:0px; padding:0px">mongod</code></p>
+</li></ul>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<span style="margin:0px; padding:0px">注意:Linux或Windows的安装可以参考官方文档:Installing MongoDB</span></p>
+<h4 style="margin:0px; padding:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+2. 命令行访问mongodb</h4>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+安装并运行mongodb成功之后，可以运行下面的命令连接mongo db:</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">localhost:myblog ramon$ mongo
+MongoDB shell version: 2.0.3
+connecting to: test
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+类&#20284;与mysql，运行<code style="margin:0px; padding:0px">show dbs</code>可以查看当前server有几个数据库，例如本机的运行情况：</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">&gt; show dbs
+db  0.203125GB
+local   (empty)
+node-mongo-blog 0.203125GB
+test    0.203125GB
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+可以看出，这里有4个数据库。你也可以运行命令<code style="margin:0px; padding:0px">help</code>以查看帮助。现在创建数据库foo，</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">&gt; use foo
+switched to db foo
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+输入命令<code style="margin:0px; padding:0px">db</code>可以查看当前数据库的名字。而要查看当前数据库有哪些集合(Collection),也就是关系数据库中的表可以用如下的命令</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">&gt; show collections
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+显示没有任何集合，现在创建collection bar:</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">&gt; db.bar.insert({a: 1, b: 'b1'})
+&gt; show collections
+bar
+system.indexes
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+对于collection的操作，必须要在collection前面加上<code style="margin:0px; padding:0px">db.</code>才行，否则报错。只要尝试往bar插入数据，那么bar就会被创建，根本不需要事先定义bar，而bar的schema也是任意的，也就是说现在插入的数据是<code style="margin:0px; padding:0px">{a:1, b: &quot;b1&quot;}</code>，接下来你也可以插入<code style="margin:0px; padding:0px">{c:
+ 2, b: &quot;b2&quot;}</code>.至于在查看集合的时候，发现有system.indexes，它是系统生成的，用于存储所有的索引（Index）信息，参考Mongo Metadata。</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">&gt; db.bar.insert({c:2, b:'b2'})
+&gt; db.bar.find()
+{ &quot;_id&quot; : ObjectId(&quot;4fde10be4245dec7bc76e27e&quot;), &quot;a&quot; : 1, &quot;b&quot; : &quot;b1&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;4fde118f4245dec7bc76e27f&quot;), &quot;c&quot; : 2, &quot;b&quot; : &quot;b2&quot; }
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+我们用<code style="margin:0px; padding:0px">find</code>命令来查看collection的数据。你可以看到自动增加了字段_id为主键。</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+更多的关于mongodb的入门介绍可以参考官方的Tutorial</p>
+<h4 style="margin:0px; padding:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+3. 安装mongodb nodejs driver</h4>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+要安装mongodb nodejs的原生driver，可以通过<code style="margin:0px; padding:0px">npm</code>，也可以通过github下载：</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<code style="margin:0px; padding:0px">npm install mongodb</code></p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+连接到数据库</h3>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">var mongo = require('mongodb'),
+  Server = mongo.Server,
+  Db = mongo.Db;
+
+var server = new Server('localhost', 27017, {auto_reconnect: true});
+var db = new Db('foo', server);
+
+db.open(function(err, db) {
+  if(!err) {
+    console.log(&quot;We are connected&quot;);
+  }
+});
+</code></pre>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+查询Get</h3>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">db.open(function(err, db) {
+    if(!err) {
+        console.log(&quot;We are connected&quot;);
+        db.collection('bar', function(err, collection){
+            collection.find().toArray(function(error, bars){console.log(bars);});
+        collection.find({a:1}).toArray(function(error, bars){console.log(bars);});
+        collection.findOne({a: 1}, function(error, bar){console.log(bar)});
+        });
+    }
+});
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+这里一旦用find获取到结果集之后，需要调用toArray方法，并传递回调函数，这个时候才能拿到真正的数据。第二个find语句则是查找所有a=1的文档。第三个find语句则是只找第一个满足条件的文档。具体更多的过滤条件可以参考官方的Query语句。这里有个有趣的事情需要注意，<code style="margin:0px; padding:0px">find</code>本身并不执行查询，它只是返回一个<code style="margin:0px; padding:0px">Cursor</code>实例，你可以遍历这个<code style="margin:0px; padding:0px">Cursor</code>来查询数据。如下面的例子：</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">  // Cursors don't run their queries until you actually attempt to retrieve data
+  // from them.
+
+  // Find returns a Cursor, which is Enumerable. You can iterate:
+  collection.find(function(err, cursor) {
+    cursor.each(function(err, item) {
+      if(item != null) console.dir(item);
+    });
+  });
+
+  // You can turn it into an array
+  collection.find(function(err, cursor) {
+    cursor.toArray(function(err, items) {          
+      console.log(&quot;count: &quot; &#43; items.length);
+    });
+  });
+</code></pre>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+插入Insert</h3>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">db.open(function(err, db) {
+  if(!err) {
+    db.collection('bar', function(err, collection) {
+      var doc1 = {a: 1};
+      var doc2 = {a: 2, b: 'b2'};
+      var docs = [{a:3}, {a:4}];
+
+      collection.insert(doc1);
+      collection.insert(doc2, {safe:true}, function(err, result) {});
+      collection.insert(docs, {safe:true}, function(err, result) {});
+    });
+  }
+});
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+第一个insert和第二个insert的区别在于，增加了一个option对象参数({safe:true})以及一个回调函数。MongoDB的insert/update/remove都是异步的，也就是说发出insert命令之后，就不管数据库是否执行成功了。要想知道数据库是否执行成功，需要再发出一个查询请求来获取连接（Connection）的最后一个错误状态。为了简化这个过程，也就支持{safe:true}这个参数，使得insert和错误状态查询能够一起执行,一旦设置这个参数，一定要增加回调函数作为第三个参数。具体地，我们可以看下面地例子来理解这个{safe:true}的意义：</p>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">db.collection('bar', function(err, collection){
+        collection.insert({a:996, _id:'1'}, function(error, bars){
+        console.log('insert success without safe');
+        console.log(error);
+        console.log(bars);
+        collection.insert({a:996, _id:'1'}, {safe:true}, function(error, bars){
+            console.log('insert fail with safe and get error');
+            console.log(error);
+            console.log(bars);
+            collection.insert({a:996, _id:'1'}, function(error, bars){
+                console.log('insert fail without safe but no error');
+                console.log(error);
+                console.log(bars);
+            });
+        });
+    });
+});
+
+# output result
+[app.js] insert success without safe
+[app.js] null
+[app.js] [ { a: 996, _id: '1' } ]
+
+[app.js] insert fail with safe and get error
+[app.js] { [MongoError: E11000 duplicate key error index: foo.bar.$_id_  dup key: { : &quot;1&quot; }]
+        name: 'MongoError',
+        err: 'E11000 duplicate key error index: foo.bar.$_id_  dup key: { : &quot;1&quot; }',
+        code: 11000,
+        n: 0,
+        connectionId: 38,
+        ok: 1 }
+[app.js] undefined
+
+[app.js] insert fail without safe but no error
+[app.js] null
+[app.js] [ { a: 996, _id: '1' } ]
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+这里的_id是mongodb默认的主键，是不允许重复的。如果你传入了_id则以传入的&#20540;作为主键，如果没有传入则会自动生成。你可以看到，第一次insert，我们也不关心是不是真的插入了，幸运的是真的成功了，因为不存在_id为1的数据。第二次插入的时候，我们设置{safe:true}以确保一定插入成功，这是会报主键重复的错误。第三次同样的插入，但是不设置{safe:true}，这个时候发现并没有报错，而且回调函数还拿到了要插入的数据。是不是第三次插入成功了呢？不是的，其实正像第二次插入的一样，肯定是主键重复了，但是由于我们并没有要求返回最后的错误状态，所以mongodb
+ drvier直接回调了我们传入的回调函数，并且设置error为null，bars为要插入的数据。总结一下，<span style="margin:0px; padding:0px">如果你要确保数据是否更新（insert/update/remove）成功必须要设置{safe:true}选项。</span></p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+更新Update</h3>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">collection.update({a:996}, {$push: {b:'b'}}, function(error, bars){});
+collection.update({a:996}, {$set: {a:997}}, function(error, bars){});
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+注意，这里为了代码简单，我们没有设置{safe:true}。你可以看到update的第一个参数是条件，即对a＝996的文档进行更新。第二个参数则是表示要如何更新文档，譬如第一个update是增加一个属性b，且设置其&#20540;为字符串'b'；第二个update是修改a的&#20540;为997。可以看出，第二个参数是一个对象，其属性名是一个操作符，以$开头，&#20540;为一个对象。这些操作符除了这里的$push和$set，还有其它的$inc, $unset, $pushAll等等，具体可以参考这里。</p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+删除Delete</h3>
+<pre style="margin-top:0px; margin-bottom:0px; padding:0px; font-size:14px; line-height:21px; background-color:rgb(242,231,202)"><code style="margin:0px; padding:0px">collection.remove({a:997}, {safe:true}, function(error, count){
+    console.log(error); 
+    console.log(count);
+    collection.remove();
+});
+</code></pre>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+这里第一个remove是删除a=997的所有文档。回调函数的第二个参数是表示相应删除的文档数量。第二个remove则是删除该collection中的所有文档。</p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+高级</h3>
+<h4 style="margin:0px; padding:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+1. sort</h4>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<code style="margin:0px; padding:0px">collection.find({}, {sort: [['created_at', 'desc'], ['body', 'asc']]})</code></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+其中'desc'也可以用-1表示，而'asc'可以用1表示。如果是只有一个sort列，也可以用下面的方式</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<code style="margin:0px; padding:0px">collection.find({}, {sort: {'created_at': -1}})</code></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<span style="margin:0px; padding:0px">注意：这里用一个对象表示sort的时候，排序方向必须是1（升序）或者-1（降序）。可以说这是一个很垃圾的API设计。首先不应该用数组的数组来表示sort；而只用一列排序时只能用数字不能用字符串更加是API的不一致</span></p>
+<h4 style="margin:0px; padding:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+2. limit</h4>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<code style="margin:0px; padding:0px">collection.find({}, {limit: 10, skip:20})</code></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+这个可以用来做分页，表示获取从第20条（第1条记录序号为0）记录开始的10条记录.类&#20284;与Mysql的<code style="margin:0px; padding:0px">limit 20, 10</code>.</p>
+<h4 style="margin:0px; padding:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+3. count</h4>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<code style="margin:0px; padding:0px">collection.count({}, function(err, count){...} )</code></p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+第一个参数是query对象，可以省略。第二个参数是callback函数。</p>
+<h3 style="margin:0px; padding:0px 0px 0px 5px; border-left-width:5px; border-left-color:gray; border-left-style:solid; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+更多参考</h3>
+<ol style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word; font-size:14px; font-family:'Times New Roman',Times,serif; line-height:21px; background-color:rgb(242,231,202)">
+<li style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word">
+MongoDB的基础介绍</li><li style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word">
+GitHub里面官方nodejs驱动自带的一些例子</li><li style="margin:0px; padding:0px; list-style:none outside none; word-break:normal; word-wrap:break-word">
+高级查询</li></ol>
+   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css" />
+
+    
+<!--172.16.140.11-->
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+        <div id="digg" ArticleId="17251843" >
+            <dl id="btnDigg" class="digg digg_disable"  onclick="btndigga();">
+               
+                 <dt>顶</dt>
+                <dd>0</dd>
+            </dl>
+           
+              
+            <dl id="btnBury" class="digg digg_disable"  onclick="btnburya();">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>               
+            </dl>
+            
+        </div>
+     <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+    <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+    <script type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </script>
+
+   <ul class="article_next_prev">
+                <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/cike110120/article/details/17231255';">上一篇</span><a href="/cike110120/article/details/17231255" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">android开发中关于含有中文字段的格林尼治标准时间的时间格式转换</a></li>
+                <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/cike110120/article/details/17252159';">下一篇</span><a href="/cike110120/article/details/17252159" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">javascript的一些类型转换</a></li>
+    </ul>
+
+    <div style="clear:both; height:10px;"></div>
+
+
+      
+</div>
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/cike110120/svc/GetSuggestContent/17251843",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+ <link rel="stylesheet" href="http://static.blog.csdn.net/css/replace.css"/>
+<div id="relate" data-mod="popu_218"  class="tracking-ad">
+        <div class="relate_t">
+            <h3><span>参考知识库</span></h3>
+        </div>
+        <div class="relate_c">
+        </div>
+</div>
+ 
+
+<dl class="blog-ass-articl" id="res-relatived" > 
+    <div class="embody embody_b" id="libkeyparent"  style="display:none">
+            <span class="embody_t">更多资料请参考：</span>
+            <div class="embody_c" id="libkey"></div>
+    </div>
+
+
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+
+    <div id="adCollege" style="width: 42%;float: left;"> 
+        <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "17251843",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </script> 
+    </div>  
+
+    
+     <div id="res"  data-mod="popu_36"  class="tracking-ad" style="width: 42%;float: left;margin-right: 30px;"></div>
+   
+</dl>
+
+
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'nodejs系列之七——nodejs与mongoDB' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </script>  
+
+    <div id="ad_cen">        
+<!-- 广告位开始 -->
+<ins data-revive-zoneid="71" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->    </div>  
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '17251843';
+    var commentscount = 1;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  language="javascript" type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/cike110120/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</script>
+ <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/async_new.js"></script>      
+
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/cike110120" target="_blank">
+    <img src="http://avatar.csdn.net/3/4/0/1_cike110120.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/cike110120" class="user_name" target="_blank">cike110120</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=cike110120','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                <div id="bms_box">
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>222297次</span></li>
+    <li>积分：<span>2823</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog5.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：2823 </div>
+        </span>  </li>
+    <li>排名：<span>第8440名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>47篇</span></li>
+    <li>转载：<span>123篇</span></li>
+    <li>译文：<span>0篇</span></li>
+    <li>评论：<span>47条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/cike110120/article/category/3074745" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">移动开发</a><span>(6)</span>
+                </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/cike110120/article/month/2016/06">2016年06月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2016/05">2016年05月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2016/04">2016年04月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2016/03">2016年03月</a><span>(4)</span></li><li><a href="/cike110120/article/month/2016/02">2016年02月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2016/01">2016年01月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2015/12">2015年12月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2015/10">2015年10月</a><span>(3)</span></li><li><a href="/cike110120/article/month/2015/09">2015年09月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2015/07">2015年07月</a><span>(5)</span></li><li><a href="/cike110120/article/month/2015/06">2015年06月</a><span>(8)</span></li><li><a href="/cike110120/article/month/2015/05">2015年05月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2015/04">2015年04月</a><span>(4)</span></li><li><a href="/cike110120/article/month/2015/03">2015年03月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2015/02">2015年02月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2015/01">2015年01月</a><span>(3)</span></li><li><a href="/cike110120/article/month/2014/12">2014年12月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2014/10">2014年10月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2014/09">2014年09月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2014/06">2014年06月</a><span>(5)</span></li><li><a href="/cike110120/article/month/2014/05">2014年05月</a><span>(6)</span></li><li><a href="/cike110120/article/month/2014/04">2014年04月</a><span>(8)</span></li><li><a href="/cike110120/article/month/2014/03">2014年03月</a><span>(4)</span></li><li><a href="/cike110120/article/month/2014/02">2014年02月</a><span>(4)</span></li><li><a href="/cike110120/article/month/2014/01">2014年01月</a><span>(4)</span></li><li><a href="/cike110120/article/month/2013/12">2013年12月</a><span>(26)</span></li><li><a href="/cike110120/article/month/2013/11">2013年11月</a><span>(7)</span></li><li><a href="/cike110120/article/month/2013/10">2013年10月</a><span>(9)</span></li><li><a href="/cike110120/article/month/2013/09">2013年09月</a><span>(5)</span></li><li><a href="/cike110120/article/month/2013/08">2013年08月</a><span>(7)</span></li><li><a href="/cike110120/article/month/2013/07">2013年07月</a><span>(2)</span></li><li><a href="/cike110120/article/month/2013/06">2013年06月</a><span>(5)</span></li><li><a href="/cike110120/article/month/2013/05">2013年05月</a><span>(15)</span></li><li><a href="/cike110120/article/month/2013/04">2013年04月</a><span>(3)</span></li><li><a href="/cike110120/article/month/2013/03">2013年03月</a><span>(7)</span></li><li><a href="/cike110120/article/month/2012/12">2012年12月</a><span>(1)</span></li><li><a href="/cike110120/article/month/2012/11">2012年11月</a><span>(4)</span></li><li><a href="/cike110120/article/month/2012/10">2012年10月</a><span>(2)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/cike110120/article/details/20061063" title="AsyncTask的参数介绍">AsyncTask的参数介绍</a><span>(17739)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/9106027" title="Android EditText图文混排的总结">Android EditText图文混排的总结</a><span>(14110)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/18867437" title="图像识别]SIFT算法">图像识别]SIFT算法</a><span>(12674)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/8675366" title="数据结构Map(java)">数据结构Map(java)</a><span>(9895)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/8976169" title="android listview异步加载图片">android listview异步加载图片</a><span>(9580)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/17251843" title="nodejs系列之七——nodejs与mongoDB">nodejs系列之七——nodejs与mongoDB</a><span>(9524)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/32695661" title="linux 登陆ftp及文件上传及下载">linux 登陆ftp及文件上传及下载</a><span>(9520)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/31795733" title="linux系统（ubuntu14.04）安装mentohust完成校园网锐捷认证">linux系统（ubuntu14.04）安装mentohust完成校园网锐捷认证</a><span>(8609)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/17222245" title="android sqlite 数据类型">android sqlite 数据类型</a><span>(7567)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/46572071" title="Android源码大放送之material design类型">Android源码大放送之material design类型</a><span>(5918)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/cike110120/article/details/9106027" title="Android EditText图文混排的总结">Android EditText图文混排的总结</a><span>(12)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/8976169" title="android listview异步加载图片">android listview异步加载图片</a><span>(7)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/16972371" title="android 音视频通信Demo">android 音视频通信Demo</a><span>(4)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/31795733" title="linux系统（ubuntu14.04）安装mentohust完成校园网锐捷认证">linux系统（ubuntu14.04）安装mentohust完成校园网锐捷认证</a><span>(4)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/8675366" title="数据结构Map(java)">数据结构Map(java)</a><span>(4)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/8266959" title="servlet">servlet</a><span>(3)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/46572071" title="Android源码大放送之material design类型">Android源码大放送之material design类型</a><span>(3)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/42396825" title="Android开源项目">Android开源项目</a><span>(2)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/20061063" title="AsyncTask的参数介绍">AsyncTask的参数介绍</a><span>(2)</span>
+</li>
+<li>
+<a href="/cike110120/article/details/18867437" title="图像识别]SIFT算法">图像识别]SIFT算法</a><span>(1)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/u013064109/article/details/51590621" target="_blank">*浅谈android中异步加载之"取消异步加载"二</a></li>
+<li><a href="http://blog.csdn.net/xiehuimx/article/details/51731649" 
+target="_blank">*笑谈Android图表------MPAndroidChart</a></li>
+<li><a href="http://blog.csdn.net/hiyun9/article/details/51602428" 
+target="_blank">*Nginx正反向代理、负载均衡等功能实现配置</a></li>
+<li><a href="http://blog.csdn.net/qianweifeng123/article/details/51555998" target="_blank">* 浅析ZeroMQ工作原理及其特点</a></li>
+<li><a 
+
+href="http://blog.csdn.net/sahadev_/article/details/51746119"target="_blank">*Android官方开发文档Training系列课程中文版：多样屏幕之支持不同的屏幕尺寸</a></li>
+<li><a href="http://blog.csdn.net/mickjoust/article/details/51646658" 
+target="_blank">*Spring Boot 实践折腾记（三）：三板斧，Spring Boot下使用Mybatis</a></li>
+
+
+</ul></ul>
+</div>
+
+
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/cike110120/article/details/20061063#comments">AsyncTask的参数介绍</a>
+    <p style="margin:0px;"><a href="/Ivory_wiki" class="user_name">Ivory_wiki</a>:
+很具体，理解比较方便
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/46572071#comments">Android源码大放送之material design类型</a>
+    <p style="margin:0px;"><a href="/ai_ma_ai" class="user_name">ai_ma_ai</a>:
+@u011987723:最新的更新地址：http://www.jiandaima.com/blog/...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/8266959#comments">servlet</a>
+    <p style="margin:0px;"><a href="/u012323351" class="user_name">u012323351</a>:
+学到很多，谢谢楼主的分享。
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/20781625#comments">科大讯飞语音合成Demo讲讲（做做玩，超简）</a>
+    <p style="margin:0px;"><a href="/lml1010402004" class="user_name">lml1010402004</a>:
+写的不错
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/20781625#comments">Android源码大放送之material design类型</a>
+    <p style="margin:0px;"><a href="/u011987723" class="user_name">u011987723</a>:
+下载不了啊，哥们，有哪位下载了的，求分享~~~~QQ838257547
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/9106027#comments">Android EditText图文混排的总结</a>
+    <p style="margin:0px;"><a href="/qq_34850185" class="user_name">qq_34850185</a>:
+@u013021896:按照博文的正则表达式解析没有显示图片显示了/external/images/...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/9106027#comments">Android EditText图文混排的总结</a>
+    <p style="margin:0px;"><a href="/qq_34850185" class="user_name">qq_34850185</a>:
+按照博主的正则表达式解析没有显示图片显示了/external/images/media/+数字，求问...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/9106027#comments">Android EditText图文混排的总结</a>
+    <p style="margin:0px;"><a href="/qq_16980459" class="user_name">qq_16980459</a>:
+@u013021896:能告诉我怎么觉得的？新手完全不懂
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/18867437#comments">图像识别]SIFT算法</a>
+    <p style="margin:0px;"><a href="/qq_18140033" class="user_name">qq_18140033</a>:
+转载都不说明出处
+    </p>
+    </li>
+    <li>
+   
+         <a href="/cike110120/article/details/17222245#comments">android sqlite 数据类型</a>
+    <p style="margin:0px;"><a href="/u013620306" class="user_name">u013620306</a>:
+楼主 辛苦了  好东西
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+ </div>   
+            <div class="clear">
+            </div>
+        </div>
+
+        
+
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/cnick/cnick.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=1310413"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>     <!--new top-->
+   
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+   
+
+  <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+   </div>
+
+</body>
+</html>   
+ 
