@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/ -->
+<html lang="zh-CN"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="张鑫旭的个人博客_web前端技术文章_PNG格式小图标的CSS任意颜色赋色技术">
+<meta name="keywords" content="web前端,HTML5,CSS3,jQuery,SVG,canvas">
+<meta name="author" content="张鑫旭,zhangxinxu">
+<title>PNG格式小图标的CSS任意颜色赋色技术 «  张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/style.css">
+<link rel="pingback" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php">
+ 
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » Feed" href="http://www.zhangxinxu.com/wordpress/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » 评论Feed" href="http://www.zhangxinxu.com/wordpress/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » PNG格式小图标的CSS任意颜色赋色技术评论Feed" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/feed/">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.zhangxinxu.com/wordpress/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="基于clip-path的任意元素的碎片拼接动效" href="http://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/">
+<meta name="generator" content="WordPress 4.1.12">
+<link rel="canonical" href="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活.html">
+<link rel="shortlink" href="http://www.zhangxinxu.com/wordpress/?p=5429">
+<script type="text/javascript" async="" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/ga.js"></script><script src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/ca-pub-0090627341039040.js"></script><script async="" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0090627341039040",
+    enable_page_level_ads: true
+  });
+</script>
+<script src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/logger.js"></script><link href="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/bdsstyle.css" rel="stylesheet" type="text/css"></head>
+<body class="single single-post postid-5429 single-format-standard"><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="bds_more">更多...</a></li></ul><p><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" class="goWebsite">百度分享</a></p></div></div></div>
+<div id="page">
+<div id="header" role="banner">
+	<div id="headerimg">
+		<a href="http://www.zhangxinxu.com/" class="page_logo">张鑫旭-鑫空间-鑫生活</a>
+		<div class="description">it's my whole life!</div>
+	</div>
+    <div id="menubar">
+<ul class="menu_tab">
+<li>
+<a class="boss" href="http://www.zhangxinxu.com/">网站首页</a>
+<a class="disabled" title="频道已关闭">提问交流</a>
+<a class="disabled" title="频道已关闭">前端调查</a>
+</li>
+<li class="on">
+<a class="boss" href="http://www.zhangxinxu.com/wordpress/">前端技术</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=3">css</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=5">js/jQuery</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=198">翻译</a>
+</li>
+<li>
+<a class="boss" href="http://www.zhangxinxu.com/life/">生活与创作</a>
+<a href="http://www.zhangxinxu.com/life/?cat=3">生活</a>
+<a href="http://www.zhangxinxu.com/life/?cat=5">散文</a>
+<a href="http://www.zhangxinxu.com/life/?cat=4">小说</a>
+</li>
+<li>
+<span class="boss">前端在线资源</span>
+<a href="http://www.zhangxinxu.com/css3/">CSS3参考</a>
+<a href="http://www.zhangxinxu.com/jq/api14/">jQuery1.4参考</a>
+</li>         
+</ul>
+<form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="翻页太辛苦，试试直接搜索" value="" name="s" id="s">
+<input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+    </div>
+</div>
+<script>
+var isSlideHide = false;
+if (window.localStorage) {
+	isSlideHide = localStorage.getItem("isSlideHide");
+	if (!isSlideHide && document.body.clientWidth <= 1024) {
+		isSlideHide = "true";
+	}
+	if (isSlideHide == "true") {
+		document.getElementById("page").className = "slide_hide";
+	}
+}
+if (window.location != window.parent.location) window.parent.location = window.location;
+</script>
+<div class="the_main">
+	<div id="content" class="widecolumn" role="main">
+    <div class="shink_rel"><a href="javascript:" id="shinkSlide" class="shink_a" title="收起右边栏" style="display: inline;">►</a></div>
+<script>if (window.localStorage && window.isSlideHide) {
+	(function() {
+		var eleShink = document.getElementById("shinkSlide");	
+		eleShink.title = "展开右边栏";
+		eleShink.innerHTML = "◄";
+	})();
+}</script>
+	
+		<div class="navigation">
+			<div class="alignleft">« <a href="http://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/" rel="prev">基于clip-path的任意元素的碎片拼接动效</a></div>
+			<div class="alignright"></div>
+		</div>
+
+		<div class="post-5429 post type-post status-publish format-standard hentry category-css tag-box-shadow tag-color tag-drop-shadow tag-filter tag-722" id="post-5429">
+			<h2>PNG格式小图标的CSS任意颜色赋色技术<span id="qrCode" class="qr_code" onmouseover="_gaq.push([&#39;_trackEvent&#39;, &#39;QR&#39;, &#39;Hover&#39;]);"><img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/api.php"></span></h2>
+			<div class="entry">
+            	<div class="postmetadata alt">
+					<small>
+												这篇文章发布于 2016年06月8日，星期三，01:17，归类于 <a href="http://www.zhangxinxu.com/wordpress/category/css/" rel="category tag">css相关</a>。                        阅读 8169 次, 今日 106 次					</small>
+				</div>
+				<p class="link">by <a href="http://www.zhangxinxu.com/">zhangxinxu</a> from <a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a><br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=5429">http://www.zhangxinxu.com/wordpress/?p=5429</a></p>
+<h3>一、眼见为实</h3>
+<p>CSS可以修改图片的颜色，没错，可以，眼见为实！您可以狠狠地点击这里：<a href="http://www.zhangxinxu.com/study/201606/png-icon-color-fill.html" target="_blank">png小图标CSS赋色demo</a></p>
+<p>上面的不是很黑的是原始图标，是个PNG图片，下面这个是可以赋色的：</p>
+<p><img data-src="http://image.zhangxinxu.com/image/blog/201606/2016-06-08_003744.png" width="247" height="214" alt="可以变色的图标" class="alignnone" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/2016-06-08_003744.png"></p>
+<p>下面，我们随意选择一个颜色，例如紫色，然后：<br>
+<img data-src="http://image.zhangxinxu.com/image/blog/201606/2016-06-08_003917.png" width="274" height="260" alt="紫色赋色" class="alignnone" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/2016-06-08_003917.png"></p>
+<p><img data-src="http://image.zhangxinxu.com/image/blog/201606/2016-06-08_003955.png" width="345" height="214" alt="红色赋色" class="alignnone" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/2016-06-08_003955.png"></p>
+<p>是不是感觉很厉害！以后设计师就不需要在提供几套颜色的图片了。</p>
+<p>SVG, icon fonts等技术似乎也不是那么耀眼了。</p>
+<h3>二、原理其实很简单</h3>
+<p>原理其实很简单，使用了CSS3滤镜<code>filter</code>中的<code>drop-shadow</code>，<code>drop-shadow</code>滤镜可以给元素或图片非透明区域添加投影。</p>
+<p>如果对<code>drop-shadow</code>不是很了解，建议先看看前些时间写的“<a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">CSS3 filter:drop-shadow滤镜与box-shadow区别应用</a>”一文！</p>
+<p>对于背景透明的png小图标而言，如果我们施加一个不带模糊的投影，不就等同于生成了另外一个颜色的小图标了吗？</p>
+<p>然后，我们把原始图标隐藏在容器外面，投影图标在容器中间，不见给人感觉是赋色效果了？</p>
+<p>比方说本文的demo，如果把icon父级的的<code>overflow:hidden</code>去掉，原始的图标就暴露出来啦！</p>
+<p><img data-src="http://image.zhangxinxu.com/image/blog/201606/2016-06-08_004748.png" width="315" height="194" alt="去掉overflow:hidden之后" class="alignnone" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/2016-06-08_004748.png"></p>
+<h3>三、实现的时候实际有难度</h3>
+<p>原理如上面，我一开始实现的时候，以为很简单，因为分分钟可以实现自己的想法，后来发现有些天真了，Chrome浏览器怎么都显示不出来；FireFox浏览器却可以！咦，究竟发生了什么。</p>
+<p>在Chrome浏览器下，<code>drop-shadow</code>有一个如下的呈现特性：</p>
+<blockquote><p>在Chrome浏览器下，如果一个元素的主体部分，无论以何种方式，只要在页面中不可见，其drop-shadow是不可见的；实体部分哪怕有1像素可见，则drop-shadow完全可见。</p></blockquote>
+<p>所以，我试过：</p>
+<ul>
+<li>text-indent负值隐藏原始图，无投影，失败！</li>
+<li>clip剪裁隐藏，无投影，失败！</li>
+<li>margin负值隐藏原始图，无投影，失败！</li>
+<li>left负值隐藏原始图，无投影，失败！</li>
+</ul>
+<p>通通不行，实现遇到了巨大的阻碍。</p>
+<p>后来，灵光一现，如果我实体部分也在可视区域内，但是是透明的，会怎样呢（反正不会有投影出来）？</p>
+<p>于是，我就试了下曾经立下无数战功的透明边框，卧槽，又立功了，成了！</p>
+<p>因此，下面这一个CSS声明是千万不能少的：</p>
+<div class="zxx_code">
+<pre>border-right: 20px solid transparent;</pre>
+</div>
+<h3>四、关于兼容性</h3>
+<p>IE13+支持，Chrome和FireFox浏览器支持，移动端iOS支持，Android4.4+支持。也就是，基本上，移动端现在可以使用这种技术了。</p>
+<p>既节约了流量，也让我们的开发更简单，维护更方便了。</p>
+<h3>五、结语碎碎念</h3>
+<p>其实，本文的技术发明（主要是透明border的处理）在“<a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">drop-shadow vs box-shaow</a>”这篇文章完成后就研究出来了。本来想写个小专利，蹭点早饭钱。结果，新厂子写专利没费用，而且周期要3年。<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/1.gif" align="absmiddle"></p>
+<p>3年我儿子都可以打酱油了。所以，罢了，直接分享出来。</p>
+<p>今天8号，本月已经6篇文章了，写文章暴走了下。就是为了腾出大段且连续的业余时间，要秘密进行其他大项目。</p>
+<p><strong>时光机</strong><br>
+如果你是3~5年之后看到此文，而且你是2016年上大学的，那么，我在写这篇文章的时候，你可能正在翻来覆去睡不着，还在焦虑明天的考试。总之，不要担心，我给大家找了一个非常硬的后台，保证你们这次高考无忧，放心睡觉吧！哟，你在好奇是哪个后台。嘻嘻嘻嘻，说出来怕吓着你————观音菩萨！</p>
+<p><img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/13.gif" align="absmiddle"></p>
+<p class="link">本文为原创文章，包含脚本行为，会经常更新知识点以及修正一些错误，因此转载请保留原出处，方便溯源，避免陈旧错误知识的误导，同时有更好的阅读体验。<br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=5429">http://www.zhangxinxu.com/wordpress/?p=5429</a></p>
+<p>（本篇完）</p>
+<div class="alipay_support"><strong>如果您觉得本文的内容对您的学习有所帮助，您可以支付宝(左)或微信(右)：</strong><div class="alipay_img"><img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/alipay.png"> <img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/wxpay.png"></div></div><div class="similarity"><div class="similar_title">相关文章</div><ul><li><a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">CSS3 filter:drop-shadow滤镜与box-shadow区别应用</a> (0.689)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/03/javascript-hex-rgb-hsl-color-convert/">javascript HEX十六进制与RGB, HSL颜色的相互转换</a> (0.214)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/07/css-%e8%83%8c%e6%99%af%e8%89%b2%e5%9b%be%e7%89%87%e9%95%82%e7%a9%ba%e6%8a%80%e6%9c%af/">CSS背景色镂空技术实际应用及进阶</a> (0.214)</li><li><a href="http://www.zhangxinxu.com/wordpress/2015/07/know-css1-css3-color/">CSS1-CSS3 &lt;color&gt;颜色知识知多少？</a> (0.214)</li><li><a href="http://www.zhangxinxu.com/wordpress/2016/02/css-hollow-image-for-transition-background-color-problem-fixed/">CSS镂空图片transition过渡初加载背景色块问题解决</a> (0.214)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/07/css%e5%ae%9e%e7%8e%b0%e8%b7%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e7%9a%84box-shadow%e7%9b%92%e9%98%b4%e5%bd%b1%e6%95%88%e6%9e%9c2/">CSS实现跨浏览器的box-shadow盒阴影效果(2)</a> (0.154)</li><li><a href="http://www.zhangxinxu.com/wordpress/2014/10/currentcolor-css3-powerful-css-keyword/">currentColor-CSS3超高校级好用CSS变量</a> (0.144)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/04/css%e5%ae%9e%e7%8e%b0%e5%85%bc%e5%ae%b9%e6%80%a7%e7%9a%84%e6%b8%90%e5%8f%98%e8%83%8c%e6%99%afgradient%e6%95%88%e6%9e%9c/">CSS实现兼容性的渐变背景(gradient)效果</a> (0.107)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/05/ie%e4%b8%8d%e6%94%af%e6%8c%81css3%e5%a4%9a%e8%83%8c%e6%99%afmultiple-backgrounds%e7%9a%84%e6%9b%bf%e4%bb%a3%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/">小tip:IE不支持CSS3多背景的替代解决方案</a> (0.107)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/08/css-svg-filter-image-grayscale/">小tip: 使用CSS将图片转换成黑白(灰色、置灰)</a> (0.107)</li><li><a href="http://www.zhangxinxu.com/wordpress/2014/07/svg-sprites-fill-color-currentcolor/">SVG图标颜色文字般继承与填充</a> (RANDOM - 0.097)</li></ul></div><!-- Tag -->				<div class="wp_share_box">
+                	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina" title="分享到新浪微博" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#"></a>
+<a class="bds_qzone" title="分享到QQ空间" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#"></a>
+<a class="bds_tqq" title="分享到腾讯微博" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#"></a>
+<a class="bds_t163" title="分享到网易微博" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#"></a>
+<a class="bds_douban" title="分享到豆瓣网" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#"></a>
+<a class="bds_tsohu" title="分享到搜狐微博" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#"></a>
+<a class="shareCount" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" title="累计分享6次">6</a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1954626" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/bds_s_v2.js"></script>
+
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END --> 
+                </div>
+								<p>标签： <a href="http://www.zhangxinxu.com/wordpress/tag/box-shadow/" rel="tag">box-shadow</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/color/" rel="tag">color</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/drop-shadow/" rel="tag">drop-shadow</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/filter/" rel="tag">filter</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%9b%be%e6%a0%87/" rel="tag">图标</a></p>			</div>
+		</div>
+        
+        <h3 class="ad_title">赞助商广告<span class="sup_span">(<a href="http://www.zhangxinxu.com/sp/support.html" target="_blank">我也要赞助</a>)</span>：</h3>
+        <div>
+			<div id="adZhuFeng" class="ad_zf_x ad_bottom">
+            	<div class="ad_zf">
+                    <span class="l hidden">如果你月薪不足20K，不妨</span>
+                    <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;zhufeng&#39;, &#39;Not interest&#39;]);">×</a>
+                </div>
+            	<a href="http://www.zhufengpeixun.cn/customize/node/index.html" target="_blank" class="ad_bottom_n" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;zhufeng&#39;, &#39;ad zhufeng Not float&#39;]);"></a>
+            </div>
+            <div id="adYuMi" class="ad_zf_x ad_bottom">
+            	<div class="ad_ym">
+                    <span class="l hidden">希望拥有自己的域名博客？</span>
+                    <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;YuMi&#39;, &#39;Not interest&#39;]);">×</a>
+                </div>
+            	<a href="http://www.qiuyumi.com/zxx/" target="_blank" class="ad_bottom_y" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yumi&#39;, &#39;ad YuMi Not float&#39;]);"></a>
+            </div>
+            <!--<a href="/sp/support.html" target="_blank"><img src="http://ww3.sinaimg.cn/large/4b4d632fgw1f497otmdt2j20a002i3yo.jpg" class="ad_bottom" style="border:1px solid #34538b;" width="360" height="90"></a>-->
+        </div>
+        <div id="adYideng" class="ad_bottom">
+        	<div class="ad_yd">
+            	<span class="l hidden">如果你有1~3年前端开发经验，不妨</span>
+                <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;Not interest&#39;]);">×</a>
+            </div>
+        	<a href="http://web.wuxianedu.com/yideng/?f=zhangxinxu.com" target="_blank" class="ad_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;ad yideng Not float&#39;]);"></a>
+        </div>
+        		
+        
+        
+	﻿
+<div id="respond">
+<h3 class="respond_title">发表评论（目前29 条评论）</h3>
+<div id="cancel-comment-reply"> 
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#respond" style="display:none;">点击这里取消回复。</a></small>
+</div> 
+
+
+<form action="http://www.zhangxinxu.com/wordpress/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" required="">
+<label for="author"><small>名称 (必须)</small></label></p>
+
+<p><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" required="">
+<label for="email"><small>邮件地址(不会被公开) (必须)</small></label></p>
+
+<p><input type="url" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>网站</small></label></p>
+
+
+<!--<p><small><strong>XHTML：</strong>您可以使用这些标签：<code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="提交评论">
+<input type="hidden" name="comment_post_ID" value="5429" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+ 
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2916971ee6"></p><p style="display: none;"></p>
+<input type="hidden" id="ak_js" name="ak_js" value="1467358570344"></form>
+
+</div>
+
+
+<!-- You can start editing here. -->
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-321100">
+				<div id="div-comment-321100" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/11d315fe9e6df04f2dfe0d96a15aba8b" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://bbs.asiaidc.net/" rel="external nofollow" class="url">Asiaidc.net</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-321100">
+			2016年06月28日 10:14</a>		</div>
+
+		<p>喜欢看鑫大虾的 碎碎念部分,简直就是临结尾了还要再次高潮经典的部分!<br>
+第二次路过,再欣赏一遍…</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=321100#respond" onclick="return addComment.moveForm( &quot;div-comment-321100&quot;, &quot;321100&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给Asiaidc.net">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-320950">
+				<div id="div-comment-320950" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/70fbc55f9ea4d29b088e46908143ca03" class="avatar avatar-32" height="32" width="32">			<cite class="fn">下拉刷新</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320950">
+			2016年06月24日 11:30</a>		</div>
+
+		<p>鑫神求个下拉刷新</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320950#respond" onclick="return addComment.moveForm( &quot;div-comment-320950&quot;, &quot;320950&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给下拉刷新">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-320949">
+				<div id="div-comment-320949" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/75e215cea7a9364665ca688b5a23a58a" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.465400.net/" rel="external nofollow" class="url">春熙路</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320949">
+			2016年06月24日 11:18</a>		</div>
+
+		<p>进来看看、了解一下</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320949#respond" onclick="return addComment.moveForm( &quot;div-comment-320949&quot;, &quot;320949&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给春熙路">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-320944">
+				<div id="div-comment-320944" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/95e71376bb1dcbeba390f13cd45b5cec" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Drsosm</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320944">
+			2016年06月24日 10:04</a>		</div>
+
+		<p>还是不能了解，不是很清楚谁来请教下。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320944#respond" onclick="return addComment.moveForm( &quot;div-comment-320944&quot;, &quot;320944&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给Drsosm">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-320804">
+				<div id="div-comment-320804" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/77ab65f2262511c9dbccd1f4403b9b6e" class="avatar avatar-32" height="32" width="32">			<cite class="fn">w33333</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320804">
+			2016年06月22日 15:26</a>		</div>
+
+		<p>暴走了下。吧主是DOTA选手吗</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320804#respond" onclick="return addComment.moveForm( &quot;div-comment-320804&quot;, &quot;320804&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给w33333">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-320777">
+				<div id="div-comment-320777" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/11d315fe9e6df04f2dfe0d96a15aba8b" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://bbs.asiaidc.net/" rel="external nofollow" class="url">Asiaidc.net</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320777">
+			2016年06月22日 07:36</a>		</div>
+
+		<p>很有创意的Web技术,鑫大侠不嫌麻烦的话真的可以申请专利了, 学习并分享之…</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320777#respond" onclick="return addComment.moveForm( &quot;div-comment-320777&quot;, &quot;320777&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给Asiaidc.net">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-320713">
+				<div id="div-comment-320713" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/10348ed1b2738b583904435eac3d2119" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.14vps.com/" rel="external nofollow" class="url">host1plus</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320713">
+			2016年06月21日 08:40</a>		</div>
+
+		<p>兄弟，交换链接吗？</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320713#respond" onclick="return addComment.moveForm( &quot;div-comment-320713&quot;, &quot;320713&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给host1plus">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-320905">
+				<div id="div-comment-320905" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/3e58242902fa8f33162f3f10df892c68" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320905">
+			2016年06月23日 23:06</a>		</div>
+
+		<p>不交，麻烦，谢谢关注~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320905#respond" onclick="return addComment.moveForm( &quot;div-comment-320905&quot;, &quot;320905&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-320690">
+				<div id="div-comment-320690" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/5242b0fd7bd932d4bcf7ffef46cef65f" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://osteam.win/" rel="external nofollow" class="url">睡觉</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320690">
+			2016年06月20日 22:57</a>		</div>
+
+		<p>以为白色做轮廓，透明做底色，然后background设置颜色。。<br>
+Get了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320690#respond" onclick="return addComment.moveForm( &quot;div-comment-320690&quot;, &quot;320690&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给睡觉">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-320663">
+				<div id="div-comment-320663" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/d8b34584eccf9ca87c5a44f21de8b770" class="avatar avatar-32" height="32" width="32">			<cite class="fn">木子太白</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320663">
+			2016年06月20日 17:15</a>		</div>
+
+		<p>问一下张同学，这个跟用<br>
+-webkit-mask结合background-color来改变png背景颜色的用法哪个更好一些？</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320663#respond" onclick="return addComment.moveForm( &quot;div-comment-320663&quot;, &quot;320663&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给木子太白">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-320661">
+				<div id="div-comment-320661" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/d5086b42de269b43d53e6eaf66386b2b" class="avatar avatar-32" height="32" width="32">			<cite class="fn">lalalal</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320661">
+			2016年06月20日 16:07</a>		</div>
+
+		<p>超赞！！！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320661#respond" onclick="return addComment.moveForm( &quot;div-comment-320661&quot;, &quot;320661&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给lalalal">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-320635">
+				<div id="div-comment-320635" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/b60c0a6a4b19227eaa9dde4b34f940b7" class="avatar avatar-32" height="32" width="32">			<cite class="fn">sandman</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320635">
+			2016年06月20日 10:16</a>		</div>
+
+		<p>大神！咱能别这么牛逼闪闪的吗！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320635#respond" onclick="return addComment.moveForm( &quot;div-comment-320635&quot;, &quot;320635&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给sandman">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-320475">
+				<div id="div-comment-320475" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/a2fa99ba7dde35f9eb2fe66cc0978e56" class="avatar avatar-32" height="32" width="32">			<cite class="fn">银狐</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320475">
+			2016年06月17日 11:30</a>		</div>
+
+		<p>新技能get</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320475#respond" onclick="return addComment.moveForm( &quot;div-comment-320475&quot;, &quot;320475&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给银狐">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-320326">
+				<div id="div-comment-320326" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/b50522fe0e8625ad49ef620bdcc78f29" class="avatar avatar-32" height="32" width="32">			<cite class="fn">edie</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320326">
+			2016年06月15日 16:44</a>		</div>
+
+		<p>SVG, icon fonts有个最大优势是他们是矢量的</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320326#respond" onclick="return addComment.moveForm( &quot;div-comment-320326&quot;, &quot;320326&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给edie">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-320319">
+				<div id="div-comment-320319" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/9b2a87c78ed92b430a41371cefaba45d" class="avatar avatar-32" height="32" width="32">			<cite class="fn">superwf</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320319">
+			2016年06月15日 15:40</a>		</div>
+
+		<p>长只是，drop-box技能get</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320319#respond" onclick="return addComment.moveForm( &quot;div-comment-320319&quot;, &quot;320319&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给superwf">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-320178">
+				<div id="div-comment-320178" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/78d125be347d50db62e3cb38c7081469" class="avatar avatar-32" height="32" width="32">			<cite class="fn">将feng猪</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320178">
+			2016年06月14日 09:50</a>		</div>
+
+		<p>很喜欢你的文章，学到很多，谢谢</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320178#respond" onclick="return addComment.moveForm( &quot;div-comment-320178&quot;, &quot;320178&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给将feng猪">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-320124">
+				<div id="div-comment-320124" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/1e6bde52d4eda391035ab1ad3eed1382" class="avatar avatar-32" height="32" width="32">			<cite class="fn">lomodd</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-320124">
+			2016年06月13日 22:38</a>		</div>
+
+		<p>真的很吊</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=320124#respond" onclick="return addComment.moveForm( &quot;div-comment-320124&quot;, &quot;320124&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给lomodd">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-319722">
+				<div id="div-comment-319722" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/c710988ef3d4c966be8e4040f0dc1cd7" class="avatar avatar-32" height="32" width="32">			<cite class="fn">九月枫林</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319722">
+			2016年06月9日 01:20</a>		</div>
+
+		<p>赞！ 真是好思路</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319722#respond" onclick="return addComment.moveForm( &quot;div-comment-319722&quot;, &quot;319722&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给九月枫林">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-319705">
+				<div id="div-comment-319705" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/9adde2cab12f9befd67305c32dd70b93" class="avatar avatar-32" height="32" width="32">			<cite class="fn">游弋耗子</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319705">
+			2016年06月8日 17:31</a>		</div>
+
+		<p>学习笔记：<br>
+1.修改的是投影的颜色，而不是图片的颜色；<br>
+2.20像素的边框大小是不是可以理解为 为投影显示制造一点空间，因为我修改边框值变小，就只显示边框宽度大小的投影；<br>
+3.如果把背景图片改用img标签，在有overflow:hidden; 将图片隐藏的情况下，投影是不显示的，这一块儿不是很理解。<br>
+谢谢分享，学习了！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319705#respond" onclick="return addComment.moveForm( &quot;div-comment-319705&quot;, &quot;319705&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给游弋耗子">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-319683">
+				<div id="div-comment-319683" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/58cacc4449f389e910a0a541da1e779c" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://zhaomenghuan.github.io/" rel="external nofollow" class="url">小青年</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319683">
+			2016年06月8日 13:14</a>		</div>
+
+		<p>马上就要去考试，看了大神又更新了文章，跑过来看看冷静一下。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319683#respond" onclick="return addComment.moveForm( &quot;div-comment-319683&quot;, &quot;319683&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给小青年">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-319678">
+				<div id="div-comment-319678" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/9de7dd5e2a703dd0a84c46a60f0593cc" class="avatar avatar-32" height="32" width="32">			<cite class="fn">iuril</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319678">
+			2016年06月8日 12:45</a>		</div>
+
+		<p>drop-shadow 生成的投影默认的是原图的透明度，比如原图透明度是50%，那投影出来的drop-shasow的透明度是在原图的50%的效果下修改的，不能更深了。是吗？</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319678#respond" onclick="return addComment.moveForm( &quot;div-comment-319678&quot;, &quot;319678&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给iuril">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent" id="comment-319684">
+				<div id="div-comment-319684" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/3e58242902fa8f33162f3f10df892c68" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319684">
+			2016年06月8日 13:15</a>		</div>
+
+		<p>@iuril 何不花个5分钟自己弄个极简demo验证下，知识就是这么慢慢积累的~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319684#respond" onclick="return addComment.moveForm( &quot;div-comment-319684&quot;, &quot;319684&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3" id="comment-319689">
+				<div id="div-comment-319689" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/9de7dd5e2a703dd0a84c46a60f0593cc" class="avatar avatar-32" height="32" width="32">			<cite class="fn">iuril</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319689">
+			2016年06月8日 13:52</a>		</div>
+
+		<p>我是验证了之后才来请教的，这和box-shadow阴影机制也不同，drop-shadow投影是继承了元素的透明度的。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319689#respond" onclick="return addComment.moveForm( &quot;div-comment-319689&quot;, &quot;319689&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给iuril">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-319669">
+				<div id="div-comment-319669" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/59ad2277c4186b617473c6812aecfca1" class="avatar avatar-32" height="32" width="32">			<cite class="fn">馒头</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319669">
+			2016年06月8日 11:25</a>		</div>
+
+		<p>我以前用的是filter 色相调整。<br>
+调节不方便，而且 ios 下 做动画 很卡。</p>
+<p>透明边框迷惑浏览器  的思路确实  很好。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319669#respond" onclick="return addComment.moveForm( &quot;div-comment-319669&quot;, &quot;319669&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给馒头">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-319664">
+				<div id="div-comment-319664" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/5d176a7734c3c8dbc7fc211a05900b39" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://blog.aijc.net/" rel="external nofollow" class="url">dolymood</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319664">
+			2016年06月8日 10:38</a>		</div>
+
+		<p>很赞</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319664#respond" onclick="return addComment.moveForm( &quot;div-comment-319664&quot;, &quot;319664&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给dolymood">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-319659">
+				<div id="div-comment-319659" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/9c83d1089f7f744521abc054bda86448" class="avatar avatar-32" height="32" width="32">			<cite class="fn">cqcookie</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319659">
+			2016年06月8日 10:08</a>		</div>
+
+		<p>恕我孤陋寡闻，请问…….IE13是什么……..</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319659#respond" onclick="return addComment.moveForm( &quot;div-comment-319659&quot;, &quot;319659&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给cqcookie">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-319832">
+				<div id="div-comment-319832" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/6a70f2e1af40e23e70ba47778be71e71" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://yijile.com/" rel="external nofollow" class="url">yjl</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319832">
+			2016年06月10日 14:22</a>		</div>
+
+		<p>博主太激动了然后就有了IE 13了…。。。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319832#respond" onclick="return addComment.moveForm( &quot;div-comment-319832&quot;, &quot;319832&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给yjl">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-319656">
+				<div id="div-comment-319656" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/857d4ec9608673eb32131af4ca774615" class="avatar avatar-32" height="32" width="32">			<cite class="fn">雨浣潇湘</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319656">
+			2016年06月8日 09:58</a>		</div>
+
+		<p>黑科技Get<br>
+好神奇</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319656#respond" onclick="return addComment.moveForm( &quot;div-comment-319656&quot;, &quot;319656&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给雨浣潇湘">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-319643">
+				<div id="div-comment-319643" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/fd23639c452911bd0856a3f1721b192f" class="avatar avatar-32" height="32" width="32">			<cite class="fn">静听雨落</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/comment-page-1/#comment-319643">
+			2016年06月8日 09:26</a>		</div>
+
+		<p>哈哈，最后一段乍一瞅还以为三五年前写的，吃了一鲸，还往上翻了翻发现是前天写的，哈哈。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/?replytocom=319643#respond" onclick="return addComment.moveForm( &quot;div-comment-319643&quot;, &quot;319643&quot;, &quot;respond&quot;, &quot;5429&quot; )" aria-label="回复给静听雨落">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+
+	
+	</div>
+</div>
+	<div id="sidebar" role="complementary">
+         <div id="zxx_intro" class="sldebar_out">
+            <div class="silebar_inner" itemscope="" itemtype="http://data-vocabulary.org/Person">
+                <img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/zxx_90_0824.jpg" itemprop="photo" class="zxx_head_image">
+                <div class="zxx_some_info">
+                    <p class="mb10"><span itemprop="name" class="fn">张鑫旭</span><sup><a itemprop="url" href="http://www.zhangxinxu.com/life/about/">more</a></sup>，09年<a href="http://www.hust.edu.cn/">华中科技大学</a>毕业，目前<span itemprop="location">上海</span>，现就职<a href="http://yuewen.book.qq.com/" itemprop="organization">阅文集团</a>，资深钓鱼爱好者，专注<span itemprop="role">web前端</span>偏前领域。</p>
+
+                    <p>邮箱：<span style="font-family:arial;">zhangxinxu@zhangxinxu.com</span></p>
+                    <p>微博：<a href="http://weibo.com/zhangxinxu">新浪</a> <a href="http://t.qq.com/iamzhangxinxu">腾讯</a></p>
+                </div>
+                <div class="clear"></div>                
+            </div>
+        </div>
+        
+        <div class="sldebar_out top_ad_out">
+            <div class="silebar_inner top_ad">
+            	<div class="ad_inner">
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-0090627341039040" data-ad-slot="7307897248" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                </div>
+            </div>
+        </div>
+    	<div class="sldebar_out">
+            <div class="silebar_inner slide_list">
+                <ul>
+                    <li id="search-3" class="widget widget_search"><form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="翻页太辛苦，试试直接搜索" value="" name="s" id="s">
+<input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+</li><li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">文章分类</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.zhangxinxu.com/wordpress/category/css/">css相关</a> (236)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/">graphic相关</a> (66)
+<ul class="children">
+	<li class="cat-item cat-item-81"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/as3%e8%8f%9c%e5%8d%95/">as3菜单</a> (32)
+</li>
+	<li class="cat-item cat-item-896"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/canvas-graphic/">canvas相关</a> (9)
+</li>
+	<li class="cat-item cat-item-895"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/svg-graphic/">SVG相关</a> (23)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.zhangxinxu.com/wordpress/category/js/">js相关</a> (112)
+<ul class="children">
+	<li class="cat-item cat-item-60"><a href="http://www.zhangxinxu.com/wordpress/category/js/jquery-about/">jquery相关</a> (43)
+</li>
+	<li class="cat-item cat-item-180"><a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/">js实例</a> (54)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-648"><a href="http://www.zhangxinxu.com/wordpress/category/mobile%e7%9b%b8%e5%85%b3/">mobile相关</a> (11)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.zhangxinxu.com/wordpress/category/ps/">ps相关</a> (13)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.zhangxinxu.com/wordpress/category/web/">web综合</a> (37)
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.zhangxinxu.com/wordpress/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91/">外文翻译</a> (36)
+</li>
+		</ul>
+</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章存档</h2>		<ul>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/06/">2016年六月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/05/">2016年五月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/04/">2016年四月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/03/">2016年三月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/02/">2016年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/">2016年一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/12/">2015年十二月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/11/">2015年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/10/">2015年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/08/">2015年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/07/">2015年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/06/">2015年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/05/">2015年五月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/04/">2015年四月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/03/">2015年三月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/02/">2015年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/01/">2015年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/12/">2014年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/11/">2014年十一月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/10/">2014年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/09/">2014年九月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/08/">2014年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/07/">2014年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/06/">2014年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/05/">2014年五月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/04/">2014年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/03/">2014年三月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/02/">2014年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/01/">2014年一月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/12/">2013年十二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/11/">2013年十一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/10/">2013年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/09/">2013年九月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/08/">2013年八月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/07/">2013年七月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/06/">2013年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/05/">2013年五月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/">2013年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/03/">2013年三月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/02/">2013年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/01/">2013年一月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/12/">2012年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/11/">2012年十一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/10/">2012年十月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/">2012年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/">2012年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/07/">2012年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/">2012年六月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/">2012年五月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/">2012年四月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/03/">2012年三月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/02/">2012年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/01/">2012年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/12/">2011年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/11/">2011年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/10/">2011年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/">2011年九月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/08/">2011年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/07/">2011年七月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/06/">2011年六月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/05/">2011年五月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/04/">2011年四月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/03/">2011年三月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/02/">2011年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/01/">2011年一月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/">2010年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/">2010年十一月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/10/">2010年十月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/09/">2010年九月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/08/">2010年八月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/07/">2010年七月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/06/">2010年六月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/05/">2010年五月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/">2010年四月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/">2010年三月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/02/">2010年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/">2010年一月</a>&nbsp;(16)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/12/">2009年十二月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/11/">2009年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/10/">2009年十月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/09/">2009年九月</a>&nbsp;(36)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/">2009年八月</a>&nbsp;(12)</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">最新文章</h2>		<ul>
+					<li>
+				<a href="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活.html">PNG格式小图标的CSS任意颜色赋色技术</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/">基于clip-path的任意元素的碎片拼接动效</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/csser-how-to-use-nodejs/">JS一般般的网页重构可以使用Node.js做些什么</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/image-preload-based-on-user-behavior/">基于用户行为的图片等资源预加载</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/pseudo-response-layout-base-on-screen-width/">基于screen.width的伪响应式开发</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/canvas-star-noise-smoke/">canvas图形绘制之星空、噪点与烟雾效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/">理解CSS3 max/min-content及fit-content等width值</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">CSS3 filter:drop-shadow滤镜与box-shadow区别应用</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/04/css-writing-mode/">改变CSS世界纵横规则的writing-mode属性</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/04/know-about-html-download-attribute/">了解HTML/HTML5中的download属性</a>
+						</li>
+				</ul>
+		</li><li id="overall-top-10-posts" class="widget widget_dailytopten_overall"><h2 class="widgettitle">热门总排行</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">jQuery powerFloat万能浮动层下拉层插件</a> (325809)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (260944)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (250494)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (217852)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/">CSS box-flex属性，然后弹性盒子模型简介</a> (201751)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (201325)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (194638)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (188222)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (174617)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/jquery%e9%a1%b5%e9%9d%a2%e5%9b%be%e7%89%87%e7%ad%89%e5%85%83%e7%b4%a0%e6%bb%9a%e5%8a%a8%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd%e5%ae%9e%e7%8e%b0/">jQuery页面滚动图片等元素动态加载实现</a> (173023)</li>
+</ul>
+</li><li id="daily-top-10-posts" class="widget widget_dailytopten"><h2 class="widgettitle">今日热门</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (212)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/">CSS box-flex属性，然后弹性盒子模型简介</a> (206)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (195)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (179)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/09/%e5%85%b3%e4%ba%8e%e6%96%87%e5%ad%97%e5%86%85%e5%ae%b9%e6%ba%a2%e5%87%ba%e7%94%a8%e7%82%b9%e7%82%b9%e7%82%b9-%e7%9c%81%e7%95%a5%e5%8f%b7%e8%a1%a8%e7%a4%ba/">关于文字内容溢出用点点点(...)省略号表示</a> (135)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/">ES5中新增的Array方法详细说明</a> (131)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (131)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/%e5%a4%a7%e5%b0%8f%e4%b8%8d%e5%9b%ba%e5%ae%9a%e7%9a%84%e5%9b%be%e7%89%87%e3%80%81%e5%a4%9a%e8%a1%8c%e6%96%87%e5%ad%97%e7%9a%84%e6%b0%b4%e5%b9%b3%e5%9e%82%e7%9b%b4%e5%b1%85%e4%b8%ad/">大小不固定的图片、多行文字的水平垂直居中</a> (131)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (129)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/06/html5-history-api-pushstate-replacestate-ajax/">ajax与HTML5 history pushState/replaceState实例</a> (124)</li>
+</ul>
+</li>                </ul>
+            </div>
+        </div>
+	</div>
+<div id="footer" role="contentinfo">
+<p>
+Powerd by <a href="http://wordpress.org/">WordPress</a> | Designed by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br>
+Copyright© 2009-2016 张鑫旭-鑫空间-鑫生活<br>
+<a target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备09015569号</a>
+</p>
+</div>
+</div><ins class="adsbygoogle" data-adsbygoogle-status="done" style="display: none; width: auto; height: auto;"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent"><iframe width="0" height="0" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+
+
+<script type="text/javascript" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/form.js"></script>
+<script type="text/javascript" src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/comment-reply.min.js"></script>
+
+<div id="footbar" class="slideout">
+	<div class="foot_yy_x hidden" id="footYyX">
+    	<div class="foot_yy_title">
+        	<span class="l">我的应用</span>
+            <a href="javascript:" class="r" id="footYYClose">-</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">工具与应用</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/base64.html">图片转base64(拖进来)</a>
+			<a class="foot_yy_a" href="http://browserhacks.com/">浏览器hack</a>
+            <a class="foot_yy_a" href="http://cubic-bezier.com/">CSS贝塞尔曲线可视化</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/css-compress-mini.html">CSS在线压缩工具</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/calculator.html">简易在线计算器</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">在线资源</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/api14/">jQuery 1.4 API中文版</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/">Snap.svg中文文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/stylus/">stylus中文版参考文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/css3/">CSS3中文共享参考指南</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/character.html">非主流字符及字符图案</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/mt/">MooTools 1.2中文文档</a>
+        </div>
+        <div>&nbsp;</div>
+        <a href="javascript:" class="foot_yy foot_yy_on nowrap" id="footYYOff"><img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    </div>
+    <a href="javascript:" class="foot_yy nowrap" id="footYYShow"><img src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    <span class="foot_rss l">
+    	<a class="foot_rss_a" href="http://www.zhangxinxu.com/wordpress/?feed=rss2">文章(RSS)</a>
+         
+    </span>
+    <a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/#" id="backToTop" class="foot_top">返回顶部↑</a>
+	<a href="http://www.zhangxinxu.com/wordpress/wp-login.php" class="foot_login"><i class="icon-male"></i>登录</a>
+</div>
+
+<script src="./PNG格式小图标的CSS任意颜色赋色技术 « 张鑫旭-鑫空间-鑫生活_files/script-min.js"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-11205167-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<div id="adYidengFloat" class="ad_bottom hidden" style="display: block;">
+        	<div class="ad_yd">
+            	<span class="l hidden">如果你有1~3年前端开发经验，不妨</span>
+                <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;Not interest&#39;]);">×</a>
+            </div>
+        	<a href="http://web.wuxianedu.com/yideng/?f=zhangxinxu.com" target="_blank" class="ad_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;ad yideng float&#39;]);"></a>
+        </div></body></html>

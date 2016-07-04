@@ -11,6 +11,7 @@
   overflow: hidden;
   position: relative;
   transition: background .3s ease 0s; }
+  
   .colorful-tab-wrapper:before {
     position: absolute;
     height: 100%;

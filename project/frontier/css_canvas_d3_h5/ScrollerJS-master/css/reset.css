@@ -14,6 +14,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	/*这样设置字体100%是默认字体大小,也就是继承父节点字体大小或者是浏览器设置的字体大小*/
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
