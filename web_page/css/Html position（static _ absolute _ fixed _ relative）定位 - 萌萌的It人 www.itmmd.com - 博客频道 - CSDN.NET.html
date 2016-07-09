@@ -1,0 +1,1099 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>   
+   
+
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>  
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+  
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <title>Html position（static | absolute | fixed | relative）定位 - 萌萌的It人 www.itmmd.com
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="1. 你让我滚，我滚了。你让我回来，对不起，滚远了2. 流氓不可怕，就怕流氓有文化……3. 走牛B的路，让傻B去说吧！4. 开车无难事，只怕有新人！6. 矿难在检讨中继续，楼价在控制中上升！7. XP不发威，你当我是DOS啊！8. 英雄不问出路，流氓不看岁数！9. 好好活着，因为我们会死很久!!!10. 人又不聪明，还学人家秃顶！！11. 没什么事不要找我，有事更不用找我12. 宁和明白人打一架，" />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+      <script type="text/javascript" src="http://static.blog.csdn.net/scripts/jquery-version.js"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+        <!--new top-->
+               <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/css/index.css">        <!--new top-->
+    
+      <!-- ad begin -->
+         <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/tracking.js"></script>
+    <!-- ad end-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/dyllove98/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/nobg.css" />
+ 
+
+
+</head>
+<body>
+    <!-- 广告位开始 -->
+        <ins data-revive-zoneid="149" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/dyllove98">萌萌的It人 www.itmmd.com</a></h2>
+            <h3></h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            
+                <li id="btnContents"><a href="http://blog.csdn.net/dyllove98?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/dyllove98?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/dyllove98/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+            
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "dyllove98";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/dyllove98";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+
+<a href="http://bbs.csdn.net/topics/391976908">
+<font color=blue>【CSDN会员专属福利】OpenStack Days China 大会门票，先到先得</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://lib.csdn.net/base/html5/resource">
+<font color=red>【收藏】Html5 精品资源汇集
+</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://geek.csdn.net/news/detail/86516">
+<font color=blue>我们为什么选择Java
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+</font></a>
+</div>                        </div>
+                        
+
+
+
+<!-- 广告位开始 -->
+<ins data-revive-zoneid="72" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->
+
+  
+<link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+<link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+<script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+<link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+<link rel="stylesheet" href="http://static.blog.csdn.net/css/category.css?v=1.0" />
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/web-storage-cache.min.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/replace.min.js"></script>
+
+
+
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Repost"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/dyllove98/article/details/8967114">
+        Html position（static | absolute | fixed | relative）定位            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_r">
+            <span class="link_postdate">2013-05-23 20:16</span>
+            <span class="link_view" title="阅读次数">19813人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(1)</span>
+            <span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('Html position（static | absolute | fixed | relative）定位','8967114');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(8967114,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>
+    <div class="embody"  style="display:none" id="embody">
+        <span class="embody_t">本文章已收录于：</span>
+        <div class="embody_c" id="lib" value="{&quot;err&quot;:0,&quot;msg&quot;:&quot;ok&quot;,&quot;data&quot;:[]}"></div>
+    </div>
+    <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+    <script  type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+    <script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>  
+
+  
+
+  
+  
+     
+
+<div id="article_content" class="article_content">
+<div id="cnblogs_post_body"> <p>语法： <br /><strong>position : </strong><strong>static </strong>|<strong> absolute </strong>|<strong> fixed </strong>|<strong> relative </strong></p>  <p>参数： <br /><strong>static : </strong> 无特殊定位，对象遵循HTML定位默认规则 <br /><strong>absolute : </strong> 绝对定位。将对象从文档流中拖出，使用<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_left.html">left</a>，<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_right.html">right</a>，<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_top.html">top</a>，<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_bottom.html">bottom</a>等属性进行绝对定位。而其层叠通过<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_zindex.html">z-index</a>属性定义。此时对象不具有<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_margin.html">边距</a>，但仍有<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_padding.html">补白</a>和<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_border.html">边框</a>。相对于position属性非static值的最近父级元素进行偏移，如果父级都是static（文档流），则相对整个文档进行偏移。偏移后，原来的空间会被其他元素挤占 <br /><strong>relative : </strong> 相对定位。对象不能想绝对定位一样层叠，但可依据<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_left.html">left</a>，<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_right.html">right</a>，<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_top.html">top</a>，<a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_bottom.html">bottom</a>等属性在正常文档流中相对原先对象的位置进行偏移。原先的位置会被其他元素挤占。</p>  <table style="width: 976px;" border="0" cellspacing="0" cellpadding="2">   <tbody>    <tr>     <td valign="top" width="98"><span style="color: #0000ff;">positon</span></td>     <td valign="top" width="76"><span style="color: #0000ff;">名称</span></td>     <td valign="top" width="178"><span style="color: #0000ff;"><span style="color: #ff0000;">(1)</span>是否将对象脱离文档流</span></td>     <td valign="top" width="215"><span style="color: #0000ff;"><span style="color: #ff0000;">(2)</span>偏移参照对象</span></td>     <td valign="top" width="144"><span style="color: #0000ff;">偏移属性</span></td>     <td valign="top" width="132"><span style="color: #0000ff;"><span style="color: #ff0000;">(3)</span>原先位置是否会被其他元素占用</span></td>     <td valign="top" width="131"><span style="color: #0000ff;"><span style="color: #ff0000;">(4)</span>是否 能通过z-index层叠</span></td>    </tr>    <tr>     <td valign="top" width="101"><span style="color: #0000ff;">absolute</span></td>     <td valign="top" width="77"><span style="color: #0000ff;">绝对定位</span></td>     <td valign="top" width="177"><span style="color: #0000ff;">是</span></td>     <td valign="top" width="214"><span style="color: #0000ff;">相对于position属性非static值的最近父级元素进行偏移，如果父级都是static（文档流），则相对整个文档进行偏移（即body左上角坐标原点）</span></td>     <td valign="top" width="144"><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_left.html"><span style="color: #0000ff;">left</span></a><span style="color: #0000ff;">，</span><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_right.html"><span style="color: #0000ff;">right</span></a><span style="color: #0000ff;">，</span><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_top.html"><span style="color: #0000ff;">top</span></a><span style="color: #0000ff;">，</span><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_bottom.html"><span style="color: #0000ff;">bottom</span></a></td>     <td valign="top" width="132"><span style="color: #0000ff;">是</span></td>     <td valign="top" width="130"><span style="color: #0000ff;">是</span></td>    </tr>    <tr>     <td valign="top" width="104"><span style="color: #0000ff;">relative</span></td>     <td valign="top" width="78"><span style="color: #0000ff;">相对定位</span></td>     <td valign="top" width="176"><span style="color: #0000ff;">否</span></td>     <td valign="top" width="214"><span style="color: #0000ff;">参照自身初始位置进行偏移</span></td>     <td valign="top" width="144"><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_left.html"><span style="color: #0000ff;">left</span></a><span style="color: #0000ff;">，</span><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_right.html"><span style="color: #0000ff;">right</span></a><span style="color: #0000ff;">，</span><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_top.html"><span style="color: #0000ff;">top</span></a><span style="color: #0000ff;">，</span><a href="mk:@MSITStore:E:%5CBT??????%5C20130218Html????????????_01%5CHtml??????%5CHTML????????????%5C????????????-?????????%5Ccss????????????.chm::/css2/c_bottom.html"><span style="color: #0000ff;">bottom</span></a></td>     <td valign="top" width="132"><span style="color: #0000ff;">是</span></td>     <td valign="top" width="131"><span style="color: #0000ff;">否</span></td>    </tr>   </tbody>  </table>  <p> <br /><strong>fixed : </strong> IE5.5及NS6尚不支持此属性 。可以使元素在屏幕上保持固定，下拉滚动条，位置也不改变</p>  <p>知识点说明：</p>  <p><span style="color: #000000; font-size: medium;"><strong>(1)文档流是文档中可显示对象在排列时所占用的位置，</strong></span>浏览器解析html时，会按从上到下的顺序，把元素放到相应位置。如div，p占用文档流，他们本身是块级元素（块级元素无论width是否占满网页宽度，都会占用一行），在文档流则从上到下分行显示div和p。</p>  <p><span style="color: #ff0000; font-size: medium;">示例1：</span></p>  <div class="cnblogs_code" onclick="cnblogs_code_show('d4ae3fba-7fca-4631-930b-80783efd7811')">  <img id="code_img_closed_d4ae3fba-7fca-4631-930b-80783efd7811" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_d4ae3fba-7fca-4631-930b-80783efd7811" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('d4ae3fba-7fca-4631-930b-80783efd7811',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_d4ae3fba-7fca-4631-930b-80783efd7811" class="cnblogs_code_hide">    <pre>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red</span><span style="color: #800000;">&quot;</span>&gt;我是div标签&lt;/div&gt; 
+&lt;p style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red</span><span style="color: #800000;">&quot;</span>&gt;我是p标签&lt;/p&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124845-a1d6c5e430e2411389ee4a859ae17da2.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124847-3fe2660f76c8463bae0f4e1e6e604f09.png" alt="image" width="364" height="259" border="0" /></a></p>  <p>而如果想让div位置脱离文档流偏移，让解析时，把div脱离文档流，相对左上角原点向右偏移400px，把p放到文档流中，占用div本来的位置，则可以用绝对定位。</p>  <p><span style="color: #ff0000; font-size: medium;">示例2：</span></p>  <div class="cnblogs_code" onclick="cnblogs_code_show('5cb4160e-86df-4865-8b4b-51e8d605fbbc')">  <img id="code_img_closed_5cb4160e-86df-4865-8b4b-51e8d605fbbc" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_5cb4160e-86df-4865-8b4b-51e8d605fbbc" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('5cb4160e-86df-4865-8b4b-51e8d605fbbc',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_5cb4160e-86df-4865-8b4b-51e8d605fbbc" class="cnblogs_code_hide">    <pre>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red;position:absolute;left:400px</span><span style="color: #800000;">&quot;</span>&gt;我是div标签&lt;/div&gt; 
+    &lt;p style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red</span><span style="color: #800000;">&quot;</span>&gt;我是p标签&lt;/p&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124849-98ad9e707e1e431ea021700a8d216b4f.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124850-b8285f6c03074e4db74249609df4169b.png" alt="image" width="614" height="128" border="0" /></a></p>  <p>这时候我们可以看出，绝对定位后，div偏离了文档流，不再是从上到下显示，而是把div偏移，p标签占用本来的文档流位置。</p>  <p><strong><span style="color: #000000; font-size: medium;">(2)偏移参照对象:</span></strong></p>  <p>absolute绝对定位的偏移参照物是最近的position非static的父标签。</p>  <p><span style="color: #ff0000; font-size: medium;">示例3：</span></p>  <div class="cnblogs_code" onclick="cnblogs_code_show('36c72ea9-426f-407c-a254-620f2d7b9ea8')">  <img id="code_img_closed_36c72ea9-426f-407c-a254-620f2d7b9ea8" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_36c72ea9-426f-407c-a254-620f2d7b9ea8" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('36c72ea9-426f-407c-a254-620f2d7b9ea8',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_36c72ea9-426f-407c-a254-620f2d7b9ea8" class="cnblogs_code_hide">    <pre>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:900px;height:100px;border:1px solid black;position:absolute;left:100px</span><span style="color: #800000;">&quot;</span>&gt;<span style="color: #000000;">我是大div，我根据body向右偏移100px，小div要根据我的左上角原点偏移 
+        </span>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red;position:absolute;left:400px</span><span style="color: #800000;">&quot;</span>&gt;我是div标签&lt;/div&gt; 
+        &lt;p style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red</span><span style="color: #800000;">&quot;</span>&gt;我是p标签&lt;/p&gt; 
+    &lt;/div&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124852-e949d363a4d54a809f643350e86bb969.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124854-02dc2887b179463588cfff7e15107c0b.png" alt="image" width="689" height="135" border="0" /></a></p>  <p>大divposition非static（默认是static），可以是absolute，relative，小div都会参照大div定位。</p>  <p><span style="color: #ff0000; font-size: medium;">示例4：</span></p>  <p>如果父标签都是static，则再向上一级找非static的父标签，直到找到body。如果父级都是static（文档流），则相对整个文档进行偏移（即body左上角坐标原点）</p>  <p>为了显示方便，先放点东东占位吧&lt;/br&gt; <br />&nbsp;&nbsp;&nbsp; 为了显示方便，先放点东东占位吧&lt;/br&gt; <br />&nbsp;&nbsp;&nbsp; 为了显示方便，先放点东东占位吧，大概占了60px了吧&lt;/br&gt; <br />&nbsp; &nbsp;</p>  <div class="cnblogs_code" onclick="cnblogs_code_show('c94633ab-1d2a-4f14-a304-0605929bb20e')">  <img id="code_img_closed_c94633ab-1d2a-4f14-a304-0605929bb20e" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_c94633ab-1d2a-4f14-a304-0605929bb20e" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('c94633ab-1d2a-4f14-a304-0605929bb20e',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_c94633ab-1d2a-4f14-a304-0605929bb20e" class="cnblogs_code_hide">    <pre> &lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:900px;height:100px;border:1px solid black;</span><span style="color: #800000;">&quot;</span>&gt;<span style="color: #000000;">我是大div，但我是static，只好让小div根据body定位了 
+        </span>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red;position:absolute;top:100px;</span><span style="color: #800000;">&quot;</span>&gt;我是div标签，根据body，向下偏移100px；&lt;/div&gt; 
+    &lt;/div&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124856-844fb047a49e4ee0bf3dcb36abbb90fd.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124859-5e791048d85a4e6fb612971e5ed1e1d5.png" alt="image" width="654" height="188" border="0" /></a></p>  <p>relative相对定位的参照对象是自己的初始位置。</p>  <p><span style="color: #ff0000; font-size: medium;">示例5：</span></p>  <div class="cnblogs_code" onclick="cnblogs_code_show('665deb61-dbfb-4492-bf82-88a9ee69ad3f')">  <img id="code_img_closed_665deb61-dbfb-4492-bf82-88a9ee69ad3f" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_665deb61-dbfb-4492-bf82-88a9ee69ad3f" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('665deb61-dbfb-4492-bf82-88a9ee69ad3f',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_665deb61-dbfb-4492-bf82-88a9ee69ad3f" class="cnblogs_code_hide">    <pre>为了显示方便，先放点东西占位吧。&lt;/br&gt;<span style="color: #000000;"> 
+        为了显示方便，先放点东西占位吧。</span>&lt;/br&gt;<span style="color: #000000;"> 
+        为了显示方便，先放点东西占位吧。大概占了60px了吧</span>&lt;/br&gt; 
+        &lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red;</span><span style="color: #800000;">&quot;</span>&gt;我是div标签，默认static，未进行定位&lt;/div&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124901-a6e07107ced7454d86116eee7c72b71f.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124903-391c19052c754e29a78db7c9f6505c8b.png" alt="image" width="410" height="183" border="0" /></a></p>  <p><span style="color: #ff0000; font-size: medium;">示例6、</span></p>  <div class="cnblogs_code" onclick="cnblogs_code_show('11e04515-ecde-473e-a59c-4f051cdd1eeb')">  <img id="code_img_closed_11e04515-ecde-473e-a59c-4f051cdd1eeb" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_11e04515-ecde-473e-a59c-4f051cdd1eeb" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('11e04515-ecde-473e-a59c-4f051cdd1eeb',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_11e04515-ecde-473e-a59c-4f051cdd1eeb" class="cnblogs_code_hide">    <pre>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;border:1px solid red;position:relative;top:100px</span><span style="color: #800000;">&quot;</span>&gt;我是div标签，相对定位，根据初始位置向下偏移100px&lt;/div&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124906-7c20de8f7af74d9c8d9992312ebe20e6.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124908-d1464d387edf4af180ef0cf6f239db3a.png" alt="image" width="424" height="256" border="0" /></a></p>  <p><span style="color: #ff0000;">(3)</span>原先位置是否会被其他元素占用:</p>  <p>绝对或相对定位后，原先的位置会被其他元素占用，如示例2</p>  <p><span style="color: #ff0000;">(4)</span>是否 能通过z-index层叠:</p>  <p>绝对定位的层可以层叠。</p>  <p><span style="color: #ff0000; font-size: medium;">示例7、</span></p>  <div class="cnblogs_code" onclick="cnblogs_code_show('a54aa65b-52e9-4282-a0f2-caede45d081d')">  <img id="code_img_closed_a54aa65b-52e9-4282-a0f2-caede45d081d" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />  <img id="code_img_opened_a54aa65b-52e9-4282-a0f2-caede45d081d" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('a54aa65b-52e9-4282-a0f2-caede45d081d',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt="" />  <span class="cnblogs_code_collapse">View Code </span>   <div id="cnblogs_code_open_a54aa65b-52e9-4282-a0f2-caede45d081d" class="cnblogs_code_hide">    <pre>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;background:red;position:absolute;</span><span style="color: #800000;">&quot;</span>&gt;我是div1，绝对定位，没有设置z-index,虽然高度和div2一样的，但div2会把我覆盖&lt;/div&gt; 
+   &lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;position:absolute;top:50px;background:yellow</span><span style="color: #800000;">&quot;</span>&gt;我是div2，绝对定位，我能把div2覆盖&lt;/div&gt;</pre>   </div>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124911-639637f9ff5d487893b34790d294bf49.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124913-232ba47f68e549e7a59d021543d39567.png" alt="image" width="375" height="178" border="0" /></a></p>  <p>&nbsp;</p>  <p><span style="color: #ff0000; font-size: medium;">示例8、</span></p>  <div class="cnblogs_code">   <pre>&lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;background:red;position:absolute;z-index:2</span><span style="color: #800000;">&quot;</span>&gt;我是div1，我的z-index比div2高，所以把div2覆盖&lt;/div&gt; 
+    &lt;div style=<span style="color: #800000;">&quot;</span><span style="color: #800000;">width:300px;height:100px;position:absolute;top:50px;background:yellow</span><span style="color: #800000;">&quot;</span>&gt;我是div2，我的z-index是默认值，比div1低&lt;/div&gt;</pre>  </div>  <p>&nbsp;</p>  <p><a href="http://images.cnitblog.com/blog/457805/201303/16124915-73307253cb524f27ae62e0b6b6607c40.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="image" src="http://images.cnitblog.com/blog/457805/201303/16124917-4a5ca4c1e36f4423b3d62cacb701c194.png" alt="image" width="396" height="195" border="0" /></a></p></div><br /><script type="text/javascript"><!--
+google_ad_client = "ca-pub-1944176156128447";
+/* cnblogs 首页横幅 */
+google_ad_slot = "5419468456";
+google_ad_width = 728;
+google_ad_height = 90;
+//--></script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css" />
+
+    
+<!--172.16.140.12-->
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+        <div id="digg" ArticleId="8967114" >
+            <dl id="btnDigg" class="digg digg_disable"  onclick="btndigga();">
+               
+                 <dt>顶</dt>
+                <dd>0</dd>
+            </dl>
+           
+              
+            <dl id="btnBury" class="digg digg_disable"  onclick="btnburya();">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>               
+            </dl>
+            
+        </div>
+     <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+    <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+    <script type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </script>
+
+   <ul class="article_next_prev">
+                <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/dyllove98/article/details/8967108';">上一篇</span><a href="/dyllove98/article/details/8967108" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">流行浏览器内核分类及样式区别</a></li>
+                <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/dyllove98/article/details/8967120';">下一篇</span><a href="/dyllove98/article/details/8967120" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">【拆了CSS照样是页面】之——HTML语义化（含H5）</a></li>
+    </ul>
+
+    <div style="clear:both; height:10px;"></div>
+
+
+      
+</div>
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/dyllove98/svc/GetSuggestContent/8967114",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+ <link rel="stylesheet" href="http://static.blog.csdn.net/css/replace.css"/>
+<div id="relate" data-mod="popu_218"  class="tracking-ad">
+        <div class="relate_t">
+            <h3><span>参考知识库</span></h3>
+        </div>
+        <div class="relate_c">
+        </div>
+</div>
+ 
+
+<dl class="blog-ass-articl" id="res-relatived" > 
+    <div class="embody embody_b" id="libkeyparent"  style="display:none">
+            <span class="embody_t">更多资料请参考：</span>
+            <div class="embody_c" id="libkey"></div>
+    </div>
+
+
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+
+    <div id="adCollege" style="width: 42%;float: left;"> 
+        <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "8967114",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </script> 
+    </div>  
+
+    
+     <div id="res"  data-mod="popu_36"  class="tracking-ad" style="width: 42%;float: left;margin-right: 30px;"></div>
+   
+</dl>
+
+
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'Html position（static | absolute | fixed | relative）定位' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </script>  
+
+    <div id="ad_cen">        
+<!-- 广告位开始 -->
+<ins data-revive-zoneid="71" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->    </div>  
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '8967114';
+    var commentscount = 1;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  language="javascript" type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/dyllove98/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</script>
+ <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/async_new.js"></script>      
+
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+    <div class="side">
+
+
+<div id="custom_column_37236631" class="panel">
+<ul class="panel_head"><span>我的网站</span></ul>
+<ul class="panel_body">
+
+<h3 style="color:red">专门为程序员量身定做！程序员app</h3>
+<p><a title="程序员app" href="http://www.itmmd.com/boke.html" target="_blank"><img width="180px" src="http://img.blog.csdn.net/20150318165449269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZHlsbG92ZTk4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></a></p>
+<p><a title="程序员休闲,程序员放松,程序员笑话,程序员段子" href="http://www.itmmd.com/boke.html" target="_blank"><img width="200px" src="http://img.bbs.csdn.net/upload/201411/04/1415083041_853107.gif" alt=""></a></p>
+<p><a title="程序员休闲,程序员放松,程序员笑话,程序员段子" href="http://www.itmmd.com/boke.html" target="_blank">萌萌的it人</a></p>
+<br>
+
+</ul>
+</div><div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/dyllove98" target="_blank">
+    <img src="http://avatar.csdn.net/3/C/2/1_dyllove98.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/dyllove98" class="user_name" target="_blank">dyllove98</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=dyllove98','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                <div id="bms_box">
+                                            <a  target="_blank">
+                                                    <img src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/zhuanlandaren.png" onmouseover="m_over_m(this,2)" onmouseout="m_out_m()" alt="2" >
+                                            </a>
+                                            <a  target="_blank">
+                                                    <img src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/chizhiyiheng.png" onmouseover="m_over_m(this,4)" onmouseout="m_out_m()" alt="5" >
+                                            </a>
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>6602981次</span></li>
+    <li>积分：<span>73880</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog9.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：73880 </div>
+        </span>  </li>
+    <li>排名：<span>第12名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>435篇</span></li>
+    <li>转载：<span>4678篇</span></li>
+    <li>译文：<span>22篇</span></li>
+    <li>评论：<span>1585条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div id="panel_Category" class="panel">
+    <ul class="panel_head"><span>博客专栏</span></ul>
+    <ul class="panel_body" id="sp_column">
+    <table cellpadding="0" cellspacing="0"><tr>
+    <td style="padding:10px 10px 0 0;">
+    <a href="http://blog.csdn.net/column/details/pm-pl-checklists.html" target="_blank"><img src="http://img.blog.csdn.net/20151123175031770" style="width:75px;height:75px;" /></a>
+    </td>
+    <td style="padding:10px 0; vertical-align:top;">
+    <a href="http://blog.csdn.net/column/details/pm-pl-checklists.html" target="_blank">项目管理checkLists</a>
+    <p>文章：21篇</p>
+    <span>阅读：41394</span>
+    </td>
+    </tr></table>
+    <table cellpadding="0" cellspacing="0"><tr>
+    <td style="padding:10px 10px 0 0;">
+    <a href="http://blog.csdn.net/column/details/eclipse-rap.html" target="_blank"><img src="http://img.blog.csdn.net/20151123175024317" style="width:75px;height:75px;" /></a>
+    </td>
+    <td style="padding:10px 0; vertical-align:top;">
+    <a href="http://blog.csdn.net/column/details/eclipse-rap.html" target="_blank">Eclipse Rap 富客户端开发</a>
+    <p>文章：15篇</p>
+    <span>阅读：31301</span>
+    </td>
+    </tr></table>
+    <table cellpadding="0" cellspacing="0"><tr>
+    <td style="padding:10px 10px 0 0;">
+    <a href="http://blog.csdn.net/column/details/philosophy.html" target="_blank"><img src="http://img.blog.csdn.net/20151123175021255" style="width:75px;height:75px;" /></a>
+    </td>
+    <td style="padding:10px 0; vertical-align:top;">
+    <a href="http://blog.csdn.net/column/details/philosophy.html" target="_blank">哲理故事与管理之道</a>
+    <p>文章：22篇</p>
+    <span>阅读：193385</span>
+    </td>
+    </tr></table>
+    </ul>
+</div><div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/dyllove98/article/details/8830264" title="Android手机出现&quot;已安装了存在签名冲突的同名数据包&quot;的原因及解决办法">Android手机出现&quot;已安装了存在签名冲突的同名数据包&quot;的原因及解决办法</a><span>(78129)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7772463" title="Spring JdbcTemplate方法详解">Spring JdbcTemplate方法详解</a><span>(66521)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/8892509" title="Linux下安装Nginx详细图解教程">Linux下安装Nginx详细图解教程</a><span>(54692)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/8795316" title="解决：安装SQl 2008为SQL Server代理服务提供的凭据无效">解决：安装SQl 2008为SQL Server代理服务提供的凭据无效</a><span>(53474)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/9246397" title="字体大小自适应纯css解决方案">字体大小自适应纯css解决方案</a><span>(53290)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7439850" title="悲剧的程序员">悲剧的程序员</a><span>(46965)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/41013883" title="Android使用ViewPager实现左右循环滑动及轮播效果">Android使用ViewPager实现左右循环滑动及轮播效果</a><span>(44993)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/8586312" title="Spring工作原理及其作用">Spring工作原理及其作用</a><span>(36030)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/41120789" title="5分钟搭建 nginx +php --------------(LNMP)新手专用">5分钟搭建 nginx +php --------------(LNMP)新手专用</a><span>(34874)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7706218" title="在Tomcat配置JNDI数据源的三种方式">在Tomcat配置JNDI数据源的三种方式</a><span>(31277)</span>
+</li>
+</ul>
+</div>
+
+
+<div id="custom_column_23145197" class="panel">
+<ul class="panel_head"><span>公告栏</span></ul>
+<ul class="panel_body">
+<html>
+<head>
+</head>
+<body>
+<ins class="adsbygoogle" style="display:inline-block; width:200px; height:200px"></ins>
+
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/dyllove98/article/month/2015/04">2015年04月</a><span>(4)</span></li><li><a href="/dyllove98/article/month/2015/02">2015年02月</a><span>(8)</span></li><li><a href="/dyllove98/article/month/2015/01">2015年01月</a><span>(28)</span></li><li><a href="/dyllove98/article/month/2014/12">2014年12月</a><span>(21)</span></li><li><a href="/dyllove98/article/month/2014/11">2014年11月</a><span>(47)</span></li><li><a href="/dyllove98/article/month/2014/10">2014年10月</a><span>(1)</span></li><li><a href="/dyllove98/article/month/2014/01">2014年01月</a><span>(1)</span></li><li><a href="/dyllove98/article/month/2013/12">2013年12月</a><span>(8)</span></li><li><a href="/dyllove98/article/month/2013/08">2013年08月</a><span>(170)</span></li><li><a href="/dyllove98/article/month/2013/07">2013年07月</a><span>(814)</span></li><li><a href="/dyllove98/article/month/2013/06">2013年06月</a><span>(1012)</span></li><li><a href="/dyllove98/article/month/2013/05">2013年05月</a><span>(1351)</span></li><li><a href="/dyllove98/article/month/2013/04">2013年04月</a><span>(969)</span></li><li><a href="/dyllove98/article/month/2013/03">2013年03月</a><span>(262)</span></li><li><a href="/dyllove98/article/month/2013/02">2013年02月</a><span>(207)</span></li><li><a href="/dyllove98/article/month/2013/01">2013年01月</a><span>(2)</span></li><li><a href="/dyllove98/article/month/2012/12">2012年12月</a><span>(3)</span></li><li><a href="/dyllove98/article/month/2012/08">2012年08月</a><span>(2)</span></li><li><a href="/dyllove98/article/month/2012/07">2012年07月</a><span>(61)</span></li><li><a href="/dyllove98/article/month/2012/06">2012年06月</a><span>(19)</span></li><li><a href="/dyllove98/article/month/2012/05">2012年05月</a><span>(2)</span></li><li><a href="/dyllove98/article/month/2012/04">2012年04月</a><span>(28)</span></li><li><a href="/dyllove98/article/month/2012/03">2012年03月</a><span>(22)</span></li><li><a href="/dyllove98/article/month/2012/02">2012年02月</a><span>(37)</span></li><li><a href="/dyllove98/article/month/2010/11">2010年11月</a><span>(1)</span></li><li><a href="/dyllove98/article/month/2010/01">2010年01月</a><span>(3)</span></li><li><a href="/dyllove98/article/month/2009/12">2009年12月</a><span>(4)</span></li><li><a href="/dyllove98/article/month/2009/11">2009年11月</a><span>(6)</span></li><li><a href="/dyllove98/article/month/2009/10">2009年10月</a><span>(9)</span></li><li><a href="/dyllove98/article/month/2009/09">2009年09月</a><span>(10)</span></li><li><a href="/dyllove98/article/month/2009/08">2009年08月</a><span>(26)</span></li>
+</div>
+</ul>
+</div>
+<div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/dyllove98/article/category/574389" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">我自己看的</a><span>(51)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1078476" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">哲理故事与管理之道</a><span>(22)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1079101" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Eclipse rap 富客户端开发总结</a><span>(14)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1079741" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">开发管理 CheckLists</a><span>(21)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1094699" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">敏捷开发之旅</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1119578" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">it</a><span>(0)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1119580" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">it生活</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1128356" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java 大数据处理</a><span>(0)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1128357" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">千万级数据处理</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1130032" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">android</a><span>(57)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1130862" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Windows SDK</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1130865" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">敏捷开发</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1134256" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">ubuntu</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1134266" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">html5</a><span>(9)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1158758" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">javaScript</a><span>(16)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1160921" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java进阶</a><span>(26)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1168613" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">研发管理</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1180469" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">设计模式</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1180470" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">C#</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1180473" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">好文转载区</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1180481" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java教程</a><span>(71)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1335492" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">jsf</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1342200" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">随笔</a><span>(40)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1344864" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring</a><span>(64)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1347149" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">项目经理</a><span>(11)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1347706" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">c# 设计模式</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1349444" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">IOS 开发</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1349854" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">jquery</a><span>(31)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1349862" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1349865" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">window</a><span>(0)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1349866" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">windows phone</a><span>(10)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1349911" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">python</a><span>(8)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1351520" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">oracle</a><span>(11)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1352180" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">虚拟机安装linux</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1352183" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">ja</a><span>(0)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1352185" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">wordpress</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1353534" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java多线程</a><span>(6)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1354763" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">mysql</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1354777" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">linux</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1356852" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">zopfli</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1356854" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">ios 判断是qq</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1356856" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">手机号</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1488985" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring mvc</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489011" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring3</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489023" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring mvc 教程</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489031" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring aop</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489035" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring hibernate</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489047" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">android开发环境搭建</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489067" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Apache配置</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489073" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java webservice</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489085" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">代码编辑器</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489097" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">sed</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489103" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java socket</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489111" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">oracle 10g 下载</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489113" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">oracle 10g</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489115" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">SimpleDateFormat</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489117" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">eclipse 快捷键</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489123" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">mysqldump</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489133" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">防止sql注入</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489147" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">0xc000007b</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489411" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">MongoDB</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1489415" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">APACHE配置多站点</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1496739" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">LocalStorage</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1496743" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">客户端 AXIS</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1498043" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">spring 事件驱动</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1534039" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">hibernate</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1534045" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">java 聊天室之</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/dyllove98/article/category/1534051" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Flex SDK</a><span>(1)</span>
+                </li>
+</ul>
+</div><div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/dyllove98/article/details/7439850" title="悲剧的程序员">悲剧的程序员</a><span>(97)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/41013883" title="Android使用ViewPager实现左右循环滑动及轮播效果">Android使用ViewPager实现左右循环滑动及轮播效果</a><span>(35)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7305178" title="哲理故事与管理之道(14)-如何留住员工">哲理故事与管理之道(14)-如何留住员工</a><span>(30)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7427218" title="哲理故事与管理之道(22)-用竞争激励下属">哲理故事与管理之道(22)-用竞争激励下属</a><span>(27)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/9391877" title="android蓝牙开发">android蓝牙开发</a><span>(17)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7320195" title="哲理故事与管理之道(15)-管理者眼中的能力和待遇">哲理故事与管理之道(15)-管理者眼中的能力和待遇</a><span>(16)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/9632247" title="IOS开发:UIAlertView使用">IOS开发:UIAlertView使用</a><span>(16)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7488780" title="java千万级别数据处理(2)-千万级别FTP下载">java千万级别数据处理(2)-千万级别FTP下载</a><span>(12)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7385994" title="哲理故事与管理之道(19)-合理施压激发下属的工作动力">哲理故事与管理之道(19)-合理施压激发下属的工作动力</a><span>(11)</span>
+</li>
+<li>
+<a href="/dyllove98/article/details/7398778" title="哲理故事与管理之道(21)-用情感激励下属">哲理故事与管理之道(21)-用情感激励下属</a><span>(11)</span>
+</li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+ </div>   
+            <div class="clear">
+            </div>
+        </div>
+
+        
+
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/cnick/cnick.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=638303"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>     <!--new top-->
+   
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+   
+
+  <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+   </div>
+
+    <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_code.css" />
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/saveToCode.js"></script>
+      <script type="text/javascript" src="//csdnimg.cn/rabbit/tracking-ad/main.js?75eacd8"></script>
+</body>
+</html>   
+ 

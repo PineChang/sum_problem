@@ -1,0 +1,3707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0054)http://www.ruanyifeng.com/blog/2012/11/require_js.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/styles.css" type="text/css">
+<link rel="start" href="http://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng">
+<script async="" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/analytics.js"></script><script type="text/javascript" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/mt.js"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2006/07/geoffrey_chaucer.html">
+<dc:title>乔叟《坎特伯雷故事集》（Geoffrey Chaucer）</dc:title>
+<dc:description> 从公元7世纪开始算起，到文艺复兴前夕，英语已经存在700年了。但是直到那时，它依然是民间的一种俗语，而且很不规范。乔叟（Geoffrey Chaucer）是历史上第一个用英语进行文学创作的人，他对英语的形成和发展起到了巨大的贡献，被公认为第一个英语文学家、英语文学的开创者。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2006-07-13T08:08:41+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+
+    
+    <link rel="prev" href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" title="Javascript模块化编程（二）：AMD规范">
+    <link rel="next" href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html" title="高斯模糊的算法">
+    
+    <title>Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志</title>
+<script src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bsStatic.js" type="text/javascript" charset="utf-8"></script><script src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/fingerprint2.min.js" type="text/javascript" charset="utf-8"></script><script src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bs-engine.js" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bshareDiv,#bsPanel,#bsMorePanel,#bshareF{border:none;background:none;padding:0;margin:0;font:12px Helvetica,Calibri,Tahoma,Arial,宋体,sans-serif;line-height:14px;}#bsPanel div,#bsMorePanel div,#bshareF div{display:block;}.bsRlogo .bsPopupAwd,.bsRlogoSel .bsPopupAwd,.bsLogo .bsPopupAwd,.bsLogoSel .bsPopupAwd{line-height:16px !important;}a.bshareDiv div,#bsFloatTab div{*display:inline;zoom:1;display:inline-block;}a.bshareDiv img,a.bshareDiv div,a.bshareDiv span,a.bshareDiv a,#bshareF table,#bshareF tr,#bshareF td{text-decoration:none;background:none;margin:0;padding:0;border:none;line-height:1.2}a.bshareDiv span{display:inline;float:none;}div.buzzButton{cursor:pointer;font-weight:bold;}.buzzButton .shareCount a{color:#333}.bsStyle1 .shareCount a{color:#fff}span.bshareText{white-space:nowrap;}span.bshareText:hover{text-decoration:underline;}a.bshareDiv .bsPromo,div.bshare-custom .bsPromo{display:none;position:absolute;z-index:100;}a.bshareDiv .bsPromo.bsPromo1,div.bshare-custom .bsPromo.bsPromo1{width:51px;height:18px;top:-18px;left:0;line-height:16px;font-size:12px !important;font-weight:normal !important;color:#fff;text-align:center;background:url(http://static.bshare.cn/frame/images/bshare_box_sprite2.gif) no-repeat 0 -606px;}div.bshare-custom .bsPromo.bsPromo2{background:url(http://static.bshare.cn/frame/images/bshare_promo_sprite.gif) no-repeat;cursor:pointer;}</style><style type="text/css">.bsBox{display:none;z-index:100000001;font-size:12px;background:url(http://static.bshare.cn/frame/images//background-opaque-dark.gif) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}.bsClose{_overflow:hidden;cursor:pointer;position:absolute;z-index:10000000;color:#666;font-weight:bold;font-family:Helvetica,Arial;font-size:14px;line-height:20px;}.bsTop{color:#666;background:#f2f2f2;height:24px;line-height:24px;border-bottom:1px solid #e8e8e8;}.bsTop span{float:left;}.bsFrameDiv,#bsMorePanel{border:none;background:#fff;}.bsReturn{float:right;*margin-right:20px;margin-right:36px;text-align:right;cursor:pointer;line-height:24px;color:#666;opacity:0.5;}#bsReturn:hover{text-decoration:underline;opacity:1;}</style><script src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bsMore.js" type="text/javascript" charset="utf-8"></script><script src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bshareS1.js" type="text/javascript" charset="utf-8"></script><style type="text/css">div.bsClear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0;}.bsSearchDiv{padding:5px 15px;background-color:#fafafa;}.bFind-wrapper-top{background:#fff;border-color:#ccc #aaa #aaa #ccc;border-style:solid;border-width:1px;height:16px;padding:4px;margin:0;}.bFind-wrapper-top input{padding:0 !important;border:none !important;box-shadow:none !important;line-height:16px !important;}.bFind-placeholder{background:url("http://static.bshare.cn/css/images/search-icon.gif") no-repeat;display:block;float:left;height:16px;width:16px;}.bFind{background:none;border:none;float:left;font-size:11px !important;height:16px !important;margin-left:3px;outline:none;padding:0;width:400px;}.bsPlatDiv{height:322px;background:#fff;overflow:auto;padding:0 15px;}#bsLogoList{display:block;list-style:none;overflow:hidden;margin:0;padding:0;}#bsLogoList li{float:left;display:inline-block;width:71px;text-align:center;font-size:12px;height:80px;margin:0 !important;}#bsLogoList .bsPlatIcon{cursor:pointer;display:block !important;text-align:center;}#bsLogoList .bsPlatImg{width:32px;height:32px;border:none !important;display:inline-block;}#bsLogoList .bsPlatImg:hover{-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;box-shadow:0 0 15px #a7a8ac;}#bsLogoList .bsPlatName{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;text-align:center;color:#333 !important;margin-top:2px;line-height:140%;*width:70px;}#bsLogoList .bsPromoM{text-align:center;}.bsFooterDiv{height:24px;line-height:24px;padding:0 15px;border-top:1px solid #e8e8e8;background:#f2f2f2;text-align:right;}a.bsLogoLink{color:#666;}.bsLogoLink:hover{text-decoration:underline;}.bsPromoM{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;}.bsNew,.bsHot,.bsRec,.bsAwd{background-position:0 -552px;width:19px;margin:5px auto 1px;line-height:16px;height:18px;font-size:12px;color:#fff;overflow:hidden;}.bsNew{background-position:0 -570px;}.bsRec{width:30px;background-position:0 -588px;}.bsAwd{background:url(http://static.bshare.cn/frame/images//promot/promote.gif) no-repeat;}</style><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style><script src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bshare_view" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style></head>
+<body id="scrapbook" class="mt-entry-archive one-column">
+<script>
+if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent)) document.body.classList.add('mobile');
+</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="http://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="http://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="http://www.ruanyifeng.com/blog/search.html" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="016304377626642577906:b_e9skaywzq">
+    <input type="hidden" name="cof" value="FORID:11">
+    <input type="hidden" name="ie" value="UTF-8">
+        <input type="text" name="q" size="20" class="searchbox" id="sbi" value="">
+        <input type="image" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa">
+      </div>
+    </form>
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="http://www.ruanyifeng.com/feed.html" title="订阅Feed">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-1749" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" title="Javascript模块化编程（二）：AMD规范">Javascript模</a></li>
+<li>下一篇：<a href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html" title="高斯模糊的算法">高斯模糊的算法&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="http://www.ruanyifeng.com/blog/javascript/" rel="tag">JavaScript</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+</div>
+                                </div>
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">Javascript模块化编程（三）：require.js的用法</h1>
+                                            <div id="share_button" style="float:right;padding-right:2em;padding-top:1em;">
+<a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/buttonLite.js"></script>
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script>
+</div>
+                                    <div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="http://www.ruanyifeng.com/">阮一峰</a></p>
+                                    <p>日期： <a href="http://www.ruanyifeng.com/blog/2012/11/"><abbr class="published" title="2012-11-07T18:06:27+08:00">2012年11月 7日</abbr></a></p>
+
+
+                                    </div>
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>这个系列的<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank">第一部分</a>和<a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank">第二部分</a>，介绍了Javascript模块原型和理论概念，今天介绍如何将它们用于实战。</p>
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p>我采用的是一个非常流行的库<a href="http://requirejs.org/" target="_blank">require.js</a>。</p>
+
+<p><img src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bg2012110702.jpg"></p>
+
+<p><strong>一、为什么要用require.js？</strong></p>
+
+<p>最早的时候，所有Javascript代码都写在一个文件里面，只要加载这一个文件就够了。后来，代码越来越多，一个文件不够了，必须分成多个文件，依次加载。下面的网页代码，相信很多人都见过。</p>
+
+<blockquote>
+
+<p>　　&lt;script src="1.js"&gt;&lt;/script&gt;<br>
+　　&lt;script src="2.js"&gt;&lt;/script&gt;<br>
+　　&lt;script src="3.js"&gt;&lt;/script&gt;<br>
+　　&lt;script src="4.js"&gt;&lt;/script&gt;<br>
+　　&lt;script src="5.js"&gt;&lt;/script&gt;<br>
+　　&lt;script src="6.js"&gt;&lt;/script&gt;</p>
+
+</blockquote>
+
+<p>这段代码依次加载多个js文件。</p>
+
+<p>这样的写法有很大的缺点。首先，加载的时候，浏览器会停止网页渲染，加载文件越多，网页失去响应的时间就会越长；其次，由于js文件之间存在依赖关系，因此必须严格保证加载顺序（比如上例的1.js要在2.js的前面），依赖性最大的模块一定要放到最后加载，当依赖关系很复杂的时候，代码的编写和维护都会变得困难。</p>
+
+<p>require.js的诞生，就是为了解决这两个问题：</p>
+
+<blockquote>
+
+<p>　　<img src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/bg2012110701.png"></p>
+
+<p>　　（1）实现js文件的异步加载，避免网页失去响应；</p>
+
+<p>　　（2）管理模块之间的依赖性，便于代码的编写和维护。</p>
+
+</blockquote>
+
+<p><strong>二、require.js的加载</strong></p>
+
+<p>使用require.js的第一步，是先去官方网站<a href="http://requirejs.org/docs/download.html" target="_blank">下载</a>最新版本。</p>
+
+<p>下载后，假定把它放在js子目录下面，就可以加载了。</p>
+
+<blockquote>
+
+<p>　　&lt;script src="js/require.js"&gt;&lt;/script&gt;</p>
+
+</blockquote>
+
+<p>有人可能会想到，加载这个文件，也可能造成网页失去响应。解决办法有两个，一个是把它放在网页底部加载，另一个是写成下面这样：</p>
+
+<blockquote>
+
+<p>　　&lt;script src="js/require.js" <strong>defer async="true"</strong> &gt;&lt;/script&gt;</p>
+
+</blockquote>
+
+<p>async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。</p>
+
+<p>加载require.js以后，下一步就要加载我们自己的代码了。假定我们自己的代码文件是main.js，也放在js目录下面。那么，只需要写成下面这样就行了：</p>
+
+<blockquote>
+
+<p>　　&lt;script src="js/require.js" <strong>data-main="js/main"</strong>&gt;&lt;/script&gt;</p>
+
+</blockquote>
+
+<p>data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。</p>
+
+<p><strong>三、主模块的写法</strong></p>
+
+<p>上一节的main.js，我把它称为"主模块"，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。</p>
+
+<p>下面就来看，怎么写main.js。</p>
+
+<p>如果我们的代码不依赖任何其他模块，那么可以直接写入javascript代码。</p>
+
+<blockquote>
+
+<p>　　// main.js</p>
+
+<p>　　alert("加载成功！");</p>
+
+</blockquote>
+
+<p>但这样的话，就没必要使用require.js了。真正常见的情况是，主模块依赖于其他模块，这时就要使用AMD规范定义的的require()函数。</p>
+
+<blockquote>
+
+<p>　　// main.js</p>
+
+<p>　　require(['moduleA', 'moduleB', 'moduleC'], function (moduleA, moduleB, moduleC){</p>
+
+<p>　　　　// some code here</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>require()函数接受两个参数。第一个参数是一个数组，表示所依赖的模块，上例就是['moduleA', 'moduleB', 'moduleC']，即主模块依赖这三个模块；第二个参数是一个回调函数，当前面指定的模块都加载成功后，它将被调用。加载的模块会以参数形式传入该函数，从而在回调函数内部就可以使用这些模块。</p>
+
+<p>require()异步加载moduleA，moduleB和moduleC，浏览器不会失去响应；它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。</p>
+
+<p>下面，我们看一个实际的例子。</p>
+
+<p>假定主模块依赖jquery、underscore和backbone这三个模块，main.js就可以这样写：</p>
+
+<blockquote>
+
+<p>　　require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone){</p>
+
+<p>　　　　// some code here</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>require.js会先加载jQuery、underscore和backbone，然后再运行回调函数。主模块的代码就写在回调函数中。</p>
+
+<p><strong>四、模块的加载</strong></p>
+
+<p>上一节最后的示例中，主模块的依赖模块是['jquery', 'underscore', 'backbone']。默认情况下，require.js假定这三个模块与main.js在同一个目录，文件名分别为jquery.js，underscore.js和backbone.js，然后自动加载。</p>
+
+<p>使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。</p>
+
+<blockquote>
+
+<p>　　require.config({</p>
+
+<p>　　　　paths: {</p>
+
+<p>　　　　　　"jquery": "jquery.min",<br>
+　　　　　　"underscore": "underscore.min",<br>
+　　　　　　"backbone": "backbone.min"</p>
+
+<p>　　　　}</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>上面的代码给出了三个模块的文件名，路径默认与main.js在同一个目录（js子目录）。如果这些模块在其他目录，比如js/lib目录，则有两种写法。一种是逐一指定路径。</p>
+
+<blockquote>
+
+<p>　　require.config({</p>
+
+<p>　　　　paths: {</p>
+
+<p>　　　　　　"jquery": "<strong>lib/</strong>jquery.min",<br>
+　　　　　　"underscore": "<strong>lib/</strong>underscore.min",<br>
+　　　　　　"backbone": "<strong>lib/</strong>backbone.min"</p>
+
+<p>　　　　}</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>另一种则是直接改变基目录（baseUrl）。</p>
+
+<blockquote>
+
+<p>　　require.config({</p>
+
+<p>　　　　<strong>baseUrl: "js/lib",</strong></p>
+
+<p>　　　　paths: {</p>
+
+<p>　　　　　　"jquery": "jquery.min",<br>
+　　　　　　"underscore": "underscore.min",<br>
+　　　　　　"backbone": "backbone.min"</p>
+
+<p>　　　　}</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>如果某个模块在另一台主机上，也可以直接指定它的网址，比如：</p>
+
+<blockquote>
+
+<p>　　require.config({</p>
+
+<p>　　　　paths: {</p>
+
+<p>　　　　　　"jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min"</p>
+
+<p>　　　　}</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>require.js要求，每个模块是一个单独的js文件。这样的话，如果加载多个模块，就会发出多次HTTP请求，会影响网页的加载速度。因此，require.js提供了一个<a href="http://requirejs.org/docs/optimization.html" target="_blank">优化工具</a>，当模块部署完毕以后，可以用这个工具将多个模块合并在一个文件中，减少HTTP请求数。</p>
+
+<p><strong>五、AMD模块的写法</strong></p>
+
+<p>require.js加载的模块，采用AMD规范。也就是说，模块必须按照AMD的规定来写。</p>
+
+<p>具体来说，就是模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。</p>
+
+<p>假定现在有一个math.js文件，它定义了一个math模块。那么，math.js就要这样写：</p>
+
+<blockquote>
+
+<p>　　// math.js</p>
+
+<p>　　define(function (){</p>
+
+<p>　　　　var add = function (x,y){</p>
+
+<p>　　　　　　return x+y;</p>
+
+<p>　　　　};</p>
+
+<p>　　　　return {</p>
+
+<p>　　　　　　add: add<br>
+　　　　};</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>加载方法如下：</p>
+
+<blockquote>
+
+<p>　　// main.js</p>
+
+<p>　　require(['math'], function (math){</p>
+
+<p>　　　　alert(math.add(1,1));</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>如果这个模块还依赖其他模块，那么define()函数的第一个参数，必须是一个数组，指明该模块的依赖性。</p>
+
+<blockquote>
+
+<p>　　define(['myLib'], function(myLib){</p>
+
+<p>　　　　function foo(){</p>
+
+<p>　　　　　　myLib.doSomething();</p>
+
+<p>　　　　}</p>
+
+<p>　　　　return {</p>
+
+<p>　　　　　　foo : foo</p>
+
+<p>　　　　};</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>当require()函数加载上面这个模块的时候，就会先加载myLib.js文件。</p>
+
+<p><strong>六、加载非规范的模块</strong></p>
+
+<p>理论上，require.js加载的模块，必须是按照AMD规范、用define()函数定义的模块。但是实际上，虽然已经有一部分流行的函数库（比如jQuery）符合AMD规范，更多的库并不符合。那么，require.js是否能够加载非规范的模块呢？</p>
+
+<p>回答是可以的。</p>
+
+<p>这样的模块在用require()加载之前，要先用require.config()方法，定义它们的一些特征。</p>
+
+<p>举例来说，underscore和backbone这两个库，都没有采用AMD规范编写。如果要加载它们的话，必须先定义它们的特征。</p>
+
+<blockquote>
+
+<p>　　require.config({</p>
+
+<p>　　　　shim: {<br>
+       	<br>
+　　　　　　'underscore':{<br>
+　　　　　　　　exports: '_'<br>
+　　　　　　},</p>
+
+<p>　　　　　　'backbone': {<br>
+　　　　　　　　deps: ['underscore', 'jquery'],<br>
+　　　　　　　　exports: 'Backbone'<br>
+　　　　　　}</p>
+
+<p>　　　　}</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>require.config()接受一个配置对象，这个对象除了有前面说过的paths属性之外，还有一个shim属性，专门用来配置不兼容的模块。具体来说，每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。</p>
+
+<p>比如，jQuery的插件可以这样定义：</p>
+
+<blockquote>
+
+<p>　　shim: {</p>
+
+<p>　　　　'jquery.scroll': {</p>
+
+<p>　　　　　　deps: ['jquery'],</p>
+
+<p>　　　　　　exports: 'jQuery.fn.scroll'</p>
+
+<p>　　　　}</p>
+
+<p>　　}</p>
+
+</blockquote>
+
+<p><strong>七、require.js插件</strong></p>
+
+<p>require.js还提供一系列<a href="https://github.com/jrburke/requirejs/wiki/Plugins" target="_blank">插件</a>，实现一些特定的功能。</p>
+
+<p>domready插件，可以让回调函数在页面DOM结构加载完成后再运行。</p>
+
+<blockquote>
+
+<p>　　require(['domready!'], function (doc){</p>
+
+<p>　　　　// called once the DOM is ready</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>text和image插件，则是允许require.js加载文本和图片文件。</p>
+
+<blockquote>
+
+<p>　　define([</p>
+
+<p>　　　　'text!review.txt', </p>
+
+<p>　　　　'image!cat.jpg'</p>
+
+<p>　　　　],<br>
+ <br>
+　　　　function(review,cat){</p>
+
+<p>　　　　　　console.log(review);</p>
+
+<p>　　　　　　document.body.appendChild(cat);</p>
+
+<p>　　　　}</p>
+
+<p>　　);</p>
+
+</blockquote>
+
+<p>类似的插件还有json和mdown，用于加载json文件和markdown文件。</p>
+
+<p>（完）</p>
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/newwindow.js"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2012-11-07T18:06:27+08:00">2012年11月 7日</abbr></li>
+<li>更多内容： <a href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 档案</a>  » 
+<a href="http://www.ruanyifeng.com/blog/javascript/"> JavaScript</a> 
+</li>
+<li>购买文集：<a href="http://www.ruanyifeng.com/blog/2014/12/my-blog-book.html" target="_blank"><img src="data:image/png;base64,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" style="border:0;"> 《如何变得有思想》</a></li>
+<li>社交媒体：<a href="https://twitter.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAk1JREFUeNqsVc9rE0EU/mZ3dhPNJl2bVIk/Km09aFBE8GLvnrwJXvwLxIsgCP4Fnit6E8Gb0IMHwUsL9SSNgiAoooJIpE1Joo1h82uT7IxvxmRN3Q32kAdvdrI773vfe+/bDTu9WioDcDAda3Ja8piepQ1avCkCeny0Y+R9KenKwOmHHLvPaKn7AtVOoO8dOWDCMpg+41gMQv5FNEJACgoE8MsPNLDBhgfoutMOsJDmWLmU037C4TApciljwQ/kHoohQxV06+wMXNvE7WINuaSpvdYVKLgWnl3O4zAxU3Z1IYVGT+B5qYWV9z2kbQaT/cOwTsxOUUYF+mB5Dkmi8HG3h2q9hxsFNwRTdvQgxxnXRrMvIdkEhllis/qtiWuLDm4WZnBlPoWnXz28LHdw0uGR7m9Wu3j0qYGEubfn4UlBfXO4gTZltRNMg9w9f0i7kNFxllsBlS0x75gYfxyWTBUjT2W5CSMSPBrQuG21+hiMDS8CeCzF8eSLp13uQ3Ab1IqMFZN8tFHPmgOBF99bYP8Be1Xp6t7OJszJgKpPSiZvaj7uf2hguz2IBQuozDvFH6RDBjuK9wdQDvt0nMpW+8efGyh5UcAeZb2+UcHbnz5Jx4wdlp4yJYU3kLiQtfBwOYeLc8nIwfXtNu69q2Oz4mMxbemYOOOjKarhvq51KUjg3GwiFPIuvcNF6pnSnWK0lOEabNLgQh1aJFAhlGB9rG110B2+oyRNPc0sZbRNFltmLKDKqj4Qrm1ojzOxDz2pyPQ0P7CK4c40/wJ+CzAAGYrXsvfFXR4AAAAASUVORK5CYII=" style="border:0;"> twitter</a>，<a href="http://weibo.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAABPZJREFUeNqMyXtM1WUcx/FnNTdreAVCEEThyEFUrM2kwkpS05qVl8rugVpRUelaJdZaWWktdZKHssImgV04osgBCbwAa2Whm6GWoXHxcD1wHiI4t9/z/H68+wO3av1R3+217/b+CFStsHq/W2V1HW+wOmq8VkeN/E+dR/7SUSOtrmOnLc93jxA6LsTw71XLrUsHsNwHsdxl/09HGVb7QawOF1bn4ZF26QDDsmqNsH7be9psKcJs+fy/tRZjXvwM//678BVdT6BsMarhxZHeug+reW+TMC84+s0LDv4tH7PZgdXqwGrLx7yYP9KaHISOvUCwYh3+4iUMOiIJVmSMbBfy+4X581Zp/ryVfzi/FfPXd1AntxNwvkvg6zfQZ7Zg/rIV8/x7qB9fJlT/JPrcm4SOPctg3ihCR5dhNu2QQjfmSt2Yi27MRf+Uiz67Ef1TLv7Ct5CPZtMzJ4N2243Ij7Kwmjdhnt+EUZeFr/BmhvYkoBqewl8yD9/eCejGTVLoUzlSn8pBn8xBn85B/fAcf7z6PJ7rl9KdNBdP6nwuJc2jL+9+jJrXGNr1On9seZHgkQ0ESq8l4EzBOLKMod1XoE6slUKfXCd1wxp0Qxb6RBYDLzxGz8xb8aSm05u2kL4bF9N902I89yzHe986PEseoGP2YjqfvpNQeTr+4rmEKucz6LgS9f1jUuiy+VIfvxvz1GoGN99Hz8wFeGan0zl3Ae4lK3A/vJb2x7PpWPEI3bevoHfJKtypt9H1UgbDZx5E//goofJF+AtmoasWSaG2jZE6P5zg9hQ8Nyyie1Y6rQ+vpafMhdHXx7BpgjWMr7sbT5kL9/IHcUck0X3LtfgLVqAP3YAumoHeHYvaPkYKlRcudf54Bh5KpjP5Fi69tplgIMCQabK/rIxtO3bgqqxkmJHzdXbRknYbrWIcrWEJ9D8RjXaMRe2ciNo5QQr1QYRUjnC8C1Nxr1pD0O/HFwyQmZmJ3W4nLS0Nm83G+vXrsSwLgP6vS2kWo/lNjKN57gTMTyJRH0Si8iZKoXZdI5Ujkt55SXRtfBuAffv2sXLlSpxOJ9nZ2SQkJBAWFobX6wVgoPooLWI0v4hxuFeFY30ahdoVhcqLkEJ9GCV1QRTehZNxZ9wPQNGXX5KZmUlbWxspKSkIIUhPT0dZFibQvSaHJjGKxujxBHZGoT+ehPpwEsoRIYUqmCR1YTTBd2NoGxtOz4Y3CPoDrNuwnuhpU7lq/HgW3LGU5l4P2h+g55XNnBOjORM/jsH3ozGLYlAFMag90ahPI6VQxZOlKo5BOyfjey+GliljaL0uA7l9D2f37uess5KBoyfwbvmIJnsajVePouXeCIKFsZglsajiyX8pvEYKoySm33DGYTjj0OVxhEri6N84kfalY2i/NRb3AhvNN0+i9Y4wPC+H4yuMxTocjzoYj7F/ymVxI/+ryH5huKaeMVzxGK54QuXT8B+y4atIZqB8Nt6SVDzFqXi+mIO39Dp+PziHwdIZDJVOJ3gogZArHsM1BcMVj1E+BcMVe1GY38auNqqnYdQkEKpOJPBNEv7DdnyVdnwVdoYqki+bge9wCv6qFAJVyQS/mU6oJhHjSCJG9VSM6kRUfXi2GK6fJYy6+CyjNrHRqLP1GbWJ0qizSfV39Tap6qdLVW+Xqt4ujfokadRdVpvgNWpt54y6qc8MV44Sfw4An+t+Gj1AKyYAAAAASUVORK5CYII=" style="border:0;"> weibo</a></li>
+<li>Feed订阅： <a href="http://www.ruanyifeng.com/feed.html" target="_blank"><img src="data:image/gif;base64,R0lGODlhFAAUANU2APV1GfmrePZ8IeR5VPq2ieNkLf7p3NpFJveCJ/NoFfibVPR1IexiJfvdzuZrNfXGuOhUEueTevaFOfzIpNxDGeZZJNU6IOubifiVTfOnid1aLuZpLOFSJf/28vJtIvGcefaLSd5kNu9iFv/z6//48//t4uFfLfNkCeJNGuGNc/rCof/+/PVxEeldI/V5KeKMbu9nIvB2OvzQtNxMKfOPXP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADYALAAAAAAUABQAAAb/QJstEjKZCsjCZsl0pIS2QWXaYsA8noVWIEAgFoNhhWNyMESi7Jbr/aZCFdRnZJAFJCwAt+vlOkwtEBk1hDUkExJ6bQJaGyYMLTQTDSOFHQF8jAseSFYiJwkuAQ2FE1xaHjBIMDAgARguJwABJIQTLJswDEgeIgSEJQQILAqVNQEiui1HHgkBhTUGCiwYtR0xLS0VJhtaEgoEBoQkGCfPNSoQY9xaCwAsCBPALgmkJA4cZN0CAAgY/PJqEIDwgVAECjM0bOAnwcAKGQJclKhRgoGDDjUeUDigkN8vQiBOfByAglSDAxw3IBCgYEU0FyJoEPpA4UGNDjMsaHDQR8EdPVYOMmQYQGHAhQgHLIRIsWAlgASsGMRBMWMGBQtYZ7yIsoBRKkhjOMxAiXJGGCEpHGxIYsSIhrcaQmy1EQQAOw==" style="border:0;"></a></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+   <div id="gegz1">
+   <p style="text-align:center;"><a href="http://www.zhufengpeixun.cn/jscourse/new/js/index.html?ref=ruanyifeng.com" target="_blank"><img alt="珠峰培训" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/sup_zhufeng_page.png" width="600" height="160" style="border:none;"></a></p>
+   <p style="text-align:center;"><a href="https://h5.jianxun.io/20160321-qianlima?utm_source=event&utm_medium=blog_ad&utm_campaign=qianlima&utm_content=ruanyifeng&utm_term=wangzhan" target="_blank"><img alt="简寻" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/ruanyifeng-bottombanner.png" width="600" height="160" style="border:none;"></a></p>
+   </div>
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2016.05.25: <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html">React Router 使用教程</a></strong>
+
+                           <div class="entry-body">
+                              真正学会 React 是一个漫长的过程。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.04.12: <a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a></strong>
+
+                           <div class="entry-body">
+                              CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.04.08: <a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html">浏览器同源政策及其规避方法</a></strong>
+
+                           <div class="entry-body">
+                              浏览器安全的基石是"同源政策"（same-origin policy）。很多开发者都知道这一点，但了解得不全面。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.03.12: <a href="http://www.ruanyifeng.com/blog/2016/03/node-systemd-tutorial.html">Node 应用的 Systemd 启动</a></strong>
+
+                           <div class="entry-body">
+                              前面的文章介绍了 Systemd 的操作命令和基本用法，今天给出一个实例，如何使用 Systemd 启动一个 Node 应用。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+<div id="gd1">
+<h2>广告<a href="http://www.ruanyifeng.com/support.html">（购买广告位）</a></h2>
+<div id="gd1-inner">
+<div id="gd1-left">
+<a href="http://web.wuxianedu.com/yideng/?utm_source=ruanyifeng.com" title="一灯学堂" target="_blank"><img alt="一灯学堂" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/sup_yideng_new.png" style="border:none;"></a>
+<br>
+<a href="http://www.zhinengshe.com/?utm_source=ruanyifeng.com" title="智能社" target="_blank"><img alt="智能社" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/sup_zhinengshe.jpg" style="border:none;"></a>
+</div>
+<div id="gd1-right">
+
+<a href="http://100offer.com/join/ruanyifeng?utm_source=ruanyifeng&utm_medium=dis&utm_campaign=ruanyifeng" target="_blank"><img src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/sup_1000ffer_2.jpg" style="border:none;"></a><br>
+<a href="https://www.upyun.com/zh/solution_video.html?utm_source=ruanyifeng&utm_medium=ad&utm_campaign=zhiboyun" title="又拍云" target="_blank"><img alt="又拍云" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/sup_upyun.jpg" style="width: 300px;height: 250px;border:none;"></a>
+
+</div>
+</div>
+</div>
+                    
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（84条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-265764" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://oncoding.in" href="http://oncoding.in/" target="_blank" rel="nofollow">子不语</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265764">
+            <p>Backbone并不依赖于jQuery啊，为什么还要写成deps: ['underscore', 'jquery']？</p>
+
+<p>写成exports: 'Backbone'的话，应该怎么使用呢？</p>
+
+<p>是这样？<br>
+require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone){<br>
+　　　// some code here<br>
+});<br>
+还是<br>
+require(['jquery', 'underscore', 'Backbone'], function ($, _, Backbone){<br>
+　　　// some code here<br>
+});</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  7, 2012  9:03 PM">2012年11月 7日 21:03</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265764">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用子不语的这条留言" onclick="return CommentQuote(&#39;comment-quote-265764&#39;,&#39;子不语&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265769" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://denganliang.com" href="http://denganliang.com/" target="_blank" rel="nofollow">邓安良</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265769">
+            <p>看你博客介绍的这三篇Javascript的文章，我也打算尝试下了！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  7, 2012 10:24 PM">2012年11月 7日 22:24</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265769">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用邓安良的这条留言" onclick="return CommentQuote(&#39;comment-quote-265769&#39;,&#39;邓安良&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265771" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://gibuloto.com/" href="http://gibuloto.com/" target="_blank" rel="nofollow">Vinta</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265771">
+            <p>@子不语</p>
+
+<p>官網上面寫著：</p>
+
+<p>Backbone's only hard dependency is Underscore.js ( &gt; 1.3.1). For RESTful persistence, history support via Backbone.Router and DOM manipulation with Backbone.View, include json2.js, and either jQuery ( &gt; 1.4.2) or Zepto.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  7, 2012 10:52 PM">2012年11月 7日 22:52</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265771">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Vinta的这条留言" onclick="return CommentQuote(&#39;comment-quote-265771&#39;,&#39;Vinta&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265800" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265800">
+            <p>@子不语：</p>
+
+<p>前一种写法正确。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  8, 2012  9:08 AM">2012年11月 8日 09:08</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265800">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用阮一峰的这条留言" onclick="return CommentQuote(&#39;comment-quote-265800&#39;,&#39;阮一峰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265806" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">aaa</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265806">
+            <p>下次介绍seajs和cmd吧</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  8, 2012  2:09 PM">2012年11月 8日 14:09</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265806">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用aaa的这条留言" onclick="return CommentQuote(&#39;comment-quote-265806&#39;,&#39;aaa&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265889" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">呵呵</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265889">
+            <p>用了这个调试起来就不方便了，没法解决调试的问题</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 11, 2012 12:52 AM">2012年11月11日 00:52</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265889">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用呵呵的这条留言" onclick="return CommentQuote(&#39;comment-quote-265889&#39;,&#39;呵呵&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265930" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">abian</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265930">
+            <p>听说Google今天解封了，试了一下，的确是快了点，好久都没用google了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 12, 2012  9:52 PM">2012年11月12日 21:52</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265930">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用abian的这条留言" onclick="return CommentQuote(&#39;comment-quote-265930&#39;,&#39;abian&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265936" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://cyj.me" href="http://cyj.me/" target="_blank" rel="nofollow">nil</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265936">
+            <p>我写过 SeaJS 的介绍 <a href="http://cyj.me/why-seajs/zh/%EF%BC%8C%E4%B9%9F%E7%BF%BB%E8%AF%91%E8%BF%87" rel="nofollow">http://cyj.me/why-seajs/zh/，也翻译过</a> RequireJS 网站上讲技术思想的两篇文章 <a href="http://cyj.me/why-seajs/requirejs/" rel="nofollow">http://cyj.me/why-seajs/requirejs/</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 13, 2012  9:40 AM">2012年11月13日 09:40</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265936">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用nil的这条留言" onclick="return CommentQuote(&#39;comment-quote-265936&#39;,&#39;nil&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265940" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">storm</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265940">
+            <p>习惯seajs</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 13, 2012  4:03 PM">2012年11月13日 16:03</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-265940">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用storm的这条留言" onclick="return CommentQuote(&#39;comment-quote-265940&#39;,&#39;storm&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-266102" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.diguage.com/" href="http://www.diguage.com/" target="_blank" rel="nofollow">D瓜哥</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-266102">
+            <blockquote>
+<pre>引用abian的发言：</pre>
+
+<p>听说Google今天解封了，试了一下，的确是快了点，好久都没用google了。</p>
+
+</blockquote>
+可以使用Chrome浏览器+Prefer HTTPS插件，打开Google以及打开Google的搜索结果时，都是使用HTTPS协议，顺利破封！
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 17, 2012 10:47 PM">2012年11月17日 22:47</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-266102">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用D瓜哥的这条留言" onclick="return CommentQuote(&#39;comment-quote-266102&#39;,&#39;D瓜哥&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-266103" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.diguage.com/" href="http://www.diguage.com/" target="_blank" rel="nofollow">D瓜哥</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-266103">
+            <p>阮老师的这三篇文章写的非常好！把我关于这方面的疑惑一扫而光！顶！！<br>
+另外，我把这三篇文章转走了。哈哈</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 17, 2012 10:49 PM">2012年11月17日 22:49</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-266103">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用D瓜哥的这条留言" onclick="return CommentQuote(&#39;comment-quote-266103&#39;,&#39;D瓜哥&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-266175" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://thisiskun.me" href="http://thisiskun.me/" target="_blank" rel="nofollow">Arthur</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-266175">
+            <p><br>
+    　　require.config({</p>
+
+<p>    　　　　paths: {</p>
+
+<p>    　　　　　　"jquery": "jquery.min.js",<br>
+    　　　　　　"underscore": "underscore.min.js",<br>
+    　　　　　　"backbone": "backbone.min.js"</p>
+
+<p>    　　　　}</p>
+
+<p>    　　});</p>
+
+<p>应该不用加 .js，不然例子不能通过。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 19, 2012  3:19 PM">2012年11月19日 15:19</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-266175">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Arthur的这条留言" onclick="return CommentQuote(&#39;comment-quote-266175&#39;,&#39;Arthur&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-266182" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-266182">
+            <blockquote>
+<pre>引用Arthur的发言：</pre>
+
+<p>应该不用加 .js，不然例子不能通过。</p>
+
+</blockquote>
+
+<p>谢谢指出。这段代码是徒手写的，当时没有上机验证，确实写错了，已经更正了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 19, 2012  6:42 PM">2012年11月19日 18:42</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-266182">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用阮一峰的这条留言" onclick="return CommentQuote(&#39;comment-quote-266182&#39;,&#39;阮一峰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-268840" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">oneway</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-268840">
+            <p>Seems like </p>
+
+<p>require.config({...}) </p>
+
+<p>should be: </p>
+
+<p>requirejs.config({...}) ?</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 19, 2013 11:17 AM">2013年2月19日 11:17</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-268840">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用oneway的这条留言" onclick="return CommentQuote(&#39;comment-quote-268840&#39;,&#39;oneway&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-269707" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Owen</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-269707">
+            <p>阮老师有时间写一个backbone.js的文章吧。这个最近很流利，可是官网的文档真的是很差，看不太懂。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 14, 2013  5:32 AM">2013年3月14日 05:32</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-269707">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Owen的这条留言" onclick="return CommentQuote(&#39;comment-quote-269707&#39;,&#39;Owen&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-270417" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">differui</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-270417">
+            <p>看文档的时候看到的：<br>
+There may be times when you do want to reference a script directly and not conform to the "baseUrl + paths" rules for finding it. If a module ID has one of the following characterstics, the ID will not be passed through the "baseUrl + paths" configuration, and just be treated like a regular URL that is relative to the document:<br>
+*Ends in ".js".<br>
+*Starts with a "/".<br>
+*Contains an URL protocol, like "http:" or "https:".</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  4, 2013 10:31 PM">2013年4月 4日 22:31</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-270417">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用differui的这条留言" onclick="return CommentQuote(&#39;comment-quote-270417&#39;,&#39;differui&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-271392" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Andy</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-271392">
+            <p>表示不太明白，main文件里面把要用到的模块都写上？<br>
+那比如有一个页面A，只需要math模块，另外一个页面B，只需要add模块，都写到main文件里面的话，那A,B页面同时都载入了两个模块了吧。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May  9, 2013  9:02 PM">2013年5月 9日 21:02</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-271392">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Andy的这条留言" onclick="return CommentQuote(&#39;comment-quote-271392&#39;,&#39;Andy&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-272489" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.yijiebuyi.com" href="http://www.yijiebuyi.com/" target="_blank" rel="nofollow">魔客</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-272489">
+            <p>谢谢分享,期待更多 backbone 相关的文章,可以做友情链接吗?</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July  4, 2013 11:40 AM">2013年7月 4日 11:40</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-272489">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用魔客的这条留言" onclick="return CommentQuote(&#39;comment-quote-272489&#39;,&#39;魔客&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-272866" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">howie</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-272866">
+            <blockquote>
+<pre>引用Andy的发言：</pre>
+
+<p>表示不太明白，main文件里面把要用到的模块都写上？<br>
+那比如有一个页面A，只需要math模块，另外一个页面B，只需要add模块，都写到main文件里面的话，那A,B页面同时都载入了两个模块了吧。</p>
+
+</blockquote>
+A页面和B页面都可以写各自的main模块啊
+
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July 28, 2013 10:55 PM">2013年7月28日 22:55</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-272866">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用howie的这条留言" onclick="return CommentQuote(&#39;comment-quote-272866&#39;,&#39;howie&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-272986" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Jerry</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-272986">
+            <p>想问一下，如果还要加载backbone.localStorage.js怎么写？require(['jquery','underscore','backbone','?'],function($,_,Backbone,?){}</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 10, 2013  9:06 AM">2013年8月10日 09:06</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-272986">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Jerry的这条留言" onclick="return CommentQuote(&#39;comment-quote-272986&#39;,&#39;Jerry&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-277618" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">王潇鸣</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-277618">
+            <p>很好，写的巴适！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October  8, 2013  2:05 PM">2013年10月 8日 14:05</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-277618">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用王潇鸣的这条留言" onclick="return CommentQuote(&#39;comment-quote-277618&#39;,&#39;王潇鸣&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-289532" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">程序员2013</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-289532">
+            <p>我在dojo对js进行打包，生成的文件<br>
+require({cache:{"custom/MyModule":function () {<br>
+    define(["dojo/_base/lang"], function (lang) {<br>
+       ......<br>
+    })<br>
+   }<br>
+   },<br>
+   ......<br>
+这个require()里面好像是个map，请问我加载了模块怎么调用模块里面的方法呢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 27, 2013  5:18 PM">2013年11月27日 17:18</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-289532">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用程序员2013的这条留言" onclick="return CommentQuote(&#39;comment-quote-289532&#39;,&#39;程序员2013&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300822" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://jasonxiang.com" href="http://jasonxiang.com/" target="_blank" rel="nofollow">Jason</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300822">
+            <p>看完很有收获！谢谢。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 23, 2014  6:49 PM">2014年2月23日 18:49</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-300822">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Jason的这条留言" onclick="return CommentQuote(&#39;comment-quote-300822&#39;,&#39;Jason&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-304666" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">juedui0769</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-304666">
+            <p>获益良多，赞！在项目中使用extjs这样的框架，又该如何合理组织代码呢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 26, 2014  1:39 PM">2014年3月26日 13:39</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-304666">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用juedui0769的这条留言" onclick="return CommentQuote(&#39;comment-quote-304666&#39;,&#39;juedui0769&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-307240" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://gregwym.info" href="http://gregwym.info/" target="_blank" rel="nofollow">咳嗽di小鱼</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-307240">
+            <p>已经用了很久的RequireJS和Backbone, 但因为是半路上手, 一直没有系统研究. 今天头一次明白了AMD和CommonJS的区别, 然后理解了RquireJS的原理. 谢谢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  3, 2014  3:25 AM">2014年4月 3日 03:25</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-307240">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用咳嗽di小鱼的这条留言" onclick="return CommentQuote(&#39;comment-quote-307240&#39;,&#39;咳嗽di小鱼&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-308942" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.saymagic.cn" href="http://www.saymagic.cn/" target="_blank" rel="nofollow">saymagic</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-308942">
+            <p>赞一个，欣赏大神的互联网思维。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  6, 2014  9:47 PM">2014年4月 6日 21:47</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-308942">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用saymagic的这条留言" onclick="return CommentQuote(&#39;comment-quote-308942&#39;,&#39;saymagic&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-322439" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">jpmg</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-322439">
+            <p>看了您很多关于javascript的文章，受益匪浅，我觉得requirejs还有一个好处是对全局变量和命名空间的管理，虽然很多框架都可以实现，或者自己也可以把前端框架包起来，但是用requirejs总是方便很多。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May  9, 2014  2:05 PM">2014年5月 9日 14:05</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-322439">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用jpmg的这条留言" onclick="return CommentQuote(&#39;comment-quote-322439&#39;,&#39;jpmg&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-327402" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Hiveer</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-327402">
+            <p>看来半天的API云里雾里的，还是中文文档来得真切。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June  6, 2014  4:00 PM">2014年6月 6日 16:00</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-327402">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Hiveer的这条留言" onclick="return CommentQuote(&#39;comment-quote-327402&#39;,&#39;Hiveer&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-328308" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.cnblogs.com/leejie/" href="http://www.cnblogs.com/leejie/" target="_blank" rel="nofollow">leejie</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-328308">
+            <p>老师，刚了解了下Ozjs一头雾水，都没找到太多关于ozjs的资料！是不是requirejs和ozjs目的都是一样的啊</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 12, 2014  7:23 PM">2014年6月12日 19:23</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-328308">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用leejie的这条留言" onclick="return CommentQuote(&#39;comment-quote-328308&#39;,&#39;leejie&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-328827" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.shuizhongyueming.com/" href="http://www.shuizhongyueming.com/" target="_blank" rel="nofollow">水中月明</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-328827">
+            <p>有个关于requirejs的问题想请教一下：现在有A,B,C三个页面，这三个页面有一个通用模块common.js。common.js依赖suggestion.js,taset.js,localStorage.js。然后在A页面，需要一个a.js，依赖localStorage.js。因为common的内容改动比较频繁，所以是单独作为一个js放入页面里面。现在问题出现了，怎样才能同时在页面里面加载两个requirejs的主模块，这两个模块都使用到了localStorage.js，怎样才能避免重复加载（指的是在线下的时候，预先进行代码的压缩合并）</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 16, 2014 10:42 AM">2014年6月16日 10:42</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-328827">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用水中月明的这条留言" onclick="return CommentQuote(&#39;comment-quote-328827&#39;,&#39;水中月明&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-329678" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小溪哥</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-329678">
+            <p>页面上怎么用模块里的方法，比如说  怎么直接在这添加onclick 不用bind的情况下</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 27, 2014  3:29 PM">2014年6月27日 15:29</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-329678">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用小溪哥的这条留言" onclick="return CommentQuote(&#39;comment-quote-329678&#39;,&#39;小溪哥&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-333731" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">马铃薯</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-333731">
+            <p>真的很感激博主，最近的项目中恰好用到require.js，自己正在头大眼花的时候，看完这一、二、三部感觉获益匪浅。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 13, 2014  4:45 PM">2014年8月13日 16:45</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-333731">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用马铃薯的这条留言" onclick="return CommentQuote(&#39;comment-quote-333731&#39;,&#39;马铃薯&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-337862" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">jerrywu</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-337862">
+            <p>请问下楼主，requirejs 版本管理怎么控制呢？版本号</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 15, 2014 11:12 AM">2014年9月15日 11:12</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-337862">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用jerrywu的这条留言" onclick="return CommentQuote(&#39;comment-quote-337862&#39;,&#39;jerrywu&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-342932" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">梦蕴</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-342932">
+            <p>碰到一个问题,假如一个main.js里依赖aa,bb,cc........n多个小模块,当执行其中的第n个模块时,会出现方法未定义,<br>
+比如:调用的cc.add()方法,提示没有add的方法</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  8, 2014  7:05 AM">2014年11月 8日 07:05</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-342932">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用梦蕴的这条留言" onclick="return CommentQuote(&#39;comment-quote-342932&#39;,&#39;梦蕴&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-343194" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">igody</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-343194">
+            <blockquote>
+<pre>引用oneway的发言：</pre>
+
+<p>Seems like </p>
+
+<p>require.config({...}) </p>
+
+<p>should be: </p>
+
+<p>requirejs.config({...}) ?</p>
+
+</blockquote>
+
+<p>是的，应该是requirejs.config({...})</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 10, 2014  5:47 PM">2014年11月10日 17:47</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-343194">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用igody的这条留言" onclick="return CommentQuote(&#39;comment-quote-343194&#39;,&#39;igody&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-344007" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">RJ</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-344007">
+            <p>Usually, we use bootjs + headjs + requerjs to load our models. :)</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 17, 2014 11:11 AM">2014年11月17日 11:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-344007">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用RJ的这条留言" onclick="return CommentQuote(&#39;comment-quote-344007&#39;,&#39;RJ&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-344555" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.yijiebuyi.com" href="http://www.yijiebuyi.com/" target="_blank" rel="nofollow">一介布衣</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-344555">
+            <p>非常感谢,您写的博文浅显易懂,深入浅出,能把一个问题说透,真的非常好,谢谢!</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 22, 2014 12:43 AM">2014年11月22日 00:43</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-344555">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用一介布衣的这条留言" onclick="return CommentQuote(&#39;comment-quote-344555&#39;,&#39;一介布衣&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-344891" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="https://github.com/wrbing728" href="https://github.com/wrbing728" target="_blank" rel="nofollow">王汝冰</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-344891">
+            <p>hola，  请教个问题啊，使用require的时候，怎么写整个网站的统一入口比较合适啊？  我现在是这样的情况，我没有用data-main来写入口，而是在每个页面里分别写自己的require（如下），  但是最后发现貌似不用data-main这样的写法，grunt-requirejs不能把加载的模块打包到一起， 但是由于每个页面所需的模块不一样，所以不知道怎么写统一的入口，请指教一下哈</p>
+
+<p>    &lt;!-- build:js scripts/require.js --&gt;<br>
+        &lt;script src="bower_components/requirejs/require.js"&gt;&lt;/script&gt;<br>
+    &lt;!-- endbuild --&gt;<br>
+        &lt;script&gt;<br>
+            require(['scripts/config'], function() {<br>
+                require(['scripts/album/create']);<br>
+            });<br>
+        &lt;/script&gt;</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 26, 2014  5:46 PM">2014年11月26日 17:46</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-344891">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用王汝冰的这条留言" onclick="return CommentQuote(&#39;comment-quote-344891&#39;,&#39;王汝冰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-346233" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Jeremy</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-346233">
+            <p>我觉得挺无聊的，我就算加载5个js文件，1,2,3,4,5 也同样可以自己写一个异步加载的方法呀，这个所以的requirejs本身就搞的好大，加上jquery文件，再加上自己的js，那得多大</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 12, 2014  6:25 PM">2014年12月12日 18:25</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-346233">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Jeremy的这条留言" onclick="return CommentQuote(&#39;comment-quote-346233&#39;,&#39;Jeremy&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-346394" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://xinwendashibaike.github.io/" href="http://xinwendashibaike.github.io/" target="_blank" rel="nofollow">xinwendashibaike</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-346394">
+            <blockquote>
+<pre>引用Jeremy的发言：</pre>
+
+<p>我觉得挺无聊的，我就算加载5个js文件，1,2,3,4,5 也同样可以自己写一个异步加载的方法呀，这个所以的requirejs本身就搞的好大，加上jquery文件，再加上自己的js，那得多大</p>
+
+</blockquote>
+
+<p>确实是，所以最后都是打成一个文件</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 17, 2014  1:30 PM">2014年12月17日 13:30</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-346394">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用xinwendashibaike的这条留言" onclick="return CommentQuote(&#39;comment-quote-346394&#39;,&#39;xinwendashibaike&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348039" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">liujun</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348039">
+            <p>小项目用这些，华而不实，有装逼感。大项目还是很有用的。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 11, 2015  4:41 PM">2015年2月11日 16:41</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-348039">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用liujun的这条留言" onclick="return CommentQuote(&#39;comment-quote-348039&#39;,&#39;liujun&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348597" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://gotoandlearn.net" href="http://gotoandlearn.net/" target="_blank" rel="nofollow">zhishaofei3</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348597">
+            <p>shim不是设置依赖的么？官网也有不写exports的例子啊<br>
+requirejs.config({<br>
+    shim: {<br>
+        'jquery.colorize': ['jquery'],<br>
+        'jquery.scroll': ['jquery'],<br>
+        'backbone.layoutmanager': ['backbone']<br>
+    }<br>
+});</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 17, 2015  7:44 PM">2015年3月17日 19:44</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-348597">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用zhishaofei3的这条留言" onclick="return CommentQuote(&#39;comment-quote-348597&#39;,&#39;zhishaofei3&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348757" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">kevin</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348757">
+            <p>看了阮老师的文章，受益匪浅，谢谢。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 24, 2015 11:48 AM">2015年3月24日 11:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-348757">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用kevin的这条留言" onclick="return CommentQuote(&#39;comment-quote-348757&#39;,&#39;kevin&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348990" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://itbokeyun.com/" href="http://itbokeyun.com/" target="_blank" rel="nofollow">itbokeyun</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348990">
+            <blockquote>
+<pre>引用子不语的发言：</pre>
+
+<p>Backbone并不依赖于jQuery啊，为什么还要写成deps: ['underscore', 'jquery']？</p>
+
+<p>写成exports: 'Backbone'的话，应该怎么使用呢？</p>
+
+<p>是这样？<br>
+require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone){<br>
+　　　// some code here<br>
+});<br>
+还是<br>
+require(['jquery', 'underscore', 'Backbone'], function ($, _, Backbone){<br>
+　　　// some code here<br>
+});</p>
+
+</blockquote>我自己的测试结果是没有什么作用，本来其他的库就是在全局变量中添加一个，比如jQuery会添加window.$,如果require.js已经加载完成了jQurey，那么全局变量的$应该就是jQuery，直接使用$就是了
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  9, 2015  5:13 PM">2015年4月 9日 17:13</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-348990">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用itbokeyun的这条留言" onclick="return CommentQuote(&#39;comment-quote-348990&#39;,&#39;itbokeyun&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-349328" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.cnblogs.com/Zjingwen/" href="http://www.cnblogs.com/Zjingwen/" target="_blank" rel="nofollow">静文</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-349328">
+            <p>最简单粗暴的requirejs介绍。<br>
+棒棒的。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 30, 2015 11:41 AM">2015年4月30日 11:41</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-349328">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用静文的这条留言" onclick="return CommentQuote(&#39;comment-quote-349328&#39;,&#39;静文&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-349468" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">波</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-349468">
+            <p>如果只是控制加载顺序的话，在jsp页面按顺序写不就行了，为啥还要require.js呢？？？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May  6, 2015  6:38 PM">2015年5月 6日 18:38</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-349468">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用波的这条留言" onclick="return CommentQuote(&#39;comment-quote-349468&#39;,&#39;波&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-349634" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">路过</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-349634">
+            <blockquote>
+<pre>引用波的发言：</pre>
+
+<p>如果只是控制加载顺序的话，在jsp页面按顺序写不就行了，为啥还要require.js呢？？？</p>
+
+</blockquote>
+
+<p>因为写在jsp里不能控制依赖关系。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 13, 2015  4:46 PM">2015年5月13日 16:46</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-349634">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用路过的这条留言" onclick="return CommentQuote(&#39;comment-quote-349634&#39;,&#39;路过&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350255" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://rrrr.com" href="http://rrrr.com/" target="_blank" rel="nofollow">rr_rr</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350255">
+            <blockquote>
+<pre>引用波的发言：</pre>
+
+<p>如果只是控制加载顺序的话，在jsp页面按顺序写不就行了，为啥还要require.js呢？？？</p>
+
+</blockquote>
+
+<p>你肯定没写过js</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 10, 2015  5:09 AM">2015年6月10日 05:09</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-350255">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用rr_rr的这条留言" onclick="return CommentQuote(&#39;comment-quote-350255&#39;,&#39;rr_rr&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350380" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">zcz</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350380">
+            <p>假如我在全局的公共文件配置了<br>
+require.config({<br>
+    baseUrl: 'js',<br>
+    paths: {<br>
+        a: 'a',<br>
+        b: 'b',<br>
+        c: 'c'<br>
+    }<br>
+});<br>
+有个单独的文件 需要在单独加入个配置<br>
+require.config({<br>
+    baseUrl: 'js',<br>
+    paths: {<br>
+        d: 'd'<br>
+    }<br>
+});<br>
+是这样覆写吗，还是有什么add到config.pathss的方法？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 17, 2015  3:00 PM">2015年6月17日 15:00</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-350380">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用zcz的这条留言" onclick="return CommentQuote(&#39;comment-quote-350380&#39;,&#39;zcz&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350458" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">qq</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350458">
+            <p>通熟易懂!!!</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 25, 2015 11:13 AM">2015年6月25日 11:13</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-350458">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用qq的这条留言" onclick="return CommentQuote(&#39;comment-quote-350458&#39;,&#39;qq&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350899" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">xingoo</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350899">
+            <p>讲的太好了！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July 17, 2015  8:58 PM">2015年7月17日 20:58</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-350899">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用xingoo的这条留言" onclick="return CommentQuote(&#39;comment-quote-350899&#39;,&#39;xingoo&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351103" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">chris</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351103">
+            <p>写JS重复代码写累了想试试模块化开发，然后被各种新技术新名词搞得晕头转向。来你这里连续看了好多篇文章，真是受益匪浅，把原来挺起了很高深的东西解释得非常简单易懂，对于初步了解非常有帮助，也消除了原有的一些恐惧，真是太感谢了！！！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August  3, 2015  1:44 PM">2015年8月 3日 13:44</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351103">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用chris的这条留言" onclick="return CommentQuote(&#39;comment-quote-351103&#39;,&#39;chris&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351319" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">噔噔蹬</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351319">
+            <p>很好，绝对受益了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 19, 2015 10:46 AM">2015年8月19日 10:46</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351319">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用噔噔蹬的这条留言" onclick="return CommentQuote(&#39;comment-quote-351319&#39;,&#39;噔噔蹬&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351359" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">yujieyu7</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351359">
+            <p>比官方文档写的好多了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 21, 2015  4:51 PM">2015年8月21日 16:51</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351359">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用yujieyu7的这条留言" onclick="return CommentQuote(&#39;comment-quote-351359&#39;,&#39;yujieyu7&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351496" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.hehaiquan.com" href="http://www.hehaiquan.com/" target="_blank" rel="nofollow">hhq</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351496">
+            <blockquote>
+<pre>引用igody的发言：</pre>
+
+<p></p>
+
+<p>是的，应该是requirejs.config({...})</p>
+
+</blockquote>
+
+<p>测试requier.config({<br>
+//doing something<br>
+})通过</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 31, 2015  1:10 AM">2015年8月31日 01:10</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351496">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用hhq的这条留言" onclick="return CommentQuote(&#39;comment-quote-351496&#39;,&#39;hhq&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351525" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">y80x86ol</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351525">
+            <p>以前我看文章几乎都不评论，但是这次一定要顶一下，老师写的真的很好。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September  2, 2015  9:35 AM">2015年9月 2日 09:35</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351525">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用y80x86ol的这条留言" onclick="return CommentQuote(&#39;comment-quote-351525&#39;,&#39;y80x86ol&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351528" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">翟彦宾</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351528">
+            <p>请教个问题：<br>
+我在main.js里配置了jquery,如下：<br>
+require.config({<br>
+    baseUrl: '/js/',<br>
+    paths: {<br>
+        'jquery': 'lib/jquery/jquery-1.7.1.min'<br>
+    }<br>
+});</p>
+
+<p>我的本意是想把一些公共的js（jquery、cookie等等）都定义下路径，然后在其他js里直接调用别名,而不是再写全路径.如下：<br>
+<br>
+<br>
+require(['jquery'], function($){<br>
+   $('body').html('test');<br>
+});a<br>
+</p>
+
+<p>但这样是实现不了的，只能是在main.js里这样调用。 我想问下是否有办法实现这样的调用？谢谢！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September  2, 2015 11:07 AM">2015年9月 2日 11:07</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351528">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用翟彦宾的这条留言" onclick="return CommentQuote(&#39;comment-quote-351528&#39;,&#39;翟彦宾&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351579" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小马</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351579">
+            <blockquote>
+<pre>引用Jeremy的发言：</pre>
+
+<p>我觉得挺无聊的，我就算加载5个js文件，1,2,3,4,5 也同样可以自己写一个异步加载的方法呀，这个所以的requirejs本身就搞的好大，加上jquery文件，再加上自己的js，那得多大</p>
+
+</blockquote>
+
+<p>不单是为了异步，关键还有模块化编程思想啊.......比如 A.js B.js，其中B.js里面需要用到A.js里面传递过来的参数.....</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September  6, 2015  1:59 PM">2015年9月 6日 13:59</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351579">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用小马的这条留言" onclick="return CommentQuote(&#39;comment-quote-351579&#39;,&#39;小马&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351687" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://front.dog" href="http://front.dog/" target="_blank" rel="nofollow">itorr</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351687">
+            <p>在读到最后时，<br>
+「text和image插件，则是允许require.js加载文本和图片文件。」下面的代码是否有误？</p>
+
+<p>`define` 可能应该为 `require` </p>
+
+<p>```javascript<br>
+　　define([<br>
+　　　　'text!review.txt',<br>
+　　　　'image!cat.jpg'<br>
+　　　　],</p>
+
+<p>　　　　function(review,cat){<br>
+　　　　　　console.log(review);<br>
+　　　　　　document.body.appendChild(cat);<br>
+　　　　}<br>
+　　);<br>
+```</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 14, 2015  3:55 PM">2015年9月14日 15:55</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-351687">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用itorr的这条留言" onclick="return CommentQuote(&#39;comment-quote-351687&#39;,&#39;itorr&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-352986" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">壮壮墙</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-352986">
+            <p>和 android 上的 Gradle 一个作用</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 28, 2015 11:11 PM">2015年11月28日 23:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-352986">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用壮壮墙的这条留言" onclick="return CommentQuote(&#39;comment-quote-352986&#39;,&#39;壮壮墙&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353018" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://shejuly.lofter.com" href="http://shejuly.lofter.com/" target="_blank" rel="nofollow">燕君</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353018">
+            <blockquote>
+<pre>引用zcz的发言：</pre>
+
+<p>假如我在全局的公共文件配置了<br>
+require.config({<br>
+baseUrl: 'js',<br>
+paths: {<br>
+a: 'a',<br>
+b: 'b',<br>
+c: 'c'<br>
+}<br>
+});<br>
+有个单独的文件 需要在单独加入个配置<br>
+require.config({<br>
+baseUrl: 'js',<br>
+paths: {<br>
+d: 'd'<br>
+}<br>
+});<br>
+是这样覆写吗，还是有什么add到config.pathss的方法？</p>
+
+</blockquote>
+直接都写在全局也没什么影响吧。只有在用的时候写了define(['d'],function(){})才会加载d。
+全局定义这个只是为了在用的时候少些一些路径。如果没定义jquery的paths，那么每个引用jquery的地方都得这么写：
+define(['lib/jquery.min'],function($){})
+
+<p>如果定义了paths:<br>
+require.config({<br>
+paths: {<br>
+jquery: 'lib/jquery.min'<br>
+}<br>
+});</p>
+
+<p>那么每个引用jquery的地方就可以这么写了：<br>
+define(['jquery'],function($){})</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December  1, 2015  8:36 PM">2015年12月 1日 20:36</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-353018">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用燕君的这条留言" onclick="return CommentQuote(&#39;comment-quote-353018&#39;,&#39;燕君&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353069" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://my.oschina.net/uniquejava" href="http://my.oschina.net/uniquejava" target="_blank" rel="nofollow">cyper</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353069">
+            <blockquote>
+<pre>引用Jeremy的发言：</pre>
+
+<p>我觉得挺无聊的，我就算加载5个js文件，1,2,3,4,5 也同样可以自己写一个异步加载的方法呀，这个所以的requirejs本身就搞的好大，加上jquery文件，再加上自己的js，那得多大</p>
+
+</blockquote>
+
+<p>我们现在的项目index.html包含了300多个js文件，急需requirejs解依赖关系之急。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December  3, 2015 11:27 PM">2015年12月 3日 23:27</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-353069">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用cyper的这条留言" onclick="return CommentQuote(&#39;comment-quote-353069&#39;,&#39;cyper&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353390" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.qqxh.net" href="http://www.qqxh.net/" target="_blank" rel="nofollow">小河</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353390">
+            <p>多谢你的文章很好</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 19, 2015  3:44 PM">2015年12月19日 15:44</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-353390">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用小河的这条留言" onclick="return CommentQuote(&#39;comment-quote-353390&#39;,&#39;小河&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353813" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Huhaskii Jingle你个bell</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353813">
+            <p>过了这么多年了，你也不更新下，还对得起苦涩的青春嘛~~   &gt; </p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  6, 2016  7:30 PM">2016年1月 6日 19:30</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-353813">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Huhaskii Jingle你个bell的这条留言" onclick="return CommentQuote(&#39;comment-quote-353813&#39;,&#39;Huhaskii Jingle你个bell&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353815" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Huhaskii Jingle你个bell</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353815">
+            <p>博主你的About Me，最后一行应该把watching movie 改成 watching movies。要不是学习了你的requirejs我会告诉你？！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  6, 2016  7:35 PM">2016年1月 6日 19:35</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-353815">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Huhaskii Jingle你个bell的这条留言" onclick="return CommentQuote(&#39;comment-quote-353815&#39;,&#39;Huhaskii Jingle你个bell&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-354026" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">page down</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-354026">
+            <p>一直在用requirejs，但不是我搭建的，是大牛搭建的，看了这篇文章很有帮助，我也会了，赞一个<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 15, 2016  4:51 PM">2016年1月15日 16:51</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-354026">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用page down的这条留言" onclick="return CommentQuote(&#39;comment-quote-354026&#39;,&#39;page down&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-354368" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">forevermnj</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-354368">
+            <p>老师，我们开发用得就是这个，但是最近遇到了重复加载的问题，一个js文件中调用了highcharts.js这个框架，登录前和登录后的页面都要引用这个js文件，这样用户从登录前的页面进入到登录后的页面，就会出现页面重复加载的问题，这种情况怎么解决呢，希望老师解答，谢谢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 28, 2016 11:24 AM">2016年1月28日 11:24</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-354368">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用forevermnj的这条留言" onclick="return CommentQuote(&#39;comment-quote-354368&#39;,&#39;forevermnj&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-354449" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Michael</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-354449">
+            <p>Javascript 的文章写的真的特别好， 学习了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February  3, 2016  2:48 PM">2016年2月 3日 14:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-354449">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Michael的这条留言" onclick="return CommentQuote(&#39;comment-quote-354449&#39;,&#39;Michael&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-354454" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">jeremy</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-354454">
+            <blockquote>
+<pre>引用hhq的发言：</pre>
+
+<p></p>
+
+<p>测试requier.config({<br>
+//doing something<br>
+})通过</p>
+
+</blockquote>
+实际上，requier === requierjs
+
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February  3, 2016  6:28 PM">2016年2月 3日 18:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-354454">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用jeremy的这条留言" onclick="return CommentQuote(&#39;comment-quote-354454&#39;,&#39;jeremy&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-354463" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">jeremy</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-354463">
+            <blockquote>
+<pre>引用forevermnj的发言：</pre>
+
+<p>老师，我们开发用得就是这个，但是最近遇到了重复加载的问题，一个js文件中调用了highcharts.js这个框架，登录前和登录后的页面都要引用这个js文件，这样用户从登录前的页面进入到登录后的页面，就会出现页面重复加载的问题，这种情况怎么解决呢，希望老师解答，谢谢</p>
+
+</blockquote>
+
+<p>虽然是重复require了，如果页面不发生跳转，浏览器应该直接用的是缓存(from cache)的吧，如果有跳转，那不同的页面就不叫重复加载啦</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February  4, 2016 10:33 AM">2016年2月 4日 10:33</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-354463">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用jeremy的这条留言" onclick="return CommentQuote(&#39;comment-quote-354463&#39;,&#39;jeremy&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355207" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">视识祈</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355207">
+            <p>讲解的很好呢，学习了，谢谢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 23, 2016  6:35 PM">2016年3月23日 18:35</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355207">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用视识祈的这条留言" onclick="return CommentQuote(&#39;comment-quote-355207&#39;,&#39;视识祈&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355262" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">brose</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355262">
+            <p>峰哥：我想请教一个问题，如果严格按照AMD规范来写的话，模块里面的define(["m1","m2"],callback),这里的m1和m2有事有依赖关系，该怎么管理？经我测试，两个顺序可以随意调换都可以？难道随意写？它自行管理依赖关系？？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 25, 2016  3:04 PM">2016年3月25日 15:04</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355262">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用brose的这条留言" onclick="return CommentQuote(&#39;comment-quote-355262&#39;,&#39;brose&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355294" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Jackson</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355294">
+            <blockquote>
+<pre>引用波的发言：</pre>
+
+<p>如果只是控制加载顺序的话，在jsp页面按顺序写不就行了，为啥还要require.js呢？？？</p>
+
+</blockquote>
+
+<p>require,js是异步加载。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 28, 2016  3:22 PM">2016年3月28日 15:22</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355294">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Jackson的这条留言" onclick="return CommentQuote(&#39;comment-quote-355294&#39;,&#39;Jackson&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355379" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">maou</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355379">
+            <p>IE10是支持async属性的</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  1, 2016  9:30 PM">2016年4月 1日 21:30</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355379">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用maou的这条留言" onclick="return CommentQuote(&#39;comment-quote-355379&#39;,&#39;maou&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355450" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Net</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355450">
+            <p>可以在页面中去调用模块中定义的方法吗？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  6, 2016 12:22 PM">2016年4月 6日 12:22</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355450">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Net的这条留言" onclick="return CommentQuote(&#39;comment-quote-355450&#39;,&#39;Net&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355492" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.muzidx.com" href="http://www.muzidx.com/" target="_blank" rel="nofollow">muzidx</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355492">
+            <p> 阮老师已经是我的启蒙老师了，一有要学的新知识，就到这里淘</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  8, 2016 11:37 AM">2016年4月 8日 11:37</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355492">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用muzidx的这条留言" onclick="return CommentQuote(&#39;comment-quote-355492&#39;,&#39;muzidx&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355647" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://暂无" href="http://xn--rgvyn/" target="_blank" rel="nofollow">Jooos</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355647">
+            <p>如果我是多个页面，调用有不同的功能，也全部都写在主文件入口上么，例如一个首页，一个列表页，一个详情页，还是全部加载主文件么！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 14, 2016  9:29 AM">2016年4月14日 09:29</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355647">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用Jooos的这条留言" onclick="return CommentQuote(&#39;comment-quote-355647&#39;,&#39;Jooos&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-355892" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">百无一是</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-355892">
+            <p>我找这个文件很久了, 谢谢阮大神.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 26, 2016  3:47 PM">2016年4月26日 15:47</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-355892">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用百无一是的这条留言" onclick="return CommentQuote(&#39;comment-quote-355892&#39;,&#39;百无一是&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-356187" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://false" href="http://false/" target="_blank" rel="nofollow">ericyin</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-356187">
+            <p>阮老师的文章确实通俗易懂，但是遇到一个问题，就是在IE7下会报错，我检查了是data-main属性的问题，但是我直接在首页通过require.config(['config.js路径'],function(){ alert('回调') })，仍然报错。公司项目必须兼容IE7，这个不知道怎么回事，查了很多资料，没发现谁说不兼容IE7的</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 12, 2016 10:48 AM">2016年5月12日 10:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-356187">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用ericyin的这条留言" onclick="return CommentQuote(&#39;comment-quote-356187&#39;,&#39;ericyin&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-356448" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">玖头</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-356448">
+            <blockquote>
+<pre>引用ericyin的发言：</pre>
+
+<p>阮老师的文章确实通俗易懂，但是遇到一个问题，就是在IE7下会报错，我检查了是data-main属性的问题，但是我直接在首页通过require.config(['config.js路径'],function(){ alert('回调') })，仍然报错。公司项目必须兼容IE7，这个不知道怎么回事，查了很多资料，没发现谁说不兼容IE7的</p>
+
+</blockquote>
+
+<p>我做了个小demo，发现ie8下报错：对象不支持此属性或方法</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 20, 2016  3:38 PM">2016年5月20日 15:38</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-356448">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用玖头的这条留言" onclick="return CommentQuote(&#39;comment-quote-356448&#39;,&#39;玖头&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-356899" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.mrco.cn" href="http://www.mrco.cn/" target="_blank" rel="nofollow">小科</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-356899">
+            <p>学习啦！又来温习了一遍！阮老师的文章都是干货！大赞！~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 31, 2016  2:40 PM">2016年5月31日 14:40</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-356899">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用小科的这条留言" onclick="return CommentQuote(&#39;comment-quote-356899&#39;,&#39;小科&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-357222" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">刘伟</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-357222">
+            <p>不错的   受益匪浅</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June  6, 2016  4:45 PM">2016年6月 6日 16:45</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-357222">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用刘伟的这条留言" onclick="return CommentQuote(&#39;comment-quote-357222&#39;,&#39;刘伟&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-360285" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://chauvet.cc" href="http://chauvet.cc/" target="_blank" rel="nofollow">xiaowei</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-360285">
+            <blockquote>
+<pre>引用Jooos的发言：</pre>
+
+<p>如果我是多个页面，调用有不同的功能，也全部都写在主文件入口上么，例如一个首页，一个列表页，一个详情页，还是全部加载主文件么！</p>
+
+</blockquote>
+
+<p>哥们解决了吗？ 我也有这个疑问。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July  6, 2016  2:32 PM">2016年7月 6日 14:32</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-360285">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用xiaowei的这条留言" onclick="return CommentQuote(&#39;comment-quote-360285&#39;,&#39;xiaowei&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-360294" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://5941740.cn" href="http://5941740.cn/" target="_blank" rel="nofollow">但丁</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-360294">
+            <p>如果有一个模块A依赖模块C，另一个模块B也依赖模块C，那么使用requirejs进行模块化加载后，C模块会被重复加载两次吗？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July  6, 2016  5:48 PM">2016年7月 6日 17:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-360294">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html#comment-text" title="引用但丁的这条留言" onclick="return CommentQuote(&#39;comment-quote-360294&#39;,&#39;但丁&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="return pleaseWait();">
+                <input type="hidden" name="static" value="1">
+                <input type="hidden" name="entry_id" value="1749">
+                <input type="hidden" name="__lang" value="en">
+                <input type="hidden" name="parent_id" value="" id="comment-parent-id">
+                <input type="hidden" name="armor" value="1">
+                <input type="hidden" name="preview" value="">
+                <input type="hidden" name="sid" value="">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="!this.checked?forgetMe(document.comments_form):rememberMe(document.comments_form)" value="1" accesskey="r"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display:none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input type="text" name="percent" size="3" style="font-family:Arial; color:black;text-align:center; border-width:medium; border-style:none;">           
+<input type="text" name="chart" size="46" style="font-family:Arial;font-weight:bolder; color:black; padding:0px; border-style:none;">
+</p>
+</div>
+
+                    <p><input type="submit" accesskey="s" name="post" id="comment-submit" value="发表">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/prism.js"></script>
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+<p><a href="http://www.ruanyifeng.com/contact.html">联系方式</a> | ruanyifeng.com 2003 - 2016
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46829782-1', 'ruanyifeng.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<!-- Site Meter -->
+<a href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" target="_top">
+<img src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/meter.asp" alt="Site Meter" border="0"></a>
+
+<!-- Copyright (c)2009 Site Meter -->
+
+</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="share_button_proto" style="display:none;">
+<a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/buttonLite.js"></script>
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script>
+</div>
+
+<script>
+document.getElementById("share_button").innerHTML=document.getElementById("share_button_proto").innerHTML;
+</script>
+
+
+
+
+        </div>
+    </div>
+
+<div id="bsBox" class="bsBox"><div class="bsClose">X</div><div class="bsTop"><div class="bsReturn">选择其他平台 &gt;&gt;</div><span style="margin-left:15px;">分享到</span><span class="bsPlatName"></span></div><div class="bsFrameDiv"><iframe class="bShareFrame" name="bsFrame781" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div><div id="bsMorePanel" style="display: none;"></div></div><div id="ads"></div><div id="bsPanelHolder"><div id="bsPanel" style="display:none;"><div class="bsTitle"><a style="float:left;height:20px;line-height:20px;font-weight:bold;" class="bsSiteLink" target="_blank" href="http://www.bshare.cn/intro">分享到...</a><a class="bsSiteLink" style="cursor:pointer;float:right;height:20px;line-height:20px;font-weight:bold;" onclick="document.getElementById(&#39;bsPanel&#39;).style.display=&#39;none&#39;;">X</a><div class="bsClear"></div></div><div class="bsClear"></div><div style="padding-left:8px;background:#fff;*height:218px;"><div style="height:47px;border-bottom:1px #ccc solid;padding:4px 0 4px 16px;margin-right:8px;_padding-left:12px;"><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;facebook&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/facebook.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Facebook</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;twitter&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/twitter.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Twitter</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;sinaminiblog&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/sinaminiblog.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">新浪微博</div></a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="微信" onclick="javascript:bShare.share(event,&#39;weixin&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/weixin.png) no-repeat;">微信</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="腾讯微博" onclick="javascript:bShare.share(event,&#39;qqmb&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1512px;">腾讯微博</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="豆瓣网" onclick="javascript:bShare.share(event,&#39;douban&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -540px;">豆瓣网</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="饭否" onclick="javascript:bShare.share(event,&#39;fanfou&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -666px;">饭否</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="雪球" onclick="javascript:bShare.share(event,&#39;xueqiu&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/xueqiu.png) no-repeat;">雪球</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="电子邮件" onclick="javascript:bShare.share(event,&#39;email&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -612px;">电子邮件</a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="Google+" onclick="javascript:bShare.share(event,&#39;gplus&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/gplus.png) no-repeat;">Google+</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="QQ空间" onclick="javascript:bShare.share(event,&#39;qzone&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1566px;">QQ空间</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="QQ好友" onclick="javascript:bShare.share(event,&#39;qqim&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/qqim.png) no-repeat;">QQ好友</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="Instapaper" onclick="javascript:bShare.share(event,&#39;instapaper&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -954px;">Instapaper</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="美味书签" onclick="javascript:bShare.share(event,&#39;delicious&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -432px;">美味书签</a></div></div><div class="bsClear"></div></div><div style="height:20px;line-height:20px;padding:0 8px;border-top:1px solid #e8e8e8;color:#666;background:#f2f2f2;"><div class="buzzButton" style="float:left;">更多平台... <font style="font-weight:normal;">(133)</font></div><div id="bsPower" style="float:right;text-align:right;overflow:hidden;height:100%;"><a class="bsSiteLink" style="font-size:10px;vertical-align:text-bottom;line-height:24px;cursor:pointer;" href="http://www.bshare.cn/" target="_blank"><span style="font-size:10px;vertical-align:text-bottom;"><span style="color:#f60;">b</span>Share</span></a></div></div></div></div><iframe src="./Javascript模块化编程（三）：require.js的用法 - 阮一峰的网络日志_files/cm.html" style="display: none;"></iframe></body></html>

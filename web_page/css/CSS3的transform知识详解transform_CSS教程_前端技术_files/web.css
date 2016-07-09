@@ -1,0 +1,396 @@
+#classnav {
+	HEIGHT: 30px; WIDTH: 800px; BORDER-BOTTOM-WIDTH: 0px; RIGHT: 0px; POSITION: absolute; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; Z-INDEX: 1; TOP: 0px; PADDING-RIGHT: 5px
+}
+#classnav LI {
+	FLOAT: right
+}
+.list {
+	WIDTH: 70px; FONT-WEIGHT: normal; PADDING-BOTTOM: 4px; TEXT-ALIGN: left; PADDING-TOP: 4px; PADDING-LEFT: 0px; LINE-HEIGHT: 20px; PADDING-RIGHT: 4px
+}
+.list A {
+	OVERFLOW: hidden; HEIGHT: 20px; COLOR: #ffffff; DISPLAY: block; LINE-HEIGHT: 20px
+}
+.list A:hover {
+	TEXT-DECORATION: none; BACKGROUND: #ffcc00; COLOR: #000000
+}
+.menu1 {
+	CURSOR: hand; HEIGHT: auto; BACKGROUND: #43a102; OVERFLOW-Y: hidden; COLOR: #ffffff; PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEFT: 12px; MARGIN: 6px 4px 0px 0px; PADDING-RIGHT: 0px
+}
+.menu1 A {
+	FONT-SIZE: 13px; FONT-WEIGHT: bold; COLOR: #ffffff
+}
+.menu2 A {
+	FONT-SIZE: 13px; FONT-WEIGHT: bold; COLOR: #ffffff
+}
+.menu2 {
+	CURSOR: hand; HEIGHT: 18px; OVERFLOW-Y: hidden; COLOR: #ffffff; PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEFT: 12px; MARGIN: 6px 4px 0px 0px; PADDING-RIGHT: 0px
+}
+.mblt {
+	HEIGHT: 35px; WIDTH: 960px; BACKGROUND: url(webtitle.png) #43a102 no-repeat 0px 2px; POSITION: relative; MARGIN: 0px auto
+}
+.mmenu LI {
+	FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 5px 0px; PADDING-RIGHT: 5px
+}
+#NewsTop {
+	MARGIN-BOTTOM: 3px; BACKGROUND: url(bluebg.gif) repeat-x; CLEAR: both
+}
+#NewsTop P {
+	FLOAT: left; LINE-HEIGHT: 26px
+}
+#NewsTop P.topTit {
+	WIDTH: 80px; FONT-WEIGHT: bold; COLOR: #000; PADDING-LEFT: 10px
+}
+#NewsTop P.topC0 {
+	CURSOR: pointer; WIDTH: 65px; TEXT-ALIGN: center; BORDER-LEFT: #f2f2f2 1px solid
+}
+#NewsTop P.topC1 {
+	WIDTH: 65px; BACKGROUND: #ff6600; COLOR: #ffffff; TEXT-ALIGN: center; BORDER-LEFT: #f2f2f2 1px solid
+}
+#NewsTop #NewsTop_tit {
+	FONT-SIZE: 12px; BORDER-TOP: #aaccee 1px solid; HEIGHT: 23px; BORDER-RIGHT: #aaccee 1px solid; BORDER-BOTTOM: #ff6600 3px solid; BORDER-LEFT: #aaccee 1px solid
+}
+#NewsTop #NewsTop_cnt {
+	BORDER-RIGHT: #aaccee 1px solid; BACKGROUND: url(tops.png) no-repeat; BORDER-BOTTOM: #aaccee 1px solid; PADDING-TOP: 3px; PADDING-LEFT: 28px; BORDER-LEFT: #aaccee 1px solid; LINE-HEIGHT: 24px
+}
+#NewsTop #NewsTop_cnt SPAN {
+	CLEAR: both
+}
+#NewsTop #NewsTop_cnt A {
+	TEXT-DECORATION: none
+}
+#NewsTop #NewsTop_cnt A:hover {
+	COLOR: #ff6600
+}
+#rad1 {
+	MARGIN-BOTTOM: 5px
+}
+#rad2 {
+	MARGIN-BOTTOM: 5px
+}
+.side_box {
+	BORDER-TOP: #ace 1px solid; BORDER-RIGHT: #ace 1px solid; WIDTH: 298px; BACKGROUND: #fff; BORDER-BOTTOM: #ace 1px solid; POSITION: relative; BORDER-LEFT: #ace 1px solid; DISPLAY: block
+}
+.side_box H3 {
+	FONT-SIZE: 12px; HEIGHT: 26px; BACKGROUND: url(bluebg.gif) #deecf5; BORDER-BOTTOM: #ace 1px solid; COLOR: #04142e; PADDING-LEFT: 8px; LINE-HEIGHT: 26px
+}
+A.all {
+	RIGHT: 5px; POSITION: absolute; TOP: 7px
+}
+.side_content {
+	WIDTH: 290px; BACKGROUND: #fff; MARGIN-LEFT: 3px; DISPLAY: block
+}
+.side_list {
+	BACKGROUND: url(tops.png) no-repeat; PADDING-TOP: 3px; PADDING-LEFT: 28px; LINE-HEIGHT: 24px
+}
+.bbline {
+	BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid; BORDER-BOTTOM: #dedede 1px solid; MARGIN: 5px 0px; BORDER-LEFT: #dedede 1px solid
+}
+.dads {
+	BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid; BORDER-BOTTOM: #dedede 1px solid; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; MARGIN: 5px 0px; BORDER-LEFT: #dedede 1px solid; PADDING-RIGHT: 5px
+}
+.dtxt {
+	HEIGHT: 20px; BACKGROUND: #dfdfdf; COLOR: #333; MARGIN: 5px 0px; LINE-HEIGHT: 20px
+}
+.filecontent {
+	MARGIN-BOTTOM: 10px; FONT-SIZE: 14px; LINE-HEIGHT: 1.6em
+}
+.tpath {
+	HEIGHT: 20px; BACKGROUND: #dfdfdf; COLOR: #333; MARGIN: 5px 0px; LINE-HEIGHT: 20px
+}
+.infolinks {
+	HEIGHT: 23px; MARGIN: 5px 0px; LINE-HEIGHT: 23px
+}
+.downbest {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px
+}
+.downbest LI {
+	HEIGHT: 25px; BORDER-BOTTOM: #dedede 1px dashed; POSITION: relative; LINE-HEIGHT: 25px
+}
+.downbest LI A {
+	DISPLAY: block
+}
+.downbest LI A:hover {
+	BACKGROUND: #ffcc00
+}
+.downbest LI SPAN {
+	RIGHT: 0px; POSITION: absolute; COLOR: #ff6600; TOP: 0px
+}
+A.i1 {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 28px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 45px; BACKGROUND: url(i1.png) no-repeat 2px 6px; BORDER-BOTTOM: #dedede 1px solid; PADDING-LEFT: 20px; MARGIN: 5px 0px; DISPLAY: block; LINE-HEIGHT: 28px
+}
+A.i2 {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 28px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 45px; BACKGROUND: url(i5.png) no-repeat 2px 6px; BORDER-BOTTOM: #dedede 1px solid; PADDING-LEFT: 20px; MARGIN: 5px 0px; DISPLAY: block; LINE-HEIGHT: 28px
+}
+A.i3 {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 28px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 45px; BACKGROUND: url(i4.png) no-repeat 2px 6px; BORDER-BOTTOM: #dedede 1px solid; PADDING-LEFT: 20px; MARGIN: 5px 0px; DISPLAY: block; LINE-HEIGHT: 31px
+}
+A.i4 {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 28px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 45px; BACKGROUND: url(i6.png) no-repeat 2px 6px; BORDER-BOTTOM: #dedede 1px solid; PADDING-LEFT: 20px; MARGIN: 5px 0px; DISPLAY: block; LINE-HEIGHT: 31px
+}
+.dlbox {
+	BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid; BORDER-BOTTOM: #dedede 1px solid; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: #dedede 1px solid; PADDING-RIGHT: 10px
+}
+.dlbox2 {
+	MARGIN: 10px 0px
+}
+.dlbox2 A.dn {
+	HEIGHT: 55px; WIDTH: 150px; BACKGROUND: url(dn.png) no-repeat; POSITION: relative; DISPLAY: block
+}
+.dlbox2 A.dn:hover {
+	HEIGHT: 55px; WIDTH: 150px; BACKGROUND: url(dn.png) no-repeat -150px 0px; DISPLAY: block
+}
+.dlbox2 A.dn SPAN {
+	RIGHT: 11px; POSITION: absolute; COLOR: #ffcc00; TOP: 33px
+}
+.other LI {
+	HEIGHT: 23px; BACKGROUND: url(dot.gif) no-repeat 0px 10px; PADDING-LEFT: 8px; LINE-HEIGHT: 23px
+}
+.besttitle {
+	HEIGHT: 24px; BACKGROUND: url(ybg.gif) repeat-x; FONT-WEIGHT: bold; COLOR: #ff6600; PADDING-LEFT: 5px; LINE-HEIGHT: 24px
+}
+.adtitle {
+	HEIGHT: 25px; WIDTH: 638px; BACKGROUND: #12667f; BORDER-BOTTOM: #dedede 1px solid; COLOR: #ffffff; PADDING-LEFT: 10px; DISPLAY: block; LINE-HEIGHT: 25px
+}
+.adbox {
+	BORDER-TOP: #dedede 1px solid; BORDER-RIGHT: #dedede 1px solid; BORDER-BOTTOM: #dedede 1px solid; PADDING-BOTTOM: 20px; BORDER-LEFT: #dedede 1px solid; MARGIN-TOP: 10px
+}
+.ad468 {
+	WIDTH: 468px; FLOAT: right
+}
+.ad150 {
+	WIDTH: 150px; FLOAT: left
+}
+.rshow {
+	WIDTH: 300px; FLOAT: right
+}
+.showbox {
+	OVERFLOW: hidden; BORDER-TOP: #69a156 1px solid; BORDER-RIGHT: #69a156 1px solid; WIDTH: 648px; BORDER-BOTTOM: #69a156 1px solid; FLOAT: left; BORDER-LEFT: #69a156 1px solid; DISPLAY: block
+}
+.showbox H1.downtitle {
+	FONT-SIZE: 24px; HEIGHT: 30px; BORDER-BOTTOM: #dedede 1px dashed; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px
+}
+.showbox H1.downtitle .topic {
+	OVERFLOW: hidden; HEIGHT: 34px; WIDTH: 500px; FLOAT: left
+}
+.showbox H1.downtitle SPAN {
+	HEIGHT: 34px; WIDTH: 100px; FLOAT: right; MARGIN-RIGHT: 10px
+}
+.showbox H1.downtitle SPAN A {
+	HEIGHT: 26px; WIDTH: 92px; BACKGROUND: url(dl.gif) no-repeat; DISPLAY: block
+}
+.showbox .infotitle {
+	MARGIN-BOTTOM: 5px; FONT-SIZE: 12px; HEIGHT: 23px; FONT-WEIGHT: bold; LINE-HEIGHT: 23px
+}
+.showbox .readme {
+	COLOR: #666666; MARGIN: 20px 0px
+}
+.showinfo {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px
+}
+.da A {
+	FONT-SIZE: 14px; TEXT-DECORATION: underline; COLOR: #0000ff; DISPLAY: block; LINE-HEIGHT: 23px
+}
+.listbox {
+	OVERFLOW: hidden; MARGIN-BOTTOM: 10px; BORDER-TOP: #69a156 1px solid; BORDER-RIGHT: #69a156 1px solid; WIDTH: 648px; BORDER-BOTTOM: #69a156 1px solid; FLOAT: left; BORDER-LEFT: #69a156 1px solid; DISPLAY: block
+}
+.listinfo {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px
+}
+.lshow {
+	FLOAT: left
+}
+.txtlist {
+	
+}
+.txtlist LI {
+	FONT-SIZE: 14px; HEIGHT: 32px; BACKGROUND: url(dot.gif) no-repeat 0px 12px; BORDER-BOTTOM: #dedede 1px dashed; PADDING-LEFT: 8px; LINE-HEIGHT: 32px
+}
+.txtlist A {
+	WIDTH: 500px; FLOAT: left; DISPLAY: block
+}
+.txtlist LI EM {
+	WIDTH: 90px; FLOAT: right; TEXT-ALIGN: right; DISPLAY: block
+}
+.imglist LI {
+	HEIGHT: 163px; WIDTH: 140px; BACKGROUND: #dedede; FLOAT: left; MARGIN: 5px 8px 10px
+}
+.imglist LI A.aimg {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 138px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 138px; BORDER-BOTTOM: #dedede 1px solid; BORDER-LEFT: #dedede 1px solid; DISPLAY: block
+}
+.imglist LI A.aimg IMG {
+	WIDTH: 138px
+}
+.imglist LI A.aimg:hover {
+	BORDER-TOP: #ff9900 1px solid; BORDER-RIGHT: #ff9900 1px solid; BORDER-BOTTOM: #ff9900 1px solid; BORDER-LEFT: #ff9900 1px solid
+}
+.imglist LI P {
+	OVERFLOW: hidden; HEIGHT: 23px; TEXT-ALIGN: center; LINE-HEIGHT: 23px
+}
+.pagebar {
+	FONT-SIZE: 14px; COLOR: #666; TEXT-ALIGN: center; MARGIN: 10px 0px 20px
+}
+.pagebar A {
+	FONT-SIZE: 14px; TEXT-DECORATION: underline; FONT-WEIGHT: bold; COLOR: #43a102; MARGIN: 0px 3px
+}
+.pagebar A.active {
+	TEXT-DECORATION: none; COLOR: #666
+}
+.mboxtitle {
+	HEIGHT: 34px; BACKGROUND: url(a4.jpg) no-repeat; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; CLEAR: both; DISPLAY: block; PADDING-RIGHT: 10px
+}
+.mboxtitle IMG {
+	flaot: left
+}
+.mboxtitle H1 {
+	OVERFLOW: hidden; FONT-SIZE: 18px
+}
+.mboxtitle SPAN A {
+	FONT-WEIGHT: bold; COLOR: #43a102
+}
+.mboxtitle SPAN {
+	WIDTH: 250px; FLOAT: right; MARGIN-TOP: -10px; DISPLAY: block
+}
+#title {
+	MARGIN-TOP: 5px
+}
+#title .face {
+	HEIGHT: 70px; WIDTH: 70px; FLOAT: left; DISPLAY: block
+}
+#title .face A {
+	OVERFLOW: hidden; FONT-SIZE: 14px; BORDER-TOP: #deecf5 5px solid; HEIGHT: 60px; BORDER-RIGHT: #deecf5 5px solid; WIDTH: 60px; BACKGROUND: #ff9900; BORDER-BOTTOM: #deecf5 5px solid; FONT-WEIGHT: bold; COLOR: #fff; TEXT-ALIGN: center; BORDER-LEFT: #deecf5 5px solid; DISPLAY: block
+}
+#title .face A:hover {
+	BACKGROUND: #ff9900; COLOR: #fff
+}
+#title .face SPAN {
+	HEIGHT: 35px; TEXT-ALIGN: center; DISPLAY: block; LINE-HEIGHT: 35px
+}
+#title .info {
+	HEIGHT: 60px; WIDTH: 550px; FLOAT: right; DISPLAY: block
+}
+#title .info H1.tt {
+	FONT-SIZE: 24px; HEIGHT: 40px; WIDTH: 555px; BORDER-BOTTOM: #deecf5 3px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 40px; PADDING-RIGHT: 0px
+}
+#title .info .tm {
+	FONT-SIZE: 12px; HEIGHT: 25px; COLOR: #666; PADDING-LEFT: 2px; LINE-HEIGHT: 25px
+}
+#title .info .tm A {
+	COLOR: #666
+}
+#context {
+	FONT-SIZE: 14px; COLOR: #000; LINE-HEIGHT: 2em
+}
+#context P {
+	FONT-SIZE: 14px; COLOR: #000; LINE-HEIGHT: 2em; TEXT-INDENT: 2em
+}
+.tags {
+	BORDER-TOP: #cccccc 1px dashed; HEIGHT: 25px; BORDER-RIGHT: #cccccc 1px dashed; BACKGROUND: #ffffff; BORDER-BOTTOM: #cccccc 1px dashed; POSITION: relative; PADDING-LEFT: 5px; CLEAR: both; MARGIN: 5px 0px; BORDER-LEFT: #cccccc 1px dashed; LINE-HEIGHT: 25px
+}
+.tags SPAN {
+	RIGHT: 5px; POSITION: absolute; TOP: 1px
+}
+#commentpost {
+	BORDER-TOP: #c7ddf3 1px solid; BORDER-RIGHT: #c7ddf3 1px solid; BACKGROUND: #f7f7f7; BORDER-BOTTOM: #c7ddf3 1px solid; CLEAR: both; MARGIN: 5px 0px; BORDER-LEFT: #c7ddf3 1px solid
+}
+#commentpost FORM {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px
+}
+#commentpost A.more {
+	RIGHT: 8px; POSITION: absolute; TOP: 0px
+}
+#commentpost .subtitle {
+	FONT-SIZE: 14px; BORDER-BOTTOM: #deecf5 1px solid; FONT-WEIGHT: bold; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; MARGIN: 0px; PADDING-RIGHT: 5px
+}
+#commentpost .cmbox {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 10px; CLEAR: both; PADDING-RIGHT: 10px
+}
+#commentpost .cmbox .face {
+	HEIGHT: 65px; WIDTH: 65px; FLOAT: left; DISPLAY: block
+}
+#commentpost .cmbox .face A {
+	BORDER-TOP: #deecf5 5px solid; HEIGHT: 50px; BORDER-RIGHT: #deecf5 5px solid; WIDTH: 50px; BORDER-BOTTOM: #deecf5 5px solid; BORDER-LEFT: #deecf5 5px solid; DISPLAY: block
+}
+#commentpost .cmbox .cminfo {
+	WIDTH: 533px; FLOAT: left; DISPLAY: block
+}
+#commentpost .cmbox .cmhead {
+	BACKGROUND: #efefef; BORDER-BOTTOM: #fff 1px dashed; POSITION: relative; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+}
+#commentpost .cmbox .cmhead SPAN {
+	RIGHT: 5px; POSITION: absolute; COLOR: blue; TOP: 7px
+}
+#commentpost .cmbox .cmbody {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 0px; LINE-HEIGHT: 1.6em; PADDING-RIGHT: 0px
+}
+.morelist {
+	
+}
+.morelist UL LI {
+	HEIGHT: 28px; BORDER-BOTTOM: #dedede 1px dashed; POSITION: relative; LINE-HEIGHT: 30px
+}
+.morelist UL LI A {
+	FONT-SIZE: 13px
+}
+.morelist UL LI SPAN {
+	RIGHT: 10px; POSITION: absolute; TOP: 0px
+}
+.bbox {
+	POSITION: relative; CLEAR: both
+}
+.bbox LI {
+	FONT-SIZE: 14px; HEIGHT: 24px; BACKGROUND: url(dot2.gif) no-repeat 8px 7px; PADDING-LEFT: 15px; LINE-HEIGHT: 24px
+}
+.bbox LI SPAN {
+	FONT-SIZE: 12px; COLOR: #555555; PADDING-LEFT: 5px; LINE-HEIGHT: 20px
+}
+.bbox LI A {
+	COLOR: #0000ff
+}
+.ads {
+	BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid
+}
+.box_caption {
+	OVERFLOW: hidden; FONT-SIZE: 13px; HEIGHT: 32px; BACKGROUND: url(classtitle.gif); POSITION: relative; FONT-WEIGHT: bold; COLOR: #002279; PADDING-LEFT: 8px; CLEAR: both; DISPLAY: block; LINE-HEIGHT: 32px
+}
+.box_caption {
+	OVERFLOW: hidden; FONT-SIZE: 13px; HEIGHT: 32px; BACKGROUND: url(classtitle.gif); POSITION: relative; FONT-WEIGHT: bold; COLOR: #002279; PADDING-LEFT: 8px; CLEAR: both; DISPLAY: block; LINE-HEIGHT: 32px
+}
+.box_caption A.more {
+	FONT-SIZE: 12px; RIGHT: 5px; POSITION: absolute; FONT-WEIGHT: normal; COLOR: #ffffff
+}
+.box_caption SPAN {
+	FONT-SIZE: 12px; RIGHT: 5px; POSITION: absolute; FONT-WEIGHT: normal; TOP: 0px
+}
+.box_caption SPAN A {
+	FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 2px; MARGIN: 0px 3px; DISPLAY: block; PADDING-RIGHT: 2px
+}
+.listintro {
+	FONT-WEIGHT: 700; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; CLEAR: both; MARGIN: 3px 0px; PADDING-RIGHT: 5px
+}
+.ads {
+	BORDER-TOP: #c7ddf3 1px solid; BORDER-RIGHT: #c7ddf3 1px solid; BORDER-BOTTOM: #c7ddf3 1px solid; MARGIN: 3px 0px; BORDER-LEFT: #c7ddf3 1px solid
+}
+.ads_con {
+	POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px
+}
+.mimg H3 {
+	OVERFLOW: hidden; FONT-SIZE: 12px; FONT-STYLE: normal; MARGIN: 3px
+}
+.mimg A.smll IMG {
+	HEIGHT: 98px
+}
+.mimg A.smll {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 98px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 156px; BORDER-BOTTOM: #dedede 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #dedede 1px solid; DISPLAY: block
+}
+.adjs LI IMG {
+	HEIGHT: 98px
+}
+.adjs LI A.aimg {
+	OVERFLOW: hidden; BORDER-TOP: #dedede 1px solid; HEIGHT: 98px; BORDER-RIGHT: #dedede 1px solid; WIDTH: 138px; BACKGROUND: #efefef; BORDER-BOTTOM: #dedede 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #dedede 1px solid; DISPLAY: block
+}
+.adjs LI P {
+	OVERFLOW: hidden; HEIGHT: 22px; WIDTH: 138px; LINE-HEIGHT: 25px
+}
+.dnbox {
+	BORDER-TOP: #d8e5f6 1px solid; BORDER-RIGHT: #d8e5f6 1px solid; BORDER-BOTTOM: #d8e5f6 1px solid; BORDER-LEFT: #d8e5f6 1px solid
+}

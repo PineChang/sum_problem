@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<!-- saved from url=(0174)http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/ -->
+<html lang="zh-CN"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="张鑫旭的个人博客_web前端技术文章_CSS box-flex属性，然后弹性盒子模型简介">
+<meta name="keywords" content="web前端,HTML5,CSS3,jQuery,SVG,canvas">
+<meta name="author" content="张鑫旭,zhangxinxu">
+<title>CSS box-flex属性，然后弹性盒子模型简介 «  张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/style.css">
+<link rel="pingback" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php">
+ 
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » Feed" href="http://www.zhangxinxu.com/wordpress/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » 评论Feed" href="http://www.zhangxinxu.com/wordpress/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » CSS box-flex属性，然后弹性盒子模型简介评论Feed" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/feed/">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.zhangxinxu.com/wordpress/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="jQuery powerFloat万能浮动层下拉层插件" href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">
+<link rel="next" title="div模拟textarea文本域轻松实现高度自适应" href="http://www.zhangxinxu.com/wordpress/2010/12/div-textarea-height-auto/">
+<meta name="generator" content="WordPress 4.1.12">
+<link rel="canonical" href="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活.html">
+<link rel="shortlink" href="http://www.zhangxinxu.com/wordpress/?p=1338">
+<script type="text/javascript" async="" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/ga.js"></script><script src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/ca-pub-0090627341039040.js"></script><script async="" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0090627341039040",
+    enable_page_level_ads: true
+  });
+</script>
+<link href="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/bdsstyle.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/getnum"></script><script src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/logger.js"></script></head>
+<body class="single single-post postid-1338 single-format-standard"><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="bds_more">更多...</a></li></ul><p><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" class="goWebsite">百度分享</a></p></div></div></div>
+<div id="page">
+<div id="header" role="banner">
+	<div id="headerimg">
+		<a href="http://www.zhangxinxu.com/" class="page_logo">张鑫旭-鑫空间-鑫生活</a>
+		<div class="description">it's my whole life!</div>
+	</div>
+    <div id="menubar">
+<ul class="menu_tab">
+<li>
+<a class="boss" href="http://www.zhangxinxu.com/">网站首页</a>
+<a class="disabled" title="频道已关闭">提问交流</a>
+<a class="disabled" title="频道已关闭">前端调查</a>
+</li>
+<li class="on">
+<a class="boss" href="http://www.zhangxinxu.com/wordpress/">前端技术</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=3">css</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=5">js/jQuery</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=198">翻译</a>
+</li>
+<li>
+<a class="boss" href="http://www.zhangxinxu.com/life/">生活与创作</a>
+<a href="http://www.zhangxinxu.com/life/?cat=3">生活</a>
+<a href="http://www.zhangxinxu.com/life/?cat=5">散文</a>
+<a href="http://www.zhangxinxu.com/life/?cat=4">小说</a>
+</li>
+<li>
+<span class="boss">前端在线资源</span>
+<a href="http://www.zhangxinxu.com/css3/">CSS3参考</a>
+<a href="http://www.zhangxinxu.com/jq/api14/">jQuery1.4参考</a>
+</li>         
+</ul>
+<form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="翻页太辛苦，试试直接搜索" value="" name="s" id="s">
+<input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+    </div>
+</div>
+<script>
+var isSlideHide = false;
+if (window.localStorage) {
+	isSlideHide = localStorage.getItem("isSlideHide");
+	if (!isSlideHide && document.body.clientWidth <= 1024) {
+		isSlideHide = "true";
+	}
+	if (isSlideHide == "true") {
+		document.getElementById("page").className = "slide_hide";
+	}
+}
+if (window.location != window.parent.location) window.parent.location = window.location;
+</script>
+<div class="the_main">
+	<div id="content" class="widecolumn" role="main">
+    <div class="shink_rel"><a href="javascript:" id="shinkSlide" class="shink_a" title="收起右边栏" style="display: inline;">►</a></div>
+<script>if (window.localStorage && window.isSlideHide) {
+	(function() {
+		var eleShink = document.getElementById("shinkSlide");	
+		eleShink.title = "展开右边栏";
+		eleShink.innerHTML = "◄";
+	})();
+}</script>
+	
+		<div class="navigation">
+			<div class="alignleft">« <a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/" rel="prev">jQuery powerFloat万能浮动层下拉层插件</a></div>
+			<div class="alignright"><a href="http://www.zhangxinxu.com/wordpress/2010/12/div-textarea-height-auto/" rel="next">div模拟textarea文本域轻松实现高度自适应</a> »</div>
+		</div>
+
+		<div class="post-1338 post type-post status-publish format-standard hentry category-css tag-box-align tag-box-direction tag-box-flex tag-box-lines tag-box-ordinal-group tag-box-orient tag-box-pack tag-css3 tag-537" id="post-1338">
+			<h2>CSS box-flex属性，然后弹性盒子模型简介<span id="qrCode" class="qr_code" onmouseover="_gaq.push([&#39;_trackEvent&#39;, &#39;QR&#39;, &#39;Hover&#39;]);"><img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/api.php"></span></h2>
+			<div class="entry">
+            	<div class="postmetadata alt">
+					<small>
+												这篇文章发布于 2010年12月19日，星期日，17:10，归类于 <a href="http://www.zhangxinxu.com/wordpress/category/css/" rel="category tag">css相关</a>。                        阅读 202795 次, 今日 178 次					</small>
+				</div>
+				<p class="link">by <a href="http://www.zhangxinxu.com/">zhangxinxu</a> from <a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a><br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=1338">http://www.zhangxinxu.com/wordpress/?p=1338</a></p>
+<h3>一、淡淡的开头语</h3>
+<p>昨天趁着不想工作的时间间隙闲逛24ways，在<a href="http://24ways.org/2010/my-css-wish-list">My CSS Wish List</a>一文中，见到了个新鲜的CSS属性，就是题目中的box-flex，以前没有见过，顿生疑惑，不知是骡子还是马，于是习惯性谷歌之，真是不谷不知道，一谷吓一跳。倒不是该属性本身，而是此属性作为导火索，让我了解了下CSS3中新的盒子模型——弹性盒子模型(Flexible Box Model)。对于我这样的流体布局控而言，这种盒子模型的出现就好比打麻将杠上开花杠到绝张边七条，让人兴奋不已。在国外，弹性盒子模型早在去年就开始被提及，研究，与应用。然而，自己现在才第一次听到此概念，真是一不留神就out了，学习这东西，果然松懈不得。</p>
+<p>本文内容叙述撇开以往顺流而下的方式，直接以box-flex属性为切入口，直入大本营，再铺开叙述。</p>
+<p><strong>添加于2014-11-30</strong>：本文已老，仅供参考。</p>
+<h3>二、box-flex属性（和谐版）</h3>
+<p>有道桌面词典显示，”flex”一词中文有“收缩”之意。不过，从此属性实际上产生的效果来看，无论怎样用“收缩”一词解释都显得很牵强。所以，这里，直接抛开字面意思，我们可以将”box-flex”理解为”房子-分配”。box为“盒子”的意思，我们可以理解为当下价格巨高的“房子”，”flex”指兄弟几个“分配房子”。</p>
+<p>举个更实际点的例子：马林大叔省吃俭用一辈子，终于在上海郊外买了间150平米的商品房。后来，马林大叔想回老家养老，决定把房子分配给他的三个儿子。ok，先暂停下，这里提到的“房子”就是”box-flex”中的”box”，“分配”就是”box-flex”中的”flex”，于是，这个“分配房子”的举动就称为”box-flex”，而box-flex属性的值就是说的如何分配，分配比例是什么。oK，继续我们的例子，马林大叔的三个儿子分别叫做大马，中马和小马，其中大马已经结婚多年，有一堆双胞胎女儿，拖家带口的人多；而中马和小马是优秀的光棍人士。所以，大马要求分配更多的房子，最终，家人一番协商有了下面的分配结果，就是：</p>
+<div class="zxx_code">
+<pre>#大马 { 房子-分配: 2; }
+#中马 { 房子-分配: 1; }
+#小马 { 房子-分配: 1; }
+</pre>
+</div>
+<p>我想，上面的分配应该很容易看懂的。房子分成了总共4份，其中有家室的大马分得其中的两份，而为国家省橡胶的中马和小马每人分得其中一份，于是用数值换算就是：<br>
+大马 = 150 * (2 / (2+1+1)) = 75（平米）;<br>
+中马 = 150 * (1 / (2+1+1)) = 37.5（平米）;<br>
+小马 = 150 * (1 / (2+1+1)) = 37.5（平米）;</p>
+<p>如果装换成CSS表示就是：</p>
+<div class="zxx_code">
+<pre>#first_boy { box-flex: 2; }
+#second_boy { box-flex: 1; }
+#three_boy { box-flex: 1; }
+</pre>
+</div>
+<p>哇咔咔，box-flex的含义与作用理解瞬间柳暗花明：用来按比例分配父标签的宽度(或高度)空间。</p>
+<p>box-flex的值为至少为1的整数时起作用。但是，仅仅一个box-flex属性是不足以实现子元素间的空间分配，因为还要看其老爸的意思。所谓，我爸是李刚，撞人很嚣张；恨爸不是刚，撞人心慌慌。只有老爸开口说：“这个房子现在你们随意分配。”其子女才能分配。</p>
+<p>所以，父元素也是需要添加必要的声明的。此声明就是：</p>
+<div class="zxx_code">
+<pre>#father { display: box; }</pre>
+</div>
+<p>似乎也可以是：
+</p><div class="zxx_code">
+<pre>#father { display: inline-box; }</pre>
+</div>
+<p>此声明好像是在说：孩子们，现在我把这个房子变成了可随意分配状态，非固定财产，你们可以自己协商分配了。<br>
+<code>display: box;</code>的声明其实就是弹性盒子模型的声明，此声明下的子元素的行为与表现与CSS2中的传统盒子模型的表现是有显著的差异的。</p>
+<p>毕竟属于CSS3的东西，目前而言，仅Firefox/Chrome/Safari浏览器支持弹性盒子模型（IE9不详，Opera尚未），且使用的时候，需要附带私有前缀。就是诸如-moz-, -webkit-之类。</p>
+<p><strong>CSS实例</strong><br>
+现在把上面的马林分房子的例子CSS实例化，看看在web页面上是个如何的表现：<span class="s" style="color:#999;">//zxx:有把小说拍成电影的感觉，<img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/kbz2.gif" class="vimg" title="抠鼻" alt="抠鼻"></span></p>
+<p>主要CSS代码如下：</p>
+<div class="zxx_code">
+<pre>.test_box {
+    display: -moz-box; 
+    display: -webkit-box; 
+    display: box; 
+    
+    ...
+ }
+.list {
+   ...
+}
+.list_one {
+    -moz-box-flex: 1; 
+    -webkit-box-flex: 1; 
+    box-flex: 1;
+}
+.list_two{
+    -moz-box-flex: 2; 
+    -webkit-box-flex: 2; 
+    box-flex: 2;
+}
+</pre>
+</div>
+<p>HTML代码如下：</p>
+<div class="zxx_code">
+<pre>&lt;div class="test_box"&gt;
+    &lt;div class="list list_two"&gt;1&lt;/div&gt;
+    &lt;div class="list list_one"&gt;2&lt;/div&gt;
+    &lt;div class="list list_one"&gt;3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<p>结果如下缩略图：<br>
+<img alt="box-flex使用效果截图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_112737.png" title="box-flex使用效果截图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="553" height="187" src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_112737.png"></p>
+<p>从上图可以看去，老大大马确实分配到了2份的房子空间，而中马和小马均分到了一份房子空间。</p>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/201012/css-box-flex-demo-1.html">box-flex弹性布局测试demo</a></p>
+<h3>三、CSS box-flex属性（不和谐版）</h3>
+<p>继续上面马林大叔分房的例子。原本兄弟三人和和睦睦是一点问题都没有的，房子怎么分也基本都定下来了。然而，突然，事情起了波澜。老三小马突然有了个彪悍的女朋友，叫阿凤。小马本人对分配房子的大小是觉得无所谓的，即使两个人住，近40平米的屋子也足够了，何必为了这点事情伤了兄弟们间的和气。然而，小马的女友阿凤却是个吃不了亏的人，说什么也要争口气，于是，找来大马中马，强烈要求要加大他们房子的分配面积。</p>
+<p>在大马，中马看来，阿凤还属于外来人，凭什么对他们兄弟的房子指手划脚，于是，没得妥协，于是，争执不断，于是，愈演愈烈，于是，不可开交。于是，有天，阿凤实在憋不住了，在厨房做菜的时候突然拿着菜刀跑出来，大声咆哮：“不管怎样，反正我家小马至少要50平米的房子，其余的怎么分是你们的事情，我不管，这是我的底线了，再低就没得商量！！”大马等被这架势吓住了，最终还是妥协了：小马就50平米（即使以后房子扩建还是50平米），剩下的面积大马，中马2:1比例再分配。于是就有：</p>
+<div class="zxx_code">
+<pre>#大马 { 房子-分配: 2; }
+#中马 { 房子-分配: 1; }
+#小马 { 房子-分配: 50m<sup>2</sup>; }
+</pre>
+</div>
+<p>改编成CSS剧本就是：</p>
+<div class="zxx_code">
+<pre>#first_boy { box-flex: 2; }
+#second_boy { box-flex: 1; }
+#three_boy { width: 50px; }
+</pre>
+</div>
+<p>还是不难理解，当子元素中有宽度值的时候，此元素就定宽处理，剩下的空间再按比例分配。<br>
+于是，此时，大马的房子大小是：(150 – 50) * (2 / (1 + 2)) = 66.7平米，中马分配房子大小是：(150 – 50) * (1 / (1 + 2)) = 33.3平米。</p>
+<p>还是类似上面的demo，看看含有定宽元素的子元素是如何表现的。</p>
+<p>新增CSS样式如下：</p>
+<div class="zxx_code">
+<pre>.list_w300 { width: 300px; }</pre>
+</div>
+<p>HTML代码如下：</p>
+<div class="zxx_code">
+<pre>&lt;div class="test_box"&gt;
+    &lt;div class="list list_two"&gt;1&lt;/div&gt;
+    &lt;div class="list list_one"&gt;2&lt;/div&gt;
+    &lt;div class="list list_w300"&gt;3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<p>结果如下缩略图：<br>
+<img alt="含定宽元素弹性布局结果缩略图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_151231.png" title="含定宽元素弹性布局结果缩略图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="550" height="181" src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_151231.png"></p>
+<p>老三分得300像素的宽度，剩下的500像素宽度老大和老二2:1比例分配。</p>
+<p>您可以狠狠地点击这里：<a target="_blank" class="a_link" href="http://www.zhangxinxu.com/study/201012/css-box-flex-demo-2.html">含定宽元素弹性布局demo</a></p>
+<p>然而，事情还没有结束。兄弟几个相处了一段时间后发现，偌大的屋子如果全部都是私有的话，会有诸多生活上的不便。所以，需要腾出些公共空间，给屋子透个气。咋办呢，老三小马的女友阿凤死活不妥协，没有办法，老马和中马只能牺牲自己的住所面积作为公共空间了。</p>
+<p>反应到CSS上，大致就是增加了margin间距，如下HTML：</p>
+<div class="zxx_code">
+<pre>&lt;div class="test_box"&gt;
+    &lt;div class="list list_two"&gt;1&lt;/div&gt;
+    &lt;div class="list list_one" style="margin:0 30px;"&gt;2&lt;/div&gt;
+    &lt;div class="list list_w300"&gt;3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<p>结果如下缩略图：<br>
+<img alt="留空后的弹性布局UI 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_152439.png" title="留空后的弹性布局UI 张鑫旭-鑫空间-鑫生活" class="alignnone" width="550" height="170"></p>
+<p>老大，老二的空间同时被压榨了，老大还好，原本比例高。只是可怜了二当家的，地方越来越小。不过，老二的隐忍换来了和睦，所做的牺牲没有白费。</p>
+<h3>四、爸爸其实很厉害，的说~</h3>
+<blockquote><p>语言小知识：“厉害”用日语说的话，动漫里面经常用的比较文雅的就是“すごい”，现在年轻人常用的就是“スゲ”，还有一种说法“よくできるね”是一种称赞的说法，语气比较柔和。</p></blockquote>
+<p>弹性盒子模型下的爸爸（父标签）其实是很有货的，男人嘛，就应该这样，够沉稳够内涵。<br>
+爸爸肚子中的货有：box-orient, box-direction, box-align, box-pack, box-lines. 现在依次讲讲这里box打头的属性都是干嘛用的。</p>
+<p><strong>box-orient</strong><br>
+box-orient用来确定子元素的方向。是横着排还是竖着走。可选的值有：</p>
+<div class="zxx_code">
+<pre>horizontal | vertical | inline-axis | block-axis | inherit</pre>
+</div>
+<p>其中，inline-axis是默认值。且horizontal与inline-axis的表现似乎一致的，让子元素横排；而vertical与block-axis的表现也是一致的，让元素纵列。</p>
+<p>我专门做了个demo页面，方便您查看各个值的行为与表现。您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/201012/css-box-orient-demo.html">box-orient值作用测试页面</a></p>
+<p>切换demo页面左边的单选选项卡（如果您的浏览器为Firefox/Chrome/Safari），就可以看到不同的box-orient属性值的行为表现了。<span class="s">//zxx:对比可以发现，Firefox下的display:box会收缩外框（有点display:inline-block的感觉），而Chrome则没有收缩。</span><br>
+<img alt="点击左边的单选切换属性值 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_175251.png" title="点击左边的单选切换属性值 张鑫旭-鑫空间-鑫生活" class="alignnone" width="337" height="193"></p>
+<p><strong>box-direction</strong><br>
+box-direction是用来确定子元素的排列顺序，可选值有：</p>
+<div class="zxx_code">
+<pre>normal | reverse | inherit</pre>
+</div>
+<p>其中normal是默认值，表示按照正常顺序排列。所谓正常顺序，就是我们看书写文字的顺序，从左往右，由上至下，先出现的元素，就上面或是左边。而reverse表示反转，原本从左往右应该是1-2-3的，结果显示确实3-2-1。</p>
+<p>例如我们将此属性应用在我们一开始的分配房子的demo上的话，最后的显示就会如下缩略图——顺序反过来的：<br>
+<img alt="弹性布局顺序反转缩略图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-17_181217.png" title="弹性布局顺序反转缩略图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="550" height="179"></p>
+<p>相关CSS代码如下：</p>
+<div class="zxx_code">
+<pre>.test_box {
+    display: -moz-box; 
+    display: -webkit-box; 
+    display: box;
+    
+    -moz-box-direction:reverse;
+    -webkit-box-direction:reverse;
+    box-direction:reverse;
+    
+    ...
+ }
+</pre>
+</div>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/201012/css-box-direction-reverse-demo.html">列表顺序反转显示demo</a></p>
+<p><strong>box-align</strong><br>
+box-align与box-pack都是决定盒子内部剩余空间怎么使用的。在行为效果上就是表现为“对齐”，这跟Adobe的软件中的一些“对齐”是一致的，例如化妆大师photoshop中的图层-对齐：<br>
+<img alt="对齐 photoshop 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_143944.png" title="对齐 photoshop 张鑫旭-鑫空间-鑫生活" class="alignnone" width="459" height="283"></p>
+<p>其中box-align决定了垂直方向上的空间利用，也就是垂直方向上的对齐表现。为了便于记忆，我们可以拿来和CSS2中的vertical-align隐射记忆，两者都有”align”，都是都是垂直方向的对齐；而剩下的box-pack就是水平方向的了。</p>
+<p>box的可选参数有：</p>
+<div class="zxx_code">
+<pre>start | end | center | baseline | stretch</pre>
+</div>
+<p>其中stretch为默认值，为拉伸，也就是父标签高度过高，其孩子元素的高度就多高，<span class="s">//zxx:以后等高布局不用愁了。start表示顶边对齐，end为底部对齐，center为居中对齐，baseline表示基线（英文字母o,m,n等的底边位置线）对齐。</span></p>
+<p>为了直观的知道各个值的效果，我做了个可实时查看效果的demo，您可以狠狠地点击这里：<a target="_blank" class="a_link" href="http://www.zhangxinxu.com/study/201012/css-box-align-demo.html">css box-align各值效果demo</a></p>
+<p>点击demo左边的单选按钮组，即可查看各个属性值的效果。<br>
+<img alt="demo操作提示截图 张鑫旭-鑫空间-鑫生活" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/2010-12-19_145502.png" title="demo操作提示截图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="187" height="184"></p>
+<p>例如，选中”center”这个单选按钮，结果右侧的显示如下面的截图：<br>
+<img alt="box-align:center的效果截图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_150001.png" title="box-align:center的效果截图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="484" height="323"></p>
+<p>其他各个属性值的效果您可以自己点击查看（非IE浏览器），这里就不一一展示效果截图了。</p>
+<p><strong>box-pack</strong><br>
+box-pack决定了父标签水平遗留空间的使用，其可选值有：</p>
+<div class="zxx_code">
+<pre>start | end | center | justify</pre>
+</div>
+<p> 就大部分的行为表现来说分别对应text-align属性的值：left | right | center | justify；但是，之所以box-pack不使用”left”, 而是”start”，是因为box-direction属性，这玩意可以反转原本的排列，原本的“左对齐”反转后结果是“右对齐”了，此时”left”显然就词不达意了，所以使用”start”更具有概括性，就是与父标签的起始位置对齐，从而不会产生语义与行为上的困扰。<br>
+<img alt="为什么使用start而不是left 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_151221.png" title="为什么使用start而不是left 张鑫旭-鑫空间-鑫生活" class="alignnone" width="481" height="186"></p>
+<p>其中”start”是box-pack属性的默认值，justify表示两端对齐。<br>
+<img alt="box-pack:justify效果截图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_151526.png" title="box-pack:justify效果截图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="575" height="195"></p>
+<p>为了方便直观的查看各个属性值的效果，我制作了与上面类似风格的demo，您可以狠狠地点击这里：<a target="_blank" class="a_link" href="http://www.zhangxinxu.com/study/201012/css-box-pack-demo.html">box-pack属性值效果demo</a></p>
+<p>下为选中end的界面截图缩略图：<br>
+<img alt="选中end后的截图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_152200.png" title="选中end后的截图 张鑫旭-鑫空间-鑫生活" class="alignnone" width="550" height="233"></p>
+<p>貌似发现在Firefox浏览器下，justify是没有反应的，可能还未支持。Chrome浏览器表现良好。</p>
+<p><strong>box-lines</strong><br>
+box-lines是用来决定子元素是可以换行显示呢？还是就算挤出油还是单行显示。两个可选值：</p>
+<div class="zxx_code">
+<pre>single | multiple</pre>
+</div>
+<p> 其中single是默认值，表示死活不换行，如下图所示：<br>
+<img alt="box-lines:single单行显示溢出 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_153751.png" title="box-lines:single单行显示溢出 张鑫旭-鑫空间-鑫生活" class="alignnone" width="563" height="215"></p>
+<p>设置box-lines:multiple后，就多行显示了。不过我自己测试了下，貌似现在无论是Firefox浏览器还是Chrome都不认识box-lines:multiple属性，是暂不支持呢，还是什么什么？</p>
+<p>您可以狠狠地点击这里：<a target="_blank" class="a_link" href="http://www.zhangxinxu.com/study/201012/css-box-lines-demo.html">看不到换行效果的demo</a></p>
+<h3>五、两个遗漏的属性</h3>
+<p>子元素除了box-flex属性，还有两个属性，box-flex-group和box-ordinal-group，其中box-flex-group的作用不详，貌似目前浏览器也不支持；box-ordinal-group的作用是拉帮结派。还是上面马林大叔分房子的例子。小马女友阿凤又不消停，眼瞅着大马的房子面积比自己大好多，心里不平衡，于是，就去拉拢中马，一起打大马房子的主意。这个“拉拢”就是这里的box-ordinal-group，拉拢的组织团伙是有一个数字级别的，决定了你这个组织的位置。</p>
+<p>数值越小，位置就越靠前，这不难理解，第一组在最前嘛，随后第二组，第三组… 例如：box-ordinal-group:1的组就会在box-ordinal-group:2的组前面显示。于是，我们可以利用这个属性改变子元素的顺序。例如下面这个例子：<br>
+HTML代码如下：</p>
+<div class="zxx_code">
+<pre>&lt;div class="test_box"&gt;
+    &lt;div class="list list_two"&gt;1&lt;/div&gt;
+    &lt;div class="list list_one"&gt;2&lt;/div&gt;
+    &lt;div class="list list_one"&gt;3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+<p>相关CSS如下：</p>
+<div class="zxx_code">
+<pre>.list_one {
+    ...
+
+    -moz-box-ordinal-group: 1; 
+    -webkit-box-ordinal-group: 1; 
+    box-ordinal-group: 1;
+}
+.list_two{
+    ...
+
+    -moz-box-ordinal-group: 2; 
+    -webkit-box-ordinal-group: 2; 
+    box-ordinal-group: 2;
+}
+</pre>
+</div>
+<p>结果后面两个class为”list_one”的元素跑到前面去了。如下图所示：<br>
+<img alt="改变列表的显示顺序 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_163126.png" title="改变列表的显示顺序 张鑫旭-鑫空间-鑫生活" class="alignnone" width="564" height="188"></p>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/201012/css-box-ordinal-group-demo.html">box-ordinal-group分组改序demo</a></p>
+<h3>六、实际点的应用</h3>
+<p>如果您现在浏览器地址栏中的地址中含有”www.zhangxinxu.com”字样，并且浏览器为较新的Firefox/Chrome/Safari浏览器，那么您就可以在本页面上找到我做的应用。</p>
+<style>
+.similarity ul{display:-moz-box; display:-webkit-box; display:box; -moz-box-orient:vertical; -webkit-box-orient:vertical; -o-box-orient:vertical; box-orient:vertical; }
+.similarity ul li{-moz-box-flex:1; -webkit-box-flex:1; box-flex:1; -moz-box-ordinal-group:2; -webkit-box-ordinal-group:2; box-ordinal-group:2; float:none; float:left\9;}
+.similarity ul li:last-child{-moz-box-ordinal-group:1; -webkit-box-ordinal-group:1; box-ordinal-group:1; }
+</style>
+<p>咔咔，我就不卖卖关子了，我改变了相关文章某一处的显示顺序，就是随机文章。<br>
+<img alt="随机文章 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_165729.png" title="随机文章 张鑫旭-鑫空间-鑫生活" class="alignnone" width="281" height="92"></p>
+<p>但是在本文所在的页面上，随机文章第一个显示了（由于赞不支持换行，故垂直显示了）。<br>
+<img alt="随机文章顺序第一 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201012/2010-12-19_170007.png" title="随机文章顺序第一 张鑫旭-鑫空间-鑫生活" class="alignnone" width="422" height="130"></p>
+<p>相关CSS代码如下：</p>
+<div class="zxx_code">
+<pre>.similarity ul{display:-moz-box; display:-webkit-box; display:box; -moz-box-orient:vertical; -webkit-box-orient:vertical; -o-box-orient:vertical; box-orient:vertical; }
+.similarity ul li{-moz-box-flex:1; -webkit-box-flex:1; box-flex:1; -moz-box-ordinal-group:2; -webkit-box-ordinal-group:2; box-ordinal-group:2;}
+.similarity ul li:last-child{-moz-box-ordinal-group:1; -webkit-box-ordinal-group:1; box-ordinal-group:1; }
+</pre>
+</div>
+<h3>七、参考文章</h3>
+<ul id="ul">
+<li><a href="http://24ways.org/2010/my-css-wish-list">My CSS Wish List</a></li>
+<li><a href="http://hacks.mozilla.org/2010/04/the-css-3-flexible-box-model/">The CSS 3 Flexible Box Model</a></li>
+<li><a href="http://www.css3.info/introducing-the-flexible-box-layout-module/">Introducing the Flexible Box Layout module</a></li>
+<li><a href="https://developer.mozilla.org/en/CSS/-moz-box-flex">-moz-box-flex</a></li>
+<li><a href="http://www.w3.org/TR/css3-flexbox/">Flexible Box Layout Module W3C Working Draft</a>, 23 July 2009</li>
+</ul>
+<p>原创文章，转载请注明来自<a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>[<a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a>]<br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=1338">http://www.zhangxinxu.com/wordpress/?p=1338</a></p>
+<p>（本篇完）</p>
+<div class="alipay_support"><strong>如果您觉得本文的内容对您的学习有所帮助，您可以支付宝(左)或微信(右)：</strong><div class="alipay_img"><img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/alipay.png"> <img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/wxpay.png"></div></div><div class="similarity"><div class="similar_title">相关文章</div><ul><li><a href="http://www.zhangxinxu.com/wordpress/2009/09/%e5%85%b3%e4%ba%8e%e6%96%87%e5%ad%97%e5%86%85%e5%ae%b9%e6%ba%a2%e5%87%ba%e7%94%a8%e7%82%b9%e7%82%b9%e7%82%b9-%e7%9c%81%e7%95%a5%e5%8f%b7%e8%a1%a8%e7%a4%ba/">关于文字内容溢出用点点点(...)省略号表示</a> (0.980)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/09/%e5%85%b3%e4%ba%8egif%e5%9b%be%e7%89%87%ef%bc%88%e6%88%96png8%ef%bc%89%e6%9d%82%e8%be%b9%e9%94%af%e9%bd%bf%e7%9a%84%e9%97%ae%e9%a2%98/">关于gif图片（或png8）杂边锯齿的问题</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/css3-transformtransition%e5%ae%9e%e7%8e%b0%e8%b6%85%e9%85%b7%e5%9b%be%e7%89%87%e5%a2%99%e5%8a%a8%e7%94%bb%e6%95%88%e6%9e%9c/">CSS3 transition实现超酷图片墙动画效果</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/01/css3-border-image/">CSS3 border-image详解、应用及jQuery插件</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/01/%e5%9b%be%e7%89%87%e6%97%8b%e8%bd%ac%e6%95%88%e6%9e%9c%e7%9a%84%e4%b8%80%e4%ba%9b%e7%a0%94%e7%a9%b6%e3%80%81jquery%e6%8f%92%e4%bb%b6%e5%8f%8a%e5%ae%9e%e4%be%8b/">图片旋转效果的一些研究、jQuery插件及实例</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/01/css3-animate%e5%ae%9e%e7%8e%b0%e5%9b%be%e7%89%87%e5%a2%993d%e7%bf%bb%e8%bd%ac%e6%95%88%e6%9e%9c/">CSS3 animate实现图片墙3D翻转效果</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/03/%e7%ba%afcss%e5%ae%9e%e7%8e%b0%e5%90%84%e7%b1%bb%e6%b0%94%e7%90%83%e6%b3%a1%e6%b3%a1%e5%af%b9%e8%af%9d%e6%a1%86%e6%95%88%e6%9e%9c/">纯CSS实现各类气球泡泡对话框效果</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/04/css3html5%e5%90%84%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81%e6%83%85%e5%86%b5%e4%b8%80%e8%a7%88%e8%a1%a8/">CSS3&amp;HTML5各浏览器支持情况一览表</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/04/css%e5%ae%9e%e7%8e%b0%e8%b7%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e5%85%bc%e5%ae%b9%e6%80%a7%e7%9a%84%e7%9b%92%e9%98%b4%e5%bd%b1%e6%95%88%e6%9e%9c/">CSS实现跨浏览器兼容性的盒阴影效果</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/04/css%e6%b8%90%e5%8f%98%e4%b9%8bcss3-gradient%e5%9c%a8firefox3-6%e4%b8%8b%e7%9a%84%e4%bd%bf%e7%94%a8/">CSS渐变之CSS3 gradient在Firefox3.6下的使用</a> (0.020)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/07/css%e5%ae%9e%e7%8e%b0%e8%b7%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e7%9a%84box-shadow%e7%9b%92%e9%98%b4%e5%bd%b1%e6%95%88%e6%9e%9c2/">CSS实现跨浏览器的box-shadow盒阴影效果(2)</a> (RANDOM - 0.020)</li></ul></div><!-- Tag -->				<div class="wp_share_box">
+                	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina" title="分享到新浪微博" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+<a class="bds_qzone" title="分享到QQ空间" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+<a class="bds_tqq" title="分享到腾讯微博" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+<a class="bds_t163" title="分享到网易微博" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+<a class="bds_douban" title="分享到豆瓣网" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+<a class="bds_tsohu" title="分享到搜狐微博" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+<a class="shareCount" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1954626" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/bds_s_v2.js"></script>
+
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END --> 
+                </div>
+								<p>标签： <a href="http://www.zhangxinxu.com/wordpress/tag/box-align/" rel="tag">box-align</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/box-direction/" rel="tag">box-direction</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/box-flex/" rel="tag">box-flex</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/box-lines/" rel="tag">box-lines</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/box-ordinal-group/" rel="tag">box-ordinal-group</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/box-orient/" rel="tag">box-orient</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/box-pack/" rel="tag">box-pack</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/css3/" rel="tag">css3</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b/" rel="tag">弹性盒子模型</a></p>			</div>
+		</div>
+        
+        <h3 class="ad_title">赞助商广告<span class="sup_span">(<a href="http://www.zhangxinxu.com/sp/support.html" target="_blank">我也要赞助</a>)</span>：</h3>
+        <div>
+			<div id="adZhuFeng" class="ad_zf_x ad_bottom">
+            	<div class="ad_zf">
+                    <span class="l hidden">如果你月薪不足20K，不妨</span>
+                    <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;zhufeng&#39;, &#39;Not interest&#39;]);">×</a>
+                </div>
+            	<a href="http://www.zhufengpeixun.cn/customize/node/index.html" target="_blank" class="ad_bottom_n" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;zhufeng&#39;, &#39;ad zhufeng Not float&#39;]);"></a>
+            </div>
+            <div id="adYuMi" class="ad_zf_x ad_bottom">
+            	<div class="ad_ym">
+                    <span class="l hidden">希望拥有自己的域名博客？</span>
+                    <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;YuMi&#39;, &#39;Not interest&#39;]);">×</a>
+                </div>
+            	<a href="http://www.qiuyumi.com/zxx/" target="_blank" class="ad_bottom_y" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yumi&#39;, &#39;ad YuMi Not float&#39;]);"></a>
+            </div>
+            <!--<a href="/sp/support.html" target="_blank"><img src="http://ww3.sinaimg.cn/large/4b4d632fgw1f497otmdt2j20a002i3yo.jpg" class="ad_bottom" style="border:1px solid #34538b;" width="360" height="90"></a>-->
+        </div>
+        <div id="adYideng" class="ad_bottom">
+        	<div class="ad_yd">
+            	<span class="l hidden">如果你有1~3年前端开发经验，不妨</span>
+                <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;Not interest&#39;]);">×</a>
+            </div>
+        	<a href="http://web.wuxianedu.com/yideng/?f=zhangxinxu.com" target="_blank" class="ad_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;ad yideng Not float&#39;]);"></a>
+        </div>
+        		
+        
+        
+	﻿
+<div id="respond">
+<h3 class="respond_title">发表评论（目前87 条评论）</h3>
+<div id="cancel-comment-reply"> 
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#respond" style="display:none;">点击这里取消回复。</a></small>
+</div> 
+
+
+<form action="http://www.zhangxinxu.com/wordpress/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" required="">
+<label for="author"><small>名称 (必须)</small></label></p>
+
+<p><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" required="">
+<label for="email"><small>邮件地址(不会被公开) (必须)</small></label></p>
+
+<p><input type="url" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>网站</small></label></p>
+
+
+<!--<p><small><strong>XHTML：</strong>您可以使用这些标签：<code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="提交评论">
+<input type="hidden" name="comment_post_ID" value="1338" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+ 
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="de8a87f1f1"></p><p style="display: none;"></p>
+<input type="hidden" id="ak_js" name="ak_js" value="1467704170654"></form>
+
+</div>
+
+
+<!-- You can start editing here. -->
+
+	<div class="navigation">
+		<div class="alignleft"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-1/#comments">« 先前评论</a></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-318417">
+				<div id="div-comment-318417" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e96d8bad3a873eb7d965b3a64b08c388?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">雯雯</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-318417">
+			2016年05月25日 16:51</a>		</div>
+
+		<p>不错,不管out不out反正我又学到了新的东西</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=318417#respond" onclick="return addComment.moveForm( &quot;div-comment-318417&quot;, &quot;318417&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给雯雯">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-317750">
+				<div id="div-comment-317750" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/0ccc8ca33352077814201f4c67163eee?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">-alice</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-317750">
+			2016年05月13日 20:23</a>		</div>
+
+		<p>受教了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=317750#respond" onclick="return addComment.moveForm( &quot;div-comment-317750&quot;, &quot;317750&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给-alice">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-317536">
+				<div id="div-comment-317536" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b3f1fa0a490800cdb7969072c1a4d874?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Todd_hua</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-317536">
+			2016年05月10日 19:17</a>		</div>
+
+		<p>知识拓展</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=317536#respond" onclick="return addComment.moveForm( &quot;div-comment-317536&quot;, &quot;317536&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给Todd_hua">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-315584">
+				<div id="div-comment-315584" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/d615d5793929e8c7d70eab5f00f7f5f1?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">感谢</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-315584">
+			2016年04月18日 13:55</a>		</div>
+
+		<p>学习了，谢谢大神！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=315584#respond" onclick="return addComment.moveForm( &quot;div-comment-315584&quot;, &quot;315584&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给感谢">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-315403">
+				<div id="div-comment-315403" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/bfedf3534ab069ba8d1a0074c902d80f?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">webxxx</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-315403">
+			2016年04月15日 14:44</a>		</div>
+
+		<p>不错！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=315403#respond" onclick="return addComment.moveForm( &quot;div-comment-315403&quot;, &quot;315403&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给webxxx">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-315351">
+				<div id="div-comment-315351" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/115ff5f51a98d117675ea146f897931d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">calm</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-315351">
+			2016年04月14日 17:19</a>		</div>
+
+		<p>学习了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=315351#respond" onclick="return addComment.moveForm( &quot;div-comment-315351&quot;, &quot;315351&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给calm">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-315306">
+				<div id="div-comment-315306" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/c9f904f78001fde0bd1f447ca577127b?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">aoi</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-315306">
+			2016年04月13日 15:51</a>		</div>
+
+		<p>老师还会日语！！かっこいい！！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=315306#respond" onclick="return addComment.moveForm( &quot;div-comment-315306&quot;, &quot;315306&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给aoi">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-314750">
+				<div id="div-comment-314750" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/efaef2c6b17ed7e805800d90611a685c?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.maicass.com/" rel="external nofollow" class="url">Domi</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-314750">
+			2016年04月6日 10:58</a>		</div>
+
+		<p>非常感谢分享，你写的blog太形象了，这下我基本就明白flex了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=314750#respond" onclick="return addComment.moveForm( &quot;div-comment-314750&quot;, &quot;314750&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给Domi">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-309825">
+				<div id="div-comment-309825" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b08fd25da9a73a6d8569ba20dccee2fc?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">归海</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-309825">
+			2016年01月2日 11:43</a>		</div>
+
+		<p>用box-flex按比例切分父元素之后，如果子元素内地字体个数不一样，还是会影响到布局</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=309825#respond" onclick="return addComment.moveForm( &quot;div-comment-309825&quot;, &quot;309825&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给归海">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-309747">
+				<div id="div-comment-309747" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/0d33a838c36b1cb45113b168ca93c755?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zerosci.com/" rel="external nofollow" class="url">klinda</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-309747">
+			2015年12月31日 14:16</a>		</div>
+
+		<p>感谢博主~~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=309747#respond" onclick="return addComment.moveForm( &quot;div-comment-309747&quot;, &quot;309747&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给klinda">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-309706">
+				<div id="div-comment-309706" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/cb5d083ece3f7652aab20ee0895d1d29?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.pp12345.com/" rel="external nofollow" class="url">……</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-309706">
+			2015年12月30日 17:54</a>		</div>
+
+		<p>实在太赞，楼主14年的时候就已经通透了。我等跪服，太与时俱进！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=309706#respond" onclick="return addComment.moveForm( &quot;div-comment-309706&quot;, &quot;309706&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给……">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-311928">
+				<div id="div-comment-311928" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/5bde97e13012edc5919e8f03fd14ccb7?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">.........</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-311928">
+			2016年01月22日 09:39</a>		</div>
+
+		<p>2010发表的</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=311928#respond" onclick="return addComment.moveForm( &quot;div-comment-311928&quot;, &quot;311928&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给.........">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even depth-2" id="comment-312806">
+				<div id="div-comment-312806" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/4adcca49b3b1e5a08ac202f5d5a9e688?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">asd</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-312806">
+			2016年02月27日 10:06</a>		</div>
+
+		<p>不是14年，是10年了，大哥们都OUT了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=312806#respond" onclick="return addComment.moveForm( &quot;div-comment-312806&quot;, &quot;312806&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给asd">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-309693">
+				<div id="div-comment-309693" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b2232a069a096bf832132ef15a2be7df?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://arrayhuang.cn/" rel="external nofollow" class="url">array_huang</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-309693">
+			2015年12月30日 11:04</a>		</div>
+
+		<p>貌似现在不用box-flex属性，改用flex属性了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=309693#respond" onclick="return addComment.moveForm( &quot;div-comment-309693&quot;, &quot;309693&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给array_huang">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-313941">
+				<div id="div-comment-313941" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/7a10dc95bfd8c6173c2125fad6e5e3f1?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">盛世游侠</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-313941">
+			2016年03月26日 14:23</a>		</div>
+
+		<p>他讲的这个是过渡标准的写法了。新的可以看这篇：http://caibaojian.com/flexbox-guide.html</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=313941#respond" onclick="return addComment.moveForm( &quot;div-comment-313941&quot;, &quot;313941&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给盛世游侠">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-308969">
+				<div id="div-comment-308969" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/f6b66f6ec09b52c992573f902a0152c0?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">西门</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-308969">
+			2015年12月23日 12:54</a>		</div>
+
+		<p>-webkit-box-flex:1  你上面的例子中子元素中的文字个数是相等的 所以分的宽度一样<br>
+如果子元素文字个数不一样，分配的宽度跟系数好像没什么关系了。。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=308969#respond" onclick="return addComment.moveForm( &quot;div-comment-308969&quot;, &quot;308969&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给西门">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-309257">
+				<div id="div-comment-309257" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/0ff6f52a2445e5bde1aef179e4956f75?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">andy</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-309257">
+			2015年12月28日 17:57</a>		</div>
+
+		<p>我也刚了解这个东东，也遇到一样的问题，观察发现，其实分配的都是针对剩余空间，也就是除去元素内容（文字）后的空间是成比例的。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=309257#respond" onclick="return addComment.moveForm( &quot;div-comment-309257&quot;, &quot;309257&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给andy">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-308330">
+				<div id="div-comment-308330" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/cd3346aa8c219fe03d3d3a771a06a191?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.cnblogs.com/Sung18/" rel="external nofollow" class="url">Sung</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-308330">
+			2015年12月18日 15:28</a>		</div>
+
+		<p>我想问一下display:box;与display:flex是一个东西么?不是的话两者有什么不同呢。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=308330#respond" onclick="return addComment.moveForm( &quot;div-comment-308330&quot;, &quot;308330&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给Sung">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-308834">
+				<div id="div-comment-308834" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-308834">
+			2015年12月21日 14:30</a>		</div>
+
+		<p>@Sung 规范在草案阶段是会变更的~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=308834#respond" onclick="return addComment.moveForm( &quot;div-comment-308834&quot;, &quot;308834&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-306163">
+				<div id="div-comment-306163" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/42ebb56f6d94a16c22c0e0802c0a361a?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://wuheng.net/" rel="external nofollow" class="url">H.W.H</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-306163">
+			2015年11月30日 14:18</a>		</div>
+
+		<p>换行失效的问题，研究下</p>
+<p>    DIV 1<br>
+    DIV 2<br>
+    DIV 3<br>
+    DIV 4<br>
+    DIV 5<br>
+    DIV 6</p>
+<p>#flexbox {<br>
+    display: -webkit-flex;<br>
+    -webkit-flex-direction: row;<br>
+    -webkit-flex-wrap: wrap;<br>
+    width: 500px;<br>
+    height: auto;<br>
+    min-height: 200px;<br>
+    }</p>
+<p>#flexbox .box {</p>
+<p>    -webkit-flex: 130px 1;</p>
+<p>    }</p>
+<p>#flexbox .box.bigger {</p>
+<p>    -webkit-flex: 330px 1;</p>
+<p>    }</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=306163#respond" onclick="return addComment.moveForm( &quot;div-comment-306163&quot;, &quot;306163&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给H.W.H">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-305099">
+				<div id="div-comment-305099" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/cd0cf93ac2f21bc357c204317ce0e7fe?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.baidu.com/" rel="external nofollow" class="url">小明</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-305099">
+			2015年11月24日 10:31</a>		</div>
+
+		<p>献上我15年11月的膝盖</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=305099#respond" onclick="return addComment.moveForm( &quot;div-comment-305099&quot;, &quot;305099&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给小明">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-296681">
+				<div id="div-comment-296681" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/6e9463ce88c4ab85477da37da8453e75?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://mclassical.org/" rel="external nofollow" class="url">patrick</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-296681">
+			2015年09月21日 16:26</a>		</div>
+
+		<p>有没有什么方法实现这样的功能<br>
+father宽1000<br>
+有n个child 他们分别宽220<br>
+使用flex布局并且居中 这样每行只能放下4个孩子<br>
+我希望在放下四个孩子的基础上再对孩子进行拉伸 （拉到宽250填满为止)</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=296681#respond" onclick="return addComment.moveForm( &quot;div-comment-296681&quot;, &quot;296681&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给patrick">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-292258">
+				<div id="div-comment-292258" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3e5f9b0bf383f3a1628f2b54765a5025?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.beicaicai.com/" rel="external nofollow" class="url">贝猜猜</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-292258">
+			2015年09月6日 20:29</a>		</div>
+
+		<p>幽默风趣易懂，赞一个</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=292258#respond" onclick="return addComment.moveForm( &quot;div-comment-292258&quot;, &quot;292258&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给贝猜猜">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-289227">
+				<div id="div-comment-289227" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/677f18fd2170a2ef4330f23630f7940e?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://xn--8ovpc/" rel="external nofollow" class="url">果子</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-289227">
+			2015年08月31日 10:41</a>		</div>
+
+		<p>看了很多前端的文章剖析，感觉还是你的最容易理解，写的更清晰易懂</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=289227#respond" onclick="return addComment.moveForm( &quot;div-comment-289227&quot;, &quot;289227&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给果子">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-288203">
+				<div id="div-comment-288203" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/284a9f724475ad35bfb8859961a7de4d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">wt</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-288203">
+			2015年08月28日 17:40</a>		</div>
+
+		<p>讲的真是太好了！我的赞围绕地球可以转3圈！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=288203#respond" onclick="return addComment.moveForm( &quot;div-comment-288203&quot;, &quot;288203&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给wt">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-284763">
+				<div id="div-comment-284763" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/05fa643bffa57800f55565dfcc2bb910?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://blog.loldan.com/" rel="external nofollow" class="url">小鱼博客</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-284763">
+			2015年08月14日 11:19</a>		</div>
+
+		<p>学习了，感谢分享</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=284763#respond" onclick="return addComment.moveForm( &quot;div-comment-284763&quot;, &quot;284763&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给小鱼博客">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-283860">
+				<div id="div-comment-283860" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/ca8f3218b0fe6464ee3f42bfc4da3eac?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://hiluluke.cn/" rel="external nofollow" class="url">hiluluke</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-283860">
+			2015年08月6日 15:55</a>		</div>
+
+		<p>box-align的demo有bug</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=283860#respond" onclick="return addComment.moveForm( &quot;div-comment-283860&quot;, &quot;283860&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给hiluluke">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-281928">
+				<div id="div-comment-281928" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/ce7a76a895d683bf58552bc076d8b324?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">hdchangchang</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-2/#comment-281928">
+			2015年07月22日 17:50</a>		</div>
+
+		<p>还是你的文章容易理解。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/?replytocom=281928#respond" onclick="return addComment.moveForm( &quot;div-comment-281928&quot;, &quot;281928&quot;, &quot;respond&quot;, &quot;1338&quot; )" aria-label="回复给hdchangchang">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/comment-page-1/#comments">« 先前评论</a></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+
+	
+	</div>
+</div>
+	<div id="sidebar" role="complementary">
+         <div id="zxx_intro" class="sldebar_out">
+            <div class="silebar_inner" itemscope="" itemtype="http://data-vocabulary.org/Person">
+                <img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/zxx_90_0824.jpg" itemprop="photo" class="zxx_head_image">
+                <div class="zxx_some_info">
+                    <p class="mb10"><span itemprop="name" class="fn">张鑫旭</span><sup><a itemprop="url" href="http://www.zhangxinxu.com/life/about/">more</a></sup>，09年<a href="http://www.hust.edu.cn/">华中科技大学</a>毕业，目前<span itemprop="location">上海</span>，现就职<a href="http://yuewen.book.qq.com/" itemprop="organization">阅文集团</a>，资深钓鱼爱好者，专注<span itemprop="role">web前端</span>偏前领域。</p>
+
+                    <p>邮箱：<span style="font-family:arial;">zhangxinxu@zhangxinxu.com</span></p>
+                    <p>微博：<a href="http://weibo.com/zhangxinxu">新浪</a> <a href="http://t.qq.com/iamzhangxinxu">腾讯</a></p>
+                </div>
+                <div class="clear"></div>                
+            </div>
+        </div>
+        
+        <div class="sldebar_out top_ad_out" style="top: 2083px;">
+            <div class="silebar_inner top_ad">
+            	<div class="ad_inner">
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-0090627341039040" data-ad-slot="7307897248" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                </div>
+            </div>
+        </div>
+    	<div class="sldebar_out">
+            <div class="silebar_inner slide_list">
+                <ul>
+                    <li id="search-3" class="widget widget_search"><form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="翻页太辛苦，试试直接搜索" value="" name="s" id="s">
+<input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+</li><li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">文章分类</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.zhangxinxu.com/wordpress/category/css/">css相关</a> (236)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/">graphic相关</a> (66)
+<ul class="children">
+	<li class="cat-item cat-item-81"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/as3%e8%8f%9c%e5%8d%95/">as3菜单</a> (32)
+</li>
+	<li class="cat-item cat-item-896"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/canvas-graphic/">canvas相关</a> (9)
+</li>
+	<li class="cat-item cat-item-895"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/svg-graphic/">SVG相关</a> (23)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.zhangxinxu.com/wordpress/category/js/">js相关</a> (112)
+<ul class="children">
+	<li class="cat-item cat-item-60"><a href="http://www.zhangxinxu.com/wordpress/category/js/jquery-about/">jquery相关</a> (43)
+</li>
+	<li class="cat-item cat-item-180"><a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/">js实例</a> (54)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-648"><a href="http://www.zhangxinxu.com/wordpress/category/mobile%e7%9b%b8%e5%85%b3/">mobile相关</a> (11)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.zhangxinxu.com/wordpress/category/ps/">ps相关</a> (13)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.zhangxinxu.com/wordpress/category/web/">web综合</a> (37)
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.zhangxinxu.com/wordpress/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91/">外文翻译</a> (36)
+</li>
+		</ul>
+</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章存档</h2>		<ul>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/06/">2016年六月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/05/">2016年五月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/04/">2016年四月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/03/">2016年三月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/02/">2016年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/">2016年一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/12/">2015年十二月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/11/">2015年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/10/">2015年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/08/">2015年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/07/">2015年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/06/">2015年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/05/">2015年五月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/04/">2015年四月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/03/">2015年三月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/02/">2015年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/01/">2015年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/12/">2014年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/11/">2014年十一月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/10/">2014年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/09/">2014年九月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/08/">2014年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/07/">2014年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/06/">2014年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/05/">2014年五月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/04/">2014年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/03/">2014年三月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/02/">2014年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/01/">2014年一月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/12/">2013年十二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/11/">2013年十一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/10/">2013年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/09/">2013年九月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/08/">2013年八月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/07/">2013年七月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/06/">2013年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/05/">2013年五月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/">2013年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/03/">2013年三月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/02/">2013年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/01/">2013年一月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/12/">2012年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/11/">2012年十一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/10/">2012年十月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/">2012年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/">2012年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/07/">2012年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/">2012年六月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/">2012年五月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/">2012年四月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/03/">2012年三月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/02/">2012年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/01/">2012年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/12/">2011年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/11/">2011年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/10/">2011年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/">2011年九月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/08/">2011年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/07/">2011年七月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/06/">2011年六月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/05/">2011年五月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/04/">2011年四月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/03/">2011年三月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/02/">2011年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/01/">2011年一月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/">2010年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/">2010年十一月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/10/">2010年十月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/09/">2010年九月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/08/">2010年八月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/07/">2010年七月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/06/">2010年六月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/05/">2010年五月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/">2010年四月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/">2010年三月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/02/">2010年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/">2010年一月</a>&nbsp;(16)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/12/">2009年十二月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/11/">2009年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/10/">2009年十月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/09/">2009年九月</a>&nbsp;(36)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/">2009年八月</a>&nbsp;(12)</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">最新文章</h2>		<ul>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/">PNG格式小图标的CSS任意颜色赋色技术</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/">基于clip-path的任意元素的碎片拼接动效</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/csser-how-to-use-nodejs/">JS一般般的网页重构可以使用Node.js做些什么</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/image-preload-based-on-user-behavior/">基于用户行为的图片等资源预加载</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/pseudo-response-layout-base-on-screen-width/">基于screen.width的伪响应式开发</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/canvas-star-noise-smoke/">canvas图形绘制之星空、噪点与烟雾效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/">理解CSS3 max/min-content及fit-content等width值</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">CSS3 filter:drop-shadow滤镜与box-shadow区别应用</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/04/css-writing-mode/">改变CSS世界纵横规则的writing-mode属性</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/04/know-about-html-download-attribute/">了解HTML/HTML5中的download属性</a>
+						</li>
+				</ul>
+		</li><li id="overall-top-10-posts" class="widget widget_dailytopten_overall"><h2 class="widgettitle">热门总排行</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">jQuery powerFloat万能浮动层下拉层插件</a> (326267)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (262301)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (251854)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (218591)</li>
+<li><a href="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活.html">CSS box-flex属性，然后弹性盒子模型简介</a> (202795)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (202200)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (195447)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (189572)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (175493)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/jquery%e9%a1%b5%e9%9d%a2%e5%9b%be%e7%89%87%e7%ad%89%e5%85%83%e7%b4%a0%e6%bb%9a%e5%8a%a8%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd%e5%ae%9e%e7%8e%b0/">jQuery页面滚动图片等元素动态加载实现</a> (173557)</li>
+</ul>
+</li><li id="daily-top-10-posts" class="widget widget_dailytopten"><h2 class="widgettitle">今日热门</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (249)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (214)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (207)</li>
+<li><a href="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活.html">CSS box-flex属性，然后弹性盒子模型简介</a> (178)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (156)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/">JS滚轮事件(mousewheel/DOMMouseScroll)了解</a> (154)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/">PNG格式小图标的CSS任意颜色赋色技术</a> (138)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/10/%e6%88%91%e6%89%80%e7%9f%a5%e9%81%93%e7%9a%84%e5%87%a0%e7%a7%8ddisplaytable-cell%e7%9a%84%e5%ba%94%e7%94%a8/">我所知道的几种display:table-cell的应用</a> (137)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (137)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (129)</li>
+</ul>
+</li>                </ul>
+            </div>
+        </div>
+	</div>
+<div id="footer" role="contentinfo">
+<p>
+Powerd by <a href="http://wordpress.org/">WordPress</a> | Designed by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br>
+Copyright© 2009-2016 张鑫旭-鑫空间-鑫生活<br>
+<a target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备09015569号</a>
+</p>
+</div>
+</div><ins class="adsbygoogle" data-adsbygoogle-status="done" style="display: none; width: auto; height: auto;"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent"><iframe width="0" height="0" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+
+
+<script type="text/javascript" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/form.js"></script>
+<script type="text/javascript" src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/comment-reply.min.js"></script>
+
+<div id="footbar" class="slideout">
+	<div class="foot_yy_x hidden" id="footYyX">
+    	<div class="foot_yy_title">
+        	<span class="l">我的应用</span>
+            <a href="javascript:" class="r" id="footYYClose">-</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">工具与应用</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/base64.html">图片转base64(拖进来)</a>
+			<a class="foot_yy_a" href="http://browserhacks.com/">浏览器hack</a>
+            <a class="foot_yy_a" href="http://cubic-bezier.com/">CSS贝塞尔曲线可视化</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/css-compress-mini.html">CSS在线压缩工具</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/calculator.html">简易在线计算器</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">在线资源</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/api14/">jQuery 1.4 API中文版</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/">Snap.svg中文文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/stylus/">stylus中文版参考文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/css3/">CSS3中文共享参考指南</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/character.html">非主流字符及字符图案</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/mt/">MooTools 1.2中文文档</a>
+        </div>
+        <div>&nbsp;</div>
+        <a href="javascript:" class="foot_yy foot_yy_on nowrap" id="footYYOff"><img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    </div>
+    <a href="javascript:" class="foot_yy nowrap" id="footYYShow"><img src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    <span class="foot_rss l">
+    	<a class="foot_rss_a" href="http://www.zhangxinxu.com/wordpress/?feed=rss2">文章(RSS)</a>
+         
+    </span>
+    <a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/#" id="backToTop" class="foot_top">返回顶部↑</a>
+	<a href="http://www.zhangxinxu.com/wordpress/wp-login.php" class="foot_login"><i class="icon-male"></i>登录</a>
+</div>
+
+<script src="./CSS box-flex属性，然后弹性盒子模型简介 « 张鑫旭-鑫空间-鑫生活_files/script-min.js"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-11205167-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<div id="adYidengFloat" class="ad_bottom hidden" style="display: block;">
+        	<div class="ad_yd">
+            	<span class="l hidden">如果你有1~3年前端开发经验，不妨</span>
+                <a href="javascript:" class="r hidden" title="不敢兴趣" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;Not interest&#39;]);">×</a>
+            </div>
+        	<a href="http://web.wuxianedu.com/yideng/?f=zhangxinxu.com" target="_blank" class="ad_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;supportAd&#39;, &#39;yideng&#39;, &#39;ad yideng float&#39;]);"></a>
+        </div></body></html>

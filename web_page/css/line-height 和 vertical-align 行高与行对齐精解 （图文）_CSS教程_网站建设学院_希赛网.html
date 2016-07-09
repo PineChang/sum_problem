@@ -1,0 +1,987 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>
+        line-height 和 vertical-align 行高与行对齐精解 （图文）_CSS教程_网站建设学院_希赛网
+    </title>
+    <meta name="keywords" content="CSS教程,css,css样式">
+    <meta name="description" content="点评：行高指的是文本行的基线间的距离，但是文本之间的空白距离不仅仅是行高决定的，同时也受字号的影响。7.3line-height行高指的是文本行的基线间的距离，但是文本之间的空白距离不仅仅是行高决定的，同时也受字号的影响。7.3.1语法line-height属性的具体定义列表如下：语法：line-height:normal|&lt;实数&gt;|&lt;长度&gt;|&lt;百..">
+    <meta name="classification" content="CSS教程" />
+    <meta name="author" content="网站建设学院_希赛网" />
+    <meta name="copyright" content="希赛网" />
+    <link rel="canonical" href="http://www.educity.cn/jianzhan/630291.html" />
+    <link rel="stylesheet" type="text/css" href="/css/article_cnt.css" />
+    
+    <link rel="stylesheet" type="text/css" href="/css/nei.css" />
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function() { 
+             //阅读数
+            $.ajax({
+                type: "post",
+                url: "/ajax/articleHandler.ashx",
+                dataType: "text",
+                data: { article_id: "630291", action: "redcount" },
+                success: function (result) { },
+                error: function () { },
+                cache: false
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--顶部Begin-->
+    <style type="text/css">
+.nav_ITjcxy{position: relative;height:46px;margin-top:22px;margin-right:100px;}
+.nav_ITjcxy #nav_ITjcxy_allKC {float: left;margin-left: 53px;position: relative;width: 95px;}
+.nav_ITjcxy #nav_ITjcxy_allKC a.tit {margin-left: 0;font-size:16px;color:#0595e8;}
+.nav_ITjcxy #nav_ITjcxy_allKC a img {margin-left: 5px;margin-top: 5px;}
+.nav_ITjcxy .nav_ITjcxy_qukc {display: none;left: -13px;position: absolute;top: 24px;width: 174px;z-index: 999;}
+.nav_ITjcxy .nav_ITjcxy_qukc .nav_ITjcxy_qukcTop {background: rgba(0, 0, 0, 0) url("/images/ITxyImages/nav_ITjcxy_qukcTop.png") no-repeat scroll center center;height: 17px;width: 174px;}
+.nav_ITjcxy .nav_ITjcxy_qukc .nav_ITjcxy_qukcBody {background: rgba(0, 0, 0, 0) url("/images/ITxyImages/nav_ITjcxy_qukcBody.png") repeat-y scroll center center;padding: 0 10px 0 16px;width: 148px;}
+.nav_ITjcxy .nav_ITjcxy_qukc .nav_ITjcxy_qukcBot {background: rgba(0, 0, 0, 0) url("/images/ITxyImages/nav_ITjcxy_qukcBot.png") no-repeat scroll center center;height: 13px;width: 174px;}
+.nav_ITjcxy .nav_ITjcxy_qukc a {margin-left: 0;line-height:16px;height:16px;overflow:hidden;}
+.nav_ITjcxy .nav_ITjcxy_qukc .nav_ITjcxy_qukcBody ul li {height: 21px;overflow: hidden;padding-bottom: 2px;padding-top: 11px;}
+</style>
+<div id="topHdead">
+<link href="http://www.educity.cn/config/head.css" rel="stylesheet" type="text/css" />
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="top_bg">
+    <tr>
+      <td>&nbsp;</td>
+      <td class="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="line-height:33px">
+          <tr>
+            <td style="color:#666;" width="380"><a href="http://www.educity.cn/" target="_blank">希赛网</a>&nbsp;·&nbsp;<a href="http://www.educity.cn/biaoqian/" target="_blank"><font color="#FF0000">知识导航</font></a></td>
+            <td style="color:#666;" width="230"><a href="http://www.csai.cn/" target="_blank"><font color="#0595e8">常识网：理财知识库和投资理财服务平台</font></a></td>
+            <td style="text-align:right;color:#666" width="370"><script language="javascript" type="text/javascript" src="http://www.educity.cn/usercenter/user_state.aspx"></script></td>
+          </tr>
+        </table></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+<div style="margin:0px auto;height:70px;background:#fff">
+  <div class="width980">
+
+    <div class="logo_y fl"><a href="http://www.educity.cn/jianzhan/" target="_blank" title="网站建设学院"><img src="http://www.educity.cn/jianzhan/images/jianzhan_logo.png" alt="网站建设学院" width="320" height="69" /></a></div>
+    <div class="nav_ITjcxy fl">
+        <div id="nav_ITjcxy_allKC">
+            <a target="_blank" href="http://www.educity.cn/zhibo/index.aspx?cid=1" class='tit'>全部课程<img src="/images/ITxyImages/nav_ITjcxy_kc.png"></a>
+            <div class="nav_ITjcxy_qukc" id="nav_ITjcxy_qukc" style="display: none; z-index: 999;">
+                <div class="nav_ITjcxy_qukcTop">
+                </div>
+                <div class="nav_ITjcxy_qukcBody fontsize12">
+                    <ul>
+                        <li><a href="http://www.educity.cn/zhibo/v25.html" target="_blank" title="从菜鸟到网络营销实战经理">从菜鸟到网络营销实战经理</a></li>
+                        <li><a href="http://www.educity.cn/zhibo/v27.html" target="_blank" title="营销型网站诊断与规划">营销型网站诊断与规划</a></li>
+                        <li><a href="http://www.educity.cn/zhibo/v26.html" target="_blank" title="零基础到SEO高手">零基础到SEO高手</a></li>
+                        <li><a href="http://www.educity.cn/zhibo/v28.html" target="_blank" title="天猫店长必修课">天猫店长必修课</a></li>
+                        <li><a href="http://www.educity.cn/zhibo/v29.html" target="_blank" title="在线课程开发与推广">在线课程开发与推广</a></li>
+                    </ul>
+                </div>
+                <div class="nav_ITjcxy_qukcBot">
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--搜索开始-->
+ <form action="http://zhannei.baidu.com/cse/search" target="_blank">
+    <div class="search fl">
+      
+       <div class="search_input fl"><input name="q" id="top_keyword" class="ser_input" placeholder="请输入要搜索的内容" type="text"/></div>
+       <div class="fl"><input type="submit" id="" class="inputnone" value="" style="cursor:pointer;" /><input type="hidden" name="s" value="17363339108322086375" /><input type="hidden" name="entry" value="1" /><input type="hidden" name="ie" value="gbk" /></div>
+    </div>
+    <input name="type" type="hidden" value="1" id="Select1" />
+  </form>
+  <!--搜索结束-->
+  </div>
+</div>
+  <div class="h10"></div>
+  <table align="center" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td background="http://www.educity.cn/images/menu_bg.png">&nbsp;</td>
+      <td width="980" background="http://www.educity.cn/images/menu_bg.png" style="text-align:left;" class="zysmenu" height="37">&nbsp;
+      <a href="http://www.educity.cn/jianzhan/c152.html" target="_blank">Dreamwaver</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c156.html" target="_blank">HTML</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c223.html" target="_blank">CSS&nbsp;DIV</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c225.html" target="_blank">Frontpage</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c218.html" target="_blank">Web设计</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c219.html" target="_blank">网站策划</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c167.html" target="_blank">网站优化&nbsp;SEO</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c222.html" target="_blank">网站运营</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c221.html" target="_blank">建站经验</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c220.html" target="_blank">淘宝店铺</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/jianzhan/c224.html" target="_blank">CMS教程</a>&nbsp; &nbsp;
+      <a href="http://www.educity.cn/sheji/" target="_blank">界面设计&nbsp;UI</a></td>
+      <td background="http://www.educity.cn/images/menu_bg.png">&nbsp;</td>
+    </tr>
+  </table>
+  <div class="width980">
+    <div style="padding:0px 0px;background-color:#FFF;margin-top:6px"><script type="text/javascript" src="http://www.educity.cn/self_text/text_disp.aspx?id=93"></script></div>
+  </div>
+</div>
+<script src="/js/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/eduPlay.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#nav_ITjcxy_allKC").hover(function () {
+            $("#nav_ITjcxy_qukc").css("display", "block");
+            $("#nav_ITjcxy_qukc").css("z-index", "999");
+        }, function () {
+            $("#nav_ITjcxy_qukc").css("display", "none");
+            $("#nav_ITjcxy_qukc").css("z-index", "999");
+        });
+    });
+</script>
+    <!--顶部End-->
+    <div class="topxian">
+        <div class="width980">
+            <div class="daohang">
+                <a href="http://www.educity.cn/" title="希赛网">希赛网</a> &gt;
+                <a id="HL_channel" title="网站建设学院" href="http://www.educity.cn/jianzhan/" style="color:#BC2931;">网站建设学院</a>
+                &gt;
+                <a id="HL_class" title="CSS教程" href="http://www.educity.cn/jianzhan/c223.html">CSS教程</a>
+                &gt;
+                line-height 和 vertical-align 行高与行对齐精解 （图文）</div>
+        </div>
+        <div class="h10">
+        </div>
+    </div>
+    <div class="h30">
+    </div>
+    <div class="width980">
+        <div class="wen_left">
+            <h1>
+                line-height 和 vertical-align 行高与行对齐精解 （图文）</h1>
+            <div class="wen_info">
+                发布者：ajam23
+                &nbsp;&nbsp;来源：<span id="lb_fromurl" title="网络转载">网络转载</span>
+                &nbsp;&nbsp;发布日期：2014年01月04日
+                &nbsp;&nbsp;<font color='red'>网络营销实战交流群：<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=644d74620e52c7985b172046ef08c6e52d97e2e5610a882d3504af105a09f8c3">469225869</a></font>
+                
+            </div>
+            <div>
+                <div style="background-color:#F4F4F4; height:100px; ">
+<div style="float:left; width:240px;">
+<script type="text/javascript">
+    /*edu_wenzhang_内容上标签云240_100*/
+    var cpro_id = "u2137144";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+<div style="float:right; width:380px;">
+<script type="text/javascript">
+var cpro_id="u2137215";
+(window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"380",rsi1:"100",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"0",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+</div>
+            </div>
+            <div class="h10">
+            </div>
+            <div class="wen_context" id="ArticleCnt">
+                <p>　　<strong>点评</strong>：行高指的是文本行的基线间的距离，但是文本之间的空白距离不仅仅是行高决定的， 同时也受字号的影响。
+
+</p>
+
+<strong>7.3 line-height</strong>
+<p>　　行高指的是文本行的基线间的距离，但是文本之间的空白距离不仅仅是行高决定的， 同时也受字号的影响。</p>
+<p>　　<strong>7.3.1</strong><strong></strong><strong>语 法</strong><strong></strong></p>
+<p>　　line-height属性的具体定义列表如下：</p>
+<p>　　语法： line-height : normal | &lt;实数&gt; | &lt;长度&gt; | &lt;百分比&gt; | inherit<br />说明： 设置元素中行的高度。<br />值： normal：默认行高，一般为1到1.2； 实数：实数值，缩放因子； 长度：合法的长度值，可为负数； 百分比：百分比取值基于元素的字体尺寸。<br />初始值： normal<br />继承性： 继承<br />适用于： 所有元素<br />媒体： 视觉<br />计算值： 长度和百分比值为绝对值；其他同指定值。</p>
+<p>　　行高指的是文本行的基线间的距离。而基线（Base line），指的是一行字横排时下沿的基础线，基线并不是汉字的下端沿，而是英文字母x的下 端沿，同时还有文字的顶线（Top line）、中线（Middle line）和底线（Bottom line），用以确定文字行的位置，如图7-17 所示。</p>
+<p>　　<img height="155" alt="clip_image001" src="http://img.educity.cn/img_8/265/2013122117/2417175334.gif" width="504" border="0" /><br />图7-17 文字的基线</p>
+<p>　　行高与字体尺寸的差称为<strong>行距</strong>（leading）， 如图7-18所示。</p>
+<p>　　<img height="146" alt="clip_image002" src="http://img.educity.cn/img_8/265/2013122117/2419175334.gif" width="406" border="0" /><br />图7-18 行高与行距</p>
+<p>　　<strong>7.3.2</strong><strong></strong><strong>内 容区域、行内框和行框</strong><strong></strong></p>
+<p>　　理论上讲，一行中的每个元素都有一个内容区域，它是由字体尺寸决定的，如图 7-19所示。</p>
+<p>　　<img height="117" alt="clip_image003" src="http://img.educity.cn/img_8/265/2013122117/2420175335.gif" width="281" border="0" /><br />图7-19 内容区域</p>
+<p>　　行内元素会生成一个行内框（inline box），行内框只是一个概念，它无法显示出来，但是它又确实存在。在没有其他因素影响的时候，行内框等于内容区域，而设定行高则可以增加或者减少行内框 的高度，即：将行距的值（行高-字体尺寸）除以2，分别增加到内容区域的上下两边，如图7-20所示。</p>
+<p>　　<img height="143" alt="clip_image004" src="http://img.educity.cn/img_8/265/2013122117/2421175335.gif" width="363" border="0" /><br />图7-20 行内框与行高</p>
+<p>　　由于行高可以应用在任何元素上，因此同一行内的若干元素可能有不同的行高和行内 框高，例如有如下代码，其显示如图7-21所示。</p>
+<p>　　<p>　　&lt;p style=&rdquo;line-height:20px;&rdquo;&gt;行高20px。&lt;strong style=&rdquo;line-height:50px;&rdquo;&gt; 行高50px。&lt;/strong&gt;&lt;span style=&rdquo;line-height:30px;&rdquo;&gt;行高30px。&lt;/span&gt;&lt;/p&gt;</p>
+</p>
+<p>　　<img height="109" alt="clip_image005" src="http://img.educity.cn/img_8/265/2013122117/2422175335.gif" width="404" border="0" /><br />图7-21 行内框与行框</p>
+<p>　　这里又有一个新的概念&mdash;&mdash;行框（line box）。同行内框类似，行框是指本行的一个虚拟的矩形框，其高度等于本行内所有元素中行高最大的值。因此，当有多行内容时，每行都会有自己的行框，如图 7-22所示。</p>
+<p>　　<img height="175" alt="clip_image006" src="http://img.educity.cn/img_8/265/2013122117/2423175335.gif" width="404" border="0" /><br />图7-22 多行内容的行框</p>
+<p>　　<strong>提示：</strong>理解行框和行内框的概念对于学习本章 [7.4垂直对齐：vertical-align属性]一节的内容非常重要。<br /><strong>注意：</strong>行框的高度只同本行内元素的行高有关，而和父元素的高度（height）无关。</p>
+<p>　　<strong>7.3.3</strong><strong></strong><strong>行 高的计算与继承</strong><strong></strong></p>
+<p>　　以em、ex和百分比为单位的行高，其基数是元素本身的字体尺寸。例如有代码如 下：</p>
+<p>　　<p>　　&lt;p style=&rdquo;font-size:20px;line-height:2em;&rdquo;&gt;字高20px，行高2em。&lt;/p&gt; &lt;p style=&rdquo;font-size:30px;line-height:2em;&rdquo;&gt;字高30px，行高2em。&lt;/p&gt;</p>
+</p>
+<p>　　2个段落的行高都为2em，但是字体大小不同，因此显示如图7-23所示。</p>
+<p>　　<img height="119" alt="clip_image007" src="http://img.educity.cn/img_8/265/2013122117/2424175335.gif" width="472" border="0" /><br />图7-23 行高的计算</p>
+<p>　　行高可以设定得比字体高度小，此时多行的文字将叠加到一起，例如有如下代码，其 显示如图7-24所示。</p>
+<p>　　<p>　　p { font-size : 20px; line-height :10px; }</p>
+<p>　　&lt;p&gt;字高20px，行高10px。此时多行的文字将叠加到一 起。&lt;/p&gt;</p>
+</p>
+<p>　　<img height="91" alt="clip_image008" src="http://img.educity.cn/img_8/265/2013122117/2425175335.gif" width="403" border="0" /><br />图7-24 比字体高度小的行高</p>
+<p>　　行高是可继承的，但是继承的是计算值，例如有如下代码：</p>
+<p>　　<p>　　p { font-size :20px; line-height : 2em; }<br />p span { font-size : 30px; }</p>
+<p>　　&lt;p&gt;字高20px。&lt;span&gt;字高 30px。&lt;/span&gt;&lt;/p&gt;</p>
+</p>
+<p>　　&lt;p&gt;元素的行高2em，字体尺寸为20px，因此计算值为 40px，虽然&lt;span&gt;元素本身的字体尺寸为30px，不过其继承的行高仍为40px。但是在不同的浏览器内显示的效果却不尽相同，如图 7-25所示。</p>
+<p>　　<img height="153" alt="clip_image009" src="http://img.educity.cn/img_8/265/2013122117/2426175335.gif" width="324" border="0" /><br />图7-25 行高的不同表现</p>
+<p>　　由于继承的是计算值，因此当元素内的文字字体尺寸不一样的时候，如果设定固定的 行高很可能造成字体的重叠，例如有如下代码，其显示如图7-26所示。</p>
+<p>　　<p>　　p { font-size : 20px; line-height : 1em; }<br />p span { font-size : 30px; }</p>
+<p>　　&lt;p&gt;字高20px，行高1em，当文本为多行时可能会发生文字重 叠的现象。&lt;span&gt;字高30px。&lt;/span&gt;&lt;/p&gt;</p>
+</p>
+<p>　　<img height="97" alt="clip_image010" src="http://img.educity.cn/img_8/265/2013122117/2427175336.gif" width="404" border="0" /><br />图7-26行高继承造成文字叠加</p>
+<p>　　为了避免这种情况，可以为每个元素单独定义行高，但是这样很烦琐，因此可以定义 一个没有单位的实数值作为缩放因子来统一控制行高，<strong>缩放因子是直接继承的，而不是继承计算值。</strong>例如修改上例中的行高 为：</p>
+<p>　　<p>　　p { line-height : 1; }</p>
+</p>
+<p>　　则上例中的XHTML代码显示如图7-27所示。</p>
+<p>　　<img height="112" alt="clip_image011" src="http://img.educity.cn/img_8/265/2013122117/2428175336.gif" width="405" border="0" /><br />图7-27缩放因子对行高的影响</p>
+<p>　　当内容中含有图片的时候，如果图片的高度大于行高，<strong>则含有图片 行的行框将被撑开到图片的高度</strong>，如图7-28所示。</p>
+<p>　　<img height="72" alt="clip_image012" src="http://img.educity.cn/img_8/265/2013122117/2429175336.gif" width="404" border="0" /><br />图7-28 含有图片的行</p>
+<p>　　<strong>注意：</strong>图片虽然撑开了行框，但是不会影响行 高，因此也不会影响到基于行高来计算的其他属性。<br /><strong>提示：</strong>当行内含有图片的时候，图片和文字的垂直对齐方式默认是基线对齐，关于垂直对齐将在本章[7.4 垂直对齐：vertical-align属性]一节中讨论。</p>
+<p>　　<strong>7.3.4</strong><strong></strong><strong>浏 览器的差别与错误</strong><strong></strong></p>
+<p>　　浏览器在显示的时候往往会有自己的表现形式，例如在Opera内，行高将按照 CSS定义的将行距除以2增加到内容区域的上下两边，而IE和Firefox则不是完全平分，如图7-29所示。</p>
+<p>　　<img height="91" alt="clip_image013" src="http://img.educity.cn/img_8/265/2013122117/2430175336.gif" width="364" border="0" /><br />图7-29 不同浏览器对行高的显示</p>
+<p>　　不过，相差的1至2个像素在实际显示中一般不会有太大的影响，因此可以忽略不 计。比较严重的错误是IE 6.0对于含有图片或者表单元等可替换行内元素的行高失效的问题，不过，在IE 7.0中已经修正了这个错误，但是其表现同其它浏览器也不相同。例如有如下代码，其显示如图7-30所示。</p>
+<p>　　<p>　　#lineHeight4 p { line-height : 60px; }<br />#lineHeight4 fieldset{ border : 0; }</p>
+<p>　　&lt;div id=&rdquo;lineHeight4&Prime;&gt; &lt;p&gt;内容含有图片在[IE 6]内浏览line-height将失效。&lt;img src=&rdquo;; alt=&rdquo;图片&rdquo; width=&rdquo;88&Prime; height=&rdquo;31&Prime; /&gt;&lt;/p&gt; &lt;form id=&rdquo;testForm&rdquo; action=&rdquo;#&rdquo;&gt; &lt;fieldset&gt; &lt;p&gt;&lt;label for=&rdquo;test1&Prime;&gt;表单元素&lt;/label&gt;&lt; input type=&rdquo;text&rdquo; maxlength=&rdquo;16&Prime; value=&rdquo;IE6内行高失效&rdquo; /&gt;&lt;/p&gt; &lt;/fieldset&gt; &lt;/form&gt; &lt;/div&gt;</p>
+</p>
+<p>　　<img height="422" alt="clip_image014" src="http://img.educity.cn/img_8/265/2013122117/2431175336.gif" width="406" border="0" /><br />图7-30 包含替换元素的行高在IE内失效</p>
+<p>　　由图7-30读者可以发现，IE 7.0中，将半行距分别加在了图片的上下，而由于图片默认是基线对齐，因此文字的基线下移了，这显然不符合CSS中的规定。</p>
+<p>　　对于IE 6.0中行高失效的问题，需要使用CSS Hack手段来针对IE 6.0设定替换元素的上下补白来修正。</p>
+<p>　　<strong>提示：</strong>关于针对IE 6的CSS Hack，请参见本书[第16章：浏览器与Hack]。</p>
+<p>　　<strong>7.3.5</strong><strong></strong><strong>应 用：单行文字在垂直方向居中</strong></p>
+<p>　　在网页设计中，往往为了突出标题而添加背景图案，如图7-31所示。</p>
+<p>　　<img height="178" alt="clip_image015" src="http://img.educity.cn/img_8/265/2013122117/2432175337.gif" width="227" border="0" /><br />图7-31 包含背景图片的标题</p>
+<p>　　假设此标题的XHTML代码如下：</p>
+<p>　　<p>　　&lt;div id=&rdquo;#sample&rdquo;&gt; &lt;h2&gt;热门帖大盘点&lt;/h2&gt; &hellip;&hellip; &lt;/div&gt;</p>
+</p>
+<p>　　此时如果只设定&lt;h2&gt;的背景图片和高，则文字会偏上，如图 7-32所示。</p>
+<p>　　<img height="35" alt="clip_image016" src="http://img.educity.cn/img_8/265/2013122117/2433175337.gif" width="217" border="0" /><br />图7-32 未设定行高的标题文字</p>
+<p>　　针对这个现象，一般只需要设定与高度相等的行高即可，相关代码如下：</p>
+<p>　　<p>　　#sample h2 { height : 31px; line-height : 31px; &hellip;&hellip; }</p>
+</p>
+<p>　　此时在浏览器内文字已经在垂直位置上居中显示，如图7-33所示。</p>
+<p>　　<img height="35" alt="clip_image017" src="http://img.educity.cn/img_8/265/2013122117/2434175337.gif" width="217" border="0" /><br />图7-33 设定行高后的标题文字</p>
+<p>　　此方法同样可以运用在其他需要文字垂直居中显示的地方，例如列表项、导航条等 等。</p>
+<p>　　上一小节讲解了行高与单行纯文字的垂直居中，而如果行内含有图片和文字，在浏览 器内浏览时，读者可以发现文字和图片在垂直方向并不是沿中线居中，而是沿基线对齐，如图7-34所示。 </p>
+<p>　　<img height="112" alt="clip_image018" src="http://img.educity.cn/img_8/265/2013122117/2435175337.gif" width="261" border="0" /><br />图7-34 文字和图片内容默认垂直对齐方式为基线对齐</p>
+<p>　　这是因为，元素默认的垂直对齐方式为基线对齐（vertical-align: baseline）。</p>
+<strong>7.4 vertical-align </strong>
+<p>　　<strong>7.4.1</strong><strong></strong><strong>语 法</strong></p>
+<p>　　vertical-align属性的具体定义列表如下：</p>
+<p>　　语法： vertical-align : baseline | sub | super | top | text- top | middle | bottom | text-bottom | &lt;百分比&gt; | &lt;长度&gt; | inherit<br />说明： 设置元素内容的垂直对齐方式<br />值： baseline：基线对齐；sub：下标；super：上标；top：顶端对齐；text-top：与文本的顶端对齐；middle：中部对 齐；bottom：底端对齐；text-bottom：文本的底端对齐；<br />百分比和长度： CSS2，可为负数。<br />初始值： baseline<br />继承性： 不继承<br />适用于： 行内元素和单元格（table-cell）元素<br />媒体： 视觉<br />计算值： 百分比和长度值为绝对长度；其他同指定值 </p>
+<p>　　此处需要特别注意的是：垂直对齐属性只对<strong>行内元素</strong>有 效。例如有如下代码： </p>
+<p>　　<p>　　&lt;p style=&rdquo;vertical-align:super;&rdquo;&gt;垂直对齐&lt;span&gt;上标&lt;/span&gt;&lt;/p&amp; gt;</p>
+</p>
+<p>　　&lt;p&gt;元素默认为块级元素，因此在浏览器内浏览时将不会有任何变 化。而如下代码： </p>
+<p>　　<p>　　&lt;p&gt;垂直对齐&lt;span style=&rdquo;vertical-align:super;&rdquo;&gt;上标&lt;/span&gt;&lt;/p&gt;</p>
+</p>
+<p>　　&lt;span&gt;元素默认为行内元素，因此显示如图7-35所示。 </p>
+<p>　　<img height="118" alt="clip_image019" src="http://img.educity.cn/img_8/265/2013122117/2436175337.gif" width="273" border="0" /><br />图7-35垂直对齐属性只对行内元素有效</p>
+<p>　　行内元素还包括图片、表单输入元素等，同时，垂直对齐不能被继承。 </p>
+<p>　　<strong>7.4.2</strong><strong></strong><strong>属 性值详解</strong></p>
+<p>　　在[7.3 行高 line-height]一节中，曾经介绍了文本的基线、顶线、中线和底线，还有内容区域、行内框和行框，而本节的垂直对齐和这几个概念密切相关。 </p>
+<p>　　垂直对齐主要属性值的表现形式如图7-36所示。 </p>
+<p>　　<img height="197" alt="clip_image020" src="http://img.educity.cn/img_8/265/2013122117/2437175337.gif" width="504" border="0" /><br />图7-36 垂直对齐的主要属性值示意</p>
+<p>　　<strong>(1). </strong><strong>基线对齐 （vertical-align : baseline）</strong><strong></strong></p>
+<p>　　基线对齐（vertical-align : baseline）使元素的基线同父元素的基线对齐，例如有如下代码： </p>
+<p>　　<p>　　p strong {<br />line-height : 7em;<br />font-size : 2em;<br />vertical-align : baseline;<br />} </p>
+</p><p>　　<p>　　&lt;p&gt;基线对 齐&lt;strong&gt;vertical-align:baseline;&lt;/strong&gt;&lt;/p&gt;</p>
+</p>
+<p>　　则其显示如图7-37所示。 </p>
+<p>　　<img height="114" alt="clip_image021" src="http://img.educity.cn/img_8/265/2013122117/2438175337.gif" width="404" border="0" /><br />图7-37 基线对齐 </p>
+<p>　　而像图片或者输入框这样的元素，本身没有基线，则将其底端同父元素的基线对齐， 如图7-34所示。 </p>
+<p>　　<strong>(2). </strong><strong>顶端对齐 （vertical-align : top）</strong><strong></strong></p>
+<p>　　顶端对齐（vertical-align : top）是将元素的行内框的顶端与行框的顶端对齐，例如有如下代码：</p>
+<p>　　<p>　　p {<br />line-height : 7em;<br />}<br />p strong {<br />vertical-align:top;<br />line-height:2em;<br />}<br />p img {<br />vertical-align : top;<br />} </p>
+<p>　　&lt;p&gt;顶端对齐：&lt;strong&gt;vertical- align:top;&lt;/strong&gt;&lt;img src=&rdquo;img/ddcat_anim.gif&rdquo; alt=&rdquo;图片&rdquo; width=&rdquo;88&Prime; height=&rdquo;31&Prime; /&gt;&lt;/p&gt;</p>
+</p>
+<p>　　则其显示如图7-38所示。 </p>
+<p>　　<img height="141" alt="clip_image022" src="http://img.educity.cn/img_8/265/2013122117/2439175338.gif" width="404" border="0" /><br />图7-38 顶端对齐</p>
+<p>　　对于&lt;strong&gt;元素，不仅设定了vertical- align，还设定了line-height，这是因为在本章 [7.3.2 内容区域、行内框和行框]一节中关于行内框的说明中介绍过，行高可以改变行内框的高度，如果不重新设定行高，则&lt;strong&gt;元素继承了父 元素&lt;p&gt;的行高，因此行内框高和行框的高度是一样的，则顶端对齐将看不出效果。 </p>
+<p>　　<strong>(3). </strong><strong>文本顶端对齐 （vertical-align : text-top）</strong><strong></strong></p>
+<p>　　文本顶端对齐（vertical-align : text-top）是将元素行内框的顶端同文本行的顶线对齐，例如有如下代码，其显示如图7-39所示。 </p>
+<p>　　<p>　　p {<br />line-height : 7em;<br />}<br />p strong {<br />vertical-align : text-top;<br />line-height : 2em;<br />}<br />p img {<br />vertical-align : text-top;<br />} </p>
+<p>　　&lt;p&gt;文本顶端对齐：&lt;strong&gt; vertical- align:top;&lt;/strong&gt;&lt;img src=&rdquo;img/ddcat_anim.gif&rdquo; alt=&rdquo;图片&rdquo; width=&rdquo;88&Prime; height=&rdquo;31&Prime; /&gt;&lt;/p&gt;</p>
+</p>
+<p>　　<img height="107" alt="clip_image023" src="http://img.educity.cn/img_8/265/2013122117/2440175338.gif" width="404" border="0" /><br />图7-39 文本顶端对齐 </p>
+<p>　　<strong>(4). </strong><strong>底端对齐 （vertical-align : bottom）</strong><strong></strong></p>
+<p>　　底端对齐（vertical-align : bottom）与顶端对齐（vertical-align : top）相反，如图7-40所示。</p>
+<p>　　<img height="98" alt="clip_image024" src="http://img.educity.cn/img_8/265/2013122117/2441175338.gif" width="404" border="0" /><br />图7-40 底端对齐</p>
+<p>　　<strong>(5). </strong><strong>文本底端对齐 （vertical-align : text-bottom）</strong><strong></strong></p>
+<p>　　文本底端对齐（vertical-align : text-bottom）与文本顶端对齐（vertical-align : text-top）相反，如图7-41所示。 </p>
+<p>　　<img height="112" alt="clip_image025" src="http://img.educity.cn/img_8/265/2013122117/2442175338.gif" width="404" border="0" /><br />图7-41 文本底端对齐</p>
+<p>　　<strong>(6). </strong><strong>中间对齐 （vertical-align : middle）</strong><strong></strong></p>
+<p>　　中间对齐（vertical-align : middle）通常使用在图片上，将图片的垂直方向的中线与文本行的中线对齐，例如有XHTML代码如下，其显示如图7-42所示。 </p>
+<p>　　<p>　　p img { vertical-align : middle; } </p>
+<p>　　&lt;p&gt;中间对齐为基线上方0.5ex处&lt;img src=&rdquo;img/ddcat_ad.gif&rdquo; alt=&rdquo;图片&rdquo; width=&rdquo;180&Prime; height=&rdquo;60&Prime; /&gt;&lt;/p&gt;</p>
+</p>
+<p>　　<img height="98" alt="clip_image026" src="http://img.educity.cn/img_8/265/2013122117/2443175338.gif" width="404" border="0" /><br />图7-42 中间对齐</p>
+<p>　　中线的定义为：中线位于基线的上方，与基线的距离为小写字母x高度（即ex）的 一半，如图7-36所示。而ex同字体尺寸相关，大部分浏览器认为1ex = 0.5em，因此会将基线以上四分之一em处作为中线来对齐。 </p>
+<p>　　<strong>注意：</strong>同在行高显示上的差别一样，在中间对 齐上，各浏览器之间也稍有些差异。</p>
+<p>　　<strong>(7). </strong><strong>上标和下标</strong><strong></strong></p>
+<p>　　上标（vertical-align:super）使元素的基线（替换元素的底 端）相对于父元素的基线升高，下标（vertical-align:sub）使元素的基线降低，移动的幅度CSS规范中没有规定，由浏览器来决定。例如有 如下代码，其显示如图7-43所示。 </p>
+<p>　　<p>　　&lt;p&gt;上标文字&lt;span style=&rdquo;vertical- align:super;&rdquo;&gt;vertical-align:super;&lt;/span&gt;下标文字&lt;span style=&rdquo;vertical-align:sub;&rdquo;&gt;vertical-align:sub;&lt;/span&gt;&lt;/p&gt;</p>
+</p>
+<p>　　<img height="116" alt="clip_image027" src="http://img.educity.cn/img_8/265/2013122117/2444175338.gif" width="404" border="0" /><br />图7-43 上标和下标</p>
+<p>　　上下标不会改变元素文字的尺寸大小。 </p>
+<p>　　<strong>(8). </strong><strong>长度值和百分比</strong><strong></strong></p>
+<p>　　和上下标类似，长度值和百分比值可使元素的基线（替换元素的底端）相对于父元素 的基线升高（正值）或者降低（负值）。 </p>
+<p>　　上下标的移动尺寸是由浏览器确定的，而设定长度值或者百分比，可以精确控制文字 上下移动的幅度。 </p>
+<p>　　百分比与行高有关，例如有如下代码，其显示如图7-44所示。 </p>
+<p>　　<p>　　p { line-height : 2em; } </p>
+</p><p>　　<p>　　&lt;p&gt;行高2em，纵向百分比对 齐：&lt;span style=&rdquo;vertical-align:100%;&rdquo;&gt;100% 正数向上&lt;/span&gt;，而&lt;span style=&rdquo;vertical-align:-100%;&rdquo;&gt;-100%负数向下&amp; lt;/span&gt;。&lt;/p&gt;</p>
+</p>
+<p>　　<img height="86" alt="clip_image028" src="http://img.educity.cn/img_8/265/2013122117/2445175338.gif" width="404" border="0" /><br />图7-44 百分比对齐</p>
+<p>　　设置垂直对齐会影响到行框高，例如有如下代码，其显示如图7-45所示。 </p>
+<p>　　<p>　　p { line-height : 2em; } </p>
+<p>　　&lt;p&gt;垂直对齐&lt;span style=&rdquo;vertical-align:2em;&rdquo;&gt;正数向上&lt;/span&amp; gt;，而&lt;span style=&rdquo;vertical-align:-2em;&rdquo;&gt;负数向下&lt;/span&gt;。&amp;lt; p&amp;gt;行高2em，而设置垂直对齐的文字撑开了行框。&lt;/p&gt;</p>
+</p>
+<p>　　<img height="155" alt="clip_image029" src="http://img.educity.cn/img_8/265/2013122117/2446175339.gif" width="404" border="0" /><br />图7-45 垂直对齐对行框的影响</p>
+<p>　　<em>注意：</em>在IE中设定百分比或者数值对齐会造成内容的叠加混 乱，如图7-46所示。</p>
+<p>　　<img height="64" alt="clip_image030" src="http://img.educity.cn/img_8/265/2013122117/2447175339.gif" width="406" border="0" /><br />图7-46在IE中设定百分比或者数值对齐</p>
+            </div>
+            <div class="wen_tag">
+                标签： <a href="http://s.educity.cn/search.php?q=css%e6%a0%b7%e5%bc%8f&type=1" target="_blank">css样式</a> <a href="http://s.educity.cn/search.php?q=css&type=1" target="_blank">css</a> <a href="http://s.educity.cn/search.php?q=CSS%e6%95%99%e7%a8%8b&type=1" target="_blank">CSS教程</a>
+            </div>
+            <div class="h10">
+            </div>
+            
+            <div class="h10">
+            </div>
+            <div class="bi_fk">
+                <div class="bi_fy">
+                    <span class="kuw">1</span> <span><a target="_blank" href="http://www.educity.cn/jianzhan/c223.html">2</a></span>
+                </div>
+            </div>
+            <div class="h10">
+            </div>
+            <div class="page">
+                <span id="lbl_pagebottom"></span>
+            </div>
+            <div class="h10">
+            </div>
+            <div>
+                <script type="text/javascript">
+   /*文章页面左边第2个广告*/
+   var cpro_id = "u1343900";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+            </div>
+            <div class="h10">
+            </div>
+            <div class="wen_tag2">
+                本文标题：<a id="Literal_Title_bottom" title="line-height 和 vertical-align 行高与行对齐精解 （图文）" href="http://www.educity.cn/jianzhan/630291.html">line-height 和 vertical-align 行高与行对齐精解 （图文）</a></div>
+            
+            <div class="wen_tag2">
+                本文链接：<a id="Literal_CurLink" title="line-height 和 vertical-align 行高与行对齐精解 （图文）" href="http://www.educity.cn/jianzhan/630291.html">http://www.educity.cn/jianzhan/630291.html</a></div>
+            <div class="h10">
+            </div>
+
+            <script language="javascript" type="text/javascript" src="/js/shengming.js"></script>
+
+            
+            <div class="h30">
+            </div>
+            <div class="wen_heixian">
+            </div>
+            <div class="wen_gengduo_title">
+                <span><a href="http://www.educity.cn/news.asp" target="_blank" title="更多最新文章">更多>></a></span>
+                <a id="Literal_ClassNameAbout" title="网站建设学院：CSS教程 栏目最近更新" href="http://www.educity.cn/jianzhan/c223.html" target="_blank">网站建设学院：CSS教程 栏目最近更新</a>
+            </div>
+            <div>
+                <div class="wen_gengduo_left">
+                    <ul>
+                        
+                                <li>·<a title="CSS网页布局中默认字体样式" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764280.html">
+                                    CSS网页布局中默认字体样式</a></li>
+                            
+                                <li>·<a title="CSS中背景background-position负值定位深入理解" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764279.html">
+                                    CSS中背景background-position负值定位深入理解</a></li>
+                            
+                                <li>·<a title="css里no-repeat熟悉后面的数字是什么意思？" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764278.html">
+                                    css里no-repeat熟悉后面的数字是什么意思？</a></li>
+                            
+                                <li>·<a title="css让图片等比例缩小的代码" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764277.html">
+                                    css让图片等比例缩小的代码</a></li>
+                            
+                                <li>·<a title="css去除点击链接时出现的虚线框" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764276.html">
+                                    css去除点击链接时出现的虚线框</a></li>
+                            
+                                <li>·<a title="用纯CSS代码创建日历图标" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764275.html">
+                                    用纯CSS代码创建日历图标</a></li>
+                            
+                                <li>·<a title="Div+CSS布局入门教程" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764274.html">
+                                    Div+CSS布局入门教程</a></li>
+                            
+                                <li>·<a title="创建多个边框box阴影css代码" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764273.html">
+                                    创建多个边框box阴影css代码</a></li>
+                            
+                                <li>·<a title="css控制div置顶置底的例子" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764272.html">
+                                    css控制div置顶置底的例子</a></li>
+                            
+                                <li>·<a title="鼠标经过背景变色之CSS+DIV方法" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764271.html">
+                                    鼠标经过背景变色之CSS+DIV方法</a></li>
+                            
+                                <li>·<a title="创建CSS样式表的十个技巧" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764270.html">
+                                    创建CSS样式表的十个技巧</a></li>
+                            
+                                <li>·<a title="CSS样式表层叠(cascade)处理冲突" target="_blank"
+                                    href="http://www.educity.cn/jianzhan/1764269.html">
+                                    CSS样式表层叠(cascade)处理冲突</a></li>
+                            
+                    </ul>
+                </div>
+                <div class="wen_gengduo_rigth">
+                    <script type="text/javascript">
+    /*文章页面左边第3个广告*/
+    var cpro_id = "u1373299";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+                </div>
+            </div>
+            <div class="h10">
+            </div>
+            
+            <div class="h10">
+            </div>
+            <div class="wen_heixian">
+            </div>
+            <div class="wen_gengduo_title">
+                <span><a href="http://www.educity.cn/xiazai/roll.asp" target="_blank" title="更多最新下载资料">
+                    更多>></a></span>
+                <a id="Literal_ClassNameAbout_down" title="网站建设资料下载：CSS教程下载 栏目最近更新" href="http://www.educity.cn/xiazai/c223.html" target="_blank">网站建设资料下载：CSS教程下载 栏目最近更新</a>
+            </div>
+            <div>
+                <div class="wen_gengduo_left">
+                    <ul>
+                        
+                                <li>·<a title="一起感受HTML5和CSS3的能量" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9515258.html">
+                                    一起感受HTML5和CSS3的能量</a></li>
+                                <li>·<a title="无懈可击的Web设计教程配套CSS实例" target="_blank"
+                                    href="http://www.educity.cn/xiazai/8824251.html">
+                                    无懈可击的Web设计教程配套CSS实例</a></li>
+                                <li>·<a title="DIV+CSS布局大全" target="_blank"
+                                    href="http://www.educity.cn/xiazai/8840729.html">
+                                    DIV+CSS布局大全</a></li>
+                                <li>·<a title="CSS属性符号" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9376091.html">
+                                    CSS属性符号</a></li>
+                                <li>·<a title="HTML+CSS网页设计指南-PPT" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9328038.html">
+                                    HTML+CSS网页设计指南-PPT</a></li>
+                                <li>·<a title="29款DIV+CSS导航菜单源码实例" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9198826.html">
+                                    29款DIV+CSS导航菜单源码实例</a></li>
+                                <li>·<a title="分页样式" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9431729.html">
+                                    分页样式</a></li>
+                                <li>·<a title="第五课_建立超链接(教参)" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9152670.html">
+                                    第五课_建立超链接(教参)</a></li>
+                                <li>·<a title="The Web Designer’s Guide to iOS Apps With HTML5, CSS3, and JavaScript" target="_blank"
+                                    href="http://www.educity.cn/xiazai/8815689.html">
+                                    The Web Designer’s Guide to iOS Apps With HTML5, CSS3,..</a></li>
+                                <li>·<a title="8款CSS在线优化工具" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9515813.html">
+                                    8款CSS在线优化工具</a></li>
+                                <li>·<a title="CSS兼容IE6,IE7,FIREFOX" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9533652.html">
+                                    CSS兼容IE6,IE7,FIREFOX</a></li>
+                                <li>·<a title="CSS教程" target="_blank"
+                                    href="http://www.educity.cn/xiazai/9808035.html">
+                                    CSS教程</a></li>
+                    </ul>
+                </div>
+                <div class="wen_gengduo_rigth">
+                    <script type="text/javascript">
+    /*文章页面左边第4个广告*/
+    var cpro_id = "u1737883";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+                </div>
+            </div>
+        </div>
+        <div class="wen_right">
+            <div style="padding-left: 15px">
+                <tr>
+    <td height="26" style="background-color:#EFFDFE;border-bottom:#CCCCCC 1px solid">&nbsp;&nbsp;&nbsp;<strong class="neblack">主编推荐</strong></td>
+  </tr>
+  <tr>
+    <td class="neblack" style="text-align:center;padding:5px 0px"><script type="text/javascript" src="http://www.educity.cn/self_text/text_disp.aspx?id=1"></script></td>
+  </tr>
+            </div>
+            <div class="t1">
+                <h2>
+                    <span>
+                        <a id="Literal_HotPaper" title="更多试卷" href="http://www.educity.cn/tiku/" target="_blank">更多>></a></span>热门试卷</h2>
+                <ul>
+                    
+                            <li>·<a href="http://www.educity.cn/tiku/tp661.html" target="_blank"
+                                title='2011年下半年系统架构设计师考试论文真题（权威解析）'>
+                                2011年下半年系统架构设计师考试论文真题（权威解析）</a></li>
+                        
+                            <li>·<a href="http://www.educity.cn/tiku/tp659.html" target="_blank"
+                                title='2012年上半年软件设计师考试上午真题（权威解析+标准答案）'>
+                                2012年上半年软件设计师考试上午真题（权威解析+标准答案）</a></li>
+                        
+                            <li>·<a href="http://www.educity.cn/tiku/tp645.html" target="_blank"
+                                title='2012年上半年系统集成项目管理工程师考试上午真题（权威解析+标准答案）'>
+                                2012年上半年系统集成项目管理工程师考试上午真题（权威解..</a></li>
+                        
+                            <li>·<a href="http://www.educity.cn/tiku/tp643.html" target="_blank"
+                                title='2012年上半年信息系统监理师考试上午真题（权威解析+标准答案）'>
+                                2012年上半年信息系统监理师考试上午真题（权威解析+标准答..</a></li>
+                        
+                            <li>·<a href="http://www.educity.cn/tiku/tp642.html" target="_blank"
+                                title='2012年上半年网络管理员考试上午真题（权威解析+标准答案）'>
+                                2012年上半年网络管理员考试上午真题（权威解析+标准答案）</a></li>
+                        
+                </ul>
+            </div>
+            <div class="t2">
+                
+            </div>
+            <div class="t1">
+                <h2>
+                    <span>
+                        <a id="Literal_NewShiPin" title="更多视频" href="http://www.educity.cn/shipin/" target="_blank">更多>></a></span>最新视频</h2>
+                <ul>
+                    
+                            <li>· <a href="http://www.educity.cn/shipin/v3739.html" target="_blank"
+                                title='PMP网络课堂（2016年09月）'>
+                                PMP网络课堂（2016年09月）</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/shipin/v3743.html" target="_blank"
+                                title='2016年初级通信工程师网络课堂'>
+                                2016年初级通信工程师网络课堂</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/shipin/v3744.html" target="_blank"
+                                title='2016年中级通信工程师（综合能力）网络课堂'>
+                                2016年中级通信工程师（综合能力）网络课堂</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/shipin/v3712.html" target="_blank"
+                                title='电子商务设计师考试培训视频教程（2016）'>
+                                电子商务设计师考试培训视频教程（2016）</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/shipin/v3745.html" target="_blank"
+                                title='2016年中级通信工程师（传输与接入）网络课堂'>
+                                2016年中级通信工程师（传输与接入）网络课堂</a></li>
+                        
+                </ul>
+            </div>
+            <div class="t2">
+                <link href="http://www.ixueyi.com/xiaohua/css/edu_wen_xiaohua.css" rel="stylesheet"
+                    type="text/css" />
+
+                <script src="http://www.ixueyi.com/xiaohua/js/xiaohua.js" type="text/javascript"></script>
+
+            </div>
+            <div class="t1">
+                <h2>
+                    <span>
+                        <a id="Literal_HotJiaoCheng" title="更多教程" href="http://www.educity.cn/jiaocheng/" target="_blank">更多>></a></span>热门阅读</h2>
+                <ul>
+                    
+                            <li>· <a href="http://www.educity.cn/jiaocheng/zt172.html" target="_blank"
+                                title='系统架构设计师教程（第3版）'>
+                                系统架构设计师教程（第3版）</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/jiaocheng/zt39.html" target="_blank"
+                                title='信息系统项目管理师教程（第3版）'>
+                                信息系统项目管理师教程（第3版）</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/jiaocheng/zt110.html" target="_blank"
+                                title='PHP开发从入门到精通'>
+                                PHP开发从入门到精通</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/jiaocheng/zt117.html" target="_blank"
+                                title='Java Web标签应用开发'>
+                                Java Web标签应用开发</a></li>
+                        
+                            <li>· <a href="http://www.educity.cn/jiaocheng/zt111.html" target="_blank"
+                                title='ASP.NET应用开发(C#版)'>
+                                ASP.NET应用开发(C#版)</a></li>
+                        
+                </ul>
+            </div>
+            <div class="t2">
+                
+            </div>
+            <div class="t1">
+                <h2>
+                    <span><a href="http://www.educity.cn/wenda/" target="_blank">更多>></asp:HyperLink></span>最新问题</h2>
+                <ul>
+                    
+        <li>&middot;&nbsp;<a title="关于试题（编号：77242）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697068.html">关于试题（编号：77242）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：86248）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697067.html">关于试题（编号：86248）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：76953）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697065.html">关于试题（编号：76953）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：27434）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697064.html">关于试题（编号：27434）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：83831）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697063.html">关于试题（编号：83831）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：32004）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697060.html">关于试题（编号：32004）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：25887）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697059.html">关于试题（编号：25887）的疑问集中解答贴</a></li>
+        <li>&middot;&nbsp;<a title="关于试题（编号：9997）的疑问集中解答贴" target="_blank" href="http://www.educity.cn/wenda/697054.html">关于试题（编号：9997）的疑问集中解答贴</a></li></ul>
+            </div>
+            <div class="t2">
+                <script type="text/javascript">
+var cpro_id="u2047949";
+(window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"300",rsi1:"300",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"0",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+            </div>
+            <div class="t2">
+                
+            </div>
+        </div>
+    </div>
+    <div class="h10">
+    </div>
+    <div>
+        <script type="text/javascript">
+    /* 创建于 2014-09-29*/
+var cpro_id = "u1740074";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cnw.js" type="text/javascript"></script>
+        <script type="text/javascript">
+ /*文章页悬浮广告*/
+var cpro_id = "u1347884";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+        <div class="h30">
+        </div>
+        <div class="width980">
+            <div class="wen_map_btn">
+                全局导航</div>
+        </div>
+        <div class="wen_map">
+            <div class="width980">
+                <dl class="site_map">
+    <dt><a href="http://www.educity.cn/it/" target="_blank">IT认证学院</a></dt><dd><a href="http://www.educity.cn/it/c1.html"
+        target="_blank">Adobe认证</a><a href="http://www.educity.cn/it/c2.html" target="_blank">Cisco认证</a><a
+            href="http://www.educity.cn/it/c3.html" target="_blank">H3C认证</a><a href="http://www.educity.cn/it/c4.html"
+                target="_blank">IBM认证</a><a href="http://www.educity.cn/it/c5.html" target="_blank">IT认证资讯</a><a
+                    href="http://www.educity.cn/it/c6.html" target="_blank">Java认证</a><a href="http://www.educity.cn/it/c7.html"
+                        target="_blank">Linux认证</a><a href="http://www.educity.cn/it/c8.html" target="_blank">Microsoft认证</a><a
+                            href="http://www.educity.cn/it/c9.html" target="_blank">Oracle认证</a><a href="http://www.educity.cn/it/c292.html"
+                                target="_blank">华为认证</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/ite/" target="_blank">IT英语</a></dt><dd><a href="http://www.educity.cn/ite/c10.html"
+        target="_blank">IT新技术</a><a href="http://www.educity.cn/ite/c11.html" target="_blank">操作系统</a><a
+            href="http://www.educity.cn/ite/c12.html" target="_blank">基础英语</a><a href="http://www.educity.cn/ite/c13.html"
+                target="_blank">计算机网络</a><a href="http://www.educity.cn/ite/c14.html" target="_blank">软件工程</a><a
+                    href="http://www.educity.cn/ite/c15.html" target="_blank">软考英语</a><a href="http://www.educity.cn/ite/c16.html"
+                        target="_blank">数据库系统</a><a href="http://www.educity.cn/ite/c17.html" target="_blank">通信专业英语</a><a
+                            href="http://www.educity.cn/ite/c18.html" target="_blank">项目管理英语</a><a href="http://www.educity.cn/ite/c19.html"
+                                target="_blank">应用系统</a><a href="http://www.educity.cn/ite/c20.html" target="_blank">硬件数码</a><a
+                                    href="http://www.educity.cn/ite/c21.html" target="_blank">职场英语</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/develop/" target="_blank">程序开发学院</a></dt><dd><a
+        href="http://www.educity.cn/develop/c22.html" target="_blank">.NET</a><a href="http://www.educity.cn/develop/c23.html"
+            target="_blank">C语言_C++语言</a><a href="http://www.educity.cn/develop/c24.html" target="_blank">Delphi</a><a
+                href="http://www.educity.cn/develop/c26.html" target="_blank">PowerBuilder</a><a
+                    href="http://www.educity.cn/develop/c27.html" target="_blank">Web开发</a><a href="http://www.educity.cn/develop/c28.html"
+                        target="_blank">嵌入式开发</a><a href="http://www.educity.cn/develop/c30.html" target="_blank">移动开发</a><a
+                            href="http://www.educity.cn/develop/c31.html" target="_blank">游戏开发</a><a href="http://www.educity.cn/develop/c184.html"
+                                target="_blank">PHP</a><a href="http://www.educity.cn/develop/c322.html" target="_blank">Python</a><a
+                                    href="http://www.educity.cn/develop/c323.html" target="_blank">Perl</a><a href="http://www.educity.cn/develop/c324.html"
+                                        target="_blank">Ruby</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/ncre/" target="_blank">等考学院</a></dt><dd><a href="http://www.educity.cn/ncre/c32.html"
+        target="_blank">考试大纲</a><a href="http://www.educity.cn/ncre/c33.html" target="_blank">二级考试经验</a><a
+            href="http://www.educity.cn/ncre/c34.html" target="_blank">二级模拟试题</a><a href="http://www.educity.cn/ncre/c35.html"
+                target="_blank">一级考试资料</a><a href="http://www.educity.cn/ncre/c36.html" target="_blank">二级考试资料</a><a
+                    href="http://www.educity.cn/ncre/c246.html" target="_blank">一级模拟试题</a><a href="http://www.educity.cn/ncre/c247.html"
+                        target="_blank">三级模拟试题</a><a href="http://www.educity.cn/ncre/c248.html" target="_blank">四级模拟试题</a><a
+                            href="http://www.educity.cn/ncre/c249.html" target="_blank">一级考试经验</a><a href="http://www.educity.cn/ncre/c250.html"
+                                target="_blank">三级考试经验</a><a href="http://www.educity.cn/ncre/c251.html" target="_blank">四级考试经验</a><a
+                                    href="http://www.educity.cn/ncre/c252.html" target="_blank">四级考试资料</a><a href="http://www.educity.cn/ncre/c253.html"
+                                        target="_blank">三级考试资料</a><a href="http://www.educity.cn/ncre/c330.html" target="_blank">等级考试动态</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/jianzaoshi/" target="_blank">建造师学院</a></dt><dd><a
+        href="http://www.educity.cn/jianzaoshi/c37.html" target="_blank">港口与航道工程</a><a href="http://www.educity.cn/jianzaoshi/c38.html"
+            target="_blank">公路工程</a><a href="http://www.educity.cn/jianzaoshi/c39.html" target="_blank">机电工程</a><a
+                href="http://www.educity.cn/jianzaoshi/c40.html" target="_blank">建设工程法规及相关知识</a><a
+                    href="http://www.educity.cn/jianzaoshi/c41.html" target="_blank">建设工程经济</a><a href="http://www.educity.cn/jianzaoshi/c42.html"
+                        target="_blank">建设工程项目管理</a><a href="http://www.educity.cn/jianzaoshi/c43.html" target="_blank">建筑工程</a><a
+                            href="http://www.educity.cn/jianzaoshi/c44.html" target="_blank">考试大纲</a><a href="http://www.educity.cn/jianzaoshi/c45.html"
+                                target="_blank">考试经验</a><a href="http://www.educity.cn/jianzaoshi/c46.html" target="_blank">考试试题</a><a
+                                    href="http://www.educity.cn/jianzaoshi/c47.html" target="_blank">矿业工程</a><a href="http://www.educity.cn/jianzaoshi/c48.html"
+                                        target="_blank">民航机场工程</a><a href="http://www.educity.cn/jianzaoshi/c49.html" target="_blank">施工管理</a><a
+                                            href="http://www.educity.cn/jianzaoshi/c50.html" target="_blank">市政公用工程</a><a href="http://www.educity.cn/jianzaoshi/c51.html"
+                                                target="_blank">水利水电工程</a><a href="http://www.educity.cn/jianzaoshi/c52.html" target="_blank">铁路工程</a><a
+                                                    href="http://www.educity.cn/jianzaoshi/c53.html" target="_blank">通信与广电工程</a><a href="http://www.educity.cn/jianzaoshi/c329.html"
+                                                        target="_blank">考试动态</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/zk/" target="_blank">基础学院</a></dt><dd><a href="http://www.educity.cn/zk/c54.html"
+        target="_blank">毕业论文</a><a href="http://www.educity.cn/zk/c55.html" target="_blank">编译原理</a><a
+            href="http://www.educity.cn/zk/c56.html" target="_blank">操作系统</a><a href="http://www.educity.cn/zk/c57.html"
+                target="_blank">高级语言程序设计</a><a href="http://www.educity.cn/zk/c58.html" target="_blank">管理信息系统</a><a
+                    href="http://www.educity.cn/zk/c59.html" target="_blank">汇编语言</a><a href="http://www.educity.cn/zk/c60.html"
+                        target="_blank">计算机图形学</a><a href="http://www.educity.cn/zk/c61.html" target="_blank">计算机网络</a><a
+                            href="http://www.educity.cn/zk/c62.html" target="_blank">计算机系统结构</a><a href="http://www.educity.cn/zk/c63.html"
+                                target="_blank">计算机应用技术</a><a href="http://www.educity.cn/zk/c64.html" target="_blank">计算机组成原理</a><a
+                                    href="http://www.educity.cn/zk/c65.html" target="_blank">人工智能</a><a href="http://www.educity.cn/zk/c66.html"
+                                        target="_blank">软件工程</a><a href="http://www.educity.cn/zk/c67.html" target="_blank">数据结构与算法</a><a
+                                            href="http://www.educity.cn/zk/c68.html" target="_blank">数据库系统</a><a href="http://www.educity.cn/zk/c69.html"
+                                                target="_blank">数据通信原理</a><a href="http://www.educity.cn/zk/c70.html" target="_blank">数字逻辑</a><a
+                                                    href="http://www.educity.cn/zk/c71.html" target="_blank">微机与接口</a><a href="http://www.educity.cn/zk/c72.html"
+                                                        target="_blank">信号与系统</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/se/" target="_blank">软件工程学院</a></dt><dd><a href="http://www.educity.cn/se/c73.html"
+        target="_blank">CASE工具</a><a href="http://www.educity.cn/se/c74.html" target="_blank">构件与中间件</a><a
+            href="http://www.educity.cn/se/c75.html" target="_blank">软件测试</a><a href="http://www.educity.cn/se/c76.html"
+                target="_blank">软件过程改进</a><a href="http://www.educity.cn/se/c77.html" target="_blank">软件设计</a><a
+                    href="http://www.educity.cn/se/c78.html" target="_blank">软件外包</a><a href="http://www.educity.cn/se/c79.html"
+                        target="_blank">需求分析</a><a href="http://www.educity.cn/se/c80.html" target="_blank">软件质量保证</a><a
+                            href="http://www.educity.cn/se/c81.html" target="_blank">系统分析与建模</a><a href="http://www.educity.cn/se/c82.html"
+                                target="_blank">系统规划</a><a href="http://www.educity.cn/se/c83.html" target="_blank">业界观点</a><a
+                                    href="http://www.educity.cn/se/c245.html" target="_blank">敏捷开发</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/rk/" target="_blank">软考学院</a></dt><dd><a href="http://www.educity.cn/rk/c84.html"
+        target="_blank">程序员</a><a href="http://www.educity.cn/rk/c85.html" target="_blank">电子商务设计师</a><a
+            href="http://www.educity.cn/rk/c86.html" target="_blank">法律法规</a><a href="http://www.educity.cn/rk/c87.html"
+                target="_blank">考试大纲</a><a href="http://www.educity.cn/rk/c88.html" target="_blank">考试政策</a><a
+                    href="http://www.educity.cn/rk/c89.html" target="_blank">历年试题</a><a href="http://www.educity.cn/rk/c90.html"
+                        target="_blank">软件评测师</a><a href="http://www.educity.cn/rk/c91.html" target="_blank">软件设计师</a><a
+                            href="http://www.educity.cn/rk/c92.html" target="_blank">软考英语</a><a href="http://www.educity.cn/rk/c93.html"
+                                target="_blank">数据库系统工程师</a><a href="http://www.educity.cn/rk/c94.html" target="_blank">网络工程师</a><a
+                                    href="http://www.educity.cn/rk/c95.html" target="_blank">网络管理员</a><a href="http://www.educity.cn/rk/c96.html"
+                                        target="_blank">网络规划设计师</a><a href="http://www.educity.cn/rk/c97.html" target="_blank">系统分析师</a><a
+                                            href="http://www.educity.cn/rk/c99.html" target="_blank">系统架构设计师</a><a href="http://www.educity.cn/rk/c100.html"
+                                                target="_blank">信息技术处理员</a><a href="http://www.educity.cn/rk/c101.html" target="_blank">信息系统管理工程师</a><a
+                                                    href="http://www.educity.cn/rk/c102.html" target="_blank">信息系统监理师</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/tx/" target="_blank">通信学院</a></dt><dd><a href="http://www.educity.cn/tx/c104.html"
+        target="_blank">初级通信工程师</a><a href="http://www.educity.cn/tx/c105.html" target="_blank">传输与接入</a><a
+            href="http://www.educity.cn/tx/c106.html" target="_blank">高级通信工程师</a><a href="http://www.educity.cn/tx/c107.html"
+                target="_blank">互联网技术</a><a href="http://www.educity.cn/tx/c108.html" target="_blank">交换技术</a><a
+                    href="http://www.educity.cn/tx/c109.html" target="_blank">考试大纲</a><a href="http://www.educity.cn/tx/c110.html"
+                        target="_blank">考试动态</a><a href="http://www.educity.cn/tx/c111.html" target="_blank">考试题库</a><a
+                            href="http://www.educity.cn/tx/c112.html" target="_blank">设备环境</a><a href="http://www.educity.cn/tx/c113.html"
+                                target="_blank">通信法规</a><a href="http://www.educity.cn/tx/c114.html" target="_blank">终端与业务</a><a
+                                    href="http://www.educity.cn/tx/c115.html" target="_blank">综合能力</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/net/" target="_blank">网络工程学院</a></dt><dd><a href="http://www.educity.cn/net/c119.html"
+        target="_blank">交换技术</a><a href="http://www.educity.cn/net/c120.html" target="_blank">接入技术</a><a
+            href="http://www.educity.cn/net/c121.html" target="_blank">路由技术</a><a href="http://www.educity.cn/net/c122.html"
+                target="_blank">实施案例</a><a href="http://www.educity.cn/net/c124.html" target="_blank">网络布线</a><a
+                    href="http://www.educity.cn/net/c125.html" target="_blank">网络存储</a><a href="http://www.educity.cn/net/c126.html"
+                        target="_blank">网络服务器</a><a href="http://www.educity.cn/net/c127.html" target="_blank">网络管理</a><a
+                            href="http://www.educity.cn/net/c128.html" target="_blank">无线网络</a><a href="http://www.educity.cn/net/c129.html"
+                                target="_blank">系统应用</a><a href="http://www.educity.cn/net/c320.html" target="_blank">网络协议</a><a
+                                    href="http://www.educity.cn/net/c321.html" target="_blank">网络设备</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/pm/" target="_blank">项目管理学院</a></dt><dd><a href="http://www.educity.cn/pm/c98.html"
+        target="_blank">系统集成项目管理工程师</a><a href="http://www.educity.cn/pm/c103.html" target="_blank">信息系统项目管理师</a><a
+            href="http://www.educity.cn/pm/c131.html" target="_blank">CPMP考试</a><a href="http://www.educity.cn/pm/c132.html"
+                target="_blank">IPMP</a><a href="http://www.educity.cn/pm/c133.html" target="_blank">PMP考试</a><a
+                    href="http://www.educity.cn/pm/c134.html" target="_blank">prince2认证</a><a href="http://www.educity.cn/pm/c135.html"
+                        target="_blank">项目采购管理</a><a href="http://www.educity.cn/pm/c136.html" target="_blank">项目成本管理</a><a
+                            href="http://www.educity.cn/pm/c137.html" target="_blank">项目范围管理</a><a href="http://www.educity.cn/pm/c138.html"
+                                target="_blank">项目风险管理</a><a href="http://www.educity.cn/pm/c139.html" target="_blank">项目沟通管理</a><a
+                                    href="http://www.educity.cn/pm/c140.html" target="_blank">项目配置管理</a><a href="http://www.educity.cn/pm/c141.html"
+                                        target="_blank">项目人力资源管理</a><a href="http://www.educity.cn/pm/c142.html" target="_blank">项目时间管理</a><a
+                                            href="http://www.educity.cn/pm/c143.html" target="_blank">项目管理案例</a><a href="http://www.educity.cn/pm/c144.html"
+                                                target="_blank">项目管理动态</a><a href="http://www.educity.cn/pm/c145.html" target="_blank">项目管理工具</a><a
+                                                    href="http://www.educity.cn/pm/c146.html" target="_blank">项目经理</a><a href="http://www.educity.cn/pm/c147.html"
+                                                        target="_blank">项目整合管理</a><a href="http://www.educity.cn/pm/c148.html" target="_blank">项目质量管理</a><a
+                                                            href="http://www.educity.cn/pm/c255.html" target="_blank">项目干系人管理</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/help/" target="_blank">新手教程</a></dt><dd><a href="http://www.educity.cn/help/c150.html"
+        target="_blank">Access教程</a><a href="http://www.educity.cn/help/c153.html" target="_blank">Excel教程</a><a
+            href="http://www.educity.cn/help/c159.html" target="_blank">Powerpoint教程</a><a href="http://www.educity.cn/help/c160.html"
+                target="_blank">Visual Basic(VB教程)</a><a href="http://www.educity.cn/help/c161.html"
+                    target="_blank">Visual FoxPro(VFP教程)</a><a href="http://www.educity.cn/help/c163.html"
+                        target="_blank">Word教程</a><a href="http://www.educity.cn/help/c166.html" target="_blank">网络应用教程</a><a
+                            href="http://www.educity.cn/help/c186.html" target="_blank">WPS教程</a><a href="http://www.educity.cn/help/c203.html"
+                                target="_blank">手机教程</a><a href="http://www.educity.cn/help/c319.html" target="_blank">Visio教程</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/ei/" target="_blank">信息化学院</a></dt><dd><a href="http://www.educity.cn/ei/c168.html"
+        target="_blank">IT运维</a><a href="http://www.educity.cn/ei/c169.html" target="_blank">电子商务</a><a
+            href="http://www.educity.cn/ei/c170.html" target="_blank">电子政务</a><a href="http://www.educity.cn/ei/c171.html"
+                target="_blank">供应链管理</a><a href="http://www.educity.cn/ei/c172.html" target="_blank">解决方案</a><a
+                    href="http://www.educity.cn/ei/c173.html" target="_blank">客户关系管理</a><a href="http://www.educity.cn/ei/c174.html"
+                        target="_blank">企业资源计划</a><a href="http://www.educity.cn/ei/c175.html" target="_blank">商业智能</a><a
+                            href="http://www.educity.cn/ei/c176.html" target="_blank">首席信息官</a><a href="http://www.educity.cn/ei/c178.html"
+                                target="_blank">信息化动态</a><a href="http://www.educity.cn/ei/c180.html" target="_blank">制造业信息化</a><a
+                                    href="http://www.educity.cn/ei/c226.html" target="_blank">办公自动化</a><a href="http://www.educity.cn/ei/c227.html"
+                                        target="_blank">SOA</a><a href="http://www.educity.cn/ei/c228.html" target="_blank">企业架构</a><a
+                                            href="http://www.educity.cn/ei/c229.html" target="_blank">大数据</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/zhicheng/" target="_blank">职称考试学院</a></dt><dd><a
+        href="http://www.educity.cn/zhicheng/c181.html" target="_blank">职称考试题目</a><a href="http://www.educity.cn/zhicheng/c182.html"
+            target="_blank">职称考试指南</a><a href="http://www.educity.cn/zhicheng/c183.html" target="_blank">职称考试资料</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/career/" target="_blank">职业规划学院</a></dt><dd><a
+        href="http://www.educity.cn/career/c192.html" target="_blank">就业指导</a><a href="http://www.educity.cn/career/c193.html"
+            target="_blank">职业道德</a><a href="http://www.educity.cn/career/c194.html" target="_blank">求职陷阱</a><a
+                href="http://www.educity.cn/career/c195.html" target="_blank">签约违约</a><a href="http://www.educity.cn/career/c196.html"
+                    target="_blank">职场动态</a><a href="http://www.educity.cn/career/c197.html" target="_blank">职业规划</a><a
+                        href="http://www.educity.cn/career/c198.html" target="_blank">职业测评</a><a href="http://www.educity.cn/career/c199.html"
+                            target="_blank">职场健康</a><a href="http://www.educity.cn/career/c200.html" target="_blank">面试题库</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/ky/" target="_blank">研究生院</a></dt><dd><a href="http://www.educity.cn/ky/c187.html"
+        target="_blank">考研英语</a><a href="http://www.educity.cn/ky/c188.html" target="_blank">考研题库</a><a
+            href="http://www.educity.cn/ky/c189.html" target="_blank">招生信息</a><a href="http://www.educity.cn/ky/c190.html"
+                target="_blank">就业指导</a><a href="http://www.educity.cn/ky/c191.html" target="_blank">考研经验</a><a
+                    href="http://www.educity.cn/ky/c201.html" target="_blank">考研政治</a><a href="http://www.educity.cn/ky/c202.html"
+                        target="_blank">考研数学</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/labs/" target="_blank">信息安全实验室</a></dt><dd><a
+        href="http://www.educity.cn/labs/c123.html" target="_blank">网络安全</a><a href="http://www.educity.cn/labs/c205.html"
+            target="_blank">黑客教程</a><a href="http://www.educity.cn/labs/c206.html" target="_blank">杀毒防毒</a><a
+                href="http://www.educity.cn/labs/c207.html" target="_blank">安全设置</a><a href="http://www.educity.cn/labs/c208.html"
+                    target="_blank">脚本攻防</a><a href="http://www.educity.cn/labs/c209.html" target="_blank">黑客入侵</a><a
+                        href="http://www.educity.cn/labs/c210.html" target="_blank">工具使用</a><a href="http://www.educity.cn/labs/c211.html"
+                            target="_blank">漏洞分析</a><a href="http://www.educity.cn/labs/c212.html" target="_blank">加密解密</a><a
+                                href="http://www.educity.cn/labs/c213.html" target="_blank">手机安全</a><a href="http://www.educity.cn/labs/c214.html"
+                                    target="_blank">安全技术</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/sheji/" target="_blank">媒体设计学院</a></dt><dd><a
+        href="http://www.educity.cn/sheji/c149.html" target="_blank">3DMax教程</a><a href="http://www.educity.cn/sheji/c151.html"
+            target="_blank">CAD教程</a><a href="http://www.educity.cn/sheji/c154.html" target="_blank">Firework教程</a><a
+                href="http://www.educity.cn/sheji/c155.html" target="_blank">Flash教程</a><a href="http://www.educity.cn/sheji/c158.html"
+                    target="_blank">Photoshop教程</a><a href="http://www.educity.cn/sheji/c185.html" target="_blank">Authorware教程</a><a
+                        href="http://www.educity.cn/sheji/c204.html" target="_blank">CorelDraw教程</a><a href="http://www.educity.cn/sheji/c215.html"
+                            target="_blank">Illustrator教程</a><a href="http://www.educity.cn/sheji/c216.html"
+                                target="_blank">Painter教程</a><a href="http://www.educity.cn/sheji/c217.html" target="_blank">Freehand教程</a><a
+                                    href="http://www.educity.cn/sheji/c278.html" target="_blank">Director教程</a><a href="http://www.educity.cn/sheji/c279.html"
+                                        target="_blank">Maya教程</a><a href="http://www.educity.cn/sheji/c303.html" target="_blank">会声会影教程</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/jianzhan/" target="_blank">网站建设学院</a></dt><dd><a
+        href="http://www.educity.cn/jianzhan/c152.html" target="_blank">Dreamwaver教程</a><a
+            href="http://www.educity.cn/jianzhan/c156.html" target="_blank">HTML教程</a><a href="http://www.educity.cn/jianzhan/c167.html"
+                target="_blank">网站优化</a><a href="http://www.educity.cn/jianzhan/c218.html" target="_blank">Web设计</a><a
+                    href="http://www.educity.cn/jianzhan/c219.html" target="_blank">网站策划</a><a href="http://www.educity.cn/jianzhan/c220.html"
+                        target="_blank">淘宝店铺</a><a href="http://www.educity.cn/jianzhan/c221.html" target="_blank">建站经验</a><a
+                            href="http://www.educity.cn/jianzhan/c222.html" target="_blank">网站运营</a><a href="http://www.educity.cn/jianzhan/c223.html"
+                                target="_blank">CSS教程</a><a href="http://www.educity.cn/jianzhan/c224.html" target="_blank">CMS教程</a><a
+                                    href="http://www.educity.cn/jianzhan/c225.html" target="_blank">Frontpage教程</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/wulianwang/" target="_blank">物联网学院</a></dt><dd><a
+        href="http://www.educity.cn/wulianwang/c230.html" target="_blank">生物识别</a><a href="http://www.educity.cn/wulianwang/c231.html"
+            target="_blank">二维码</a><a href="http://www.educity.cn/wulianwang/c232.html" target="_blank">射频技术</a><a
+                href="http://www.educity.cn/wulianwang/c233.html" target="_blank">传感器</a><a href="http://www.educity.cn/wulianwang/c234.html"
+                    target="_blank">物联网感知层</a><a href="http://www.educity.cn/wulianwang/c235.html" target="_blank">物联网网络层</a><a
+                        href="http://www.educity.cn/wulianwang/c236.html" target="_blank">物联网传输层</a><a href="http://www.educity.cn/wulianwang/c237.html"
+                            target="_blank">物联网应用层</a><a href="http://www.educity.cn/wulianwang/c238.html" target="_blank">物联网标准</a><a
+                                href="http://www.educity.cn/wulianwang/c239.html" target="_blank">物联网前沿技术</a><a href="http://www.educity.cn/wulianwang/c240.html"
+                                    target="_blank">智能生活</a><a href="http://www.educity.cn/wulianwang/c241.html" target="_blank">智慧城市</a><a
+                                        href="http://www.educity.cn/wulianwang/c242.html" target="_blank">物联网案例分析</a><a href="http://www.educity.cn/wulianwang/c243.html"
+                                            target="_blank">云计算</a><a href="http://www.educity.cn/wulianwang/c244.html" target="_blank">虚拟化技术</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/shenghuo/" target="_blank">IT生活</a></dt><dd><a
+        href="http://www.educity.cn/shenghuo/c261.html" target="_blank">互联网</a><a href="http://www.educity.cn/shenghuo/c262.html"
+            target="_blank">电子商务</a><a href="http://www.educity.cn/shenghuo/c263.html" target="_blank">硬件数码</a><a
+                href="http://www.educity.cn/shenghuo/c264.html" target="_blank">电信</a><a href="http://www.educity.cn/shenghuo/c265.html"
+                    target="_blank">手机</a><a href="http://www.educity.cn/shenghuo/c266.html" target="_blank">家电</a><a
+                        href="http://www.educity.cn/shenghuo/c267.html" target="_blank">IT业界</a><a href="http://www.educity.cn/shenghuo/c268.html"
+                            target="_blank">创新创业</a><a href="http://www.educity.cn/shenghuo/c269.html" target="_blank">移动互联</a><a
+                                href="http://www.educity.cn/shenghuo/c270.html" target="_blank">IT生活</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/java/" target="_blank">Java学院</a></dt><dd><a href="http://www.educity.cn/java/c25.html"
+        target="_blank">Javascript教程</a><a href="http://www.educity.cn/java/c271.html" target="_blank">Java教程</a><a
+            href="http://www.educity.cn/java/c272.html" target="_blank">Java核心技术</a><a href="http://www.educity.cn/java/c273.html"
+                target="_blank">Java高级技术</a><a href="http://www.educity.cn/java/c274.html" target="_blank">J2EE教程</a><a
+                    href="http://www.educity.cn/java/c275.html" target="_blank">J2ME教程</a><a href="http://www.educity.cn/java/c276.html"
+                        target="_blank">XML教程</a><a href="http://www.educity.cn/java/c277.html" target="_blank">Java开源技术</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/linux/" target="_blank">Linux学院</a></dt><dd><a
+        href="http://www.educity.cn/linux/c116.html" target="_blank">Linux系统管理</a><a href="http://www.educity.cn/linux/c117.html"
+            target="_blank">Unix教程</a><a href="http://www.educity.cn/linux/c157.html" target="_blank">Linux教程</a><a
+                href="http://www.educity.cn/linux/c280.html" target="_blank">Linux编程</a><a href="http://www.educity.cn/linux/c281.html"
+                    target="_blank">Linux集群</a><a href="http://www.educity.cn/linux/c282.html" target="_blank">Linux内核技术</a><a
+                        href="http://www.educity.cn/linux/c283.html" target="_blank">Linux安全</a><a href="http://www.educity.cn/linux/c284.html"
+                            target="_blank">Linux服务器</a><a href="http://www.educity.cn/linux/c325.html" target="_blank">Solaris教程</a><a
+                                href="http://www.educity.cn/linux/c326.html" target="_blank">AIX教程</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/windows/" target="_blank">Windows学院</a></dt><dd><a
+        href="http://www.educity.cn/windows/c118.html" target="_blank">Windows系统管理</a><a
+            href="http://www.educity.cn/windows/c162.html" target="_blank">Windows教程</a><a href="http://www.educity.cn/windows/c286.html"
+                target="_blank">Windows安全</a><a href="http://www.educity.cn/windows/c287.html" target="_blank">Windows服务器</a><a
+                    href="http://www.educity.cn/windows/c288.html" target="_blank">Windows网络管理</a><a
+                        href="http://www.educity.cn/windows/c289.html" target="_blank">Windows故障</a><a href="http://www.educity.cn/windows/c290.html"
+                            target="_blank">Windows优化</a><a href="http://www.educity.cn/windows/c291.html" target="_blank">Windows动态</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/guanli/" target="_blank">商学院</a></dt><dd><a href="http://www.educity.cn/guanli/c293.html"
+        target="_blank">IT领导力</a><a href="http://www.educity.cn/guanli/c294.html" target="_blank">战略管理</a><a
+            href="http://www.educity.cn/guanli/c295.html" target="_blank">组织运营</a><a href="http://www.educity.cn/guanli/c296.html"
+                target="_blank">市场营销</a><a href="http://www.educity.cn/guanli/c297.html" target="_blank">人力资源</a><a
+                    href="http://www.educity.cn/guanli/c298.html" target="_blank">财务资本</a><a href="http://www.educity.cn/guanli/c299.html"
+                        target="_blank">管理经验</a><a href="http://www.educity.cn/guanli/c300.html" target="_blank">企业文化</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/gongju/" target="_blank">常用工具</a></dt><dd><a href="http://www.educity.cn/gongju/c165.html"
+        target="_blank">软件应用教程</a><a href="http://www.educity.cn/gongju/c304.html" target="_blank">即时通讯</a><a
+            href="http://www.educity.cn/gongju/c305.html" target="_blank">视频播放</a><a href="http://www.educity.cn/gongju/c306.html"
+                target="_blank">网络音乐</a><a href="http://www.educity.cn/gongju/c307.html" target="_blank">图片处理</a><a
+                    href="http://www.educity.cn/gongju/c308.html" target="_blank">文件压缩</a><a href="http://www.educity.cn/gongju/c309.html"
+                        target="_blank">电子邮件</a><a href="http://www.educity.cn/gongju/c310.html" target="_blank">系统优化</a><a
+                            href="http://www.educity.cn/gongju/c311.html" target="_blank">杀毒软件</a><a href="http://www.educity.cn/gongju/c312.html"
+                                target="_blank">下载工具</a><a href="http://www.educity.cn/gongju/c313.html" target="_blank">浏览器</a><a
+                                    href="http://www.educity.cn/gongju/c314.html" target="_blank">输入法</a><a href="http://www.educity.cn/gongju/c315.html"
+                                        target="_blank">驱动程序</a><a href="http://www.educity.cn/gongju/c316.html" target="_blank">网盘</a><a
+                                            href="http://www.educity.cn/gongju/c317.html" target="_blank">微博</a><a href="http://www.educity.cn/gongju/c318.html"
+                                                target="_blank">其他工具</a></dd></dl>
+<dl class="site_map">
+    <dt><a href="http://www.educity.cn/shujuku/" target="_blank">数据库学院</a></dt><dd><a
+        href="http://www.educity.cn/shujuku/c29.html" target="_blank">数据库开发</a><a href="http://www.educity.cn/shujuku/c256.html"
+            target="_blank">Oracle数据库</a><a href="http://www.educity.cn/shujuku/c257.html" target="_blank">MySQL数据库</a><a
+                href="http://www.educity.cn/shujuku/c258.html" target="_blank">Sybase数据库</a><a href="http://www.educity.cn/shujuku/c259.html"
+                    target="_blank">DB2数据库</a><a href="http://www.educity.cn/shujuku/c260.html" target="_blank">SQL
+                        Server数据库</a><a href="http://www.educity.cn/shujuku/c327.html" target="_blank">数据仓库</a><a
+                            href="http://www.educity.cn/shujuku/c328.html" target="_blank">Informix数据库</a></dd></dl>
+
+            </div>
+            <div class="h10">
+            </div>
+        </div>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="menu1" style="margin-top:10px;margin-bottom:20px">
+  <tr>
+    <td align="center"><a href="http://www.educity.cn/" target="_blank">网站首页</a>&nbsp;&nbsp;&nbsp;<a href="http://www.educity.cn/hzzx/about.htm" target="_blank">关于希赛</a>&nbsp;&nbsp;&nbsp;<a href="http://www.educity.cn/hzzx/job.htm" target="_blank" >工作机会</a>&nbsp;&nbsp;&nbsp;<a href="http://www.educity.cn/hzzx/xieyi.htm" target="_blank">服务协议</a>&nbsp;&nbsp;&nbsp;<a href="http://www.educity.cn/hzzx/right.htm" target="_blank">免责声明</a>&nbsp;&nbsp;&nbsp;<a href="http://www.educity.cn/hzzx/contact.htm" target="_blank">联系希赛</a><br>
+    希赛网 版权所有 &copy; 2001-2016&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank">湘ICP备10203241号-9</a></td>
+</tr>
+</table>
+
+<!-- 置顶按钮开始 -->
+<link href="/css/to_top.css" rel="stylesheet" type="text/css" />
+<script src="/js/to_top.js" type="text/javascript"></script>
+<!-- 置顶按钮结束 -->
+
+<!-- 图+推广开始 -->
+<script>
+var cpro_id = 'u1605519';
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/i.js"></script>
+<!-- 图+推广结束 -->
+
+<!-- 百度统计开始 -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F555d9dcffdcb317595de82b0fc125cdf' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- 百度统计结束 -->
+
+<!-- 百度分享开始 -->
+<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=6&amp;pos=right&amp;uid=6819010" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+var bds_config={"bdTop":120};
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<!-- 百度分享结束 -->
+    </div>
+
+    <script language="javascript" type="text/javascript" src="/js/imgWidth.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0042)http://www.cnblogs.com/zhwl/p/3529473.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>margin:0 auto 与 text-align:center 的区别 - 郑文亮 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/bundle-SimpleBlue.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zhwl/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zhwl/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zhwl/wlwmanifest.xml">
+<script src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'zhwl', cb_enable_mathjax=false;</script>
+<script src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zhwl/">郑文亮</a></div>
+<div class="subtitle">专心地钻研编程，每天进步一点点</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/zhwl/">首页</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E9%83%91%E6%96%87%E4%BA%AE">联系</a></li>
+<li id="nav_rss">
+<!----></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-1608&nbsp;
+文章-3&nbsp;
+评论-505&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园.html">margin:0 auto 与 text-align:center 的区别</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><span style="color: #ff0000;"><strong>基本概念：</strong></span></p>
+<p><strong>1.text-align: 属性规定元素中的文本的水平对齐方式;&nbsp;</strong></p>
+<p><strong>　　　　　　&nbsp;该属性通过指定行框与哪个点对齐，从而设置块级元素内文本的水平对齐方式;</strong></p>
+<p><strong>　　　　　　&nbsp;一般情况下设置文本对齐方式的时使用此属性。支持值 justify。</strong></p>
+<p><span>　　<span>Example:&nbsp;</span><span>div&nbsp;{&nbsp;text-align:&nbsp;left;&nbsp;} &nbsp;//文本居左对齐</span></span></p>
+<p><span>　　</span>注释：所有浏览器都支持 text-align 属性；任何的版本的 Internet Explorer （包括 IE8）都不支持属性值 "inherit"。</p>
+<p><strong>2.margin 是设置对象四边的外延边距，被称为外补丁或外边距。</strong></p>
+<p><span>　　Example:&nbsp;<span>div&nbsp;{&nbsp;margin:&nbsp;20px&nbsp;10px&nbsp;30px&nbsp;40px;&nbsp;} &nbsp;//&nbsp;</span><span>表示对象外边距，顶20px、右10px、下30px、左40px</span></span></p>
+<p><strong><span style="color: #ff0000;">区别如下:</span></strong></p>
+<p><span>1.text-align:center 设置文本或img标签等一些内联对象（或与之类似的元素）的居中。</span></p>
+<p><span>2.margin:0 auto 设置块元素（或与之类似的元素）的居中。</span></p>
+<p><span>这两个属性IE与FF的理解也有所不同。<strong>我们设置一个段落</strong><strong>P</strong><strong>，在段落内存在一个图片</strong><strong>img</strong><strong>标签。</strong>　　</span></p>
+<p><strong><span style="color: #ff0000;">注意：</span></strong></p>
+<p>1.当设置body{text-align:center;}。 在IE中，段落P，图片img同时实现了居中对齐，也就是说text-align:center;同时作用于元素p与元素img。 在FF中，段落P，没有能实现居中对齐，而图片img实现了居中对齐，也就是说text-align:center;作用于img标签，而段落p标签没有起到居中的作用。</p>
+<p>2.当设置段落 p {margin:0 auto;}。 在IE与FF中，段落P均实现了居中对齐。图片img由于不是作用对象，所以不会居中对齐。</p>
+<p>有三种情况需要说明： 1.margin:0 auto;的选择器是作用对象，如div，p，而不是body。如果设置：body { margin:0 auto; }将不会达到任何效果，除非你定义body的宽度，那将会让body内的元素产生位置变化。如我们设置body宽度为500px。对p段落不作任何设置， 我们最大化窗口将会看到段落并非处于窗口的最左上角。 2.设置段落 p {text-align:center;} 将要实现的并不是段落本身的对齐方式，而是段落内元素居中对齐。 3. 设置图片标签img {margin:0 auto;} ，就犯了一个小错误，img类于内联对象，不可以设置图片img标签的margin属性，如果一定要设置，那么先将它的属性转变为块元素，如下面的代 码：img {display:block; margin:0 auto;}</p>
+<p><strong>知识点</strong>：块元素，内联元素的区别。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/zhwl/category/285011.html">前台HTML/CSS</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3529473,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E9%83%91%E6%96%87%E4%BA%AE" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/zhwl/" target="_blank"><img src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/u274740.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/zhwl/">郑文亮</a><br>
+<a href="http://home.cnblogs.com/u/zhwl/followees">关注 - 12</a><br>
+<a href="http://home.cnblogs.com/u/zhwl/followers">粉丝 - 703</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3529473,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+	<div class="buryit" onclick="votePost(3529473,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zhwl/p/3529436.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/zhwl/p/3529436.html" title="发布于2014-01-22 11:18">div页面居中(上下左右)</a><br><a href="http://www.cnblogs.com/zhwl/p/3529628.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/zhwl/p/3529628.html" title="发布于2014-01-22 13:24">[转]javascript中style.left和offsetLeft的使用</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-01-22 11:34</span> <a href="http://www.cnblogs.com/zhwl/">郑文亮</a> 阅读(<span id="post_view_count">8641</span>) 评论(<span id="post_comment_count">1</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3529473" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/zhwl/p/3529473.html#" onclick="AddToWz(3529473);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=83874,cb_entryId=3529473,cb_blogApp=currentBlogApp,cb_blogUserGuid='ee933689-693b-e011-ac81-842b2b196315',cb_entryCreatedDate='2014/1/22 11:34:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zhwl/p/3529473.html#3253074" class="layer">#1楼</a><a name="3253074" id="comment_anchor_3253074"></a><span id="comment-maxId" style="display:none;">3253074</span><span id="comment-maxDate" style="display:none;">2015/8/24 13:36:51</span>  <span class="comment_date">2015-08-24 13:36</span> <a id="a_comment_author_3253074" href="http://www.cnblogs.com/valentino24/" target="_blank">Mayboy</a> <a href="http://msg.cnblogs.com/send/Mayboy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3253074" class="blog_comment_body">学习了，非常不错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3253074,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3253074,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3253074_avatar" style="display:none;">http://pic.cnblogs.com/face/532579/20141018172713.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/zhwl/p/3529473.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/zhwl/p/3529473.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://qy.grapecity.cn/activereports_server/?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=ARS&utm_campaign=community" target="_blank"><img width="300" height="250" src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/24442-20160630110643984-296965588.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/548756/" target="_blank">豌豆荚确认并入阿里移动，双方并未透露具体金额</a><br> ·  <a href="http://news.cnblogs.com/n/548755/" target="_blank">1340亿美元！台积电背靠苹果创下台湾企业市值最高纪录</a><br> ·  <a href="http://news.cnblogs.com/n/548754/" target="_blank">三星电子第二季度业绩或两年多最佳 Galaxy S7又立功了</a><br> ·  <a href="http://news.cnblogs.com/n/548753/" target="_blank">支付宝接入一键呼叫无人机功能 以后可以打飞的了</a><br> ·  <a href="http://news.cnblogs.com/n/548734/" target="_blank">评论：李彦宏刚刷出的好感度又被百度用户体验总监给败光</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./margin_0 auto 与 text-align_center 的区别 - 郑文亮 - 博客园_files/24442-20160613130538213-1713265809.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/544641/" target="_blank">抽象：程序员必备的能力</a><br> ·  <a href="http://kb.cnblogs.com/page/213197/" target="_blank">编程同写作，写代码只是在码字</a><br> ·  <a href="http://kb.cnblogs.com/page/207265/" target="_blank">遇见程序员男友</a><br> ·  <a href="http://kb.cnblogs.com/page/511529/" target="_blank">设计师的视觉设计五项修炼</a><br> ·  <a href="http://kb.cnblogs.com/page/514193/" target="_blank">我听到过的最精彩的一个软件纠错故事</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"><b>历史上的今天:</b><br>2013-01-22 <a href="http://www.cnblogs.com/zhwl/archive/2013/01/22/2871731.html">[转载][iPhone]XML文件解析 parsing-xml-files NSXMLParser</a><br>2013-01-22 <a href="http://www.cnblogs.com/zhwl/archive/2013/01/22/2871292.html">[精华] 苹果个人开发者账号注册引导帖</a><br>2013-01-22 <a href="http://www.cnblogs.com/zhwl/archive/2013/01/22/2871034.html">在iPhone应用的导航栏添加自定义标题</a><br></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/zhwl/">郑文亮</a><br>园龄：<a href="http://home.cnblogs.com/u/zhwl/" title="入园时间：2011-02-18">5年4个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/zhwl/followers/">703</a><br>关注：<a href="http://home.cnblogs.com/u/zhwl/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;ee933689-693b-e011-ac81-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="日历">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&lt;</a></td><td align="center">2016年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/08/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td class="CalTodayDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+
+</div>
+</div>
+
+</div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(1704)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/zhwl/category/284132.html">Asp.Net(133)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/zhwl/category/284138.html">asp.net MVC(19)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/zhwl/category/284139.html">c#(54)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/zhwl/category/284289.html">c# winform(17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/zhwl/category/356791.html">flash/flex(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/zhwl/category/566167.html">Hadoop(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/zhwl/category/309004.html">JAVA(106)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/zhwl/category/289263.html">Json(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/zhwl/category/322154.html">Jsp(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/zhwl/category/455938.html">Linux(centos)(43)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/zhwl/category/453930.html">Linux(ubuntu)(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/zhwl/category/355050.html">lucene(34)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/zhwl/category/284300.html">Microsoft Ajax</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/zhwl/category/519975.html">nginx(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/zhwl/category/681251.html">node.js(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/zhwl/category/312707.html">Others(45)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/zhwl/category/473302.html">Phonegap/jQueryMobile(20)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/zhwl/category/548964.html">phonejs(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/zhwl/category/381211.html">PHP(30)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/zhwl/category/284296.html">PowerBuild(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/zhwl/category/342960.html">Python(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/zhwl/category/719596.html">redis(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/zhwl/category/284293.html">SharePoint</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/zhwl/category/284298.html">silverlight(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/zhwl/category/554549.html">SmartGwt(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/zhwl/category/284292.html">UML(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/zhwl/category/369804.html">visual c++(73)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/zhwl/category/284288.html">WCF(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/zhwl/category/630277.html">webApp(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/zhwl/category/284822.html">WebServices(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/zhwl/category/284291.html">WF</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/zhwl/category/284290.html">WPF</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/zhwl/category/284315.html">操作系统(44)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/zhwl/category/358364.html">辅助工具(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/zhwl/category/525692.html">架构设计(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/zhwl/category/295027.html">敏捷开发(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/zhwl/category/401442.html">苹果机器用(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/zhwl/category/591111.html">前台ExtJs(42)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/zhwl/category/285011.html">前台HTML/CSS(116)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/zhwl/category/558382.html">前台html5(26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/zhwl/category/284137.html">前台javascript(117)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/zhwl/category/284287.html">前台jQuery(65)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/zhwl/category/309912.html">手机开发(Android)(180)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/zhwl/category/363528.html">手机开发(flash)(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/zhwl/category/335486.html">手机开发(iPhone)(196)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/zhwl/category/567849.html">数据库HBase(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/zhwl/category/512376.html">数据库MongoDb(17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/zhwl/category/405955.html">数据库Mysql(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/zhwl/category/559241.html">数据库oracle(33)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/zhwl/category/284295.html">数据库SqlServer(28)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/zhwl/category/295177.html">随想(18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/zhwl/category/566258.html">淘宝网(18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/zhwl/category/561311.html">微信开发(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/zhwl/category/327175.html">物联网(20)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/zhwl/category/284301.html">项目管理(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/zhwl/category/358330.html">需要补充的(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/zhwl/category/536927.html">移动黄页(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/zhwl/category/293088.html">质量保证QA(10)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(1608)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/zhwl/archive/2016/04.html">2016年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/zhwl/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/zhwl/archive/2016/02.html">2016年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/zhwl/archive/2016/01.html">2016年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/zhwl/archive/2015/12.html">2015年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/zhwl/archive/2015/11.html">2015年11月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/zhwl/archive/2015/10.html">2015年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/zhwl/archive/2015/09.html">2015年9月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/zhwl/archive/2015/08.html">2015年8月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/zhwl/archive/2015/07.html">2015年7月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/zhwl/archive/2015/06.html">2015年6月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/zhwl/archive/2015/05.html">2015年5月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/zhwl/archive/2015/04.html">2015年4月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/zhwl/archive/2015/03.html">2015年3月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/zhwl/archive/2015/02.html">2015年2月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/zhwl/archive/2015/01.html">2015年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/zhwl/archive/2014/12.html">2014年12月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/zhwl/archive/2014/11.html">2014年11月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/zhwl/archive/2014/09.html">2014年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/zhwl/archive/2014/07.html">2014年7月 (56)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/zhwl/archive/2014/06.html">2014年6月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/zhwl/archive/2014/05.html">2014年5月 (51)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/zhwl/archive/2014/04.html">2014年4月 (78)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/zhwl/archive/2014/03.html">2014年3月 (57)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/zhwl/archive/2014/02.html">2014年2月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/zhwl/archive/2014/01.html">2014年1月 (39)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/zhwl/archive/2013/12.html">2013年12月 (30)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/zhwl/archive/2013/11.html">2013年11月 (23)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/zhwl/archive/2013/10.html">2013年10月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/zhwl/archive/2013/09.html">2013年9月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/zhwl/archive/2013/08.html">2013年8月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/zhwl/archive/2013/07.html">2013年7月 (32)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/zhwl/archive/2013/06.html">2013年6月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/zhwl/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/zhwl/archive/2013/04.html">2013年4月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/zhwl/archive/2013/03.html">2013年3月 (19)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/zhwl/archive/2013/02.html">2013年2月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/zhwl/archive/2013/01.html">2013年1月 (55)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/zhwl/archive/2012/12.html">2012年12月 (51)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/zhwl/archive/2012/11.html">2012年11月 (86)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_40" href="http://www.cnblogs.com/zhwl/archive/2012/10.html">2012年10月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_41" href="http://www.cnblogs.com/zhwl/archive/2012/09.html">2012年9月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_42" href="http://www.cnblogs.com/zhwl/archive/2012/08.html">2012年8月 (33)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_43" href="http://www.cnblogs.com/zhwl/archive/2012/07.html">2012年7月 (47)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_44" href="http://www.cnblogs.com/zhwl/archive/2012/06.html">2012年6月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_45" href="http://www.cnblogs.com/zhwl/archive/2012/05.html">2012年5月 (31)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_46" href="http://www.cnblogs.com/zhwl/archive/2012/04.html">2012年4月 (21)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_47" href="http://www.cnblogs.com/zhwl/archive/2012/03.html">2012年3月 (105)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_48" href="http://www.cnblogs.com/zhwl/archive/2012/02.html">2012年2月 (82)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_49" href="http://www.cnblogs.com/zhwl/archive/2012/01.html">2012年1月 (19)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_50" href="http://www.cnblogs.com/zhwl/archive/2011/12.html">2011年12月 (45)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_51" href="http://www.cnblogs.com/zhwl/archive/2011/11.html">2011年11月 (29)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_52" href="http://www.cnblogs.com/zhwl/archive/2011/10.html">2011年10月 (21)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_53" href="http://www.cnblogs.com/zhwl/archive/2011/09.html">2011年9月 (32)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_54" href="http://www.cnblogs.com/zhwl/archive/2011/08.html">2011年8月 (42)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_55" href="http://www.cnblogs.com/zhwl/archive/2011/07.html">2011年7月 (42)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_56" href="http://www.cnblogs.com/zhwl/archive/2011/06.html">2011年6月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_57" href="http://www.cnblogs.com/zhwl/archive/2011/05.html">2011年5月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_58" href="http://www.cnblogs.com/zhwl/archive/2011/04.html">2011年4月 (40)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_59" href="http://www.cnblogs.com/zhwl/archive/2011/03.html">2011年3月 (55)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_60" href="http://www.cnblogs.com/zhwl/archive/2011/02.html">2011年2月 (55)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">HTML</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://blog.csdn.net/coolszy#" rel="nofollow">android学习网址</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://developer.51cto.com/developer/aspdotnet/" rel="nofollow">asp.net网站开发</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.yyjcw.com/html/News/1397.html" rel="nofollow">asp.net学习网站</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://www.enet.com.cn/eschool/video/autohtml/310/261/0.shtml" rel="nofollow">c++</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="http://club.topsage.com/thread-156290-1-1.html" rel="nofollow">c语言教程</a> </li>
+<li class="c_b_p_link_desc">c语言教程</li>
+<li><a id="CatList_LinkList_2_Link_5" href="http://blog.sina.com.cn/s/blog_616425f10100gss6.html" rel="nofollow">Flex中文视频教程</a> </li>
+<li class="c_b_p_link_desc">http://video.baidu.com/v?ct=301989888&amp;rn=20&amp;pn=0&amp;db=0&amp;s=8&amp;word=flex%B5%C4%CA%D3%C6%B5%BD%CC%B3%CC&amp;fr=ala0</li>
+<li><a id="CatList_LinkList_2_Link_6" href="http://www.abab123.com/Soft/ShowSoft.asp?SoftID=6242" rel="nofollow">Gis系统</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_7" href="http://mobile.51cto.com/news-147845.htm" rel="nofollow">iPhone多视图开发案例纪实</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_8" href="http://blog.csdn.net/nicktang/article/details/6826244" rel="nofollow">iphone开发</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_9" href="http://www.cocoachina.com/bbs/register.php?step=finish&verify=e70a1b1b" rel="nofollow">iphone开发学习网址</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_10" href="http://v.youku.com/v_show/id_XMjk1OTk3MzIw.html?f=6608541" rel="nofollow">iphone视频教程</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_11" href="http://www.aspxcs.net/HTML/0021031734.html" rel="nofollow">JQuery操作cookie插件</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_12" href="http://www.jslab.org.cn/?tag=easyTitle" rel="nofollow">js用法</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_13" href="http://hi.baidu.com/ewmwxb/blog/item/3481a9c2472e301c0ef47729.html" rel="nofollow">sqlserver 视频学习</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_14" href="http://www.gissky.net/" rel="nofollow">关于地图 </a> </li>
+
+<li><a id="CatList_LinkList_2_Link_15" href="http://www.w3cmm.com/other/css-position.html" rel="nofollow">网页知识</a> </li>
+<li class="c_b_p_link_desc">网页知识</li>
+<li><a id="CatList_LinkList_2_Link_16" href="http://blog.csdn.net/BiologyPianoProgram/article/details/4103062" rel="nofollow">学习HTML：iframe用法总结收藏</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_17" href="http://www.w3school.com.cn/html5/index.asp" rel="nofollow">学习Html的好地方(w3school)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_18" href="http://en.hujiang.com/level/lingjichu/" rel="nofollow">英语学习</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	1002680
+	</li>
+	<li class="liRank">
+		排名 -	54
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhwl/archive/2011/12/13/2285820.html#3463567">1. Re:Xcode调试断点不停止解决方案！（转）</a></li>
+        <li class="recent_comment_body">Object -&gt; TARGETS -&gt; Build Settings -&gt; Generate Debug Symbols -&gt; Yes就OK了。适用于xcode 7.3.1...</li>
+        <li class="recent_comment_author">--guoqiangx_5</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhwl/p/3524326.html#3460462">2. Re:使用iScroll和photoswipe写手机浏览图片的插件的几点经验</a></li>
+        <li class="recent_comment_body">我想问一下，楼主，有没有一种方法可以点击图片就关闭预览呢？</li>
+        <li class="recent_comment_author">--時针</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhwl/p/3375775.html#3455839">3. Re:获取WebView加载HTML时网页中的内容</a></li>
+        <li class="recent_comment_body">我的也没有打印出来0.0为啥呢？</li>
+        <li class="recent_comment_author">--=3</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhwl/p/3488790.html#3447793">4. Re:小菜学习Lucene.Net(更新3.0.3版本使用)</a></li>
+        <li class="recent_comment_body">传智播客害人不浅</li>
+        <li class="recent_comment_author">--夜无痕星</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhwl/archive/2011/10/05/2199275.html#3445358">5. Re:服务器推送技术Server Push详解 （转）</a></li>
+        <li class="recent_comment_body">前段时间研究了一下goeasy,一款web实时推送工具，代码简洁易读，服务稳定。后台推送只需要两行代码， js前端推送也只需要3，4行，而且文档齐全，还提供了后台查询信息收发情况，所以我觉得GoEas......</li>
+        <li class="recent_comment_author">--EmmaMao</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhwl/p/3611898.html">1. 微信支付----没我想的那么难！(34893)</a></li><li><a href="http://www.cnblogs.com/zhwl/p/3719302.html">2. centos安装oracle 11g 完全图解(28412)</a></li><li><a href="http://www.cnblogs.com/zhwl/p/3332636.html">3. android PopupWindow实现从底部弹出或滑出选择菜单或窗口(27455)</a></li><li><a href="http://www.cnblogs.com/zhwl/archive/2013/06/12/3132722.html">4. android多分辨率多密度下界面适配方案(26943)</a></li><li><a href="http://www.cnblogs.com/zhwl/archive/2013/06/09/3128255.html">5. Google开源项目二维码读取与生成工具ZXing(26651)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhwl/archive/2012/08/09/2629647.html">1. 今天你抛弃了ASP.NET了吗？问题篇(13)</a></li><li><a href="http://www.cnblogs.com/zhwl/p/3736522.html">2. Tomcat7中配置Oracle 11g数据库DBCP连接池(9)</a></li><li><a href="http://www.cnblogs.com/zhwl/archive/2011/02/26/1965613.html">3. 通过网银在线进行在线支付(9)</a></li><li><a href="http://www.cnblogs.com/zhwl/archive/2012/05/10/2493803.html">4. 甩掉 ashx/asmx，使用jQuery.ajaxWebService请求WebMethod,Ajax处理更加简练(8)</a></li><li><a href="http://www.cnblogs.com/zhwl/p/3333585.html">5. 日积月累：ScrollView嵌套ListView只显示一行(8)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 郑文亮
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

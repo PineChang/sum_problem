@@ -1,0 +1,1987 @@
+<!DOCTYPE html>   
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="zh-CN" prefix="og: http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+
+
+<!-- BEGIN head -->
+<head>
+
+	<!-- Title -->
+	
+	
+	<!-- Meta Tags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!-- Favicon & Mobileicon -->
+	<link rel="shortcut icon" href="http://jbcdn2.b0.upaiyun.com/2013/12/favicon.png" />
+	<link rel="apple-touch-icon" href="http://jbcdn2.b0.upaiyun.com/2013/12/jobbole-blog-logo-mobile.png" />
+	
+	<!-- RSS, Atom & Pingbacks -->
+		<link rel="alternate" title="文章 &#8211; 伯乐在线 RSS Feed" href="http://blog.jobbole.com/feed/" />
+		<link rel="alternate" title="RSS .92" href="http://blog.jobbole.com/feed/rss/" />
+	<link rel="alternate" title="Atom 0.3" href="http://blog.jobbole.com/feed/atom/" />
+	<link rel="pingback" href="http://blog.jobbole.com/xmlrpc.php" />
+	
+	<!-- Theme Hook -->
+	
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.13 - http://yoast.com/wordpress/seo/ -->
+<title>十步图解CSS的position - 文章 - 伯乐在线</title>
+<meta name="description" content="CSS的positon，我想做为一个Web制作者来说都有碰到过，但至于对其是否真正的了解呢？那我就不也说了，至少我自己并不非常的了解其内核的运行。今天在Learn CSS Positioning in Ten Steps一文中分十步介绍了CSS的“position”中的“static、relative、absolute、float”使用，觉得蛮有意思的。整理了一下贴上来与大家一起分享。希望大家能喜欢。"/>
+<link rel="canonical" href="http://blog.jobbole.com/49320/" />
+<meta property='og:locale' content='zh_CN'/>
+<meta property='og:type' content='article'/>
+<meta property='og:title' content='十步图解CSS的position - 文章 - 伯乐在线'/>
+<meta property='og:description' content='CSS的positon，我想做为一个Web制作者来说都有碰到过，但至于对其是否真正的了解呢？那我就不也说了，至少我自己并不非常的了解其内核的运行。今天在Learn CSS Positioning in Ten Steps一文中分十步介绍了CSS的“position”中的“static、relative、absolute、float”使用，觉得蛮有意思的。整理了一下贴上来与大家一起分享。希望大家能喜欢。'/>
+<meta property='og:url' content='http://blog.jobbole.com/49320/'/>
+<meta property='og:site_name' content='文章 - 伯乐在线'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-1.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-2.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-3.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-4.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-5.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-6.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-7.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-8.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-9.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-11.png'/>
+<meta property='og:image' content='http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-10-1.png'/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel='stylesheet' id='dashicons-css'  href='http://blog.jobbole.com/wp-includes/css/dashicons.min.css?ver=4.5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='thickbox-css'  href='http://blog.jobbole.com/wp-includes/js/thickbox/thickbox.css?ver=4.5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css-css'  href='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/css/jquery.fancybox.css?ver=2.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jobbole-wp-css-css'  href='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/css/jobbole-wp-plugin.css?ver=1.0.28' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon_colorbox_css-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/colorbox/colorbox.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon_style-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/css/src/crayon_style.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon_global_style-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/css/src/global_style.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=2.7.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='v48fv_images-css'  href='http://blog.jobbole.com/wp-content/plugins/mu-widgets/library/base/public/css/images.css?ver=1.2.v48fv' type='text/css' media='all' />
+<link rel='stylesheet' id='v48fv_front-css'  href='http://blog.jobbole.com/wp-content/plugins/mu-widgets/library/base/public/css/front.css?ver=1.2.v48fv' type='text/css' media='all' />
+<link rel='stylesheet' id='v48fv_common-css'  href='http://blog.jobbole.com/wp-content/plugins/mu-widgets/library/base/public/css/common.css?ver=1.2.v48fv' type='text/css' media='all' />
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/jquery/jquery.js?ver=1.12.3'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/jquery.fancybox.pack.js?ver=2.1.5'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/superfish.js?ver=1.4.8'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/menu-effects.js?ver=1.5.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var JobboleAjax = {"ajaxurl":"http:\/\/blog.jobbole.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/jobbole-wp-plugin/js/jobbole-wp-plugin.js?ver=1.0.61'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/colorbox/jquery.colorbox-min.js?ver=2.7.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.7.1.1","is_admin":"0","ajaxurl":"http:\/\/blog.jobbole.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/js/src/util.js?ver=2.7.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonTagEditorSettings = {"home_url":"http:\/\/blog.jobbole.com","css":"crayon-te","css_selected":"crayon-selected","code_css":"#crayon-code","url_css":"#crayon-url","url_info_css":"#crayon-te-url-info","lang_css":"#crayon-lang","title_css":"#crayon-title","mark_css":"#crayon-mark","range_css":"#crayon-range","inline_css":"crayon-inline","inline_hide_css":"crayon-hide-inline","inline_hide_only_css":"crayon-hide-inline-only","hl_css":"#crayon-highlight","switch_html":"#content-html","switch_tmce":"#content-tmce","tinymce_button_generic":".mce-btn","tinymce_button":"a.mce_crayon_tinymce,.mce-i-crayon_tinymce","tinymce_button_unique":"mce_crayon_tinymce","tinymce_highlight":"mce-active","submit_css":"#crayon-te-ok","cancel_css":"#crayon-te-cancel","content_css":"#crayon-te-content","dialog_title_css":"#crayon-te-title","submit_wrapper_css":"#crayon-te-submit-wrapper","data_value":"data-value","attr_sep":":","css_sep":"_","fallback_lang":"default","add_text":"Add Code","edit_text":"Edit Code","quicktag_text":"crayon","submit_add":"\u63d2\u5165","submit_edit":"\u4fdd\u5b58","bar":"#crayon-te-bar","bar_content":"#crayon-te-bar-content","extensions":{"scpt":"applescript","applescript":"applescript","swf":"as","fla":"as","cs":"c#","h":"c++","hh":"c++","hpp":"c++","hxx":"c++","h++":"c++","cc":"c++","cpp":"c++","cxx":"c++","c++":"c++","pas":"delphi","java":"java","class":"java","jar":"java","mv":"miva","mvc":"miva","mvt":"miva","m":"objc","mm":"objc","psc":"papyrus","pl":"perl","py":"python","pyw":"python","pyc":"python","pyo":"python","pyd":"python","rb":"ruby","rbx":"ruby","rhtml":"ruby","vbs":"vb"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/crayon_tag_editor.js?ver=2.7.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/js/src/jquery.popup.js?ver=2.7.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/js/src/crayon.js?ver=2.7.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/modernizr.js?ver=2.5.3'></script>
+<link rel='https://api.w.org/' href='http://blog.jobbole.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.jobbole.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.jobbole.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://blog.jobbole.com/?p=49320' />
+<link rel="alternate" type="application/json+oembed" href="http://blog.jobbole.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://blog.jobbole.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F&#038;format=xml" />
+<script type="text/javascript">
+	window._wp_rp_static_base_url = 'http://dtmvdvtzf8rz0.cloudfront.net/static/';
+	window._wp_rp_wp_ajax_url = "http://blog.jobbole.com/wp-admin/admin-ajax.php";
+	window._wp_rp_plugin_version = '2.8';
+	window._wp_rp_post_id = '49320';
+	window._wp_rp_num_rel_posts = '10';
+</script>
+    <script type="text/javascript">
+        jQuery(function($){
+            $('.comment-reply-link').click(function(e){
+                e.preventDefault();
+                var args = $(this).data('onclick');
+                args = args.replace(/.*\(|\)/gi, '').replace(/\"|\s+/g, '');
+                args = args.split(',');
+                tinymce.EditorManager.execCommand('mceRemoveEditor', true, 'comment_editor');
+                addComment.moveForm.apply( addComment, args );
+                tinymce.EditorManager.execCommand('mceAddEditor', true, 'comment_editor');
+            });
+
+            $('#cancel-comment-reply-link').click(function(e){
+                e.preventDefault();
+                tinymce.EditorManager.execCommand('mceRemoveEditor', true, 'comment_editor');
+                tinymce.EditorManager.execCommand('mceAddEditor', true, 'comment_editor');
+            });
+        });
+    </script>
+	
+	<!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/style.css?ver=1.0.66">
+	<style>
+				*::selection { background: #0099cc; }
+		*::-moz-selection { background: #0099cc; }
+		body {
+            background: #ffffff         }
+
+        a,
+        .tabs ul.nav li a:hover,
+        .tabs ul.nav li.active a,
+        .dropcap,
+        .toggle.hover .toggle-title,
+        li.comment cite a:hover,
+        h3.widget-title,
+        .post-meta .meta-title:hover,
+        .the-latest a:hover h4,
+        .aw_socialcounter_widget li a:hover,
+        .aw_tabbed_widget #tab-latest-comments a:hover
+        {
+            color: #0099cc;
+        }
+
+		a:hover { color: #b30000; }
+		input:focus, textarea:focus { border-color: #0099cc; }
+
+		#searchsubmit,
+        .highlight,
+        .aw_tabbed_widget .tabs ul.nav li.active a, footer .aw_tabbed_widget .tabs ul.nav li.active a,
+        #top .aw_tabbed_widget .tabs ul.nav li.active a,
+        .aw_tabbed_widget .tabs ul.nav li a:hover,
+        footer .aw_tabbed_widget .tabs ul.nav li a:hover,
+        #top .aw_tabbed_widget .tabs ul.nav li a:hover,
+        .aw_twitter_widget .twitter-icon, .testimonial-icon,
+        #top-closed:hover,
+        .flex-control-nav a:hover,
+        .flex-control-nav a.flex-active {
+            background-color: #0099cc;
+        }
+
+		.submit { background-color: #0099cc; border-color: #007399; }
+		.submit:hover { background-color: #b30000; border-color: #860000; }
+		#searchsubmit:hover { background-color: #b30000; }
+		.toggle.hover .toggle-icon { border-top-color: #0099cc; }
+		.toggle.hover.active .toggle-icon { border-bottom-color: #0099cc; }
+		.flex-direction-nav li .flex-prev:hover { border-right-color: #0099cc; }
+		.flex-direction-nav li .flex-next:hover { border-left-color: #0099cc; }
+		@media only screen and (min-width: 768px) and (max-width: 959px) {
+			.aw_tabbed_widget .tabs ul.nav li a:hover, .tabs ul.nav li.active a { color: #0099cc; }
+		}
+		@media screen and (max-width: 767px) {
+			.tabs ul.nav li a:hover, .tabs ul.nav li.active a { color: #0099cc; }
+		}
+	</style>
+
+	<!--[if IE 8]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+	<!-- Links: RSS + Atom Syndication + Pingback etc. -->
+	<link rel="alternate" type="application/rss+xml" title="文章 &#8211; 伯乐在线 RSS Feed" href="http://blog.jobbole.com/feed/" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://blog.jobbole.com/feed/rss/" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://blog.jobbole.com/feed/atom/" />
+	<link rel="pingback" href="http://blog.jobbole.com/xmlrpc.php" />
+
+<!-- END head -->
+</head>
+
+<!-- BEGIN body -->
+<body class="single single-post postid-49320 single-format-standard chrome">
+
+		
+	    <nav id="top-nav" class="menu-nav">
+
+        <!-- BEGIN .container -->
+        <div class="container">
+
+            <div class="grid-7 hide-on-480 hide-on-767">
+                <ul id="menu-main-menu" class="menu left">
+                    <li class="menu-item">
+                        <a href="http://www.jobbole.com">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://top.jobbole.com">资讯</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://blog.jobbole.com">文章</a>
+                    </li>
+                    <li class="menu-item">
+                        <span><a href="#">频道 <i class="fa fa-angle-double-down"></i></a></span>
+                        <ul class="sub-menu sf-js-enabled">
+                            <li class="menu-item"><a href="http://design.jobbole.com">设计频道</a></li>
+                            <li class="menu-item"><a href="http://web.jobbole.com">Web前端</a></li>
+                            <li class="menu-item"><a href="http://python.jobbole.com">Python开发</a></li>
+                            <li class="menu-item"><a href="http://www.importnew.com/?utm_source=home-top-nav">Java技术</a></li>
+                            <li class="menu-item"><a href="http://android.jobbole.com">Android应用</a></li>
+                            <li class="menu-item"><a href="http://ios.jobbole.com">iOS应用</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="http://hao.jobbole.com">资源</a>
+                    </li>
+
+                    
+                    <li class="menu-item">
+                        <a href="http://group.jobbole.com">小组</a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="http://date.jobbole.com"><i class="fa fa-heart-o pinkiconcolor"></i> 相亲</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid-5">
+                <ul id="menu-main-menu" class="menu">
+                    <li class="menu-item hide-on-768-wider left">
+                        <span><a href="#">频道 <i class="fa fa-angle-double-down"></i></a></span>
+                        <ul class="sub-menu sf-js-enabled">
+                            <li class="menu-item"><a href="http://www.jobbole.com">首页</a></li>
+                            <li class="menu-item"><a href="http://top.jobbole.com">资讯</a></li>
+                            <li class="menu-item"><a href="http://blog.jobbole.com">文章</a></li>
+                            <li class="menu-item"><a href="http://group.jobbole.com">小组</a></li>
+                            <li class="menu-item"><a href="http://date.jobbole.com">相亲 <i class="fa fa-heart-o pinkiconcolor"></i></a></li>
+                            <li class="menu-item"><a href="http://hao.jobbole.com">资源</a></li>
+                            <li class="menu-item"><a href="http://design.jobbole.com">设计</a></li>
+                            <li class="menu-item"><a href="http://web.jobbole.com">前端</a></li>
+                            <li class="menu-item"><a href="http://python.jobbole.com">Python</a></li>
+                            <li class="menu-item"><a href="http://www.importnew.com/">Java</a></li>
+                            <li class="menu-item"><a href="http://android.jobbole.com">安卓</a></li>
+                            <li class="menu-item"><a href="http://ios.jobbole.com">iOS</a></li>
+
+                                                    </ul>
+                    </li>
+
+                                            <li class="menu-item"><a href="http://www.jobbole.com/login?redirect=http%3A%2F%2Fblog.jobbole.com%2F49320%2F"><i class="fa fa-sign-in"></i> 登录</a></li>
+                        <li class="menu-item"><a href="http://www.jobbole.com/register"><i class="fa fa-user-plus"></i> 注册</a></li>
+                    
+                    
+                    <li class="menu-item"><a title="帮助" href="http://blog.jobbole.com/87622/"><i class="fa fa-question-circle fa-lg"></i></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .container -->
+
+    </nav>
+    <!-- END #top-nav -->
+  	
+	<!-- BEGIN #wrapper -->
+	<div id="wrapper" class="container">
+
+		<!-- BEGIN header -->
+		<header>
+		
+						
+			<div class="header-wrapper">
+								
+				<!-- BEGIN #logo -->
+				<div id="logo" class="leaderboard-true">
+                    <a href="http://blog.jobbole.com"><img src="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/jobbole-logo.png" alt="文章 &#8211; 伯乐在线" /></a>
+				</div>
+				<!-- END #logo -->
+				
+				<!-- BEGIN #leaderboard -->
+				<div id="leaderboard">
+				
+					<a href='http://www.magedu.com' target='_blank'><img width='728' height='90' src='http://ww4.sinaimg.cn/mw690/bfdcef89gw1f3zdnqbs1qj20k902igmq.jpg' /></a>				
+				</div>
+				<!-- END #leaderboard -->
+				
+				<div class="clear"></div>
+			
+			</div>
+			
+						
+			<div class="clear"></div>
+
+            			<!-- BEGIN #main-nav -->
+			<nav id="main-nav" class="grid-12 menu-nav">
+                <div class="menu-sub-menu-container"><ul id="main-nav-menu" class="menu"><li id="menu-item-33290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33290"><a href="http://blog.jobbole.com/">首页</a></li>
+<li id="menu-item-33406" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-33406"><a href="http://blog.jobbole.com/all-posts/">最新文章</a></li>
+<li id="menu-item-56111" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56111"><a href="http://blog.jobbole.com/tag/featuredpost/">经典回顾</a></li>
+<li id="menu-item-33319" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-33319"><a href="http://blog.jobbole.com/category/programmer/">开发</a>
+<ul class="sub-menu">
+	<li id="menu-item-81047" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81047"><a href="http://web.jobbole.com">Web前端</a></li>
+	<li id="menu-item-81218" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81218"><a href="http://python.jobbole.com">Python</a></li>
+	<li id="menu-item-81220" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81220"><a href="http://android.jobbole.com">Android</a></li>
+	<li id="menu-item-81219" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81219"><a href="http://ios.jobbole.com">iOS</a></li>
+	<li id="menu-item-53194" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-53194"><a href="http://www.importnew.com">Java</a></li>
+	<li id="menu-item-57616" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-57616"><a href="http://blog.jobbole.com/category/c-cpp/">C/C++</a></li>
+	<li id="menu-item-57003" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-57003"><a href="http://blog.jobbole.com/category/php-programmer/">PHP</a></li>
+	<li id="menu-item-97173" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97173"><a href="http://blog.jobbole.com/tag/net/">.NET</a></li>
+	<li id="menu-item-55603" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55603"><a href="http://blog.jobbole.com/category/ruby/">Ruby</a></li>
+	<li id="menu-item-70347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70347"><a href="http://blog.jobbole.com/category/go/">Go</a></li>
+</ul>
+</li>
+<li id="menu-item-95935" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-95935"><a href="http://design.jobbole.com">设计</a>
+<ul class="sub-menu">
+	<li id="menu-item-55608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55608"><a href="http://design.jobbole.com/category/ui-design/">UI设计</a></li>
+	<li id="menu-item-55610" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55610"><a href="http://design.jobbole.com/category/web-design/">网页设计</a></li>
+	<li id="menu-item-55609" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55609"><a href="http://design.jobbole.com/category/inter-design/">交互设计</a></li>
+	<li id="menu-item-55611" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55611"><a href="http://design.jobbole.com/category/ue-design/">用户体验</a></li>
+	<li id="menu-item-95936" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-95936"><a href="http://design.jobbole.com/category/guide/">设计教程</a></li>
+	<li id="menu-item-95937" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-95937"><a href="http://design.jobbole.com/category/design-career/">设计职场</a></li>
+</ul>
+</li>
+<li id="menu-item-33313" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-33313"><a href="http://blog.jobbole.com/category/it-tech/">IT技术</a>
+<ul class="sub-menu">
+	<li id="menu-item-55604" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55604"><a href="http://blog.jobbole.com/tag/linux/">Linux</a></li>
+	<li id="menu-item-55607" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55607"><a href="http://blog.jobbole.com/tag/unix/">UNIX</a></li>
+	<li id="menu-item-55605" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55605"><a href="http://blog.jobbole.com/tag/mysql/">MySQL</a></li>
+	<li id="menu-item-55621" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55621"><a href="http://blog.jobbole.com/tag/nosql/">NoSQL</a></li>
+	<li id="menu-item-55622" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55622"><a href="http://blog.jobbole.com/tag/database/">数据库</a></li>
+	<li id="menu-item-55606" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55606"><a href="http://blog.jobbole.com/tag/git/">Git</a></li>
+	<li id="menu-item-89963" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89963"><a href="http://blog.jobbole.com/tag/machinelearning/">机器学习</a></li>
+	<li id="menu-item-55635" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55635"><a href="http://blog.jobbole.com/tag/algorithm/">算法</a></li>
+	<li id="menu-item-55612" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55612"><a href="http://blog.jobbole.com/tag/%e6%b5%8b%e8%af%95/">测试</a></li>
+	<li id="menu-item-55618" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55618"><a href="http://blog.jobbole.com/tag/%e5%ae%89%e5%85%a8/">信息安全</a></li>
+	<li id="menu-item-55636" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55636"><a href="http://blog.jobbole.com/tag/vim/">Vim</a></li>
+</ul>
+</li>
+<li id="menu-item-33390" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33390"><a href="http://blog.jobbole.com/category/career/">职场</a></li>
+<li id="menu-item-95977" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-95977"><a href="http://top.jobbole.com/category/news/">业界</a></li>
+<li id="menu-item-97313" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-97313"><a href="http://blog.jobbole.com/category/geeks/">极客</a></li>
+<li id="menu-item-33317" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33317"><a href="http://blog.jobbole.com/category/startup/">创业</a></li>
+<li id="menu-item-56094" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56094"><a href="http://blog.jobbole.com/category/interview/">访谈</a></li>
+<li id="menu-item-56110" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56110"><a href="http://blog.jobbole.com/category/overseas/">在国外</a></li>
+</ul></div>				<div class="clear"></div>
+			</nav>
+			<!-- END #main-nav -->
+                        <div class="clear"></div>
+
+		</header>
+		<!-- END header -->
+		
+		<div id="breadcrumb" class="grid-12 margin-20"><div class="breadcrumb-wrapper"><!-- Breadcrumb NavXT 4.4.0 -->
+<a title="Go to 伯乐在线." href="http://www.jobbole.com" class="main-home">伯乐在线</a> &gt; <a href="http://blog.jobbole.com" class="home">首页</a> &gt; <a href="http://blog.jobbole.com/all-posts/" class="post-root post-post">所有文章</a> &gt; <a href="http://blog.jobbole.com/category/webfront/" class="category">Web前端</a> &gt; 十步图解CSS的position</div></div><div class="clear"></div>
+
+<!-- BEGIN .grid-8 -->
+<div class="grid-8">
+
+		
+	<!-- BEGIN .post -->
+<div class="post-49320 post type-post status-publish format-standard hentry category-webfront category-books category-programmer tag-css odd" id="post-49320">
+	
+	<!-- BEGIN .entry-header -->
+	<div class="entry-header">
+	
+				
+		<h1>十步图解CSS的position</h1>
+		
+							
+	</div>
+	<!-- BEGIN .entry-header -->
+	
+	<!-- BEGIN .entry-meta -->
+	<div class="entry-meta">
+	
+		<p class="entry-meta-hide-on-mobile">
+
+            2013/10/12 &middot;  <a href="http://blog.jobbole.com/category/webfront/" rel="category tag">Web前端</a>, <a href="http://blog.jobbole.com/category/books/" rel="category tag">书籍与教程</a>, <a href="http://blog.jobbole.com/category/programmer/" rel="category tag">开发</a>
+            
+                            &middot; <a href="#article-comment"> 1 评论 </a>
+            
+
+            
+             &middot;  <a href="http://blog.jobbole.com/tag/css/">CSS</a>
+            
+</p>
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style" style="display: block; margin: 0 0px; clear: both;"><span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_readitlater"></a>
+<a class="jiathis_button_evernote"></a>
+<a class="jiathis_button_ydnote"></a>
+<a href="http://www.jiathis.com/share?uid=1745061" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<!-- JiaThis Button END -->
+
+
+	</div>
+	<!-- END .entry-meta -->
+
+	<!-- BEGIN .entry -->
+	<div class="entry">
+
+        			<div class="textwidget"><p><script src="http://www.imooc.com/open/courselistrandjs"></script><span style='display:block;margin-bottom:10px;'></span></p>
+</div>
+		
+		<div class='copyright-area'>原文出处： <a ref='nofollow' target='_blank' href='http://www.barelyfitz.com/screencast/html-training/css/positioning/'>barelyfitz</a>&nbsp;&nbsp;&nbsp;译文出处：<a ref='nofollow' target='_blank' href='http://www.w3cplus.com/css/learn-css-positioningin-ten-steps'>w3cplus</a>&nbsp;&nbsp;&nbsp;</div><p>CSS的<a href="http://www.w3.org/TR/CSS2/" target="_blank">positon</a>，我想做为一个Web制作者来说都有碰到过，但至于对其是否真正的了解呢？那我就不也说了，至少我自己并不非常的了解其内核的运行。今天在<a href="http://www.barelyfitz.com/screencast/html-training/css/positioning/" target="_blank">Learn CSS Positioning in Ten Steps</a>一文中分十步介绍了CSS的“<strong>position</strong>”中的“static、relative、absolute、float”使用，觉得蛮有意思的。整理了一下贴上来与大家一起分享。希望大家能喜欢。</p>
+<p>在图解这十个过程之前，我将实例的代码放上来，好让大家一个实体参考：</p>
+<p><strong>HTML Markup</strong></p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb4d5508273080" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">XHTML</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+&lt;div id="example"&gt;
+				&lt;div id="div-before"&gt;
+					&lt;p&gt;id = div-before&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div id="div-1"&gt;
+					&lt;div id="div-1-padding"&gt;
+						&lt;p&gt;id = div-1&lt;/p&gt;
+						&lt;div id="div-1a"&gt;
+							&lt;p&gt;id = div-1a&lt;/p&gt;
+							&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer pretium dui sit amet felis. Integer sit amet diam. Phasellus ultrices viverra velit.&lt;/p&gt;
+						&lt;/div&gt;
+						&lt;div id="div-1b"&gt;
+							&lt;p&gt;id = div-1b&lt;/p&gt;
+							&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer pretium dui sit amet felis. Integer sit amet diam. Phasellus ultrices viverra velit. Nam mattis, arcu ut bibendum commodo, magna nisi tincidunt tortor, quis accumsan augue ipsum id lorem.&lt;/p&gt;
+						&lt;/div&gt;
+						&lt;div id="div-1c"&gt;
+							&lt;p&gt;id = div-1c&lt;/p&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div id="div-after"&gt;
+					&lt;p&gt;id = div-after&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-8">8</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-10">10</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-12">12</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-14">14</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-16">16</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-18">18</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-20">20</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-22">22</div><div class="crayon-num" data-line="crayon-577ee8f3eb4d5508273080-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4d5508273080-24">24</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-1"><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"example"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-2"><span class="crayon-i ">				</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-before"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-3"><span class="crayon-i ">					</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">id = div-before</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-4"><span class="crayon-i ">				</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-5"><span class="crayon-i ">				</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-1"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-6"><span class="crayon-i ">					</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-1-padding"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-7"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">id = div-1</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-8"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-1a"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-9"><span class="crayon-i ">							</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">id = div-1a</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-10"><span class="crayon-i ">							</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer pretium dui sit amet felis. Integer sit amet diam. Phasellus ultrices viverra velit.</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-11"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-12"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-1b"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-13"><span class="crayon-i ">							</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">id = div-1b</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-14"><span class="crayon-i ">							</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer pretium dui sit amet felis. Integer sit amet diam. Phasellus ultrices viverra velit. Nam mattis, arcu ut bibendum commodo, magna nisi tincidunt tortor, quis accumsan augue ipsum id lorem.</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-15"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-16"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-1c"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-17"><span class="crayon-i ">							</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">id = div-1c</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-18"><span class="crayon-i ">						</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-19"><span class="crayon-i ">					</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-20"><span class="crayon-i ">				</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-21"><span class="crayon-i ">				</span><span class="crayon-r ">&lt;div </span><span class="crayon-e ">id</span><span class="crayon-o">=</span><span class="crayon-s ">"div-after"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-22"><span class="crayon-i ">					</span><span class="crayon-r ">&lt;p&gt;</span><span class="crayon-i ">id = div-after</span><span class="crayon-r ">&lt;/p&gt;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4d5508273080-23"><span class="crayon-i ">				</span><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4d5508273080-24"><span class="crayon-i ">			</span><span class="crayon-r ">&lt;/div&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0022 seconds] -->
+<p><strong>CSS Code</strong></p>
+<p>简单的运用一点样式：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb4df869149546" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#example {
+				float: right;
+			}
+
+			#example p {
+				margin: 0 0.25em;
+				padding: 0.25em 0;
+			}
+			#div-before,
+			#div-after {
+				background-color: #88d;
+				color: #000;
+			}
+
+			#div-1 {
+				width: 400px;
+				background-color: #000;
+				color: #fff;
+			}
+
+			#div-1-padding {
+				padding: 10px;
+			}
+
+			#div-1a {
+				background-color: #d33;
+				color: #fff;
+			}
+
+			#div-1b {
+				background-color: #3d3;
+				color: #fff;
+			}
+
+			#div-1c {
+				background-color: #33d;
+				color: #fff;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-8">8</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-10">10</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-12">12</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-14">14</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-16">16</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-18">18</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-20">20</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-22">22</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-24">24</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-26">26</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-28">28</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-30">30</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-32">32</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-34">34</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-36">36</div><div class="crayon-num" data-line="crayon-577ee8f3eb4df869149546-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4df869149546-38">38</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-1"><span class="crayon-k ">#example </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-2"><span class="crayon-h">				</span><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">right</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-3"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-4">&nbsp;</div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-5"><span class="crayon-h">			</span><span class="crayon-k ">#example p </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-6"><span class="crayon-h">				</span><span class="crayon-e ">margin</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">0.25em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-7"><span class="crayon-h">				</span><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0.25em</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-8"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-9"><span class="crayon-h">			</span><span class="crayon-k ">#div-before,</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-10"><span class="crayon-k ">			#div-after </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-11"><span class="crayon-h">				</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#88d</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-12"><span class="crayon-h">				</span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#000</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-13"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-14">&nbsp;</div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-15"><span class="crayon-h">			</span><span class="crayon-k ">#div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-16"><span class="crayon-h">				</span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">400px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-17"><span class="crayon-h">				</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#000</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-18"><span class="crayon-h">				</span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-19"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-20">&nbsp;</div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-21"><span class="crayon-h">			</span><span class="crayon-k ">#div-1-padding </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-22"><span class="crayon-h">				</span><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-23"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-24">&nbsp;</div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-25"><span class="crayon-h">			</span><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-26"><span class="crayon-h">				</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#d33</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-27"><span class="crayon-h">				</span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-28"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-29">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-30"><span class="crayon-h">			</span><span class="crayon-k ">#div-1b </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-31"><span class="crayon-h">				</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#3d3</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-32"><span class="crayon-h">				</span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-33"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-34">&nbsp;</div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-35"><span class="crayon-h">			</span><span class="crayon-k ">#div-1c </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-36"><span class="crayon-h">				</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#33d</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4df869149546-37"><span class="crayon-h">				</span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4df869149546-38"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0027 seconds] -->
+<p>初步效果：</p>
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-1.png"><img class="alignnone size-full wp-image-49379" alt="ten-css-position-1" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-1.png" /></a></p>
+<p>为了后面能更好的了解相关知识点，我特将此例的DOM草图画出来：</p>
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-2.png"><img class="alignnone size-full wp-image-49380" alt="ten-css-position-2" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-2.png" /></a></p>
+<p>上面的DOM图，我想大家一定非常容易的理解，下面就一起来主要看position的使用。</p>
+<h4><span style="color: #99cc00">第一步：position: static</span></h4>
+<p>在CSS中所有元素的“position”属性的默认值都是“<strong>static</strong>”，因为不需要显式的为每个元素设置“<strong>position:static</strong>”。此时大家会问，那这个属性值是不是没有任何意义呢？其实不是的，他在CSS中也会起着很大的作用。我们来看一个实例：</p>
+<p>比如说你的两个页面，同时存在“div#div-1”，那么此时你在A面中需要对“div#div-1”进行绝对定位；而在B页面中“div#div-1”又不需要进行绝对定位。</p>
+<p><strong>A页面中“div#div-1”绝对定位：</strong></p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb4e8453223169" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1 {
+				position: absolute;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb4e8453223169-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4e8453223169-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb4e8453223169-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb4e8453223169-1"><span class="crayon-k ">#div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4e8453223169-2"><span class="crayon-h">				</span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4e8453223169-3"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>此时在B页面中不想在进行绝对定位，那么我们就必须在你的样式中显式的重新设置“#div-1”的postion属性为“static”</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb4ee770418010" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+body.B #div-1 {
+				position: static;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb4ee770418010-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4ee770418010-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb4ee770418010-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb4ee770418010-1"><span class="crayon-k ">body.B #div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4ee770418010-2"><span class="crayon-h">				</span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">static</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4ee770418010-3"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p><strong><span style="color: #99cc00"> 第二步：相对定位position:relative</span></strong></p>
+<p><strong>relative</strong>称为相对定位，如果你给某个元素指定了<strong>postion</strong>的值为“<strong>relative</strong>”，那么你就可以通过“T-R-B-L”(也就是top,right,bottom,left)来设置元素的定位值。</p>
+<p>使用relative时有几点需要注意：</p>
+<ol>
+<li>元素设置了relative时，是相对于元素本身位置进行定位；</li>
+<li>元素设置了relative后，可以通过“T-R-B-L”改变元素当前所在的位置，但元素移位后，同样点有当初的物理空间位；</li>
+<li>元素设置了relative后，如果没有进行任何的“T-R-B-L”设置，元素不会进行任何位置改变。</li>
+</ol>
+<p>上面三点第一点和第三点来说都是比较好理解，那么现在针对第二点，我们来看一个实例的操作：</p>
+<p>在上面的基础上，我们对“div-1”进行向下移动20px；向左移动40px:</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb4f4550040104" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1 {
+					position:relative;
+					top:20px;
+					left:-40px;
+				}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb4f4550040104-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4f4550040104-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb4f4550040104-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4f4550040104-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb4f4550040104-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb4f4550040104-1"><span class="crayon-k ">#div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4f4550040104-2"><span class="crayon-h">					</span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">relative</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4f4550040104-3"><span class="crayon-h">					</span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">20px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4f4550040104-4"><span class="crayon-h">					</span><span class="crayon-e ">left</span><span class="crayon-sy">:</span><span class="crayon-i ">-40px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4f4550040104-5"><span class="crayon-h">				</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>我们来看看效果：</p>
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-3.png"><img class="alignnone size-full wp-image-49381" alt="ten-css-position-3" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-3.png" /></a></p>
+<p>从效果图可以再次印证上面说的第二点。元素“div-1”向下移动了20px，向左移动了40px，本身位置变化了，而元素最初所占的物理空间依然还是存在，另外一点元素相对定位后并没有影响其他相邻的元素。</p>
+<h4><span style="color: #99cc00">第三步：绝对定位position:absolute</span></h4>
+<p><strong>absolute</strong>是position中的第三个属性值，如果你给元素指定了<strong>absolute</strong>，整个元素就会漂出文档流，而且元素自身的物理空间也同时消失了。不像“<strong>relative</strong>”还具有原先的物理空间。</p>
+<p>我们来看一个实例,在div-1a元素上进行绝对定位：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb4fb872806803" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1a {
+				position:absolute;
+				top:0;
+				right:0;
+				width:200px;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb4fb872806803-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4fb872806803-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb4fb872806803-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4fb872806803-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb4fb872806803-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb4fb872806803-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb4fb872806803-1"><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4fb872806803-2"><span class="crayon-h">				</span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4fb872806803-3"><span class="crayon-h">				</span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4fb872806803-4"><span class="crayon-h">				</span><span class="crayon-e ">right</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb4fb872806803-5"><span class="crayon-h">				</span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb4fb872806803-6"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-4.png"><img class="alignnone size-full wp-image-49382" alt="ten-css-position-4" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-4.png" /></a></p>
+<p>此时元素“div-1a”不在当初的文档流中，而且其此时定位也是相对于html来进行定位，那么我们有时候并不是需要这样的效果，哪果我们元素div-1a还想在div-1是进行绝对定位，那要怎么办呢？此时就要发挥前面第二步的“relative”作用了。</p>
+<h4><span style="color: #99cc00">第四步：relative和absolute的结合</span></h4>
+<p>第二步中大家知道元素相对定位“relative”是相对于元素自身定位，而在第三步中大家知道元素绝对定位“absolute”是相对于html。但这种说法只有满足这样的条件才是正常的：“<strong>绝对定位元素的任何祖先元素没有进行任何的“relative”或者“absolute”设置，那么绝对定位的元素的参考物就是html</strong>”，这样一来，“relative”和“absolute”的结合就能起到很大的作用。</p>
+<p>我们接下来看一个截图：</p>
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-5.png"><img class="alignnone size-full wp-image-49383" alt="ten-css-position-5" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-5.png" /></a></p>
+<p>上图做为一个实例来说明“relative”和“absolute”的关系，首先上图中共有三个div放在body内，而且他们三个div的关系是“div-1&gt;div-2&gt;div-3”,而且在div-3有这么一个绝对定位：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb501931496737" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+.div-3 {
+				position: absolute;
+				left:0;
+				top:0;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb501931496737-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb501931496737-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb501931496737-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb501931496737-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb501931496737-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb501931496737-1"><span class="crayon-k ">.div-3 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb501931496737-2"><span class="crayon-h">				</span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb501931496737-3"><span class="crayon-h">				</span><span class="crayon-e ">left</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb501931496737-4"><span class="crayon-h">				</span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb501931496737-5"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>下面分几个情况来说明上图的意思：</p>
+<p><strong>1、div-1与div-2都没有设置“position:relative”</strong>，此时我们的div-3绝对定位后就漂到了上图中“div-3c”的位置上；</p>
+<p><strong>2、现在我们在div-2元素中加设置一个“position: relative”</strong>，此时我们的div-3绝对定位后就漂到了上图中的“div-3a”的位置;</p>
+<p><strong>3、接下来把相对定位的设置换到div-1元素上，</strong>此时div-3绝对定位后就到了div-3b的位置。</p>
+<p>花这么多心思，我只想说明一点：<strong>如果一个元素绝对定位后，其参照物是以离自身最近元素是否设置了相对定位，如果有设置将以离自己最近元素定位，如果没有将往其祖先元素寻找相对定位元素，一直找到html为止。</strong>这句话说起起来好像有点拗口，不知道大家能否明白我说的是什么？如果不明白大家可以参考上图或者下面这个实例效果：</p>
+<p>回到上面的实例中，如果我们在“div-1”加一个“relative”：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb505068529380" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1 {
+			 position:relative;
+			}
+			#div-1a {
+			 position:absolute;
+			 top:0;
+			 right:0;
+			 width:200px;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb505068529380-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb505068529380-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb505068529380-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb505068529380-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb505068529380-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb505068529380-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb505068529380-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb505068529380-8">8</div><div class="crayon-num" data-line="crayon-577ee8f3eb505068529380-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb505068529380-1"><span class="crayon-k ">#div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb505068529380-2"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">relative</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb505068529380-3"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb505068529380-4"><span class="crayon-h">			</span><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-577ee8f3eb505068529380-5"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb505068529380-6"><span class="crayon-h">			 </span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb505068529380-7"><span class="crayon-h">			 </span><span class="crayon-e ">right</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb505068529380-8"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb505068529380-9"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>现在我们相对点不在是第三步中的body了，而是“div-1”了，大家看看与第三步的变化：</p>
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-6.png"><img class="alignnone size-full wp-image-49384" alt="ten-css-position-6" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-6.png" /></a></p>
+<p><strong><span style="color: #99cc00"> 第五步：relative和absolute实现布局效果</span></strong></p>
+<p>这一步只要想演示一下使用相对定位和绝对定位实现的两例布局。在前面的基础上，div-1进行相对定位，而div-1a和div-1b进行绝对定位，从而实现两列布局的效果：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb508701093832" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1 {
+			 position:relative;
+			}
+			#div-1a {
+			 position:absolute;
+			 top:0;
+			 right:0;
+			 width:200px;
+			}
+			#div-1b {
+			 position:absolute;
+			 top:0;
+			 left:0;
+			 width:200px;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-8">8</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-10">10</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-12">12</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb508701093832-14">14</div><div class="crayon-num" data-line="crayon-577ee8f3eb508701093832-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb508701093832-1"><span class="crayon-k ">#div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-2"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">relative</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-3"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-4"><span class="crayon-h">			</span><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-5"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-6"><span class="crayon-h">			 </span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-7"><span class="crayon-h">			 </span><span class="crayon-e ">right</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-8"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-9"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-10"><span class="crayon-h">			</span><span class="crayon-k ">#div-1b </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-11"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-12"><span class="crayon-h">			 </span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-13"><span class="crayon-h">			 </span><span class="crayon-e ">left</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb508701093832-14"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb508701093832-15"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0013 seconds] -->
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-7.png"><img class="alignnone size-full wp-image-49385" alt="ten-css-position-7" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-7.png" /></a></p>
+<p>这样的制作只是用来说明absolute的作用，如果只能实现上面的效果，可能在实际制作中并不完美，为了让其更完美一些，在这个基础上我们在来看下面这一步。</p>
+<h4><span style="color: #99cc00">第六步：设置固定高度</span></h4>
+<p>为了让布局更适用一些，可以在div-1元素上设置固定高度，如：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb50c806764071" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1 {
+			 position:relative;
+			 height:250px;
+			}
+			#div-1a {
+			 position:absolute;
+			 top:0;
+			 right:0;
+			 width:200px;
+			}
+			#div-1b {
+			 position:absolute;
+			 top:0;
+			 left:0;
+			 width:200px;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-8">8</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-10">10</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-12">12</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-14">14</div><div class="crayon-num" data-line="crayon-577ee8f3eb50c806764071-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50c806764071-16">16</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-1"><span class="crayon-k ">#div-1 </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-2"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">relative</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-3"><span class="crayon-h">			 </span><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-i ">250px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-4"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-5"><span class="crayon-h">			</span><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-6"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-7"><span class="crayon-h">			 </span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-8"><span class="crayon-h">			 </span><span class="crayon-e ">right</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-9"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-10"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-11"><span class="crayon-h">			</span><span class="crayon-k ">#div-1b </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-12"><span class="crayon-h">			 </span><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-13"><span class="crayon-h">			 </span><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-14"><span class="crayon-h">			 </span><span class="crayon-e ">left</span><span class="crayon-sy">:</span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb50c806764071-15"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50c806764071-16"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0014 seconds] -->
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-8.png"><img class="alignnone size-full wp-image-49386" alt="ten-css-position-8" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-8.png" /></a></p>
+<p>相比之下好一点，但我们并不知道元素内容高度将会是多少，所以在此设置一个固定高度也是我们实际中的一个死穴，个人不建议这样使用。如果为了需要，我们可以通过别的办法来实现。</p>
+<h4><span style="color: #99cc00">第七步：float</span></h4>
+<p>前两步，使用绝对定位都并不是很理想，那么我们可以考虑使用float来解决。我们可以在一个元素上使用float，让元素向左或向右，而且还可以使用文本围绕在这个元素的周边（这个作用在文本围绕图片特别有用）。下面来模拟一下：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb50f984381028" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1a {
+			 float:left;
+			 width:200px;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb50f984381028-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50f984381028-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb50f984381028-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb50f984381028-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb50f984381028-1"><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50f984381028-2"><span class="crayon-h">			 </span><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb50f984381028-3"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb50f984381028-4"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-9.png"><img class="alignnone size-full wp-image-49387" alt="ten-css-position-9" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-9.png" /></a></p>
+<h4><strong>第八步：多列浮动</strong></h4>
+<p>上面展示的是一个列浮动，接下来看看多列的变化：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb513760683832" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1a {
+			 float:left;
+			 width:150px;
+			}
+			#div-1b {
+			 float:left;
+			 width:150px;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb513760683832-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb513760683832-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb513760683832-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb513760683832-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb513760683832-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb513760683832-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb513760683832-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb513760683832-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb513760683832-1"><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb513760683832-2"><span class="crayon-h">			 </span><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb513760683832-3"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">150px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb513760683832-4"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb513760683832-5"><span class="crayon-h">			</span><span class="crayon-k ">#div-1b </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb513760683832-6"><span class="crayon-h">			 </span><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb513760683832-7"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">150px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb513760683832-8"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-11.png"><img class="alignnone size-full wp-image-49388" alt="ten-css-position-11" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-11.png" /></a></p>
+<p>浮动与绝对定位来相比，现在解决了其高度自适应的问题，但也存在一个问题，浮动也破坏了元素当初的文档流，使其父元素塌陷了，那么为了解决这个问题，我们有必要对其进行清除浮动。</p>
+<h4><strong>第九步：清除浮动</strong></h4>
+<p>为了让浮动元素的父元素不在处于塌陷状态下，我们需要对浮动元素进行清除浮动：</p><!-- Crayon Syntax Highlighter v2.7.1.1 -->
+
+		<div id="crayon-577ee8f3eb516255374475" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style=" margin-top: 12px; margin-bottom: 12px; font-size: 13px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-nums-button" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 13px !important; line-height: 15px !important;">
+#div-1a {
+			 float:left;
+			 width:190px;
+			}
+			#div-1b {
+			 float:left;
+			 width:190px;
+			}
+			#div-1c {
+			 clear:both;
+			}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-577ee8f3eb516255374475-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb516255374475-2">2</div><div class="crayon-num" data-line="crayon-577ee8f3eb516255374475-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb516255374475-4">4</div><div class="crayon-num" data-line="crayon-577ee8f3eb516255374475-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb516255374475-6">6</div><div class="crayon-num" data-line="crayon-577ee8f3eb516255374475-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb516255374475-8">8</div><div class="crayon-num" data-line="crayon-577ee8f3eb516255374475-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-577ee8f3eb516255374475-10">10</div><div class="crayon-num" data-line="crayon-577ee8f3eb516255374475-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-577ee8f3eb516255374475-1"><span class="crayon-k ">#div-1a </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb516255374475-2"><span class="crayon-h">			 </span><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb516255374475-3"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">190px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb516255374475-4"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb516255374475-5"><span class="crayon-h">			</span><span class="crayon-k ">#div-1b </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb516255374475-6"><span class="crayon-h">			 </span><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb516255374475-7"><span class="crayon-h">			 </span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-i ">190px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb516255374475-8"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-577ee8f3eb516255374475-9"><span class="crayon-h">			</span><span class="crayon-k ">#div-1c </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-577ee8f3eb516255374475-10"><span class="crayon-h">			 </span><span class="crayon-e ">clear</span><span class="crayon-sy">:</span><span class="crayon-i ">both</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-577ee8f3eb516255374475-11"><span class="crayon-h">			</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p><a href="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-10-1.png"><img class="alignnone size-full wp-image-49389" alt="ten-css-position-10 (1)" src="http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-10-1.png" /></a></p>
+<p>浮动是在css中是一个很深的课题，这里只是轻描淡写了一下。前面在《<a href="http://www.w3cplus.com/css/css-containing-floats" target="_blank">CSS的Float之一</a>》和《<a href="http://www.w3cplus.com/css/css-containing-floats-part-2" target="_blank">CSS的Float之二</a>》也介绍了一些有关于float的相关知识，有关于清除浮动的，大家也可以点阅《<a href="http://www.w3cplus.com/css/clear-float" target="_blank">Clear Float</a>》。</p>
+<h4><span style="color: #99cc00">第十步：扩展阅读</span></h4>
+<p>上面只是简单的介绍了一下CSS中的position的基础知识。如果大家对这一块知识感兴趣的话，可以点击下面的相关连接：</p>
+<ol>
+<li><a href="http://www.quirksmode.org/css/position.html" target="_blank">The position declaration</a></li>
+<li><a href="http://css-tricks.com/absolute-positioning-inside-relative-positioning/" target="_blank">Absolute Positioning Inside Relative Positioning</a></li>
+<li><a href="http://www.alistapart.com/articles/css-positioning-101/" target="_blank">CSS Positioning 101</a></li>
+<li><a href="http://css.flepstudio.org/en/css-properties/position-static-absolute-relative-static.html" target="_blank">Css position: position static, absolute, relative and fixed of an element</a></li>
+<li><a href="http://stopdesign.com/archive/2003/09/03/absolute.html" target="_blank">Making the absolute, relative</a></li>
+<li><a href="http://css.maxdesign.com.au/floatutorial/" target="_blank">floatutorial</a></li>
+<li><a href="http://www.alistapart.com/articles/css-floats-101/" target="_blank">CSS Floats 101</a></li>
+<li><a href="http://css-tricks.com/all-about-floats/" target="_blank">All About Floats</a></li>
+<li><a href="https://developer.mozilla.org/en/CSS/float" target="_blank">float</a></li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+        <script language="javascript"> 
+var randomNum = Math.round(Math.random()*1);
+var innerHTML=new Array(2);
+innerHTML[0]="加入伯乐在线专栏作者。扩大知名度，还能得赞赏！详见《<a target='_blank' href='http://blog.jobbole.com/99322'>招募专栏作者</a>》";
+innerHTML[1]="拿高薪，还能扩大业界知名度！优秀的开发工程师看过来 ->《<a target='_blank' href='http://blog.jobbole.com/99511/'>高薪招募讲师</a>》";
+var widgetHTML="<div id='single-page-inner-widget'>"+innerHTML[randomNum]+"</div>";
+document.write(widgetHTML);
+</script>
+        
+        
+    <div class="post-adds">
+        <span data-post-id="49320" class=" btn-bluet-bigger href-style vote-post-up   register-user-only "><i class="fa  fa-thumbs-o-up"></i> <h10 id="49320votetotal"></h10> 赞</span>
+        <span data-book-type="1" data-site-id="2" data-item-id="49320" data-item-type="1" class=" btn-bluet-bigger href-style bookmark-btn  register-user-only "><i class="fa fa-bookmark-o  "></i> 4 收藏</span>
+
+                    <a href="#article-comment"><span class="btn-bluet-bigger href-style hide-on-480"><i class="fa fa-comments-o"></i> 1 评论</span></a>
+        
+        
+        
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style_24x24" style="display: inline-flex; position: relative; margin: 0; clear: both;float: right;">
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_weixin"></a>
+            <a class="jiathis_button_qzone"></a>
+            <a class="jiathis_button_fb hide-on-480"></a>
+            <a href="http://www.jiathis.com/share?uid=1745061" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+        </div>
+
+    </div>
+
+
+
+
+        <!-- BEGIN #author-bio -->
+
+
+<!-- END #author-bio -->
+	</div>
+	<!-- END .entry -->
+
+
+<script type="text/javascript" >
+var jiathis_config={
+	data_track_clickback:false,
+	title:"分享从伯乐在线看到的一篇好文章 ",
+	summary:"《十步图解CSS的position》",
+	pic:"http://jbcdn2.b0.upaiyun.com/2013/10/ten-css-position-1.png",
+	appkey:{
+         "tsina": 1473879058    },
+	ralateuid:{
+		"tsina": 1670481425	},
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1745061" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+			<div class="textwidget"><p><a href='http://blog.jobbole.com/84342/?utm_source=blog.jobbole.com&amp;utm_medium=articleBanner&amp;utm_content=2015.9.16' target='_blank'><img src='http://ww2.sinaimg.cn/mw690/e5298966gw1evykwqsj8wj20h802smxh.jpg' /></a></p>
+</div>
+		
+</div>
+<!-- END .post -->
+    
+<div class="wp_rp_wrap  wp_rp_plain" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">相关文章</h3><ul class="related_post wp_rp" style="visibility: visible"><li ><a href="http://blog.jobbole.com/31147/" class="wp_rp_title">CSS架构</a></li><li ><a href="http://blog.jobbole.com/21431/" class="wp_rp_title">CSS 入门</a></li><li ><a href="http://blog.jobbole.com/10408/" class="wp_rp_title">如何将页脚固定在页面底部</a></li><li ><a href="http://blog.jobbole.com/55067/" class="wp_rp_title">编写更好的CSS代码</a></li><li ><a href="http://blog.jobbole.com/49301/" class="wp_rp_title">学习使用:before和:after伪元素</a></li><li ><a href="http://blog.jobbole.com/49173/" class="wp_rp_title">理解伪元素 :before 和 :after</a></li><li ><a href="http://blog.jobbole.com/32741/" class="wp_rp_title">SASS 新手指南</a></li><li ><a href="http://blog.jobbole.com/1564/" class="wp_rp_title">30个最常用CSS选择器解析</a></li><li ><a href="http://blog.jobbole.com/79663/" class="wp_rp_title">必须记住的 30 类 CSS 选择器</a></li><li ><a href="http://blog.jobbole.com/44662/" class="wp_rp_title">打印样式CSS的技巧和要点</a></li></ul></div></div>
+
+    
+<div style="text-align: left;">
+    <h3>可能感兴趣的话题</h3>
+    <ul style="font-size: 13px; list-style: disc inside;">
+                        <li>
+                    <a href="http://group.jobbole.com/20671/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="2016阿里校园招聘笔试题(机器人问题)" target="_blank">2016阿里校园招聘笔试题(机器人问题)</a>
+                     &middot; <a href="http://group.jobbole.com/20671/#comments" target="_blank"><i class="fa fa-comments-o"></i> 8</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/18836/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="写给程序员：妹子并不会比程序难懂" target="_blank">写给程序员：妹子并不会比程序难懂</a>
+                     &middot; <a href="http://group.jobbole.com/18836/#comments" target="_blank"><i class="fa fa-comments-o"></i> 68</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20909/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="恒生电子2017校园招聘笔试题(数据类型)" target="_blank">恒生电子2017校园招聘笔试题(数据类型)</a>
+                                    </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20755/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="你被什么样的bug折磨的最无奈？" target="_blank">你被什么样的bug折磨的最无奈？</a>
+                     &middot; <a href="http://group.jobbole.com/20755/#comments" target="_blank"><i class="fa fa-comments-o"></i> 5</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20866/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="程序猿的圈子到底有多大？" target="_blank">程序猿的圈子到底有多大？</a>
+                     &middot; <a href="http://group.jobbole.com/20866/#comments" target="_blank"><i class="fa fa-comments-o"></i> 8</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20878/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="有Web前端大神收徒弟吗？" target="_blank">有Web前端大神收徒弟吗？</a>
+                     &middot; <a href="http://group.jobbole.com/20878/#comments" target="_blank"><i class="fa fa-comments-o"></i> 9</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20858/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="作为一个真*萌新，刚来北京求老司机带路" target="_blank">作为一个真*萌新，刚来北京求老司机带路</a>
+                     &middot; <a href="http://group.jobbole.com/20858/#comments" target="_blank"><i class="fa fa-comments-o"></i> 5</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/19939/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="不要在浮躁的世界里迷失自己（长篇大论请慢慢读，或许正好说中了你的现状）" target="_blank">不要在浮躁的世界里迷失自己（长篇大论请慢慢读，或许正好说中了你的现状）</a>
+                     &middot; <a href="http://group.jobbole.com/19939/#comments" target="_blank"><i class="fa fa-comments-o"></i> 11</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20480/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="作为一个程序员或者程序媛，你们有那种想起来就会内心澎湃的梦想吗" target="_blank">作为一个程序员或者程序媛，你们有那种想起来就会内心澎湃的梦想吗</a>
+                     &middot; <a href="http://group.jobbole.com/20480/#comments" target="_blank"><i class="fa fa-comments-o"></i> 128</a>                </li>
+                            <li>
+                    <a href="http://group.jobbole.com/20314/?utm_source=blog.jobbole.com&utm_medium=article-related-group-topic" title="深圳有什么好玩的地方，好吃的。。" target="_blank">深圳有什么好玩的地方，好吃的。。</a>
+                     &middot; <a href="http://group.jobbole.com/20314/#comments" target="_blank"><i class="fa fa-comments-o"></i> 44</a>                </li>
+                </ul>
+</div>
+    
+        <!-- BEGIN .navigation -->
+        <div class="navigation margin-20">
+
+            <div class="alignleft"><a href="http://blog.jobbole.com/49290/" rel="prev">&laquo; CommonJS Modules/1.0 规范</a></div>
+            <div class="alignright"><a href="http://blog.jobbole.com/49341/" rel="next">既然PyPy的速度是CPython的6.3倍，难道我不应该放弃CPython转用PyPy？ &raquo;</a></div>
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .navigation -->
+
+    
+	
+            <div id="article-comment" class="dot-box center-align">
+
+                        <a href="http://www.jobbole.com/login?redirect=http://blog.jobbole.com/49320/"><button type="button" class="btn btn-non-transparent">登录后评论</button></a>
+            
+            <a target="_blank" href="http://www.jobbole.com/register"><button type="button" class="btn btn-primary">新用户注册</button></a>
+
+            <br/><br/>
+            <span>直接登录</span>
+            <style type="text/css">.t_login_text{margin:0; padding:0;}.t_login_button{margin:0; padding: 5px 0;}.t_login_button a{margin:0; padding-right:3px; line-height:25px}.t_login_button img{display:inline; border:none;}</style><!-- 使用社交帐号登录 来自 WordPress连接微博 插件 --><span class="connectBox1 t_login_button"><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=weixin&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F" title="微信" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_weixin.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=qzone&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F" title="QQ" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_qzone.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=sina&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F" title="新浪微博" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_sina.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=douban&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F" title="豆瓣" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_douban.png" /></a><a href="http://blog.jobbole.com/wp-content/plugins/wp-connect/login.php?go=github&redirect_url=http%3A%2F%2Fblog.jobbole.com%2F49320%2F" title="GitHub" rel="nofollow"><img src="http://blog.jobbole.com/wp-content/plugins/wp-connect/images/login/btn_github.png" /></a></span>        </div>
+    
+
+    <div id="comment_list" class="comments">
+
+                    <h5 id="comments" class="sub-title"><i class="glyphicon"></i>最新评论</h5>
+            <ul class="cmnt-list">
+
+                        <li id="comment-26009"  class="comment cmnt odd">
+    
+    <div class="cmnt-box">
+        <div class="cmnt-header">
+                            <a href="http://www.jobbole.com/members/yanhaijing" class="cmnt-img"><img width="37" height="37" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png" alt=""></a>
+                <div class="cmnt-meta">
+                    <span><a href="http://www.jobbole.com/members/yanhaijing">yanhaijing</a><label class="comment_author_data">&nbsp;（ <a title='声望值' target='_blank' href='http://www.jobbole.com/members/yanhaijing/reputation/'><i class='fa fa-graduation-cap'></i> 1</a> ）</label></span>
+                    <span class="c-title">
+                        &nbsp;                    </span>
+
+                    <span class="c-date">
+                        <a href="http://blog.jobbole.com/49320/#comment-26009">2013/10/14</a>
+                    </span>
+
+                    
+                    
+                </div>
+                    </div>
+        <div class="cmnt-body">
+            <p>
+                <p>写的不错，容易理解</p>
+            </p>
+                    </div>
+                    <div class="cmnt-footer">
+
+                
+                <p class="c-like">
+                    <a title="赞同" alt="赞同" class="26009voteflag  t-up  href-style vote-comment-up  register-user-only   " data-comment-id="26009"><i class="fa fa-thumbs-o-up"></i> <span id="26009voteuptotal"> 赞</span></a>
+
+                    
+                    <a rel='nofollow' class='comment-reply-link register-user-only' href='http://blog.jobbole.com/49320/?replytocom=26009#respond' data-onclick='return addComment.moveForm( "comment-26009", "26009", "respond", "49320" )' aria-label='回复给yanhaijing'>回复 <i class='fa fa-reply'></i></a>
+                </p>
+            </div>
+            </div>
+    </li>
+</li><!-- #comment-## -->
+            </ul>
+        
+    </div>
+		
+
+	
+</div>
+<!-- END .grid-8 -->
+
+<!-- BEGIN #sidebar -->
+<div id="sidebar" class="grid-4">
+
+	    <div class="nav-search-box ">
+                <form method="get" id="searchform" action="http://blog.jobbole.com">
+            <select id="searchselect">
+                                    <option selected value="http://blog.jobbole.com">文章</option>
+                                    <option  value="http://hao.jobbole.com">资源</option>
+                                    <option  value="http://design.jobbole.com">设计</option>
+                                    <option  value="http://web.jobbole.com">WEB前端</option>
+                                    <option  value="http://ios.jobbole.com">IOS</option>
+                                    <option  value="http://python.jobbole.com">Python</option>
+                                    <option  value="http://android.jobbole.com">安卓</option>
+                                    <option  value="http://top.jobbole.com">资讯</option>
+                                    <option  value="http://group.jobbole.com">小组</option>
+                                    <option  value="http://date.jobbole.com">面向对象</option>
+                            </select>
+            <div class="input-wrapper">
+                <input type="text" value="" name="s" id="s" placeholder="输入搜索关键字">
+            </div>
+            <input type="submit" id="searchsubmit" value="搜索">
+        </form>
+    </div>
+<div id="text-103" class="widget widget_text">			<div class="textwidget"><p><a href="https://fanpinshe.taobao.com/category-1240220550.htm" target="_blank"><img src="http://jbcdn2.b0.upaiyun.com/2016/06/4a47b8f3f21d775ef3c754d3eca8da63.jpg" /></a></p>
+</div>
+		</div><div class="tabs tabbed_widget"><ul class="nav clearfix"><li><a id="link-tab1" href="#tab1" title="本周热门文章">本周热门文章</a></li><li><a id="link-tab2" href="#tab2" title="本月热门文章">本月热门文章</a></li><li><a id="link-tab3" href="#tab3" title="热门标签">热门标签</a></li></ul><div id="tab1" class="tab"><div class="floated-thumb">
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">0</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103098/" title="一个知乎重度用户眼中的知乎">一个知乎重度用户眼中的知乎</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">1</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103205/" title="国外程序员的办公桌是什么样的？">国外程序员的办公桌是什么样的？</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">2</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103192/" title="如何给变量取个简短且无歧义的名字">如何给变量取个简短且无歧义的名字</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">3</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103183/" title="谷歌的代码管理">谷歌的代码管理</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">4</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103177/" title="聪明人不做的十件事">聪明人不做的十件事</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">5</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103096/" title="Github 徽章整理">Github 徽章整理</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">6</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103069/" title="通过做一个基于Node的微服务器来学习Docker">通过做一个基于Node的微服务器来学习Do...</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">7</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103134/" title="linux grep命令详解">linux grep命令详解</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">8</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103173/" title="学习的奥秘">学习的奥秘</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">9</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103250/" title="Facebook 直播如何撑起瞬间 80 万人的流量？">Facebook 直播如何撑起瞬间 80 ...</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                </div></div><div id="tab2" class="tab"><div class="floated-thumb">
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">0</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/87995/" title="AngularJS 入门教学视频【完结】">AngularJS 入门教学视频【完结】</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">1</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/101405/" title="两种编程高手">两种编程高手</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">2</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102118/" title="Google 怎么样做 50 PB 数据排序的？">Google 怎么样做 50 PB 数据...</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">3</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102957/" title="30 分钟 git 命令入门到放弃">30 分钟 git 命令入门到放弃</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">4</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102601/" title="身份证号码验证算法">身份证号码验证算法</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">5</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102415/" title="DNS 原理入门">DNS 原理入门</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">6</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/103098/" title="一个知乎重度用户眼中的知乎">一个知乎重度用户眼中的知乎</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">7</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102600/" title="去大公司，还是小公司？">去大公司，还是小公司？</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">8</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102520/" title="MySQL单表百万数据记录分页性能优化">MySQL单表百万数据记录分页性能...</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                
+                    
+                    <!-- BEGIN .post-meta -->
+                    <div class="post-meta  no-thumb">
+
+                        <p>
+                            <span class="numb">9</span>
+                            <a class="meta-title" target="_blank" href="http://blog.jobbole.com/102562/" title="我从编程总结的 22 个经验">我从编程总结的 22 个经验</a><br />
+                        </p>
+
+                    </div>
+                    <!-- END .post-meta -->
+
+                    <div class="clear"></div>
+
+                </div></div><div id="tab3" class="tab"><p><a href='http://blog.jobbole.com/tag/net/' class='tag-link-1636 tag-link-position-1' title='268个话题' style='font-size: 16.711111111111px;'>.Net</a>
+<a href='http://blog.jobbole.com/tag/android/' class='tag-link-4884 tag-link-position-2' title='149个话题' style='font-size: 14.118518518519px;'>Android</a>
+<a href='http://blog.jobbole.com/tag/app/' class='tag-link-1941 tag-link-position-3' title='92个话题' style='font-size: 11.940740740741px;'>App</a>
+<a href='http://blog.jobbole.com/tag/bug/' class='tag-link-218 tag-link-position-4' title='67个话题' style='font-size: 10.488888888889px;'>Bug</a>
+<a href='http://blog.jobbole.com/tag/cpp/' class='tag-link-807 tag-link-position-5' title='78个话题' style='font-size: 11.214814814815px;'>C++</a>
+<a href='http://blog.jobbole.com/tag/c-sharp/' class='tag-link-2197 tag-link-position-6' title='99个话题' style='font-size: 12.251851851852px;'>C sharp</a>
+<a href='http://blog.jobbole.com/tag/css/' class='tag-link-711 tag-link-position-7' title='68个话题' style='font-size: 10.592592592593px;'>CSS</a>
+<a href='http://blog.jobbole.com/tag/c/' class='tag-link-757 tag-link-position-8' title='198个话题' style='font-size: 15.362962962963px;'>C语言</a>
+<a href='http://blog.jobbole.com/tag/facebook/' class='tag-link-164 tag-link-position-9' title='109个话题' style='font-size: 12.666666666667px;'>Facebook</a>
+<a href='http://blog.jobbole.com/tag/featuredpost/' class='tag-link-2241 tag-link-position-10' title='622个话题' style='font-size: 20.444444444444px;'>featuredpost</a>
+<a href='http://blog.jobbole.com/tag/git/' class='tag-link-885 tag-link-position-11' title='81个话题' style='font-size: 11.318518518519px;'>Git</a>
+<a href='http://blog.jobbole.com/tag/github/' class='tag-link-1253 tag-link-position-12' title='67个话题' style='font-size: 10.488888888889px;'>Github</a>
+<a href='http://blog.jobbole.com/tag/go/' class='tag-link-4888 tag-link-position-13' title='41个话题' style='font-size: 8.3111111111111px;'>Go</a>
+<a href='http://blog.jobbole.com/tag/google/' class='tag-link-198 tag-link-position-14' title='284个话题' style='font-size: 16.918518518519px;'>Google</a>
+<a href='http://blog.jobbole.com/tag/hadoop/' class='tag-link-862 tag-link-position-15' title='38个话题' style='font-size: 8px;'>Hadoop</a>
+<a href='http://blog.jobbole.com/tag/html5/' class='tag-link-182 tag-link-position-16' title='84个话题' style='font-size: 11.525925925926px;'>HTML5</a>
+<a href='http://blog.jobbole.com/tag/ios/' class='tag-link-4887 tag-link-position-17' title='232个话题' style='font-size: 16.088888888889px;'>iOS</a>
+<a href='http://blog.jobbole.com/tag/it/' class='tag-link-513 tag-link-position-18' title='43个话题' style='font-size: 8.5185185185185px;'>IT</a>
+<a href='http://blog.jobbole.com/tag/java/' class='tag-link-457 tag-link-position-19' title='163个话题' style='font-size: 14.42962962963px;'>java</a>
+<a href='http://blog.jobbole.com/tag/javascript/' class='tag-link-683 tag-link-position-20' title='276个话题' style='font-size: 16.814814814815px;'>Javascript</a>
+<a href='http://blog.jobbole.com/tag/jquery/' class='tag-link-459 tag-link-position-21' title='56个话题' style='font-size: 9.762962962963px;'>jQuery</a>
+<a href='http://blog.jobbole.com/tag/linux/' class='tag-link-190 tag-link-position-22' title='368个话题' style='font-size: 18.162962962963px;'>Linux</a>
+<a href='http://blog.jobbole.com/tag/mysql/' class='tag-link-191 tag-link-position-23' title='113个话题' style='font-size: 12.874074074074px;'>MySQL</a>
+<a href='http://blog.jobbole.com/tag/nginx/' class='tag-link-1172 tag-link-position-24' title='39个话题' style='font-size: 8.1037037037037px;'>Nginx</a>
+<a href='http://blog.jobbole.com/tag/node-js/' class='tag-link-896 tag-link-position-25' title='45个话题' style='font-size: 8.7259259259259px;'>Node.js</a>
+<a href='http://blog.jobbole.com/tag/nosql/' class='tag-link-967 tag-link-position-26' title='48个话题' style='font-size: 9.037037037037px;'>NoSQL</a>
+<a href='http://blog.jobbole.com/tag/php/' class='tag-link-168 tag-link-position-27' title='147个话题' style='font-size: 14.014814814815px;'>php</a>
+<a href='http://blog.jobbole.com/tag/python/' class='tag-link-4886 tag-link-position-28' title='172个话题' style='font-size: 14.740740740741px;'>Python</a>
+<a href='http://blog.jobbole.com/tag/redis/' class='tag-link-2221 tag-link-position-29' title='48个话题' style='font-size: 9.037037037037px;'>Redis</a>
+<a href='http://blog.jobbole.com/tag/ruby/' class='tag-link-4885 tag-link-position-30' title='39个话题' style='font-size: 8.1037037037037px;'>Ruby</a>
+<a href='http://blog.jobbole.com/tag/shell/' class='tag-link-1714 tag-link-position-31' title='63个话题' style='font-size: 10.281481481481px;'>shell</a>
+<a href='http://blog.jobbole.com/tag/soho/' class='tag-link-153 tag-link-position-32' title='40个话题' style='font-size: 8.2074074074074px;'>soho</a>
+<a href='http://blog.jobbole.com/tag/sql/' class='tag-link-857 tag-link-position-33' title='57个话题' style='font-size: 9.762962962963px;'>SQL</a>
+<a href='http://blog.jobbole.com/tag/sql-server/' class='tag-link-2681 tag-link-position-34' title='90个话题' style='font-size: 11.837037037037px;'>SQL Server</a>
+<a href='http://blog.jobbole.com/tag/ui/' class='tag-link-1143 tag-link-position-35' title='55个话题' style='font-size: 9.6592592592593px;'>UI</a>
+<a href='http://blog.jobbole.com/tag/ui%e8%ae%be%e8%ae%a1/' class='tag-link-2548 tag-link-position-36' title='142个话题' style='font-size: 13.911111111111px;'>UI设计</a>
+<a href='http://blog.jobbole.com/tag/web/' class='tag-link-404 tag-link-position-37' title='46个话题' style='font-size: 8.8296296296296px;'>Web</a>
+<a href='http://blog.jobbole.com/tag/web-fundamentals/' class='tag-link-3560 tag-link-position-38' title='38个话题' style='font-size: 8px;'>web fundamentals</a>
+<a href='http://blog.jobbole.com/tag/web%e5%bc%80%e5%8f%91/' class='tag-link-493 tag-link-position-39' title='118个话题' style='font-size: 13.081481481481px;'>Web开发</a>
+<a href='http://blog.jobbole.com/tag/book/' class='tag-link-1022 tag-link-position-40' title='52个话题' style='font-size: 9.3481481481481px;'>书籍</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%92%e8%81%94%e7%bd%91/' class='tag-link-40 tag-link-position-41' title='85个话题' style='font-size: 11.525925925926px;'>互联网</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%a4%e4%ba%92%e8%ae%be%e8%ae%a1/' class='tag-link-648 tag-link-position-42' title='121个话题' style='font-size: 13.185185185185px;'>交互设计</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%a7%e5%93%81/' class='tag-link-522 tag-link-position-43' title='92个话题' style='font-size: 11.940740740741px;'>产品</a>
+<a href='http://blog.jobbole.com/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86/' class='tag-link-549 tag-link-position-44' title='57个话题' style='font-size: 9.762962962963px;'>产品经理</a>
+<a href='http://blog.jobbole.com/tag/%e4%bb%a3%e7%a0%81/' class='tag-link-489 tag-link-position-45' title='110个话题' style='font-size: 12.77037037037px;'>代码</a>
+<a href='http://blog.jobbole.com/tag/startup/' class='tag-link-4878 tag-link-position-46' title='207个话题' style='font-size: 15.57037037037px;'>创业</a>
+<a href='http://blog.jobbole.com/tag/%e5%89%8d%e7%ab%af/' class='tag-link-1138 tag-link-position-47' title='68个话题' style='font-size: 10.592592592593px;'>前端</a>
+<a href='http://blog.jobbole.com/tag/%e5%9b%a2%e9%98%9f/' class='tag-link-551 tag-link-position-48' title='64个话题' style='font-size: 10.281481481481px;'>团队</a>
+<a href='http://blog.jobbole.com/tag/%e5%a4%a7%e6%95%b0%e6%8d%ae/' class='tag-link-884 tag-link-position-49' title='55个话题' style='font-size: 9.6592592592593px;'>大数据</a>
+<a href='http://blog.jobbole.com/tag/%e5%a5%b3%e7%a8%8b%e5%ba%8f%e5%91%98/' class='tag-link-1460 tag-link-position-50' title='54个话题' style='font-size: 9.5555555555556px;'>女程序员</a>
+<a href='http://blog.jobbole.com/tag/%e5%a8%81%e5%ae%a2/' class='tag-link-129 tag-link-position-51' title='40个话题' style='font-size: 8.2074074074074px;'>威客</a>
+<a href='http://blog.jobbole.com/tag/%e5%ad%a6%e4%b9%a0/' class='tag-link-442 tag-link-position-52' title='47个话题' style='font-size: 8.9333333333333px;'>学习</a>
+<a href='http://blog.jobbole.com/tag/%e5%ae%89%e5%85%a8/' class='tag-link-1214 tag-link-position-53' title='144个话题' style='font-size: 13.911111111111px;'>安全</a>
+<a href='http://blog.jobbole.com/tag/%e5%ae%89%e5%8d%93%e5%bc%80%e5%8f%91/' class='tag-link-3362 tag-link-position-54' title='59个话题' style='font-size: 9.9703703703704px;'>安卓开发</a>
+<a href='http://blog.jobbole.com/tag/%e5%ae%a2%e6%88%b7/' class='tag-link-174 tag-link-position-55' title='53个话题' style='font-size: 9.4518518518519px;'>客户</a>
+<a href='http://blog.jobbole.com/tag/%e5%b7%a5%e5%85%b7/' class='tag-link-18 tag-link-position-56' title='131个话题' style='font-size: 13.496296296296px;'>工具</a>
+<a href='http://blog.jobbole.com/tag/%e5%b7%a5%e7%a8%8b%e5%b8%88/' class='tag-link-470 tag-link-position-57' title='38个话题' style='font-size: 8px;'>工程师</a>
+<a href='http://blog.jobbole.com/tag/%e5%bc%80%e5%8f%91%e4%ba%ba%e5%91%98/' class='tag-link-370 tag-link-position-58' title='121个话题' style='font-size: 13.185185185185px;'>开发人员</a>
+<a href='http://blog.jobbole.com/tag/%e5%bc%80%e6%ba%90/' class='tag-link-196 tag-link-position-59' title='95个话题' style='font-size: 12.044444444444px;'>开源</a>
+<a href='http://blog.jobbole.com/tag/%e5%be%ae%e8%bd%af/' class='tag-link-429 tag-link-position-60' title='93个话题' style='font-size: 11.940740740741px;'>微软</a>
+<a href='http://blog.jobbole.com/tag/%e6%8a%80%e6%9c%af%e9%9d%a2%e8%af%95/' class='tag-link-1876 tag-link-position-61' title='58个话题' style='font-size: 9.8666666666667px;'>技术面试</a>
+<a href='http://blog.jobbole.com/tag/%e6%8b%9b%e8%81%98/' class='tag-link-326 tag-link-position-62' title='45个话题' style='font-size: 8.7259259259259px;'>招聘</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%88%e7%8e%87/' class='tag-link-415 tag-link-position-63' title='59个话题' style='font-size: 9.9703703703704px;'>效率</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%99%e7%a8%8b/' class='tag-link-600 tag-link-position-64' title='53个话题' style='font-size: 9.4518518518519px;'>教程</a>
+<a href='http://blog.jobbole.com/tag/%e6%95%b0%e5%ad%a6/' class='tag-link-495 tag-link-position-65' title='39个话题' style='font-size: 8.1037037037037px;'>数学</a>
+<a href='http://blog.jobbole.com/tag/database/' class='tag-link-353 tag-link-position-66' title='333个话题' style='font-size: 17.644444444444px;'>数据库</a>
+<a href='http://blog.jobbole.com/tag/time-management/' class='tag-link-271 tag-link-position-67' title='53个话题' style='font-size: 9.4518518518519px;'>时间管理</a>
+<a href='http://blog.jobbole.com/tag/%e6%9c%8d%e5%8a%a1%e5%99%a8/' class='tag-link-311 tag-link-position-68' title='45个话题' style='font-size: 8.7259259259259px;'>服务器</a>
+<a href='http://blog.jobbole.com/tag/machinelearning/' class='tag-link-1910 tag-link-position-69' title='78个话题' style='font-size: 11.214814814815px;'>机器学习</a>
+<a href='http://blog.jobbole.com/tag/architecture/' class='tag-link-603 tag-link-position-70' title='110个话题' style='font-size: 12.77037037037px;'>架构</a>
+<a href='http://blog.jobbole.com/tag/%e6%b5%8b%e8%af%95/' class='tag-link-678 tag-link-position-71' title='92个话题' style='font-size: 11.940740740741px;'>测试</a>
+<a href='http://blog.jobbole.com/tag/%e6%b5%8f%e8%a7%88%e5%99%a8/' class='tag-link-63 tag-link-position-72' title='52个话题' style='font-size: 9.3481481481481px;'>浏览器</a>
+<a href='http://blog.jobbole.com/tag/%e6%b8%b8%e6%88%8f/' class='tag-link-797 tag-link-position-73' title='74个话题' style='font-size: 11.007407407407px;'>游戏</a>
+<a href='http://blog.jobbole.com/tag/%e7%94%a8%e6%88%b7/' class='tag-link-460 tag-link-position-74' title='59个话题' style='font-size: 9.9703703703704px;'>用户</a>
+<a href='http://blog.jobbole.com/tag/%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c/' class='tag-link-580 tag-link-position-75' title='197个话题' style='font-size: 15.362962962963px;'>用户体验</a>
+<a href='http://blog.jobbole.com/tag/%e7%95%8c%e9%9d%a2/' class='tag-link-4190 tag-link-position-76' title='47个话题' style='font-size: 8.9333333333333px;'>界面</a>
+<a href='http://blog.jobbole.com/tag/%e7%a0%81%e5%86%9c%e6%95%85%e4%ba%8b/' class='tag-link-2863 tag-link-position-77' title='54个话题' style='font-size: 9.5555555555556px;'>码农故事</a>
+<a href='http://blog.jobbole.com/tag/%e7%a7%bb%e5%8a%a8%e5%ba%94%e7%94%a8/' class='tag-link-654 tag-link-position-78' title='70个话题' style='font-size: 10.696296296296px;'>移动应用</a>
+<a href='http://blog.jobbole.com/tag/%e7%a7%bb%e5%8a%a8%e7%ab%af/' class='tag-link-3904 tag-link-position-79' title='45个话题' style='font-size: 8.7259259259259px;'>移动端</a>
+<a href='http://blog.jobbole.com/tag/%e7%a8%8b%e5%ba%8f%e5%91%98/' class='tag-link-368 tag-link-position-80' title='862个话题' style='font-size: 22px;'>程序员</a>
+<a href='http://blog.jobbole.com/tag/algorithm/' class='tag-link-650 tag-link-position-81' title='242个话题' style='font-size: 16.296296296296px;'>算法</a>
+<a href='http://blog.jobbole.com/tag/management/' class='tag-link-4880 tag-link-position-82' title='40个话题' style='font-size: 8.2074074074074px;'>管理</a>
+<a href='http://blog.jobbole.com/tag/%e7%bc%96%e7%a8%8b/' class='tag-link-389 tag-link-position-83' title='140个话题' style='font-size: 13.807407407407px;'>编程</a>
+<a href='http://blog.jobbole.com/tag/%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80/' class='tag-link-596 tag-link-position-84' title='119个话题' style='font-size: 13.081481481481px;'>编程语言</a>
+<a href='http://blog.jobbole.com/tag/%e7%bd%91%e7%ab%99/' class='tag-link-150 tag-link-position-85' title='82个话题' style='font-size: 11.422222222222px;'>网站</a>
+<a href='http://blog.jobbole.com/tag/%e7%bd%91%e9%a1%b5%e8%ae%be%e8%ae%a1/' class='tag-link-454 tag-link-position-86' title='243个话题' style='font-size: 16.296296296296px;'>网页设计</a>
+<a href='http://blog.jobbole.com/tag/%e8%81%8c%e5%9c%ba/' class='tag-link-253 tag-link-position-87' title='376个话题' style='font-size: 18.266666666667px;'>职场</a>
+<a href='http://blog.jobbole.com/tag/%e8%87%aa%e7%94%b1%e8%81%8c%e4%b8%9a/' class='tag-link-315 tag-link-position-88' title='131个话题' style='font-size: 13.496296296296px;'>自由职业</a>
+<a href='http://blog.jobbole.com/tag/translation/' class='tag-link-4882 tag-link-position-89' title='39个话题' style='font-size: 8.1037037037037px;'>英语</a>
+<a href='http://blog.jobbole.com/tag/%e8%8b%b9%e6%9e%9c/' class='tag-link-183 tag-link-position-90' title='52个话题' style='font-size: 9.3481481481481px;'>苹果</a>
+<a href='http://blog.jobbole.com/tag/%e8%ae%be%e8%ae%a1/' class='tag-link-431 tag-link-position-91' title='132个话题' style='font-size: 13.496296296296px;'>设计</a>
+<a href='http://blog.jobbole.com/tag/%e8%ae%be%e8%ae%a1%e5%b8%88/' class='tag-link-436 tag-link-position-92' title='208个话题' style='font-size: 15.57037037037px;'>设计师</a>
+<a href='http://blog.jobbole.com/tag/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f/' class='tag-link-1845 tag-link-position-93' title='63个话题' style='font-size: 10.281481481481px;'>设计模式</a>
+<a href='http://blog.jobbole.com/tag/%e8%b6%a3%e6%96%87/' class='tag-link-2105 tag-link-position-94' title='56个话题' style='font-size: 9.762962962963px;'>趣文</a>
+<a href='http://blog.jobbole.com/tag/%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b%e5%b8%88/' class='tag-link-400 tag-link-position-95' title='38个话题' style='font-size: 8px;'>软件工程师</a>
+<a href='http://blog.jobbole.com/tag/%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91/' class='tag-link-38 tag-link-position-96' title='91个话题' style='font-size: 11.837037037037px;'>软件开发</a>
+<a href='http://blog.jobbole.com/tag/%e9%9d%a2%e8%af%95/' class='tag-link-173 tag-link-position-97' title='111个话题' style='font-size: 12.77037037037px;'>面试</a>
+<a href='http://blog.jobbole.com/tag/%e9%a1%b9%e7%9b%ae/' class='tag-link-177 tag-link-position-98' title='38个话题' style='font-size: 8px;'>项目</a>
+<a href='http://blog.jobbole.com/tag/%e9%a1%b9%e7%9b%ae%e7%bb%8f%e7%90%86/' class='tag-link-1049 tag-link-position-99' title='38个话题' style='font-size: 8px;'>项目经理</a>
+<a href='http://blog.jobbole.com/tag/%e9%bb%91%e5%ae%a2/' class='tag-link-617 tag-link-position-100' title='61个话题' style='font-size: 10.074074074074px;'>黑客</a></p></div></div><div id="text-100" class="widget widget_text">			<div class="textwidget"><p><a href='http://blog.jobbole.com/99322/?utm_source=blog.jobbole.com&#038;utm_medium=sidebarBanner&#038;utm_content=2016.4.5' target='_blank'><img src='http://ww2.sinaimg.cn/mw690/bfdcef89jw1f2lmtdfiyxj208c03cglx.jpg' /></a></p>
+</div>
+		</div>
+        <h3 class="widget-title">
+            <a target="_blank" href="http://top.jobbole.com/category/news/">业界热点资讯</a>
+            <span style="float:right;"><a target="_blank" href="http://top.jobbole.com/category/news/">更多 &raquo;</a></span>
+        </h3>
+        <!-- BEGIN .container -->
+        <div class="container">
+            
+                <!-- BEGIN .grid-4 -->
+                <div class="grid-4 floated-thumb">
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/35257/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2016/07/fa186de02277dcfb218000283318667c.jpeg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="谷歌转型：把2.5万工程师变成机器学习专家是怎样的体验？" target="_blank" href="http://top.jobbole.com/35257/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">谷歌转型：把2.5万工程师变成机器学习专家是怎样的体验？</a><br />
+                                1 天前                                &middot; <i class="fa fa-thumbs-o-up"></i> 15                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/35251/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2016/07/24a16801a53c31a0c07651ba9fd4106c.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="2016 年 7月 TIOBE 编程语言排行榜" target="_blank" href="http://top.jobbole.com/35251/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">2016 年 7月 TIOBE 编程语言排行榜</a><br />
+                                1 天前                                &middot; <i class="fa fa-thumbs-o-up"></i> 14                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/35265/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2016/07/8fcd08147d405122fc997583e518bada.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="Facebook发布基站开源平台OpenCellular" target="_blank" href="http://top.jobbole.com/35265/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">Facebook发布基站开源平台OpenCellular</a><br />
+                                21 小时前                                &middot; <i class="fa fa-thumbs-o-up"></i> 3                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/35263/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2016/07/afc4b64e76a54e5f71652b5f15be66a9.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="Git 2.9：改进子模块，提升diff文件可读性" target="_blank" href="http://top.jobbole.com/35263/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">Git 2.9：改进子模块，提升diff文件可读性</a><br />
+                                1 天前                                &middot; <i class="fa fa-thumbs-o-up"></i> 4                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                        <!-- BEGIN .post-thumb -->
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://top.jobbole.com/35247/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news"><img src="http://jbcdn2.b0.upaiyun.com/2015/11/565719730ba5cef93633ac3fb10cd4e5.jpg" alt="" width="50" height="50" /></a>
+                        </div>
+                        <!-- END .post-thumb -->
+
+                        <!-- BEGIN .post-meta -->
+                        <div class="post-meta">
+
+                            <p>
+                                <a class="meta-title" title="MIT工程师开发出可编程RNA疫苗" target="_blank" href="http://top.jobbole.com/35247/?utm_source=blog.jobbole.com&utm_medium=sidebar-top-news">MIT工程师开发出可编程RNA疫苗</a><br />
+                                2 天前                                &middot; <i class="fa fa-thumbs-o-up"></i> 8                                
+                            </p>
+
+                        </div>
+                        <!-- END .post-meta -->
+
+                        <div class="clear"></div>
+
+                    
+                </div>
+                <!-- END .grid-4 -->
+
+            
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .container -->
+                    <h3 class="widget-title">
+                <a href="http://hao.jobbole.com?utm_source=blog.jobbole.com&utm_medium=sidebar-resources-more" target="_blank">精选工具资源</a>
+                <span style="float:right;"><a target="_blank" href="http://hao.jobbole.com?utm_source=blog.jobbole.com&utm_medium=sidebar-resources-more">更多资源 &raquo;</a></span>
+            </h3>
+            <div class="container">
+                <div class="grid-4">
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/mediu-css/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="Medium的CSS 方案：简直完美"><img src="http://jbcdn1.b0.upaiyun.com/2016/07/3eeb09805dd101a31d62a4482b06c918.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/mediu-css/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="Medium的CSS 方案：简直完美">Medium的CSS 方案：简直完美</a><br />
+                                <a href="http://hao.jobbole.com/category/css/" rel="category tag">CSS</a>, <a href="http://hao.jobbole.com/category/css/css-development-at-large-scale-websites/" rel="category tag">大型网站的CSS开发</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/youcompleteme/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="YouCompleteMe：一款Vim代码补全引擎"><img src="http://jbcdn1.b0.upaiyun.com/2016/07/4f15ef8efb3985d36bd29a219fa87404.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/youcompleteme/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="YouCompleteMe：一款Vim代码补全引擎">YouCompleteMe：一款Vim代码补全引擎</a><br />
+                                <a href="http://hao.jobbole.com/category/c-lang/" rel="category tag">C语言</a>, <a href="http://hao.jobbole.com/category/python-tools/" rel="category tag">Python</a>, <a href="http://hao.jobbole.com/category/c-lang/c-text-editor-extensions/c-vim/" rel="category tag">Vim</a>, <a href="http://hao.jobbole.com/category/c-lang/c-text-editor-extensions/" rel="category tag">文本编辑器扩展</a>, <a href="http://hao.jobbole.com/category/python-tools/python-editor-plugin/" rel="category tag">编辑器插件</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/ingeosdk/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="IngeoSDK：对CoreLocation的扩展和封装"><img src="http://jbcdn1.b0.upaiyun.com/2016/06/5fba6afa573f3329655cd83311672aba.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/ingeosdk/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="IngeoSDK：对CoreLocation的扩展和封装">IngeoSDK：对CoreLocation的扩展和封装</a><br />
+                                <a href="http://hao.jobbole.com/category/ios/" rel="category tag">iOS</a>, <a href="http://hao.jobbole.com/category/ios/ios-libraries-and-frameworks/ios-hardware/" rel="category tag">硬件</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/htmlcss-code-guide-by-mark-otto/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="HTML/CSS Code Guide by Mark Otto：Mark Otto 编写的HTML/CSS代码风格指南"><img src="http://jbcdn1.b0.upaiyun.com/2016/06/0d0efdcb75df17208864246ec03f06e5.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/htmlcss-code-guide-by-mark-otto/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="HTML/CSS Code Guide by Mark Otto：Mark Otto 编写的HTML/CSS代码风格指南">HTML/CSS Code Guide by Mark Otto：Mark...</a><br />
+                                <a href="http://hao.jobbole.com/category/css/" rel="category tag">CSS</a>, <a href="http://hao.jobbole.com/category/css/css-style-guide/" rel="category tag">代码风格指南</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                
+                    <div class="floated-thumb">
+                        <div class="post-thumb">
+                            <a target="_blank" href="http://hao.jobbole.com/motionkit/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="MotionKit：对Core Motion的包装"><img src="http://jbcdn1.b0.upaiyun.com/2016/06/92379526df1d314b10433883eb7ccb1e.png" alt="" width="50" height="50" /></a>
+                        </div>
+                        <div class="post-meta">
+                            <p>
+                                <a class="meta-title" target="_blank" href="http://hao.jobbole.com/motionkit/?utm_source=blog.jobbole.com&utm_medium=sidebar-resources" title="MotionKit：对Core Motion的包装">MotionKit：对Core Motion的包装</a><br />
+                                <a href="http://hao.jobbole.com/category/ios/" rel="category tag">iOS</a>, <a href="http://hao.jobbole.com/category/ios/ios-libraries-and-frameworks/ios-hardware/" rel="category tag">硬件</a>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                                </div>
+            </div>
+        		<h3 class='widget-title'>最新评论</h3>
+		<ul>
+		
+					
+			<li id="rc-comment-157476" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/Moonshell"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="修改Hosts为何不生效，是DNS缓存？" href="http://blog.jobbole.com/86935/#comment-157476" rel="nofollow">修改Hosts为何不生效，是DNS...</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				最近对于这个情况写了个基于 node 的命令行工具，每次切换 hosts 后会刷新 DNS，不过目前...				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157475" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/打鱼不晒网"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="ThreadLocal 那点事儿" href="http://blog.jobbole.com/103325/#comment-157475" rel="nofollow">ThreadLocal 那点事儿</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				这玩意是为了解决多线程并发问题的？第一个例子 序列号生成器就不解了， 序列号一般理解是唯一的，你多个...				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157474" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/lenvon2012"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://jbcdn2.b0.upaiyun.com/2016/06/38026ed22fc1a91d92b5d2ef93540f209.jpg"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="ThreadLocal 那点事儿" href="http://blog.jobbole.com/103325/#comment-157474" rel="nofollow">ThreadLocal 那点事儿</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				不错，点赞				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157473" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/jiangbingo"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://jbcdn2.b0.upaiyun.com/2016/05/4013c6f5967c84c4de95b030f37c21b3.jpg"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="我的大脑不能再处理面向对象编程了" href="http://blog.jobbole.com/20874/#comment-157473" rel="nofollow">我的大脑不能再处理面向对象编程了</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				不要这么激动嘛				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157472" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/xxmajia"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="ThreadLocal 那点事儿" href="http://blog.jobbole.com/103325/#comment-157472" rel="nofollow">ThreadLocal 那点事儿</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				nice				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157471" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/wx2163903777"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://jbcdn2.b0.upaiyun.com/2015/04/8fbdaaa5ea6d3b49c8c1c825aafeb5d9.png"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="Git详解之三：Git分支" href="http://blog.jobbole.com/25877/#comment-157471" rel="nofollow">Git详解之三：Git分支</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				不就是链表吗?看样子,一个简单的链表数据结构也能做大事情.				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157469" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/den1212"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://q.qlogo.cn/qqapp/208656/F967A9CB599722701DA7AF22CDB681BD/100"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="Facebook 直播如何撑起瞬间 80 万人的流量？" href="http://blog.jobbole.com/103250/#comment-157469" rel="nofollow">Facebook 直播如何撑起瞬间 8...</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				感觉国内直播平台很多人数一多就容易卡，很影响体验。				</div>
+			</li>
+			
+					
+			<li id="rc-comment-157468" class="rc-item rc-comment rc-clearfix">
+				<a target="_blank" href="http://www.jobbole.com/members/den1212"><img class="rc-avatar rc-left" width="34" height="34" alt="" src="http://q.qlogo.cn/qqapp/208656/F967A9CB599722701DA7AF22CDB681BD/100"></a>
+				<div class="rc-info">
+				Re:
+				<a class="rc-post" target="_blank" title="聪明人不做的十件事" href="http://blog.jobbole.com/103177/#comment-157468" rel="nofollow">聪明人不做的十件事</a>
+				</div>
+				<div class="rc-timestamp"></div>
+				<div class="rc-excerpt">
+				把这些都做到不容易。加油				</div>
+			</li>
+			
+				
+		</ul>
+        	
+	<!-- BEGIN .container -->
+	<div class="container">
+	
+		<!-- BEGIN .grid-2 -->
+		<div class="grid-2">
+			
+						
+		</div>
+		<!-- END .grid-2 -->
+		
+		<!-- BEGIN .grid-2 -->
+		<div class="grid-2">
+			
+						
+		</div>
+		<!-- END .grid-2 -->
+		
+		<div class="clear"></div>
+			
+	</div>
+	<!-- END .container -->
+
+</div>
+<!-- END #sidebar -->
+<div class="clear"></div>	
+
+
+</div>
+<!-- END #wrapper -->
+
+<!-- BEGIN footer -->
+
+    <footer>
+
+        <!-- BEGIN .container -->
+        <div class="container">
+
+            <!-- BEGIN .grid-4 -->
+            <div class="grid-4">
+
+                <div id="text-3" class="widget widget_text"><h3 class="widget-title">关于伯乐在线博客</h3>			<div class="textwidget"><p>在这个信息爆炸的时代，人们已然被大量、快速并且简短的信息所包围。然而，我们相信：过多“快餐”式的阅读只会令人“虚胖”，缺乏实质的内涵。伯乐在线内容团队正试图以我们微薄的力量，把优秀的原创文章和译文分享给读者，为“快餐”添加一些“营养”元素。</p>
+<p><b>快速链接</b><br />
+<a target='_blank' href="http://group.jobbole.com/category/feedback/thanks">问题反馈与求助 » </a><br />
+<a target='_blank' href="http://group.jobbole.com/category/feedback/trans-team/">加入伯乐翻译小组 » </a><br />
+<a target='_blank' href="http://blog.jobbole.com/99322">加入专栏作者 » </a></p>
+</div>
+		</div>
+            </div>
+            <!-- END .grid-4 -->
+
+            <!-- BEGIN .grid-4 -->
+            <div class="grid-4">
+
+                <div id="text-4" class="widget widget_text"><h3 class="widget-title">关注我们</h3>			<div class="textwidget"><p>新浪微博：<a href='http://weibo.com/jobbole' target='_blank'>@伯乐在线官方微博</a><br />
+RSS：<a href='http://blog.jobbole.com/feed/' target='_blank'>订阅地址</a><br />
+推荐微信号 <br />
+<img src='http://jbcdn2.b0.upaiyun.com/2015/12/weixin/iprogrammer_weixin.png' width='100' height='110' /><img src='http://jbcdn2.b0.upaiyun.com/2015/12/weixin/ui_weixin.png' width='100' height='110' /><img src='http://jbcdn2.b0.upaiyun.com/2015/12/weixin/geekfan_weixin.png' width='100' height='110' /></p>
+<p><strong>合作联系</strong><br />
+Email：<a href='mailto:bd@jobbole.com'>bd@Jobbole.com</a><br />
+QQ： 2302462408  （加好友请注明来意）</p>
+</div>
+		</div>
+            </div>
+            <!-- END .grid-4 -->
+
+            <!-- BEGIN .grid-4 -->
+            <div class="grid-4">
+
+                <div id="text-7" class="widget widget_text"><h3 class="widget-title">更多频道</h3>			<div class="textwidget"><p><a href='http://group.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>小组</a> &#8211; 好的话题、有启发的回复、值得信赖的圈子<br />
+<a href='http://top.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>头条</a> &#8211; 分享和发现有价值的内容与观点<br />
+<a href='http://date.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>相亲</a> &#8211; 为IT单身男女服务的征婚传播平台<br />
+<a href='http://hao.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>资源</a> &#8211; 优秀的工具资源导航<br />
+<a href='http://fanyi.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>翻译</a> &#8211; 翻译传播优秀的外文文章<br />
+<a href='http://blog.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>文章</a> &#8211; 国内外的精选文章<br />
+<a href='http://design.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>设计</a> &#8211; UI,网页，交互和用户体验<br />
+<a href='http://ios.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>iOS</a> &#8211; 专注iOS技术分享<br />
+<a href='http://android.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>安卓</a> &#8211; 专注Android技术分享<br />
+<a href='http://web.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>前端</a> &#8211; JavaScript, HTML5, CSS<br />
+<a href='http://www.importnew.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>Java</a> &#8211; 专注Java技术分享<br />
+<a href='http://python.jobbole.com/?utm_source=blog.jobbole.com&#038;utm_medium=bottomText' target='_blank'>Python</a> &#8211; 专注Python技术分享</p>
+</div>
+		</div>
+            </div>
+            <!-- END .grid-4 -->
+
+            <div class="clear"></div>
+
+        </div>
+        <!-- END .container -->
+
+        <!-- BEGIN #bottom -->
+        <div id="bottom">
+
+            <!-- BEGIN .container -->
+            <div class="container">
+
+                <!-- BEGIN .grid-12 -->
+                <div class="grid-12">
+
+                    <p>&copy; 2016 伯乐在线
+                    <span style="margin-left: 40px;">
+                        <a href="http://www.jobbole.com">首页</a>&nbsp;&nbsp;
+                        <a href="http://blog.jobbole.com">博客</a>&nbsp;&nbsp;
+                        <a href="http://hao.jobbole.com">资源</a>&nbsp;&nbsp;
+                        <a href="http://group.jobbole.com">小组</a>&nbsp;&nbsp;
+                        <a href="http://date.jobbole.com">相亲</a>&nbsp;&nbsp;
+                        <a href="http://group.jobbole.com/category/feedback/thanks/"><i class="fa fa-bullhorn"></i> 反馈</a>
+                    </span>
+                    </p>
+
+                </div>
+                <!-- END .grid-12 -->
+
+                <div class="clear"></div>
+
+            </div>
+            <!-- END .container -->
+
+        </div>
+        <!-- END #bottom -->
+    </footer>
+
+    
+<!-- END footer -->
+
+
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"\u4e0b\u4e00\u9875 >","prev":"< \u4e0a\u4e00\u9875","image":"\u56fe\u50cf","of":"\/","close":"\u5173\u95ed","noiframes":"\u8fd9\u4e2a\u529f\u80fd\u9700\u8981iframe\u7684\u652f\u6301\u3002\u60a8\u53ef\u80fd\u7981\u6b62\u4e86iframe\u7684\u663e\u793a\uff0c\u6216\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6b64\u529f\u80fd\u3002","loadingAnimation":"http:\/\/blog.jobbole.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/thickbox/thickbox.js?ver=3.1-20121105'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/shortcode.min.js?ver=4.5.2'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-admin/js/media-upload.min.js?ver=4.5.2'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/comment-reply.min.js?ver=4.5.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var quicktagsL10n = {"closeAllOpenTags":"\u5173\u95ed\u6240\u6709\u6253\u5f00\u7684\u6807\u7b7e","closeTags":"\u5173\u95ed\u6807\u7b7e","enterURL":"\u8f93\u5165URL","enterImageURL":"\u8f93\u5165\u56fe\u50cfURL","enterImageDescription":"\u4e3a\u56fe\u50cf\u8f93\u5165\u63cf\u8ff0","textdirection":"\u6587\u672c\u65b9\u5411","toggleTextdirection":"\u5207\u6362\u7f16\u8f91\u5668\u6587\u672c\u4e66\u5199\u65b9\u5411","dfw":"\u514d\u6253\u6270\u5199\u4f5c\u6a21\u5f0f","strong":"\u7c97\u4f53","strongClose":"\u5173\u95ed\u7c97\u4f53\u6807\u7b7e","em":"\u659c\u4f53","emClose":"\u5173\u95ed\u659c\u4f53\u6807\u7b7e","link":"\u63d2\u5165\u94fe\u63a5","blockquote":"\u5757\u5f15\u7528","blockquoteClose":"\u5173\u95ed\u5757\u5f15\u7528\u6807\u7b7e","del":"\u5220\u9664\u7684\u6587\u5b57\uff08\u5220\u9664\u7ebf\uff09","delClose":"\u5173\u95ed\u5220\u9664\u7ebf\u6807\u7b7e","ins":"\u63d2\u5165\u7684\u6587\u5b57","insClose":"\u5173\u95ed\u63d2\u5165\u7684\u6587\u5b57\u6807\u7b7e","image":"\u63d2\u5165\u56fe\u50cf","ul":"\u9879\u76ee\u7b26\u53f7\u5217\u8868","ulClose":"\u5173\u95ed\u9879\u76ee\u7b26\u53f7\u5217\u8868\u6807\u7b7e","ol":"\u7f16\u53f7\u5217\u8868","olClose":"\u5173\u95ed\u7f16\u53f7\u5217\u8868\u6807\u7b7e","li":"\u5217\u8868\u9879\u76ee","liClose":"\u5173\u95ed\u5217\u8868\u9879\u76ee\u6807\u7b7e","code":"\u4ee3\u7801","codeClose":"\u5173\u95ed\u4ee3\u7801\u6807\u7b7e","more":"\u63d2\u5165\u201cMore\u201d\u6807\u7b7e"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/quicktags.min.js?ver=4.5.2'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/crayon-syntax-highlighter/util/tag-editor/crayon_qt.js?ver=2.7.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"http:\/\/blog.jobbole.com\/wp-admin\/admin-ajax.php","post_id":"49320"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/plugins/wp-postviews/postviews-cache.js?ver=1.68'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/ready.js?ver=1.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/easing.js?ver=1.3'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/validate.js?ver=1.9.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/touchwipe.js?ver=1.1.1'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/caroufredsel.js?ver=5.5.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/flexslider.js?ver=2.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/jplayer.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/fitvids.js?ver=1.0'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/selectnav.js?ver=0.11'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/js/effects.js?ver=1.11'></script>
+<script type='text/javascript' src='http://blog.jobbole.com/wp-includes/js/wp-embed.min.js?ver=4.5.2'></script>
+
+
+<div id="full-btm">
+<a><img src="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/back-btm.png" width="20" border=0 alt="跳到底部" title="跳到底部"></a>
+</div>
+
+<script type="text/javascript">
+jQuery('#full-btm').click(function(){
+    jQuery('html, body').animate({scrollTop:jQuery(document).height()}, 'slow');
+    return false;
+});
+</script>
+
+<div id="full-top">
+<a><img src="http://blog.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/back-top.png" width="20" border=0 alt="返回顶部" title="返回顶部"></a>
+</div>
+
+<script type="text/javascript">
+jQuery('#full-top').click(function(){
+    jQuery('html, body').animate({scrollTop:0}, 'slow');
+    return false;
+});
+
+</script>
+
+</body>
+<!-- END body -->
+
+</html>
+<!-- END html -->

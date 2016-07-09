@@ -1,0 +1,1085 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://www.alixixi.com/web/a/2013112291744.shtml -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=7.0000" 
+http-equiv="X-UA-Compatible">
+<TITLE>CSS3的transform知识:详解transform_CSS教程_前端技术</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=keywords content="">
+<META name=description 
+content="CSS3的transform知识:详解transform-origin,在这篇文章，回顾了CSS3的transform的基本知识，然后深入介绍了transform-origin的相关知识。 "><LINK 
+rel=stylesheet type=text/css 
+href="CSS3的transform知识详解transform_CSS教程_前端技术_files/style.css"><LINK 
+rel=stylesheet type=text/css 
+href="CSS3的transform知识详解transform_CSS教程_前端技术_files/web.css"><LINK rel=icon 
+type=image/x-icon href="http://www.alixixi.com/favicon.ico"><LINK 
+rel="shortcut icon" type=image/x-icon href="http://www.alixixi.com/favicon.ico">
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/dhtml.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 11.00.9600.18349"></HEAD>
+<BODY id=body_13>
+<DIV class=topbg><A onfocus=this.blur() title=网页制作教程,web开发之家 class=logo 
+href="http://www.alixixi.com/"></A>
+<DIV class=topsearch>
+<FORM method=get action=http://www.alixixi.com/search.asp>
+<DIV class=toplink><SPAN class=sof><INPUT CHECKED type=radio value=1 name=m> 
+文章&nbsp; <INPUT type=radio value=3 name=m> 下载</SPAN><SPAN class=lk><A 
+href="http://www.alixixi.com/about/ad.asp" target=_blank>广告合作</A> | <A 
+href="http://www.alixixi.cn/dvd/" target=_blank>素材光盘</A> | <A 
+href="http://tool.alixixi.com/" target=_blank>站长工具</A></SPAN></DIV><INPUT 
+onclick="if (this.value=='请输入关键字') this.value=''" onmouseover=this.focus() 
+onfocus=this.select() onblur="if (this.value =='') this.value='请输入关键字'" class=wd 
+value=请输入关键字 name=wd> <INPUT class=s type=submit value=站内搜索 name=s> 
+</FORM></DIV></DIV>
+<DIV id=header>
+<DIV class=topNav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://www.alixixi.com/web/c/html_1.shtml" target=_blank>网页基础</A>|<A 
+href="http://www.alixixi.com/web/c/xhtml_1.shtml" target=_blank>网站重构</A>|<A 
+href="http://www.alixixi.com/web/c/css_1.shtml" target=_blank>样式表</A>|<A 
+href="http://www.alixixi.com/web/c/script_1.shtml" target=_blank>脚本</A>|<A 
+href="http://www.alixixi.com/web/c/sheji_1.shtml" target=_blank>软件</A>|<A 
+href="http://www.alixixi.com/zz/" 
+target=_blank>站长文章</A>&nbsp;<SPAN></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://down.alixixi.com/" target=_blank>网站源码</A>|<A 
+href="http://book.alixixi.com/" target=_blank>电子书</A>|<A 
+href="http://mb.alixixi.com/c/fonts_1.shtml" target=_blank>字体库</A>|<A 
+href="http://down.alixixi.com/c/software_1.shtml" 
+target=_blank>软件</A>&nbsp;<SPAN></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://js.alixixi.com/c/guanggao_1.shtml" target=_blank>广告代码</A>|<A 
+href="http://js.alixixi.com/c/menu_1.shtml" target=_blank>菜单特效</A>|<A 
+href="http://js.alixixi.com/c/datetime_1.shtml" target=_blank>日期特效</A>|<A 
+href="http://js.alixixi.com/c/picture_1.shtml" target=_blank>图像</A>|<A 
+href="http://js.alixixi.com/c/text_1.shtml" target=_blank>文字</A>|<A 
+href="http://js.alixixi.com/c/example_1.shtml" 
+target=_blank>实例</A>&nbsp;<SPAN></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://cool.alixixi.com/class-172.shtml" target=_blank>欧美酷站</A>|<A 
+href="http://cool.alixixi.com/class-171.shtml" target=_blank>韩国酷站</A>|<A 
+href="http://cool.alixixi.com/class-173.shtml" 
+target=_blank>中国站</A><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://www.alixixi.com/web/" target=_blank>前端技术</A>|<A 
+href="http://www.alixixi.com/program/" target=_blank>编程开发</A>|<A 
+href="http://www.alixixi.com/program/c/database_1.shtml" 
+target=_blank>数据库</A>|<A href="http://www.alixixi.com/web/c/donghua_1.shtml" 
+target=_blank>动画</A>|<A href="http://www.alixixi.com/web/c/kaifawendang_1.shtml" 
+target=_blank>文档</A>|<A href="http://www.alixixi.com/zz/c/experience_1.shtml" 
+target=_blank>网站运营</A>&nbsp;<SPAN></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://mb.alixixi.com/" target=_blank>网页模板</A>|<A 
+href="http://mb.alixixi.com/c/sheji_1.shtml" target=_blank>素材库</A>|<A 
+href="http://down.alixixi.com/s/serv_1.shtml" target=_blank>服务器</A>|<A 
+href="http://mb.alixixi.com/c/tubiao_1.shtml" 
+target=_blank>图标</A>&nbsp;<SPAN></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://js.alixixi.com/s/pfad_1.shtml" target=_blank>漂浮特效</A>|<A 
+href="http://js.alixixi.com/c/table_1.shtml" target=_blank>图层特效</A>|<A 
+href="http://js.alixixi.com/c/form_1.shtml" target=_blank>表单特效</A>|<A 
+href="http://js.alixixi.com/c/mouse_1.shtml" target=_blank>鼠标</A>|<A 
+href="http://js.alixixi.com/c/color_1.shtml" target=_blank>色彩</A>|<A 
+href="http://js.alixixi.com/c/window_1.shtml" 
+target=_blank>窗口</A>&nbsp;<SPAN></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+style="COLOR: red" href="http://cool.alixixi.com/color-4.shtml" 
+target=_blank>红-</A>|<A style="COLOR: #ffcc00" 
+href="http://cool.alixixi.com/color-6.shtml" target=_blank>黄-</A>|<A 
+style="COLOR: green" href="http://cool.alixixi.com/color-7.shtml" 
+target=_blank>绿-</A>|<A style="COLOR: blue" 
+href="http://cool.alixixi.com/color-9.shtml" target=_blank>蓝-</A>|<A 
+style="COLOR: #6600ff" href="http://cool.alixixi.com/color-10.shtml" 
+target=_blank>紫-</A>|<A style="COLOR: #ff6600" 
+href="http://cool.alixixi.com/color-5.shtml" target=_blank>橙-</A>|<A 
+style="COLOR: #ff00ff" href="http://cool.alixixi.com/color-1.shtml" 
+target=_blank>炫</A></DIV></DIV>
+<DIV></DIV>
+<DIV id=topad>
+<SCRIPT src="CSS3的transform知识详解transform_CSS教程_前端技术_files/adimg.js"></SCRIPT>
+</DIV>
+<DIV id=txtad>您的位置：<A href="http://www.alixixi.com/">阿里西西</A> &gt; <A 
+href="http://www.alixixi.com/web/">前端技术</A> &gt; <A 
+href="http://www.alixixi.com/web/c/css_1.shtml">CSS教程</A> &gt; 
+详细内容<SPAN></SPAN></DIV>
+<DIV class=main>
+<DIV class=showbox>
+<DIV class=listinfo>
+<DIV id=title>
+<DIV class=face><A onclick=digg(91744); title=好文章，顶上去！ 
+href="javascript:void(0);"><SPAN id=digg>-</SPAN>顶</A></DIV>
+<DIV class=info>
+<H1 
+title=CSS3的transform知识:详解transform-origin,在这篇文章，回顾了CSS3的transform的基本知识，然后深入介绍了transform-origin的相关知识。 
+class=tt>CSS3的transform知识:详解transform</H1><SPAN class=tm><INPUT id=articleid 
+type=hidden value=91744 name=articleid> &nbsp;&nbsp;本站整理 &nbsp;&nbsp;互联网 
+&nbsp;&nbsp;2013-11-22 &nbsp;&nbsp;点击： <LABEL id=hits>1</LABEL> &nbsp;&nbsp;<A 
+href="http://www.alixixi.com/web/a/2013112291744.shtml#replay">我要评论</A></SPAN> 
+</DIV>
+<DIV class="clear mb5"></DIV></DIV>
+<DIV id=context>
+<DIV class=listintro><SPAN id=sp></SPAN></DIV>
+<DIV style="HEIGHT: 285px; WIDTH: 340px; FLOAT: left">
+<SCRIPT>
+var cpro_id = 'u260852';
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/c.js"></SCRIPT>
+</DIV>
+<P>
+<TABLE 
+style="BORDER-TOP: #cccccc 1px dotted; BORDER-RIGHT: #cccccc 1px dotted; TABLE-LAYOUT: fixed; BORDER-BOTTOM: #cccccc 1px dotted; BORDER-LEFT: #cccccc 1px dotted" 
+cellSpacing=0 cellPadding=6 width="95%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD style="WORD-WRAP: break-word" bgColor=#fdfddf><FONT 
+      color=#ff0000>文章简介：</FONT><FONT 
+      color=#000000>在这篇文章，回顾了CSS3的transform的基本知识，然后深入介绍了transform-origin的相关知识。</FONT></TD></TR></TBODY></TABLE></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>在CSS2.1中，我们的页面都是静态的，网页设计师也习惯把它作为页面效果的设计工具。但往往有些页面效果不只是静态的，比如说，如何实际移动一些元素？如何更改元素的外观——旋转或缩放？</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>多年来，Web设计师为了给修改页面的外观，都依赖于图片、Flash或JavaScript才能完成。不过，CSS3将要改变设计师这种思维，进入CSS3时代，借助CSS3就可以轻松倾斜、缩放、移动以及翻转元素。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>在2011年05月在站上发表了第一篇有关于CSS3 
+Transform教程，现已时隔近两年，有很多东西都有变化，而且理解也略有不同，接下来将会分几篇教程，向大家介绍CSS3 Transform相关的知识。</P>
+<H2 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(81,177,72); FONT: bold 18px/30px "Microsoft Yahei"; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>CSS3变形的介绍</H2>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>2012年9月，W3C组织发布了CSS3变形工作草案。CSS3变形允许CSS把元素转变为2D 
+或3D空间，这个草案包括了CSS3 2D变形和CSS3 3D变形。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>CSS3变形是一些效果的集合，比如平移、旋转、缩放和倾斜效果，每个效果都被称作为变形函数（Transform 
+Function）,它们可以操控元素发生旋转、缩放、和平移等变化。这些效果在之前都需要依赖图片、Flash或JavaScript才能完成。而使用纯CSS来完成这些变形则无需加载这些额外的文件，再一次提升了你的开发效率，还提高了页面的执行效率。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>CSS变形允许您动态的控制元素。您可以在屏幕周围移动它们，缩小或扩大，旋转，或结合所有这些产生复杂的动画效果。通过CSS变形，可以让元素生成静态视觉效果，但也可以很容易结合CSS3的transition和动画的keyframe产生一些动画效果。在本章中，首先介绍简单的2D变形，然后向您展示如何扩展转换成3D变形。</P>
+<UL 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; FONT: 14px/28px "Microsoft Yahei"; PADDING-LEFT: 1em; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3的<CODE>transform</CODE>属性指一组转换函数。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3的2D<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE>transform</CODE>函数包括了<CODE>translate()</CODE>、<CODE>scale()</CODE>、<CODE>rotate()</CODE>和<CODE>skew()</CODE>。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>translate()</CODE>函数接受CSS的标准度量单位；<CODE>scale()</CODE>函数接受一个0和1之间的十进制值；<CODE>rotate()</CODE>和<CODE>skew()</CODE>两个函数都接受一个径向的度量单位值<CODE>deg</CODE>。除了<CODE>rotate()</CODE>函数之外，每个函数都接受X轴和Y轴的参数。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3变形中具有<CODE>X 
+  /Y</CODE>可用的函数：<CODE>translateX()</CODE>、<CODE>translateY()</CODE>、<CODE>scaleX()</CODE>、<CODE>scaleY()</CODE>、<CODE>skewX()</CODE>和<CODE>skewY()</CODE>。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">2D变形中还有一个矩阵<CODE>matrix()</CODE>函数，其包括六个参数。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3 
+  3D变形包括函数有：<CODE>rotateX()</CODE>、<CODE>rotateY()</CODE>、<CODE>rotate3d()</CODE>、<CODE>translateZ()</CODE>、<CODE>translate3d()</CODE>、<CODE>scaleZ()</CODE>和<CODE>scale3d()</CODE>。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3 
+  3D变形中也包括一个矩阵<CODE>matrix3d()</CODE>函数，其包括16个参数。 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>transform-origin</CODE>属性指定元素的中心点在哪。后面增加了第三个数<CODE>transform-origin-z</CODE>，控制元素三维空间中心点。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>perspective</CODE>属性相对于观众产生一个3D场景，你看3D物体，眼睛到画布的距离。正确的用法是他需要应用到变形元素的祖先元素上。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>perspective-origin</CODE>为视点的位置。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>backface-visibilty</CODE>属性用来设置背面的可见性。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">设置<CODE>transform-style</CODE>的值为<CODE>preserve-3d</CODE>值，建立一个3D渲染环境。 
+  </LI></UL>
+<H2 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(81,177,72); FONT: bold 18px/30px "Microsoft Yahei"; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform属性</H2>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>CSS3的变形（transform）属性让元素在一个坐标系统中变形。这个属性包含一系列变形函数，可以移动、旋转和缩放元素。transform属性的基本语法如下：</P><PRE class=javascript style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=javascript style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)">transform：none  <SPAN class=xml><SPAN class=tag><SPAN class=xml><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">transform-function</SPAN></SPAN>&gt;</SPAN></SPAN></SPAN><SPAN class=xml> [<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">transform-function</SPAN></SPAN>&gt;</SPAN></SPAN>]* </SPAN></SPAN></CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><CODE>transform</CODE>属性可用于内联元素和块元素。其默认值为<CODE>none</CODE>，表示不元素不进行变形。<CODE>transform</CODE>另一个属性值是一系列的<CODE>&lt;transform-function&gt;</CODE>。<CODE>&lt;transform-function&gt;</CODE>表示一个或多个变形函数，以空格分开；换句话说就是我们同时对一个元素进行变形的多种属性操作，例如<CODE>rotate</CODE>、<CODE>scale</CODE>、<CODE>translate</CODE>等。但这里需要提醒大家，以往我们叠加效果都是用逗号(“，”)隔开，但在<CODE>transform</CODE>中使用多个<CODE>transform-function</CODE>时却需要有空格隔开。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform属性3D变形（3D 
+transform）模块的一部分，也就是说所有的2D变形函数也包含于3D变形规范中。如此一来，CSS3变形中的函数根据不同的规范略有不同，下面列出的是变形中的2D和3D常用变形函数的功能，简单说明如下：</P>
+<H4 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(81,177,72); FONT: bold 16px/30px "Microsoft Yahei"; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>2D 
+transform常用的transform-function的功能:</H4>
+<UL 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; FONT: 14px/28px "Microsoft Yahei"; PADDING-LEFT: 1em; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>translate()</CODE>：用来移动元素，可以根据X轴和Ｙ轴坐标重新定位元素位置。在此基础上有两个扩展函数：<CODE>translateX()</CODE>和<CODE>translateY()</CODE>。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>scale()</CODE>：用来缩小或放大元素，可以使用元素尺寸发生变化。在此基础上有两个扩展函数：<CODE>scaleX()</CODE>和<CODE>scaleY()</CODE>。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>rotate()</CODE>：用来旋转元素。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>skew()</CODE>：用来让元素倾斜。在此基础上有两个扩展函数：<CODE>skewX()</CODE>和<CODE>skewY()</CODE>。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>matrix()</CODE>：定义矩阵变形，基于X轴和Y轴坐标重新定位元素位置。 
+  </LI></UL>
+<H4 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(81,177,72); FONT: bold 16px/30px "Microsoft Yahei"; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>3D 
+transform常用的transform-function的功能:</H4>
+<UL 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; FONT: 14px/28px "Microsoft Yahei"; PADDING-LEFT: 1em; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>translate3d()</CODE>：移元素元素，用来指定一个3D变形移动位移量 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>translate()</CODE>：指定3Ｄ位移在Ｚ轴的位移量。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>scale3d()</CODE>：用来缩放一个元素。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>scaleZ()</CODE>:指定Z轴的缩放向量。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>rotate3d()</CODE>：指定元素具有一个三维旋转的角度。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>rotateX()</CODE>、<CODE>rotateY()</CODE>和<CODE>rotateZ()</CODE>：让元素具有一个旋转角度。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>perspective()</CODE>：指定一个透视投影矩阵。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE>matrix3d()</CODE>：定义矩阵变形。 
+  </LI></UL>
+<H2 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(81,177,72); FONT: bold 18px/30px "Microsoft Yahei"; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin属性</H2>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>默认情况，变形的原点在元素的中心点，或者是元素X轴和Y轴的50%处，如下图所示：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203033987.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>我们没有使用<CODE>transform-origin</CODE>改变元素原点位置的情况下，CSS变形进行的旋转、移位、缩放等操作都是以元素自己中心（变形原点）位置进行变形的。但很多时候需要在不同的位置对元素进行变形操作，我们就可以使用<CODE>transform-origin</CODE>来对元素进行原点位置改变，使元素原点不在元素的中心位置，以达到需要的原点位置。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>如果我们把元素变换原点（<CODE>transform-origin</CODE>）设置0（x） 
+0（y），这个时候元素的变换原点转换到元素的左顶角处，如下图所示：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203034921.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>正如上图所示，改变<CODE>transform-origin</CODE>属性的X轴和Ｙ轴的值就可以重置元素变形原点位置，其基本语法如下所示:</P><PRE class=javascript style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=javascript style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)">transform-origin：[<SPAN class=xml><SPAN class=tag><SPAN class=xml><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">percentage</SPAN></SPAN>&gt;</SPAN></SPAN></SPAN><SPAN class=xml>
+					<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">length</SPAN></SPAN>&gt;</SPAN></SPAN>  left  center  right  top  bottom]  [<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">percentage</SPAN></SPAN>&gt;</SPAN></SPAN>
+					<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">length</SPAN></SPAN>&gt;</SPAN></SPAN>  left  center  right]  [[<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">percentage</SPAN></SPAN>&gt;</SPAN></SPAN>
+					<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">length</SPAN></SPAN>&gt;</SPAN></SPAN>  left  center  right] &amp;&amp; [<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">percentage</SPAN></SPAN>&gt;</SPAN></SPAN>
+					<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">length</SPAN></SPAN>&gt;</SPAN></SPAN>  top  center  bottom]] <SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">length</SPAN></SPAN>&gt;</SPAN></SPAN> ? </SPAN></SPAN></CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>上面的语法让人看得发晕，其实可以将语法拆分成：</P><PRE class=perl style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=perl style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)">/<SPAN class=variable style="COLOR: rgb(181,137,0)"><SPAN class=variable style="COLOR: rgb(181,137,0)">*只</SPAN></SPAN>设置一个值的语法<SPAN class=variable style="COLOR: rgb(181,137,0)"><SPAN class=variable style="COLOR: rgb(181,137,0)">*/</SPAN></SPAN> transform-origin: <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset transform-origin:offset-keyword /<SPAN class=variable style="COLOR: rgb(181,137,0)"><SPAN class=variable style="COLOR: rgb(181,137,0)">*设</SPAN></SPAN>置两个值的语法<SPAN class=variable style="COLOR: rgb(181,137,0)"><SPAN class=variable style="COLOR: rgb(181,137,0)">*/</SPAN></SPAN> transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset-keyword transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset-keyword  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword /<SPAN class=variable style="COLOR: rgb(181,137,0)"><SPAN class=variable style="COLOR: rgb(181,137,0)">*设</SPAN></SPAN>置三个值的语法<SPAN class=variable style="COLOR: rgb(181,137,0)"><SPAN class=variable style="COLOR: rgb(181,137,0)">*/</SPAN></SPAN> transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset  z-offset transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword  z-offset transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset  z-offset transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset-keyword  z-offset transform-origin：<SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">y</SPAN></SPAN>-offset-keyword  <SPAN class=keyword style="COLOR: rgb(133,153,0)"><SPAN class=keyword style="COLOR: rgb(133,153,0)">x</SPAN></SPAN>-offset-keyword  z-offset </CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><CODE>transform-origin</CODE>属性值可以是百分比、em、px等具体的值，也可以是top、right、bottom、left和center这样的关键词。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>2D的变形中的<CODE>transform-origin</CODE>属性可以是一个参数值，也可以是两个参数值。如果是两个参数值时，第一值设置水平方向X轴的位置，第二个值是用来设置垂直方向Ｙ轴的位置。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>3D的变形中的<CODE>transform-origin</CODE>属性还包括了Ｚ轴的第三个值。其各个值的取值简单说明如下：</P>
+<UL 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; FONT: 14px/28px "Microsoft Yahei"; PADDING-LEFT: 1em; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">x-offset：用来设置<CODE>transform-origin</CODE>水平方向Ｘ轴的偏移量，可以使用<CODE>&lt;length&gt;</CODE>和<CODE>&lt;percentage&gt;</CODE>值，同时也可以是正值（从中心点沿水平方向Ｘ轴向右偏移量），也可以是负值（从中心点沿水平方向Ｘ轴向左偏移量）。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">offset-keyword：是<CODE>top</CODE>、<CODE>right</CODE>、<CODE>bottom</CODE>、<CODE>left</CODE>或<CODE>center</CODE>中的一个关键词，可以用来设置<CODE>transform-origin</CODE>的偏移量。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">y-offset：用来设置<CODE>transform-origin</CODE>属性在垂直方向Ｙ轴的偏移量，可以使用<CODE>&lt;length&gt;</CODE>和<CODE>&lt;percentage&gt;</CODE>值，同时可以是正值（从中心点沿垂直方向Ｙ轴向下的偏移量），也可以是负值（从中心点沿垂直方向Ｙ轴向上的偏移量）。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">x-offset-keyword：是<CODE>left</CODE>、<CODE>right</CODE>或<CODE>center</CODE>中的一个关键词，可以用来设置<CODE>transform-origin</CODE>属性值在水平Ｘ轴的偏移量。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">y-offset-keyword：是<CODE>top</CODE>、<CODE>bottom</CODE>或<CODE>center</CODE>中的一个关键词，可以用来设置<CODE>transform-origin</CODE>属性值在垂直方向Ｙ轴的偏移量。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">z-offset：用来设置3D变形中<CODE>transform-origin</CODE>远离用户眼睛视点的距离，默认值<CODE>z=0</CODE>，其取值可以<CODE>&lt;length&gt;</CODE>，不过<CODE>&lt;percentage&gt;</CODE>在这里将无效。 
+  </LI></UL>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>看上去<CODE>transform-origin</CODE>取值与<CODE>background-position</CODE>取值类似。为了方便记忆，可以把关键词和百分比值对比起来记：</P>
+<UL 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; FONT: 14px/28px "Microsoft Yahei"; PADDING-LEFT: 1em; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">top 
+  = top center = center top = 50% 0 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">right 
+  = right center = center right = 100%或(100% 50%) 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">bottom 
+  = bottom center = center bottom = 50% 100% 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">left 
+  = left center = center left = 0或(0 50%) 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">center 
+  = center center = 50%或（50% 50%） 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">top 
+  left = left top = 0 0 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">right 
+  top = top right = 100% 0 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">bottom 
+  right = right bottom = 100% 100% 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">bottom 
+  left = left bottom = 0 100% </LI></UL>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>为了让大家能一眼看明白，下面截图以transform中的旋转rotate()为例，并transform-origin取值不一样时的效果：</P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为center（或center 
+center或50% 或50% 50%）：</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203035330.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为top（或top 
+center或center top或50％ 0）：</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203035391.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为right(或right 
+center 或center right 或 100％ 或 100％ 50％)：</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203035412.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为bottom(或bottom 
+center 或center bottom 或 50％ 100％)：</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203036296.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为left(或left 
+center或center left或0或0 50％):</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2120466.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为top 
+left(或left top或0 0)：</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203058510.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为right 
+top（或top right或100％ 0）：</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/201311220314476.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为bottom 
+right（或right bottom或100％ 100％）:</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/201311220315227.jpg" 
+data-pinit="registered"></P>
+<H5 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei"; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT-STYLE: normal; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>transform-origin取值为left 
+bottom（或bottom left 或 0 100％）:</H5>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/201311220315539.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>CSS3变形中旋转、缩放、倾斜都可以通过<CODE>transform-origin</CODE>属性重置元素的原点，但其中的位移<CODE>translate()</CODE>始终以元素中心点进行位移。例如下面的两段代码的演示过程：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{   <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-o-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-ms-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-o-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-ms-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>接下来通过<CODE>transform-origin</CODE>将变形原点设置为100% 
+100%:</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{   <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-o-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-ms-transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-o-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-ms-transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>translate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">40</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translate(-<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>px)</SPAN></SPAN>
+									<SPAN class=function><SPAN class=function>translateY(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>虽然元素的变形原点通过<CODE>transform-origin</CODE>从50% 
+50%变成100% 100%，但元素位移<CODE>translate()</CODE>始终是依元素中心点进行位移，如下图所示：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/201311220316360.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>到目前为止，<CODE>transform-origin</CODE>属性在现代主流浏览器得到很好的支持，但在一些浏览器之下依然需要添加各浏览器私有属性，详细情况如下所示:</P>
+<UL 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; FONT: 14px/28px "Microsoft Yahei"; PADDING-LEFT: 1em; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">2D变形中transform-origin需要添加浏览器私有属性版本：IE9+、Firefox3.5+、Chrome4+、Safari3.1+、Opera10.5+；iOS 
+  Safari3.2+、Android Browser2.1+、Blackberry Browser7.0+、Chrome for Android25.0+。 
+
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">2D变形中transform-origin支持W3C标准规范的浏览器：IE10+、Firefox16+、Opera12.1+；Opera 
+  Mobile11.0+、Firefox for Android19.0。 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3D变形中transform-origin需要添加浏览器私有属性版本：IE10+、Firefox10+、Chrome12+、Safari4+、Opera15+、iOS 
+  Safari3.2+、Android Browser3.0+、Blackberry Browser7.0+、Opera Mobile14.0+、Chrome 
+  for Android25.0+。 
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3D变形中transform-origin支持W3C标准规范的浏览器:Firefox16+、Firefox 
+  for Android19+ </LI></UL>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>通过<CODE>transform-origin</CODE>属性改变元素的原点，可以实现不同的变形效果，下面的示例中我们分别演示了改变元素原点前后，CSS3变形各函数对图像变形操作。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>为了能更具有对比性，下面的示例中有两个<CODE>div</CODE>，每个<CODE>div</CODE>各有5个<CODE>img</CODE>，而第一个<CODE>div</CODE>是指<CODE>transform-origin</CODE>为默认值时效果，第二个<CODE>div</CODE>是指<CODE>transform-origin</CODE>修改后在不同<CODE>transform</CODE>函数中效果。</P><PRE class=xml style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=xml style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">div</SPAN></SPAN>&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">div</SPAN></SPAN>&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">div</SPAN></SPAN>&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">img</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">src</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"images/cardKingClub.png"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">alt</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">""</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"142"</SPAN></SPAN>
+					<SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)"><SPAN class=value style="COLOR: rgb(42,161,152)">"200"</SPAN></SPAN> /&gt;</SPAN></SPAN>
+			<SPAN class=tag><SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px"><SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">div</SPAN></SPAN>&gt;</SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>默认样式：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">width</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">500</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">height</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">300</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">margin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>px auto;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">position</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> relative;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">background</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>url(images/bg-grid.jpg)</SPAN></SPAN> no-repeat center center;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">background-size</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>% <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">position</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> absolute;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">top</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">left</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">margin-left</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> -<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">71</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">margin-top</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> -<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><STRONG>注：</STRONG>为了节省篇幅，代码中省去了各浏览器前缀。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>首先来看transform-origin属性改变元素原点前后rotate()函数对图像的旋转效果：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)">
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(1)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">10</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(2)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">6</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">2</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">25</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(3)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">7</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">3</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(4)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">8</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">4</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">45</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(5)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">60</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-of-type(2)</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> bottom;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>上面实例演示了变形中旋转<CODE>rotate()</CODE>函数围绕不同原点旋转的效果，第一个容器<CODE>div</CODE>中的图片围绕图片默认原点（中心）旋转的过程；而第二个容器<CODE>div</CODE>中的图片经过<CODE>transform-origin</CODE>属性将图片原点从中心点（<CODE>center</CODE>）修改为底部中心点（<CODE>bottom</CODE>）旋转过程：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/201311220316662.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>接下来，我们在来看<CODE>transform-origin</CODE>修改原点前后，CSS3变形中倾斜<CODE>skew()</CODE>函数对图片变形的过程：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(1)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>skewX(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">10</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(2)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">6</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">2</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>skewX(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">15</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(3)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">7</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">3</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>skewX(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">20</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(4)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">8</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">4</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>skewX(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">25</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(5)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>skewX(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">30</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-of-type(2)</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> bottom;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>效果如下所示：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/201311220318831.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>上面两个例子简单的演示了变形中的<CODE>rotate()</CODE>和<CODE>skew()</CODE>函数都可以通过<CODE>transform-origin</CODE>属性改变对象原点，让对象根据不同的原点进行变形。接来我继续向大家演示变形中的缩放<CODE>scale()</CODE>函数在不同原点产生变形效果：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(1)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>scale(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1.2</SPAN></SPAN>)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(2)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">6</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">2</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>scale(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1.1</SPAN></SPAN>)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(3)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">7</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">3</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>scale(.<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">9</SPAN></SPAN>)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(4)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">8</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">4</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>scale(.<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">8</SPAN></SPAN>)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(5)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>scale(.<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">6</SPAN></SPAN>)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-of-type(2)</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> right;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>效果如下所示：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203110549.jpg" 
+data-pinit="registered"></P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>上面三个简单实例再次验证了CSS3变形中的旋转<CODE>rotate()</CODE>、缩放<CODE>scale()</CODE>和倾斜<CODE>skew()</CODE>函数都可以通过<CODE>transform-origin</CODE>属性来改变元素对象的原点位置。但是<CODE>transform-origin</CODE>属性改变元素对像原点位置，位移<CODE>translate()</CODE>函数始终会根据元素对像中心点进行位移。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>前面演示的只是2D变形中<CODE>transform-origin</CODE>用来修改元素对象原点，以及对各种变形函数产生的不同效果。接下来，在来看一个简单的实例，演示一下3D变形中<CODE>transform-origin</CODE>修改元素原点的3D旋转效果。</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; ORPHANS: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><CODE class=css style="FONT-SIZE: 16px; FONT-FAMILY: consolas; OVERFLOW-X: auto; COLOR: rgb(131,148,150); PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; PADDING-LEFT: 0.5em; DISPLAY: block; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">position</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> absolute;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">top</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">left</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>%;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">margin-left</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> -<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">71</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">margin-top</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> -<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">100</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">backface-visibility</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> visible;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>perspective(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">500</SPAN></SPAN>px)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(1)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate3d(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>,<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">10</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(2)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">6</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">2</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate3d(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>,<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">25</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(3)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">7</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">3</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate3d(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>,<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">35</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(4)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">opacity</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> .<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">8</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">4</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate3d(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>,<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">45</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-child(5)</SPAN></SPAN><SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">z-index</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">5</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value>
+									<SPAN class=function><SPAN class=function>rotate3d(<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>, <SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">1</SPAN></SPAN>,<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">60</SPAN></SPAN>deg)</SPAN></SPAN>;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">div</SPAN></SPAN><SPAN class=pseudo><SPAN class=pseudo>:nth-of-type(2)</SPAN></SPAN>
+			<SPAN class=tag style="COLOR: rgb(133,153,0)"><SPAN class=tag style="COLOR: rgb(133,153,0)">img</SPAN></SPAN>
+			<SPAN class=rules><SPAN class=rules>{     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)"><SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">transform-origin</SPAN></SPAN></SPAN><SPAN class=rule>:<SPAN class=value><SPAN class=value> left bottom -<SPAN class=number style="COLOR: rgb(42,161,152)"><SPAN class=number style="COLOR: rgb(42,161,152)">50</SPAN></SPAN>px;</SPAN></SPAN></SPAN><SPAN class=value></SPAN></SPAN>
+					<SPAN class=rule><SPAN class=rule>}</SPAN></SPAN></SPAN><SPAN class=rule></SPAN></SPAN>
+		</CODE></PRE>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>其效果如下所示：</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'><IMG 
+onclick=javascript:window.open(this.src); onload="return imgzoom(this,600);" 
+style="CURSOR: pointer" border=0 alt="CSS3 Transform——transform-origin" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/2013112203112698.jpg" 
+data-pinit="registered"></P>
+<H2 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(81,177,72); FONT: bold 18px/30px "Microsoft Yahei"; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>下一篇</H2>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>在这篇文章，回顾了CSS3的transform的基本知识，然后深入介绍了transform-origin的相关知识。在接下来的文章中，我们将一起探讨transform-style和perspective属性的应用。大家和我一起期待吧。</P>
+<P 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(64,64,64); FONT: 14px/28px "Microsoft Yahei"; MARGIN: 0px 0px 9px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px'>如需转载，烦请注明出处：http://www.w3cplus.com/css3/transform-origin.html</P>
+<DIV style="WIDTH: 100%; TEXT-ALIGN: center; MARGIN: 10px 0px">
+<SCRIPT type=text/javascript><!--
+google_ad_client = "ca-pub-3553298197128602";
+/* 468x60, 创建于 10-9-9 */
+google_ad_slot = "3842766146";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/f.txt">
+</SCRIPT>
+</DIV><BR><BR>
+<DIV style="WIDTH: 100%; TEXT-ALIGN: center; MARGIN: 10px 0px">
+<SCRIPT type=text/javascript>
+/*XX文字*/
+var cpro_id = "u1103383";
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/c(1).js"></SCRIPT>
+</DIV>
+<DIV class=clear></DIV>
+<DIV class=tags>更多关于 的文章<SPAN></SPAN></DIV>
+<DIV id=nextpage><B>·上一篇：</B><A 
+href="http://www.alixixi.com/web/a/2013112291743.shtml">网站优化教程:网站专题页面优化标准流程</A><BR><B>·下一篇：</B><A 
+href="http://www.alixixi.com/web/a/2013112291745.shtml">CSS开发框架技术OOCSS编写和管理CSS的方法</A><BR></DIV></DIV><IFRAME 
+id=moodiframe style="MARGIN: 5px 0px" height=105 marginHeight=0 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/hcom.htm" frameBorder=0 
+width=630 marginWidth=0 scrolling=no></IFRAME>
+<DIV class="bbox ads">
+<DIV class=box_caption>相关阅读</DIV>
+<UL>
+  <LI><A title=CSS3学习资源:学习css3应用的经典案例 
+  href="http://www.alixixi.com/web/a/2013112291750.shtml">CSS3学习资源:学习css3应用的经典案...</A><SPAN>(2013-11-22 
+  00:31:39)</SPAN> </LI>
+  <LI><A title=CSS3的transform知识:详解transform 
+  href="http://www.alixixi.com/web/a/2013112291744.shtml">CSS3的transform知识:详解transfor...</A><SPAN>(2013-11-22 
+  00:30:33)</SPAN> </LI>
+  <LI><A title="CSS3中2D tansform各函数的使用技巧" 
+  href="http://www.alixixi.com/web/a/2013112291740.shtml">CSS3中2D 
+  tansform各函数的使用技巧...</A><SPAN>(2013-11-22 00:29:31)</SPAN> </LI>
+  <LI><A title="css3加强了media types更加友好的支持移动设备" 
+  href="http://www.alixixi.com/web/a/2013100991476.shtml">css3加强了media 
+  types更加友好的支...</A><SPAN>(2013-10-09 08:55:39)</SPAN> </LI>
+  <LI><A title=CSS3网页制作教程:闪烁跳跃的进度条 
+  href="http://www.alixixi.com/web/a/2013100991475.shtml">CSS3网页制作教程:闪烁跳跃的进度条...</A><SPAN>(2013-10-09 
+  08:55:36)</SPAN> </LI>
+  <LI><A title="css3 文字效果: 如何利用CSS3制作3D文字效果" 
+  href="http://www.alixixi.com/web/a/2013090590781.shtml">css3 文字效果: 
+  如何利用CSS3制作3...</A><SPAN>(2013-09-05 11:05:15)</SPAN> </LI>
+  <LI><A title="css3手册: 实用的 CSS3 参考手册和代码生成工具" 
+  href="http://www.alixixi.com/web/a/2013090590780.shtml">css3手册: 实用的 CSS3 
+  参考手册和...</A><SPAN>(2013-09-05 11:05:14)</SPAN> </LI>
+  <LI><A title="高性能 CSS3 动画" 
+  href="http://www.alixixi.com/web/a/2013080290093.shtml">高性能 CSS3 
+  动画</A><SPAN>(2013-08-02 02:02:21)</SPAN> </LI></UL>
+<DIV class=clear></DIV></DIV>
+<DIV id=commentpost><A name=replay></A>
+<DIV class=box_caption>会员评论<A class=more 
+href="http://www.alixixi.com/web/comment.asp?id=91744" 
+target=_blank>所有会员评论</A></DIV>
+<DIV class="clear mb5"></DIV><A name=comment></A><BR><IFRAME 
+style="DISPLAY: none" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/union2.htm" 
+name=_blankframe></IFRAME>
+<FORM id=apost method=post name=commentform action=/public/comment.asp 
+target=_blankframe><INPUT type=hidden value=91744 name=postid> <INPUT 
+type=hidden value=1 name=channelid> <INPUT type=hidden value=1 name=modules> 
+<INPUT type=hidden value=save name=action> <INPUT type=hidden value=1 
+name=history> 
+<P><TEXTAREA class=acom rows=5 cols=70 name=content></TEXTAREA></P>
+<P><INPUT class=button type=submit value=提交 name=submit_button> 
+&nbsp;&nbsp;</P></FORM></DIV></DIV></DIV>
+<DIV class=rshow>
+<DIV id=rad1>
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/article_r1.js"></SCRIPT>
+</DIV>
+<DIV>
+<DIV id=NewsTop>
+<DIV id=NewsTop_tit>
+<P class=topTit style="WIDTH: 80px">相关排行总榜</P>
+<P class=topC0>网页教程</P>
+<P class=topC0>站长文章</P>
+<P class=topC0>特效排行</P></DIV>
+<DIV id=NewsTop_cnt><SPAN title="Don't delete me"></SPAN><SPAN><A 
+title=PS快速去水印方法 
+href="http://www.alixixi.com/web/a/2009092358265.shtml">PS快速去水印方法</A><BR><A 
+title=网页视频播放器代码大全 
+href="http://www.alixixi.com/web/a/2009080757363.shtml">网页视频播放器代码大全</A><BR><A 
+title=Photoshop教程：改变人物照片背景颜色 
+href="http://www.alixixi.com/web/a/2009120759232.shtml">Photoshop教程：改变人物照片背景颜色</A><BR><A 
+title=photoshop制作透明玻璃效果 
+href="http://www.alixixi.com/web/a/2009122359360.shtml">photoshop制作透明玻璃效果</A><BR><A 
+title=HTML表格边框的设置小技巧 
+href="http://www.alixixi.com/web/a/2009082657736.shtml">HTML表格边框的设置小技巧</A><BR><A 
+title=FLASH透明背景代码 
+href="http://www.alixixi.com/web/a/2008022755224.shtml">FLASH透明背景代码</A><BR><A 
+title=PHOTOSHOP教程:打造星星发光效果 
+href="http://www.alixixi.com/web/a/2009120359200.shtml">PHOTOSHOP教程:打造星星发光效果</A><BR><A 
+title=Photoshop相册排版设计:韩版简洁的相册板式 
+href="http://www.alixixi.com/web/a/2011112776779.shtml">Photoshop相册排版设计:韩版简洁的相册板...</A><BR><A 
+title=JS函数集合大全 
+href="http://www.alixixi.com/web/a/2008050746877.shtml">JS函数集合大全</A><BR><A 
+title=PS电影海报制作:超酷的灾难巨片《2012》风格的电影海报 
+href="http://www.alixixi.com/web/a/2011072272656.shtml">PS电影海报制作:超酷的灾难巨片《2012》风...</A><BR></SPAN><SPAN><A 
+title="什么是SEM? SEM是什么意思?" 
+href="http://www.alixixi.com/zz/a/2010071963746.shtml">什么是SEM? 
+SEM是什么意思?</A><BR><A title="什么是IIS? IIS是什么意思?" 
+href="http://www.alixixi.com/zz/a/2010071963745.shtml">什么是IIS? 
+IIS是什么意思?</A><BR><A title=qq群聊天时，发送消息后对话框自动关闭的解决方法 
+href="http://www.alixixi.com/zz/a/2011031768664.shtml">qq群聊天时，发送消息后对话框自动关闭的...</A><BR><A 
+title="Service Unavailable的原因分析及解决方法" 
+href="http://www.alixixi.com/zz/a/2009070256601.shtml">Service 
+Unavailable的原因分析及解决方法...</A><BR><A title=浅谈如何利用微博网赚的三种方法 
+href="http://www.alixixi.com/zz/a/2011052670826.shtml">浅谈如何利用微博网赚的三种方法</A><BR><A 
+title=看看美国人都喜欢上什么网站 
+href="http://www.alixixi.com/zz/a/2009081457510.shtml">看看美国人都喜欢上什么网站</A><BR><A 
+title=[原创]揭开淘宝骗子商家“支持货到付款”的骗局 
+href="http://www.alixixi.com/zz/a/2009091658166.shtml">[原创]揭开淘宝骗子商家“支持货到付款”...</A><BR><A 
+title=万网空间怎么样 
+href="http://www.alixixi.com/zz/a/2010073064020.shtml">万网空间怎么样</A><BR><A 
+title=腾讯大厦员工办公环境实拍 
+href="http://www.alixixi.com/zz/a/2009080457248.shtml">腾讯大厦员工办公环境实拍</A><BR><A 
+title="爱普生 EPSON ME1+ 打印机红绿灯交替闪烁 清零教程" 
+href="http://www.alixixi.com/zz/a/2010122266610.shtml">爱普生 EPSON ME1+ 
+打印机红绿灯交替闪烁...</A><BR></SPAN><SPAN><A title=漂亮js图片切换效果 
+href="http://js.alixixi.com/a/2016346262834.shtml">漂亮js图片切换效果</A><BR><A 
+title=JQUERY多图切换轮换图片播放特效 
+href="http://js.alixixi.com/a/2012051780870.shtml">JQUERY多图切换轮换图片播放特效</A><BR><A 
+title=QQ在线客服浮动代码下载 
+href="http://js.alixixi.com/a/2009051155839.shtml">QQ在线客服浮动代码下载</A><BR><A 
+title=弹性十足的横向弹出菜单特效代码 
+href="http://js.alixixi.com/a/2012041980141.shtml">弹性十足的横向弹出菜单特效代码</A><BR><A 
+title=非常漂亮的菜单切换格子图片特效 
+href="http://js.alixixi.com/a/2011120276888.shtml">非常漂亮的菜单切换格子图片特效</A><BR><A 
+title=超酷3D照片展示效果 
+href="http://js.alixixi.com/a/2009070356649.shtml">超酷3D照片展示效果</A><BR><A 
+title=JQUERY制作的全屏个性相册展示特效 
+href="http://js.alixixi.com/a/2011052670869.shtml">JQUERY制作的全屏个性相册展示特效</A><BR><A 
+title=带向左向右方向按钮图片无限循环左右滚动的js特效代码 
+href="http://js.alixixi.com/a/2012032279441.shtml">带向左向右方向按钮图片无限循环左右滚动...</A><BR><A 
+title=鼠标点击展开的下拉列表特效 
+href="http://js.alixixi.com/a/2012041180006.shtml">鼠标点击展开的下拉列表特效</A><BR><A 
+title=纯CSS菜单导航特效代码 
+href="http://js.alixixi.com/a/2011123177691.shtml">纯CSS菜单导航特效代码</A><BR></SPAN></SPAN></DIV>
+<SCRIPT>
+				var Tags=document.getElementById('NewsTop_tit').getElementsByTagName('p'); 
+				var TagsCnt=document.getElementById('NewsTop_cnt').getElementsByTagName('span'); 
+				var len=Tags.length; 
+				var flag=1;//修改默认值
+				for(i=1;i<len;i++){
+					Tags[i].value = i;
+					Tags[i].onmouseover=function(){changeNav(this.value)}; 
+					TagsCnt[i].className='undis';					
+				}
+				Tags[flag].className='topC1';
+				TagsCnt[flag].className='dis';
+				function changeNav(v){	
+					Tags[flag].className='topC0';
+					TagsCnt[flag].className='undis';
+					flag=v;	
+					Tags[v].className='topC1';
+					TagsCnt[v].className='dis';
+				}
+			</SCRIPT>
+</DIV></DIV>
+<DIV>
+<DIV class="side_box mb5">
+<H3>分类热门文章</H3><A class=all href="http://www.alixixi.com/web/s/top_1.shtml">更多 
+&raquo;</A> 
+<DIV class=side_content>
+<UL class=side_list>
+  <LI><A title=PS快速去水印方法 href="http://www.alixixi.com/web/a/2009092358265.shtml" 
+  target=_blank>PS快速去水印方法</A> 
+  <LI><A title=网页视频播放器代码大全 
+  href="http://www.alixixi.com/web/a/2009080757363.shtml" 
+  target=_blank>网页视频播放器代码大全</A> 
+  <LI><A title=Photoshop教程：改变人物照片背景颜色 
+  href="http://www.alixixi.com/web/a/2009120759232.shtml" 
+  target=_blank>Photoshop教程：改变人物照片背景颜...</A> 
+  <LI><A title=可牛影像制作一张中秋全家福照片 
+  href="http://www.alixixi.com/web/a/2009092758370.shtml" 
+  target=_blank>可牛影像制作一张中秋全家福照片</A> 
+  <LI><A title=12个ajax弹出层效果 
+  href="http://www.alixixi.com/web/a/2009091858204.shtml" 
+  target=_blank>12个ajax弹出层效果</A> 
+  <LI><A title=教你7招提升网页设计品质 
+  href="http://www.alixixi.com/web/a/2009080757346.shtml" 
+  target=_blank>教你7招提升网页设计品质</A> 
+  <LI><A title=div背景透明效果代码 
+  href="http://www.alixixi.com/web/a/2009070956771.shtml" 
+  target=_blank>div背景透明效果代码</A> 
+  <LI><A title=DIV+CSS设计时浏览器兼容性问题 
+  href="http://www.alixixi.com/web/a/2009072156976.shtml" 
+  target=_blank>DIV+CSS设计时浏览器兼容性问题</A> 
+  <LI><A title=优秀的404错误页设计参考 
+  href="http://www.alixixi.com/web/a/2009090657943.shtml" 
+  target=_blank>优秀的404错误页设计参考</A> 
+  <LI><A title=photoshop制作透明玻璃效果 
+  href="http://www.alixixi.com/web/a/2009122359360.shtml" 
+  target=_blank>photoshop制作透明玻璃效果</A> </LI></UL>
+<DIV class=clear></DIV></DIV></DIV></DIV>
+<DIV id=rad2>
+<SCRIPT>google_ad_client = "pub-3553298197128602";
+google_ad_slot = "3370710432";
+google_ad_width = 300;
+google_ad_height = 250;
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/f.txt"></SCRIPT>
+</DIV></DIV></DIV>
+<SCRIPT>
+setcount('/web/',91744);
+</SCRIPT>
+
+<DIV class=clear></DIV>
+<DIV class=footer>
+<DIV class=info><A href="http://www.alixixi.cn/dvd/" target=_blank><IMG 
+style="BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; POSITION: absolute; LEFT: -28px; TOP: 15px; BORDER-TOP-WIDTH: 0px" 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/sale.gif"></A>
+<TABLE style="MARGIN: 10px 0px 0px" cellSpacing=0 cellPadding=0 width=958 
+bgColor=#cccccc border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+      href="http://www.alixixi.cn/dvd/catalog-6-1.html"><IMG 
+      style="MARGIN-LEFT: 2px" border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a7.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://shop.alixixi.com/webdesigner/"><IMG border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a8.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/catalog-5-1.html"><IMG border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a9.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/19.html"><IMG 
+      style="MARGIN-LEFT: 2px" border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a4.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/33.html"><IMG border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a5.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/215.html"><IMG border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a6.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/catalog-8-1.html"><IMG 
+      style="MARGIN-LEFT: 2px" border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a3.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/105.html"><IMG 
+      style="MARGIN-LEFT: 2px" border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a2.gif"></A></TD>
+    <TD></TD>
+    <TD><A href="http://www.alixixi.cn/dvd/catalog-65-1.html"><IMG 
+      style="MARGIN-LEFT: 2px" border=0 
+      src="CSS3的transform知识详解transform_CSS教程_前端技术_files/a1.gif"></A></TD></TR></TBODY></TABLE></DIV>
+<DIV class=copyright>
+<DIV class=copy><A href="http://www.alixixi.com/about/gy.asp" 
+target=_blank>关于我们</A> | <A href="http://www.alixixi.com/about/ad.asp" 
+target=_blank>广告服务</A> | <A href="http://www.alixixi.com/sitemap.shtml" 
+target=_blank>网站地图</A> | <A href="http://dir.alixixi.com/add_submit.asp" 
+target=_blank>网站收录</A> | 客服QQ：<A 
+href="tencent://message/?uin=663313&amp;Site=在线客服2&amp;Menu=yes" 
+target=_blank><IMG 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/qq1_online.gif" 
+align=absMiddle>663313</A> <SPAN>Copyright &copy; 2004 - 2011 Alixixi.com. All Rights 
+Reserved. ICP：桂ICP备09011362号</SPAN></DIV></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="CSS3的transform知识详解transform_CSS教程_前端技术_files/count.js"></SCRIPT>
+</BODY></HTML>

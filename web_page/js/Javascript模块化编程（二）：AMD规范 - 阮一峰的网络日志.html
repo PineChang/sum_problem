@@ -1,0 +1,2254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0074)http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/styles.css" type="text/css">
+<link rel="start" href="http://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng">
+<script async="" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/analytics.js"></script><script type="text/javascript" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/mt.js"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2006/07/geoffrey_chaucer.html">
+<dc:title>乔叟《坎特伯雷故事集》（Geoffrey Chaucer）</dc:title>
+<dc:description> 从公元7世纪开始算起，到文艺复兴前夕，英语已经存在700年了。但是直到那时，它依然是民间的一种俗语，而且很不规范。乔叟（Geoffrey Chaucer）是历史上第一个用英语进行文学创作的人，他对英语的形成和发展起到了巨大的贡献，被公认为第一个英语文学家、英语文学的开创者。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2006-07-13T08:08:41+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+
+    
+    <link rel="prev" href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" title="Javascript模块化编程（一）：模块的写法">
+    <link rel="next" href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" title="Javascript模块化编程（三）：require.js的用法">
+    
+    <title>Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志</title>
+<script src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bsStatic.js" type="text/javascript" charset="utf-8"></script><script src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/fingerprint2.min.js" type="text/javascript" charset="utf-8"></script><script src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bs-engine.js" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bshareDiv,#bsPanel,#bsMorePanel,#bshareF{border:none;background:none;padding:0;margin:0;font:12px Helvetica,Calibri,Tahoma,Arial,宋体,sans-serif;line-height:14px;}#bsPanel div,#bsMorePanel div,#bshareF div{display:block;}.bsRlogo .bsPopupAwd,.bsRlogoSel .bsPopupAwd,.bsLogo .bsPopupAwd,.bsLogoSel .bsPopupAwd{line-height:16px !important;}a.bshareDiv div,#bsFloatTab div{*display:inline;zoom:1;display:inline-block;}a.bshareDiv img,a.bshareDiv div,a.bshareDiv span,a.bshareDiv a,#bshareF table,#bshareF tr,#bshareF td{text-decoration:none;background:none;margin:0;padding:0;border:none;line-height:1.2}a.bshareDiv span{display:inline;float:none;}div.buzzButton{cursor:pointer;font-weight:bold;}.buzzButton .shareCount a{color:#333}.bsStyle1 .shareCount a{color:#fff}span.bshareText{white-space:nowrap;}span.bshareText:hover{text-decoration:underline;}a.bshareDiv .bsPromo,div.bshare-custom .bsPromo{display:none;position:absolute;z-index:100;}a.bshareDiv .bsPromo.bsPromo1,div.bshare-custom .bsPromo.bsPromo1{width:51px;height:18px;top:-18px;left:0;line-height:16px;font-size:12px !important;font-weight:normal !important;color:#fff;text-align:center;background:url(http://static.bshare.cn/frame/images/bshare_box_sprite2.gif) no-repeat 0 -606px;}div.bshare-custom .bsPromo.bsPromo2{background:url(http://static.bshare.cn/frame/images/bshare_promo_sprite.gif) no-repeat;cursor:pointer;}</style><style type="text/css">.bsBox{display:none;z-index:100000001;font-size:12px;background:url(http://static.bshare.cn/frame/images//background-opaque-dark.gif) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}.bsClose{_overflow:hidden;cursor:pointer;position:absolute;z-index:10000000;color:#666;font-weight:bold;font-family:Helvetica,Arial;font-size:14px;line-height:20px;}.bsTop{color:#666;background:#f2f2f2;height:24px;line-height:24px;border-bottom:1px solid #e8e8e8;}.bsTop span{float:left;}.bsFrameDiv,#bsMorePanel{border:none;background:#fff;}.bsReturn{float:right;*margin-right:20px;margin-right:36px;text-align:right;cursor:pointer;line-height:24px;color:#666;opacity:0.5;}#bsReturn:hover{text-decoration:underline;opacity:1;}</style><script src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bsMore.js" type="text/javascript" charset="utf-8"></script><script src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bshareS1.js" type="text/javascript" charset="utf-8"></script><style type="text/css">div.bsClear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0;}.bsSearchDiv{padding:5px 15px;background-color:#fafafa;}.bFind-wrapper-top{background:#fff;border-color:#ccc #aaa #aaa #ccc;border-style:solid;border-width:1px;height:16px;padding:4px;margin:0;}.bFind-wrapper-top input{padding:0 !important;border:none !important;box-shadow:none !important;line-height:16px !important;}.bFind-placeholder{background:url("http://static.bshare.cn/css/images/search-icon.gif") no-repeat;display:block;float:left;height:16px;width:16px;}.bFind{background:none;border:none;float:left;font-size:11px !important;height:16px !important;margin-left:3px;outline:none;padding:0;width:400px;}.bsPlatDiv{height:322px;background:#fff;overflow:auto;padding:0 15px;}#bsLogoList{display:block;list-style:none;overflow:hidden;margin:0;padding:0;}#bsLogoList li{float:left;display:inline-block;width:71px;text-align:center;font-size:12px;height:80px;margin:0 !important;}#bsLogoList .bsPlatIcon{cursor:pointer;display:block !important;text-align:center;}#bsLogoList .bsPlatImg{width:32px;height:32px;border:none !important;display:inline-block;}#bsLogoList .bsPlatImg:hover{-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;box-shadow:0 0 15px #a7a8ac;}#bsLogoList .bsPlatName{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;text-align:center;color:#333 !important;margin-top:2px;line-height:140%;*width:70px;}#bsLogoList .bsPromoM{text-align:center;}.bsFooterDiv{height:24px;line-height:24px;padding:0 15px;border-top:1px solid #e8e8e8;background:#f2f2f2;text-align:right;}a.bsLogoLink{color:#666;}.bsLogoLink:hover{text-decoration:underline;}.bsPromoM{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;}.bsNew,.bsHot,.bsRec,.bsAwd{background-position:0 -552px;width:19px;margin:5px auto 1px;line-height:16px;height:18px;font-size:12px;color:#fff;overflow:hidden;}.bsNew{background-position:0 -570px;}.bsRec{width:30px;background-position:0 -588px;}.bsAwd{background:url(http://static.bshare.cn/frame/images//promot/promote.gif) no-repeat;}</style><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style><script src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bshare_view" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style></head>
+<body id="scrapbook" class="mt-entry-archive one-column">
+<script>
+if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent)) document.body.classList.add('mobile');
+</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="http://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="http://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="http://www.ruanyifeng.com/blog/search.html" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="016304377626642577906:b_e9skaywzq">
+    <input type="hidden" name="cof" value="FORID:11">
+    <input type="hidden" name="ie" value="UTF-8">
+        <input type="text" name="q" size="20" class="searchbox" id="sbi" value="">
+        <input type="image" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa">
+      </div>
+    </form>
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="http://www.ruanyifeng.com/feed.html" title="订阅Feed">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-1748" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" title="Javascript模块化编程（一）：模块的写法">Javascript模</a></li>
+<li>下一篇：<a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" title="Javascript模块化编程（三）：require.js的用法">Javascript模</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="http://www.ruanyifeng.com/blog/javascript/" rel="tag">JavaScript</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+</div>
+                                </div>
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">Javascript模块化编程（二）：AMD规范</h1>
+                                            <div id="share_button" style="float:right;padding-right:2em;padding-top:1em;">
+<a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/buttonLite.js"></script>
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script>
+</div>
+                                    <div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="http://www.ruanyifeng.com/">阮一峰</a></p>
+                                    <p>日期： <a href="http://www.ruanyifeng.com/blog/2012/10/"><abbr class="published" title="2012-10-30T16:58:16+08:00">2012年10月30日</abbr></a></p>
+
+
+                                    </div>
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>这个系列的<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank">第一部分</a>介绍了Javascript模块的基本写法，今天介绍如何规范地使用模块。</p>
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p><img src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bg2012103001.jpg"></p>
+
+<p>（接<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank">上文</a>）</p>
+
+<p><strong>七、模块的规范</strong></p>
+
+<p>先想一想，为什么模块很重要？</p>
+
+<p>因为有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。</p>
+
+<p>但是，这样做有一个前提，那就是大家必须以同样的方式编写模块，否则你有你的写法，我有我的写法，岂不是乱了套！考虑到Javascript模块现在还没有官方规范，这一点就更重要了。</p>
+
+<p>目前，通行的Javascript模块规范共有两种：<a href="http://wiki.commonjs.org/wiki/Modules/1.1" target="_blank">CommonJS</a>和<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank">AMD</a>。我主要介绍AMD，但是要先从CommonJS讲起。</p>
+
+<p><strong>八、CommonJS</strong></p>
+
+<p>2009年，美国程序员Ryan Dahl创造了<a href="http://nodejs.org/" target="_blank">node.js</a>项目，将javascript语言用于服务器端编程。</p>
+
+<p><img src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/bg2012103002.jpg"></p>
+
+<p>这标志"Javascript模块化编程"正式诞生。因为老实说，在浏览器环境下，没有模块也不是特别大的问题，毕竟网页程序的复杂性有限；但是在服务器端，一定要有模块，与操作系统和其他应用程序互动，否则根本没法编程。</p>
+
+<p>node.js的<a href="http://nodejs.org/docs/latest/api/modules.html" target="_blank">模块系统</a>，就是参照<a href="http://wiki.commonjs.org/wiki/Modules/1.1" target="_blank">CommonJS</a>规范实现的。在CommonJS中，有一个全局性方法require()，用于加载模块。假定有一个数学模块math.js，就可以像下面这样加载。</p>
+
+<blockquote>
+
+<p>　　var math = require('math');</p>
+
+</blockquote>
+
+<p>然后，就可以调用模块提供的方法：</p>
+
+<blockquote>
+
+<p>　　var math = require('math');</p>
+
+<p>　　math.add(2,3); // 5</p>
+
+</blockquote>
+
+<p>因为这个系列主要针对浏览器编程，不涉及node.js，所以对CommonJS就不多做介绍了。我们在这里只要知道，require()用于加载模块就行了。</p>
+
+<p><strong>九、浏览器环境</strong></p>
+
+<p>有了服务器端模块以后，很自然地，大家就想要客户端模块。而且最好两者能够兼容，一个模块不用修改，在服务器和浏览器都可以运行。</p>
+
+<p>但是，由于一个重大的局限，使得CommonJS规范不适用于浏览器环境。还是上一节的代码，如果在浏览器中运行，会有一个很大的问题，你能看出来吗？</p>
+
+<blockquote>
+
+<p>　　var math = require('math');</p>
+
+<p>　　math.add(2, 3);</p>
+
+</blockquote>
+
+<p>第二行math.add(2, 3)，在第一行require('math')之后运行，因此必须等math.js加载完成。也就是说，如果加载时间很长，整个应用就会停在那里等。</p>
+
+<p>这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于"假死"状态。</p>
+
+<p>因此，浏览器端的模块，不能采用"同步加载"（synchronous），只能采用"异步加载"（asynchronous）。这就是AMD规范诞生的背景。</p>
+
+<p><strong>十、AMD</strong></p>
+
+<p><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank">AMD</a>是"Asynchronous Module Definition"的缩写，意思就是"异步模块定义"。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。</p>
+
+<p>AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
+
+<blockquote>
+
+<p>　　require([module], callback);</p>
+
+</blockquote>
+
+<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。如果将前面的代码改写成AMD形式，就是下面这样：</p>
+
+<blockquote>
+
+<p>　　require(['math'], function (math) {</p>
+
+<p>　　　　math.add(2, 3);</p>
+
+<p>　　});</p>
+
+</blockquote>
+
+<p>math.add()与math模块加载不是同步的，浏览器不会发生假死。所以很显然，AMD比较适合浏览器环境。</p>
+
+<p>目前，主要有两个Javascript库实现了AMD规范：<a href="http://requirejs.org/" target="_blank">require.js</a>和<a href="https://github.com/cujojs/curl" target="_blank">curl.js</a>。本系列的第三部分，将通过介绍require.js，进一步讲解AMD的用法，以及如何将模块化编程投入实战。</p>
+
+<p>（完）</p>
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/newwindow.js"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2012-10-30T16:58:16+08:00">2012年10月30日</abbr></li>
+<li>更多内容： <a href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 档案</a>  » 
+<a href="http://www.ruanyifeng.com/blog/javascript/"> JavaScript</a> 
+</li>
+<li>购买文集：<a href="http://www.ruanyifeng.com/blog/2014/12/my-blog-book.html" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAKOWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanZZ3VFTXFofPvXd6oc0wAlKG3rvAANJ7k15FYZgZYCgDDjM0sSGiAhFFRJoiSFDEgNFQJFZEsRAUVLAHJAgoMRhFVCxvRtaLrqy89/Ly++Osb+2z97n77L3PWhcAkqcvl5cGSwGQyhPwgzyc6RGRUXTsAIABHmCAKQBMVka6X7B7CBDJy82FniFyAl8EAfB6WLwCcNPQM4BOB/+fpFnpfIHomAARm7M5GSwRF4g4JUuQLrbPipgalyxmGCVmvihBEcuJOWGRDT77LLKjmNmpPLaIxTmns1PZYu4V8bZMIUfEiK+ICzO5nCwR3xKxRoowlSviN+LYVA4zAwAUSWwXcFiJIjYRMYkfEuQi4uUA4EgJX3HcVyzgZAvEl3JJS8/hcxMSBXQdli7d1NqaQffkZKVwBALDACYrmcln013SUtOZvBwAFu/8WTLi2tJFRbY0tba0NDQzMv2qUP91829K3NtFehn4uWcQrf+L7a/80hoAYMyJarPziy2uCoDOLQDI3fti0zgAgKSobx3Xv7oPTTwviQJBuo2xcVZWlhGXwzISF/QP/U+Hv6GvvmckPu6P8tBdOfFMYYqALq4bKy0lTcinZ6QzWRy64Z+H+B8H/nUeBkGceA6fwxNFhImmjMtLELWbx+YKuGk8Opf3n5r4D8P+pMW5FonS+BFQY4yA1HUqQH7tBygKESDR+8Vd/6NvvvgwIH554SqTi3P/7zf9Z8Gl4iWDm/A5ziUohM4S8jMX98TPEqABAUgCKpAHykAd6ABDYAasgC1wBG7AG/iDEBAJVgMWSASpgA+yQB7YBApBMdgJ9oBqUAcaQTNoBcdBJzgFzoNL4Bq4AW6D+2AUTIBnYBa8BgsQBGEhMkSB5CEVSBPSh8wgBmQPuUG+UBAUCcVCCRAPEkJ50GaoGCqDqqF6qBn6HjoJnYeuQIPQXWgMmoZ+h97BCEyCqbASrAUbwwzYCfaBQ+BVcAK8Bs6FC+AdcCXcAB+FO+Dz8DX4NjwKP4PnEIAQERqiihgiDMQF8UeikHiEj6xHipAKpAFpRbqRPuQmMorMIG9RGBQFRUcZomxRnqhQFAu1BrUeVYKqRh1GdaB6UTdRY6hZ1Ec0Ga2I1kfboL3QEegEdBa6EF2BbkK3oy+ib6Mn0K8xGAwNo42xwnhiIjFJmLWYEsw+TBvmHGYQM46Zw2Kx8lh9rB3WH8vECrCF2CrsUexZ7BB2AvsGR8Sp4Mxw7rgoHA+Xj6vAHcGdwQ3hJnELeCm8Jt4G749n43PwpfhGfDf+On4Cv0CQJmgT7AghhCTCJkIloZVwkfCA8JJIJKoRrYmBRC5xI7GSeIx4mThGfEuSIemRXEjRJCFpB+kQ6RzpLuklmUzWIjuSo8gC8g5yM/kC+RH5jQRFwkjCS4ItsUGiRqJDYkjiuSReUlPSSXK1ZK5kheQJyeuSM1J4KS0pFymm1HqpGqmTUiNSc9IUaVNpf+lU6RLpI9JXpKdksDJaMm4ybJkCmYMyF2TGKQhFneJCYVE2UxopFykTVAxVm+pFTaIWU7+jDlBnZWVkl8mGyWbL1sielh2lITQtmhcthVZKO04bpr1borTEaQlnyfYlrUuGlszLLZVzlOPIFcm1yd2WeydPl3eTT5bfJd8p/1ABpaCnEKiQpbBf4aLCzFLqUtulrKVFS48vvacIK+opBimuVTyo2K84p6Ss5KGUrlSldEFpRpmm7KicpFyufEZ5WoWiYq/CVSlXOavylC5Ld6Kn0CvpvfRZVUVVT1Whar3qgOqCmrZaqFq+WpvaQ3WCOkM9Xr1cvUd9VkNFw08jT6NF454mXpOhmai5V7NPc15LWytca6tWp9aUtpy2l3audov2Ax2yjoPOGp0GnVu6GF2GbrLuPt0berCehV6iXo3edX1Y31Kfq79Pf9AAbWBtwDNoMBgxJBk6GWYathiOGdGMfI3yjTqNnhtrGEcZ7zLuM/5oYmGSYtJoct9UxtTbNN+02/R3Mz0zllmN2S1zsrm7+QbzLvMXy/SXcZbtX3bHgmLhZ7HVosfig6WVJd+y1XLaSsMq1qrWaoRBZQQwShiXrdHWztYbrE9Zv7WxtBHYHLf5zdbQNtn2iO3Ucu3lnOWNy8ft1OyYdvV2o/Z0+1j7A/ajDqoOTIcGh8eO6o5sxybHSSddpySno07PnU2c+c7tzvMuNi7rXM65Iq4erkWuA24ybqFu1W6P3NXcE9xb3Gc9LDzWepzzRHv6eO7yHPFS8mJ5NXvNelt5r/Pu9SH5BPtU+zz21fPl+3b7wX7efrv9HqzQXMFb0ekP/L38d/s/DNAOWBPwYyAmMCCwJvBJkGlQXlBfMCU4JvhI8OsQ55DSkPuhOqHC0J4wybDosOaw+XDX8LLw0QjjiHUR1yIVIrmRXVHYqLCopqi5lW4r96yciLaILoweXqW9KnvVldUKq1NWn46RjGHGnIhFx4bHHol9z/RnNjDn4rziauNmWS6svaxnbEd2OXuaY8cp40zG28WXxU8l2CXsTphOdEisSJzhunCruS+SPJPqkuaT/ZMPJX9KCU9pS8Wlxqae5Mnwknm9acpp2WmD6frphemja2zW7Fkzy/fhN2VAGasyugRU0c9Uv1BHuEU4lmmfWZP5Jiss60S2dDYvuz9HL2d7zmSue+63a1FrWWt78lTzNuWNrXNaV78eWh+3vmeD+oaCDRMbPTYe3kTYlLzpp3yT/LL8V5vDN3cXKBVsLBjf4rGlpVCikF84stV2a9021DbutoHt5turtn8sYhddLTYprih+X8IqufqN6TeV33zaEb9joNSydP9OzE7ezuFdDrsOl0mX5ZaN7/bb3VFOLy8qf7UnZs+VimUVdXsJe4V7Ryt9K7uqNKp2Vr2vTqy+XeNc01arWLu9dn4fe9/Qfsf9rXVKdcV17w5wD9yp96jvaNBqqDiIOZh58EljWGPft4xvm5sUmoqbPhziHRo9HHS4t9mqufmI4pHSFrhF2DJ9NProje9cv+tqNWytb6O1FR8Dx4THnn4f+/3wcZ/jPScYJ1p/0Pyhtp3SXtQBdeR0zHYmdo52RXYNnvQ+2dNt293+o9GPh06pnqo5LXu69AzhTMGZT2dzz86dSz83cz7h/HhPTM/9CxEXbvUG9g5c9Ll4+ZL7pQt9Tn1nL9tdPnXF5srJq4yrndcsr3X0W/S3/2TxU/uA5UDHdavrXTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxSfNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/6H7o/ujz8cGn1E+f/gUDmPP8kcBa2wAAADxQTFRFAAAAAAAAAgICBAQEBQUFBgYGBwcHCAgICQkJCgoKDQ0NExMTOTk5c3NzdXV1eHh4eXl5enp6e3t7fHx8rr9WJAAAAAF0Uk5TAEDm2GYAAAABYktHRACIBR1IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gYMADMaKH8BrQAAAGVJREFUGNONkI0KwCAIhE+32n/b2vu/6yqYCRnshMCPS/SA/6Ikk5vQWXQ7gpL6H1KV54OMbCiuCk0n9rOdma3i1JteuIGIJ1bI60Se2dG4qFWDddQsSeiZpRkILfQ6Hcmvk2NPLzksA4TnEeNNAAAAAElFTkSuQmCC" style="border:0;"> 《如何变得有思想》</a></li>
+<li>社交媒体：<a href="https://twitter.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAk1JREFUeNqsVc9rE0EU/mZ3dhPNJl2bVIk/Km09aFBE8GLvnrwJXvwLxIsgCP4Fnit6E8Gb0IMHwUsL9SSNgiAoooJIpE1Joo1h82uT7IxvxmRN3Q32kAdvdrI773vfe+/bDTu9WioDcDAda3Ja8piepQ1avCkCeny0Y+R9KenKwOmHHLvPaKn7AtVOoO8dOWDCMpg+41gMQv5FNEJACgoE8MsPNLDBhgfoutMOsJDmWLmU037C4TApciljwQ/kHoohQxV06+wMXNvE7WINuaSpvdYVKLgWnl3O4zAxU3Z1IYVGT+B5qYWV9z2kbQaT/cOwTsxOUUYF+mB5Dkmi8HG3h2q9hxsFNwRTdvQgxxnXRrMvIdkEhllis/qtiWuLDm4WZnBlPoWnXz28LHdw0uGR7m9Wu3j0qYGEubfn4UlBfXO4gTZltRNMg9w9f0i7kNFxllsBlS0x75gYfxyWTBUjT2W5CSMSPBrQuG21+hiMDS8CeCzF8eSLp13uQ3Ab1IqMFZN8tFHPmgOBF99bYP8Be1Xp6t7OJszJgKpPSiZvaj7uf2hguz2IBQuozDvFH6RDBjuK9wdQDvt0nMpW+8efGyh5UcAeZb2+UcHbnz5Jx4wdlp4yJYU3kLiQtfBwOYeLc8nIwfXtNu69q2Oz4mMxbemYOOOjKarhvq51KUjg3GwiFPIuvcNF6pnSnWK0lOEabNLgQh1aJFAhlGB9rG110B2+oyRNPc0sZbRNFltmLKDKqj4Qrm1ojzOxDz2pyPQ0P7CK4c40/wJ+CzAAGYrXsvfFXR4AAAAASUVORK5CYII=" style="border:0;"> twitter</a>，<a href="http://weibo.com/ruanyf" target="_blank"><img src="data:image/png;base64,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" style="border:0;"> weibo</a></li>
+<li>Feed订阅： <a href="http://www.ruanyifeng.com/feed.html" target="_blank"><img src="data:image/gif;base64,R0lGODlhFAAUANU2APV1GfmrePZ8IeR5VPq2ieNkLf7p3NpFJveCJ/NoFfibVPR1IexiJfvdzuZrNfXGuOhUEueTevaFOfzIpNxDGeZZJNU6IOubifiVTfOnid1aLuZpLOFSJf/28vJtIvGcefaLSd5kNu9iFv/z6//48//t4uFfLfNkCeJNGuGNc/rCof/+/PVxEeldI/V5KeKMbu9nIvB2OvzQtNxMKfOPXP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADYALAAAAAAUABQAAAb/QJstEjKZCsjCZsl0pIS2QWXaYsA8noVWIEAgFoNhhWNyMESi7Jbr/aZCFdRnZJAFJCwAt+vlOkwtEBk1hDUkExJ6bQJaGyYMLTQTDSOFHQF8jAseSFYiJwkuAQ2FE1xaHjBIMDAgARguJwABJIQTLJswDEgeIgSEJQQILAqVNQEiui1HHgkBhTUGCiwYtR0xLS0VJhtaEgoEBoQkGCfPNSoQY9xaCwAsCBPALgmkJA4cZN0CAAgY/PJqEIDwgVAECjM0bOAnwcAKGQJclKhRgoGDDjUeUDigkN8vQiBOfByAglSDAxw3IBCgYEU0FyJoEPpA4UGNDjMsaHDQR8EdPVYOMmQYQGHAhQgHLIRIsWAlgASsGMRBMWMGBQtYZ7yIsoBRKkhjOMxAiXJGGCEpHGxIYsSIhrcaQmy1EQQAOw==" style="border:0;"></a></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+   <div id="gegz1">
+   <p style="text-align:center;"><a href="http://www.zhufengpeixun.cn/jscourse/new/js/index.html?ref=ruanyifeng.com" target="_blank"><img alt="珠峰培训" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/sup_zhufeng_page.png" width="600" height="160" style="border:none;"></a></p>
+   <p style="text-align:center;"><a href="https://h5.jianxun.io/20160321-qianlima?utm_source=event&utm_medium=blog_ad&utm_campaign=qianlima&utm_content=ruanyifeng&utm_term=wangzhan" target="_blank"><img alt="简寻" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/ruanyifeng-bottombanner.png" width="600" height="160" style="border:none;"></a></p>
+   </div>
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2016.05.25: <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html">React Router 使用教程</a></strong>
+
+                           <div class="entry-body">
+                              真正学会 React 是一个漫长的过程。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.04.12: <a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a></strong>
+
+                           <div class="entry-body">
+                              CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.04.08: <a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html">浏览器同源政策及其规避方法</a></strong>
+
+                           <div class="entry-body">
+                              浏览器安全的基石是"同源政策"（same-origin policy）。很多开发者都知道这一点，但了解得不全面。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.03.12: <a href="http://www.ruanyifeng.com/blog/2016/03/node-systemd-tutorial.html">Node 应用的 Systemd 启动</a></strong>
+
+                           <div class="entry-body">
+                              前面的文章介绍了 Systemd 的操作命令和基本用法，今天给出一个实例，如何使用 Systemd 启动一个 Node 应用。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+<div id="gd1">
+<h2>广告<a href="http://www.ruanyifeng.com/support.html">（购买广告位）</a></h2>
+<div id="gd1-inner">
+<div id="gd1-left">
+<a href="http://web.wuxianedu.com/yideng/?utm_source=ruanyifeng.com" title="一灯学堂" target="_blank"><img alt="一灯学堂" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/sup_yideng_new.png" style="border:none;"></a>
+<br>
+<a href="http://www.zhinengshe.com/?utm_source=ruanyifeng.com" title="智能社" target="_blank"><img alt="智能社" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/sup_zhinengshe.jpg" style="border:none;"></a>
+</div>
+<div id="gd1-right">
+
+<a href="http://100offer.com/join/ruanyifeng?utm_source=ruanyifeng&utm_medium=dis&utm_campaign=ruanyifeng" target="_blank"><img src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/sup_1000ffer_2.jpg" style="border:none;"></a><br>
+<a href="https://www.upyun.com/zh/solution_video.html?utm_source=ruanyifeng&utm_medium=ad&utm_campaign=zhiboyun" title="又拍云" target="_blank"><img alt="又拍云" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/sup_upyun.jpg" style="width: 300px;height: 250px;border:none;"></a>
+
+</div>
+</div>
+</div>
+                    
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（50条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-265497" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">宁静</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265497">
+            <p>学习了！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 30, 2012  5:59 PM">2012年10月30日 17:59</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265497">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用宁静的这条留言" onclick="return CommentQuote(&#39;comment-quote-265497&#39;,&#39;宁静&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265499" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://ninofocus.com" href="http://ninofocus.com/" target="_blank" rel="nofollow">NinoFocus</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265499">
+            <p>真是简洁明了啊</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 30, 2012  6:38 PM">2012年10月30日 18:38</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265499">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用NinoFocus的这条留言" onclick="return CommentQuote(&#39;comment-quote-265499&#39;,&#39;NinoFocus&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265504" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://denganliang.com" href="http://denganliang.com/" target="_blank" rel="nofollow">邓安良</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265504">
+            <p>最近你发文章很频繁啊，支持</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 30, 2012  8:21 PM">2012年10月30日 20:21</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265504">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用邓安良的这条留言" onclick="return CommentQuote(&#39;comment-quote-265504&#39;,&#39;邓安良&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265505" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">sundr</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265505">
+            <blockquote>
+<pre>引用NinoFocus的发言：</pre>
+
+<p>真是简洁明了啊</p>
+
+</blockquote>
+
+<p>这样的语法去写一些复杂的应用感觉在做恶梦.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 30, 2012 10:32 PM">2012年10月30日 22:32</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265505">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用sundr的这条留言" onclick="return CommentQuote(&#39;comment-quote-265505&#39;,&#39;sundr&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265508" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://hax.iteye.com/" href="http://hax.iteye.com/" target="_blank" rel="nofollow">hax</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265508">
+            <p>实现AMD规范的加载器其实是挺多的，不过多数人还是用requirejs。另外如果对ES6的模块感兴趣，可以考虑http://github.com/hax/my.js ，是按照ES6草案的module/loader规范实现的。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 31, 2012  2:47 AM">2012年10月31日 02:47</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265508">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用hax的这条留言" onclick="return CommentQuote(&#39;comment-quote-265508&#39;,&#39;hax&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265511" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://redhacker.iteye.com" href="http://redhacker.iteye.com/" target="_blank" rel="nofollow">redhacker</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265511">
+            <blockquote>
+第二行Math.add(2, 3)，在第一行require('math')之后运行，因此必须等math.js加载完成。
+</blockquote>
+
+<p>这里写错了Math应该为math吧？<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 31, 2012  8:28 AM">2012年10月31日 08:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265511">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用redhacker的这条留言" onclick="return CommentQuote(&#39;comment-quote-265511&#39;,&#39;redhacker&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265526" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">大名</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265526">
+            <p>期待下集</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 31, 2012  4:30 PM">2012年10月31日 16:30</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265526">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用大名的这条留言" onclick="return CommentQuote(&#39;comment-quote-265526&#39;,&#39;大名&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265529" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://zciii.com" href="http://zciii.com/" target="_blank" rel="nofollow">w</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265529">
+            <p>建议把seajs也加入介绍</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 31, 2012  5:33 PM">2012年10月31日 17:33</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265529">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用w的这条留言" onclick="return CommentQuote(&#39;comment-quote-265529&#39;,&#39;w&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265539" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265539">
+            <blockquote>
+<pre>引用redhacker的发言：</pre>
+
+<p>这里写错了Math应该为math吧？</p>
+
+</blockquote>
+
+<p>谢谢指出，已经更正了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 31, 2012  9:15 PM">2012年10月31日 21:15</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265539">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用阮一峰的这条留言" onclick="return CommentQuote(&#39;comment-quote-265539&#39;,&#39;阮一峰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265563" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">忆秋年</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265563">
+            <p>建议写一写 SeaJS 的 CMD 规范，与 AMD 非常类似，在国内的影响力非常大，但是个人觉得 SeaJS 比 RequireJS 好很多，另外由于是国人开发的，交流也非常方便，可以看到 github 上的更新、互动非常频繁<br>
+<a href="http://seajs.org/" rel="nofollow">http://seajs.org</a><br>
+<a href="https://github.com/seajs/seajs" rel="nofollow">https://github.com/seajs/seajs</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  1, 2012  1:12 PM">2012年11月 1日 13:12</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265563">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用忆秋年的这条留言" onclick="return CommentQuote(&#39;comment-quote-265563&#39;,&#39;忆秋年&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265581" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">HACK21</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265581">
+            <p>这章讲的好少...<br>
+希望下一章可以禁得住看～</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  2, 2012  3:32 PM">2012年11月 2日 15:32</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265581">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用HACK21的这条留言" onclick="return CommentQuote(&#39;comment-quote-265581&#39;,&#39;HACK21&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265712" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">BillLi</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265712">
+            <p>转载网上总结的实现规范异同：</p>
+
+<p>RequireJS 与 SeaJS 的异同<br>
+<a href="https://github.com/seajs/seajs/issues/277" rel="nofollow">https://github.com/seajs/seajs/issues/277</a><br>
+AMD 和 CMD 的区别有哪些？ <br>
+<a href="http://www.zhihu.com/question/20351507/answer/14859415" rel="nofollow">http://www.zhihu.com/question/20351507/answer/14859415</a></p>
+
+<p>浏览器环境模块加载个人推荐用：SeaJS</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  6, 2012  3:55 PM">2012年11月 6日 15:55</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265712">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用BillLi的这条留言" onclick="return CommentQuote(&#39;comment-quote-265712&#39;,&#39;BillLi&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-265893" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">桃桃</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-265893">
+            <p>特别想听你讲ECMA3和ECMA5的区别啊</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 11, 2012  2:18 PM">2012年11月11日 14:18</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-265893">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用桃桃的这条留言" onclick="return CommentQuote(&#39;comment-quote-265893&#39;,&#39;桃桃&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-266930" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://classjs.com" href="http://classjs.com/" target="_blank" rel="nofollow">亚丁</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-266930">
+            <p>这次真的看懂了，大神的行为果然流畅易懂。<br>
+期待ECMA3与5的相关主题。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 13, 2012  2:28 PM">2012年12月13日 14:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-266930">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用亚丁的这条留言" onclick="return CommentQuote(&#39;comment-quote-266930&#39;,&#39;亚丁&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-267590" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.cnblogs.com/NNUF/" href="http://www.cnblogs.com/NNUF/" target="_blank" rel="nofollow">VVG</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-267590">
+            <p>“这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于"假死"状态。”<br>
+这段解释得太到位了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  5, 2013 10:20 AM">2013年1月 5日 10:20</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-267590">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用VVG的这条留言" onclick="return CommentQuote(&#39;comment-quote-267590&#39;,&#39;VVG&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-267627" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.sokis.info" href="http://www.sokis.info/" target="_blank" rel="nofollow">撒子都学</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-267627">
+            <p>最近也在学习模块化编程。学习了！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  7, 2013 10:30 AM">2013年1月 7日 10:30</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-267627">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用撒子都学的这条留言" onclick="return CommentQuote(&#39;comment-quote-267627&#39;,&#39;撒子都学&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-267854" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.qianyunlai.com/blog/" href="http://www.qianyunlai.com/blog/" target="_blank" rel="nofollow">钱运来</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-267854">
+            <p>我懂了，谢谢哥的分享~~~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 15, 2013 10:15 AM">2013年1月15日 10:15</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-267854">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用钱运来的这条留言" onclick="return CommentQuote(&#39;comment-quote-267854&#39;,&#39;钱运来&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-268533" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">East神奇</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-268533">
+            <p>您好！我有一个疑问，如下：<br>
+require(['jquery',  'backbone'], function ($, Backbone){</p>
+
+<p>　　　　// some code here</p>
+
+<p>　　});<br>
+*******************<br>
+同事加载了jquery，backbone两个模块，但我要在backbone里面，使用jquery怎么办啊？</p>
+
+<p>我尝试了一下直接使用是不行的。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February  4, 2013 11:04 AM">2013年2月 4日 11:04</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-268533">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用East神奇的这条留言" onclick="return CommentQuote(&#39;comment-quote-268533&#39;,&#39;East神奇&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-269771" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">lee</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-269771">
+            <p>简单明了，学习了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 16, 2013  4:24 PM">2013年3月16日 16:24</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-269771">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用lee的这条留言" onclick="return CommentQuote(&#39;comment-quote-269771&#39;,&#39;lee&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-272949" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">j60017268</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-272949">
+            <p>require.js相对CommonJS太丑陋了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August  5, 2013  4:36 PM">2013年8月 5日 16:36</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-272949">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用j60017268的这条留言" onclick="return CommentQuote(&#39;comment-quote-272949&#39;,&#39;j60017268&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-330039" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">鬼舞</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-330039">
+            <p>终于看到是人看的了,介绍的很清楚.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July  2, 2014  2:58 PM">2014年7月 2日 14:58</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-330039">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用鬼舞的这条留言" onclick="return CommentQuote(&#39;comment-quote-330039&#39;,&#39;鬼舞&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-336777" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">tab3o1</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-336777">
+            <blockquote>
+<pre>引用East神奇的发言：</pre>
+
+<p>您好！我有一个疑问，如下：<br>
+require(['jquery','backbone'], function ($, Backbone){</p>
+
+<p>　　　　// some code here</p>
+
+<p>　　});<br>
+*******************<br>
+同事加载了jquery，backbone两个模块，但我要在backbone里面，使用jquery怎么办啊？</p>
+
+<p>我尝试了一下直接使用是不行的。</p>
+
+<p><br>
+</p></blockquote>
+
+<p>requireJS的shim可以拿来指定依赖</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September  5, 2014  5:48 PM">2014年9月 5日 17:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-336777">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用tab3o1的这条留言" onclick="return CommentQuote(&#39;comment-quote-336777&#39;,&#39;tab3o1&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-341372" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">javascript的菜鸟</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-341372">
+            <p>你好，我有个疑问, 我比较菜，不好意思。</p>
+
+<p>如果我用AMD的话：<br>
+require(['math'], function (math) {<br>
+　　　　math.add(2, 3);<br>
+});<br>
+math.add这个方法还是要等math这个模块加载完之后才会被调用，这不是跟同步一样的嘛？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 13, 2014  3:18 PM">2014年10月13日 15:18</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-341372">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用javascript的菜鸟的这条留言" onclick="return CommentQuote(&#39;comment-quote-341372&#39;,&#39;javascript的菜鸟&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-341869" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://weibo.com/gudaozr" href="http://weibo.com/gudaozr" target="_blank" rel="nofollow">简陋的艺术家</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-341869">
+            <p>阮老师，非常感谢您的分享！学生在这里谢谢您了！祝您工作顺利，身体健康！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 20, 2014  3:45 PM">2014年10月20日 15:45</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-341869">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用简陋的艺术家的这条留言" onclick="return CommentQuote(&#39;comment-quote-341869&#39;,&#39;简陋的艺术家&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-342702" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://elselife.me" href="http://elselife.me/" target="_blank" rel="nofollow">昂帝梵德·纳尔</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-342702">
+            <blockquote>
+<pre>引用javascript的菜鸟的发言：</pre>
+
+<p>你好，我有个疑问, 我比较菜，不好意思。</p>
+
+<p>如果我用AMD的话：<br>
+require(['math'], function (math) {<br>
+　　　　math.add(2, 3);<br>
+});<br>
+math.add这个方法还是要等math这个模块加载完之后才会被调用，这不是跟同步一样的嘛？</p>
+
+</blockquote>
+菜鸟献丑
+
+<p>这个是回调函数，math加载完后执行math.add(2,3)就不会出错。<br>
+而第一种，有可能math还没加载完时，执行math.add(2,3)会抛出错误。</p>
+
+<p>讲到这里，我又发现一个问题了。跟朴灵一样，这里阮老师又没把同步异步的概念说清楚。</p>
+
+<p>这个加载都是异步的。第一种没用AMD的回调函数，加载和执行是异步的，会出现异常。<br>
+第二种，加载是异步的，但用了回调，整个执行流程是同步的。</p>
+
+<p>设置script.src的方式都是异步加载。</p>
+
+<p>我在这看到了同步加载的办法。</p>
+
+<p><a href="http://www.cnblogs.com/ecalf/archive/2012/12/12/2813962.html" rel="nofollow">http://www.cnblogs.com/ecalf/archive/2012/12/12/2813962.html</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  6, 2014 12:18 AM">2014年11月 6日 00:18</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-342702">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用昂帝梵德·纳尔的这条留言" onclick="return CommentQuote(&#39;comment-quote-342702&#39;,&#39;昂帝梵德·纳尔&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-346400" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://xinwendashibaike.github.io/" href="http://xinwendashibaike.github.io/" target="_blank" rel="nofollow">xinwendashibaike</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-346400">
+            <blockquote>
+<pre>引用tab3o1的发言：</pre>
+
+<p></p>
+
+<p>requireJS的shim可以拿来指定依赖</p>
+
+</blockquote>
+哦，模块加载之间也要保持顺序
+
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 17, 2014  2:34 PM">2014年12月17日 14:34</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-346400">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用xinwendashibaike的这条留言" onclick="return CommentQuote(&#39;comment-quote-346400&#39;,&#39;xinwendashibaike&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-346614" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">amanda</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-346614">
+            <p>@昂帝梵德·纳尔</p>
+
+<p>我也有同样的问题, 那么这样说其实所有的模块加载都是同步的,只是为了执行流程不抛出异常,才用require去规范模块之间的加载顺序,继而用回调函数处理. 我是不是太菜了......</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 25, 2014 10:09 AM">2014年12月25日 10:09</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-346614">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用amanda的这条留言" onclick="return CommentQuote(&#39;comment-quote-346614&#39;,&#39;amanda&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-347045" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">anyedage</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-347045">
+            <p>写的太清楚了！！！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  8, 2015 10:04 AM">2015年1月 8日 10:04</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-347045">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用anyedage的这条留言" onclick="return CommentQuote(&#39;comment-quote-347045&#39;,&#39;anyedage&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-347053" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">王金有</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-347053">
+            <p>写得简明易懂太适合我这种小白看啦。以后就看你的文章啦~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  8, 2015 11:15 AM">2015年1月 8日 11:15</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-347053">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用王金有的这条留言" onclick="return CommentQuote(&#39;comment-quote-347053&#39;,&#39;王金有&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-347309" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮少</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-347309">
+            <p>个人感觉所谓的同步异步的问题，还是看各个代码块的依赖关系，如果代码毫无依赖，从上之下依次执行毫无问题，可以看成同步执行。如果B代码依赖于A代码，A不执行完就执行B的话就会报错，所以只要A先于B执行完成即可，假设A执行所需要花的时间很长，而除了B以外的代码没有任何与AB的依赖关系，那么除了B需要阻塞一下，其他的代码可以直接执行，也就是所谓的异步，这样理解对否？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 18, 2015  2:24 PM">2015年1月18日 14:24</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-347309">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用阮少的这条留言" onclick="return CommentQuote(&#39;comment-quote-347309&#39;,&#39;阮少&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-347826" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小白白</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-347826">
+            <p>"它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行"<br>
+这句话的意思，实质上不还是同步的吗。等模块加载完才会执行回调啊，不解，到底异步是什么意思</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February  4, 2015  2:53 PM">2015年2月 4日 14:53</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-347826">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用小白白的这条留言" onclick="return CommentQuote(&#39;comment-quote-347826&#39;,&#39;小白白&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348419" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">ethanchen</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348419">
+            <blockquote>
+<pre>引用小白白的发言：</pre>
+
+<p>"它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行"<br>
+这句话的意思，实质上不还是同步的吗。等模块加载完才会执行回调啊，不解，到底异步是什么意思</p>
+
+</blockquote>
+
+<p>// 异步, 先加载完的先执行,可能b.bar先与a.foo执行<br>
+require(['a'], function(a) {<br>
+   a.foo();<br>
+});<br>
+required(['b'], function(b) {<br>
+   b.bar()<br>
+});</p>
+
+<p>// 同步，b.bar必须等a加载完再执行<br>
+var a = require('a');<br>
+a.foo();<br>
+var b = require('b');<br>
+b.bar();</p>
+
+<p>大概是这个意思吧?</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 10, 2015  4:12 PM">2015年3月10日 16:12</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-348419">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用ethanchen的这条留言" onclick="return CommentQuote(&#39;comment-quote-348419&#39;,&#39;ethanchen&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348593" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://niewj.com" href="http://niewj.com/" target="_blank" rel="nofollow">聂君</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348593">
+            <p>一笔点睛，醍醐灌顶。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 17, 2015 11:56 AM">2015年3月17日 11:56</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-348593">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用聂君的这条留言" onclick="return CommentQuote(&#39;comment-quote-348593&#39;,&#39;聂君&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-349163" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">古老二</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-349163">
+            <p>通俗易懂，厉害</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 18, 2015  4:01 AM">2015年4月18日 04:01</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-349163">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用古老二的这条留言" onclick="return CommentQuote(&#39;comment-quote-349163&#39;,&#39;古老二&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-349779" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">july</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-349779">
+            <blockquote>
+<pre>引用小白白的发言：</pre>
+
+<p>"它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行"<br>
+这句话的意思，实质上不还是同步的吗。等模块加载完才会执行回调啊，不解，到底异步是什么意思</p>
+
+</blockquote>
+
+<p>前一个异步是针对这个模块与其他模块来说，这个模块(这个模块可能要执行很长时间，异步的可以放到最后执行)并不会阻塞其他模块的执行；这里说的同步是这个模块内部的执行是同步的（内部必须按严格执行顺序）---个人见解</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 18, 2015 11:16 PM">2015年5月18日 23:16</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-349779">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用july的这条留言" onclick="return CommentQuote(&#39;comment-quote-349779&#39;,&#39;july&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350462" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Cocos</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350462">
+            <blockquote>
+<pre>引用小白白的发言：</pre>
+
+<p>"它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行"<br>
+这句话的意思，实质上不还是同步的吗。等模块加载完才会执行回调啊，不解，到底异步是什么意思</p>
+
+</blockquote>
+
+<p>这里说的同步异步,不是你理解的那样.<br>
+所谓同步,就是脚本按照顺序加载,执行.假如脚本放在页面前,这是页面就要等脚本加载好执行完才能加载页面,浏览器会停留一段时间的空白显示...<br>
+异步就不同了,脚本位置和页面位置跟上面的一情况假设一样,这时浏览器不会先加载脚本,而是从上到下先加载整个HTML的字节,加载完再解析得到外部引用的JS脚本,再采用某种算法加载这些外部脚本,加载完成一个,就执行一次事先定义的回调方法.</p>
+
+<p>总体说你的问题就是  观看的角度不同</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 25, 2015  6:11 PM">2015年6月25日 18:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-350462">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Cocos的这条留言" onclick="return CommentQuote(&#39;comment-quote-350462&#39;,&#39;Cocos&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350477" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">heipacker</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350477">
+            <p>requirejs是来解决依赖的, 跟同步异步有毛关系 , 是我太菜了?</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 27, 2015  2:45 PM">2015年6月27日 14:45</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-350477">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用heipacker的这条留言" onclick="return CommentQuote(&#39;comment-quote-350477&#39;,&#39;heipacker&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350666" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">连续</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350666">
+            <p>一步步引入，清晰简明！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July  7, 2015 11:46 PM">2015年7月 7日 23:46</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-350666">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用连续的这条留言" onclick="return CommentQuote(&#39;comment-quote-350666&#39;,&#39;连续&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351370" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Jim.Yan</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351370">
+            <p>但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于"假死"状态。</p>
+
+<p>=====</p>
+
+<p>请问这里怎么做到浏览器“假死”的等待状态？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 22, 2015  3:38 PM">2015年8月22日 15:38</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-351370">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Jim.Yan的这条留言" onclick="return CommentQuote(&#39;comment-quote-351370&#39;,&#39;Jim.Yan&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351371" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Jim.Yan</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351371">
+            <p>AMD是"Asynchronous Module Definition"的缩写，意思就是"异步模块定义"。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。<br>
+============</p>
+
+<p>请问这个依赖模块加载完成和上面CMD说浏览器“假死”等待状态有什么区别？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 22, 2015  3:41 PM">2015年8月22日 15:41</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-351371">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Jim.Yan的这条留言" onclick="return CommentQuote(&#39;comment-quote-351371&#39;,&#39;Jim.Yan&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351372" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Jim.Yan</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351372">
+            <p>建议作者把文章的主题调整一下，直说AMD和CMD的区别，把文章中的“假死”  异步等相关介绍删除吧 误导初学者</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 22, 2015  3:44 PM">2015年8月22日 15:44</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-351372">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Jim.Yan的这条留言" onclick="return CommentQuote(&#39;comment-quote-351372&#39;,&#39;Jim.Yan&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-352114" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Fred</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-352114">
+            <p>本章中有一些不严谨的地方，就说下面两行代码<br>
+var math = require('math');<br>
+　　math.add(2, 3);</p>
+
+<p>首先两行代码是顺序执行的，如果第一行代码是异步加载的，那么第二行代码就有可能会报错，如果第一行代码是同步加载的，那么第二行就不会报错，无非会等待一段阻塞时间</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 14, 2015 11:07 AM">2015年10月14日 11:07</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-352114">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Fred的这条留言" onclick="return CommentQuote(&#39;comment-quote-352114&#39;,&#39;Fred&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-352342" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小菜</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-352342">
+            <blockquote>
+<pre>引用小白白的发言：</pre>
+
+<p>"它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行"<br>
+这句话的意思，实质上不还是同步的吗。等模块加载完才会执行回调啊，不解，到底异步是什么意思</p>
+
+</blockquote>
+
+<p>模块的加载都是异步（异步要和平时生活中反过来理解，异步是指一起做多件事情）的，而执行确实是同步（同步就是个异步相反，事情得一件一件的做，不能一起做多件事）的。所以当我们require多个模块时，这些模块是同时在加载（也就是异步），可能有的模块很小，最快加载完了，那它后面的回调函数就先执行了。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 24, 2015  2:59 PM">2015年10月24日 14:59</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-352342">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用小菜的这条留言" onclick="return CommentQuote(&#39;comment-quote-352342&#39;,&#39;小菜&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-352838" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">ShiT</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-352838">
+            <p>小白飘过问一个弱智的问题，普通写js，通过dev Tools 打断点看JS代码的运行过程，但是采用了amd 模块化的js代码改如何断点进去</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 18, 2015  6:29 PM">2015年11月18日 18:29</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-352838">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用ShiT的这条留言" onclick="return CommentQuote(&#39;comment-quote-352838&#39;,&#39;ShiT&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-352927" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">cbtpro</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-352927">
+            <p>老师，我们用Eclipse编写AMD规范的JavaScript代码后，大纲(outline)视图就不能列出我们写的函数了。Ctrl + O也不能快速找到函数了。也不支持require方式的编程。我购买了spket，但是也只能解决部分js库的问题。还有其他什么解决方法吗？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 24, 2015  3:33 PM">2015年11月24日 15:33</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-352927">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用cbtpro的这条留言" onclick="return CommentQuote(&#39;comment-quote-352927&#39;,&#39;cbtpro&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-352928" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">cbtpro</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-352928">
+            <blockquote>
+<pre>引用ShiT的发言：</pre>
+
+<p>小白飘过问一个弱智的问题，普通写js，通过dev Tools 打断点看JS代码的运行过程，但是采用了amd 模块化的js代码改如何断点进去</p>
+
+</blockquote>
+
+<p><br>
+可以在你需要进入断点的地方输入  debugger;<br>
+访问的时候打开开发者调试工具，走到debugger处就能进入断点。windows下按F12可以快速打开开发者调试工具。Mac下是Shift Control I。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 24, 2015  3:36 PM">2015年11月24日 15:36</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-352928">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用cbtpro的这条留言" onclick="return CommentQuote(&#39;comment-quote-352928&#39;,&#39;cbtpro&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353664" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://sungo.com" href="http://sungo.com/" target="_blank" rel="nofollow">sungo</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353664">
+            <p>文笔好的程序员就是让人仰慕! 一下子就豁然开朗了!! </p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 30, 2015  7:02 PM">2015年12月30日 19:02</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-353664">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用sungo的这条留言" onclick="return CommentQuote(&#39;comment-quote-353664&#39;,&#39;sungo&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353779" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Mark</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353779">
+            <p>阮老師 你好，新年快樂。<br>
+最近開始從頭看一下Commonjs 與AMD<br>
+以前胡裡胡塗的照用，現在有些想法想要釐清，<br>
+我的認知如下<br>
+Commonjs 與AMD 都只是一種標準(SPEC)，<br>
+但是是非ES的標準，Commonjs 多用在Server 端的應用(ex: nodejs)，<br>
+AMD是Web在用(ex: Requirejs)，兩者最大目的都在載入模組，<br>
+最大的差異是Commonjs是同步 AMD是異步載入。<br>
+ES6(ES2015)開始有規範模組載入的標準，<br>
+不過我不清楚ES6 在同步或非同步的寫法上有何差異？<br>
+隨著瀏覽器的支援，ES6(以後的)標準將會取代Commonjs 與 AMD. </p>
+
+<p>以上的觀念不知道有沒有錯誤的地方，再麻煩老師指正。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  6, 2016  2:53 AM">2016年1月 6日 02:53</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-353779">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Mark的这条留言" onclick="return CommentQuote(&#39;comment-quote-353779&#39;,&#39;Mark&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353937" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小牛也蒙圈</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353937">
+            <p>你们可以把模块看成是一个.js文件，异步加载是指多个.js文件同时去加载，而这个时候callback还没有执行，等所有的.js文件加载完毕的时候，才开始调用这个callback。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 11, 2016  6:13 PM">2016年1月11日 18:13</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-353937">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用小牛也蒙圈的这条留言" onclick="return CommentQuote(&#39;comment-quote-353937&#39;,&#39;小牛也蒙圈&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-353941" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Bruce.Lee</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-353941">
+            <p>简洁明了，豁然开朗</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 11, 2016  7:56 PM">2016年1月11日 19:56</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-353941">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html#comment-text" title="引用Bruce.Lee的这条留言" onclick="return CommentQuote(&#39;comment-quote-353941&#39;,&#39;Bruce.Lee&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="return pleaseWait();">
+                <input type="hidden" name="static" value="1">
+                <input type="hidden" name="entry_id" value="1748">
+                <input type="hidden" name="__lang" value="en">
+                <input type="hidden" name="parent_id" value="" id="comment-parent-id">
+                <input type="hidden" name="armor" value="1">
+                <input type="hidden" name="preview" value="">
+                <input type="hidden" name="sid" value="">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="!this.checked?forgetMe(document.comments_form):rememberMe(document.comments_form)" value="1" accesskey="r"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display:none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input type="text" name="percent" size="3" style="font-family:Arial; color:black;text-align:center; border-width:medium; border-style:none;">           
+<input type="text" name="chart" size="46" style="font-family:Arial;font-weight:bolder; color:black; padding:0px; border-style:none;">
+</p>
+</div>
+
+                    <p><input type="submit" accesskey="s" name="post" id="comment-submit" value="发表">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/prism.js"></script>
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+<p><a href="http://www.ruanyifeng.com/contact.html">联系方式</a> | ruanyifeng.com 2003 - 2016
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46829782-1', 'ruanyifeng.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<!-- Site Meter -->
+<a href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" target="_top">
+<img src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/meter.asp" alt="Site Meter" border="0"></a>
+
+<!-- Copyright (c)2009 Site Meter -->
+
+</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="share_button_proto" style="display:none;">
+<a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="./Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志_files/buttonLite.js"></script>
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script>
+</div>
+
+<script>
+document.getElementById("share_button").innerHTML=document.getElementById("share_button_proto").innerHTML;
+</script>
+
+
+
+
+        </div>
+    </div>
+
+<div id="bsBox" class="bsBox"><div class="bsClose">X</div><div class="bsTop"><div class="bsReturn">选择其他平台 &gt;&gt;</div><span style="margin-left:15px;">分享到</span><span class="bsPlatName"></span></div><div class="bsFrameDiv"><iframe class="bShareFrame" name="bsFrame547" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div><div id="bsMorePanel" style="display: none;"></div></div><div id="ads"></div><div id="bsPanelHolder"><div id="bsPanel" style="display:none;"><div class="bsTitle"><a style="float:left;height:20px;line-height:20px;font-weight:bold;" class="bsSiteLink" target="_blank" href="http://www.bshare.cn/intro">分享到...</a><a class="bsSiteLink" style="cursor:pointer;float:right;height:20px;line-height:20px;font-weight:bold;" onclick="document.getElementById(&#39;bsPanel&#39;).style.display=&#39;none&#39;;">X</a><div class="bsClear"></div></div><div class="bsClear"></div><div style="padding-left:8px;background:#fff;*height:218px;"><div style="height:47px;border-bottom:1px #ccc solid;padding:4px 0 4px 16px;margin-right:8px;_padding-left:12px;"><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;facebook&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/facebook.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Facebook</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;twitter&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/twitter.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Twitter</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;sinaminiblog&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/sinaminiblog.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">新浪微博</div></a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="微信" onclick="javascript:bShare.share(event,&#39;weixin&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/weixin.png) no-repeat;">微信</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="腾讯微博" onclick="javascript:bShare.share(event,&#39;qqmb&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1512px;">腾讯微博</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="豆瓣网" onclick="javascript:bShare.share(event,&#39;douban&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -540px;">豆瓣网</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="饭否" onclick="javascript:bShare.share(event,&#39;fanfou&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -666px;">饭否</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="雪球" onclick="javascript:bShare.share(event,&#39;xueqiu&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/xueqiu.png) no-repeat;">雪球</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="电子邮件" onclick="javascript:bShare.share(event,&#39;email&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -612px;">电子邮件</a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="Google+" onclick="javascript:bShare.share(event,&#39;gplus&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/gplus.png) no-repeat;">Google+</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="QQ空间" onclick="javascript:bShare.share(event,&#39;qzone&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1566px;">QQ空间</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="QQ好友" onclick="javascript:bShare.share(event,&#39;qqim&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/qqim.png) no-repeat;">QQ好友</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="Instapaper" onclick="javascript:bShare.share(event,&#39;instapaper&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -954px;">Instapaper</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="美味书签" onclick="javascript:bShare.share(event,&#39;delicious&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -432px;">美味书签</a></div></div><div class="bsClear"></div></div><div style="height:20px;line-height:20px;padding:0 8px;border-top:1px solid #e8e8e8;color:#666;background:#f2f2f2;"><div class="buzzButton" style="float:left;">更多平台... <font style="font-weight:normal;">(133)</font></div><div id="bsPower" style="float:right;text-align:right;overflow:hidden;height:100%;"><a class="bsSiteLink" style="font-size:10px;vertical-align:text-bottom;line-height:24px;cursor:pointer;" href="http://www.bshare.cn/" target="_blank"><span style="font-size:10px;vertical-align:text-bottom;"><span style="color:#f60;">b</span>Share</span></a></div></div></div></div></body></html>

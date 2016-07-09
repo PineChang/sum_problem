@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www.duba.com/union2.html -->
+<HTML><HEAD><META content="IE=7.0000" http-equiv="X-UA-Compatible">
+<TITLE></TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<STYLE type=text/css>BODY {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+DIV {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 11.00.9600.18349"></HEAD>
+<BODY>
+<DIV id=baidu></DIV>
+<SCRIPT language=javascript>
+function $union(){
+	var param = window.location.search.replace('?', '');
+    var arr = param.split('_');
+	if(arr.length===4){
+		var e=document.getElementById("baidu");
+		if(e){
+			e.style.cssText="width:"+arr[1]+"px; height:"+arr[2]+"px";
+
+			var ifr = document.createElement('iframe');
+			ifr.scrolling="no";
+			ifr.marginWidth= "0";
+			ifr.marginHeight="0";
+			ifr.frameBorder="0";
+			ifr.width=arr[1];
+			ifr.height=arr[2];
+			ifr.allowTransparency="true";
+			ifr.src="http://11.mydrivers.com/duba/baiduAfxId.html#c_id="+arr[0];
+			e.appendChild(ifr);
+		}
+	}
+}
+$union();
+</SCRIPT>
+</BODY></HTML>
