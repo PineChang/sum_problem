@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="张鑫旭的个人博客_web前端技术文章_如何灵活利用免费开源图标字体-IcoMoon篇" />
+<meta name="keywords" content="web前端,HTML5,CSS3,jQuery,SVG,canvas" />
+<meta name="author" content="张鑫旭,zhangxinxu" />
+<title>如何灵活利用免费开源图标字体-IcoMoon篇 &laquo;  张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="/wordpress/wp-content/themes/default/style.css?160628" />
+<link rel="pingback" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php" />
+ 
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 &raquo; Feed" href="http://www.zhangxinxu.com/wordpress/feed/" />
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 &raquo; 评论Feed" href="http://www.zhangxinxu.com/wordpress/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 &raquo; 如何灵活利用免费开源图标字体-IcoMoon篇评论Feed" href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/feed/" />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='http://www.zhangxinxu.com/wordpress/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.zhangxinxu.com/wordpress/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='渐进使用HTML5语言识别, so easy!' href='http://www.zhangxinxu.com/wordpress/2012/05/html5-speech-x-webkit-grammar/' />
+<link rel='next' title='理解CSS3 transform中的Matrix(矩阵)' href='http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/' />
+<meta name="generator" content="WordPress 4.1.12" />
+<link rel='canonical' href='http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/' />
+<link rel='shortlink' href='http://www.zhangxinxu.com/wordpress/?p=2416' />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0090627341039040",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+<body class="single single-post postid-2416 single-format-standard">
+<div id="page">
+<div id="header" role="banner">
+	<div id="headerimg">
+		<a href="/" class="page_logo">张鑫旭-鑫空间-鑫生活</a>
+		<div class="description">it&#039;s my whole life!</div>
+	</div>
+    <div id="menubar">
+<ul class="menu_tab">
+<li>
+<a class="boss" href="/">网站首页</a>
+<a class="disabled" title="频道已关闭">提问交流</a>
+<a class="disabled" title="频道已关闭">前端调查</a>
+</li>
+<li class="on">
+<a class="boss" href="/wordpress/">前端技术</a>
+<a href="/wordpress/?cat=3">css</a>
+<a href="/wordpress/?cat=5">js/jQuery</a>
+<a href="/wordpress/?cat=198">翻译</a>
+</li>
+<li>
+<a class="boss" href="/life/">生活与创作</a>
+<a href="/life/?cat=3">生活</a>
+<a href="/life/?cat=5">散文</a>
+<a href="/life/?cat=4">小说</a>
+</li>
+<li>
+<span class="boss">前端在线资源</span>
+<a href="/css3/">CSS3参考</a>
+<a href="/jq/api14/">jQuery1.4参考</a>
+</li>         
+</ul>
+<form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="翻页太辛苦，试试直接搜索" value="" name="s" id="s" />
+<input type="submit" id="searchsubmit" data-value="Search" value="搜索" />
+</div>
+</form>
+    </div>
+</div>
+<script>
+var isSlideHide = false;
+if (window.localStorage) {
+	isSlideHide = localStorage.getItem("isSlideHide");
+	if (!isSlideHide && document.body.clientWidth <= 1024) {
+		isSlideHide = "true";
+	}
+	if (isSlideHide == "true") {
+		document.getElementById("page").className = "slide_hide";
+	}
+}
+if (window.location != window.parent.location) window.parent.location = window.location;
+</script>
+<div class="the_main">
+	<div id="content" class="widecolumn" role="main">
+    <div class="shink_rel"><a href="javascript:" id="shinkSlide" class="shink_a" title="收起右边栏">►</a></div>
+<script>if (window.localStorage && window.isSlideHide) {
+	(function() {
+		var eleShink = document.getElementById("shinkSlide");	
+		eleShink.title = "展开右边栏";
+		eleShink.innerHTML = "◄";
+	})();
+}</script>
+	
+		<div class="navigation">
+			<div class="alignleft">&laquo; <a href="http://www.zhangxinxu.com/wordpress/2012/05/html5-speech-x-webkit-grammar/" rel="prev">渐进使用HTML5语言识别, so easy!</a></div>
+			<div class="alignright"><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/" rel="next">理解CSS3 transform中的Matrix(矩阵)</a> &raquo;</div>
+		</div>
+
+		<div class="post-2416 post type-post status-publish format-standard hentry category-css tag-font-face tag-fontforge tag-html5 tag-icomoon tag-722 tag-258 tag-216" id="post-2416">
+			<h2>如何灵活利用免费开源图标字体-IcoMoon篇<span id="qrCode" class="qr_code" onMouseOver="_gaq.push(['_trackEvent', 'QR', 'Hover']);"></span></h2>
+			<div class="entry">
+            	<div class="postmetadata alt">
+					<small>
+												这篇文章发布于 2012年06月4日，星期一，00:15，归类于 <a href="http://www.zhangxinxu.com/wordpress/category/css/" rel="category tag">css相关</a>。                        阅读 113956 次, 今日 25 次					</small>
+				</div>
+				<p class="link">by <a href="http://www.zhangxinxu.com/">zhangxinxu</a> from <a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a><br />
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=2416">http://www.zhangxinxu.com/wordpress/?p=2416</a></p>
+<h3>一、温故知新</h3>
+<p>之前有专门介绍过如何使用类似<a href="http://www.zhangxinxu.com/wordpress/?p=2041">fontforge软件制作自定义字符字体</a>以及<a href="http://www.zhangxinxu.com/wordpress/?p=2047">如何在web中实际应用</a>。</p>
+<p>不过，文中提到的是利用系统自带的一些特殊字体，如<code>WINGDNG3.ttf</code>字体。<br />
+<img width="554" height="168" class="alignnone" title="大把的文字箭头啊" data-src="http://image.zhangxinxu.com/image/blog/201111/2011-11-19_220833.png" alt="大把的文字箭头啊" /></p>
+<p>显然，系统自带字体有限。好在，前段时间<a href="http://shenfei.me/">神飞</a>整理出了一篇雪中送炭的文章：“<a target="_blank" href="http://www.qianduan.net/icon-font-large-collecting.html">icon font大搜罗</a>”，里面罗列了非常多的免费或不免费的优秀图标字体（图片较长，滚动显示）：</p>
+<p style="height:200px;width:220px; overflow:auto; padding:5px; border:3px solid #a0b3d6;"><img alt="图标字体 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_202558.png" title="罗列的图标字体截图" class="alignnone" width="218" height="692" /></p>
+<p>或者是参见css-tricker网站整理的图标字体们 &#8211; <a href="http://css-tricks.com/flat-icons-icon-fonts/">Flat Icons &#038; Icon Fonts</a> &#8211; <span class="s">by</span> Chris Coyier.</p>
+<p>于是，我们需要什么图标，直接把这些字体导入fontforge中移花接木即可！</p>
+<p>利用fontforge确实可行，但是，必将淘汰。why? 因为有了更好的方法 &#8211; IcoMoon.</p>
+<p>这不难理解：在没有空调的时代，有电风扇的自习室成为同学们自习教室首选——人满为患；后来，部分自习室装了空调了，结果，原来安装风扇的自习室无人问津——人去室空。</p>
+<h3>二、IcoMoon为何物？</h3>
+<p>打开<a href="http://keyamoon.com/icomoon/">IcoMoon</a>网站往往会给人一种错觉，误认为跟上面罗列的字体网站一样，就是展示。</p>
+<p>其实非也，IcoMoon的水要深多了。</p>
+<p>这么说吧：假设整个上海梅园地区有100家卖衣服的小店，其中有99家就是拿货然后卖衣服给顾客（这就是大搜罗的icon font们）；但是，其中有一家店不仅卖衣服，还可以根据用户需求定制衣服，甚至还可以把别家店的衣服按照顾客要求进行改制，且适用于高矮胖瘦，古今中外给类人群，而且还有穿衣说明，模特试穿以及打包送货上门服务（这就是本文的IcoMoon），最最关键的是，这家店是免费的。</p>
+<p>体现在IcoMoon上就是：提供600+字符，您可以根据自己需求定制（如就选两个）；可以导入其他字体，也进行特别定制（类似fontforge功能）；定制字体提供打包导出功能（省去了字体转换），兼容IE6+，现代浏览器以及各类手机设备，且有demo实例，并对字符进行了HTML转化。</p>
+<p>可谓图标字体一条龙服务，又称“图标解决方案”！</p>
+<h3>三、使用流程、操作演示</h3>
+<p>进入<a href="http://keyamoon.com/icomoon/#toHome">主页</a>，点击下图所示<a href="http://keyamoon.com/icomoon/app/">区域</a>开始：<br />
+<img alt="IcoMoon操作示意图" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_214455.png" title="IcoMoon操作示意图" class="alignnone" width="374" height="284" /></p>
+<p>作为演示，我就选了三个图标，如下图所示：<br />
+<img alt="IcoMoon操作示意图" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_214853.png" title="IcoMoon操作示意图" class="alignnone" width="402" height="264" /></p>
+<p>插播：每个图标你都是可以自己进行标记的（移上去会看到Edit, 点击之），然后——<br />
+<img alt="图标编辑示意" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_215116.png" title="图标编辑示意" class="alignnone" width="112" height="135" /><br />
+<img alt="图标标记弹出层截图 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_215248.png" title="图标标记弹出层截图" class="alignnone" width="476" height="274" /></p>
+<p>注：编辑框下面的Download会下载该图标svg格式的zip文件, Save Copy按钮则是上面新生成一个图标，而Save则是原来替换。<br />
+<img alt="新保存的图标示意 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_220311.png" title="新保存的图标示意" class="alignnone" width="458" height="313" /></p>
+<p>选择好你要的图标之后，点击页面下方黑色条条上面的f字样的图标按钮，生成字体：<br />
+<img alt="点击按钮生成字体 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_220500.png" title="点击按钮生成字体" class="alignnone" width="220" height="118" /></p>
+<p>然后你会看到下图所示画面：<br />
+<img alt="字符画面 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-02_221251.png" title="字符画面" class="alignnone" width="534" height="183" /></p>
+<p>剩下的就是点击下面的下载标识进行zip打包文件下载了：<br />
+<img alt="zip打包下载 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_203448.png" title="zip打包下载" class="alignnone" width="253" height="126" /></p>
+<p>您会得到<code>icomoon*.zip</code>的文件。例如，<code>icomoon1512.zip</code>，打开zip包，会看到里面有适合各个浏览器的字体以及demo演示：<br />
+<img alt="zip文件里面内容 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_203814.png" title="zip文件里面内容" class="alignnone" width="483" height="202" /></p>
+<p>然后，你就可以依葫芦画瓢使用这些图标形状字体了！</p>
+<h3>四、IcoMoon demo中图标字体使用简介</h3>
+<p>demo中字符图标的显示用了HTML5以及一些高级CSS技巧。</p>
+<p>关键代码如下：</p>
+<div class="zxx_code">
+<pre>[data-icon]:before {
+    font-family: 'IcoMoon';
+    content: attr(data-icon);
+    speak: none;
+}</pre>
+</div>
+<p>意思是所有含有&#8221;<code>data-icon</code>&#8220;属性(HTML5 data-*)的标签都应该这段样式。使用了<code>before</code>伪类与<code>content</code>内容生成，而<code>content</code>内容就是&#8221;<code>data-icon</code>&#8220;的属性值。</p>
+<p>参见如下HTML：</p>
+<div class="zxx_code">
+<pre>&lt;div class="fs1" aria-hidden="true" <span style="color:#cd0000;">data-icon="&#x0021;"</span>>&lt;/div></pre>
+</div>
+<p><code>&amp;#x0021;</code>为HTML转移字符，对应普通<code>!</code>字符。转义的好处（我估计）是没有一些编码不兼容的问题。</p>
+<p>上面的方法与技巧都是比较新的，因此，显然的，对于IE6~8浏览器就是屌丝眼中的白富美。因此，在实际的传统web项目中（手机自然可以）是不适用的。</p>
+<h3>五、使用其他开源图标字体</h3>
+<p>即使IcoMoon上有600+图形，但是，并不一定满足我们的特定需求，例如，有个歪瓜裂枣的人物头像造型正是我们需要的，好比<a href="http://thenounproject.com/zh-cn/">The Noun Project</a>中的这个图标造型：<br />
+<img alt="歪瓜裂枣的面部造型 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_224032.png" title="歪瓜裂枣的面部造型" class="alignnone" width="218" height="193" /></p>
+<p>我们该怎么办？</p>
+<p>“凉拌”显然是不行的，我们可以利用<code>IcoMoon</code>平台进行“自我定制”，大致步骤如下：<br />
+1. 下载其字体文件（官网肯定有，不同字体项目下载方式不一样，有些是整个一起下，有的是可以单独下载，如这里示例的<code>Noun</code>项目）。<br />
+<img alt="双面头像图标下载" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_225154.png" title="双面头像图标下载" class="alignnone" width="514" height="254" /><br />
+2. 我们需要的是其中<code>*.svg</code>格式的文件(如这里的: <code>noun_project_2552.svg</code>)。<br />
+3. 在<code>IcoMoon</code> APP页面导入该SVG文件，如下图演示：<br />
+<img alt="导入SVG文件" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_225428.png" title="导入SVG文件" class="alignnone" width="338" height="135" /></p>
+<p>然后，我们自定义的字体就会显现出来：<br />
+<img alt="IcoMoon显示自定义字体 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_225446.png" title="IcoMoon显示自定义字体" class="alignnone" width="303" height="183" /></p>
+<p>4~10. 与IcoMoon自带600+字符操作一样，该选择选择，该编辑编辑，该删除删除，该生成生成，上面都一步一步演示过了，这里不赘述。<br />
+<img alt="与自带图标字符操作一样 张鑫旭-鑫空间-鑫生活" data-src="http://image.zhangxinxu.com/image/blog/201206/2012-06-03_225816.png" title="与自带图标字符操作一样" class="alignnone" width="474" height="252" /></p>
+<h3>六、结语还是要滴</h3>
+<p>图标字体，字体图标高性能，易维护，本身就是字符，因为可以很好地享受CSS诸多属性控制。之前，我还担心其制作不方便会影响其使用，现在有了类似<code>IcoMoon</code>这样的网站，我的工作又大大轻松了。因此，我觉得本文的内容还是很实用的。我可以打包票说，图标字体肯定是未来几年，技术实现以及相关设计风格趋势。不过，中国大多数产品经理往往保守和盲从（大众点评/淘宝/腾讯是这样做的，我们也这样……之类~~），加上本身眼界就限制在周围（或国内）这么大的圈子<sup>(原因亦结果)</sup>。因此，即使设计师有着创新与不拘一格的灵魂，也会被湮没在实际的产品需求中。</p>
+<p>其实如今信息交流如此方便迅速，为何国外图标字体相关项目（开源的或不开源的）上百之多，而且已经开始流行，关注与重视。但是，国内呢，仅仅是某个时候，某些地方冒个泡(或许是我孤陋寡闻)。我想不明白？或许是教育体制的原因吧，培养出的都是习惯于随波逐流，缺少开拓进取，勇于创新精神的人。因此，我们一直都是滞后，滞后好多年。等哪一天，企鹅、狐狸、眼睛等公司都改成扁平化设计，图标字体风格；我敢保证，相关技术文章泡沫般漫天飞，众多网站调调都向其靠拢！sign~~</p>
+<p>跟风这种事情很常见，尤其像我们这种群体性国家，深根的。比方说现在说的HTML5, HTML5确实是个好东西，但是，铺天盖地HTML5 A小组，B小组；什么HTML5 A论坛, B论坛；HTML5 A书籍, B书籍。很多CSS/JS半吊子的人跟着这股HTML5潮流一下子变成了HTML5达人，演讲啊，分享啊什么的感觉好得很！这其实没什么，但是可能会引起一些不必要的盲从。比方说有人就担心：“现在HTML5这么热，大家都在关注，我要是不扎进去学习会不会有什么损失啊？？”于是，花高价买了国内某人写的HTML5的书，花时间研究之，学习之。</p>
+<p>好学精神令人赞赏，实际做的是吃力不讨好的事。中国有句成语，叫做“舍本逐末”。如果你不是做手机的，不是做游戏的，不是做图形处理的，HTML5的东西基本都是没有实用价值的，而真正对你日后高度有决定作用的是CSS/JS基础，再说了，如果你CSS/JS足够扎实，HTML5日后学习就是张无忌学乾坤大挪移（早已打通任督二脉）。因此，千万不要盲从、跟风、浮躁！那些满眼冲击的HTML5相关东西，了解了解即可，没必要当真，精力多放在基础与实际应用上。</p>
+<p>还有那些HTML5狂热追随者们，少TM吹嘘HTML5怎么怎么好，少卖弄自己用HTML5做的应用什么的。你真的有精力的话，多研究些接地气的东西，比方说弄个类似<code>IcoMoon</code>这样的平台，这才是真正有实用价值的东西，这才是真正推动国内前端事业发展的东西，这才是真正造福广大前端开发人员的东西！</p>
+<p>我给你们指条路吧：<code>IcoMoon</code>只能导入SVG格式字体，你们改进下，让TTF/WOFF等字体也可以(类似<code><a href="http://www.fontsquirrel.com/fontface/generator">fontsquirrel</a></code>).</p>
+<p>参考文章：<a href="http://css-tricks.com/html-for-icon-font-usage/">HTML for Icon Font Usage</a></p>
+<p>原创文章，转载请注明来自<a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>[<a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a>]<br />
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=2416">http://www.zhangxinxu.com/wordpress/?p=2416</a></p>
+<p>（本篇完）</p>
+<div class="similarity"><div class="similar_title">相关文章</div><ul><li><a href="http://www.zhangxinxu.com/wordpress/2011/11/css3-font-face%e5%85%bc%e5%ae%b9%e6%80%a7%e4%b8%89%e8%a7%92%e6%95%88%e6%9e%9c/">CSS3 @font-face实现颜色大小可控的三角效果</a> (0.499)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/10/new-pad-retina-devicepixelratio-css-page/">视网膜New iPad与普通分辨率iPad页面的兼容处理</a> (0.487)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/11/fontforge%e8%87%aa%e5%ae%9a%e4%b9%89%e6%89%8b%e6%9c%ba%e5%ad%97%e4%bd%93/">fontforge制作自定义字体及在手机上应用举例</a> (0.438)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/05/web%e9%a1%b5%e9%9d%a2%e7%9b%b8%e5%85%b3%e7%9a%84%e4%b8%80%e4%ba%9b%e5%b8%b8%e8%a7%81%e5%8f%af%e7%94%a8%e5%ad%97%e7%ac%a6%e4%bb%8b%e7%bb%8d/">web页面相关的一些常见可用字符介绍</a> (0.150)</li><li><a href="http://www.zhangxinxu.com/wordpress/2014/07/svg-sprites-fill-color-currentcolor/">SVG图标颜色文字般继承与填充</a> (0.150)</li><li><a href="http://www.zhangxinxu.com/wordpress/2014/12/psd-icon-path-illustrator-svg-sprites-css3-font-face/">PSD小图标变身SVG Sprites/font-face历险记</a> (0.150)</li><li><a href="http://www.zhangxinxu.com/wordpress/2015/01/tips-blank-character-chinese-align/">小tips: 使用&amp;#x3000;等空格实现最小成本中文对齐</a> (0.150)</li><li><a href="http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%e5%8e%bb%e9%99%a4%e9%97%b4%e8%b7%9d/">去除inline-block元素间间距的N种方法</a> (0.088)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/11/%e5%91%8a%e5%88%ab%e5%9b%be%e7%89%87%e2%80%94%e4%bd%bf%e7%94%a8%e5%ad%97%e7%ac%a6%e5%ae%9e%e7%8e%b0%e5%85%bc%e5%ae%b9%e6%80%a7%e7%9a%84%e5%9c%86%e8%a7%92%e5%b0%96%e8%a7%92%e6%95%88%e6%9e%9cbeta/">告别图片—使用字符实现兼容性的圆角尖角效果beta版</a> (0.075)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/%e7%bf%bb%e8%af%91-ie78font-face%e5%b5%8c%e5%85%a5%e5%ad%97%e4%bd%93%e4%b8%8e%e6%96%87%e5%ad%97%e5%b9%b3%e6%bb%91/">翻译-IE7/8@font-face嵌入字体与文字平滑</a> (0.075)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/03/style%e6%a0%87%e7%ad%be%e4%b8%8b%e7%9a%84css%e4%bb%a3%e7%a0%81%e7%9a%84%e6%98%be%e7%a4%ba%e4%b8%8e%e5%ae%9e%e6%97%b6%e7%bc%96%e8%be%91/">style标签下的CSS代码的显示与实时编辑</a> (RANDOM - 0.014)</li></ul></div><!-- Tag -->				<div class="wp_share_box">
+                	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina"></a>
+<a class="bds_qzone"></a>
+<a class="bds_tqq"></a>
+<a class="bds_t163"></a>
+<a class="bds_douban"></a>
+<a class="bds_tsohu"></a>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1954626" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END --> 
+                </div>
+								<p>标签： <a href="http://www.zhangxinxu.com/wordpress/tag/font-face/" rel="tag">font-face</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/fontforge/" rel="tag">fontforge</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/html5/" rel="tag">HTML5</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/icomoon/" rel="tag">IcoMoon</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%9b%be%e6%a0%87/" rel="tag">图标</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%ad%97%e4%bd%93/" rel="tag">字体</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%ad%97%e7%ac%a6/" rel="tag">字符</a></p>			</div>
+		</div>
+        
+        <h3 class="ad_title">赞助商广告<span class="sup_span">(<a href="/sp/support.html"target="_blank">我也要赞助</a>)</span>：</h3>
+        <div>
+			<div id="adZhuFeng" class="ad_zf_x ad_bottom">
+            	<div class="ad_zf">
+                    <span class="l hidden">如果你月薪不足20K，不妨</span>
+                    <a href="javascript:" class="r hidden" title="不敢兴趣" onClick="_gaq.push(['_trackEvent', 'supportAd', 'zhufeng', 'Not interest']);">×</a>
+                </div>
+            	<a href="http://www.zhufengpeixun.cn/customize/node/index.html" target="_blank" class="ad_bottom_n" onClick="_gaq.push(['_trackEvent', 'supportAd', 'zhufeng', 'ad zhufeng Not float']);"></a>
+            </div>
+            <div id="adYuMi" class="ad_zf_x ad_bottom">
+            	<div class="ad_ym">
+                    <span class="l hidden">希望拥有自己的域名博客？</span>
+                    <a href="javascript:" class="r hidden" title="不敢兴趣" onClick="_gaq.push(['_trackEvent', 'supportAd', 'YuMi', 'Not interest']);">×</a>
+                </div>
+            	<a href="http://www.qiuyumi.com/zxx/" target="_blank" class="ad_bottom_y" onClick="_gaq.push(['_trackEvent', 'supportAd', 'yumi', 'ad YuMi Not float']);"></a>
+            </div>
+            <!--<a href="/sp/support.html" target="_blank"><img src="http://ww3.sinaimg.cn/large/4b4d632fgw1f497otmdt2j20a002i3yo.jpg" class="ad_bottom" style="border:1px solid #34538b;" width="360" height="90"></a>-->
+        </div>
+        <div id="adYideng" class="ad_bottom">
+        	<div class="ad_yd">
+            	<span class="l hidden">如果你有1~3年前端开发经验，不妨</span>
+                <a href="javascript:" class="r hidden" title="不敢兴趣" onClick="_gaq.push(['_trackEvent', 'supportAd', 'yideng', 'Not interest']);">×</a>
+            </div>
+        	<a href="http://web.wuxianedu.com/yideng/?f=zhangxinxu.com" target="_blank" class="ad_bottom_w" onClick="_gaq.push(['_trackEvent', 'supportAd', 'yideng', 'ad yideng Not float']);"></a>
+        </div>
+        		
+        
+        
+	﻿
+<div id="respond">
+<h3 class="respond_title">发表评论（目前43 条评论）</h3>
+<div id="cancel-comment-reply"> 
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="/wordpress/2012/06/free-icon-font-usage-icomoon/#respond" style="display:none;">点击这里取消回复。</a></small>
+</div> 
+
+
+<form action="http://www.zhangxinxu.com/wordpress/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' required />
+<label for="author"><small>名称 (必须)</small></label></p>
+
+<p><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' required />
+<label for="email"><small>邮件地址(不会被公开) (必须)</small></label></p>
+
+<p><input type="url" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>网站</small></label></p>
+
+
+<!--<p><small><strong>XHTML：</strong>您可以使用这些标签：<code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="提交评论" />
+<input type='hidden' name='comment_post_ID' value='2416' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+ 
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="89715c431e" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="236"/></p>
+</form>
+
+</div>
+
+
+<!-- You can start editing here. -->
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-316973">
+				<div id="div-comment-316973" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/0bc1a498e94b2225b99c0efbca751172?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">黎明</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-316973">
+			2016年05月6日 09:38</a>		</div>
+
+		<p>请问我在网上下载两组字体图标，就是两个压缩包，里面的图案各不相同，我要怎么样才能让这两组图标能一起使用，总不能将两个文件夹都放进去把</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=316973#respond' onclick='return addComment.moveForm( "div-comment-316973", "316973", "respond", "2416" )' aria-label='回复给黎明'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-313630">
+				<div id="div-comment-313630" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/2b047d9285862aa2440df29f93824e48?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">海边</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-313630">
+			2016年03月22日 16:18</a>		</div>
+
+		<p>用IcoMoon做好一套图标后，其中一个图标需要修改或者增加一个图标怎么保持之前做好的content是不变的</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=313630#respond' onclick='return addComment.moveForm( "div-comment-313630", "313630", "respond", "2416" )' aria-label='回复给海边'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-312755">
+				<div id="div-comment-312755" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/cb7b76e6fc78a7b4b68a00eea0efb8c7?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://ziven27.github.io/' rel='external nofollow' class='url'>字体偏粗</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-312755">
+			2016年02月25日 15:48</a>		</div>
+
+		<p>请问一下我用ps将文字转换成形状导出成svg，再用icomoon弄成的字体，为什么会比ps里面偏粗，用了-webkit-font-smoothing也没有反应，这个怎么解决呢？</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=312755#respond' onclick='return addComment.moveForm( "div-comment-312755", "312755", "respond", "2416" )' aria-label='回复给字体偏粗'>回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-313091">
+				<div id="div-comment-313091" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/8f5c49f7799c84174f60f388ce3f130b?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">wingmeng</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-313091">
+			2016年03月9日 16:59</a>		</div>
+
+		<p>PS没有导出svg这个功能吧？是不是用了PS脚本？建议你用AI做形状，再导出svg，毕竟AI是专业处理矢量图的。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=313091#respond' onclick='return addComment.moveForm( "div-comment-313091", "313091", "respond", "2416" )' aria-label='回复给wingmeng'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-312629">
+				<div id="div-comment-312629" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3c0b7db10f95e93fdf52e598d2a24b3d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.hehaibao.com' rel='external nofollow' class='url'>海宝</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-312629">
+			2016年02月17日 23:18</a>		</div>
+
+		<p>不得不说，博主的文章真是让人通俗易懂，赞</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=312629#respond' onclick='return addComment.moveForm( "div-comment-312629", "312629", "respond", "2416" )' aria-label='回复给海宝'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-305170">
+				<div id="div-comment-305170" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/2c6674b7f94f3459e7608be8b0de5a90?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">HHKEDANG</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-305170">
+			2015年11月25日 11:11</a>		</div>
+
+		<p>确实不错，我是了解了bootstrap后，知道图标可以做字体~博主写得很好</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=305170#respond' onclick='return addComment.moveForm( "div-comment-305170", "305170", "respond", "2416" )' aria-label='回复给HHKEDANG'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-269975">
+				<div id="div-comment-269975" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/0ad9dcf5bb76ff299e9dd84ec3ca968e?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.meiyou.com' rel='external nofollow' class='url'>望天</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-269975">
+			2015年05月20日 21:24</a>		</div>
+
+		<p>先赞一个。呵呵我也是在你发表三年后才看，因为我要定义框架。<br />
+你第六点的第一段最后一句，讲的不确切应该是前端工程师决定是否选用IcoMoon，设计的风格依然不会改变，产品的业务流程依然没问题，而且这个技术选用是可以说是架构定义，还不是以普通人员来决定,其实这种用法在以后的高速网络时代WEB端依然不会选择，而手机端用这个是因为没一个好的标准规范所以用矢量效果比较好，速度和流量是优势</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=269975#respond' onclick='return addComment.moveForm( "div-comment-269975", "269975", "respond", "2416" )' aria-label='回复给望天'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-267030">
+				<div id="div-comment-267030" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/9ee0cd0e36efca49dbdff4a8b7c60435?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://iridescent.cn' rel='external nofollow' class='url'>santino</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-267030">
+			2015年05月6日 15:28</a>		</div>
+
+		<p>张大神的文章真是读的越多越是拜倒在石榴裙下，受益匪浅！</p>
+<p>有个问题，比如我第一版有20个svg生成了字体，第二版如果多了10个svg，我还得重新全部上传一下，然后重新做30个字体啊。因为好像每次上传生成的content都是/e600</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=267030#respond' onclick='return addComment.moveForm( "div-comment-267030", "267030", "respond", "2416" )' aria-label='回复给santino'>回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-267113">
+				<div id="div-comment-267113" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-267113">
+			2015年05月7日 00:28</a>		</div>
+
+		<p>@santino 建议上传后来的10个SVG就可以了，icoMoon会自动记录你之前的设置的，你还可以以project的方式进行管理。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=267113#respond' onclick='return addComment.moveForm( "div-comment-267113", "267113", "respond", "2416" )' aria-label='回复给张 鑫旭'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt depth-2" id="comment-279970">
+				<div id="div-comment-279970" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/74514f8886c4b79045c3fe1dcb04b56d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Bulandent</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-279970">
+			2015年07月8日 17:11</a>		</div>
+
+		<p>你可以这样，将第一版生成的svg格式的字体文件导入到IcoMoon，然后全部选中他们；然后select你第二版需要的字体图标。这样download的时候就包含了全部想要的字体图标了。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=279970#respond' onclick='return addComment.moveForm( "div-comment-279970", "279970", "respond", "2416" )' aria-label='回复给Bulandent'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-242679">
+				<div id="div-comment-242679" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/a95eb23a9d0ab71f613b69a01bebe818?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">xieranmaya</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-242679">
+			2015年03月4日 17:40</a>		</div>
+
+		<p>鑫哥能写写关于如何让自制字体的内容跟常用文字字体（比如雅黑）的内容垂直对齐的方法吗</p>
+<p>我目前发现对的最齐的也就是fontawesome了</p>
+<p>其它比如IcoMoon，还有iconfont.cn，等的字体，跟文字配合使用时，都需要写额外的css才能让它们垂直对齐</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=242679#respond' onclick='return addComment.moveForm( "div-comment-242679", "242679", "respond", "2416" )' aria-label='回复给xieranmaya'>回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-242743">
+				<div id="div-comment-242743" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-242743">
+			2015年03月4日 22:00</a>		</div>
+
+		<p>@xieranmaya 制作字体时候，你可以调垂直位置的，你可以找找~</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=242743#respond' onclick='return addComment.moveForm( "div-comment-242743", "242743", "respond", "2416" )' aria-label='回复给张 鑫旭'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-240185">
+				<div id="div-comment-240185" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/282291cce9449a82d45de30842efd302?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Megasu</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-240185">
+			2015年02月28日 11:15</a>		</div>
+
+		<p>用16进制编码的字体图标在小米1的微信上不显示，有什么解决办法呢？</p>
+<p>测试机型：小米1，小米1s，小米2<br />
+浏览器：微信6.1内置浏览器，QQ浏览器5.7,X5内核 025705GPU<br />
+字体图标：不显示<br />
+svg图标：显示正常</p>
+<p>内置浏览器，uc浏览器，正常显示</p>
+<p>如楼上的 Glyphicons 官网的字体图标就不显示，svg图标显示。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=240185#respond' onclick='return addComment.moveForm( "div-comment-240185", "240185", "respond", "2416" )' aria-label='回复给Megasu'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-227672">
+				<div id="div-comment-227672" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/83759e2472593ffebb6f01262e4f889e?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">shooke</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-227672">
+			2015年02月3日 15:29</a>		</div>
+
+		<p>我一直在用淘宝的平台http://www.iconfont.cn/</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=227672#respond' onclick='return addComment.moveForm( "div-comment-227672", "227672", "respond", "2416" )' aria-label='回复给shooke'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-224753">
+				<div id="div-comment-224753" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/ad67ef0ed54c4fb04b4485768b7f97b6?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">amy</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-224753">
+			2015年01月30日 11:02</a>		</div>
+
+		<p>时隔3年才看到这篇文章，相见恨晚！旭哥，V5</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=224753#respond' onclick='return addComment.moveForm( "div-comment-224753", "224753", "respond", "2416" )' aria-label='回复给amy'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-206149">
+				<div id="div-comment-206149" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/afdb5815025088e2784e767e54f064e1?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">mayte</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-206149">
+			2015年01月4日 15:08</a>		</div>
+
+		<p>非常厉害！！！！！！！！！</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=206149#respond' onclick='return addComment.moveForm( "div-comment-206149", "206149", "respond", "2416" )' aria-label='回复给mayte'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-117904">
+				<div id="div-comment-117904" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/7a0b9b3d1c39682779d6cb54843d64ce?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://79px.com' rel='external nofollow' class='url'>源泉</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-117904">
+			2014年08月20日 11:09</a>		</div>
+
+		<p>想能定制下载fontawesome就好，之前看到一个网站，但是忘了mark了哎！</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=117904#respond' onclick='return addComment.moveForm( "div-comment-117904", "117904", "respond", "2416" )' aria-label='回复给源泉'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-101190">
+				<div id="div-comment-101190" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/ba24c83b25ece3d66bcc71bdbe994fad?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">ada</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-101190">
+			2014年07月16日 13:18</a>		</div>
+
+		<p>iie7不兼容哦。有解决的方法吗</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=101190#respond' onclick='return addComment.moveForm( "div-comment-101190", "101190", "respond", "2416" )' aria-label='回复给ada'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-77154">
+				<div id="div-comment-77154" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/cb7b76e6fc78a7b4b68a00eea0efb8c7?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">ziven</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-77154">
+			2014年05月20日 15:22</a>		</div>
+
+		<p>ie6,ie7,ie8不是支持font-face?<br />
+我只要用这个字体，然后采用ie6~ie8支持的写法不是也可以支持？<br />
+但是实际上却是为啥不行呢？</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=77154#respond' onclick='return addComment.moveForm( "div-comment-77154", "77154", "respond", "2416" )' aria-label='回复给ziven'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-62391">
+				<div id="div-comment-62391" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/946974db15cb4a38a2a9ca080f74e2a2?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">光腚</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-62391">
+			2014年03月11日 09:34</a>		</div>
+
+		<p>这种字体图标，在IE8下，会有不能正常显示的问题，不知道鑫工有解决方法否，这个问题直接影响现在BOOTstrap的使用了。。。。。。<br />
+悲剧阿。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=62391#respond' onclick='return addComment.moveForm( "div-comment-62391", "62391", "respond", "2416" )' aria-label='回复给光腚'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-39337">
+				<div id="div-comment-39337" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/4d6d6ae093041cbb780b3f1ffa457d2d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">老七</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-39337">
+			2013年08月29日 00:26</a>		</div>
+
+		<p>鑫哥，这篇文章言词间略显霸气。。。哈哈</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=39337#respond' onclick='return addComment.moveForm( "div-comment-39337", "39337", "respond", "2416" )' aria-label='回复给老七'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-25518">
+				<div id="div-comment-25518" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/87da2b9ead7e129ff2e5e80eb2302c8c?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">quqiu</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-25518">
+			2013年01月4日 09:49</a>		</div>
+
+		<p><a href="http://lextang.com/fontdiao/" rel="nofollow">http://lextang.com/fontdiao/</a><br />
+其实有现成的</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=25518#respond' onclick='return addComment.moveForm( "div-comment-25518", "25518", "respond", "2416" )' aria-label='回复给quqiu'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-23052">
+				<div id="div-comment-23052" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e4895a348cd011ae01c156149e5fe0fd?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://niko-blog.com' rel='external nofollow' class='url'>niko</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-23052">
+			2012年11月7日 19:46</a>		</div>
+
+		<p>LZ说的很对，特别是最后一段，嘿嘿，顶一个</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=23052#respond' onclick='return addComment.moveForm( "div-comment-23052", "23052", "respond", "2416" )' aria-label='回复给niko'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-22324">
+				<div id="div-comment-22324" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/2fcb73436445cd9dd917e849c9d87bd0?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">wzw</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-22324">
+			2012年10月18日 16:29</a>		</div>
+
+		<p>不太好，这个网站更新的太快了，都快用不起了</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=22324#respond' onclick='return addComment.moveForm( "div-comment-22324", "22324", "respond", "2416" )' aria-label='回复给wzw'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-21007">
+				<div id="div-comment-21007" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/5fa66ab864f75fddd925394182ec552d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">cece</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-21007">
+			2012年09月5日 11:33</a>		</div>
+
+		<p>已经用过了，很不错，可是第2次要再添加图标的时候有点麻烦，新图标对应的代码已经往svg和css里加了，可是不显示，不知道为什么</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=21007#respond' onclick='return addComment.moveForm( "div-comment-21007", "21007", "respond", "2416" )' aria-label='回复给cece'>回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-21010">
+				<div id="div-comment-21010" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-21010">
+			2012年09月5日 13:59</a>		</div>
+
+		<p>@cece 可以导入之前的SVG，再新添加或删除~~</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=21010#respond' onclick='return addComment.moveForm( "div-comment-21010", "21010", "respond", "2416" )' aria-label='回复给张 鑫旭'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-20243">
+				<div id="div-comment-20243" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/ef8bf92f6e043cc8c96ad4bb756a18ec?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.gyratesky.com' rel='external nofollow' class='url'>gtrate</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-20243">
+			2012年08月9日 08:22</a>		</div>
+
+		<p>张大哥时常能在blog里介绍各种国外新奇网站，请问是如何找到的，平时都有哪些订阅呢？？</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=20243#respond' onclick='return addComment.moveForm( "div-comment-20243", "20243", "respond", "2416" )' aria-label='回复给gtrate'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-19528">
+				<div id="div-comment-19528" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/4b02426b4596a3f291be6294df275245?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.mxria.com' rel='external nofollow' class='url'>美瑞网</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-19528">
+			2012年07月18日 13:18</a>		</div>
+
+		<p>很不错的，不过中文字体还是个问题，免费库少，目前只能用英文字体来实现一些符号，Icon<br />
+期待未来能实现更多的中文网络字体</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=19528#respond' onclick='return addComment.moveForm( "div-comment-19528", "19528", "respond", "2416" )' aria-label='回复给美瑞网'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-19503">
+				<div id="div-comment-19503" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/fb261294dda0493a738a27881382b93b?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://cnblogs.com/alfredlee' rel='external nofollow' class='url'>alfred lee</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-19503">
+			2012年07月17日 15:20</a>		</div>
+
+		<p>国内IE6还没淘汰让产品经理很踌躇啊。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=19503#respond' onclick='return addComment.moveForm( "div-comment-19503", "19503", "respond", "2416" )' aria-label='回复给alfred lee'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-18832">
+				<div id="div-comment-18832" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/7db80c015c0385f168e8a5f910da721c?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.choizhang.com' rel='external nofollow' class='url'>choizhang</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18832">
+			2012年06月24日 18:25</a>		</div>
+
+		<p>之前使用web font发现在XP+safari5会导致系统蓝屏，没找到解决方案，只有屏蔽之。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18832#respond' onclick='return addComment.moveForm( "div-comment-18832", "18832", "respond", "2416" )' aria-label='回复给choizhang'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-18417">
+				<div id="div-comment-18417" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/c6808f2a0750e37c34b8d98133320580?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.rockyxia.com' rel='external nofollow' class='url'>rockyxia</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18417">
+			2012年06月9日 12:14</a>		</div>
+
+		<p>顶起，观望html5中，学习巩固js中！</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18417#respond' onclick='return addComment.moveForm( "div-comment-18417", "18417", "respond", "2416" )' aria-label='回复给rockyxia'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-18349">
+				<div id="div-comment-18349" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/68b0fc13f66df58280a15731a2b33c11?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">阿毛</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18349">
+			2012年06月6日 23:02</a>		</div>
+
+		<p>很cool啊，而且这种兼容度应该很好实施起来的吧。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18349#respond' onclick='return addComment.moveForm( "div-comment-18349", "18349", "respond", "2416" )' aria-label='回复给阿毛'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-18347">
+				<div id="div-comment-18347" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/150bc9220a0a6f765db46e402e6b2539?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://dsedfg.blogcn.com' rel='external nofollow' class='url'>dd</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18347">
+			2012年06月6日 22:30</a>		</div>
+
+		<p>天</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18347#respond' onclick='return addComment.moveForm( "div-comment-18347", "18347", "respond", "2416" )' aria-label='回复给dd'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-18346">
+				<div id="div-comment-18346" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/afcbeda8c49d973e4a89a5063cd47844?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.baidu.com' rel='external nofollow' class='url'>手机壳</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18346">
+			2012年06月6日 22:29</a>		</div>
+
+		<p>啊啊啊</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18346#respond' onclick='return addComment.moveForm( "div-comment-18346", "18346", "respond", "2416" )' aria-label='回复给手机壳'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-18335">
+				<div id="div-comment-18335" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/07b177dc7a5f865977a86d4dbe7ccb4d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">阿牛</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18335">
+			2012年06月6日 09:49</a>		</div>
+
+		<p>仔细看了下是支持&gt;=IE6的,下载的DEMO隐藏了上面使用data-icon形式生成的图标</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18335#respond' onclick='return addComment.moveForm( "div-comment-18335", "18335", "respond", "2416" )' aria-label='回复给阿牛'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-18334">
+				<div id="div-comment-18334" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/07b177dc7a5f865977a86d4dbe7ccb4d?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">阿牛</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18334">
+			2012年06月6日 09:25</a>		</div>
+
+		<p>ie&lt;9好象有问题。有点不兼容不知道大家测试是这样的吗？</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18334#respond' onclick='return addComment.moveForm( "div-comment-18334", "18334", "respond", "2416" )' aria-label='回复给阿牛'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-18319">
+				<div id="div-comment-18319" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/324a91b40a7cbe7ca6afbabf5dc68096?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">ethanchen</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18319">
+			2012年06月5日 18:50</a>		</div>
+
+		<p>win8来了，metro UI 来了，font icon不正合适吗？</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18319#respond' onclick='return addComment.moveForm( "div-comment-18319", "18319", "respond", "2416" )' aria-label='回复给ethanchen'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-18294">
+				<div id="div-comment-18294" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e0c987d94d37f5d19f5b6c4fedff65e0?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.cnblogs.com/and1coder' rel='external nofollow' class='url'>三桂</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18294">
+			2012年06月4日 16:10</a>		</div>
+
+		<p>大赞,可以投入到实际应用中了&#8230;</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18294#respond' onclick='return addComment.moveForm( "div-comment-18294", "18294", "respond", "2416" )' aria-label='回复给三桂'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-18293">
+				<div id="div-comment-18293" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/34aaa34dfae1dce1c34314a03a45915a?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Zz</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18293">
+			2012年06月4日 15:39</a>		</div>
+
+		<p>不错不错，发人深思。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18293#respond' onclick='return addComment.moveForm( "div-comment-18293", "18293", "respond", "2416" )' aria-label='回复给Zz'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-18287">
+				<div id="div-comment-18287" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/824f83c1dded350e1285cb4be0b64f32?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://leil.info' rel='external nofollow' class='url'>alex</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18287">
+			2012年06月4日 11:57</a>		</div>
+
+		<p>lz 对目前国内html5的环境评价的很中肯，确实如此。<br />
+学习lz了。话说字体图标新了解了一个使用bootstrap 改得一个开源项目http://fortawesome.github.com/Font-Awesome/#</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18287#respond' onclick='return addComment.moveForm( "div-comment-18287", "18287", "respond", "2416" )' aria-label='回复给alex'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-18285">
+				<div id="div-comment-18285" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/0edbad0334fbc56fd3e66cf9a7777cc3?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://yu123.me/' rel='external nofollow' class='url'>wordgold</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18285">
+			2012年06月4日 09:39</a>		</div>
+
+		<p>神飞说 &#8220;eot文件必须添加域名白名单才可以使用&#8221;<br />
+这样的话下载下来的eot文件还需要重新导一下么?</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18285#respond' onclick='return addComment.moveForm( "div-comment-18285", "18285", "respond", "2416" )' aria-label='回复给wordgold'>回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-18286">
+				<div id="div-comment-18286" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/3e58242902fa8f33162f3f10df892c68?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href='http://www.zhangxinxu.com' rel='external nofollow' class='url'>张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18286">
+			2012年06月4日 09:46</a>		</div>
+
+		<p>@wordgold 我并不清楚有这种说法。我使用eot文件没有这个问题的。神飞所说可能指某些跨域的情况吧。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18286#respond' onclick='return addComment.moveForm( "div-comment-18286", "18286", "respond", "2416" )' aria-label='回复给张 鑫旭'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-18280">
+				<div id="div-comment-18280" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/2b7b9f29942414dd329f58a7a66d491b?s=32" class="avatar avatar-32" height="32" width="32">			<cite class="fn">dxyqq</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2012/06/free-icon-font-usage-icomoon/comment-page-1/#comment-18280">
+			2012年06月4日 09:01</a>		</div>
+
+		<p>当我第一次读到可以在页面中能引入服务器端字体，很开心，但随后又说因为中文字体文件太大，所以实用价值不高，心凉掉了，可随后又看到能将小图标放入字体文件中引用，很开心，但项目管理说时间紧不让用，心凉掉了。</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/wordpress/2012/06/free-icon-font-usage-icomoon/?replytocom=18280#respond' onclick='return addComment.moveForm( "div-comment-18280", "18280", "respond", "2416" )' aria-label='回复给dxyqq'>回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+
+	
+	</div>
+</div>
+	<div id="sidebar" role="complementary">
+         <div id="zxx_intro" class="sldebar_out">
+            <div class="silebar_inner" itemscope itemtype="http://data-vocabulary.org/Person">
+                <img src="http://photo.zhangxinxu.com/wp/zxx_90_0824.jpg" itemprop="photo" class="zxx_head_image">
+                <div class="zxx_some_info">
+                    <p class="mb10"><span itemprop="name" class="fn">张鑫旭</span><sup><a itemprop="url" href="/life/about/">more</a></sup>，09年<a href="http://www.hust.edu.cn/">华中科技大学</a>毕业，目前<span itemprop="location">上海</span>，现就职<a href="http://yuewen.book.qq.com/" itemprop="organization">阅文集团</a>，资深钓鱼爱好者，专注<span itemprop="role">web前端</span>偏前领域。</p>
+
+                    <p>邮箱：<span style="font-family:arial;">zhangxinxu@zhangxinxu.com</span></p>
+                    <p>微博：<a href="//weibo.com/zhangxinxu">新浪</a> <a href="//t.qq.com/iamzhangxinxu">腾讯</a></p>
+                </div>
+                <div class="clear"></div>                
+            </div>
+        </div>
+        
+        <div class="sldebar_out top_ad_out">
+            <div class="silebar_inner top_ad">
+            	<div class="ad_inner">
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-0090627341039040"
+     data-ad-slot="7307897248"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                </div>
+            </div>
+        </div>
+    	<div class="sldebar_out">
+            <div class="silebar_inner slide_list">
+                <ul>
+                    <li id="search-3" class="widget widget_search"><form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="翻页太辛苦，试试直接搜索" value="" name="s" id="s" />
+<input type="submit" id="searchsubmit" data-value="Search" value="搜索" />
+</div>
+</form>
+</li><li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">文章分类</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.zhangxinxu.com/wordpress/category/css/" >css相关</a> (239)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/" >graphic相关</a> (66)
+<ul class='children'>
+	<li class="cat-item cat-item-81"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/as3%e8%8f%9c%e5%8d%95/" >as3菜单</a> (32)
+</li>
+	<li class="cat-item cat-item-896"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/canvas-graphic/" >canvas相关</a> (9)
+</li>
+	<li class="cat-item cat-item-895"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/svg-graphic/" >SVG相关</a> (23)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.zhangxinxu.com/wordpress/category/js/" >js相关</a> (113)
+<ul class='children'>
+	<li class="cat-item cat-item-60"><a href="http://www.zhangxinxu.com/wordpress/category/js/jquery-about/" >jquery相关</a> (43)
+</li>
+	<li class="cat-item cat-item-180"><a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/" >js实例</a> (54)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-648"><a href="http://www.zhangxinxu.com/wordpress/category/mobile%e7%9b%b8%e5%85%b3/" >mobile相关</a> (11)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.zhangxinxu.com/wordpress/category/ps/" >ps相关</a> (13)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.zhangxinxu.com/wordpress/category/web/" >web综合</a> (37)
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.zhangxinxu.com/wordpress/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91/" >外文翻译</a> (36)
+</li>
+		</ul>
+</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章存档</h2>		<ul>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/07/'>2016年七月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/06/'>2016年六月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/05/'>2016年五月</a>&nbsp;(2)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/04/'>2016年四月</a>&nbsp;(2)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/03/'>2016年三月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/02/'>2016年二月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2016/01/'>2016年一月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/12/'>2015年十二月</a>&nbsp;(2)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/11/'>2015年十一月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/10/'>2015年十月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/08/'>2015年八月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/07/'>2015年七月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/06/'>2015年六月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/05/'>2015年五月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/04/'>2015年四月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/03/'>2015年三月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/02/'>2015年二月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2015/01/'>2015年一月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/12/'>2014年十二月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/11/'>2014年十一月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/10/'>2014年十月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/09/'>2014年九月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/08/'>2014年八月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/07/'>2014年七月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/06/'>2014年六月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/05/'>2014年五月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/04/'>2014年四月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/03/'>2014年三月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/02/'>2014年二月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2014/01/'>2014年一月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/12/'>2013年十二月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/11/'>2013年十一月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/10/'>2013年十月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/09/'>2013年九月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/08/'>2013年八月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/07/'>2013年七月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/06/'>2013年六月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/05/'>2013年五月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/04/'>2013年四月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/03/'>2013年三月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/02/'>2013年二月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2013/01/'>2013年一月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/12/'>2012年十二月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/11/'>2012年十一月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/10/'>2012年十月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/09/'>2012年九月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/08/'>2012年八月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/07/'>2012年七月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/06/'>2012年六月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/05/'>2012年五月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/04/'>2012年四月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/03/'>2012年三月</a>&nbsp;(9)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/02/'>2012年二月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2012/01/'>2012年一月</a>&nbsp;(4)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/12/'>2011年十二月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/11/'>2011年十一月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/10/'>2011年十月</a>&nbsp;(3)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/09/'>2011年九月</a>&nbsp;(9)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/08/'>2011年八月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/07/'>2011年七月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/06/'>2011年六月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/05/'>2011年五月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/04/'>2011年四月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/03/'>2011年三月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/02/'>2011年二月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2011/01/'>2011年一月</a>&nbsp;(5)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/12/'>2010年十二月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/11/'>2010年十一月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/10/'>2010年十月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/09/'>2010年九月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/08/'>2010年八月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/07/'>2010年七月</a>&nbsp;(10)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/06/'>2010年六月</a>&nbsp;(8)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/05/'>2010年五月</a>&nbsp;(11)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/04/'>2010年四月</a>&nbsp;(14)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/03/'>2010年三月</a>&nbsp;(11)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/02/'>2010年二月</a>&nbsp;(1)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2010/01/'>2010年一月</a>&nbsp;(16)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/12/'>2009年十二月</a>&nbsp;(14)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/11/'>2009年十一月</a>&nbsp;(7)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/10/'>2009年十月</a>&nbsp;(6)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/09/'>2009年九月</a>&nbsp;(36)</li>
+	<li><a href='http://www.zhangxinxu.com/wordpress/2009/08/'>2009年八月</a>&nbsp;(12)</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">最新文章</h2>		<ul>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/">等宽字体在web布局中应用以及CSS3 ch单位嘿嘿</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/07/ie7-ie8-css-circle-border-radius/">小tips: IE7,IE8浏览器纯CSS实现正圆角效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/07/css3-appearance-all-box-sizing/">CSS3 appearance大全鉴赏以及是否影响box-sizing</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/07/know-html5-web-notification/">简单了解HTML5中的Web Notification桌面通知</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/">PNG格式小图标的CSS任意颜色赋色技术</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/">基于clip-path的任意元素的碎片拼接动效</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/csser-how-to-use-nodejs/">JS一般般的网页重构可以使用Node.js做些什么</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/image-preload-based-on-user-behavior/">基于用户行为的图片等资源预加载</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/pseudo-response-layout-base-on-screen-width/">基于screen.width的伪响应式开发</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2016/06/canvas-star-noise-smoke/">canvas图形绘制之星空、噪点与烟雾效果</a>
+						</li>
+				</ul>
+		</li><li id="overall-top-10-posts" class="widget widget_dailytopten_overall"><h2 class="widgettitle">热门总排行</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">jQuery powerFloat万能浮动层下拉层插件</a> (327348)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (264789)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (254846)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (220219)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/">CSS box-flex属性，然后弹性盒子模型简介</a> (205188)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (203971)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (197120)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (192559)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (177258)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/jquery%e9%a1%b5%e9%9d%a2%e5%9b%be%e7%89%87%e7%ad%89%e5%85%83%e7%b4%a0%e6%bb%9a%e5%8a%a8%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd%e5%ae%9e%e7%8e%b0/">jQuery页面滚动图片等元素动态加载实现</a> (174635)</li>
+</ul>
+</li><li id="daily-top-10-posts" class="widget widget_dailytopten"><h2 class="widgettitle">今日热门</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (102)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (85)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (74)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/">CSS box-flex属性，然后弹性盒子模型简介</a> (74)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2016/07/know-html5-web-notification/">简单了解HTML5中的Web Notification桌面通知</a> (60)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/">等宽字体在web布局中应用以及CSS3 ch单位嘿嘿</a> (57)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (55)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/01/why-use-href-javascript-void0/">疑问：为什么要使用href="javascript:void(0);"？</a> (54)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/09/%e7%b2%be%e7%ae%80%e9%ab%98%e6%95%88%e7%9a%84css%e5%91%bd%e5%90%8d%e5%87%86%e5%88%99%e6%96%b9%e6%b3%95/">精简高效的CSS命名准则/方法</a> (54)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/05/%e6%88%91%e5%af%b9css-vertical-align%e7%9a%84%e4%b8%80%e4%ba%9b%e7%90%86%e8%a7%a3%e4%b8%8e%e8%ae%a4%e8%af%86%ef%bc%88%e4%b8%80%ef%bc%89/">我对CSS vertical-align的一些理解与认识（一）</a> (52)</li>
+</ul>
+</li>                </ul>
+            </div>
+        </div>
+	</div>
+<div id="footer" role="contentinfo">
+<p>
+Powerd by <a href="http://wordpress.org/">WordPress</a> | Designed by <a href="/">zhangxinxu</a><br />
+Copyright© 2009-2016 张鑫旭-鑫空间-鑫生活<br />
+<a target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备09015569号</a>
+</p>
+</div>
+</div>
+
+
+<script type='text/javascript' src='http://www.zhangxinxu.com/wordpress/wp-content/plugins/akismet/_inc/form.js?ver=3.1.5'></script>
+<script type='text/javascript' src='http://www.zhangxinxu.com/wordpress/wp-includes/js/comment-reply.min.js?ver=4.1.12'></script>
+
+<div id="footbar">
+	<div class="foot_yy_x hidden" id="footYyX">
+    	<div class="foot_yy_title">
+        	<span class="l">我的应用</span>
+            <a href="javascript:" class="r" id="footYYClose">-</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">工具与应用</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="/sp/base64.html">图片转base64(拖进来)</a>
+			<a class="foot_yy_a" href="//browserhacks.com">浏览器hack</a>
+            <a class="foot_yy_a" href="http://cubic-bezier.com/">CSS贝塞尔曲线可视化</a>
+            <a class="foot_yy_a" href="/sp/css-compress-mini.html">CSS在线压缩工具</a>
+            <a class="foot_yy_a" href="/sp/calculator.html">简易在线计算器</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">在线资源</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="/jq/api14/">jQuery 1.4 API中文版</a>
+            <a class="foot_yy_a" href="/GitHub/demo-Snap.svg/demo/basic/">Snap.svg中文文档</a>
+            <a class="foot_yy_a" href="/jq/stylus/">stylus中文版参考文档</a>
+            <a class="foot_yy_a" href="/css3/">CSS3中文共享参考指南</a>
+            <a class="foot_yy_a" href="/sp/character.html">非主流字符及字符图案</a>
+            <a class="foot_yy_a" href="/jq/mt/">MooTools 1.2中文文档</a>
+        </div>
+        <div>&nbsp;</div>
+        <a href="javascript:" class="foot_yy foot_yy_on nowrap" id="footYYOff"><img src="/zxx_ico.png" class="vimg"> 我的应用</a>
+    </div>
+    <a href="javascript:" class="foot_yy nowrap" id="footYYShow"><img src="/zxx_ico.png" class="vimg" /> 我的应用</a>
+    <span class="foot_rss l">
+    	<a class="foot_rss_a" href="/wordpress/?feed=rss2">文章(RSS)</a>
+         
+    </span>
+    <a href="#" id="backToTop" class="foot_top">返回顶部↑</a>
+	<a href="/wordpress/wp-login.php" class="foot_login"><i class="icon-male"></i>登录</a>
+</div>
+
+<script src="/wordpress/wp-content/themes/default/script-min.js?v=160622"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-11205167-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

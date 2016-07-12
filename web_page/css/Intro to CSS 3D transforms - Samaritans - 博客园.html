@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<title>Intro to CSS 3D transforms - Samaritans - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=umTYGJ1Xbo61obX_Gqsil3krUSBXOilTLax6nesdN401"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/BlueSky/bundle-BlueSky.css?v=_lYRTG5SjWWADGcuS8G-fWWj62fg5g8s6xd9-hRa-g01"/>
+<link type="text/css" rel="stylesheet" href="/blog/customcss/101421.css?v=Vhfs%2bFXOUJc5AH%2bEiXlP9aW0Zuk%3d"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/dolphinX/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/dolphinX/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/dolphinX/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'dolphinX', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=2Zs8QG7I27WguWECxCpE9rKckP7dHNZ3hmM9khFPf7U1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/dolphinX/"><img id="blogLogo" src="/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/dolphinX/">Samaritan</a></h1>
+<h2>It always seems impossible until it's done.</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/dolphinX/">首页</a></li>
+<li></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/Samaritans">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/dolphinX/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/dolphinX/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 110&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 1628</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/dolphinX/p/4075402.html">Intro to CSS 3D transforms</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="cnblogs-markdown"><p>原文地址：<a href="http://desandro.github.io/3dtransforms/">Intro to CSS 3D transforms</a>，本文只是翻译了其中的一部分，省去了作者写文章的原因浏览器兼容部分（已经过时）<br />
+<!--more--></p>
+<h1 id="perspective">Perspective</h1>
+<p>元素需要设置需要设置<code>perspective</code>来激活3D效果，可以通过两种方式实现</p>
+<ul>
+<li><p>在transform属性中使用perspective方法</p>
+<pre><code>transform: perspective( 600px );</code></pre></li>
+<li><p>直接使用perspective属性</p>
+<pre><code>perspective: 600px;</code></pre></li>
+</ul>
+<p>NOTE：出于代码简介的目的，demo中的CSS样式没有使用浏览器前缀，在实际使用中需要使用-webkit-perspective, -moz-perspective, 等</p>
+<pre><code>&lt;style&gt;
+    .container {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #CCC;
+        margin: 0 auto 40px;
+    }
+    .box {
+        width: 100%;
+        height: 100%;
+    }
+    #red1 .box {
+      background-color: red;
+      transform: perspective( 600px ) rotateY( 45deg );
+    }
+&lt;/style&gt;
+&lt;section id=&quot;red1&quot; class=&quot;container&quot;&gt;
+    &lt;div class=&quot;box red&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p> </p>
+<style>    .container {        width: 200px;        height: 200px;        border: 1px solid #CCC;        margin: 0 auto 40px;    }    .box {        width: 100%;        height: 100%;    }    #red1 .box {      background-color: red;      transform: perspective( 600px ) rotateY( 45deg );    }</style>
+<section id="red1" class="container">    <div class="box red"></div></section>
+<pre><code>&lt;style&gt;
+    #blue1{
+        perspective: 600px;
+    }
+    #blue1 .box {
+      background-color: blue;
+      transform: rotateY( 45deg );
+    }
+&lt;/style&gt;
+
+&lt;section id=&quot;blue1&quot; class=&quot;container&quot;&gt;
+    &lt;div class=&quot;box blue1&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p> </p>
+<style>    #blue1{        perspective: 600px;    }    #blue1 .box {      background-color: blue;      transform: rotateY( 45deg );    }</style>
+<section id="blue1" class="container">    <div class="box blue1"></div></section>
+<p>这两种方式都会触发3D效果，但是有一点不同：第一种方式直接在一个元素上触发3D变形，但是当多个元素的时候变形效果和预期会有所不同，如果使用同样的方法作用于不同位置的元素的时候，每个元素会有自己的轴心，为了解决这个问题，需要在父元素使用perspective属性，这样每个子元素都共享相同的3D空间</p>
+<pre><code>&lt;style&gt;
+    #red2 figure {
+      background: red;
+      transform: perspective( 400px ) rotateY(45deg);
+    }
+    .container figure {
+        display: block;
+        width: 55px;
+        height: 55px;
+        float: left;
+        margin: 5px;
+    }
+
+    #red2 figure {
+        background: #F00;
+        -webkit-transform: perspective( 400px ) rotateY( 45deg );
+        -moz-transform: perspective( 400px ) rotateY( 45deg );
+        -o-transform: perspective( 400px ) rotateY( 45deg );
+        transform: perspective( 400px ) rotateY( 45deg );
+    }
+&lt;/style&gt;
+&lt;section id=&quot;red2&quot; class=&quot;container&quot;&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+&lt;/section&gt;</code></pre>
+<p> </p>
+<style>    #red2 figure {      background: red;      transform: perspective( 400px ) rotateY(45deg);    }    .container figure {        display: block;        width: 55px;        height: 55px;        float: left;        margin: 5px;    }    #red2 figure {        background: #F00;        -webkit-transform: perspective( 400px ) rotateY( 45deg );        -moz-transform: perspective( 400px ) rotateY( 45deg );        -o-transform: perspective( 400px ) rotateY( 45deg );        transform: perspective( 400px ) rotateY( 45deg );    }</style>
+<section id="red2" class="container">    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure></section>
+<pre><code>&lt;style&gt;
+    #blue2 {
+      perspective: 400px;
+    }
+
+    #blue2 figure {
+      background: blue;
+      transform: rotateY( 45deg );
+    }
+&lt;/style&gt;
+&lt;section id=&quot;blue2&quot; class=&quot;container&quot;&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;/figure&gt;
+&lt;/section&gt;</code></pre>
+<p> </p>
+<style>    #blue2 {      perspective: 400px;    }    #blue2 figure {      background: blue;      transform: rotateY( 45deg );    }</style>
+<section id="blue2" class="container">    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure>    <figure></figure></section>
+<p>perspective属性的值决定了3D效果的强烈程度，可以认为是观察者到页面的距离。值越大距离越远，视觉上的3D效果就会相应的减弱。perspective: 2000px; 会产生一个好像我们使用望远镜看远方物体的3D效果，perspective: 100px;会产生一个小昆虫看大象的效果。</p>
+<p>3D效果默认轴心是元素中央，可以通过<code>perspective-origin</code>来修改轴心</p>
+<pre><code>perspective-origin: 25% 75%;</code></pre>
+<p><a href="http://desandro.github.io/3dtransforms/examples/perspective-03.html">点击这里</a>看一下作者写的一个有意思的立方体旋转页面</p>
+<h1 id="d变形方法">3D变形方法</h1>
+<p>作为一个web者，可能很熟悉两个方向：X &amp; Y，表示元素的水平方向和垂直方向，在perspective激活的3D空间中我们可以在X、Y、Z三个坐标轴上对元素进行变形处理。3D变形使用的变形方法和2D变形一样，如果熟悉<a href="http://www.w3.org/TR/css3-transforms/#transform-functions">2D变形方法</a>很容易掌握3D变形</p>
+<ul>
+<li>rotateX( angle )</li>
+<li>rotateY( angle )</li>
+<li>rotateZ( angle )</li>
+<li>translateZ( tz )</li>
+<li>scaleZ( sz )</li>
+</ul>
+<p>translateX()方法使元素延X轴移动，translateZ()使元素延Z轴（在3D空间中方向从前到后）移动。正值使元素离观察者更近，负值使元素变远。</p>
+<style>    .container2 {      width: 200px;      height: 200px;      border: 1px solid #CCC;      margin: 0 auto 60px;      position: relative;      -webkit-perspective: 600px;         -moz-perspective: 600px;           -o-perspective: 600px;              perspective: 600px;    }    .panel {      width: 100%;      height: 100%;      position: absolute;      opacity: 0.7;      color: white;      background: red;    }    #translate-z-negative .panel {      -webkit-transform: translateZ( -200px );         -moz-transform: translateZ( -200px );           -o-transform: translateZ( -200px );              transform: translateZ( -200px );    }    #translate-z-positive .panel {      -webkit-transform: translateZ( 200px );         -moz-transform: translateZ( 200px );           -o-transform: translateZ( 200px );              transform: translateZ( 200px );    }    #rotate-x .panel {      -webkit-transform: rotateX( 45deg );         -moz-transform: rotateX( 45deg );           -o-transform: rotateX( 45deg );              transform: rotateX( 45deg );    }    #rotate-y .panel {      -webkit-transform: rotateY( 45deg );         -moz-transform: rotateY( 45deg );           -o-transform: rotateY( 45deg );              transform: rotateY( 45deg );    }    #rotate-z .panel {      -webkit-transform: rotateZ( 45deg );         -moz-transform: rotateZ( 45deg );           -o-transform: rotateZ( 45deg );              transform: rotateZ( 45deg );    }</style>
+<div id="translate-z-negative" class="container2">    <div class="panel">translateZ( -200px )</div>  </div>
+<p><div id="translate-z-positive" class="container2"><br />
+<div class="panel">translateZ( 200px )</div><br />
+</div></p>
+<p><div id="rotate-x" class="container2"><br />
+<div class="panel">rotateX( 45deg )</div><br />
+</div></p>
+<p><div id="rotate-y" class="container2"><br />
+<div class="panel">rotateY( 45deg )</div><br />
+</div></p>
+<p><div id="rotate-z" class="container2"><br />
+<div class="panel">rotateZ( 45deg )</div><br />
+</div></p>
+<p>有几个变形方法的缩写，这些方法需要把三个参数写全</p>
+<ul>
+<li>translate3d( tx, ty, tz )</li>
+<li>scale3d( sx, sy, sz )</li>
+<li>rotate3d( rx, ry, rz, angle )</li>
+</ul>
+<p>Pro-tip: fn3d()变形方法可以触发硬件加速<a href="http://mir.aculo.us/2010/08/05/html5-buzzwords-in-action/">HTML5 buzzwords in action</a></p>
+<blockquote>
+<p>任意3D操作会触发硬件加速，甚至可能变形只用到了2D的，或者没有做任何事情（比如translate3d(0,0,0)）。需要注意的是这只是当前的表现，未来可能变化（这也是为什么我们没有写文档或者鼓励这么做），但是这在很多场景下非常有用，可以显著的提高渲染性能</p>
+</blockquote>
+<h1 id="立方体">立方体</h1>
+<p>创建六个面</p>
+<pre><code>&lt;section class=&quot;container&quot;&gt;
+  &lt;div id=&quot;cube&quot;&gt;
+    &lt;figure class=&quot;front&quot;&gt;1&lt;/figure&gt;
+    &lt;figure class=&quot;back&quot;&gt;2&lt;/figure&gt;
+    &lt;figure class=&quot;right&quot;&gt;3&lt;/figure&gt;
+    &lt;figure class=&quot;left&quot;&gt;4&lt;/figure&gt;
+    &lt;figure class=&quot;top&quot;&gt;5&lt;/figure&gt;
+    &lt;figure class=&quot;bottom&quot;&gt;6&lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p>为6个面设置基本的位置和尺寸样式</p>
+<pre><code>.container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+}
+
+#cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+#cube figure {
+  width: 196px;
+  height: 196px;
+  display: block;
+  position: absolute;
+  border: 2px solid black;
+}</code></pre>
+<p>1、2是前后面，3、4是左右，5、6是上下</p>
+<pre><code>#cube .front  { transform: rotateY(   0deg ); }
+#cube .back   { transform: rotateX( 180deg ); }
+#cube .right  { transform: rotateY(  90deg ); }
+#cube .left   { transform: rotateY( -90deg ); }
+#cube .top    { transform: rotateX(  90deg ); }
+#cube .bottom { transform: rotateX( -90deg ); }</code></pre>
+<p>我们可以移除#cube .front样式声明，只用前面是可见的，上、下、左、右面与视角平行，所以看不到。需要从中心位置移动它们才可以看得到，每个面都是200px宽，每个面都需要从立方体中心移动100px；</p>
+<pre><code>#cube .front  { transform: rotateY(   0deg ) translateZ( 100px ); }
+#cube .back   { transform: rotateX( 180deg ) translateZ( 100px ); }
+#cube .right  { transform: rotateY(  90deg ) translateZ( 100px ); }
+#cube .left   { transform: rotateY( -90deg ) translateZ( 100px ); }
+#cube .top    { transform: rotateX(  90deg ) translateZ( 100px ); }
+#cube .bottom { transform: rotateX( -90deg ) translateZ( 100px ); }</code></pre>
+<p>需要注意的是translateZ方法在rotate方法之后，变形方法的顺序很重要，吸收一会儿屌丝们，每面都先按自己的方向旋转，然后向外移动一个向量。</p>
+<p>为了用户看清楚，我们的3D变形不应该在扭曲不是active的面，但是我们延Z轴移动的时候，这种情况就难以避免。为了保持3D变形的瞬间，Safari先组合元素，然后再应用变形，因此文本会保持变形之前的样式，在3D变形中经常会出现显著的像素变化</p>
+<p><style media="screen"><br />
+.ex {<br />
+text-align: center;<br />
+line-height: 60px;<br />
+margin: 0;<br />
+white-space: pre;<br />
+}</p>
+<pre><code>.font-size {
+  font-size: 2.5em;
+}
+
+.scale {
+  -webkit-transform: scale(2.5);
+     -moz-transform: scale(2.5);
+       -o-transform: scale(2.5);
+          transform: scale(2.5);
+}
+
+.perspective {
+  -webkit-transform: perspective(1200px) translateZ(700px);
+     -moz-transform: perspective(1200px) translateZ(700px);
+       -o-transform: perspective(1200px) translateZ(700px);
+          transform: perspective(1200px) translateZ(700px);
+}</code></pre>
+<p></style></p>
+<p><p class="ex font-size">font-size: 2.5em</p><br />
+<p class="ex scale">transform: scale(2.5);</p><br />
+<p class="ex perspective">transform: perspective(1200) translateZ(700px);</p></p>
+<p>通过<a href="http://desandro.github.io/3dtransforms/examples/perspective-03.html">之前例子</a>可以发现无论perspective的值多小，或者变形的轴心在哪里，面1永远回到初始位置，好像3D变形对它没影响</p>
+<p>为了解决变形和像素保留问题，我们可以向后推一下3D对象，这样前面就会Z轴后移</p>
+<pre><code>#cube { transform: translateZ( -100px ); }</code></pre>
+<p>为了显示每个面，我们需要一个旋转立方体的样式，变形和当前面的方向相反，我们在#box 上切换必要的类来应用变形</p>
+<pre><code>#cube.show-front  { transform: translateZ( -100px ) rotateY(    0deg ); }
+#cube.show-back   { transform: translateZ( -100px ) rotateX( -180deg ); }
+#cube.show-right  { transform: translateZ( -100px ) rotateY(  -90deg ); }
+#cube.show-left   { transform: translateZ( -100px ) rotateY(   90deg ); }
+#cube.show-top    { transform: translateZ( -100px ) rotateX(  -90deg ); }
+#cube.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }</code></pre>
+<p>需要注意变形方法的顺序变了，我们先向后推元素，然后再旋转，再添加transition属性就完成了</p>
+<pre><code>#cube { transition: transform 1s; }</code></pre>
+<p><a href="http://desandro.github.io/3dtransforms/examples/cube-02-show-sides.html">效果demo</a></p>
+<h1 id="旋转木马">旋转木马</h1>
+<p>和创建立方体类似，我们创建一个9个面的旋转木马</p>
+<pre><code>&lt;section class=&quot;container&quot;&gt;
+  &lt;div id=&quot;carousel&quot;&gt;
+    &lt;figure&gt;1&lt;/figure&gt;
+    &lt;figure&gt;2&lt;/figure&gt;
+    &lt;figure&gt;3&lt;/figure&gt;
+    &lt;figure&gt;4&lt;/figure&gt;
+    &lt;figure&gt;5&lt;/figure&gt;
+    &lt;figure&gt;6&lt;/figure&gt;
+    &lt;figure&gt;7&lt;/figure&gt;
+    &lt;figure&gt;8&lt;/figure&gt;
+    &lt;figure&gt;9&lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p>现在应用一下基本的布局样式，给每个#carousel子元素面板20px的间距，这样每个面板的空间为210px</p>
+<pre><code>.container {
+  width: 210px;
+  height: 140px;
+  position: relative;
+  perspective: 1000px;
+}
+
+#carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+#carousel figure {
+  display: block;
+  position: absolute;
+  width: 186px;
+  height: 116px;
+  left: 10px;
+  top: 10px;
+  border: 2px solid black;
+}</code></pre>
+<p>下一步需要旋转每个面，9个面板，如果等分的话每个面板需要旋转40deg相对下一个</p>
+<pre><code>#carousel figure:nth-child(1) { transform: rotateY(   0deg ); }
+#carousel figure:nth-child(2) { transform: rotateY(  40deg ); }
+#carousel figure:nth-child(3) { transform: rotateY(  80deg ); }
+#carousel figure:nth-child(4) { transform: rotateY( 120deg ); }
+#carousel figure:nth-child(5) { transform: rotateY( 160deg ); }
+#carousel figure:nth-child(6) { transform: rotateY( 200deg ); }
+#carousel figure:nth-child(7) { transform: rotateY( 240deg ); }
+#carousel figure:nth-child(8) { transform: rotateY( 280deg ); }
+#carousel figure:nth-child(9) { transform: rotateY( 320deg ); }</code></pre>
+<p>现在外移元素，我们需要计算外移的距离，画一个草图，我们发现只有两个已知数：每个面板的宽度是210px，每个面板相对下一个旋转了40deg。拿出任意一个三角形都是右边的样子</p>
+<p><img src="http://lsly1989.qiniudn.com/cssdiagram.png" /></p>
+<p>我们可以通过正切函数算出r</p>
+<p><img src="http://lsly1989.qiniudn.com/csscalc.png" alt="image" /></p>
+<p>这样我们就知道知道需要移动288px</p>
+<pre><code>#carousel figure:nth-child(1) { transform: rotateY(   0deg ) translateZ( 288px ); }
+#carousel figure:nth-child(2) { transform: rotateY(  40deg ) translateZ( 288px ); }
+#carousel figure:nth-child(3) { transform: rotateY(  80deg ) translateZ( 288px ); }
+#carousel figure:nth-child(4) { transform: rotateY( 120deg ) translateZ( 288px ); }
+#carousel figure:nth-child(5) { transform: rotateY( 160deg ) translateZ( 288px ); }
+#carousel figure:nth-child(6) { transform: rotateY( 200deg ) translateZ( 288px ); }
+#carousel figure:nth-child(7) { transform: rotateY( 240deg ) translateZ( 288px ); }
+#carousel figure:nth-child(8) { transform: rotateY( 280deg ) translateZ( 288px ); }
+#carousel figure:nth-child(9) { transform: rotateY( 320deg ) translateZ( 288px ); }</code></pre>
+<p>如果需要改变面板的宽度或者数量，我们只需要应用一下公式就可以了，在JavaScript中</p>
+<pre><code>var tz = Math.round( ( panelSize / 2 ) / 
+  Math.tan( ( ( Math.PI * 2 ) / numberOfPanels ) / 2 ) );
+// or simplified to
+var tz = Math.round( ( panelSize / 2 ) / 
+  Math.tan( Math.PI / numberOfPanels ) );
+  </code></pre>
+<p>最后我们需要再旋转木马上应用些变形</p>
+<pre><code>transform: translateZ( -288px ) rotateY( -160deg );</code></pre>
+<p><a class="jsbin-embed" href="http://jsbin.com/monavodopaxa/1/embed?output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<script>    $('br').remove();</script>
+</div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2014-11-05 09:29</span> <a href='http://www.cnblogs.com/dolphinX/'>Samaritans</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=4075402" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4075402);return false;">收藏</a></div>
+	</div>
+	<script src="//common.cnblogs.com/highlight/9.1.0/highlight.min.js?id=20160127"></script><script>markdown_highlight();</script><script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=101421,cb_entryId=4075402,cb_blogApp=currentBlogApp,cb_blogUserGuid='0c473040-b30a-e111-b7b9-842b2b196315',cb_entryCreatedDate='2014/11/5 9:29:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2016 Samaritans
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+</body>
+</html>

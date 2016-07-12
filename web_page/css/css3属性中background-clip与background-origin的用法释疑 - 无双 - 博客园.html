@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>css3属性中background-clip与background-origin的用法释疑 - 无双 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=umTYGJ1Xbo61obX_Gqsil3krUSBXOilTLax6nesdN401"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/marvin2/bundle-marvin2-brown.css?v=XX5jb76xyBTDkuz4GHc9T_qGUR-1oOf-1_iv8KwHFqI1"/>
+<link type="text/css" rel="stylesheet" href="/blog/customcss/70308.css?v=0f4Lp59LazZKhM8%2befS%2bnjcawYA%3d"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/2050/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/2050/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/2050/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = '2050', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=2Zs8QG7I27WguWECxCpE9rKckP7dHNZ3hmM9khFPf7U1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top">
+
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/2050/">无双</a></h1>
+<p id="tagline">博学善思，自强不息</p>
+</div>
+<div id="leftmenu">
+
+	
+<h3>导航</h3>
+<ul>
+	<li>
+		<a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a>
+	<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/2050/">首页</a></li>
+	<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li>
+		<a id="MyLinks1_ContactLink" accesskey="9" rel="nofollow" href="http://msg.cnblogs.com/send/%E6%97%A0%E5%8F%8C">联系</a>
+	<li>
+		<a id="MyLinks1_Syndication" href="http://www.cnblogs.com/2050/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/2050/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>
+	<li>
+		<a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+	<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+	
+<h3>统计</h3>
+<ul>
+	<li>
+		随笔 -
+		117
+	<li>
+		文章 -
+		0
+	<li>
+		评论 -
+		496
+	<li>
+		引用 -
+		0
+	</li>
+</ul>
+
+	
+<h3>公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+
+	<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+
+</div>
+<div id="main">
+	
+<div id="post_detail">
+	<div class="post">
+		<h2>
+			<a id="cb_post_title_url" href="http://www.cnblogs.com/2050/archive/2012/11/13/2768289.html">css3属性中background-clip与background-origin的用法释疑</a>
+		</h2>
+		<div id="cnblogs_post_body"><p><strong>困惑在哪里？</strong></p>  <p>background-clip 与 background-origin是css3中引入的两个跟元素背景相关的属性，它们有相同的可选值，即border、padding、content三种，而且这两个属性表示的都是元素背景与元素边框、补白(padding)和内容区域之间的某种关系。</p>  <p>比如，我们想要在边框上显示背景，我们可以使用background-origin帮我们实现（前提是边框要是透明的，不然它会覆盖住背景）</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651421466.png"><img title="code" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="198" alt="code" src="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651436581.png" width="253" border="0" /></a> </p>  <p>这里为了既体现出边框，又体现出边框中的背景，我特意使用了虚线的边框。(我是在chrome上做的demo,所以css3属性只使用了webkit前缀)</p>  <p>运行效果如下：</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651453465.jpg"><img title="img" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="330" alt="img" src="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651476487.jpg" width="339" border="0" /></a> </p>  <p>我们看到黑色部分是虚线的边框（因为边宽宽度很大，所以虚线看起来怪怪的），虚的地方正好露出了背景。</p>  <p>所以使用background-origin能够把背景显示的边框上。那background-clip又是做什么滴捏？</p>  <p>很多书上或文章上的解释是background-clip是用来控制背景的显示范围的，那么是不是background-clip也可以让背景显示在边框上呢？那就试试咯</p>  <p>还是用上面的代码，不过这回是把里面的background-origin改为background-clip</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651485714.png"><img title="code" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="195" alt="code" src="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651496370.png" width="252" border="0" /></a> </p>  <p>然后看下运行结果：</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651541358.jpg"><img title="img" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="339" alt="img" src="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131651566049.jpg" width="340" border="0" /></a> </p>  <p>我们看到背景并没有在边框上显示，看来background-clip并没有这个功能。那这货到底有什么用呢？</p>  <p>&#160;</p>  <p><strong>元芳，关于background-clip与background-origin这两个东西，你怎么看？</strong></p>  <p>大人，经过明察暗访，卑职已经摸清了这二人的底细，容卑职慢慢道来。</p>  <p>首先来看<strong>background-clip</strong>, mozilla官网上的解释是：</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131652007841.png"><img title="1" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="48" alt="1" src="http://images.cnblogs.com/cnblogs_com/2050/201211/20121113165201972.png" width="914" border="0" /></a> </p>  <p>这解释还是很让人蛋疼，义译过来大概就是规定背景图片或颜色是否能在边框下显示。但前面已经说了，把background-clip设为border是没任何效果的。事实上，background-clip的默认值就是border</p>  <p>其实background-clip的真正作用是决定背景在哪些区域显示。如果它的值为border,则背景在元素的边框、补白和内容区域都会显示；如果值为padding,则背景只会在补白和内容区域显示；如果值为content，则背景只会在内容区域显示。</p>  <p>那为毛前面的background-clip:border不起作用？这就得说说background-origin了</p>  <p>这回还是不看什么官网啊手册啊什么的了，我直接说说我的理解。</p>  <p><strong>background-origin</strong>是指背景显示的区域，或者说背景是从哪个区域开始绘制的(边框、补白或内容区域)。</p>  <p>还不理解的话那就这么来说吧，background-position总该知道吧？它指定了背景的位置，比如background-position:0px 0px ；那这个0像素是指相对于哪里来说的呢？这就涉及到一个参照点的问题了。<strong>background-origin</strong>的作用就是指定background-position的参照点是在边框区域的左上角，还是在补白区域的左上角，或是在内容区域的左上角，对应的三个值就分别是border、padding、content. background-position的也可以是left、right等方向词语，这时候就不能说参照点了，而应该说参照面，如果值为background-origin的值为border,则参照面包括边框区域、补白区域、内容区域三个部分，如果值为padding,则参照面只包括补白区域和内容区域，如果值为content,则不用我讲了吧。</p>  <p>这个时候再来看看前面那个问题就豁然开朗了，你把background-clip设为border,这时候边框里是能显示背景的，但问题是背景并不是从边框的左上角开始绘制的，它是从补白区域才开始绘制的，女神背景压根就没想要搭理屌丝边框，你屌丝摆出一个怀抱来迎接女神又有个屁用啊，赶紧细软跑吧。background-origin的默认值是padding,也就是默认从补白区域开始绘制背景。</p>  <p>但屌丝终有逆袭日，木耳再无回粉时，当变成黑木耳女神再来投怀送抱时，屌丝也完全可以说一声：不！</p>  <p>所以当background-origin的值为border，而background-clip的值为padding时，虽然背景是从边框区域开始绘制的，但因为设定了边框不显示背景，所以本来属于边框的那一部分背景就不会显示出来，就好像背景图片被裁剪了一部分一样。看下代码：</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131652023579.png"><img title="code" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="230" alt="code" src="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131652036186.png" width="276" border="0" /></a> </p>  <p>效果如下：</p>  <p><a href="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131652051957.jpg"><img title="img" style="border-right: 0px; border-top: 0px; display: inline; border-left: 0px; border-bottom: 0px" height="330" alt="img" src="http://images.cnblogs.com/cnblogs_com/2050/201211/201211131652069581.jpg" width="334" border="0" /></a> </p>  <p>&#160;</p>  <p><strong><font color="#ff0000">最后总结一下</font></strong></p>  <p><strong>background-clip：</strong><em>border|padding|content</em></p>  <p>该属性指定了背景在哪些区域可以显示，但与背景开始绘制的位置无关，背景的绘制的位置可以出现在不显示背景的区域，这时就相当于背景图片被不显示背景的区域裁剪了一部分一样。</p>  <p><strong>background-origin：</strong><em>padding|border|content</em></p>  <p>该属性指定了背景从哪个区域(边框、补白或内容)开始绘制,但也仅仅能控制背景开始绘制的位置，你可以用这个属性在边框上绘制背景，但边框上的背景显不显示出来那就要由background-clip来决定了</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		<p class="postfoot">
+			posted on <span id="post-date">2012-11-13 16:52</span> <a href='http://www.cnblogs.com/2050/'>无双</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=2768289" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2768289);return false;">收藏</a>
+		</p>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=70308,cb_entryId=2768289,cb_blogApp=currentBlogApp,cb_blogUserGuid='8c3fc9fe-9856-df11-ba8f-001cf0cd104b',cb_entryCreatedDate='2012/11/13 16:52:00';loadViewCount(cb_entryId);</script>
+	
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br />
+	Copyright &copy; 无双
+</p>
+</body>
+</html>

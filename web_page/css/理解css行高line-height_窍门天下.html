@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>理解css行高line-height_窍门天下</title>
+<meta name="keywords" content="理解css行高line-height ,多行文本垂直居中 line-height纯数字单位和%百分比单位" />
+<meta name="description" content="line-height的概念line-height CSS中的这一属性，我在学校的时候就已经“会”使用了，之所以加上引号，因为一直对line-height一知半解，用的最多的就是单行文本居中。line-height（行高）从字面上理解就是行的高度，而实际呢行高指" />
+<link type="text/css" rel="stylesheet" href="/skin/2015/css/public.css" />
+<link type="text/css" rel="stylesheet" href="/skin/2015/css/inside.css" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5d629b736bb7f871023e2adba186eb69";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <script type="text/javascript">
+    //手机跳转
+    if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i))) {
+        location.replace('http://m.qmtx3.com/view.php?id=37230');
+    }
+    </script>
+</head>
+
+
+<body>
+<div class="g_nav">
+    <div class="w">
+        <a href="/">首页</a>
+        <a href="/live/">日常生活</a>
+        <a href="/sjly/">社交礼仪</a>
+        <a href="/beauty/">美容健身</a>
+        <a href="/pc/">电脑网络</a>
+        <a href="/digital/phone/">手机技巧</a>
+        <a href="/digital/">电子数码</a>
+        <a href="/fwly/">废物利用</a>
+    </div>
+</div>
+
+
+<div class="w g_pos">
+    <a href="/">首页</a>&nbsp;>&nbsp;<a href="/pc/">电脑网络</a>&nbsp;>&nbsp;<a href="/pc/web/">网站建设</a>&nbsp;&gt;&nbsp;理解css行高line-height详情
+</div>
+<div class="inside_wrap w">
+    <div class="left_main fl">
+        <div class="arc_bot_3 left_main_cen">
+            <div class="pic_news_x clearfix">
+                <!-- 【qmtx3 标题上原生】 -->
+                <script type="text/javascript">
+                var cpro_id="u2419213";
+                (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"669",rsi1:"140",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"0",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}
+                </script>
+                <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+            </div>
+        </div>
+        <div class="arc_hd">
+            <h1 class="arc_tit mb_5 fs_24 fnb ft_c">理解css行高line-height</h1>
+            <ul class="arc_attr left_main_cen fc_999 mb20 clearfix">
+                <li class="item date">2015-10-22 10:44:18</li>
+                <li class="item from">阅读：<i id="downAmount">...</i></li>
+                <li class="item share">
+                    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb">
+            <script type="text/javascript">
+                /*【qmtx3 内容上文字链】*/
+                var cpro_id = "u2419235";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+
+        <div class="arc_body left_main_cen">
+            <div style="float:right; margin:0 0 10px 10px;">
+                <script type="text/javascript">
+                    /*【qmtx3 内容上画中画】*/
+                    var cpro_id = "u2419217";
+                </script>
+                <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+            </div>
+            <h2><strong>line-height的概念</strong></h2><p>line-height CSS中的这一属性，我在学校的时候就已经“会”使用了，之所以加上引号，因为一直对line-height一知半解，用的最多的就是单行文本居中。line-height（行高）从字面上理解就是行的高度，而实际呢行高指的是两<strong>基线</strong>之间的垂直距离，这里有个名词基线，其实除了基线还有如底线、中线、顶线。一图胜千言，来张片片吧</p><p>[caption id=&quot;attachment_81&quot; align=&quot;aligncenter&quot; width=&quot;810&quot;]<img alt="基线、底线、中线、顶线示意图" class="size-full wp-image-81 wp-caption aligncenter" height="383" data-cke-saved-src="http://www.lmqy.net/wp-content/uploads/2015/10/1.gif" src="/d/file/pc/web/2015-10-22/1445481862121359.gif" width="810"/>基线、底线、中线、顶线示意图[/caption]</p><p>受浏览器类型、版本及字体等因素影响，制图并不是特别标准。另外图片“？”所示的高度，有人说是字体size，但我自己没找到相关的介绍，希望有了解的朋友指出。</p><h2><strong>line-height与line box高度</strong></h2><p>继续下面的内容之前，很有有必要先简单了解下<strong>line box模型</strong>，最初很长一段时间，我都认为CSS中一般由height显示指定或者由文字内容撑开元素来产生高度，这里要说明一下的是后者，就是文字并不一定能撑开高度，即文字不是产生高度最直接的原因，真正产生高度的是line-height及line box，line box是浏览器渲染模式中的一个概念，line box指的是一个虚拟的矩形框，它并不会直接呈现出来。line box内存在多个inline box，众多inline box里高度最高的inline box高度就是该line box的高度。先上一段很普通的代码</p><pre class="brush:xml;">&lt;div&gt;我的外面有一个隐形的line&nbsp;box&lt;span&gt;&nbsp;里面可能包含多个&nbsp;&lt;/span&gt;&lt;strong&gt;&nbsp;inline&nbsp;box&nbsp;&lt;/strong&gt;,哈哈！&lt;/div&gt;</pre><p>这段代码中就包含了几个inline box，span、strong、em、i等之类的内联元素标签会形成inline box，而没有任何标签包裹裸奔的文本形成匿名inline box，由这些inline box最终形成外面的line box，详细如下图注</p><p>[caption id=&quot;attachment_89&quot; align=&quot;aligncenter&quot; width=&quot;742&quot;]<img alt="inline box组成line box图注" class="size-full wp-image-89 wp-caption aligncenter" height="219" data-cke-saved-src="http://www.lmqy.net/wp-content/uploads/2015/10/2.gif" src="/d/file/pc/web/2015-10-22/1445481862283490.gif" width="742"/>inline box组成line box图注[/caption]</p><p>line box模型是个很重要的概念，很多问题的理解都会需要他，另外还有containing block、Block formatting context、inline formatting context等等，这里不深入了解了，后面有空再另外写个文章专门介绍line box和相关的内容。</p><h2><strong>line-height的属性值和单位</strong></h2><p>有了上面基线等四条线和line box模型的简单了解，现在就来看看line-height有哪些属性值</p><table class="dataintable cke_show_border"><tbody><tr class="firstRow"><th>值</th><th>描述</th></tr><tr><td>normal</td><td>默认。设置合理的行间距。</td></tr><tr><td><em>number</em></td><td>设置数字，此数字会与<span style="color:#FF0000;">当前</span>的字体尺寸相乘来设置行间距。</td></tr><tr><td><em>length</em></td><td>设置固定的行间距。单位em，px，pt等等</td></tr><tr><td><em>%</em></td><td><em>基于当前字体尺寸的百分比行间距。</em></td></tr><tr><td>inherit</td><td>规定应该从父元素继承 line-height 属性的值。</td></tr></tbody></table><p>上面的描述相对比较官方，不怎么好理解，这里说下我对%和number的理解，其他相信都比较好容易，line-height是可以继承的，但是继承的方式不太一样。</p><p><span style="background-color:#AFEEEE;">%在设置某父元素（P）的line-height值为x%时，那么所有P的子元素（C）line-height就确定死了。具体的值为p.fontSize * x%;</span></p><p><span style="background-color:#AFEEEE;">number纯数字表现为，在设置某父元素（P）的line-height值为num时，确定的只是因子或者说成是一个比例num，P的子元素（C）line-height = num * C.fontSize;</span></p><p>$和length其实是差不多的，%只是会根据自身的字体大小转换一下。</p><h2><strong>line-height的实际应用</strong></h2><p>1、纯数字单位的应用</p><p>做项目的时候经常会碰到编辑器里出来的内容，编辑器中用户可以随意设置字体大小，如果在外框中line-height设置为%或者length形式，就很有可能出来文字重叠的情况，如下代码和图示</p><pre class="brush:xml;">&lt;div&nbsp;style=&quot;margin-bottom:20px;&nbsp;line-height:20px;&nbsp;font-size:12px;&quot;&gt;
+	&lt;div&nbsp;style=&quot;font-size:30px;&quot;&gt;我可能是编辑器&lt;br&nbsp;/&gt;产生的内容&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&nbsp;style=&quot;margin-bottom:20px;&nbsp;line-height:160%;&nbsp;font-size:12px;&quot;&gt;
+	&lt;div&nbsp;style=&quot;font-size:30px;&quot;&gt;我可能是编辑器&lt;br&nbsp;/&gt;产生的内容&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div&nbsp;style=&quot;margin-bottom:20px;&nbsp;line-height:1.6;&nbsp;font-size:12px;&quot;&gt;
+	&lt;div&nbsp;style=&quot;font-size:30px;&quot;&gt;我可能是编辑器&lt;br&nbsp;/&gt;产生的内容&lt;/div&gt;
+&lt;/div&gt;</pre><p>[caption id=&quot;attachment_96&quot; align=&quot;aligncenter&quot; width=&quot;240&quot;]<img alt="line-height单位设置" class="size-full wp-image-96 wp-caption aligncenter" height="230" data-cke-saved-src="http://www.lmqy.net/wp-content/uploads/2015/10/1.jpg" src="/d/file/pc/web/2015-10-22/1445481864557112.jpg" width="240"/>line-height单位设置[/caption]</p><p>所以，number纯数字作为line-height的单位是不错的选择</p><p>2、line-height实现元素垂直居中</p><p>单行文本的就不说了，地球人都知道</p><p>下面看下固定高度框内多行文本垂直居，代码如下：</p><p>CSS内容</p><pre>.line-height-box{&nbsp;margin-bottom:222px;&nbsp;border:solid&nbsp;1px&nbsp;red;&nbsp;width:400px;&nbsp;line-height:400px;}
+.line-height-box&nbsp;.text{&nbsp;display:inline-block;&nbsp;line-height:1.6;&nbsp;vertical-align:middle;}
+.line-height-box&nbsp;.vertical{&nbsp;display:inline-block;&nbsp;width:0;&nbsp;font-size:0;&nbsp;overflow:hidden;&nbsp;vertical-align:middle;}</pre><p>HTML内容</p><pre class="brush:xml;">&lt;div&nbsp;class=&quot;line-height-box&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;text&quot;&gt;line-height实现固定高度框内多行文本垂直居中&lt;br&nbsp;/&gt;\\更多的文字显示换行效果&lt;/span&gt;&lt;span&nbsp;class=&quot;vertical&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;/div&gt;</pre><p>为什么他就居中显示了呢？一个一个来分析下，首先外层.line-height-box设置了line-height:400px;这样就产生了一个高度，且由于line-height的继承性，里面的子元素.vertical的line-height及height也为400，但.text重置了line-height所以他的高度为自身内容框的高度。同时.vertical和.text都设置了display:inline-block;属性使得他们会在一行显示，最后的大招vertical-align:middle;居中对齐，如下图所示。</p><p>[caption id=&quot;attachment_101&quot; align=&quot;aligncenter&quot; width=&quot;469&quot;]<img alt="line-height实现固定高度框内多行文本垂直居中" class="size-full wp-image-101 wp-caption aligncenter" height="469" data-cke-saved-src="http://www.lmqy.net/wp-content/uploads/2015/10/11.gif" src="/d/file/pc/web/2015-10-22/1445481864897572.gif" width="469"/>line-height实现固定高度框内多行文本垂直居中[/caption]</p><p>关键点就是文本区域与一个固定高度居中对齐，所以把 line-height:400px;放到.vertical中也是可以的；如果不考虑ie6直接把&lt;span class=&quot;vertical&quot;&gt;&amp;nbsp;&lt;/span&gt;去掉都可以，因为外层有高度了。</p><h2><strong>line-height避免haslayout产生IE6 Bug</strong></h2><p>haslayout是IE家的东东，这里引用一段百科的内容</p><blockquote><p>haslayout 是Windows Internet Explorer渲染引擎的一个内部组成部分。在InternetExplorer中，一个元素要么自己对自身的内容进行计算大小和组织，要么依赖于父元素来计算尺寸和组织内容。为了调节这两个不同的概念，渲染引擎采用了 hasLayout 的属性，属性值可以为true或false。当一个元素的 hasLayout属性值为true时，我们说这个元素有一个布局（layout）</p></blockquote><p>让元素haslayout可以解决IE中很多bug，比如清除浮动产生的破坏等等，但是有的时候需要避免haslayout，如下代码</p><pre class="brush:xml;">&lt;div&nbsp;style=&quot;width:300px;&nbsp;height:150px;&nbsp;border:solid&nbsp;1px&nbsp;red;&quot;&gt;
+	&lt;span&nbsp;style=&quot;display:inline-block;&nbsp;border:solid&nbsp;1px&nbsp;green;&quot;&gt;&lt;i&nbsp;style=&quot;display:block;&nbsp;line-height:50px;&quot;&gt;随便一点内容&lt;/i&gt;&lt;/span&gt;
+	&lt;span&nbsp;style=&quot;display:inline-block;&nbsp;border:solid&nbsp;1px&nbsp;green;&quot;&gt;&lt;i&nbsp;style=&quot;display:block;&nbsp;height:50px;&quot;&gt;随便一点内容&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;</pre><p>在现代浏览器和IE6里产生的效果如下图：</p><p style="text-align: center;">[caption id=&quot;attachment_103&quot; align=&quot;aligncenter&quot; width=&quot;328&quot;]<img alt="hasLayout使inline-block元素宽度100%的Bug" class="size-full wp-image-103 wp-caption aligncenter" height="351" data-cke-saved-src="http://www.lmqy.net/wp-content/uploads/2015/10/12.gif" src="/d/file/pc/web/2015-10-22/1445481864100431.gif" title="hasLayout使inline-block元素宽度100%的Bug" width="328"/>hasLayout使inline-block元素宽度100%的Bug[/caption]</p><p>在IE6中宽度变成了100%，这并不是我们想要的结果，产生这个Bug的条件<span style="color:#FF0000;">父元素display:inline-block;子元素display:block;且haslayout</span>,CSS使元素haslayout的属性有很多，设置height为一个非auto的值，只是其中之一，即这里的height:50px;让i元素有了haslayout。</p><p>如果父元素换成块级元素也会出现该bug,如：</p><pre class="brush:xml;">&lt;div&nbsp;style=&quot;display:inline-block;&nbsp;border:solid&nbsp;1px&nbsp;green;&nbsp;*display:inline;&nbsp;*zoom:1;&quot;&gt;&lt;i&nbsp;style=&quot;display:block;&nbsp;height:50px;&quot;&gt;随便一点内容&lt;/i&gt;&lt;/div&gt;</pre><h2><strong>终于可以结尾了</strong></h2><p>第一次写这么长的文章，真的太累、太累了，不知道能不能坚持下去。</p><p><br/></p>            <p style="color:#ff0000;">相关文章推荐：</p><p>
+            <strong><span style="color:#0000ff;">1.</span><a href="http://www.qmtx3.com/pc/web/201510/37835.html" target="_blank"><span style="color:#0000ff;">CSS属性line-height新解</span></a></strong></p>
+            <p>        </div>
+        <div class="mb">
+            <!-- 【qmtx3 内容下原生】 -->
+            <script type="text/javascript">
+            var cpro_id="u2419244";
+            (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"669",rsi1:"250",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"0",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"120",pih:"85",ptp:"0"}
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+        <div class="g_pages">
+            
+        </div>
+        <div class="arc-property clearfix">
+            <div class="property fl">
+                <p>文章标题：<strong>理解css行高line-height</strong></p>
+                <p>文章地址：<a href="http://www.qmtx3.com/pc/web/201510/37230.html">http://www.qmtx3.com/pc/web/201510/37230.html</a></p>
+                <p>文章标签：<a href="http://www.qmtx3.com/tags-line-height.html">line-height</a> <a href="http://www.qmtx3.com/tags-linebox.html">line box</a> <a href="http://www.qmtx3.com/tags-inlineboxes.html">inline boxes</a> <a href="http://www.qmtx3.com/tags-haslayout.html">haslayout</a> </p>
+                <p>所属栏目：<a href="/pc/">电脑网络</a>&nbsp;&gt;&nbsp;<a href="/pc/web/">网站建设</a></p>
+            </div>
+            <div class="related fr">
+                <ul>
+                    
+                    <!-- 最新 -->
+                                        <li class="item">·<a title="jQuery获取元素索引index()方法" href="/pc/web/201511/39177.html">jQuery获取元素索引index()方法</a></li>
+                                        <li class="item">·<a title="使用John the ripper工具来尝试破解Linux密码" href="/pc/web/201511/39014.html">使用John the ripper工具来尝试破解Linux密码</a></li>
+                                        <li class="item">·<a title="初探：视觉格式化模型（Visual formatting model）" href="/pc/web/201511/38977.html">初探：视觉格式化模型（Visual formatting model）</a></li>
+                                        <li class="item">·<a title="PHP正则表达式之捕获组与非捕获组" href="/pc/web/201511/38924.html">PHP正则表达式之捕获组与非捕获组</a></li>
+                                        <li class="item">·<a title="php实现点击可刷新验证码" href="/pc/web/201511/38923.html">php实现点击可刷新验证码</a></li>
+                                    </ul>
+            </div>
+        </div>
+        <div style="margin:0 auto 10px;">
+            <script type="text/javascript">
+                /*【qmtx3 文章属性下文字链】*/
+                var cpro_id = "u2419263";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+        
+                <div class="arc_bot_1 mb20 left_main_cen">
+            <div class="hot_pic fl mb20">
+                <script type="text/javascript">
+                    /*【qmtx3 内容四图左】*/
+                    var cpro_id = "u2419269";
+                </script>
+                <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+            </div>
+            <ul class="pic_news_x fl clearfix">
+                                <li class="item mb clearfix fl">
+                    <a class="img" href="/qiquxiaohua/201510/37433.html" title="妹子玩的是限制级运动"><img class="lazy" original="/d/file/diythumb/201510/37433_154_97_1445602659.jpg" height="97" width="154" alt="妹子玩的是限制级运动" /></a>
+                    <div class="t hidtit_2  ft_c"><a class="fs_14" href="/qiquxiaohua/201510/37433.html" title="妹子玩的是限制级运动">妹子玩的是限制级运动</a></div>
+                </li>
+                                <li class="item mb clearfix fr">
+                    <a class="img" href="/qiquxiaohua/201510/37432.html" title="他俩让我受到了一千点伤害"><img class="lazy" original="/d/file/diythumb/201510/37432_154_97_1445602652.jpg" height="97" width="154" alt="他俩让我受到了一千点伤害" /></a>
+                    <div class="t hidtit_2  ft_c"><a class="fs_14" href="/qiquxiaohua/201510/37432.html" title="他俩让我受到了一千点伤害">他俩让我受到了一千点伤害</a></div>
+                </li>
+                                <li class="item mb clearfix fl">
+                    <a class="img" href="/qiquxiaohua/201510/37430.html" title="随时随地都要傲娇的神态"><img class="lazy" original="/d/file/diythumb/201510/37430_154_97_1445602631.jpg" height="97" width="154" alt="随时随地都要傲娇的神态" /></a>
+                    <div class="t hidtit_2  ft_c"><a class="fs_14" href="/qiquxiaohua/201510/37430.html" title="随时随地都要傲娇的神态">随时随地都要傲娇的神态</a></div>
+                </li>
+                                <li class="item mb clearfix fr">
+                    <a class="img" href="/qiquxiaohua/201510/37429.html" title="老师紧身衣性感教学"><img class="lazy" original="/d/file/diythumb/201510/37429_154_97_1445599165.jpg" height="97" width="154" alt="老师紧身衣性感教学" /></a>
+                    <div class="t hidtit_2  ft_c"><a class="fs_14" href="/qiquxiaohua/201510/37429.html" title="老师紧身衣性感教学">老师紧身衣性感教学</a></div>
+                </li>
+                            </ul>
+        </div>
+        <div class="mb20">
+            <script type="text/javascript">
+                /*【qmtx3 内容四图下】*/
+                var cpro_id = "u2419273";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+
+        <div class="arc_bot_3 left_main_cen">
+            <h2 class="hd mb15 fs_20">奇闻笑话</h2>
+            <ul class="pic_news_x clearfix">
+                                <li class="item fl clearfix">
+                    <a class="img_tit fl" href="/yule/201409/35690.html" title="内涵笑话:本人男，去健身房运动，休息，教练说该起来运动啦。我..."><img class="lazy" original="/d/file/diythumb/201409/35690_152_150_1410348394.jpg" height="150" width="152" alt="内涵笑话:本人男，去健身房运动，休息，教练说该起来运动啦。我..." /><span class="t fs_14">内涵笑话:本人男，去健身房</span></a>
+                </li>
+                                <li class="item fl clearfix">
+                    <a class="img_tit fl" href="/yule/201409/35684.html" title="内涵笑话:这样合适吗。"><img class="lazy" original="/d/file/diythumb/201409/35684_152_150_1410348380.png" height="150" width="152" alt="内涵笑话:这样合适吗。" /><span class="t fs_14">内涵笑话:这样合适吗。</span></a>
+                </li>
+                                <li class="item fl clearfix">
+                    <a class="img_tit fl" href="/yule/201410/36096.html" title="好大的眼睛"><img class="lazy" original="/d/file/diythumb/201410/36096_152_150_1413163177.jpg" height="150" width="152" alt="好大的眼睛" /><span class="t fs_14">好大的眼睛</span></a>
+                </li>
+                                <li class="item fl clearfix">
+                    <a class="img_tit fl" href="/yule/201410/36412.html" title="我们都是深井冰(198)：如果这都不算真爱"><img class="lazy" original="/d/file/diythumb/201410/36412_152_150_1414717763.jpg" height="150" width="152" alt="我们都是深井冰(198)：如果这都不算真爱" /><span class="t fs_14">我们都是深井冰(198)：如果</span></a>
+                </li>
+                            </ul>
+        </div>
+        
+
+    </div>
+    <div class="inside_side w300 fr">
+        <div class="mb">
+            <!-- 【qmtx3 内容右一橱窗】 -->
+            <script type="text/javascript">
+                var cpro_id="u2419283";
+                (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"300",rsi1:"300",pat:"17",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"1",adp:"1",ptt:"0",titFF:"",titFS:"14",rss2:"#000000",titSU:"0"}
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+
+        <div class="arc mb">
+            <h2 class="hd mb15">网站建设最新文章</h2>
+            <div class="md">
+                <ul class="g_list_rank fs_14">
+                                    <li class="item"><span class="num num_top">1</span><a title="php实现点击可刷新验证码" href="/pc/web/201511/38923.html">php实现点击可刷新验证码</a></li>
+                                    <li class="item"><span class="num num_top">2</span><a title="php实现处理输入转义字符的代码" href="/pc/web/201511/38922.html">php实现处理输入转义字符的代码</a></li>
+                                    <li class="item"><span class="num num_top">3</span><a title="PHP 7的一些引人注目的新特性简单介绍" href="/pc/web/201511/38921.html">PHP 7的一些引人注目的新特性简单介绍</a></li>
+                                    <li class="item"><span class="num">4</span><a title="在PHP中使用FastCGI解析漏洞及修复方案" href="/pc/web/201511/38920.html">在PHP中使用FastCGI解析漏洞及修复方案</a></li>
+                                    <li class="item"><span class="num">5</span><a title="深入理解PHP内核（二）之SAPI探究" href="/pc/web/201511/38919.html">深入理解PHP内核（二）之SAPI探究</a></li>
+                                    <li class="item"><span class="num">6</span><a title="PHP防止刷新重复提交页面的示例代码" href="/pc/web/201511/38918.html">PHP防止刷新重复提交页面的示例代码</a></li>
+                                    <li class="item"><span class="num">7</span><a title="2款PHP无限级分类实例代码" href="/pc/web/201511/38917.html">2款PHP无限级分类实例代码</a></li>
+                                    <li class="item"><span class="num">8</span><a title="修复ShopNC使用QQ 互联时提示100010 错误" href="/pc/web/201511/38916.html">修复ShopNC使用QQ 互联时提示100010 错误</a></li>
+                                </ul>
+            </div>
+        </div>
+
+        <div class="mb">
+            <!-- 【qmtx3 内容右二 原生】 -->
+            <script type="text/javascript">
+            var cpro_id="u2419287";
+            (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"300",rsi1:"250",pat:"6",tn:"baiduCustNativeAD",rss1:"#F7F7F7",conBW:"0",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"140",pih:"90",ptp:"0"}
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+
+        <div class="photo mb20">
+            <h2 class="hd">网站建设热点文章</h2>
+            <div class="md">
+                <ul class="picarc_news mb20 clearfix">
+                                        <li class="item mt20 clearfix">
+                        <a class="img fl mr" href="/pc/web/201511/38914.html" title="php开发工具有哪五款"><img class="lazy" original="/d/file/diythumb/201511/38914_70_70_1447512602.jpg" height="70" width="70" alt="php开发工具有哪五款" /></a>
+                        <div class="autofix">
+                            <div class="t hidtit_2 mb15"><a class="fs_16" href="/pc/web/201511/38914.html" title="php开发工具有哪五款">php开发工具有哪五款</a></div>
+                            <p class="infos hidtit fc_666"> 由于最近小编要自学php，所以整理了一些常用的php开发</p>
+                        </div>
+                    </li>
+                                        <li class="item mt20 clearfix">
+                        <a class="img fl mr" href="/pc/web/201511/38913.html" title="再推荐十款免费的php开发工具"><img class="lazy" original="/d/file/diythumb/201511/38913_70_70_1447515568.gif" height="70" width="70" alt="再推荐十款免费的php开发工具" /></a>
+                        <div class="autofix">
+                            <div class="t hidtit_2 mb15"><a class="fs_16" href="/pc/web/201511/38913.html" title="再推荐十款免费的php开发工具">再推荐十款免费的php开发</a></div>
+                            <p class="infos hidtit fc_666">下面介绍10个免费、强大的PHP编辑器/开发工具。这些编</p>
+                        </div>
+                    </li>
+                                        <li class="item mt20 clearfix">
+                        <a class="img fl mr" href="/pc/web/201511/38912.html" title="PHP中使用GD库绘制折线图 折线统计图的绘制方法"><img class="lazy" original="/d/file/diythumb/201511/38912_70_70_1447514566.png" height="70" width="70" alt="PHP中使用GD库绘制折线图 折线统计图的绘制方法" /></a>
+                        <div class="autofix">
+                            <div class="t hidtit_2 mb15"><a class="fs_16" href="/pc/web/201511/38912.html" title="PHP中使用GD库绘制折线图 折线统计图的绘制方法">PHP中使用GD库绘制折线图 </a></div>
+                            <p class="infos hidtit fc_666">在PHP中，有一些简单的图像函数是可以直接使用的，但大多</p>
+                        </div>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="mb20">
+            <script type="text/javascript">
+                /*【qmtx3 内容右 悬停】*/
+                var cpro_id = "u2419296";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+    </div>
+</div>
+
+<script src="/skin/2015/js/jquery1.7.2.js" type="text/javascript"></script>
+<!-- 底部 -->
+<div class="footer">
+            <div class="wlinks"><a href="/">窍门天下首页</a> | <a href="/aboutqmtx/about.html" rel="nofollow">关于窍门网</a> | <a href="/aboutqmtx/service.html" rel="nofollow">服务条款</a> | <a href="/aboutqmtx/webad.html" rel="nofollow">广告服务</a> | <a href="/aboutqmtx/webmap.html" rel="nofollow">网站地图</a></div>
+            <p>Copyright &copy; 2004 - 2013 窍门天下.&nbsp;&nbsp;All Rights Reserved&nbsp;&nbsp;窍门天下QQ交流群：292393382</p>
+            备案号:蜀ICP备11019366号-4
+</div>
+<script type="text/javascript">
+    /*【qmtx3】对联*/
+var cpro_id = "u2419208";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+<script src="/e/extend/ck/"></script>
+
+
+<script type="text/javascript">
+    /*为了保证用户体验及收益，图片大小不得小于：200*180*/
+    /*【qmtx3 图+】*/
+var cpro_id = "u2419302";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/i.js" type="text/javascript"></script>
+
+
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<script src="/e/public/ViewClick?classid=90&id=37230&addclick=1"></script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+            
+</body>
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js no-auth ">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-ZA-Response-Id" content="488f17592fc146a195b0c40afc9b7e86">
+
+<title>&lt;img&gt;元素是块元素还是内连元素？ - 戴彬的回答 - 知乎</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://answers/30728140">
+
+<meta property="og:description" content="img是inline元素，但是他同时也是replace元素，他有着特殊的表现：1. 可以设置width/height;2. 默认的，img元素在屏幕占据的空间与其图片的实际像素一致，除非CSS有设置或者自身的width/height HTML 属性有设置3. 如果img标签的包裹元素为也为inline元素，…" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/25402556/answer/30728140">
+<meta id="znonce" name="znonce" content="718502a45c554ac89bf21b4086db1db9">
+
+
+
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-152.87c020b9.png" sizes="152x152">
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-120.496c913b.png" sizes="120x120">
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-76.dcf79352.png" sizes="76x76">
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-60.9911cffb.png" sizes="60x60">
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/revved/-/css/z.34ac988c.css">
+
+
+
+<meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" />
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+<script src="http://static.zhihu.com/static/revved/-/js/instant.e7a17de6.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi ">
+
+
+
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知乎</a>
+
+
+
+<ul class="topnav-noauth clearfix">
+<li>
+<a href="javascript:;" class="js-signup-noauth"><i class="zg-icon zg-icon-dd-home"></i>注册知乎</a>
+</li>
+<li>
+<a href="javascript:;" class="js-signin-noauth">登录</a>
+</li>
+</ul>
+
+
+
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
+
+
+
+<input type="hidden" name="type" value="content">
+<label for="q" class="hide-text">知乎搜索</label><input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索你感兴趣的内容...">
+<button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span class="sprite-global-icon-magnifier-dark"></span></button>
+</form>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-nav-home">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
+</li>
+
+
+
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+</li>
+
+<li class="zu-top-nav-li " id="zh-top-nav-explore">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content message">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content user" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content thanks" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="zg-wrap zu-main clearfix with-indention-votebar"  role="main">
+<div class="zu-main-content">
+<div class="zu-main-content-inner">
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19550901"
+data-tip="t$b$19550901" data-token="19550901" data-topicid="225">
+前端开发
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="false">
+<h2 class="zm-item-title">
+
+<a href="/question/25402556">
+&lt;img&gt;元素是块元素还是内连元素？
+</a>
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="2343662" data-action="/question/detail">
+
+<div class="zm-editable-content">本人自学html,，打算从事网编，看到块元素和内连元素的分类后对&lt;img&gt;元素属于那一阵营有点懵懂啊</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>添加评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+
+<div class="zh-answers-title">
+<h3><a href="/question/25402556" class="zg-link-litblue">查看全部 9 个回答</a></h3>
+</div>
+
+<div id="zh-question-answer-wrap" class="zh-question-answer-wrapper autohide-false"
+data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt;.zm-item-answer&quot;}"
+style="border-bottom:none;">
+<div tabindex="-1" class="zm-item-answer  zm-item-expanded"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7675818"
+data-atoken="30728140"
+data-collapsed="0"
+data-created="1411092880"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-copyable="1"
+
+
+>
+<link itemprop="url" href="/question/25402556/answer/30728140">
+<meta itemprop="answer-id" content="7675818">
+<meta itemprop="answer-url-token" content="30728140">
+<a class="zg-anchor-hidden" name="answer-7675818"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="count">6</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link"
+
+href="/people/undersound" target="_blank" data-tip="p$t$undersound"
+
+><img src="https://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar avatar"
+></a>
+
+
+<a class="author-link"
+data-tip="p$t$undersound"
+target="_blank" href="/people/undersound"
+>戴彬</a>
+
+
+<span title="frankdai.com" class="bio">，<a href="//link.zhihu.com/?target=http%3A//frankdai.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">frankdai.com</span><span class="invisible"></span><i class="icon-external"></i></a></span>
+
+</div>
+<div class="zm-item-vote-info" data-votecount="6">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">6</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="2343662" data-action="/answer/content" data-author-name="戴彬" data-entry-url="/question/25402556/answer/30728140">
+
+
+<div class="zh-summary summary clearfix" style="display:none;">
+
+img是inline元素，但是他同时也是replace元素，他有着特殊的表现：1. 可以设置width/height;2. 默认的，img元素在屏幕占据的空间与其图片的实际像素一致，除非CSS有设置或者自身的width/height HTML 属性有设置3. 如果img标签的包裹元素为也为inline元素，…
+
+<a href="/question/25402556/answer/30728140" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+img是inline元素，但是他同时也是replace元素，他有着特殊的表现：<br><br>1. 可以设置width/height;<br>2. 默认的，img元素在屏幕占据的空间与其图片的实际像素一致，除非CSS有设置或者自身的width/height HTML 属性有设置<br>3. 如果img标签的包裹元素为也为inline元素，则img的边界可以超出其直接父元素的边界，直到自己的宽、高达到最大或者设定值为止，而且文档流中img的兄弟元素也不能遮盖住img。最常见的就是&lt;a&gt;里面包含的&lt;img&gt;<br>4. 所以从行为上看,img元素作为替换元素，有着类似于Inline-block的行为，尽管在SPEC里面，他的确是一个inline元素<br><br>Eric Meyer曾经很详细的解释过替换元素的概念，请参考他的CSS权威指南
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="7675818-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="/question/25402556/answer/30728140">发布于 2014-09-19</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="more-awesome"><span>更多回答</span></div>
+<div class="awesome-answer-list">
+
+<div class="feed-item">
+<div class="content">
+<div class="entry-body "
+data-aid="7652521"
+data-atoken="30669848"
+data-collapsed="False"
+data-created="1410966984"
+data-isowner="0"
+data-helpful="1"
+data-copyable="1"
+>
+<link itemprop="url" href="/question/25402556/answer/30669848">
+<meta itemprop="answer-id" content="7652521">
+<meta itemprop="answer-url-token" content="30669848">
+
+<div class="zm-item-vote">
+<a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount>18</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="count">18</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+<div class="zm-item-answer-author-info">
+
+
+<a class="author-link"
+data-tip="p$t$he-shi-jun"
+target="_blank" href="/people/he-shi-jun"
+>贺师俊</a>
+
+
+<span title="Web开发者" class="bio">，Web开发者</span>
+
+</div>
+<div class="zm-item-vote-info" data-votecount="18">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">18</span>&nbsp;人赞同</a></span>
+
+
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="2343662" data-action="/answer/content" data-author-name="贺师俊" data-entry-url="/question/25402556/answer/30669848">
+
+<textarea hidden class="content">block 或 inline 是 CSS 术语。元素本身并没有一定是  block 或 inline。如果想知道 img 元素默认的 display 值，可查 CSS spec 或直接在 dev tools 中 inspect 之。&lt;br&gt;&lt;br&gt;BTW，inline 应译为“行内”而不是“内联”，当 inline 译为“内联”时是指编译器优化手段或相关的编程语言特性。&lt;br&gt;&lt;br&gt;注意：在HTML4时代有text-level(inline)/block-level元素的分法，但是现在早已经不再用这样的分法了。</textarea>
+
+
+<div class="zh-summary summary clearfix">
+
+block 或 inline 是 CSS 术语。元素本身并没有一定是 block 或 inline。如果想知道 img 元素默认的 display 值，可查 CSS spec 或直接在 dev tools 中 inspect 之。BTW，inline 应译为“行内”而不是“内联”，当 inline 译为“内联”时是指编译器优化手段…
+
+<a href="/question/25402556/answer/30669848" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+<a class="zg-anchor-hidden ac" name="7652521-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" data-tip="s$t$发布于 2014-09-17" target="_blank" href="/question/25402556/answer/30669848">编辑于 2014-09-18</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+</div>
+</div>
+</div>
+
+<div class="feed-item">
+<div class="content">
+<div class="entry-body "
+data-aid="7653769"
+data-atoken="30672966"
+data-collapsed="False"
+data-created="1410971568"
+data-isowner="0"
+data-helpful="1"
+data-copyable="1"
+>
+<link itemprop="url" href="/question/25402556/answer/30672966">
+<meta itemprop="answer-id" content="7653769">
+<meta itemprop="answer-url-token" content="30672966">
+
+<div class="zm-item-vote">
+<a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount>3</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="count">3</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+<div class="zm-item-answer-author-info">
+
+
+<span class="name">知乎用户</span>
+
+
+<span title="想不想来阿里一起愉快的写代码？请私信简历" class="bio">，想不想来阿里一起愉快的写代码？请私信简历</span>
+
+</div>
+<div class="zm-item-vote-info" data-votecount="3">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">3</span>&nbsp;人赞同</a></span>
+
+
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="2343662" data-action="/answer/content" data-author-name="杨森" data-entry-url="/question/25402556/answer/30672966">
+
+<textarea hidden class="content">img 属于行内元素，但在表现上更倾向于 inline-block，这种内容可替换的元素虽然属于 inline，但又能自由设置 height、width 等值。&lt;br&gt;见 &lt;a href=&quot;http://www.zhihu.com/question/20495297&quot; class=&quot;internal&quot;&gt;为什么 input 元素能用 width 属性？&lt;/a&gt;</textarea>
+
+
+<div class="zh-summary summary clearfix">
+
+img 属于行内元素，但在表现上更倾向于 inline-block，这种内容可替换的元素虽然属于 inline，但又能自由设置 height、width 等值。见 <a href="http://www.zhihu.com/question/20495297" class="internal">为什么 input 元素能用 width 属性？</a>
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+<a class="zg-anchor-hidden ac" name="7653769-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" data-tip="s$t$发布于 2014-09-18" target="_blank" href="/question/25402556/answer/30672966">编辑于 2014-09-18</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="zh-answers-title">
+<h3><a href="/question/25402556" class="zg-link-litblue">查看全部 9 个回答</a></h3>
+</div>
+<div class="zu-answer-form-disabled-wrap" id="zh-single-answer-disable-wrap" style="display:none"></div>
+
+</div>
+</div>
+
+
+<div class="zu-main-sidebar">
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div class="SignFlow SignFlow--bordered" id="SidebarSignFlow">
+<div class="SignFlow-panel">
+<div class="title register">
+<h1>加入知乎</h1>
+<h2>与世界分享你的知识、经验和见解</h2>
+</div>
+<div class="view register SignupForm">
+<form action="/register/email">
+<div class="input-wrapper">
+<input type="text" name="fullname" aria-label="姓名" data-placeholder="姓名" required>
+</div>
+<div class="input-wrapper">
+
+<input type="text" name="phone_num" class="account" aria-label="手机号（仅支持中国大陆）" data-placeholder="手机号（仅支持中国大陆）" required>
+
+</div>
+<div class="input-wrapper toggle-password">
+<input type="password" hidden> 
+<input type="password" name="password" aria-label="密码" data-placeholder="密码（不少于 6 位）" required>
+<span class="z-ico-show-password"></span>
+</div>
+<div class="input-wrapper captcha-module" data-type="en" >
+<input id="captcha" name="captcha" placeholder="验证码" required data-rule-required="true" data-msg-required="请填写验证码">
+<div class="captcha-container">
+
+<img class="js-refreshCaptcha captcha" width="120" height="30" data-tip="s$t$看不清楚？换一张"  alt="验证码">
+</div>
+</div>
+<div class="actions">
+
+<input type="submit" value="注册" class="submit zg-btn-blue">
+
+</div>
+<div class="sns clearfix">
+<span>已有帐号？<a href="#" class="switch-to-login">登录</a></span>
+</div>
+</form>
+</div>
+</div>
+<div class="SignFlow-panel" hidden>
+<div class="LoginForm">
+<div class="title login">
+<h1>登录知乎</h1>
+<h2>与世界分享你的知识、经验和见解</h2>
+</div>
+<div class="view login">
+<form method="POST">
+<div class="input-wrapper">
+<input type="text" name="account" class="account" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required>
+</div>
+<div class="input-wrapper toggle-password">
+<input type="password" name="password" aria-label="密码" placeholder="密码" required>
+<span class="z-ico-show-password"></span>
+</div>
+<div class="input-wrapper captcha-module" data-type="en" >
+<input id="captcha" name="captcha" placeholder="验证码" required data-rule-required="true" data-msg-required="请填写验证码">
+<div class="captcha-container">
+
+<img class="js-refreshCaptcha captcha" width="120" height="30" data-tip="s$t$看不清楚？换一张"  alt="验证码">
+</div>
+</div>
+<div class="actions">
+
+<input type="submit" value="登录" class="submit zg-btn-blue">
+
+</div>
+<div class="sns clearfix">
+<label class="remember-me"><input type="checkbox" name="remember_me" checked value="true">记住我</label>
+<span class="middot">·</span>
+<button class="unable-login" type="button">无法登录？</button>
+<button type="button" class="js-show-sns-buttons is-visible">社交帐号登录</button>
+<div class="sns-buttons">
+<button type="button" class="wechat"><span class="ico sprite-global-icon-wechat-gray"></span>微信</button>
+<button type="button" class="weibo"><span class="ico sprite-global-icon-weibo-gray"></span>微博</button>
+<button type="button" class="qq"><span class="ico sprite-global-icon-qq-gray"></span>QQ</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner zg-gray-normal" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="2343662">关注问题</button>
+
+40
+人关注该问题
+
+</div>
+</div>
+
+<div class="zm-side-section sidebar-author-info clearfix">
+<div class="zm-side-section-inner" id="js-sidebar-author-info">
+<h3>关于作者</h3>
+<div class="zm-profile-card zm-profile-section-item zg-clear no-hovercard">
+<div class="zg-right">
+<button data-follow="m:button" data-id="4dd80143e58f8006c9edd8cebb55c087" class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0">关注他</button>
+</div>
+<a title="戴彬"
+data-tip="p$t$undersound"
+class="zm-item-link-avatar"
+href="/people/undersound">
+<img src="https://pic1.zhimg.com/da8e974dc_m.jpg" class="zm-item-img-avatar">
+</a>
+<div class="zm-list-content-medium">
+<h2 class="zm-list-content-title"><a data-tip="p$t$undersound" href="http://www.zhihu.com/people/undersound" class="zg-link" title="戴彬"
+>戴彬</a></h2>
+
+<div class="zg-big-gray"></div>
+<div class="details zg-gray">
+<a target="_blank" href="/people/undersound/followers" class="zg-link-gray-normal">159 关注者</a>
+/
+<a target="_blank" href="/people/undersound/asks" class="zg-link-gray-normal">27 提问</a>
+/
+<a target="_blank" href="/people/undersound/answers" class="zg-link-gray-normal">122 回答</a>
+/
+<a target="_blank" href="/people/undersound" class="zg-link-gray-normal">1091 赞同</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-loc="answer_up" data-params='{&quot;question_token&quot;: 25402556}'></div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>被收藏 <a href="/question/25402556/answer/30728140/collections" data-za-c="collect" data-za-a="click_answer_collected_count" data-za-l="sidebar_answer_collected_count">1</a> 次</h3>
+<div id="zh-fav-list-side-related">
+
+<div class="zm-item" id="mi-1452211921">
+<h2 class="zm-item-title ">
+<a href="/collection/83740409">前端问题</a>
+</h2>
+<div class="zm-item-meta">
+
+<a href="/people/zhao-hai-ping-65" data-tip="p$t$zhao-hai-ping-65" class="zg-link-litblue"> 赵海平 </a> 创建
+
+
+<span style="color: #dddddd;">&nbsp;|&nbsp;</span>
+<a class="zg-link-gray" href="/collection/83740409/followers" data-za-c="collect" data-za-a="visit_answer_collections" data-za-l="sidebar_answer_collection_followed_count">0 人关注</a>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix" data-za-module="RelatedQuestions">
+
+<a class="zg-right next">换一换</a>
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/21445727" data-id="758987">
+为什么 Web 前端开发不抛弃 HTML 和 CSS，用纯 JavaScript 开发？
+</a> <span class="num">96 个回答</span><meta itemprop="followerCount" content="1171" />
+</li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/21935157" data-id="954872">
+如何看待 CSS 中 BEM 的命名方式？
+</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="592" />
+</li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/22337798" data-id="1116024">
+&lt;body/onload=alert(1)&gt; 是什么写法？
+</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="121" />
+</li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/20797118" data-id="499295">
+网页头部的声明应该是用 lang=&quot;zh&quot; 还是 lang=&quot;zh-cn&quot;？
+</a> <span class="num">13 个回答</span><meta itemprop="followerCount" content="809" />
+</li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/21468450" data-id="768081">
+有哪些好方法能处理 display: inline-block 元素之间出现的空格？
+</a> <span class="num">13 个回答</span><meta itemprop="followerCount" content="184" />
+</li>
+
+<li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/22818104" data-id="1307959">
+网上常能见到的一段 JS 随机数生成算法如下，为什么用 9301, 49297, 233280 这三个数字做基数？
+</a> <span class="num">4 个回答</span><meta itemprop="followerCount" content="884" />
+</li>
+
+<li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/19813265" data-id="105287">
+JavaScript 是什么？
+</a> <span class="num">23 个回答</span><meta itemprop="followerCount" content="723" />
+</li>
+
+<li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/24317445" data-id="1908783">
+中国国内 JavaScript 圈的现状如何？
+</a> <span class="num">48 个回答</span><meta itemprop="followerCount" content="1036" />
+</li>
+
+<li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/19657253" data-id="42844">
+怎么样才算是精通 JavaScript？
+</a> <span class="num">90 个回答</span><meta itemprop="followerCount" content="1286" />
+</li>
+
+<li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question">
+<a class="question_link" href="/question/21943416" data-id="958175">
+如何理解 CSS 类名语义化？
+</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="180" />
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section zh-answer-status">
+<div class="zm-side-section-inner">
+<h3>回答状态</h3>
+<p>
+
+发布于
+
+<span class="time">2014-09-19</span>
+</p>
+<p>
+所属问题被浏览 <strong>3280</strong> 次
+</p>
+<p class="copyright">
+
+<a href="/terms#sec-licence"><i class="icon icon-copyable"></i>作者保留所有权利</a>
+
+</p>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-loc="answer_down" data-params='{&quot;question_token&quot;: 25402556}'></div>
+
+</div>
+
+
+</div>
+
+
+<div id="zh-footer" class="zh-footer">
+<div class="content zg-wrap clearfix">
+<ul>
+
+<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
+
+<li><a href="/app" target="_blank">移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="/contact">联系我们</a></li>
+
+</ul>
+
+<span class="copy">&copy; 2016 知乎</span>
+
+</div>
+</div>
+
+<script type="text/json" class="json-inline" data-name="guiders2">{}</script>
+<script type="text/json" class="json-inline" data-name="current_user">["","","","-1","",0,0]</script>
+<script type="text/json" class="json-inline" data-name="user_status">[null,null]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null,false]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":0,"now":1468299897000,"abtest_mask":"------------------------------","user_attr":[0,0,0,"-","-"],"user_hash":0}</script>
+
+<script type="text/json" class="json-inline" data-name="ra-urls">{"Report":"http:\/\/static.zhihu.com\/static\/revved\/-\/apps\/Report.de4e9d17.js","Community":"http:\/\/static.zhihu.com\/static\/revved\/-\/apps\/Community.4e11c449.js","OrgAnalytics":"http:\/\/static.zhihu.com\/static\/revved\/-\/apps\/OrgAnalytics.47e1a483.js","common":"http:\/\/static.zhihu.com\/static\/revved\/-\/apps\/common.ed1d17c3.js","CommentApp":"http:\/\/static.zhihu.com\/static\/revved\/-\/apps\/CommentApp.2ab02258.js"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"isEditLocked":false,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":2343662,"urlToken":25402556,"isOrg":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_bio">{"selected_bio":null,"type":null,"value":""}</script>
+<script type="text/json" class="json-inline" data-name="current_answer">{"urlToken":30728140}</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+
+<script src="http://static.zhihu.com/static/revved/-/js/vendor.ff76fbae.js"></script>
+<script src="http://static.zhihu.com/static/revved/-/js/closure/base.6247b9d1.js"></script>
+
+<script src="http://static.zhihu.com/static/revved/-/js/closure/common.f59fc617.js"></script>
+
+
+<script src="http://static.zhihu.com/static/revved/-/js/closure/richtexteditor.b342c9ea.js" async></script>
+<script src="http://static.zhihu.com/static/revved/-/js/closure/page-main.908c4034.js"></script>
+<meta name="entry" content="ZH.entrySA" data-module-id="page-main">
+
+<script type="text/zscript" znonce="718502a45c554ac89bf21b4086db1db9"></script>
+
+<input type="hidden" name="_xsrf" value="df6b8c75482d0f45db392403384b62cd"/>
+</body>
+</html>

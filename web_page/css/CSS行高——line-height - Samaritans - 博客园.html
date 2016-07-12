@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<title>CSS行高——line-height - Samaritans - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=umTYGJ1Xbo61obX_Gqsil3krUSBXOilTLax6nesdN401"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/BlueSky/bundle-BlueSky.css?v=_lYRTG5SjWWADGcuS8G-fWWj62fg5g8s6xd9-hRa-g01"/>
+<link type="text/css" rel="stylesheet" href="/blog/customcss/101421.css?v=Vhfs%2bFXOUJc5AH%2bEiXlP9aW0Zuk%3d"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/dolphinX/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/dolphinX/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/dolphinX/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'dolphinX', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=2Zs8QG7I27WguWECxCpE9rKckP7dHNZ3hmM9khFPf7U1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/dolphinX/"><img id="blogLogo" src="/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/dolphinX/">Samaritan</a></h1>
+<h2>It always seems impossible until it's done.</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/dolphinX/">首页</a></li>
+<li></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/Samaritans">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/dolphinX/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/dolphinX/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 110&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 1628</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/dolphinX/p/3236686.html">CSS行高——line-height</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>初入前端的时候觉得CSS知道display、position、float就可以在布局上游刃有余了，随着以后工作问题层出不穷，才逐渐了解到CSS并不是几个style属性那么简单，最近看了一些关于行高的知识，就此总结一下。</p>
+<p>所谓行高是指文本行基线间的垂直距离。要想理解这句话首先得了解几个基本知识：</p>
+<h3><strong>顶线、中线、基线、底线</strong></h3>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Test<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="text/css"</span> <span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;">
+            span
+            </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+                padding</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">0px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+                line-height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">1.5</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+            <span style="background-color: #f5f5f5; color: #000000;">}</span>
+        <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="test"</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="background-color:#ccc;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:3em;background-color:#999;"</span><span style="color: #0000ff;">&gt;</span>中文English<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:3em;background-color:#999;"</span><span style="color: #0000ff;">&gt;</span>English中文<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+        <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191645-6676816d69204555beb3374d3daa5277.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14492" src="http://images.cnitblog.com/blog/349217/201308/04191646-bdab6a76666f4747a58b5e9b7c6be74c.png" alt="wps_clip_image-14492" width="588" height="303" border="0" /></a></p>
+<p>从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，就是和这四条线相关。</p>
+<p>尤其记得基线不是最下面的线，最下面的是底线。</p>
+<h3>行高、行距与半行距</h3>
+<p>行高是指上下文本行的基线间的垂直距离，即图中两条红线间垂直距离。</p>
+<p>行距是指一行底线到下一行顶线的垂直距离，即第一行粉线和第二行绿线间的垂直距离。</p>
+<p>半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字体size）/2</p>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191648-943fdde78927484e858416514e949ba2.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14662" src="http://images.cnitblog.com/blog/349217/201308/04191649-7fdab9f4cce5477a90e766ff47ba1291.png" alt="wps_clip_image-14662" width="725" height="361" border="0" /></a></p>
+<h3>内容区、行内框、行框</h3>
+<p><strong>内容区：</strong>底线和顶线包裹的区域，即下图深灰色背景区域。</p>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191650-1840b09dc8994d2797eec8c77c0fb417.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14718" src="http://images.cnitblog.com/blog/349217/201308/04191651-5accf16cbfca4a53929ce89f6096e4c8.png" alt="wps_clip_image-14718" width="604" height="299" border="0" /></a></p>
+<p><strong>行内框</strong>，每个行内元素会生成一个行内框，行内框是一个浏览器渲染模型中的一个概念，无法显示出来，在没有其他因素影响的时候（padding等），行内框等于内容区域，而设定行高时行内框高度不变，半行距【（行高-字体size）/2】分别增加/减少到内容区域的上下两边（深蓝色区域）</p>
+<p><strong>行框（line box），</strong>行框是指本行的一个虚拟的矩形框，是浏览器渲染模式中的一个概念，并没有实际显示。行框高度等于本行内所有元素中行内框最大的值（以行高值最大的行内框为基准，其他行内框采用自己的对齐方式向基准对齐，最终计算行框的高度），当有多行内容时，每行都会有自己的行框。</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="background-color:#ccc;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:1em;background-color:#666;"</span><span style="color: #0000ff;">&gt;</span>中文English<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:3em;background-color:#999;"</span><span style="color: #0000ff;">&gt;</span>中文English<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:3em;background-color:#999;"</span><span style="color: #0000ff;">&gt;</span>English中文<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:1em;background-color:#666;"</span><span style="color: #0000ff;">&gt;</span>English中文<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191855-b184cb52f05f487a992d5fda66626651.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14832" src="http://images.cnitblog.com/blog/349217/201308/04191857-97e3168990b446f89d4a0fbe6b287802.png" alt="wps_clip_image-14832" width="721" height="336" border="0" /></a></p>
+<h3>line-height</h3>
+<p>基本概念搞明白了我们就可以说说本文的主角line-height属性了。</p>
+<p>定义：line-height 属性设置行间的距离（行高），不能使用负值。该属性会影响行框的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。line-height 与 font-size 的计算值之差(行距)分为两半，分别加到一个文本行内容的顶部和底部。可以包含这些内容的最小框就是行框。</p>
+<p>可能的值</p>
+<table style="width: 737px;" border="1" cellspacing="0" cellpadding="4">
+<tbody>
+<tr>
+<td valign="top" width="200">值</td>
+<td valign="top" width="535">说明</td>
+</tr>
+<tr>
+<td valign="top" width="200">normal</td>
+<td valign="top" width="535">默认,设置合理的行间距。</td>
+</tr>
+<tr>
+<td valign="top" width="200">number</td>
+<td valign="top" width="535">设置数字，此数字会与当前的字体尺寸<strong>相乘</strong>来设置行间距。相当于倍数</td>
+</tr>
+<tr>
+<td valign="top" width="200">length</td>
+<td valign="top" width="535">设置固定的行间距。</td>
+</tr>
+<tr>
+<td valign="top" width="200">%</td>
+<td valign="top" width="535">基于当前字体尺寸的百分比行间距。</td>
+</tr>
+<tr>
+<td valign="top" width="200">inherit</td>
+<td valign="top" width="535">规定应该从父元素继承 line-height 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<p>貌似很简单，但感觉没什么用出的样子，那就让我们看看line-height的几个应用</p>
+<h3>div文字垂直居中</h3>
+<p>div居中对齐一直是个难题，水平还好解决些，margin：0 auto; 可以解决现代浏览器，IE下text-align:center。但垂直居中就没那么简单了，默认是这样子的。</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="width:150px;height:100px;background-color:#ccc;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>This is a test.<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
+                        This is a test.
+                </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191857-bb349a54faa8439a8964a6ca144ff68f.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14888" src="http://images.cnitblog.com/blog/349217/201308/04191858-242d57417a9040cfa1554e8367ecad29.png" alt="wps_clip_image-14888" width="244" height="176" border="0" /></a></p>
+<p>我们可以利用line-block这样做</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="width:150px;height:100px;line-height:100px;background-color:#ccc;font-size:0;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="display:inline-block;font-size:10px;line-height:1.4em;vertical-align:middle;"</span><span style="color: #0000ff;">&gt;</span>This is a test.<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
+                        This is a test.
+                </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191858-a34caee10a9b4f80b8ede64eef15fa6d.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14910" src="http://images.cnitblog.com/blog/349217/201308/04191859-86bcbe38823746129bec3f43483e9ab7.png" alt="wps_clip_image-14910" width="244" height="173" border="0" /></a></p>
+<p>单行就比较简单了，把line-height设置为box的大小可以实现单行文字的垂直居中</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="line-height:100px;border:dashed 1px #0e0;"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+                This is a test.
+            </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>&nbsp;</p>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191859-bbd21032ba234c22ae0a45baaf0386f0.png"><img style="display: inline; border: 0px;" title="wps_clip_image-14956" src="http://images.cnitblog.com/blog/349217/201308/04191900-6eb4cfa5171d40778373ccf97ac1fa41.png" alt="wps_clip_image-14956" width="615" height="141" border="0" /></a></p>
+<p>&nbsp;</p>
+<h3>元素对行高影响</h3>
+<p>行框高度是行内最高的行内框高度，通过line-height调整，内容区行高与字体尺寸有关，padding不对行高造成影响。</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="border:dashed 1px #0e0;margin-bottom:30px;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:14px;background-color:#999;"</span><span style="color: #0000ff;">&gt;</span>This is a test<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="border:dashed 1px #0e0;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:14px;padding:20px;background-color:#999;"</span><span style="color: #0000ff;">&gt;</span>This is a test<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191900-9d0f00f721da4ec7b4d397b231875e5b.png"><img style="display: inline; border: 0px;" title="wps_clip_image-15002" src="http://images.cnitblog.com/blog/349217/201308/04191901-9dee8b75d4144db7ac45c08aab9c115a.png" alt="wps_clip_image-15002" width="714" height="184" border="0" /></a></p>
+<p>第二个span虽然因为padding原因内容区变大，当行高并未改变</p>
+<h3>行高的继承</h3>
+<p>行高是可继承的，但并不是简单的copy父元素行高，继承的是计算得来的值。</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="border:dashed 1px #0e0;line-height:150%;font-size:10px;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">p </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:30px;"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+                    1232</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
+                    123
+                </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">p</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>按一般理解既然line-height可以继承，那么p元素的行高也是150%了，可是事实是这样的</p>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191902-6280ba0ed4d34bb9a380ed1bd700327b.png"><img style="display: inline; border: 0px;" title="wps_clip_image-15035" src="http://images.cnitblog.com/blog/349217/201308/04191902-710ae93b705e4957b63bfe529d347433.png" alt="wps_clip_image-15035" width="363" height="134" border="0" /></a></p>
+<p>非但没有变成150%，反而连100%都没有，重叠了！这就是继承计算的结果，如果父元素的line-height有单位（px、%）,那么继承的值则是换算后的一个具体的px级别的值；上例p得到的是10px*150%=15px的行高，而P的字体大小为30px，所以发生了重叠。</p>
+<p>而如果属性值没有单位，则浏览器会直接继承这个&ldquo;因子（数值）&rdquo;，而非计算后的具体值，此时它的line-height会根据本身的font-size值重新计算得到新的line-height 值。</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="border:dashed 1px #0e0;line-height:1.5;font-size:10px;"</span><span style="color: #0000ff;">&gt;</span>
+                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">p </span><span style="color: #ff0000;">style</span><span style="color: #0000ff;">="font-size:30px;"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+                    1232</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
+                    123
+                </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">p</span><span style="color: #0000ff;">&gt;</span>
+            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><a href="http://images.cnitblog.com/blog/349217/201308/04191905-de7f7864aaa241f591f8c21bca2a9595.png"><img style="display: inline; border: 0px;" title="wps_clip_image-15080" src="http://images.cnitblog.com/blog/349217/201308/04191906-c76caee2fa0c4c9db5f7ae88d913549e.png" alt="wps_clip_image-15080" width="377" height="206" border="0" /></a></p>
+<p>所以在使用line-height时，除非你刻意否则尽量使用倍数设值</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2013-08-04 19:21</span> <a href='http://www.cnblogs.com/dolphinX/'>Samaritans</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=3236686" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(3236686);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=101421,cb_entryId=3236686,cb_blogApp=currentBlogApp,cb_blogUserGuid='0c473040-b30a-e111-b7b9-842b2b196315',cb_entryCreatedDate='2013/8/4 19:21:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2016 Samaritans
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+</body>
+</html>
